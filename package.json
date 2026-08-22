@@ -1,0 +1,8 @@
+{
+  "name": "design-projects",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "projects/*"
+  ]
+}

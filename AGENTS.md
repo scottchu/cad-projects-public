@@ -11,6 +11,10 @@ This is a multi-project repository for personal design work. Keep every design u
 - Use `uv sync --all-packages --all-groups` to update the shared root `.venv`.
 - Do not create, commit, copy, or rely on a project-local `.venv` or nested `uv.lock`.
 - Keep project-specific dependencies in that project's `pyproject.toml`; keep only repository-wide tooling in the root `pyproject.toml`.
+- Use the root npm workspace for JavaScript projects and run npm commands from the repository root.
+- Keep project-specific JavaScript dependencies and scripts in that project's `package.json`; keep the root `package.json` limited to workspace configuration and repository-wide tooling.
+- Use the root `package-lock.json` and root npm install. Do not create, commit, copy, or rely on a project-local `package-lock.json` or independently managed project-local `node_modules`.
+- Let npm resolve unavoidable version conflicts inside the workspace rather than splitting projects into separate installs.
 
 ## Project boundaries
 

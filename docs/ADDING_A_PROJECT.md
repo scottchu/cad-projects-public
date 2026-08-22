@@ -15,9 +15,11 @@ Do not modify the original project during this inventory.
 
 ## 2. Copy into the workspace
 
-Create `projects/<project-slug>/` and preserve the project's meaningful internal layout. Do not copy `.venv`, `uv.lock`, Python caches, Node dependencies, slicer scratch data, or unrelated review output.
+Create `projects/<project-slug>/` and preserve the project's meaningful internal layout. Do not copy `.venv`, `uv.lock`, Python caches, `node_modules`, a project-local `package-lock.json`, slicer scratch data, or unrelated review output.
 
 Keep the project `pyproject.toml`, but remove any project-local workspace declaration. The root workspace will own the shared lockfile and environment.
+
+Keep the project `package.json` when JavaScript is used, but remove any project-local npm workspace declaration. The root npm workspace will own dependency resolution, the lockfile, and the install.
 
 ## 3. Register dependencies
 
@@ -26,9 +28,12 @@ From the repository root:
 ```bash
 uv lock
 uv sync --all-packages --all-groups
+npm install
 ```
 
 If requirements conflict with another member, resolve and test the conflict explicitly. Do not create a nested environment as a shortcut.
+
+Run both Python and npm commands from the repository root. Keep dependency declarations with the project that uses them; add only repository-wide tooling to the root manifests.
 
 ## 4. Verify the migration
 
@@ -37,6 +42,8 @@ At minimum:
 ```bash
 uv lock --check
 uv run --project projects/<project-slug> pytest
+npm run test --workspace projects/<project-slug> --if-present
+npm run build --workspace projects/<project-slug> --if-present
 ```
 
 Then run the project's documented export and artifact checks. Compare source and destination manifests or hashes for files that were intended to move.

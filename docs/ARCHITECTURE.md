@@ -6,7 +6,7 @@ This repository provides one stable home for multiple independent design project
 
 The central rule is:
 
-> Shared environment and lockfile; project-owned dependencies, source, tests, artifacts, and decisions.
+> Shared environments, installs, and lockfiles; project-owned dependency declarations, source, tests, artifacts, and decisions.
 
 ## uv workspace model
 
@@ -46,6 +46,25 @@ uv run --project projects/<project-slug> <command>
 
 All workspace members resolve into one `uv.lock` and use the root `.venv`. Conflicting requirements must be resolved explicitly; do not work around them with nested environments.
 
+## npm workspace model
+
+The root `package.json` declares `projects/*` as npm workspace members. A JavaScript project keeps its dependencies and scripts in `projects/<slug>/package.json`, while the repository owns the root `package-lock.json` and npm install.
+
+The repository owns:
+
+- the root npm workspace configuration;
+- `package-lock.json`;
+- the root `node_modules` install;
+- repository-wide JavaScript tooling, when needed.
+
+Each JavaScript project owns:
+
+- its runtime and development dependency declarations;
+- its build, test, and development scripts;
+- its simulator or application source.
+
+Run npm commands from the repository root. Do not maintain a project-local lockfile or independent project-local install. npm may place a conflicting package version in a nested location as part of normal workspace resolution; that is still one root-managed install and is not a separate project environment.
+
 ## Project layout
 
 A project may adapt its internal structure to the work, but should expose these stable entry points:
@@ -54,6 +73,7 @@ A project may adapt its internal structure to the work, but should expose these 
 projects/<project-slug>/
 ├── README.md
 ├── pyproject.toml
+├── package.json (when JavaScript is used)
 ├── docs/
 ├── tests/
 └── source and generated-release directories

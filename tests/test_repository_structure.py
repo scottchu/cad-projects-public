@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import tomllib
 
@@ -11,6 +12,14 @@ def test_root_workspace_contract() -> None:
     assert config["project"]["requires-python"] == ">=3.12,<3.13"
     assert config["tool"]["uv"]["package"] is False
     assert config["tool"]["uv"]["workspace"]["members"] == ["projects/[!.]*/"]
+
+
+def test_root_npm_workspace_contract() -> None:
+    config = json.loads((ROOT / "package.json").read_text())
+
+    assert config["private"] is True
+    assert config["workspaces"] == ["projects/*"]
+    assert (ROOT / "package-lock.json").is_file()
 
 
 def test_required_repository_docs_exist() -> None:
@@ -46,3 +55,4 @@ def test_workspace_members_do_not_own_environments_or_locks() -> None:
     for project in (path for path in project_root.iterdir() if path.is_dir()):
         assert not (project / ".venv").exists()
         assert not (project / "uv.lock").exists()
+        assert not (project / "package-lock.json").exists()
