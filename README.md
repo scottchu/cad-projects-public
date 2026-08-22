@@ -70,4 +70,4 @@ Project-specific commands belong in that project's README.
 - Generated files are committed only when they are intentional release or review artifacts.
 - Migrations preserve history and working artifacts without importing local environments, caches, or disposable output.
 
-See [Architecture](docs/ARCHITECTURE.md) and [Adding a project](docs/ADDING_A_PROJECT.md) for the workspace contract.
+See [Architecture](docs/ARCHITECTURE.md), [CAD workflow](docs/CAD_WORKFLOW.md), and [Adding a project](docs/ADDING_A_PROJECT.md) for the repository contract.

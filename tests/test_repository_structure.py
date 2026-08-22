@@ -19,9 +19,25 @@ def test_required_repository_docs_exist() -> None:
         "AGENTS.md",
         "docs/ARCHITECTURE.md",
         "docs/ADDING_A_PROJECT.md",
+        "docs/CAD_WORKFLOW.md",
     )
 
     assert all((ROOT / path).is_file() for path in required)
+
+
+def test_cad_policy_contains_core_evidence_categories() -> None:
+    policy = (ROOT / "docs/CAD_WORKFLOW.md").read_text().lower()
+
+    required_categories = (
+        "object-collision tests",
+        "math tests",
+        "constraint tests",
+        "user-requirement tests",
+        "source-to-artifact parity",
+        "physical coupon or observation gate",
+    )
+
+    assert all(category in policy for category in required_categories)
 
 
 def test_workspace_members_do_not_own_environments_or_locks() -> None:
