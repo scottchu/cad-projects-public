@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "project": "kage",
+  "display_name": "Kage",
+  "migration_iteration": "2026-08-22-r0-monorepo-migration",
+  "repository_baseline": "1484955cc1cfa64164dbdd1ca1222be658933c8e",
+  "source": {
+    "absolute_path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator",
+    "parent_git_head": "96b055d4b8d0b87f3e6132fa3d90b23b3be4ed84",
+    "tracking_status": "source directory untracked beneath parent repository",
+    "restart_document_sha256": "f5cf4e42a75ddb6df437cb2bdeeff9a017067f4e41097ec66974130bb0962464",
+    "source_authority_manifest_sha256": "c838df4fb1edaa4077330db1fb8e24808a065e8738d5646cd76b26077a707cdd"
+  },
+  "selection": {
+    "legacy_docs_files": 60,
+    "legacy_source_files": 667,
+    "locked_reference_files_before_migration_readme": 7,
+    "q3_reference_files_before_migration_readme": 11,
+    "locked_binary_artifacts": 1,
+    "q3_binary_artifacts": 4,
+    "legacy_docs_bytes": 590586,
+    "legacy_source_bytes": 6360381,
+    "selected_binary_artifacts": [
+      {
+        "target": "references/locked-direct-gear/p3_v3_direct_gear_race_assembled.step",
+        "bytes": 44429558,
+        "sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7",
+        "status": "locked reference; not physical acceptance"
+      },
+      {
+        "target": "references/q3-r0/written/p3_v3_mvp_base_q3_identical_sector_print_qty3.3mf",
+        "bytes": 58006,
+        "sha256": "6379eea1cbf06f6abc511b411e20ac73a9d39010537ce85e5a4be0c124706489",
+        "status": "candidate/reference only"
+      },
+      {
+        "target": "references/q3-r0/written/p3_v3_mvp_base_q3_r0_identical_sector_qty3.step",
+        "bytes": 171126,
+        "sha256": "44bf9348278c64529ac6026972014cc40d7be35969d1ecfa91ed6b5e8db9ca53",
+        "status": "candidate/reference only"
+      },
+      {
+        "target": "references/q3-r0/written/p3_v3_mvp_base_q3_r0_roller_seam_diagonal_preview_assembled.step",
+        "bytes": 607571,
+        "sha256": "1d8ce2f69fa144a8ab100fc2ddbd84f8d8effd1f2b1f7751e56467155d54e900",
+        "status": "candidate/reference only"
+      },
+      {
+        "target": "references/q3-r0/written/p3_v3_mvp_base_q3_r0_roller_seam_diagonal_preview_u1_diagonal_beds.step",
+        "bytes": 570967,
+        "sha256": "d77a496947d44d1b886c4c35d00d53c0d3b6b3487d641ef9e44ea95c0090d941",
+        "status": "candidate/reference only"
+      }
+    ],
+    "rules": [
+      "preserve all textual legacy docs under docs/legacy/source-docs",
+      "preserve meaningful text/code outside docs under legacy/source-project",
+      "preserve original tool manifests and locks under inert .legacy names",
+      "select only locked assembled STEP and Q3-R0 four-artifact set as binary CAD"
+    ]
+  },
+  "excluded": [
+    ".venv",
+    "node_modules",
+    ".uv-cache",
+    ".pytest_cache",
+    "__pycache__",
+    "__cadgen__",
+    "*.egg-info",
+    ".DS_Store",
+    ".tmp*",
+    "rollback duplicate",
+    "logs",
+    "bulk STEP/3MF/STL/GLB/PNG and other generated artifacts"
+  ],
+  "workspace_adaptations": {
+    "python_project_name": "kage",
+    "python_requires": ">=3.12,<3.13",
+    "cli": "kage-clock",
+    "environment": "root uv workspace and root .venv",
+    "javascript_package_name": "kage",
+    "javascript_display_name": "Kage",
+    "node_environment": "root npm workspace and root package-lock.json",
+    "three": "0.176.0",
+    "esbuild": "0.25.8",
+    "cadgen": "local compatibility shim; no external dependency added"
+  },
+  "test_routing": {
+    "normal": "uv run --package kage pytest projects/kage/tests",
+    "normal_scope": "migration integrity only",
+    "optional_compatibility": "uv run --package kage pytest projects/kage/compatibility-tests",
+    "compatibility_scope": "non-normative installed historical simulator and optics runtime"
+  },
+  "acceptance": {
+    "cad_source": "migration integrity may be accepted independently; no restart CAD candidate exists",
+    "written_artifact_slicer": "locked STEP and Q3 reference artifacts require exact independent inspection; no slicer acceptance implied",
+    "physical_print_assembly": "pending; no completed physical-results JSON/photo set exists"
+  }
+}

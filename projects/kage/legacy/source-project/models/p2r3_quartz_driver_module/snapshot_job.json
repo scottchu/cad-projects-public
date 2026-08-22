@@ -1,0 +1,56 @@
+{
+  "jobs": [
+    {
+      "input": "models/p2r3_quartz_driver_module/p2r3_compact_reference_assembly.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_compact_aligned_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_compact_aligned_iso_opposite.png", "camera": {"direction": [-1, 1, -0.8]}},
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_compact_aligned_top.png", "camera": "top"},
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_compact_aligned_profile.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p2r3_quartz_driver_module/p2r3_fit_coupon_ladders.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_coupons_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_coupons_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p2r3_quartz_driver_module/p2r3_second_r135_torque_wand.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_second_wand_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_second_wand_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p2r3_quartz_driver_module/p2r3_state_060000.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_regression_060000_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_regression_060000_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p2r3_quartz_driver_module/p2r3_state_120030.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_regression_120030_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_quartz_driver_module/snapshots/p2r3_regression_120030_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "effective_print_totals": {
+    "flanged_spool": 9,
+    "spacer": 6,
+    "station_frame": 3,
+    "upper_bridge": 3
+  },
+  "existing_base_policy": {
+    "base_reprint_required": false,
+    "existing_part": "canonical Q3 r0 sector, quantity 3",
+    "post_print_operation": "six rear ISO M3 90-degree countersinks, D6.0 x 1.45 mm target",
+    "replacement_base_exported": false
+  },
+  "lower_axle_socket": {
+    "depth_mm": 2.65,
+    "diameter_mm": 4.2,
+    "finished_axle_diameter_mm": 3.99,
+    "post_outer_diameter_mm": 6.0,
+    "post_top_z_mm": -2.45,
+    "socket_overrun_above_post_mm": 0.1,
+    "z_mm": [
+      -5.0,
+      -2.35
+    ]
+  },
+  "namespace": "p3_v3_mvp_free_roller_r1_retrofit",
+  "one_station_kit": {
+    "bounds_mm": [
+      [
+        22.5,
+        29.7,
+        39.05
+      ],
+      [
+        23.299999999999983,
+        15.4,
+        1.299999999999999
+      ],
+      [
+        13.799999999999997,
+        13.8,
+        4.3
+      ],
+      [
+        13.800000000000004,
+        13.8,
+        4.3
+      ],
+      [
+        13.800000000000011,
+        13.8,
+        4.3
+      ],
+      [
+        6.0,
+        6.0,
+        0.8
+      ],
+      [
+        6.0,
+        6.0,
+        0.8
+      ]
+    ],
+    "build_item_count": 7,
+    "bytes": 129711,
+    "object_count": 7,
+    "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_free_roller_r1_retrofit/one_station_retrofit_kit_print_qty3.3mf",
+    "print_quantity": 3,
+    "printer_process_profiles_embedded": false,
+    "sha256": "b30d26472017e9c8b140db2ede2f2a11f2f1ae659946e0a660fe9a747c9fe287"
+  },
+  "physical_gate": "CAD accepted only; countersink depth, nut fit, friction, wear and motion require physical checks",
+  "purchased_hardware": {
+    "bridge": "M3x6 screw x6; ordinary M3 nut x6",
+    "station": "M3x10 90-degree flat-head screw x6; ordinary M3 nut x6"
+  }
+}

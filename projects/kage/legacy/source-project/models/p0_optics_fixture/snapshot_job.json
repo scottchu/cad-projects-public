@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "input": "models/p0_optics_fixture/p0_assembly.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p0_optics_fixture/snapshots/p0_assembly_iso.png", "camera": "iso"},
+        {"path": "models/p0_optics_fixture/snapshots/p0_assembly_iso_opposite.png", "camera": {"direction": [-1, 1, -0.8]}},
+        {"path": "models/p0_optics_fixture/snapshots/p0_assembly_top.png", "camera": "top"},
+        {"path": "models/p0_optics_fixture/snapshots/p0_assembly_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p0_optics_fixture/p0_assembly.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p0_optics_fixture/snapshots/p0_assembly_exploded.png", "camera": "iso"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic", "exploded": {"enabled": true, "axis": "z", "spacing": 2.0}}
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.venv/
+.uv-cache/
+.pytest_cache/
+__pycache__/
+__cadgen__/
+*.py[cod]
+*.egg-info/
+node_modules/
+npm-debug.log*

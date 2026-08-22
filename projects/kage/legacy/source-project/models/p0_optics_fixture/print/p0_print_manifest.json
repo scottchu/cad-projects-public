@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "status": "pending_independent_review",
+  "units": "millimeter",
+  "printable_part_count": 4,
+  "printable_parts": [
+    "pedestal_mask",
+    "hour_hand",
+    "minute_hand",
+    "second_hand"
+  ],
+  "three_mf": {
+    "path": "models/p0_optics_fixture/print/p0_four_part_test_bundle.3mf",
+    "sha256": "cf89c5683f98c94b37bc6b97d31420c2c259bbfe9dd4b783c80bb12f3f4e6e1b",
+    "object_count": 4
+  },
+  "spec": {
+    "wall_z_mm": -60.0,
+    "mask_z_mm": 0.0,
+    "hand_planes_z_mm": [
+      1.2,
+      3.2,
+      5.2
+    ],
+    "source_z_mm": 44.8,
+    "body_rear_diameter_mm": 80.0,
+    "body_mask_diameter_mm": 111.1429,
+    "body_depth_mm": 60.0,
+    "hand_thickness_mm": 1.2,
+    "slicer_infill_percent": 8.0
+  },
+  "projection": {
+    "wall_z_mm": -60.0,
+    "mask_z_mm": 0.0,
+    "source_z_mm": 44.8,
+    "source_wall_mm": 104.8,
+    "mask_magnification": 2.3392857142857144,
+    "projected_mask_diameter_mm": 259.9949982142857,
+    "hands": {
+      "hour": {
+        "plane_z_mm": 1.2,
+        "magnification": 2.4036697247706424,
+        "projected_tip_radius_mm": 144.22018348623854,
+        "projected_tip_width_mm": 3.6055045871559637,
+        "penumbra_mm": 1.122935779816514,
+        "local_pad_radial_interference_mm": 0.050000000000000266
+      },
+      "minute": {
+        "plane_z_mm": 3.2,
+        "magnification": 2.5192307692307696,
+        "projected_tip_radius_mm": 176.34615384615387,
+        "projected_tip_width_mm": 6.046153846153847,
+        "penumbra_mm": 1.2153846153846155,
+        "local_pad_radial_interference_mm": 0.04999999999999982
+      },
+      "second": {
+        "plane_z_mm": 5.2,
+        "magnification": 2.6464646464646466,
+        "projected_tip_radius_mm": 224.94949494949498,
+        "projected_tip_width_mm": 3.175757575757576,
+        "penumbra_mm": 1.3171717171717174,
+        "local_pad_radial_interference_mm": 0.04999999999999982
+      }
+    }
+  },
+  "stl": {
+    "pedestal_mask": {
+      "path": "models/p0_optics_fixture/print/p0_pedestal_mask.stl",
+      "sha256": "2292fd97e4fedcbdaa47ed9087f89ee8f920e6ee1f8d527cdde709be3752824e",
+      "solid_count": 1,
+      "bbox_mm": [
+        111.14290000000001,
+        111.14290000000001,
+        66.37
+      ],
+      "volume_mm3": 434426.62689242186
+    },
+    "hour_hand": {
+      "path": "models/p0_optics_fixture/print/p0_hour_hand.stl",
+      "sha256": "4973b681a75ef611d9540feabd90a63f06c9b39b31111b5ec896e60a4f435b6b",
+      "solid_count": 1,
+      "bbox_mm": [
+        65.9791303715507,
+        12.0,
+        1.2000000000000002
+      ],
+      "volume_mm3": 350.3327038911449
+    },
+    "minute_hand": {
+      "path": "models/p0_optics_fixture/print/p0_minute_hand.stl",
+      "sha256": "e49fef736dd38a0c2b8b4e0c77093a9c28d43d06c9cbca3f0bbd399f78118e4b",
+      "solid_count": 1,
+      "bbox_mm": [
+        74.9749371855331,
+        10.0,
+        1.2000000000000002
+      ],
+      "volume_mm3": 335.09914116221677
+    },
+    "second_hand": {
+      "path": "models/p0_optics_fixture/print/p0_second_hand.stl",
+      "sha256": "1552f51b15618233a30746079762c0a65e7fd3c8766e8d8e8ebb25f462053552",
+      "solid_count": 1,
+      "bbox_mm": [
+        88.9686269665969,
+        8.0,
+        1.2000000000000002
+      ],
+      "volume_mm3": 254.91619175405452
+    }
+  },
+  "notes": [
+    "CAD body is intentionally solid; apply low infill in the slicer.",
+    "Hub pad force and long-term fit are physical-test gates, not CAD claims.",
+    "Verify hand release and LED heat shielding before optical testing."
+  ]
+}

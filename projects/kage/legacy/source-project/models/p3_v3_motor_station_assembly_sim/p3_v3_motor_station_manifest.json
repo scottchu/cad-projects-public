@@ -1,0 +1,26 @@
+{
+  "artifact_sha256": {
+    "p3_v3_motor_station_chassis_patch.step": "9783eb724ca01a7d78b0778e6af4ea3c80c96f37e50cb12186799d6cad0ba182",
+    "p3_v3_motor_station_open_yoke.step": "66f4826711d023b07fb84925b130b48c6f7c50c4b7641b6880a58ca7f94fd1f7",
+    "p3_v3_motor_station_stage1_motor_mount.step": "2353b4fd348761cee21300a0f53b24106a613ec64ff0feb93f2df3aba5625a06",
+    "p3_v3_motor_station_stage2_gearbox_mount.step": "544884ce1bf3b94e2ad14274f9f546eb9554ca990071858d5b867ca57ee0cf1d",
+    "p3_v3_motor_station_stage3_shaft_stack.step": "1ab594de2efadad96fe20bb8de07327a9bef47140158d90af951b50786b1284e",
+    "p3_v3_motor_station_stage4_final_height_lock.step": "1c2fef20d78a36cae203e280808f0c375437f6a76093cd520d87f16c48197f40",
+    "p3_v3_motor_station_stage5_reverse_service.step": "b0905278d7c0178f8de5fb431f8d234626ae54ea51669f712736cc693cb4a406"
+  },
+  "revision": "D-shaft-retained-static-stages-r2",
+  "source_sha256": {
+    "p3_v3_motor_station_assembly_sim_export.py": "af15d977df4272291b190debad364507db2d4b41f779fb7f0f5611fe9fbaa0a9",
+    "p3_v3_motor_station_assembly_sim_geometry.py": "bf2cf4ef0dada419d791eaa04f8166425653f36536ee8a7fbfb9a929a72d5276",
+    "p3_v3_motor_station_assembly_sim_spec.py": "75f9494a56b06cc30b7efc6ec0a53f74f554c1bc6101f0b259b6e812fb7f8e1e"
+  },
+  "stage_labels": {
+    "p3_v3_motor_station_chassis_patch.step": "fixed_chassis_patch_with_4x_M3_heat_set_insert_pockets",
+    "p3_v3_motor_station_open_yoke.step": "gearbox_open_yoke_second_one_piece",
+    "p3_v3_motor_station_stage1_motor_mount.step": "STATIC_STAGE1_mount_NEMA8_and_horizontal_bevel_before_output_stack",
+    "p3_v3_motor_station_stage2_gearbox_mount.step": "STATIC_STAGE2_mount_open_yoke_with_4x_M3x8",
+    "p3_v3_motor_station_stage3_shaft_stack.step": "STATIC_STAGE3_build_output_stack_then_install_MR84_gates_before_ring",
+    "p3_v3_motor_station_stage4_final_height_lock.step": "STATIC_STAGE4_CUTAWAY_second_final_height_locked",
+    "p3_v3_motor_station_stage5_reverse_service.step": "STATIC_STAGE5_REVERSE_SERVICE_ring_then_gates_then_output_stack_then_motor_M2"
+  }
+}

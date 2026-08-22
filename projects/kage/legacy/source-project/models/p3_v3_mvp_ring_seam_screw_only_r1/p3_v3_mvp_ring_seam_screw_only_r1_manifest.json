@@ -1,0 +1,145 @@
+{
+  "artifacts": {
+    "step": {
+      "objects": [
+        "hour_locked_65T_Q1_screw_only_r1",
+        "hour_locked_65T_Q2_screw_only_r1",
+        "hour_screw_only_outboard_splice_pad_two_shoulders",
+        "hour_seam_M3x8_socket_cap_1_REFERENCE",
+        "hour_seam_AF5p5_M3_nut_1_REFERENCE",
+        "hour_seam_M3x8_socket_cap_2_REFERENCE",
+        "hour_seam_AF5p5_M3_nut_2_REFERENCE"
+      ],
+      "path": "models/p3_v3_mvp_ring_seam_screw_only_r1/hour_q1_q2_seam_coupon.step",
+      "sha256": "df5587bde7af838bb3b46d4b114f0d12f1ebd2756162e1298de562ae81fd1f7c"
+    },
+    "three_mf": {
+      "objects": [
+        "hour_locked_65T_Q1_screw_only_r1",
+        "hour_locked_65T_Q2_screw_only_r1",
+        "hour_screw_only_outboard_splice_pad_two_shoulders"
+      ],
+      "path": "models/p3_v3_mvp_ring_seam_screw_only_r1/hour_q1_q2_seam_coupon_print_layout.3mf",
+      "sha256": "de643680737c9ff782ea3a6e549d2895482ee98a5117b24bd3d37ee34ad1e5ef"
+    }
+  },
+  "authority": {
+    "locked_step_path": "models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818/p3_v3_direct_gear_race_assembled.step",
+    "locked_step_sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7",
+    "parity_manifest_path": "models/p3_v3_locked_parametric_repair_r1/p3_v3_locked_parametric_repair_r1_zero_delta_parity.json",
+    "parity_manifest_sha256": "89426c12ea433547f06f8c2bcd68e0c1ce66b006afe3bd4ea02ccd83b8bc4411",
+    "source_occurrences": [
+      {
+        "brep_sha256": "a2d06377665713c24a720521b5662680c52273c7f3f8194a166fb7c7a0ad10aa",
+        "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+        "occurrence_index": 108
+      },
+      {
+        "brep_sha256": "e90943a193a0dd55926a7949acdb97dd651bbb7f6389caff6eb72d73bf89f088",
+        "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+        "occurrence_index": 109
+      }
+    ]
+  },
+  "design": {
+    "capture_clearance": {
+      "head_outer_radius_mm": 144.6,
+      "intersection_volume_mm3": 0.0,
+      "minimum_actual_capture_clearance_mm": 0.24999999999997763,
+      "pad_outer_radius_mm": 144.75,
+      "trap_outer_radius_mm": 144.65
+    },
+    "hardware": "two M3x8 socket-cap screws and two AF5.5 M3 nuts; no washers or dowels",
+    "nut_trap": {
+      "across_flats_mm": 5.6,
+      "depth_mm": 2.5,
+      "roof_mm": 0.5
+    },
+    "registration_pocket_mm": [
+      5.25,
+      6.25,
+      0.9
+    ],
+    "registration_shoulder_mm": [
+      5.0,
+      6.0,
+      0.8
+    ],
+    "role_tangential_offsets_mm": [
+      [
+        -12.0,
+        4.0
+      ],
+      [
+        -4.0,
+        12.0
+      ],
+      [
+        -12.0,
+        4.0
+      ]
+    ],
+    "screw_clearance_diameter_mm": 3.4
+  },
+  "namespace": "p3_v3_mvp_ring_seam_screw_only_r1",
+  "physical_validation_required": [
+    "reviewer acceptance",
+    "printed registration fit",
+    "screw and nut insertion",
+    "loaded seam rigidity",
+    "full rotation in capture"
+  ],
+  "print_layout": [
+    {
+      "label": "hour_locked_65T_Q1_screw_only_r1",
+      "print_aabb_mm": [
+        5.0,
+        5.0,
+        0.0,
+        143.9000001,
+        149.340289795,
+        3.0000002
+      ],
+      "translation_mm": [
+        5.0000001,
+        5.000000100000032,
+        1.5000001
+      ]
+    },
+    {
+      "label": "hour_locked_65T_Q2_screw_only_r1",
+      "print_aabb_mm": [
+        110.0,
+        110.0,
+        0.0,
+        248.9000001,
+        254.724524308,
+        3.0000002
+      ],
+      "translation_mm": [
+        248.9,
+        110.00000009999998,
+        1.5000001
+      ]
+    },
+    {
+      "label": "hour_screw_only_outboard_splice_pad_two_shoulders",
+      "print_aabb_mm": [
+        230.0,
+        10.0,
+        0.0,
+        260.583151906,
+        21.5,
+        2.0
+      ],
+      "translation_mm": [
+        245.2915759527558,
+        -123.25,
+        2.7
+      ]
+    }
+  ],
+  "schema": "kage.p3-v3.mvp-ring-seam-screw-only-r1.v1",
+  "scope": "isolated one-hour Q1/Q2 seam coupon; locked baseline and Stage A unchanged",
+  "status": "REVIEW_PENDING_NOT_PRINT_READY"
+}

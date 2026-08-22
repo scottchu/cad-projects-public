@@ -1,0 +1,179 @@
+{
+  "artifacts": {
+    "step": {
+      "objects": [
+        "hour_production_Q1_65T_valley_C_interlock_M2_r1",
+        "hour_production_Q2_65T_valley_C_interlock_M2_r1",
+        "hour_localized_underside_retention_bridge_M2x6",
+        "hour_seam_M2x6_socket_cap_1_REFERENCE",
+        "hour_seam_AF4p0_M2_nut_1_REFERENCE",
+        "hour_seam_M2x6_socket_cap_2_REFERENCE",
+        "hour_seam_AF4p0_M2_nut_2_REFERENCE"
+      ],
+      "path": "models/p3_v3_mvp_ring_seam_c_interlock_m2_r1/hour_q1_q2_c_interlock_m2_coupon.step",
+      "sha256": "779fd24d720d2dc6e5ea7b5240e3152ee79469dfc0931df54f684f2b4ee7af83"
+    },
+    "three_mf": {
+      "objects": [
+        "hour_production_Q1_65T_valley_C_interlock_M2_r1",
+        "hour_production_Q2_65T_valley_C_interlock_M2_r1",
+        "hour_localized_underside_retention_bridge_M2x6"
+      ],
+      "path": "models/p3_v3_mvp_ring_seam_c_interlock_m2_r1/hour_q1_q2_c_interlock_m2_print_layout.3mf",
+      "sha256": "3720236b3c44d57a588b0c9a7f47076e56d3d2f7832b3fe5e668488bcbd6f517"
+    }
+  },
+  "authority": {
+    "locked_step_path": "models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818/p3_v3_direct_gear_race_assembled.step",
+    "locked_step_sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7",
+    "parity_manifest_path": "models/p3_v3_locked_parametric_repair_r1/p3_v3_locked_parametric_repair_r1_zero_delta_parity.json",
+    "parity_manifest_sha256": "89426c12ea433547f06f8c2bcd68e0c1ce66b006afe3bd4ea02ccd83b8bc4411",
+    "source_occurrences": [
+      {
+        "brep_sha256": "a2d06377665713c24a720521b5662680c52273c7f3f8194a166fb7c7a0ad10aa",
+        "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+        "occurrence_index": 108
+      },
+      {
+        "brep_sha256": "e90943a193a0dd55926a7949acdb97dd651bbb7f6389caff6eb72d73bf89f088",
+        "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+        "occurrence_index": 109
+      },
+      {
+        "brep_sha256": "740b95eda450a399bb2d260f686772ce3125b3c42b9c37f259d21f31c02ce643",
+        "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q3_65T_BARE_carrier_race",
+        "occurrence_index": 110
+      },
+      {
+        "brep_sha256": "326f2320734a2e8c4ba5adb4fe5b19e915a3b9ed9d32a3d03a85dad2b4b8efdd",
+        "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q4_65T_BARE_carrier_race",
+        "occurrence_index": 111
+      }
+    ]
+  },
+  "design": {
+    "capture_clearance": {
+      "bridge_outer_radius_mm": 144.7,
+      "head_outer_radius_mm": 143.8,
+      "intersection_volume_mm3": 0.0,
+      "minimum_actual_capture_clearance_mm": 0.2999999999999989,
+      "trap_outer_radius_mm": 143.975
+    },
+    "interlock": {
+      "axial_allowance_mm": 0.1,
+      "engagement_mm": 4.0,
+      "neck_width_mm": 1.4,
+      "protected_inner_radius_mm": 133.2,
+      "root_fillet_mm": 0.35,
+      "type": "full-thickness XY planar complementary jigsaw",
+      "xy_clearance_per_side_mm": 0.22
+    },
+    "retention": "localized underside/outboard bridge; two M2x6 socket-cap screws; captive AF4.0 M2 nuts; no dowel, M3, washer, or separate splice",
+    "role_tangential_offsets_mm": [
+      [
+        -11.0,
+        5.0
+      ],
+      [
+        -5.0,
+        11.0
+      ],
+      [
+        -11.0,
+        5.0
+      ]
+    ]
+  },
+  "namespace": "p3_v3_mvp_ring_seam_c_interlock_m2_r1",
+  "phase_contract": {
+    "carrier_layers_mm": [
+      [
+        -1.5,
+        1.5
+      ],
+      [
+        4.05,
+        7.05
+      ],
+      [
+        9.6,
+        12.6
+      ]
+    ],
+    "carrier_race_radius_mm": 131.6,
+    "coupon_seam_angle_deg": 90.692307692308,
+    "crop_boundary_shift_deg": 0.692307692308,
+    "display_fin_angles_deg": [
+      305.0,
+      45.0,
+      145.0
+    ],
+    "global_pinion_phase_delta_deg": 0.0,
+    "locked_global_tooth_phase_deg": 0.6923076923076923,
+    "locked_hour_global_pinion_spin_deg": 11.25,
+    "pinion_geometry_in_coupon": false,
+    "quadrant_teeth": 65,
+    "ring_teeth": 260,
+    "shifted_quadrant_local_pinion_phase_deg": 0.0
+  },
+  "physical_validation_required": [
+    "independent reviewer acceptance",
+    "printed interlock fit",
+    "M2 screw and nut insertion",
+    "loaded seam rigidity",
+    "full three-ring rotation in frozen capture"
+  ],
+  "print_layout": [
+    {
+      "label": "hour_production_Q1_65T_valley_C_interlock_M2_r1",
+      "print_aabb_mm": [
+        5.0,
+        5.0,
+        0.0,
+        149.532932653,
+        147.591555555,
+        3.0000002
+      ],
+      "translation_mm": [
+        10.643072134378944,
+        3.4147426900745197,
+        1.5000001
+      ]
+    },
+    {
+      "label": "hour_production_Q2_65T_valley_C_interlock_M2_r1",
+      "print_aabb_mm": [
+        110.0,
+        110.0,
+        0.0,
+        247.31474269,
+        256.000640252,
+        3.0000002
+      ],
+      "translation_mm": [
+        248.9,
+        111.67829472072152,
+        1.5000001
+      ]
+    },
+    {
+      "label": "hour_localized_underside_retention_bridge_M2x6",
+      "print_aabb_mm": [
+        230.0,
+        10.0,
+        0.0,
+        258.554265245,
+        16.951713646,
+        1.1
+      ],
+      "translation_mm": [
+        246.01697476833476,
+        -127.74828635432107,
+        2.6
+      ]
+    }
+  ],
+  "schema": "kage.p3-v3.mvp-ring-seam-c-interlock-m2-r1.v1",
+  "scope": "isolated production hour Q1/Q2 seam coupon; locked baseline and M3 r1 unchanged",
+  "status": "REVIEW_PENDING_NOT_PRINT_READY"
+}

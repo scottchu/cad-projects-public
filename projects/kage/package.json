@@ -1,0 +1,19 @@
+{
+  "name": "kage",
+  "displayName": "Kage",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Reproducible offline Three.js visualization runtime for Kage",
+  "scripts": {
+    "build:three": "esbuild src/three-scene.js --bundle --minify --format=iife --global-name=KageThreeScene --outfile=vendor/kage-three.bundle.js --banner:js=\"/*! KAGE Three.js runtime · three r176 · MIT · see vendor/THREE-LICENSE.txt */\"",
+    "build:adr": "esbuild src/adr-free-spinner-ring-guidance.js --bundle --minify --format=iife --global-name=KageFreeSpinnerADR --outfile=vendor/kage-free-spinner-adr.bundle.js --banner:js=\"/*! KAGE free-spinner ADR · three r176 · MIT · see vendor/THREE-LICENSE.txt */\"",
+    "serve": "bun run serve.ts",
+    "test": "npm run build:three && npm run build:adr"
+  },
+  "dependencies": {
+    "three": "0.176.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.8"
+  }
+}

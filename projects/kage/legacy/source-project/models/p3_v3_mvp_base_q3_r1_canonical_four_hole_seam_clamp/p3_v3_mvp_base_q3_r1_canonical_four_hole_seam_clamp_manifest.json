@@ -1,0 +1,40 @@
+{
+  "clamp": {
+    "bounds_mm": [
+      51.30000000000001,
+      28.85,
+      3.0
+    ],
+    "build_item_count": 1,
+    "bytes": 17325,
+    "manifold_and_oriented": true,
+    "object_count": 1,
+    "object_name": "p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp_CANONICAL_CLAMP_PRINT_QTY_3",
+    "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp/p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp_canonical_clamp_print_qty3.3mf",
+    "print_quantity": 3,
+    "printer_process_profiles_embedded": false,
+    "sha256": "ee52225074e2e58951562f631b66f0ee5636215a881c9f74906424e65d52c15e",
+    "triangles": 1372,
+    "vertices": 680
+  },
+  "namespace": "p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp",
+  "sector": {
+    "bounds_mm": [
+      194.54570305273023,
+      194.7906520270086,
+      6.0
+    ],
+    "build_item_count": 1,
+    "bytes": 58011,
+    "manifold_and_oriented": true,
+    "object_count": 1,
+    "object_name": "p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp_CANONICAL_SECTOR_PRINT_QTY_3",
+    "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp/p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp_canonical_sector_print_qty3.3mf",
+    "print_quantity": 3,
+    "printer_process_profiles_embedded": false,
+    "sha256": "1dc84c9ff23531c64411facc3d182e65ce00549c4e42da9772881efff7f104e9",
+    "triangles": 4400,
+    "vertices": 2178
+  },
+  "status": "CAD_VALIDATED_PHYSICAL_STRENGTH_UNPROVEN"
+}

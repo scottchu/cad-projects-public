@@ -1,0 +1,52 @@
+{
+  "jobs": [
+    {
+      "input": "models/p3_v3_mvp_base_q4_r3_integral_lap/p3_v3_mvp_base_q4_r3_integral_lap_assembled.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r3_integral_lap/snapshots/assembled_top.png",
+          "camera": "top"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r3_integral_lap/snapshots/assembled_underside.png",
+          "camera": {"direction": [-1, 1, -0.8]}
+        }
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q4_r3_integral_lap/p3_v3_mvp_base_q4_r3_integral_lap_service_exploded.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r3_integral_lap/snapshots/service_exploded.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q4_r3_integral_lap/p3_v3_mvp_base_q4_r3_integral_lap_quadrant_Q1_underside_down.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r3_integral_lap/snapshots/A_tongue_seams_closeup.png",
+          "camera": {"direction": [1, -1, 0.8]}
+        }
+      ],
+      "render": {"viewLabels": true, "padding": 0.08, "sizeProfile": "diagnostic"}
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q4_r3_integral_lap/p3_v3_mvp_base_q4_r3_integral_lap_quadrant_Q2_front_down.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r3_integral_lap/snapshots/B_rebate_seams_closeup.png",
+          "camera": {"direction": [-1, -1, 0.8]}
+        }
+      ],
+      "render": {"viewLabels": true, "padding": 0.08, "sizeProfile": "diagnostic"}
+    }
+  ]
+}

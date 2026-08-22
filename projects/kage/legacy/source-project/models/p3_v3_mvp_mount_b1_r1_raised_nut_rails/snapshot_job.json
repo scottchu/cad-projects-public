@@ -1,0 +1,192 @@
+{
+  "jobs": [
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_assembled_test_rig.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/assembled_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/assembled_opposite.png",
+          "camera": {
+            "direction": [
+              -1,
+              1,
+              -0.8
+            ]
+          }
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/assembled_top.png",
+          "camera": "top"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/assembled_front.png",
+          "camera": "front"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.1,
+        "sizeProfile": "assembly"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_service_exploded.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/service_exploded.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.1,
+        "sizeProfile": "assembly"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_quadrant_Q1.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/quadrant_Q1_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_quadrant_Q2.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/quadrant_Q2_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_quadrant_Q3.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/quadrant_Q3_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_quadrant_Q4.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/quadrant_Q4_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_reusable_motor_sled.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/reusable_motor_sled_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_reusable_fixed_riser.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/reusable_fixed_riser_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/reusable_fixed_riser_top.png",
+          "camera": "top"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/p3_v3_mvp_mount_b1_r1_raised_nut_rails_spine_riser.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/spine_riser_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_mount_b1_r1_raised_nut_rails/snapshots/spine_riser_top.png",
+          "camera": "top"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    }
+  ]
+}

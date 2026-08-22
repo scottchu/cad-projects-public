@@ -1,0 +1,3 @@
+# B6-R1 coplanar broad-underside electronics backbone MVP
+
+One removable PETG printed solid mounted on the eight existing R4 seam axes. R1 removes the rejected four isolated landing pips and extends the complete connected footprint to a broad coplanar global underside at Z=-25.5 mm while preserving the R0 functional web and pad top elevations. The assembled and exploded STEP files contain non-print board, hardware, cable, antenna, and thermal witnesses. Electronics envelopes are replaceable and no board-specific hole pattern is claimed. The 3MF is model-only and contains exactly the single B6 backbone. B4 moving rings remain the last assembly step.

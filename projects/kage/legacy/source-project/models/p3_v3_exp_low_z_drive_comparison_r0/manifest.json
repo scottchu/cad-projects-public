@@ -1,0 +1,52 @@
+{
+  "status": "communication_geometry_not_print_ready",
+  "locked_step": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818/p3_v3_direct_gear_race_assembled.step",
+  "locked_sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7",
+  "preserved": [
+    "three exact 260T ring/fins",
+    "three exact 16T output pinions"
+  ],
+  "concepts": {
+    "A_locked_z_budget_section.step": {
+      "z_envelope": [
+        -32.5,
+        24.2514,
+        56.7514
+      ],
+      "solids": 201,
+      "immutable_existing_artifact": true
+    },
+    "B_flush_hardware_captive_axle.step": {
+      "z_envelope": [
+        -28.0,
+        24.2514,
+        52.2514
+      ],
+      "solids": 225
+    },
+    "C_role_local_short_bevel_station.step": {
+      "z_envelope": [
+        -28.0,
+        15.15,
+        43.15
+      ],
+      "solids": 72,
+      "complete_clock": false,
+      "scope": "three_role_local_coupon",
+      "claim": "packaging_potential_only_full_clock_integration_unproven"
+    },
+    "p3_v3_exp_low_z_drive_comparison_r0_side_by_side.step": {
+      "z_envelope": [
+        -32.5,
+        24.2514,
+        56.7514
+      ],
+      "solids": 498
+    }
+  },
+  "comparison_layout": {
+    "minimum_requested_gap_x": 40.0,
+    "measured_A_to_B_gap_x": 40.0,
+    "measured_B_to_C_gap_x": 40.0
+  }
+}
