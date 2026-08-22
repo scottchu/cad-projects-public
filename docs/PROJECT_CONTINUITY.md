@@ -40,6 +40,7 @@ Before material work begins:
 2. point `docs/iterations/CURRENT` to it;
 3. freeze the exact baseline, intent, scope, invariants, non-goals, and planned evidence in `BRIEF.md`;
 4. record alternatives, tradeoffs, assumptions, and planned architecture in `DESIGN.md`.
+5. when work is delegated, record the bounded execution plan as a DAG in `BRIEF.md`, using a summary table plus task detail blocks; do not create separate orchestration documents or per-agent diaries.
 
 While work is in progress:
 
@@ -68,6 +69,8 @@ Each active iteration contains:
 - `REVIEW.md`: critic and review findings, severity, resolution, and remaining concerns;
 - `HANDOFF.md`: current status, changed paths, artifacts, open work, and precise next-agent instructions.
 
+For delegated work, `BRIEF.md` additionally contains a stable frozen design contract section and a separate mutable execution-plan/status area. The execution-plan summary table records task ID, role, dependencies, immutable inputs, exclusive write scope, done condition, parallel group, model/effort/time/token ceiling, and status. Its task detail blocks record owner identity, allowed reads, forbidden scope, deliverables/evidence, output/retry/concurrency ceilings, and stop/escalation conditions. An immutable input manifest is a declared SHA-256 list of decision-bearing paths and content hashes: relevant frozen requirements, the frozen brief/design contracts, and applicable authoritative source/test/artifact paths. It excludes only mutable orchestration/status and evidence records. `REVIEW.md` records distinct critic and independent formal-reviewer provenance, candidate fingerprint, and read-only status. `VALIDATION.md` records validator provenance and candidate fingerprint. `HANDOFF.md` carries a concise agent receipt/ledger with canonical evidence links and the next collect/refine action. `NEXT_AGENT.md` links to these canonical records rather than copying their contents.
+
 These documents evolve during an active iteration. Once the iteration closes, correct factual errors with an explicit correction note; do not rewrite the historical reasoning to look cleaner than it was.
 
 ## What to preserve
@@ -83,7 +86,7 @@ Preserve information that can change later work:
 - review findings and how they were resolved;
 - open physical unknowns and required observations.
 
-Do not commit raw agent transcripts, caches, broad debug logs, redundant screenshots, or speculative notes that did not affect a decision. Summarize the durable fact, rationale, or lesson instead.
+Do not commit raw agent transcripts, per-agent diaries, caches, broad debug logs, redundant screenshots, or speculative notes that did not affect a decision. Summarize the durable fact, rationale, or lesson instead.
 
 ## Decision records
 

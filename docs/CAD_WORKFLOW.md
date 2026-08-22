@@ -29,7 +29,7 @@ requirements + invariants + risks
         ↓
 small test plan and numeric design contract
         ↓
-design → implementation → critique → review → validation
+design → implementation → (critic || independent validation) → formal independent-review join
         ↑                         findings          │
         └──── smallest-source repair and rerun ────┘
         ↓
@@ -170,7 +170,7 @@ Run gates in this order so cheap failures stop expensive work:
 4. render and review required snapshots;
 5. generate secondary fabrication artifacts;
 6. validate source/export parity, mesh/3MF packaging, orientation, and slicer behavior;
-7. hand immutable artifacts to independent review and validation.
+7. freeze the generated candidate, then hand it to the independent critic and validation roles; formal independent review joins their results.
 
 Do not regenerate an entire project when only one explicit target changed.
 
@@ -207,7 +207,7 @@ Do not use a slicer workaround to hide a source-geometry defect.
 
 ### Visual review
 
-After deterministic checks, render and inspect the primary STEP and the views needed to understand it: assembled, exploded/service, and critical closeups. Visual review checks intent, usability, and obvious omissions; it does not replace measurements or collision tests.
+After deterministic checks, render and inspect the primary STEP and the views needed to understand it: assembled, exploded/service, and critical closeups. This visual inspection checks intent, usability, and obvious omissions; it does not replace measurements or collision tests, and it is not the formal independent reviewer role described below.
 
 ### Defect regression
 
@@ -230,15 +230,33 @@ CAD evidence cannot prove physical fit, strength, friction, heat behavior, wear,
 - an implementation agent approving its own design;
 - “CAD passed” presented as “physically proven.”
 
-## Multi-agent feedback loop for substantial CAD
+## Delegated execution protocol for substantial CAD
+
+The orchestrator owns the task DAG, frozen inputs, scheduling, provenance checks, receipt collection, conflict synthesis, and concise continuity-index maintenance. It does not quietly substitute for substantive design, implementation, critique, formal review, or validation deliverables. Each material task has a stable ID and owner identity, a single bounded role, objective/done gate, dependencies, exact project/iteration/baseline, task-specific immutable input manifest/candidate fingerprint, allowed reads and exclusive writes, forbidden scope, deliverables/evidence, model/effort, time/token/output/retry/concurrency ceilings, and stop/escalation conditions.
+
+Create each immutable input manifest with SHA-256 over a sorted list of its declared decision-bearing paths and content hashes: the relevant frozen requirements, the `BRIEF.md` frozen design contract section, the frozen selected design contract in `DESIGN.md`, and applicable authoritative source, tests, and artifacts. The candidate fingerprint names that manifest and its exact baseline. Exclude only mutable orchestration/status and evidence records: the delegated-plan/status area of `BRIEF.md`, mutable progress in `DESIGN.md`, `VALIDATION.md`, `REVIEW.md`, `HANDOFF.md`, receipts, and indexes. When a path or declared section changes, invalidate only a gate whose declared manifest includes it; do not discard unrelated evidence merely because a mutable coordination or evidence record changed.
 
 Use separate roles with bounded deliverables:
 
 1. **Design agent:** produces the numeric contract, parameters, datums, risks, and test targets; does not implement.
 2. **Implementation agent:** edits parametric source and generates explicit artifacts; does not approve its own work.
 3. **Critic agent:** challenges mechanical intent, assembly, usability, DfAM, and likely failure modes using the exact baseline and generated artifacts.
-4. **Review agent:** checks scope, requirement traceability, version preservation, and whether findings were actually resolved.
+4. **Formal review agent:** independently checks scope, requirement traceability, version preservation, and whether critic/validator findings were actually resolved. This acceptance role is distinct from visual inspection.
 5. **Validation/test agent:** independently runs the focused tests, actual-solid checks, source/export parity, and artifact inspection.
+
+### Frozen DAG and parallelism
+
+Default to no more than three workers while the orchestrator retains coordination capacity. One writer owns each project/source/artifact namespace. Parallelize only dependency-ready nodes that have frozen inputs and disjoint write scopes or are read-only. Do not assign duplicate agents to the same role and revision unless an independent arbitration or comparison is explicitly required. A runtime agent may be reused for follow-up or focused repair in the same bounded role/workstream; record its stable identity. The implementer, critic, validator, and formal reviewer identities must be distinct for the same candidate.
+
+For substantial CAD, use this order:
+
+1. Discovery branches may run in parallel before design, read-only against the frozen baseline.
+2. The design role selects and freezes the candidate contract before implementation. The implementation role alone mutates the candidate source/tests/artifacts and never approves its own result.
+3. After that candidate is frozen, the critic and independent validation roles may run in parallel, read-only against the same candidate fingerprint.
+4. Formal independent review is their join gate: it audits their provenance, requirement coverage, findings, and dispositions, and determines whether the candidate can advance.
+5. Any candidate change invalidates only downstream critique, validation, or review gates whose declared input manifests include the changed path; rerun those affected independent gates on the new fingerprint.
+
+Use the least expensive adequate model: fast/low for deterministic inventory, formatting, and command checks; balanced/medium for prescribed implementation or simple parts; strong/high for mechanisms, fit, critique, review, and acceptance checks; frontier/max only for unresolved architecture, repeated material failure, or physical-defect diagnosis. A max model never substitutes for a clear brief. Establish checkpoints and timeboxes; if exact controls are unavailable, record qualitative ceilings. After an initial attempt, permit at most two focused repair cycles within the task retry ceiling before reopening design, reducing scope, or escalating to the user. Stop stale, duplicate, and superseded tasks.
 
 The orchestrator must:
 
@@ -248,14 +266,16 @@ The orchestrator must:
 - stop or reuse idle roles instead of accumulating agents;
 - report findings and progress in terms of unresolved risks, not agent count or test count.
 
+Each role returns a concise receipt: stable owner identity and role; status; verified fingerprint; changed paths/artifacts; canonical links to exact commands/results, hashes/manifests, findings/severity, and requirement coverage; unresolved risks; and next action. Record distinct critic, validator, and formal reviewer provenance without copying raw reports. The orchestrator verifies provenance, synthesizes conflicts instead of concatenating reports, routes the smallest correction, and records durable evidence. Raw transcripts and per-agent diaries are prohibited.
+
 When a finding occurs:
 
 1. isolate the smallest failed invariant or interface;
 2. send the numeric correction to design when architecture is affected;
 3. let implementation change only the responsible source;
 4. rerun the failed focused gate and affected regressions;
-5. return immutable regenerated artifacts to independent review/validation;
-6. repeat until there are no unresolved material findings.
+5. return immutable regenerated artifacts to independent critic and validation, then to formal independent review as their join gate;
+6. repeat only within the task retry ceiling; otherwise reopen design, reduce scope, or escalate.
 
 Do not restart the whole design for a local defect unless the evidence shows the architecture is impossible.
 

@@ -89,6 +89,10 @@ Agent sessions are temporary execution contexts, not authoritative project recor
 
 Closed iterations and superseded decisions remain readable history. Current documents point to replacements rather than silently rewriting past reasoning.
 
+## Agent orchestration contract
+
+Material repository work is run as a bounded task DAG: the root agent may schedule, collect provenance/receipts, and maintain concise continuity indexes, while distinct role owners create substantive design, implementation, critique, formal review, or validation deliverables. Tasks record owner identity and task-specific SHA-256 immutable input manifests for declared frozen requirements and brief/design contracts plus applicable authoritative source/test/artifact paths; only mutable orchestration/status and evidence records are excluded. Only gates whose declared inputs changed are invalidated. Only frozen, dependency-ready tasks with disjoint writes (or read-only scopes) may run in parallel; one writer owns a project/source/artifact namespace. Implementation cannot self-approve, formal review joins independent critic and validation results, and those acceptance identities are distinct for one candidate. Continuity records retain concise receipts and durable evidence, never raw transcripts or per-agent diaries.
+
 ## Artifact policy
 
 Generated CAD and fabrication files are allowed when they are useful handoff or release artifacts. They must remain traceable to authoritative source and preferably carry manifest or checksum evidence.

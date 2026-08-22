@@ -2,6 +2,10 @@
 
 ## Environment
 
+- Validator provenance:
+- Candidate fingerprint:
+- Read-only status:
+
 
 ## Commands and results
 
@@ -19,4 +23,3 @@
 - Physical:
 
 ## Failures, repairs, and reruns
-

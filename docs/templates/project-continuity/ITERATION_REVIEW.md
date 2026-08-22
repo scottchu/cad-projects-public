@@ -2,6 +2,11 @@
 
 ## Review baseline
 
+- Critic provenance:
+- Independent reviewer provenance:
+- Candidate fingerprint:
+- Read-only status:
+
 
 ## Findings
 
@@ -12,4 +17,3 @@
 
 
 ## Review conclusion
-
