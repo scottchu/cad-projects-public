@@ -61,3 +61,9 @@ Every worker return is a receipt: status; verified fingerprint; changed paths/ar
 - Every release artifact must identify its source revision or manifest, generating command, parameters when relevant, checksum, and separate CAD, artifact/slicer, and physical acceptance states.
 - Keep root documentation about repository-wide policy only; project design decisions belong inside the relevant project.
 - Update `docs/ARCHITECTURE.md` only when the repository contract changes.
+
+## GitHub delivery
+
+- Every change intended for trunk `main` must be developed on a non-`main` branch and delivered through a GitHub pull request unless the user explicitly overrides that route for that specific change.
+- Link the pull request to a GitHub Project item and record the validation, independent review provenance, acceptance boundaries, unresolved risks, and next action in the pull request template.
+- Do not claim repository-host enforcement from this documentation; `.github/repository-policy.toml` records the intended delivery contract.

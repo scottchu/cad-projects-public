@@ -71,11 +71,26 @@ Validate all currently registered workspace projects:
 ```bash
 uv lock --check
 uv sync --all-packages --all-groups
-uv run pytest
-npm install --package-lock-only --ignore-scripts
+uv run pytest tests/test_repository_structure.py
+
+uv run --project projects/xt60-bend-jig pytest \
+  projects/xt60-bend-jig/tests/test_p13_four_plate_three_rod.py::test_gate0_hash_p21_pivot_and_independent_stroke_derivations \
+  projects/xt60-bend-jig/tests/test_p13_four_plate_three_rod.py::test_one_connected_complete_workpiece_has_required_extrema_and_90_degree_path \
+  projects/xt60-bend-jig/tests/test_p13_four_plate_three_rod.py::test_three_rods_are_tangent_at_contact_then_apply_locked_wire_preload \
+  projects/xt60-bend-jig/tests/test_p13_four_plate_three_rod.py::test_exact_occurrence_census_and_upward_journal_topology \
+  projects/xt60-bend-jig/tests/test_p13_four_plate_three_rod.py::test_right_cap_physical_fit_contract_is_rigid_clear_and_floor_blocked \
+  projects/xt60-bend-jig/tests/test_p13_four_plate_three_rod.py::test_continuous_full_domain_motion_and_removal_certificates \
+  projects/xt60-bend-jig/tests/test_p13_motion.py::test_motion_entry_has_exact_sixteen_stable_open_occurrences_and_envelope \
+  projects/xt60-bend-jig/tests/test_p13_motion.py::test_javascript_solver_matches_python_kinematics_on_dense_grid \
+  projects/xt60-bend-jig/tests/test_p13_motion.py::test_motion_contact_preload_directions_and_loop_are_exact \
+  projects/xt60-bend-jig/tests/test_p13_rod_fit_coupon_3p8.py::test_written_step_and_model_only_3mf_roundtrip_are_valid
+
+npm ci --ignore-scripts
+npm test --workspaces --if-present
+npm run build --workspaces --if-present
 ```
 
-Run project JavaScript checks with the workspace-specific commands above. Repository-wide npm aggregation becomes available after JavaScript workspace projects are registered.
+These are the required pull-request gates: repository structure, the current supported P13 architecture/regression subset, and declared JavaScript workspace tests/builds. The complete XT60 Python suite contains historical P1–P16 export diagnostics and is intentionally manual because unsupported historical outputs make it slow and non-green; run it only when investigating migration history. Workspace-wide npm commands run scripts only where a project declares them.
 
 Project-specific commands belong in that project's README.
 
@@ -90,4 +105,8 @@ Project-specific commands belong in that project's README.
 - Generated files are committed only when they are intentional release or review artifacts.
 - Migrations preserve history and working artifacts without importing local environments, caches, or disposable output.
 
-See [Architecture](docs/ARCHITECTURE.md), [Project continuity](docs/PROJECT_CONTINUITY.md), [CAD workflow](docs/CAD_WORKFLOW.md), and [Adding a project](docs/ADDING_A_PROJECT.md) for the repository contract.
+See [Architecture](docs/ARCHITECTURE.md), [Project continuity](docs/PROJECT_CONTINUITY.md), [CAD workflow](docs/CAD_WORKFLOW.md), [Workshop inventory](docs/WORKSHOP.md), and [Adding a project](docs/ADDING_A_PROJECT.md) for the repository contract and fabrication context.
+
+## Contributing changes
+
+Start trunk-bound work from a non-`main` branch, use the [pull request template](.github/pull_request_template.md), and link the pull request to its GitHub Project item. The machine-readable delivery contract is in [`.github/repository-policy.toml`](.github/repository-policy.toml); only an explicit user override for a specific change bypasses the pull-request route.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Reflection"
+  short_description: "Reflect on CAD evidence and next experiments"
+  default_prompt: "$design-reflection review the named project, the project containing the current directory, or the sole repository project, and propose the smallest falsifiable next experiment."

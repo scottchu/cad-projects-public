@@ -1,6 +1,9 @@
 import json
 from pathlib import Path
+import re
 import tomllib
+
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +24,18 @@ ITERATION_FILES = (
     "REVIEW.md",
     "HANDOFF.md",
 )
+
+
+SKILL_FRONTMATTER_KEYS = {"name", "description", "license", "allowed-tools", "metadata"}
+
+
+def _skill_document(path: Path) -> tuple[dict[str, object], str]:
+    text = path.read_text()
+    match = re.match(r"^---\n(.*?)\n---(?:\n|$)(.*)$", text, re.DOTALL)
+    assert match is not None
+    frontmatter = yaml.safe_load(match.group(1))
+    assert isinstance(frontmatter, dict)
+    return frontmatter, match.group(2).strip()
 
 
 def test_root_workspace_contract() -> None:
@@ -47,9 +62,94 @@ def test_required_repository_docs_exist() -> None:
         "docs/ADDING_A_PROJECT.md",
         "docs/PROJECT_CONTINUITY.md",
         "docs/CAD_WORKFLOW.md",
+        "docs/WORKSHOP.md",
     )
 
     assert all((ROOT / path).is_file() for path in required)
+
+
+def test_repository_local_skills_have_valid_entrypoints() -> None:
+    skills_root = ROOT / ".agents/skills"
+    if not skills_root.exists():
+        return
+
+    for skill in (path for path in skills_root.iterdir() if path.is_dir()):
+        entrypoint = skill / "SKILL.md"
+        assert entrypoint.is_file()
+        fields, body = _skill_document(entrypoint)
+        assert {"name", "description"} <= set(fields)
+        assert set(fields) <= SKILL_FRONTMATTER_KEYS
+        assert isinstance(fields["name"], str) and fields["name"]
+        assert isinstance(fields["description"], str) and fields["description"]
+        assert fields["name"] == skill.name
+        assert re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", fields["name"])
+        assert len(fields["name"]) <= 64
+        assert len(fields["description"]) <= 1024
+        assert body
+        assert "TODO" not in entrypoint.read_text()
+
+        interface = skill / "agents/openai.yaml"
+        if interface.exists():
+            assert interface.is_file()
+            config = yaml.safe_load(interface.read_text())
+            assert isinstance(config, dict)
+            assert set(config) <= {"interface", "dependencies", "policy"}
+            ui = config["interface"]
+            assert isinstance(ui, dict)
+            assert isinstance(ui.get("display_name"), str) and ui["display_name"]
+            assert isinstance(ui.get("short_description"), str)
+            assert 25 <= len(ui["short_description"]) <= 64
+            assert isinstance(ui.get("default_prompt"), str)
+            assert ui["default_prompt"].startswith(f"${skill.name}")
+
+
+def test_repository_delivery_policy_is_parseable() -> None:
+    policy = tomllib.loads((ROOT / ".github/repository-policy.toml").read_text())
+    delivery = policy["trunk_delivery"]
+
+    required = {
+        "branch": "main",
+        "pull_request_required": True,
+        "github_project_item_required": True,
+        "override_authority": "explicit-user-per-change",
+        "server_enforcement_claimed": False,
+    }
+    assert required.items() <= delivery.items()
+
+
+def test_pull_request_ci_targets_main_with_stable_job() -> None:
+    workflow = yaml.load(
+        (ROOT / ".github/workflows/validate.yml").read_text(), Loader=yaml.BaseLoader
+    )
+
+    assert workflow["on"]["pull_request"]["branches"] == ["main"]
+    assert "workflow_dispatch" in workflow["on"]
+    assert workflow["permissions"] == {"contents": "read"}
+    job = workflow["jobs"]["repository-tests"]
+    assert job["timeout-minutes"] == "12"
+    steps = job["steps"]
+    step_names = [step["name"] for step in steps]
+    node_setup = next(step for step in steps if step["name"] == "Set up Node.js")
+    node_index = step_names.index("Set up Node.js")
+    assert node_index + 1 == step_names.index("Run XT60 supported P13 gate")
+    assert node_setup["uses"] == "actions/setup-node@v4"
+    assert node_setup["with"]["node-version"] == "22"
+    runs = [step["run"] for step in steps if "run" in step]
+    named_runs = {step["name"]: step["run"] for step in steps if "run" in step}
+    assert named_runs["Run repository structure tests"] == (
+        "uv run pytest tests/test_repository_structure.py"
+    )
+    supported = named_runs["Run XT60 supported P13 gate"]
+    assert supported.startswith(
+        "uv run --project projects/xt60-bend-jig pytest "
+    )
+    assert "test_p13_four_plate_three_rod.py::" in supported
+    assert "test_p13_motion.py::" in supported
+    assert "test_p13_rod_fit_coupon_3p8.py::" in supported
+    assert "projects/*/tests" not in supported
+    assert all("projects/*/tests" not in command for command in runs)
+    assert "npm test --workspaces --if-present" in runs
+    assert "npm run build --workspaces --if-present" in runs
 
 
 def test_cad_policy_contains_core_evidence_categories() -> None:
