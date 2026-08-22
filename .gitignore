@@ -1,0 +1,33 @@
+# Shared uv environment and Python caches
+.venv/
+**/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# CAD and mesh application caches
+.cadquery/
+*.FCStd1
+
+# JavaScript dependencies and build output
+node_modules/
+dist/
+
+# Editors and macOS
+.DS_Store
+.idea/
+.vscode/
+
+# Local scratch and generated review output
+scratch/
+tmp/
+artifacts/
+renders/
+snapshots/
+
+# Project-local logs
+*.log

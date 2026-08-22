@@ -1,0 +1,22 @@
+[project]
+name = "design-projects"
+version = "0.1.0"
+description = "Shared tooling workspace for personal parametric design projects"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["projects/[!.]*/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
