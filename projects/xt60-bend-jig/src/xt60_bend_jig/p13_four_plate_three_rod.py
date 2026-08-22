@@ -71,7 +71,7 @@ P13_FROZEN_TOPOLOGY = {
 P13_GATE0_BRIEF_PATH = "docs/p13-four-plate-three-rod-brief.md"
 P13_GATE0_BRIEF_SHA256 = "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322"
 P13_DOMAIN_AMENDMENT_PATH = "docs/p13-cad-source-domain-amendment.md"
-P13_DOMAIN_AMENDMENT_SHA256 = "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590"
+P13_DOMAIN_AMENDMENT_SHA256 = "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda"
 P13_EPS_GLOBAL_MM = 0.005
 P13_CAP_ENGAGEMENT_DOMAIN_MM = (2.50, 3.00)
 P13_FULL_ROLL_DOMAIN_DEG = (0.0, 360.0)
@@ -150,8 +150,8 @@ class P13Parameters:
     # reduced journal lands and the left keeper rides in its own round groove.
     shaft_od: float = 5.60
     shaft_d_across_flat: float = 5.15
-    cam_d_bore_od: float = 5.70
-    cam_d_bore_across_flat: float = 5.25
+    cam_d_bore_od: float = 5.75
+    cam_d_bore_across_flat: float = 5.30
     cam_hub_od: float = 10.00
     cam_hub_extension: float = 2.00
     shaft_head_od: float = 9.60

@@ -1,7 +1,7 @@
 {
   "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
   "cadSourceStatus": "CAD_SOURCE_DOMAIN_CERTIFIED",
-  "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+  "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
   "laneSolidWitness": {
     "overlapVolumeTolerance": {
       "unit": "cubic_millimetre",
@@ -376,14 +376,14 @@
     },
     "smoothstepMonotone": true
   },
-  "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+  "parameterManifestSha256": "a4cff853c6b48ed55e50e8316835e83072f13e83d965c14653060aea004fad46",
   "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
   "removal": {
     "cadSourceDomainCertificate": {
       "certifiedBracket": {
-        "lower": 20.85,
+        "lower": 20.875,
         "unit": "millimetre",
-        "upper": 20.855,
+        "upper": 20.88,
         "width": 0.004999999999999005
       },
       "converged": true,
@@ -391,7 +391,7 @@
       "domain": {
         "amendment": {
           "path": "docs/p13-cad-source-domain-amendment.md",
-          "sha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590"
+          "sha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda"
         },
         "correlations": {
           "X_cam_lower": "left cam hub outer face >= keeper right face + axial_endplay",
@@ -633,7 +633,7 @@
           "left_cam_transverse_radius": {
             "bounds": [
               0.0,
-              0.050000000000000266
+              0.07500000000000018
             ],
             "kind": "connected-component-enclosure",
             "unit": "millimetre"
@@ -722,7 +722,7 @@
       },
       "endpointMargin": {
         "unit": "millimetre",
-        "value": 0.001372644585973859
+        "value": 0.0013726445859667535
       },
       "epsGlobal": {
         "unit": "millimetre",
@@ -730,13 +730,13 @@
       },
       "globalRemovalCommand": {
         "unit": "millimetre",
-        "value": 20.855
+        "value": 20.88
       },
       "mechanismTopCandidates": {
         "unit": "millimetre",
         "value": {
           "keeperAllS1": 32.80362735541403,
-          "leftCam": 48.20362735541403,
+          "leftCam": 48.228627355414034,
           "leftFixed": 48.15362735541403,
           "rightActuatorCam": 48.15362735541403,
           "rightFixedAllS1": 48.15362735541403,
@@ -762,7 +762,7 @@
       "proofMethod": "closed-form monotone interval bound with directed outward 0.005-mm rounding",
       "requiredLiftExactBound": {
         "unit": "millimetre",
-        "value": 20.853627355414027
+        "value": 20.878627355414032
       },
       "rightCapStage1Coverage": {
         "certificatePath": "removal.rightCapStage1Removal",
@@ -774,7 +774,7 @@
       "status": "CAD_SOURCE_DOMAIN_CERTIFIED",
       "worstCaseCorner": {
         "c_sw": 0.5,
-        "leftCamTransverse": 0.050000000000000266,
+        "leftCamTransverse": 0.07500000000000018,
         "wire_diameter_design": 4.3
       }
     },
@@ -793,7 +793,7 @@
         "unit": "millimetre",
         "value": [
           0.0,
-          20.855
+          20.88
         ]
       },
       "globalMargin": {
@@ -1919,7 +1919,7 @@
           "actualRightFixedOccurrence": "right_fixed_OD40p50_integral_upward_C_journal_ID4p80",
           "completeWorkpieceOccurrences": [
             "complete_connected_XT60_two_exact_90deg_leads_lift_0p00",
-            "complete_connected_XT60_two_exact_90deg_leads_lift_20p86"
+            "complete_connected_XT60_two_exact_90deg_leads_lift_20p88"
           ],
           "mainOuterBlank": "coaxial_disc_D40p50_T2p80",
           "persistentCutter": "coaxial_circular_journal_D4p80",
@@ -2444,11 +2444,11 @@
       "method": "exact_male_D_endpoint_support_to_female_flat_contact",
       "oneSided": {
         "unit": "degree",
-        "value": 1.9325113632825863
+        "value": 2.9405049697591217
       },
       "totalSymmetric": {
         "unit": "degree",
-        "value": 3.8650227265651727
+        "value": 5.881009939518243
       }
     },
     "directPlusXWithFixedGuidesInstalled": {
@@ -2456,14 +2456,14 @@
         "unit": "cubic_millimetre",
         "value": {
           "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 7.300469154631463,
-          "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 7.30046915463142
+          "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 7.300469154631419
         }
       },
       "admissible": false
     },
     "journalToDBoreFlatClearance": {
       "unit": "millimetre",
-      "value": 0.10000000000000009
+      "value": 0.125
     },
     "overlapVolumeTolerance": {
       "unit": "cubic_millimetre",
@@ -2494,5 +2494,5 @@
       }
     }
   },
-  "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+  "sourceRevisionSha256": "7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067"
 }

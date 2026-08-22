@@ -80,7 +80,7 @@ def test_gate0_hash_p21_pivot_and_independent_stroke_derivations() -> None:
     assert p13.P13_GATE0_BRIEF_SHA256 == "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322"
     amendment = ROOT / p13.P13_DOMAIN_AMENDMENT_PATH
     assert sha256(amendment.read_bytes()).hexdigest() == p13.P13_DOMAIN_AMENDMENT_SHA256
-    assert p13.P13_DOMAIN_AMENDMENT_SHA256 == "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590"
+    assert p13.P13_DOMAIN_AMENDMENT_SHA256 == "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda"
     expected_delta = (
         p.shaft_od / 2.0
         + p.wire_diameter_design / 2.0
@@ -403,6 +403,67 @@ def test_right_cap_physical_fit_contract_is_rigid_clear_and_floor_blocked() -> N
     assert "cavity_D4p20_throat_D4p10" in installed_cap.label
 
 
+def test_printed_D_shaft_cam_bore_fit_regression_p13_r2() -> None:
+    """Represent the printed shaft-to-both-cam insertion failure from PHYS-001."""
+
+    p = p13.P13_DEFAULTS
+    minimum_diametral_allowance = 0.15
+    circular_diametral_allowance = p.cam_d_bore_od - p.shaft_od
+    flat_profile_diametral_allowance = 2.0 * (
+        (p.cam_d_bore_across_flat - p.cam_d_bore_od / 2.0)
+        - (p.shaft_d_across_flat - p.shaft_od / 2.0)
+    )
+    assert circular_diametral_allowance >= minimum_diametral_allowance - 1.0e-9
+    assert flat_profile_diametral_allowance >= minimum_diametral_allowance - 1.0e-9
+
+    male_d = p13._d_prism_x(
+        p.shaft_od,
+        p.shaft_d_across_flat,
+        p.cam_d_engagement,
+        0.0,
+        p,
+    )
+    female_d = p13._cam_d_bore_cutter(0.0, p.cam_d_engagement, p)
+    assert float((male_d - female_d).volume) == pytest.approx(0.0, abs=1.0e-9)
+
+    cams = [
+        p13.build_left_cam(p.open_angle_deg, p),
+        p13.build_right_actuator(p.open_angle_deg, p),
+    ]
+    shaft_envelope = p13.build_shaft_extraction_envelope(p)
+    assert all(
+        intersection_volume(piece, cam) <= p.continuous_overlap_volume_tolerance
+        for piece in shaft_envelope.children
+        for cam in cams
+    )
+
+    assert p13.d_shaft_one_sided_lash_deg(p) <= 3.0 + 1.0e-9
+    assert (p.cam_hub_od - p.cam_d_bore_od) / 2.0 >= 2.075 - 1.0e-9
+    assert p.cam_d_engagement >= 4.50 - 1.0e-9
+
+    # Freeze all unrelated fits, stock, production census and authored orientations.
+    assert (
+        p.rod_diameter,
+        p.rod_length,
+        p.lane_width,
+        p.fixed_groove_od,
+        p.journal_land_od,
+        p.keeper_id,
+        p.keeper_groove_od,
+        p.left_cap_socket,
+        p.right_cap_cavity,
+        p.right_cap_throat,
+    ) == pytest.approx((4.00, 50.00, 4.75, 4.80, 4.60, 4.80, 4.60, 3.90, 4.20, 4.10))
+    assert (
+        p.print_plate_rotation_deg,
+        p.print_actuator_rotation_deg,
+        p.print_cap_rotation_deg,
+        p.print_shaft_rotation_deg,
+        p.cap_reverse_rotation_deg,
+    ) == pytest.approx((90.0, 90.0, 90.0, 0.0, 180.0))
+    assert len(p13.build_print_kit(p).children) == 14
+
+
 def test_separate_D_shaft_actual_solids_capture_phase_and_print_orientation() -> None:
     p = p13.P13_DEFAULTS
     assert p.cam_d_engagement == pytest.approx(4.50)
@@ -427,7 +488,7 @@ def test_separate_D_shaft_actual_solids_capture_phase_and_print_orientation() ->
     assert intersection_volume(p13.build_right_actuator(0.0, p), right_bore) == pytest.approx(0.0, abs=1e-7)
 
     one_sided_lash = p13.d_shaft_one_sided_lash_deg(p)
-    assert one_sided_lash == pytest.approx(1.9325113632826, abs=1e-10)
+    assert one_sided_lash == pytest.approx(2.9405049697591217, abs=1e-10)
     assert one_sided_lash <= 3.0
     male_d = p13._d_prism_x(
         p.shaft_od,
@@ -746,9 +807,12 @@ def test_domain_a_global_command_is_closed_form_outward_and_not_the_nominal_seed
         "rollDomainSource": "domain.variables.right_cap_roll_each.bounds",
     }
     command = certificate["globalRemovalCommand"]["value"]
-    assert command == pytest.approx(20.855, abs=1e-12)
+    assert command == pytest.approx(20.88, abs=1e-12)
     assert command != pytest.approx(p.removal_lift, abs=1e-6)
-    assert f"global_command_{str(command).replace('.', 'p')}mm" in p13.build_remove(p).label
+    command_tag = f"{command:.3f}".replace(".", "p")
+    assert p13.build_remove(p).label == (
+        f"P13_REMOVE_global_command_{command_tag}mm_full_workpiece_caps_off_rods_left"
+    )
 
     incomplete = deepcopy(domain)
     del incomplete["variables"]["right_cap_roll_each"]
@@ -1004,8 +1068,8 @@ def _valid_physical_record(tmp_path: Path) -> dict[str, object]:
             for name in p13.ROD_NAMES
         },
         "bore_key_journal_keeper_geometry": {
-            "cam_d_bore_od": measurement(5.70, 5.65, 5.75),
-            "cam_d_bore_across_flat": measurement(5.25, 5.20, 5.30),
+            "cam_d_bore_od": measurement(5.75, 5.70, 5.80),
+            "cam_d_bore_across_flat": measurement(5.30, 5.25, 5.35),
             "fixed_journal_id": measurement(4.80, 4.75, 4.85),
             "keeper_id": measurement(4.80, 4.75, 4.85),
         },

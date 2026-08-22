@@ -321,7 +321,7 @@
           "unit": "millimetre",
           "value": [
             0.0,
-            20.855
+            20.88
           ]
         },
         "globalMargin": {
@@ -380,7 +380,7 @@
     },
     "global_removal_command": {
       "unit": "millimetre",
-      "value": 20.855
+      "value": 20.88
     },
     "initial_arc_distance": {
       "unit": "millimetre",
@@ -453,7 +453,7 @@
     }
   },
   "domainAmendmentPath": "docs/p13-cad-source-domain-amendment.md",
-  "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+  "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
   "frozenTopology": {
     "cam_phase_feature": "separate_D_keyed_shaft",
     "fixed_journal_opening": "upward",
@@ -530,13 +530,13 @@
       "class": "requires-regate",
       "type": "float",
       "unit": "millimetre",
-      "value": 5.25
+      "value": 5.3
     },
     "cam_d_bore_od": {
       "class": "requires-regate",
       "type": "float",
       "unit": "millimetre",
-      "value": 5.7
+      "value": 5.75
     },
     "cam_hub_extension": {
       "class": "requires-regate",

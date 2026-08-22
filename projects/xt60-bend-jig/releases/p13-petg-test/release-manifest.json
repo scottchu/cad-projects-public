@@ -1,26 +1,92 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project": "xt60-bend-jig",
-  "iteration": "p13-r1-monorepo-migration",
-  "source_revision_sha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b",
-  "imported_on": "2026-08-22",
-  "status": "migration-regenerated-physical-fit-rejected",
-  "artifacts": [
-    {"path": "cad/p13_four_plate_three_rod/p13_print_kit.3mf", "sha256": "a3d1f546c66943703605ad9462d997f460b87f04ec09d75ab77a4b42c9de7571", "historical_import_sha256": "d163cb311a78fbf8ffbc231593c492930696c5a03e4826b55cb68728c89fab35", "role": "production-3mf"},
-    {"path": "cad/p13_four_plate_three_rod/p13_print_kit.step", "sha256": "e47ef3ea32db7cacf28177e668e4455613b7b88028859ecea12a8241bafed8d8", "historical_import_sha256": "52272f7ec3e57be6cb72b8c906a697684434cdbe9dcda71e48b470c7e08ef3ec", "role": "print-kit-step"},
-    {"path": "cad/p13_four_plate_three_rod/p13_motion.step", "sha256": "309e257a07320ec94ea8b8fb4e37d27cb0b1e46e5b94a1f559a12c147702531a", "historical_import_sha256": "61d33734c5e286aab44014705147ba9829021485c39c19694746a6300ebc5f20", "role": "motion-review-step"},
-    {"path": "cad/p13_four_plate_three_rod/p13_fit_coupons.3mf", "sha256": "276ba0fc07784a04bf55c775c51552df36b7cfc57f0cf8605f5f8e25bf2b03cb", "historical_import_sha256": "4e78b8dc5ecf2906ab53fc91e46f6666dd7932dfe8207be95872251bf7604db6", "role": "p13-fit-coupon-3mf"},
-    {"path": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.3mf", "sha256": "cb99aee000afb9043dc08ecbceaa1050c64184ceb6138cb4ca40267896b71970", "role": "rod-fit-calibration-3mf"},
-    {"path": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.step", "sha256": "f46769e355cb7c36659e40c903ec7bdfeb536e7501da92ebfa6616ea660190f6", "role": "rod-fit-calibration-step"},
-    {"path": "cad/p15_cap_fit_test/p15_cap_fit_test.3mf", "sha256": "c3566c77be7cc70efa22f808017fa8b74722381fa224fc9e84df3ce71552daed", "role": "cap-fit-calibration-3mf"},
-    {"path": "cad/p15_cap_fit_test/p15_cap_fit_test.step", "sha256": "27492704be2dc18bfe209207cae0f8184ac71749e0994ce3bffdd711c69884fc", "role": "cap-fit-calibration-step"},
-    {"path": "cad/p16_cap_throat_test/p16_cap_throat_test.3mf", "sha256": "ee4b53d3af2f119ba18a42aa2643969aa94fd6c209ba63ded7497dd7ec7bd756", "role": "cap-throat-calibration-3mf"},
-    {"path": "cad/p16_cap_throat_test/p16_cap_throat_test.step", "sha256": "33a9c8757a7c5f4bd6d9403f67d949b87c5ac36f132178f47be5ed043ea5c413", "role": "cap-throat-calibration-step"}
+  "iteration": "p13-r2-center-hole-fit-repair",
+  "repair_baseline_revision": "b0b79253373c7cf80943e99df8ab799958c50d49",
+  "repository_policy_baseline": "a5e21e6760d383f900ee30e4457edfb13267e09d",
+  "generated_on": "2026-08-22",
+  "status": "generated-awaiting-independent-validation-slicer-check-and-physical-reprint",
+  "source": {
+    "path": "src/xt60_bend_jig/p13_four_plate_three_rod.py",
+    "sha256": "7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067",
+    "domain_amendment_path": "docs/p13-cad-source-domain-amendment.md",
+    "domain_amendment_sha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
+    "parameter_manifest_path": "docs/p13-default-parameter-manifest.json",
+    "parameter_manifest_canonical_sha256": "a4cff853c6b48ed55e50e8316835e83072f13e83d965c14653060aea004fad46",
+    "parameters": {
+      "cam_d_bore_od_mm": 5.75,
+      "cam_d_bore_across_flat_mm": 5.3,
+      "shaft_od_mm": 5.6,
+      "shaft_d_across_flat_mm": 5.15
+    }
+  },
+  "reproducible_generation_commands": [
+    "uv run --project projects/xt60-bend-jig python -m xt60_bend_jig.p13_four_plate_three_rod --write-evidence",
+    "CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.21/skills/cad; uv run --project projects/xt60-bend-jig python \"$CAD_SKILL/scripts/gen\" projects/xt60-bend-jig/cad/p13_four_plate_three_rod/p13_*.step.py --write",
+    "uv run --project projects/xt60-bend-jig python projects/xt60-bend-jig/scripts/export_p13_3mf.py",
+    "CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.21/skills/cad; uv run --project projects/xt60-bend-jig python \"$CAD_SKILL/scripts/snapshot\" --input projects/xt60-bend-jig/cad/p13_four_plate_three_rod/p13_print_kit.step --output projects/xt60-bend-jig/docs/review/p13-r2-center-hole-fit-repair/p13-print-kit.png --camera iso --size-profile assembly --json",
+    "CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.21/skills/cad; uv run --project projects/xt60-bend-jig python \"$CAD_SKILL/scripts/snapshot\" --input projects/xt60-bend-jig/cad/p13_four_plate_three_rod/p13_motion.step.py --output projects/xt60-bend-jig/docs/review/p13-r2-center-hole-fit-repair/p13-motion-locked.png --camera iso --size-profile assembly --params '{\"motion\":1.0}' --json"
   ],
+  "generation_receipt_boundary": "These commands reproduce the source-derived outputs. The exact prior snapshot invocation/stdout was not retained; independent validation must rerun and record its own commands.",
+  "provenance": [
+    {
+      "path": "cad/p13_four_plate_three_rod/p13-artifact-provenance.json",
+      "sha256": "15f786d82a7b69c965da0322da3b9b32410126b66c0f34793525702397086f83",
+      "role": "23-source-artifact-step-checksum-index"
+    },
+    {
+      "path": "cad/p13_four_plate_three_rod/p13-3mf-provenance.json",
+      "sha256": "c81ff4d438dbaf5a1332b4853fc50884fc91fa6d5dcca3e264108e62d0820e10",
+      "role": "production-and-coupon-3mf-provenance"
+    }
+  ],
+  "artifacts": [
+    {"path": "cad/p13_four_plate_three_rod/p13_actuator_shaft.step", "sha256": "4941238bcc25e3c9d50d76519a3e789b62deaa99c792b0b0052179cddccbb010", "role": "actuator-shaft-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_caps_off.step", "sha256": "099f9cfada5cc2f6e2057a14e43e4bbe206d7c7d6ee1f59daa8f418755c4f1be", "role": "caps-off-service-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_cool.step", "sha256": "8c4019a50244109a83e9377cdc8ebb07a1e9a7ca090fa2889fbfe21b84f63146", "role": "cool-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_exploded.step", "sha256": "fb71933890c384faf23bc82a8227eedf09d539834c6c2b9e7bea38b87d6d57f2", "role": "exploded-review-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_fit_coupons.step", "sha256": "8aa31c361b0dd791c6638c6d8636a74746c441694b6d3d8c667f9125c042aa56", "role": "diagnostic-fit-coupons-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_fixed_guide.step", "sha256": "3baaae11c56c1316b545dc18c7aaa9e062fb0ee01c618554f5545b4068e8d8d9", "role": "fixed-guide-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_left_cam.step", "sha256": "1971b2fce46dec45eda93a069a558f6d749d4265a02b79a6a068c4f2a1eef616", "role": "repaired-left-cam-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_left_cap.step", "sha256": "19b2314438c0b794f1490643faa8d18b0a899477cf26ae4e227fc8607ebc9471", "role": "left-cap-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_loaded.step", "sha256": "f43d52c005d6387542224c3528d8c9d3170c81c6b86b9af5e16274150b22ed0c", "role": "loaded-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_locked.step", "sha256": "78a08f1902b7ad1141c787d56b5620b032df6294ce64b512502e90cb6e00ee2e", "role": "locked-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_motion.step", "sha256": "1501c8b2e75d17a48367fe78871592be3c9999ba056aa706043f6fb069632160", "role": "motion-review-step", "previous_p13_r1_sha256": "309e257a07320ec94ea8b8fb4e37d27cb0b1e46e5b94a1f559a12c147702531a"},
+    {"path": "cad/p13_four_plate_three_rod/p13_open.step", "sha256": "058f40b50d31e488e31eb919f4322f0732a8fea78782c2e7803cd3fcf5fe0ac7", "role": "open-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_print_kit.step", "sha256": "5237fe9bc908781ae5793c9ab004f4fc51d24720244b26846bb1dacba63256b7", "role": "print-kit-step", "previous_p13_r1_sha256": "e47ef3ea32db7cacf28177e668e4455613b7b88028859ecea12a8241bafed8d8"},
+    {"path": "cad/p13_four_plate_three_rod/p13_release.step", "sha256": "ab6d26b42bb86f1d64d4b8f25ebf52ce1d39d90ea9fd3aa0d4e047719ddf6a8f", "role": "release-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_removal_sweep.step", "sha256": "828d63b4a8927a71393b2dd24dd20cb69908a296deae1d0530b0f7d0e48e86a5", "role": "removal-sweep-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_remove.step", "sha256": "30f330381197a4cd6216e5fbc9fe185b160f8eba77c9f7421b6b5d933f312fe1", "role": "remove-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_right_actuator.step", "sha256": "81e04eaa89732e49b9265b84f8ce14ef222519467306dc83abec85b97b77d619", "role": "repaired-right-actuator-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_right_cap.step", "sha256": "bde73d56f4dff678f0fd38f4c09176c1cd86d34c93d095e508d149129a3a5794", "role": "right-cap-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_rods_withdrawn.step", "sha256": "01cd20221f71553a929114b739000e678b32ef8793177f483e82be22529e9637", "role": "rods-withdrawn-service-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_service_disassembly.step", "sha256": "d0edc304e751d0b4c7010b8804b1f5eeed78c51e5f3e8a2074a59aa1863d0862", "role": "service-disassembly-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_set_close.step", "sha256": "b8723e8b7b7b648ebdfcbac511b558fedcf557d4674eb40c336ed2a0621ca9c4", "role": "set-close-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_shaft_keeper.step", "sha256": "667f6c552a9d44eba4f2ca886430b90c8a33d0c0bd90a5d5ffac3ed4b01f893a", "role": "shaft-keeper-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_solder_left.step", "sha256": "05b87a323650691532a4ce8bb00dcbdc544b53db01b4faf53b6bd9e893a48ce3", "role": "solder-left-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_solder_right.step", "sha256": "7e393f673e566c6c3b16a353aba0909f33ebac1bd6c6be5d1179f0336440bcfc", "role": "solder-right-state-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_print_kit.3mf", "sha256": "588f11e47c89a64221e527085e560453d4e7e75a7b6ecc00cf448f7d22bf75a7", "role": "production-3mf", "previous_p13_r1_sha256": "a3d1f546c66943703605ad9462d997f460b87f04ec09d75ab77a4b42c9de7571"},
+    {"path": "cad/p13_four_plate_three_rod/p13_fit_coupons.3mf", "sha256": "2d429b4d2647e2bbe89c91480dc560242cef5d66fdd13e809aaf88858c1b5cec", "role": "p13-fit-coupon-3mf", "previous_p13_r1_sha256": "276ba0fc07784a04bf55c775c51552df36b7cfc57f0cf8605f5f8e25bf2b03cb"},
+    {"path": "docs/review/p13-r2-center-hole-fit-repair/p13-print-kit_20260822T192147Z.png", "sha256": "2e69934552816104461e40347a6a2ad490f0e0c8b7da4cccea02c11ed58eef86", "role": "print-kit-implementation-snapshot"},
+    {"path": "docs/review/p13-r2-center-hole-fit-repair/p13-motion-locked_20260822T192157Z.png", "sha256": "cdada9011b62c2a733b5a937b57e13dd48850efb376b3373ce7264c705bf8c70", "role": "locked-motion-implementation-snapshot"},
+    {"path": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.3mf", "sha256": "cb99aee000afb9043dc08ecbceaa1050c64184ceb6138cb4ca40267896b71970", "role": "unchanged-rod-fit-calibration-3mf"},
+    {"path": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.step", "sha256": "f46769e355cb7c36659e40c903ec7bdfeb536e7501da92ebfa6616ea660190f6", "role": "unchanged-rod-fit-calibration-step"},
+    {"path": "cad/p15_cap_fit_test/p15_cap_fit_test.3mf", "sha256": "c3566c77be7cc70efa22f808017fa8b74722381fa224fc9e84df3ce71552daed", "role": "unchanged-cap-fit-calibration-3mf"},
+    {"path": "cad/p15_cap_fit_test/p15_cap_fit_test.step", "sha256": "27492704be2dc18bfe209207cae0f8184ac71749e0994ce3bffdd711c69884fc", "role": "unchanged-cap-fit-calibration-step"},
+    {"path": "cad/p16_cap_throat_test/p16_cap_throat_test.3mf", "sha256": "ee4b53d3af2f119ba18a42aa2643969aa94fd6c209ba63ded7497dd7ec7bd756", "role": "unchanged-cap-throat-calibration-3mf"},
+    {"path": "cad/p16_cap_throat_test/p16_cap_throat_test.step", "sha256": "33a9c8757a7c5f4bd6d9403f67d949b87c5ac36f132178f47be5ed043ea5c413", "role": "unchanged-cap-throat-calibration-step"}
+  ],
+  "implementation_checks": {
+    "focused_failing_before": "1 failed on b0b7925 source; circular diametral allowance 0.10000000000000053 mm was below 0.15 mm",
+    "focused_passing_after": "1 passed on source sha256 7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067",
+    "step_provenance_hash_match": "23 of 23 provenance-indexed STEP artifacts matched; p13_motion.step is separately listed and matched its release hash",
+    "three_mf_provenance_hash_match": "2 of 2 3MF artifacts matched",
+    "broader_suite": "prior implementation run was interrupted before a durable result; independent validation pending"
+  },
   "acceptance": {
-    "cad_source": "migration-baseline-passed",
-    "artifact": "regenerated-step-3mf-provenance-and-static-mesh-checks-passed",
-    "slicer": "historical-evidence-only-fresh-rerun-pending",
-    "physical": "failed-center-hole-fit-and-remaining-complete-p13-tests-pending"
+    "cad_source": "implementation-generated-focused-regression-passed-independent-validation-and-review-pending",
+    "artifact": "generated-checksums-and-provenance-match-independent-solid-parity-mesh-dfam-validation-pending",
+    "slicer": "fresh-rerun-pending",
+    "physical": "latest-print-failed-center-hole-fit-repaired-reprint-and-assembly-validation-pending"
   }
 }

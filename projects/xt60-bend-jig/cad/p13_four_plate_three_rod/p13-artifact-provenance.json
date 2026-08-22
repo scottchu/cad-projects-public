@@ -2,187 +2,187 @@
   "artifacts": {
     "actuator_shaft": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_actuator_shaft.step",
-      "provenanceRoot": "P13_ARTIFACT_actuator_shaft__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "12968f1a0ec9caa7c9c096040d37cf569aa2623d11681d082f5c5612c1ad5708"
+      "provenanceRoot": "P13_ARTIFACT_actuator_shaft__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "4941238bcc25e3c9d50d76519a3e789b62deaa99c792b0b0052179cddccbb010"
     },
     "caps_off": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_caps_off.step",
-      "provenanceRoot": "P13_ARTIFACT_caps_off__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "c9ba0aa05603e279d3c3c35d7971ba3cd4e6870d5135817533e51a9ead3097b5"
+      "provenanceRoot": "P13_ARTIFACT_caps_off__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "099f9cfada5cc2f6e2057a14e43e4bbe206d7c7d6ee1f59daa8f418755c4f1be"
     },
     "cool": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_cool.step",
-      "provenanceRoot": "P13_ARTIFACT_cool__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "82462a115b6de6e84a5f4b846864329093d9c3fb5fdf9cde9e11e3e1caff7a81"
+      "provenanceRoot": "P13_ARTIFACT_cool__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "8c4019a50244109a83e9377cdc8ebb07a1e9a7ca090fa2889fbfe21b84f63146"
     },
     "exploded": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_exploded.step",
-      "provenanceRoot": "P13_ARTIFACT_exploded__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "dfad937c8d3c94891290f1c3e3cf951c37e541afa9e8abe0f0a37fd2d84fbd46"
+      "provenanceRoot": "P13_ARTIFACT_exploded__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "fb71933890c384faf23bc82a8227eedf09d539834c6c2b9e7bea38b87d6d57f2"
     },
     "fit_coupons": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_fit_coupons.step",
-      "provenanceRoot": "P13_ARTIFACT_fit_coupons__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "075cc9eccf5b124a2f4272518c240e558a90807e1312db98b5d67b76cbe10d4a"
+      "provenanceRoot": "P13_ARTIFACT_fit_coupons__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "8aa31c361b0dd791c6638c6d8636a74746c441694b6d3d8c667f9125c042aa56"
     },
     "fixed_guide": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_fixed_guide.step",
-      "provenanceRoot": "P13_ARTIFACT_fixed_guide__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "5733ecd8fdc8f70c6332931e3e7f3c7ea0bab1399da25319ca39f8a068e6273d"
+      "provenanceRoot": "P13_ARTIFACT_fixed_guide__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "3baaae11c56c1316b545dc18c7aaa9e062fb0ee01c618554f5545b4068e8d8d9"
     },
     "left_cam": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_left_cam.step",
-      "provenanceRoot": "P13_ARTIFACT_left_cam__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "1f504994645a3aa25f40c75339ee8f0a31be4469547d1f618420f86b3869428a"
+      "provenanceRoot": "P13_ARTIFACT_left_cam__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "1971b2fce46dec45eda93a069a558f6d749d4265a02b79a6a068c4f2a1eef616"
     },
     "left_cap": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_left_cap.step",
-      "provenanceRoot": "P13_ARTIFACT_left_cap__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "63189d6b0cee8e9348d1f8237829d6aac019a53e1779955cb590244889d70131"
+      "provenanceRoot": "P13_ARTIFACT_left_cap__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "19b2314438c0b794f1490643faa8d18b0a899477cf26ae4e227fc8607ebc9471"
     },
     "loaded": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_loaded.step",
-      "provenanceRoot": "P13_ARTIFACT_loaded__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "f9b49f6050a299f2e7d0f2271494fff923703eb9866b160c41454130dc2386e4"
+      "provenanceRoot": "P13_ARTIFACT_loaded__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "f43d52c005d6387542224c3528d8c9d3170c81c6b86b9af5e16274150b22ed0c"
     },
     "locked": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_locked.step",
-      "provenanceRoot": "P13_ARTIFACT_locked__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "2ec118d6390ef5a86d62d0fe98c550949b96a657050e8e77c3bc260ff5e2f9e0"
+      "provenanceRoot": "P13_ARTIFACT_locked__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "78a08f1902b7ad1141c787d56b5620b032df6294ce64b512502e90cb6e00ee2e"
     },
     "open": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_open.step",
-      "provenanceRoot": "P13_ARTIFACT_open__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "9426260710a26436d48d00fe718e3eb61a9955e6b222cee31a60f8913692bf3e"
+      "provenanceRoot": "P13_ARTIFACT_open__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "058f40b50d31e488e31eb919f4322f0732a8fea78782c2e7803cd3fcf5fe0ac7"
     },
     "print_kit": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_print_kit.step",
-      "provenanceRoot": "P13_ARTIFACT_print_kit__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "e47ef3ea32db7cacf28177e668e4455613b7b88028859ecea12a8241bafed8d8"
+      "provenanceRoot": "P13_ARTIFACT_print_kit__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "5237fe9bc908781ae5793c9ab004f4fc51d24720244b26846bb1dacba63256b7"
     },
     "release": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_release.step",
-      "provenanceRoot": "P13_ARTIFACT_release__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "bb0b26e65c8b30878d85ebe0ff0d21a7bfc11ce0d50ae94648546ec649937dc4"
+      "provenanceRoot": "P13_ARTIFACT_release__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "ab6d26b42bb86f1d64d4b8f25ebf52ce1d39d90ea9fd3aa0d4e047719ddf6a8f"
     },
     "removal_sweep": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_removal_sweep.step",
-      "provenanceRoot": "P13_ARTIFACT_removal_sweep__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "a5506fb720ec272b0d0d60081ba3bf7a2ef2af95208f6555cdbb8eba5ae8f057"
+      "provenanceRoot": "P13_ARTIFACT_removal_sweep__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "828d63b4a8927a71393b2dd24dd20cb69908a296deae1d0530b0f7d0e48e86a5"
     },
     "remove": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_remove.step",
-      "provenanceRoot": "P13_ARTIFACT_remove__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "31c59b3b404132cfe44fbd04364b81c815a2a398a19addf3637e009d53bb1c69"
+      "provenanceRoot": "P13_ARTIFACT_remove__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "30f330381197a4cd6216e5fbc9fe185b160f8eba77c9f7421b6b5d933f312fe1"
     },
     "right_actuator": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_right_actuator.step",
-      "provenanceRoot": "P13_ARTIFACT_right_actuator__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "d12403c243ae8863a22d7b3e532f6b66d4c44daf078f419b7fa711c36df43abf"
+      "provenanceRoot": "P13_ARTIFACT_right_actuator__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "81e04eaa89732e49b9265b84f8ce14ef222519467306dc83abec85b97b77d619"
     },
     "right_cap": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_right_cap.step",
-      "provenanceRoot": "P13_ARTIFACT_right_cap__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "fed41dfa6a9d90260b7a2a90a2bdb095c9cc1b34cf40a3a1333b11a4a87a9229"
+      "provenanceRoot": "P13_ARTIFACT_right_cap__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "bde73d56f4dff678f0fd38f4c09176c1cd86d34c93d095e508d149129a3a5794"
     },
     "rods_withdrawn": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_rods_withdrawn.step",
-      "provenanceRoot": "P13_ARTIFACT_rods_withdrawn__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "5b8c08b87bb9e844be89f412e490de2a294798a7cf79e0c828fae3e9c24d06c5"
+      "provenanceRoot": "P13_ARTIFACT_rods_withdrawn__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "01cd20221f71553a929114b739000e678b32ef8793177f483e82be22529e9637"
     },
     "service_disassembly": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_service_disassembly.step",
-      "provenanceRoot": "P13_ARTIFACT_service_disassembly__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "39c549bc7f743deecd22c850809fc7d14378440d689ff4412442afd4dd657ef1"
+      "provenanceRoot": "P13_ARTIFACT_service_disassembly__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "d0edc304e751d0b4c7010b8804b1f5eeed78c51e5f3e8a2074a59aa1863d0862"
     },
     "set_close": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_set_close.step",
-      "provenanceRoot": "P13_ARTIFACT_set_close__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "0da9553a4fdf22494e6e4d6c4c1c9921af851157460e07326c31f871f28624e3"
+      "provenanceRoot": "P13_ARTIFACT_set_close__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "b8723e8b7b7b648ebdfcbac511b558fedcf557d4674eb40c336ed2a0621ca9c4"
     },
     "shaft_keeper": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_shaft_keeper.step",
-      "provenanceRoot": "P13_ARTIFACT_shaft_keeper__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "371e9305325ce0be39d3d48e00b08800f6892755a97d0a70ee999c00065347ee"
+      "provenanceRoot": "P13_ARTIFACT_shaft_keeper__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "667f6c552a9d44eba4f2ca886430b90c8a33d0c0bd90a5d5ffac3ed4b01f893a"
     },
     "solder_left": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_solder_left.step",
-      "provenanceRoot": "P13_ARTIFACT_solder_left__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "089f42c1e67e09d7ae7b4c93382123baeb75fd62118374811f9d525633cac25e"
+      "provenanceRoot": "P13_ARTIFACT_solder_left__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "05b87a323650691532a4ce8bb00dcbdc544b53db01b4faf53b6bd9e893a48ce3"
     },
     "solder_right": {
       "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exists": true,
       "path": "cad/p13_four_plate_three_rod/p13_solder_right.step",
-      "provenanceRoot": "P13_ARTIFACT_solder_right__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590__manifest_af3acbefd96b__source_e424fac8064d",
-      "stepSha256": "4f613a38dd23ec1f41481778659acdfe05c8fd914281d1286edd8e2f4740a288"
+      "provenanceRoot": "P13_ARTIFACT_solder_right__brief_9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322__amendment_dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda__manifest_a4cff853c6b4__source_7927bc9bb0d0",
+      "stepSha256": "7e393f673e566c6c3b16a353aba0909f33ebac1bd6c6be5d1179f0336440bcfc"
     }
   },
   "boundary": "EXPLORATORY NOMINAL ONLY: physical fit, measured tolerance feasible-set, strength, heat, long-term friction retention, springback, and mechanism usability are unproven; the removable right-cap has only an initial accepted PETG hand-fit gate",
@@ -191,19 +191,19 @@
   "continuousCertificate": {
     "exists": true,
     "path": "docs/p13-continuous-certificates.json",
-    "sha256": "48efbe3639e9101ead875265c82383e6a86cb1adeb8060553274a67f7e1457f9"
+    "sha256": "95104b65dc4642781178f01152a3276c2c3a1b3a5236b925f70b080629fc4ab0"
   },
-  "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+  "domainAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
   "domainEvidence": {
     "cadSourceCertificate": {
       "exists": true,
       "path": "docs/cad-source-certificate.json",
-      "sha256": "fe1cdbbef628b4226be3e487ea3467c194881c21c5b3562f0651688ff84db45d"
+      "sha256": "4178595a888c5d0b32a8663e554325c68123b5f3a4bb4971bc237f946dfed110"
     },
     "cadSourceDomain": {
       "exists": true,
       "path": "docs/cad-source-domain.json",
-      "sha256": "da70283dc0c31db27272d51bfc6fbb6299c539569fa069da0cb241a39b7e7540"
+      "sha256": "2fd333c0a6d1c85f26944117a26cbae6729f3b7238fb2d72cbce0d4b58ba52c9"
     },
     "physicalRecordSchema": {
       "exists": true,
@@ -211,7 +211,7 @@
       "sha256": "a45660e79e100337ec0dcb19437b92be253d767492d70b38154c2f6766dd3178"
     }
   },
-  "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+  "parameterManifestSha256": "a4cff853c6b48ed55e50e8316835e83072f13e83d965c14653060aea004fad46",
   "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
-  "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+  "sourceRevisionSha256": "7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067"
 }

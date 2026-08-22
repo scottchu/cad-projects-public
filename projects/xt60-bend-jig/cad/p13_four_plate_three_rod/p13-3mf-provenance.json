@@ -1,14 +1,14 @@
 {
   "coupons": {
     "allMeshesManifoldAndOriented": true,
-    "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+    "controllingAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
     "embeddedMetadata": {
       "artifactRole": "diagnostic-fit-coupons-2-objects",
-      "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "controllingAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
-      "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+      "parameterManifestSha256": "a4cff853c6b48ed55e50e8316835e83072f13e83d965c14653060aea004fad46",
       "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+      "sourceRevisionSha256": "7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067"
     },
     "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
     "layout": {
@@ -98,7 +98,7 @@
         }
       }
     ],
-    "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+    "parameterManifestSha256": "a4cff853c6b48ed55e50e8316835e83072f13e83d965c14653060aea004fad46",
     "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
     "path": "cad/p13_four_plate_three_rod/p13_fit_coupons.3mf",
     "principalBedContact": {
@@ -107,8 +107,8 @@
       "writtenRoundTripValidated": true,
       "zToleranceMm": 1e-06
     },
-    "sha256": "276ba0fc07784a04bf55c775c51552df36b7cfc57f0cf8605f5f8e25bf2b03cb",
-    "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+    "sha256": "2d429b4d2647e2bbe89c91480dc560242cef5d66fdd13e809aaf88858c1b5cec",
+    "sourceRevisionSha256": "7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067"
   },
   "excludedFromProduction3MF": [
     "three purchased uncut OD4x50 rods",
@@ -121,14 +121,14 @@
   "printingInitiated": false,
   "production": {
     "allMeshesManifoldAndOriented": true,
-    "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+    "controllingAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
     "embeddedMetadata": {
       "artifactRole": "production-print-kit-12-objects-no-forming-rods-no-hardware-no-references",
-      "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "controllingAmendmentSha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda",
       "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
-      "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+      "parameterManifestSha256": "a4cff853c6b48ed55e50e8316835e83072f13e83d965c14653060aea004fad46",
       "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
-      "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+      "sourceRevisionSha256": "7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067"
     },
     "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
     "layout": {
@@ -169,14 +169,14 @@
           48.25
         ],
         "label": "left_D_bore_cam_OD40p50_theta_0p00",
-        "meshSignedVolume": 2882.9625049687265,
-        "sourceBREPVolume": 2883.288824651856,
+        "meshSignedVolume": 2880.958715217355,
+        "sourceBREPVolume": 2881.28483314974,
         "sourceMeshBedContact": {
           "boundsZMm": [
             1.7763568394002505e-15,
             4.500000000000011
           ],
-          "coplanarZ0TriangleAreaMm2": 1110.0217136037138,
+          "coplanarZ0TriangleAreaMm2": 1109.5764269922981,
           "coplanarZ0TriangleCount": 2258,
           "maximumZMm": 4.500000000000011,
           "minimumZMm": 1.7763568394002505e-15
@@ -188,7 +188,7 @@
             0.0,
             4.5
           ],
-          "coplanarZ0TriangleAreaMm2": 1110.021716461457,
+          "coplanarZ0TriangleAreaMm2": 1109.5764397605944,
           "coplanarZ0TriangleCount": 2258,
           "maximumZMm": 4.5,
           "minimumZMm": 0.0
@@ -202,8 +202,8 @@
           48.25
         ],
         "label": "left_fixed_OD40p50_integral_upward_C_journal_ID4p80",
-        "meshSignedVolume": 3060.310087021614,
-        "sourceBREPVolume": 3060.6425216604794,
+        "meshSignedVolume": 3060.2603228718763,
+        "sourceBREPVolume": 3060.5928208447103,
         "sourceMeshBedContact": {
           "boundsZMm": [
             1.7763568394002505e-15,
@@ -214,8 +214,8 @@
           "maximumZMm": 3.000000000000014,
           "minimumZMm": 1.7763568394002505e-15
         },
-        "triangleCount": 6380,
-        "vertexCount": 3188,
+        "triangleCount": 6388,
+        "vertexCount": 3192,
         "writtenRoundTripBedContact": {
           "boundsZMm": [
             0.0,
@@ -235,8 +235,8 @@
           48.25
         ],
         "label": "right_fixed_OD40p50_integral_upward_C_journal_ID4p80",
-        "meshSignedVolume": 3060.310087021623,
-        "sourceBREPVolume": 3060.6425216604794,
+        "meshSignedVolume": 3060.2603228718763,
+        "sourceBREPVolume": 3060.5928208447094,
         "sourceMeshBedContact": {
           "boundsZMm": [
             0.0,
@@ -247,8 +247,8 @@
           "maximumZMm": 3.000000000000009,
           "minimumZMm": 0.0
         },
-        "triangleCount": 6380,
-        "vertexCount": 3188,
+        "triangleCount": 6388,
+        "vertexCount": 3192,
         "writtenRoundTripBedContact": {
           "boundsZMm": [
             0.0,
@@ -268,14 +268,14 @@
           -5.75
         ],
         "label": "right_D_bore_cam_actuator_OD40p50_theta_0p00",
-        "meshSignedVolume": 2882.9625049687515,
-        "sourceBREPVolume": 2883.2888246518582,
+        "meshSignedVolume": 2880.9587152173717,
+        "sourceBREPVolume": 2881.2848331497426,
         "sourceMeshBedContact": {
           "boundsZMm": [
             -3.552713678800501e-15,
             4.5000000000000036
           ],
-          "coplanarZ0TriangleAreaMm2": 1110.0217136037127,
+          "coplanarZ0TriangleAreaMm2": 1109.5764269922981,
           "coplanarZ0TriangleCount": 2258,
           "maximumZMm": 4.5000000000000036,
           "minimumZMm": -3.552713678800501e-15
@@ -287,7 +287,7 @@
             0.0,
             4.5
           ],
-          "coplanarZ0TriangleAreaMm2": 1110.0217139961408,
+          "coplanarZ0TriangleAreaMm2": 1109.57642954571,
           "coplanarZ0TriangleCount": 2258,
           "maximumZMm": 4.5,
           "minimumZMm": 0.0
@@ -558,7 +558,7 @@
         }
       }
     ],
-    "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+    "parameterManifestSha256": "a4cff853c6b48ed55e50e8316835e83072f13e83d965c14653060aea004fad46",
     "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
     "path": "cad/p13_four_plate_three_rod/p13_print_kit.3mf",
     "principalBedContact": {
@@ -572,8 +572,8 @@
       "writtenRoundTripValidated": true,
       "zToleranceMm": 1e-06
     },
-    "sha256": "a3d1f546c66943703605ad9462d997f460b87f04ec09d75ab77a4b42c9de7571",
-    "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+    "sha256": "588f11e47c89a64221e527085e560453d4e7e75a7b6ecc00cf448f7d22bf75a7",
+    "sourceRevisionSha256": "7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067"
   },
   "schema": "P13ThreeMFProvenance/v2",
   "stepPrintKitCensus": {

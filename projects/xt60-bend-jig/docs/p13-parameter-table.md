@@ -8,7 +8,7 @@ Frozen Gate-0 source: `docs/p13-four-plate-three-rod-brief.md`, SHA256
 `9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322`,
 with accepted controlling amendment
 `docs/p13-cad-source-domain-amendment.md` SHA256
-`b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590`.
+`dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda`.
 
 ## Primary and derived groups
 
@@ -19,7 +19,7 @@ with accepted controlling amendment
 | P21 pivot | `shaft_od`, `wire_diameter_design`, `c_sw`, `bend_radius`, bend centre, `horizontal_z` | `initial_arc_distance`, `pivot_delta`, `shaft_y`, `shaft_z` |
 | Motion | `wire_preload`, guide directions, passage/follower allowances | tangent `contact_centres`, three `stroke_requirements`, derived `contact_stroke` + preload `common_stroke`, inverse cam paths |
 | Plates | OD/thickness/gap/spacing/lane fields, `fixed_thrust_land_height`, `cam_thrust_land_height` | all four concentric blanks, fixed-only lands, lanes, upward C-journals, `nominal_thrust_land_gap`, rim checks |
-| Actuator | shallow-D shaft, bore, head, groove, and engagement fields | one separate printed `OD5.60 / AF5.15` D shaft with stop head; matching `OD5.70 / AF5.25` bores and outward hubs on both cams |
+| Actuator | shallow-D shaft, bore, head, groove, and engagement fields | one separate printed `OD5.60 / AF5.15` D shaft with stop head; matching P13 R2 `OD5.75 / AF5.30` bores and outward hubs on both cams |
 | Normal removal | `rod_exit_clearance`, `removal_end_clearance` | synchronous `rod_withdrawal_distance`, `mechanism_top_z`, `completed_workpiece_min_z`, `removal_lift` |
 | Retainers | keeper and cap profile fields | one keeper, three permanent left caps, three removable right caps |
 | Diagnostics | coupon values/sizes | one-solid lane and bore coupons; never production selectors |

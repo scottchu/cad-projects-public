@@ -1,7 +1,7 @@
 {
   "amendment": {
     "path": "docs/p13-cad-source-domain-amendment.md",
-    "sha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590"
+    "sha256": "dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda"
   },
   "correlations": {
     "X_cam_lower": "left cam hub outer face >= keeper right face + axial_endplay",
@@ -243,7 +243,7 @@
     "left_cam_transverse_radius": {
       "bounds": [
         0.0,
-        0.050000000000000266
+        0.07500000000000018
       ],
       "kind": "connected-component-enclosure",
       "unit": "millimetre"

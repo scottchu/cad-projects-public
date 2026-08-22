@@ -42,7 +42,9 @@ def leaves(shape):
 def canonical(shape):
     result = defaultdict(list)
     for leaf in leaves(shape):
-        result[leaf.label].append((len(leaf.solids()), round(float(leaf.volume), 7)))
+        # STEP round trips can shift the final decimal by one 1e-7 mm^3 unit;
+        # compare at 1e-6 mm^3 while retaining exact labels and solid counts.
+        result[leaf.label].append((len(leaf.solids()), round(float(leaf.volume), 6)))
     return {key: sorted(values) for key, values in sorted(result.items())}
 
 

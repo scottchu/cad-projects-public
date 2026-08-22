@@ -1,11 +1,29 @@
 # P13 CAD-source-domain certificate amendment
 
 Status: accepted, controlling superseding contract for the current P13 CAD
-source. The parent brief retains historical review material; this amendment
-controls every conflicting integral-shaft/key-rib clause.
+source, including the P13 R2 cam-D-bore fit repair. The parent brief retains
+historical review material; this amendment controls every conflicting
+integral-shaft/key-rib and earlier `OD5.70 / AF5.25` cam-bore clause.
 
 Parent Gate-0 brief: `docs/p13-four-plate-three-rod-brief.md`, SHA256
 `9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322`.
+
+## P13 R2 shared cam-D-bore fit supersession
+
+The latest printed P13 failed assembly because the separate printed shallow-D
+shaft would not fit the matching centre holes in the two cam plates. P13 R2
+supersedes only the shared cam-D-bore profile: `cam_d_bore_od=5.75 mm` and
+`cam_d_bore_across_flat=5.30 mm`. The printed shaft remains `OD5.60 / AF5.15
+mm`, giving `0.15 mm` circular diametral allowance and `0.15 mm`
+diametral-equivalent allowance at the controlling D flat. Both cam bores change
+together because they are the repeated interface traversed by the same shaft.
+
+This repair does not change the printed shaft, fixed `ID4.80` C journals,
+`OD4.60` journal lands, keeper, purchased rods or lanes, caps, motion, part
+census, or source-defined print orientations. The fixed thrust-land running
+relief reuses `cam_d_bore_od` and therefore grows only as an affected derived
+non-mating clearance. CAD and artifact validation do not physically accept the
+repaired printed fit; that remains pending a repaired print and assembly trial.
 
 This amendment explicitly supersedes the parent brief only where the parent
 required an integral actuator shaft/local rectangular key. That printable
@@ -36,14 +54,14 @@ blur:
   hubs. Each D engagement is `4.50 mm`; the fixed guide stations remain round
   upward-C journals and therefore do not carry a D profile.
 - The nominal shaft is `OD5.60 / AF5.15 mm`; both cam bores are
-  `OD5.70 / AF5.25 mm`; the reduced fixed-guide journal lands are `OD4.60 mm`
-  in `ID4.80 mm` upward-C journals. The hub radial wall is `2.15 mm`.
+  `OD5.75 / AF5.30 mm`; the reduced fixed-guide journal lands are `OD4.60 mm`
+  in `ID4.80 mm` upward-C journals. The hub radial wall is `2.125 mm`.
 - A low-profile `OD9.60 x 2.00 mm` stop head retains the right end. The
   existing removable C keeper retains the left. The keeper centre, groove,
   shaft left tip, hubs, and head are derived from named parameters; nominal
   axial endplay is `0.275 mm`.
 - The exact D endpoint-to-female-flat contact equation certifies
-  `1.9325113632826 deg` one-sided angular lash (`3.8650227265652 deg` total),
+  `2.9405049697591 deg` one-sided angular lash (`5.8810099395182 deg` total),
   below the active `3 deg` one-sided CAD limit. Actual-solid containment below
   and escape above that contact are regression tested. No physical lash claim
   exists until the PETG coupons are measured.
