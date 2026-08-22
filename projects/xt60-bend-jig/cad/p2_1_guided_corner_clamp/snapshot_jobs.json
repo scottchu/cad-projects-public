@@ -1,0 +1,42 @@
+{
+  "jobs": [
+    {
+      "input": "cad/p2_1_guided_corner_clamp/p2_1_loaded_closed.step.py",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/closed_iso.png", "camera": "iso"},
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/closed_iso_opposite.png", "camera": {"direction": [-1, 1, -0.8]}},
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/closed_top.png", "camera": "top"},
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/closed_side.png", "camera": "right"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p2_1_guided_corner_clamp/p2_1_loaded_open.step.py",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/open_iso.png", "camera": "iso"},
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/open_side.png", "camera": "right"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p2_1_guided_corner_clamp/p2_1_exploded.step.py",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/exploded_iso.png", "camera": "iso"},
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/exploded_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly-large"}
+    },
+    {
+      "input": "cad/p2_1_guided_corner_clamp/p2_1_print_kit.step.py",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/print_kit_iso.png", "camera": "iso"},
+        {"path": "cad/p2_1_guided_corner_clamp/snapshots/print_kit_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly-large"}
+    }
+  ]
+}

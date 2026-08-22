@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "iteration": "p13-r1-monorepo-migration",
+  "recorded_on": "2026-08-22",
+  "source": {
+    "path": "/Users/scottchu/Projects/personal/3d-print-xt60-restart/design/xt60-bend-jig",
+    "parent_repository_head": "96b055d4b8d0b87f3e6132fa3d90b23b3be4ed84",
+    "parent_branch": "restart/xt60-bend-jig-20260822",
+    "project_was_untracked": true,
+    "preserved_unchanged": true
+  },
+  "target": "projects/xt60-bend-jig",
+  "bulk_transfer_file_count": 206,
+  "included": [
+    "parametric Python source and STEP entry generators",
+    "Three.js simulator source and contract tests",
+    "Python and JavaScript dependency declarations",
+    "project tests, export scripts, design briefs, manifests, and physical records",
+    "one imported vendor XT60 STEP",
+    "selected P13 production and P14-P16 calibration release artifacts",
+    "five curated P13 historical review views",
+    "legacy handoff files relocated unchanged under docs/legacy"
+  ],
+  "excluded": [
+    ".venv",
+    ".uv-cache",
+    ".python-version",
+    "uv.lock",
+    "node_modules",
+    "package-lock.json",
+    "dist",
+    ".pytest_cache",
+    "__pycache__",
+    "__cadgen__",
+    "logs",
+    ".DS_Store",
+    "bulk review and snapshot output",
+    "generated STEP and 3MF files not selected as release evidence"
+  ],
+  "baseline_hashes": {
+    "p13_source": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b",
+    "p13_brief": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
+    "p13_amendment": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+    "legacy_handoff": "2a41d9dacf6f98686b9d7f8d6621f12dc000719254c2830abcd785d8d4cbe47e",
+    "legacy_continuation": "f621adbc8bca36048d54f253863762653dc48fd9e3bb0724f95c7410ae2fde4f",
+    "legacy_next_agent": "4f35e2b711585055ae7a824f0c80d876df8918f58bc593b2568a3cca79c16e8e"
+  },
+  "copy_verification": "checksum dry run reported file-content parity; directory timestamp differences only"
+}

@@ -1,0 +1,33 @@
+{
+  "jobs": [
+    {
+      "input": "cad/p7_three_rod_scroll/p7_loaded_closed.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p7_three_rod_scroll/p7_closed_iso.png", "camera": "iso"},
+        {"path": "cad/p7_three_rod_scroll/p7_closed_opposite.png", "camera": {"direction": [-1, 1, -0.8]}},
+        {"path": "cad/p7_three_rod_scroll/p7_closed_side.png", "camera": "right"},
+        {"path": "cad/p7_three_rod_scroll/p7_closed_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p7_three_rod_scroll/p7_loaded_open.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p7_three_rod_scroll/p7_open_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p7_three_rod_scroll/p7_exploded.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p7_three_rod_scroll/p7_exploded_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p7_three_rod_scroll/p7_print_kit.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p7_three_rod_scroll/p7_print_kit_top.png", "camera": "top"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    }
+  ]
+}

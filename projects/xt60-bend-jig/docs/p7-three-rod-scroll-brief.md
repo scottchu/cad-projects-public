@@ -1,0 +1,53 @@
+# P7 three-rod scroll bender — CAD brief
+
+- Model: new multi-part functional prototype assembly derived from the accepted three-rod motion contract; do not modify P0-P6 artifacts.
+- Task type: STEP-first parametric mechanism with open, mid, closed, exploded, and print-kit entries.
+- Units: millimetres.
+- Coordinate convention: rods run along X; Y runs from the upright leg toward the ESC pad; +Z is up. The side-view bend lies in YZ.
+- Workpiece contract: two 12 AWG leads, 4.3 mm nominal OD, 44 mm available length, 6 mm centerline bend radius, horizontal solder leg transitioning to an exactly vertical leg.
+- Purchased hardware: exactly three 304 stainless rods, 4.0 mm diameter x 50.0 mm long. The rods themselves are the guide and scroll followers; do not substitute printed rods.
+- Closed contact geometry:
+  - upright reaction rod center: Y=-4.15, Z=42.00.
+  - bottom reaction rod center: Y=12.00, Z=25.85.
+  - diagonal forming rod center: Y=4.691852455, Z=34.691852455.
+  - each rod is tangent to the 12 AWG reference path at closure with zero modeled overlap.
+- Motion:
+  - all three rods move together from one shared scroll shaft.
+  - common linear stroke is 11.0 mm.
+  - upright rod closes along +Y; bottom rod closes along +Z; diagonal rod closes along (-Y,-Z)/sqrt(2).
+  - dial range is 0-80 degrees: 0-70 degrees is monotonic closing travel; 70-80 degrees is a true constant-radius dwell with zero rod motion.
+  - a positive end stop at 80 degrees defines the final pose. At that stop, the workpiece centerline must be an exact 90.0 degree horizontal-to-vertical path. No over-travel may reduce the included angle.
+- Architecture:
+  - two fixed side guide plates, one left and one right, each containing three straight 4.4 mm nominal guide slots.
+  - two mirrored rotating scroll plates outside the guide plates, each containing three derived curved follower slots. Slot paths must come from inverse kinematics, not hand-drawn splines.
+  - one shared shaft on X keys both scroll plates; one external dial turns the shaft; a stationary clamp/brake or positive indexing feature can lock any pose.
+  - retain rods axially with simple caps: left cap is a 3.90 mm trial press fit, right cap is a removable 4.10 mm trial fit. Preserve positive axial float so caps do not clamp the scroll plates.
+  - connect the two fixed guide plates with the minimum number of rigid cross-members placed outside the wire, XT60, FPV-stack, and soldering-iron corridors. Include one flat external tab/datum that can be held by a small bench clamp without squeezing a moving scroll plate.
+  - start with plain plates/discs and minimal fillets. No cosmetic shell, frame imitation, or elaborate handle.
+- Initial printable assumptions:
+  - fixed guide plate thickness: 3.0 mm.
+  - scroll plate thickness: 2.5 mm.
+  - clear span between fixed plates: 32.0 mm for the first scroll/cap proof. This is a mechanism prototype, not yet a guarantee of clearance around every 30.5 mm FPV stack.
+  - nominal slot clearance: 0.20 mm radial around a 4.0 mm rod, giving 4.4 mm slot width.
+  - audited scroll datum: shared shaft center Y=-7.5, Z=32.5; nominal shaft diameter 6.0 mm in 6.2 mm fixed bores; scroll plate OD 64.0 mm. This point gives at least 2.014 mm material between the closest 4.4 mm slots, at least 3.498 mm outer rim, and 2.796 mm shaft-to-wire surface clearance in the analytic sweep.
+  - axial stack: 32.0 mm clear + two 3.0 mm guides + two 0.3 mm running gaps + two 2.5 mm scrolls = 43.6 mm. A 50 mm rod therefore projects 3.2 mm per side; cap engagement must not exceed 2.9 mm if 0.3 mm axial running float is retained.
+  - PETG prototype; no structural or heat-resistance certification claim.
+- Assembly intent:
+  - guide plates remain fixed and parallel.
+  - scroll plates rotate about the same shaft axis with identical world angle and mirrored exterior appearance.
+  - each rod remains parallel to X with modeled left/right skew <=0.05 mm through the full motion.
+  - shaft position and scroll diameter are derived to clear the wire envelope, rods, and soldering corridor while minimizing overall size.
+  - the clamping tab and fixed cross-members must remain stationary and must not reduce the 32 mm clear work envelope.
+- Source/output paths:
+  - helper module: `src/xt60_bend_jig/p7_three_rod_scroll.py`.
+  - entry generators: `cad/p7_three_rod_scroll/p7_loaded_open.step.py`, `p7_loaded_mid.step.py`, `p7_loaded_closed.step.py`, `p7_exploded.step.py`, and `p7_print_kit.step.py`.
+  - generated STEP files with matching basenames; 3MF is secondary and only produced after STEP validation.
+- Required validation:
+  - exactly three rods, each bounding 50 x 4 x 4 mm.
+  - 201 or more sampled poses: common monotonic 11 mm travel, zero motion in the 70-80 degree dwell, zero rod skew, slot/follower reconstruction residual <=0.02 mm, and no unintended solid intersections.
+  - closed actual-BREP rods tangent to both actual-BREP wire references with zero positive overlap.
+  - wire reference centerline has horizontal and vertical tangent vectors with dot product zero and a measured 90.0 degree included angle at the final stop.
+  - straight guides and curved scroll slots remain open and printable; moving parts retain positive clearance across sampled poses.
+  - every printed part is a closed positive-volume solid; assembly labels and transforms are inspectable.
+  - mandatory ISO/opposite/side/top snapshots for closed assembly plus open and exploded review.
+- Physical-proof boundary: CAD can prove geometry, travel, nominal clearance, and assembly order. Printing must still prove rod/cap fit, PETG plate stiffness, friction, backlash, lock holding force, soldering access, and heat behaviour.

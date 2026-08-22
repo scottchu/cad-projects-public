@@ -1,0 +1,2498 @@
+{
+  "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
+  "cadSourceStatus": "CAD_SOURCE_DOMAIN_CERTIFIED",
+  "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+  "laneSolidWitness": {
+    "overlapVolumeTolerance": {
+      "unit": "cubic_millimetre",
+      "value": 1e-07
+    },
+    "proof": "continuous analytic tubes checked against actual final fixed/cam material",
+    "rows": {
+      "bottom": {
+        "camPlateIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left": [
+              0.0
+            ],
+            "right": [
+              0.0
+            ]
+          }
+        },
+        "camWitnessDiameter": {
+          "unit": "millimetre",
+          "value": 4.001150064812827
+        },
+        "fixedPlateIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left": [
+              0.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "fixedWitnessDiameter": {
+          "unit": "millimetre",
+          "value": 4.0
+        },
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "minimumProfileAllowanceRimMargin": {
+          "unit": "millimetre",
+          "value": 2.2716926874672074
+        }
+      },
+      "diagonal": {
+        "camPlateIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left": [
+              0.0
+            ],
+            "right": [
+              0.0
+            ]
+          }
+        },
+        "camWitnessDiameter": {
+          "unit": "millimetre",
+          "value": 4.001141090305964
+        },
+        "fixedPlateIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left": [
+              0.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "fixedWitnessDiameter": {
+          "unit": "millimetre",
+          "value": 4.0
+        },
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "minimumProfileAllowanceRimMargin": {
+          "unit": "millimetre",
+          "value": 4.1572330470336345
+        }
+      },
+      "upright": {
+        "camPlateIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left": [
+              0.0
+            ],
+            "right": [
+              0.0
+            ]
+          }
+        },
+        "camWitnessDiameter": {
+          "unit": "millimetre",
+          "value": 4.001150064812827
+        },
+        "fixedPlateIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left": [
+              0.0,
+              0.0
+            ],
+            "right": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "fixedWitnessDiameter": {
+          "unit": "millimetre",
+          "value": 4.0
+        },
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "minimumProfileAllowanceRimMargin": {
+          "unit": "millimetre",
+          "value": 2.2716926874672057
+        }
+      }
+    }
+  },
+  "motion": {
+    "contactThetaDegrees": {
+      "unit": "degree",
+      "value": [
+        0.0,
+        22.0
+      ]
+    },
+    "domainThetaDegrees": {
+      "unit": "degree",
+      "value": [
+        0.0,
+        27.0
+      ]
+    },
+    "maximumCutterInterval": {
+      "unit": "radian",
+      "value": 0.004363323129985824
+    },
+    "polygonKnotAnglesDegrees": {
+      "unit": "degree",
+      "value": [
+        0.0,
+        0.25,
+        0.5,
+        0.75,
+        1.0,
+        1.25,
+        1.5,
+        1.75,
+        2.0,
+        2.25,
+        2.5,
+        2.75,
+        3.0,
+        3.25,
+        3.5,
+        3.75,
+        4.0,
+        4.25,
+        4.5,
+        4.75,
+        5.0,
+        5.25,
+        5.5,
+        5.75,
+        6.0,
+        6.25,
+        6.5,
+        6.75,
+        7.0,
+        7.25,
+        7.5,
+        7.75,
+        8.0,
+        8.25,
+        8.5,
+        8.75,
+        9.0,
+        9.25,
+        9.5,
+        9.75,
+        10.0,
+        10.25,
+        10.5,
+        10.75,
+        11.0,
+        11.25,
+        11.5,
+        11.75,
+        12.0,
+        12.25,
+        12.5,
+        12.75,
+        13.0,
+        13.25,
+        13.5,
+        13.75,
+        14.0,
+        14.25,
+        14.5,
+        14.75,
+        15.0,
+        15.25,
+        15.5,
+        15.75,
+        16.0,
+        16.25,
+        16.5,
+        16.75,
+        17.0,
+        17.25,
+        17.5,
+        17.75,
+        18.0,
+        18.25,
+        18.5,
+        18.75,
+        19.0,
+        19.25,
+        19.5,
+        19.75,
+        20.0,
+        20.25,
+        20.5,
+        20.75,
+        21.0,
+        21.25,
+        21.5,
+        21.75,
+        22.0,
+        22.25,
+        22.5,
+        22.75,
+        23.0,
+        23.25,
+        23.5,
+        23.75,
+        24.0,
+        24.25,
+        24.5,
+        24.75,
+        25.0,
+        25.25,
+        25.5,
+        25.75,
+        26.0,
+        26.25,
+        26.5,
+        26.75,
+        27.0
+      ]
+    },
+    "preloadThetaDegrees": {
+      "unit": "degree",
+      "value": [
+        22.0,
+        27.0
+      ]
+    },
+    "proof": "global-analytic-piecewise-C2-chord-bound",
+    "rodAxialReachMargin": {
+      "unit": "millimetre",
+      "value": 6.300000000000001
+    },
+    "rods": {
+      "bottom": {
+        "camChordErrorBound": {
+          "unit": "millimetre",
+          "value": 0.0005750324064136159
+        },
+        "camInverseSecondDerivativeBound": {
+          "unit": "millimetre_per_radian_squared",
+          "value": 241.62816451035548
+        },
+        "camRadialMargin": {
+          "unit": "millimetre",
+          "value": 0.3744249675935864
+        },
+        "fixedCentreResidualBound": {
+          "unit": "millimetre",
+          "value": 0.0
+        },
+        "fixedRadialMargin": {
+          "unit": "millimetre",
+          "value": 0.375
+        },
+        "nominalRimMargin": {
+          "unit": "millimetre",
+          "value": 2.6252460780604814
+        },
+        "profileAllowanceRimMargin": {
+          "unit": "millimetre",
+          "value": 2.2716926874672074
+        }
+      },
+      "diagonal": {
+        "camChordErrorBound": {
+          "unit": "millimetre",
+          "value": 0.0005705451529820939
+        },
+        "camInverseSecondDerivativeBound": {
+          "unit": "millimetre_per_radian_squared",
+          "value": 239.74262415078906
+        },
+        "camRadialMargin": {
+          "unit": "millimetre",
+          "value": 0.3744294548470179
+        },
+        "fixedCentreResidualBound": {
+          "unit": "millimetre",
+          "value": 0.0
+        },
+        "fixedRadialMargin": {
+          "unit": "millimetre",
+          "value": 0.375
+        },
+        "nominalRimMargin": {
+          "unit": "millimetre",
+          "value": 4.5107864376269085
+        },
+        "profileAllowanceRimMargin": {
+          "unit": "millimetre",
+          "value": 4.1572330470336345
+        }
+      },
+      "upright": {
+        "camChordErrorBound": {
+          "unit": "millimetre",
+          "value": 0.0005750324064136159
+        },
+        "camInverseSecondDerivativeBound": {
+          "unit": "millimetre_per_radian_squared",
+          "value": 241.62816451035548
+        },
+        "camRadialMargin": {
+          "unit": "millimetre",
+          "value": 0.3744249675935864
+        },
+        "fixedCentreResidualBound": {
+          "unit": "millimetre",
+          "value": 0.0
+        },
+        "fixedRadialMargin": {
+          "unit": "millimetre",
+          "value": 0.375
+        },
+        "nominalRimMargin": {
+          "unit": "millimetre",
+          "value": 2.6252460780604796
+        },
+        "profileAllowanceRimMargin": {
+          "unit": "millimetre",
+          "value": 2.2716926874672057
+        }
+      }
+    },
+    "smoothstepMonotone": true
+  },
+  "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+  "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+  "removal": {
+    "cadSourceDomainCertificate": {
+      "certifiedBracket": {
+        "lower": 20.85,
+        "unit": "millimetre",
+        "upper": 20.855,
+        "width": 0.004999999999999005
+      },
+      "converged": true,
+      "coverageComplete": true,
+      "domain": {
+        "amendment": {
+          "path": "docs/p13-cad-source-domain-amendment.md",
+          "sha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590"
+        },
+        "correlations": {
+          "X_cam_lower": "left cam hub outer face >= keeper right face + axial_endplay",
+          "X_cam_upper": "X_cam <= X_fixed_left - 2.85 mm",
+          "openState": "theta_R_OPEN = open_angle_deg = 0 degree",
+          "rightCaps": "complete S1 is non-roll-invariant and is certified in Stage 1 before removal",
+          "rightFixedRoll": "projection is complete S1; admissibility is the staged correlated union D0..D6"
+        },
+        "coverage": {
+          "allPeriodicDomainProjectionsComplete": true,
+          "allVariablesBounded": true,
+          "coupledAxialConstraintsRetained": true,
+          "rightFixedRollNeverIndependentWhileRodsJournaled": true
+        },
+        "parentBrief": {
+          "path": "docs/p13-four-plate-three-rod-brief.md",
+          "sha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322"
+        },
+        "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+        "rightFixedRollAdmissibleUnion": {
+          "admissibility": "stage-correlated union; never a Cartesian-independent S1 while any rod journal relation J_i is true",
+          "engagedComponentSummary": {
+            "componentIds": [
+              "alpha0-seam"
+            ],
+            "nonAlpha0Components": [],
+            "seamIdentification": "0 degree == 360 degree"
+          },
+          "projection": {
+            "completeS1": true,
+            "unit": "degree",
+            "value": [
+              0.0,
+              360.0
+            ],
+            "variable": "right_fixed_roll"
+          },
+          "schema": "P13RightFixedRollStageUnion/v1",
+          "stages": {
+            "D0-operate": {
+              "caps": "installed",
+              "rightFixedRoll": {
+                "certificatePath": "rightFixedRollCertificate.engagedComponent",
+                "componentId": "alpha0-seam",
+                "exactPredicateRequired": true
+              },
+              "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+              "theta": {
+                "unit": "degree",
+                "value": [
+                  0.0,
+                  27.0
+                ]
+              },
+              "withdrawalU": {
+                "unit": "millimetre",
+                "value": [
+                  0.0,
+                  0.0
+                ]
+              }
+            },
+            "D1-caps-off": {
+              "caps": "right-caps-removed",
+              "rightFixedRoll": {
+                "certificatePath": "rightFixedRollCertificate.engagedComponent",
+                "componentId": "alpha0-seam",
+                "exactPredicateRequired": true
+              },
+              "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+              "theta": {
+                "unit": "degree",
+                "value": [
+                  0.0,
+                  27.0
+                ]
+              },
+              "withdrawalU": {
+                "unit": "millimetre",
+                "value": [
+                  0.0,
+                  0.0
+                ]
+              }
+            },
+            "D2-engaged-withdrawal": {
+              "rightFixedRoll": {
+                "certificatePath": "rightFixedRollCertificate.engagedComponent",
+                "componentId": "alpha0-seam",
+                "exactPredicateRequired": true
+              },
+              "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+              "theta": {
+                "unit": "degree",
+                "value": [
+                  0.0,
+                  27.0
+                ]
+              },
+              "withdrawalU": {
+                "lowerOpen": 0.0,
+                "unit": "millimetre",
+                "upperOpen": 11.9
+              }
+            },
+            "D3-rods-clear": {
+              "rightFixedRoll": {
+                "unit": "degree",
+                "value": [
+                  0.0,
+                  360.0
+                ]
+              },
+              "rodJournalRelations": "J_upright=J_bottom=J_diagonal=false",
+              "withdrawalU": {
+                "unit": "millimetre",
+                "value": [
+                  11.9,
+                  44.2
+                ]
+              }
+            },
+            "D4-workpiece-lift": {
+              "requires": "full-S1 right-fixed rotational envelope plus complete-workpiece +Z certificate",
+              "rightFixedRoll": {
+                "unit": "degree",
+                "value": [
+                  0.0,
+                  360.0
+                ]
+              },
+              "rodJournalRelations": "all J_i=false"
+            },
+            "D5-empty-service-prealign": {
+              "rightFixedRoll": {
+                "unit": "degree",
+                "value": [
+                  0.0,
+                  360.0
+                ]
+              },
+              "rodJournalRelations": "all J_i=false",
+              "workpiece": "removed-or-clear"
+            },
+            "D6-keeper-off-release": {
+              "keeper": "removed",
+              "motion": "right-fixed minus-Z service release",
+              "mouth": "up",
+              "rightFixedRoll": {
+                "unit": "degree",
+                "value": [
+                  0.0,
+                  0.0
+                ]
+              }
+            }
+          },
+          "supportGuard": {
+            "relation": "all J_i are false iff rod_right_tip_X <= right_fixed_BREP_min_X",
+            "unit": "millimetre",
+            "value": 11.9,
+            "variable": "u_clear"
+          }
+        },
+        "schema": "P13CADSourceRemovalDomain/v1",
+        "status": "CAD_SOURCE_DOMAIN_CERTIFIED",
+        "topology": {
+          "remainingDuringLift": [
+            "left_cam",
+            "left_fixed",
+            "right_fixed",
+            "right_actuator",
+            "separate_D_shaft",
+            "shaft_keeper"
+          ],
+          "removedBeforeLift": [
+            "three_right_caps",
+            "three_complete_rod_permanent_left_cap_units"
+          ],
+          "workpiece": "one complete connected XT60 plus two full 90-degree leads"
+        },
+        "variables": {
+          "X_cam_projection": {
+            "bounds": [
+              -17.75,
+              -17.25
+            ],
+            "kind": "coupled-projection",
+            "unit": "millimetre"
+          },
+          "X_fixed_left": {
+            "bounds": [
+              -14.6,
+              -14.4
+            ],
+            "kind": "closed-interval",
+            "unit": "millimetre"
+          },
+          "X_fixed_right": {
+            "bounds": [
+              14.4,
+              14.6
+            ],
+            "kind": "closed-interval",
+            "unit": "millimetre"
+          },
+          "X_keeper": {
+            "bounds": [
+              -21.575,
+              -21.374999999999996
+            ],
+            "kind": "derived-closed-interval",
+            "unit": "millimetre"
+          },
+          "c_sw": {
+            "bounds": [
+              0.5,
+              0.75
+            ],
+            "kind": "closed-interval",
+            "unit": "millimetre"
+          },
+          "keeper_roll": {
+            "bounds": [
+              0.0,
+              360.0
+            ],
+            "kind": "periodic-S1",
+            "unit": "degree"
+          },
+          "keeper_transverse_radius": {
+            "bounds": [
+              0.0,
+              0.10000000000000009
+            ],
+            "kind": "connected-component-enclosure",
+            "unit": "millimetre"
+          },
+          "left_cam_transverse_radius": {
+            "bounds": [
+              0.0,
+              0.050000000000000266
+            ],
+            "kind": "connected-component-enclosure",
+            "unit": "millimetre"
+          },
+          "left_cap_engagement_each": {
+            "bounds": [
+              2.5,
+              3.0
+            ],
+            "kind": "frozen-per-specimen-x3",
+            "unit": "millimetre"
+          },
+          "left_fixed_transverse_radius": {
+            "bounds": [
+              0.0,
+              0.10000000000000009
+            ],
+            "kind": "connected-component-enclosure",
+            "unit": "millimetre"
+          },
+          "right_cap_engagement_each": {
+            "bounds": [
+              2.5,
+              3.0
+            ],
+            "kind": "movable-before-removal-x3",
+            "unit": "millimetre"
+          },
+          "right_cap_roll_each": {
+            "bounds": [
+              0.0,
+              360.0
+            ],
+            "kind": "periodic-S1-x3-non-invariant",
+            "unit": "degree"
+          },
+          "right_fixed_roll": {
+            "bounds": [
+              0.0,
+              360.0
+            ],
+            "kind": "periodic-S1-projection-with-stage-correlated-admissibility",
+            "unit": "degree"
+          },
+          "right_fixed_transverse_radius": {
+            "bounds": [
+              0.0,
+              0.10000000000000009
+            ],
+            "kind": "connected-component-enclosure",
+            "unit": "millimetre"
+          },
+          "rod_roll_each": {
+            "bounds": [
+              0.0,
+              360.0
+            ],
+            "kind": "periodic-S1-x3",
+            "unit": "degree"
+          },
+          "source_profile_deviation": {
+            "bounds": [
+              0.0,
+              0.0
+            ],
+            "kind": "exact-source-only",
+            "unit": "millimetre"
+          },
+          "theta_R_OPEN": {
+            "bounds": [
+              0.0,
+              0.0
+            ],
+            "kind": "fixed-command",
+            "unit": "degree"
+          },
+          "wire_diameter_design": {
+            "bounds": [
+              4.2,
+              4.3
+            ],
+            "kind": "closed-interval",
+            "unit": "millimetre"
+          }
+        }
+      },
+      "endpointMargin": {
+        "unit": "millimetre",
+        "value": 0.001372644585973859
+      },
+      "epsGlobal": {
+        "unit": "millimetre",
+        "value": 0.005
+      },
+      "globalRemovalCommand": {
+        "unit": "millimetre",
+        "value": 20.855
+      },
+      "mechanismTopCandidates": {
+        "unit": "millimetre",
+        "value": {
+          "keeperAllS1": 32.80362735541403,
+          "leftCam": 48.20362735541403,
+          "leftFixed": 48.15362735541403,
+          "rightActuatorCam": 48.15362735541403,
+          "rightFixedAllS1": 48.15362735541403,
+          "shaft": 30.70362735541403
+        }
+      },
+      "nominalSeedOnly": {
+        "unit": "millimetre",
+        "value": 20.80362735541403
+      },
+      "objective": "max(0,Z_mech_top+c_remove_end-Z_payload_min)",
+      "payloadMinCandidates": {
+        "unit": "millimetre",
+        "value": {
+          "insulatedLead": 27.85,
+          "solderCup": 41.5,
+          "solderEnvelope": 28.5,
+          "strippedConductor": 28.85,
+          "xt60Body": 48.0
+        }
+      },
+      "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+      "proofMethod": "closed-form monotone interval bound with directed outward 0.005-mm rounding",
+      "requiredLiftExactBound": {
+        "unit": "millimetre",
+        "value": 20.853627355414027
+      },
+      "rightCapStage1Coverage": {
+        "certificatePath": "removal.rightCapStage1Removal",
+        "engagementDomainSource": "domain.variables.right_cap_engagement_each.bounds",
+        "rollDomainSource": "domain.variables.right_cap_roll_each.bounds",
+        "status": "CERTIFIED_BY_CONTINUOUS_REMOVAL_CERTIFICATE"
+      },
+      "schema": "P13CADSourceRemovalCertificate/v1",
+      "status": "CAD_SOURCE_DOMAIN_CERTIFIED",
+      "worstCaseCorner": {
+        "c_sw": 0.5,
+        "leftCamTransverse": 0.050000000000000266,
+        "wire_diameter_design": 4.3
+      }
+    },
+    "cadSourceStatus": "CAD_SOURCE_DOMAIN_CERTIFIED",
+    "completeWorkpieceLift": {
+      "arcRadialAlignmentInsideDomain": true,
+      "bendArcAngleDomain": {
+        "unit": "degree",
+        "value": [
+          -180.0,
+          -90.0
+        ]
+      },
+      "commandSource": "P13CADSourceRemovalCertificate/v1.globalRemovalCommand",
+      "domainLift": {
+        "unit": "millimetre",
+        "value": [
+          0.0,
+          20.855
+        ]
+      },
+      "globalMargin": {
+        "unit": "millimetre",
+        "value": 0.49999999999999956
+      },
+      "margins": {
+        "cupToShaft": {
+          "unit": "millimetre",
+          "value": 10.941235031622995
+        },
+        "keeperAxial": {
+          "unit": "millimetre",
+          "value": 13.024999999999999
+        },
+        "plateAxial": {
+          "unit": "millimetre",
+          "value": 5.1499999999999995
+        },
+        "solderSphereToShaft": {
+          "unit": "millimetre",
+          "value": 21.880440093131803
+        },
+        "strippedConductorToShaft": {
+          "unit": "millimetre",
+          "value": 17.250276343109388
+        },
+        "wireArcToShaft": {
+          "unit": "millimetre",
+          "value": 0.49999999999999956
+        },
+        "wireHorizontalToShaft": {
+          "unit": "millimetre",
+          "value": 3.4133742152894473
+        },
+        "wireVerticalToShaft": {
+          "unit": "millimetre",
+          "value": 3.4133742152894473
+        },
+        "xt60BodyToShaft": {
+          "unit": "millimetre",
+          "value": 17.29637264458597
+        }
+      },
+      "plusZClearanceMonotone": true,
+      "proof": "certified-global-analytic-primitive-decomposition",
+      "shaftToBendAngle": {
+        "unit": "degree",
+        "value": -135.0
+      },
+      "workpieceHalfX": {
+        "unit": "millimetre",
+        "value": 7.95
+      }
+    },
+    "futureMeasuredSpecimenSchema": {
+      "allowedHashAliasGroups": [
+        [
+          "left_fixed",
+          "right_fixed"
+        ],
+        [
+          "rod_upright",
+          "rod_bottom",
+          "rod_diagonal"
+        ],
+        [
+          "left_cap_upright",
+          "left_cap_bottom",
+          "left_cap_diagonal"
+        ],
+        [
+          "right_cap_upright",
+          "right_cap_bottom",
+          "right_cap_diagonal"
+        ]
+      ],
+      "brepEntrySchema": {
+        "allowedExtensions": [
+          ".step",
+          ".stp"
+        ],
+        "freshProcessParse": true,
+        "pathMustExist": true,
+        "required": [
+          "role",
+          "path",
+          "sha256",
+          "registrationFrame",
+          "provenance"
+        ]
+      },
+      "measurementSchema": {
+        "finite": true,
+        "rangeOrderedAndContainsValue": true,
+        "required": [
+          "value",
+          "uncertainty",
+          "unit",
+          "range",
+          "method",
+          "measured_at_utc"
+        ]
+      },
+      "missingDataPolicy": "FAIL_CLOSED",
+      "registrationFrameSchema": {
+        "convention": "right-handed",
+        "transform": "finite-row-major-4x4-rigid-transform-det-plus-one",
+        "units": "millimetre"
+      },
+      "requiredBREPs": [
+        "left_cam",
+        "left_fixed",
+        "right_fixed",
+        "right_actuator",
+        "separate_D_shaft",
+        "shaft_keeper",
+        "rod_upright",
+        "rod_bottom",
+        "rod_diagonal",
+        "left_cap_upright",
+        "left_cap_bottom",
+        "left_cap_diagonal",
+        "right_cap_upright",
+        "right_cap_bottom",
+        "right_cap_diagonal",
+        "complete_workpiece",
+        "frame_esc_reference",
+        "iron_left",
+        "iron_right"
+      ],
+      "requiredRecords": [
+        "specimen_id",
+        "measurement_provenance",
+        "registration_frames",
+        "lane_profiles",
+        "bore_key_journal_keeper_geometry",
+        "rod_end_frames_and_straightness",
+        "left_cap_seated_engagements",
+        "movable_component_domains",
+        "breps"
+      ],
+      "rolePolicies": {
+        "complete_workpiece": {
+          "labelTokens": [
+            "workpiece"
+          ],
+          "minSolids": 1,
+          "minSpanZ": 35.0
+        },
+        "frame_esc_reference": {
+          "labelTokens": [
+            "esc"
+          ],
+          "minSolids": 2
+        },
+        "iron_left": {
+          "labelTokens": [
+            "iron"
+          ],
+          "minSolids": 2
+        },
+        "iron_right": {
+          "labelTokens": [
+            "iron"
+          ],
+          "minSolids": 2
+        },
+        "left_cam": {
+          "labelTokens": [
+            "left_cam"
+          ],
+          "minSolids": 1
+        },
+        "left_cap_bottom": {
+          "labelTokens": [
+            "left_cap"
+          ],
+          "maxSpan": 8.1,
+          "minSolids": 1
+        },
+        "left_cap_diagonal": {
+          "labelTokens": [
+            "left_cap"
+          ],
+          "maxSpan": 8.1,
+          "minSolids": 1
+        },
+        "left_cap_upright": {
+          "labelTokens": [
+            "left_cap"
+          ],
+          "maxSpan": 8.1,
+          "minSolids": 1
+        },
+        "left_fixed": {
+          "labelTokens": [
+            "fixed_guide"
+          ],
+          "minSolids": 1
+        },
+        "right_actuator": {
+          "labelTokens": [
+            "right",
+            "actuator"
+          ],
+          "minSolids": 1
+        },
+        "right_cap_bottom": {
+          "labelTokens": [
+            "right_cap"
+          ],
+          "maxSpan": 8.1,
+          "minSolids": 1
+        },
+        "right_cap_diagonal": {
+          "labelTokens": [
+            "right_cap"
+          ],
+          "maxSpan": 8.1,
+          "minSolids": 1
+        },
+        "right_cap_upright": {
+          "labelTokens": [
+            "right_cap"
+          ],
+          "maxSpan": 8.1,
+          "minSolids": 1
+        },
+        "right_fixed": {
+          "labelTokens": [
+            "fixed_guide"
+          ],
+          "minSolids": 1
+        },
+        "rod_bottom": {
+          "labelTokens": [
+            "rod",
+            "bottom"
+          ],
+          "minSolids": 1,
+          "minSpanX": 49.0
+        },
+        "rod_diagonal": {
+          "labelTokens": [
+            "rod",
+            "diagonal"
+          ],
+          "minSolids": 1,
+          "minSpanX": 49.0
+        },
+        "rod_upright": {
+          "labelTokens": [
+            "rod",
+            "upright"
+          ],
+          "minSolids": 1,
+          "minSpanX": 49.0
+        },
+        "separate_D_shaft": {
+          "labelTokens": [
+            "shaft"
+          ],
+          "minSolids": 1,
+          "minSpanX": 40.0
+        },
+        "shaft_keeper": {
+          "labelTokens": [
+            "shaft_keeper"
+          ],
+          "minSolids": 1
+        }
+      },
+      "schema": "P13PhysicalMeasuredRecord/v1",
+      "statusWhenAbsent": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+      "statusWhenCertified": "MEASURED_SPECIMEN_GEOMETRY_CERTIFIED"
+    },
+    "invariantStructureLabels": [
+      "left_D_bore_cam_OD40p50_theta_0p00",
+      "left_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+      "right_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+      "right_D_bore_cam_actuator_OD40p50_theta_0p00",
+      "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00",
+      "round_C_shaft_keeper_OD9p60_ID4p80"
+    ],
+    "method": "range-expanded cap and complete-unit swept BREPs plus exact global analytic complete-workpiece +Z decomposition",
+    "overlapVolumeTolerance": {
+      "unit": "cubic_millimetre",
+      "value": 1e-07
+    },
+    "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+    "rightCapStage1Removal": {
+      "domainSources": {
+        "engagement": "Domain-A.variables.right_cap_engagement_each.bounds",
+        "roll": "Domain-A.variables.right_cap_roll_each.bounds"
+      },
+      "maximumUnintendedIntersectionVolume": {
+        "unit": "cubic_millimetre",
+        "value": 0.0
+      },
+      "overlapVolumeTolerance": {
+        "unit": "cubic_millimetre",
+        "value": 1e-07
+      },
+      "proof": "range-expanded outer-cylinder swept-BREP over engagement, outward translation, and full S1 roll",
+      "rows": {
+        "bottom": {
+          "certificateMargin": {
+            "unit": "cubic_millimetre",
+            "value": 1e-07
+          },
+          "completeWorkpieceIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 0.0
+          },
+          "engagementDomain": {
+            "unit": "millimetre",
+            "value": [
+              2.5,
+              3.0
+            ]
+          },
+          "envelopeLabel": "continuous_stage1_bottom_right_cap_outer_envelope_engagement_2p50_to_3p00_roll_0p00_to_360p00",
+          "intendedOwnRodEngagementEnvelopeIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 37.69911184307751
+          },
+          "maximumUnintendedIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 0.0
+          },
+          "nonMatingRodIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "diagonal": 0.0,
+              "upright": 0.0
+            }
+          },
+          "otherStage1EnvelopeIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "diagonal": 0.0,
+              "upright": 0.0
+            }
+          },
+          "outwardTranslationDomainX": {
+            "unit": "millimetre",
+            "value": [
+              0.0,
+              3.0
+            ]
+          },
+          "rollDomain": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              360.0
+            ]
+          },
+          "seatedCapExtentXAtEngagementEndpoints": {
+            "unit": "millimetre",
+            "value": {
+              "lower": [
+                22.5,
+                26.3
+              ],
+              "upper": [
+                22.0,
+                25.8
+              ]
+            }
+          },
+          "structureIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+              "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+              "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0,
+              "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+              "round_C_shaft_keeper_OD9p60_ID4p80": 0.0,
+              "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00": 0.0
+            }
+          },
+          "sweptEnvelopeExtentX": {
+            "unit": "millimetre",
+            "value": [
+              22.0,
+              28.8
+            ]
+          }
+        },
+        "diagonal": {
+          "certificateMargin": {
+            "unit": "cubic_millimetre",
+            "value": 1e-07
+          },
+          "completeWorkpieceIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 0.0
+          },
+          "engagementDomain": {
+            "unit": "millimetre",
+            "value": [
+              2.5,
+              3.0
+            ]
+          },
+          "envelopeLabel": "continuous_stage1_diagonal_right_cap_outer_envelope_engagement_2p50_to_3p00_roll_0p00_to_360p00",
+          "intendedOwnRodEngagementEnvelopeIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 37.69911184307752
+          },
+          "maximumUnintendedIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 0.0
+          },
+          "nonMatingRodIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "bottom": 0.0,
+              "upright": 0.0
+            }
+          },
+          "otherStage1EnvelopeIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "bottom": 0.0,
+              "upright": 0.0
+            }
+          },
+          "outwardTranslationDomainX": {
+            "unit": "millimetre",
+            "value": [
+              0.0,
+              3.0
+            ]
+          },
+          "rollDomain": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              360.0
+            ]
+          },
+          "seatedCapExtentXAtEngagementEndpoints": {
+            "unit": "millimetre",
+            "value": {
+              "lower": [
+                22.5,
+                26.3
+              ],
+              "upper": [
+                22.0,
+                25.8
+              ]
+            }
+          },
+          "structureIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+              "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+              "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0,
+              "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+              "round_C_shaft_keeper_OD9p60_ID4p80": 0.0,
+              "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00": 0.0
+            }
+          },
+          "sweptEnvelopeExtentX": {
+            "unit": "millimetre",
+            "value": [
+              22.0,
+              28.8
+            ]
+          }
+        },
+        "upright": {
+          "certificateMargin": {
+            "unit": "cubic_millimetre",
+            "value": 1e-07
+          },
+          "completeWorkpieceIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 0.0
+          },
+          "engagementDomain": {
+            "unit": "millimetre",
+            "value": [
+              2.5,
+              3.0
+            ]
+          },
+          "envelopeLabel": "continuous_stage1_upright_right_cap_outer_envelope_engagement_2p50_to_3p00_roll_0p00_to_360p00",
+          "intendedOwnRodEngagementEnvelopeIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 37.699111843077524
+          },
+          "maximumUnintendedIntersectionVolume": {
+            "unit": "cubic_millimetre",
+            "value": 0.0
+          },
+          "nonMatingRodIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "bottom": 0.0,
+              "diagonal": 0.0
+            }
+          },
+          "otherStage1EnvelopeIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "bottom": 0.0,
+              "diagonal": 0.0
+            }
+          },
+          "outwardTranslationDomainX": {
+            "unit": "millimetre",
+            "value": [
+              0.0,
+              3.0
+            ]
+          },
+          "rollDomain": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              360.0
+            ]
+          },
+          "seatedCapExtentXAtEngagementEndpoints": {
+            "unit": "millimetre",
+            "value": {
+              "lower": [
+                22.5,
+                26.3
+              ],
+              "upper": [
+                22.0,
+                25.8
+              ]
+            }
+          },
+          "structureIntersectionVolumes": {
+            "unit": "cubic_millimetre",
+            "value": {
+              "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+              "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+              "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0,
+              "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+              "round_C_shaft_keeper_OD9p60_ID4p80": 0.0,
+              "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00": 0.0
+            }
+          },
+          "sweptEnvelopeExtentX": {
+            "unit": "millimetre",
+            "value": [
+              22.0,
+              28.8
+            ]
+          }
+        }
+      },
+      "stageOrdering": {
+        "mustCompleteBefore": "rodLeftCapWithdrawal",
+        "rightCapsRemovedBeforeLift": true,
+        "stage": 1
+      }
+    },
+    "rightFixedRollStageCorrelation": {
+      "allRollWorkpieceLift": {
+        "certificatePath": "removal.completeWorkpieceLift",
+        "certifiedForEveryAlphaInS1": true,
+        "rightFixedEnvelopePath": "rightFixedRollCertificate.fullS1AfterClear"
+      },
+      "engagedComponent": {
+        "alpha0MaximumResidual": {
+          "unit": "millimetre",
+          "value": -0.3749999999999991
+        },
+        "boundaryBrackets": {
+          "unit": "degree",
+          "value": [
+            [
+              1.4083099365234375,
+              1.40899658203125
+            ],
+            [
+              358.59100341796875,
+              358.59169006347656
+            ]
+          ]
+        },
+        "boundaryResidualEnclosures": [
+          {
+            "constraintResidualEnclosures": {
+              "unit": "millimetre",
+              "value": {
+                "bottom:LOCKED": {
+                  "lower": -0.3264862078485669,
+                  "upper": -0.3263158965404011
+                },
+                "bottom:OPEN": {
+                  "lower": -0.00017590060261901685,
+                  "upper": 6.8558781328165175e-06
+                },
+                "diagonal:LOCKED": {
+                  "lower": -0.14518610612965158,
+                  "upper": -0.14507405362678652
+                },
+                "diagonal:OPEN": {
+                  "lower": -0.04654547083235011,
+                  "upper": -0.046385311091335424
+                },
+                "upright:LOCKED": {
+                  "lower": -0.02570030656190614,
+                  "upper": -0.025529995253740334
+                },
+                "upright:OPEN": {
+                  "lower": -0.23633054705503184,
+                  "upper": -0.23614779057427995
+                }
+              }
+            },
+            "interval": {
+              "unit": "degree",
+              "value": [
+                1.4083099365234375,
+                1.40899658203125
+              ]
+            },
+            "maximumResidualEnclosure": {
+              "lower": -0.00017590060261901685,
+              "unit": "millimetre",
+              "upper": 6.8558781328165175e-06
+            }
+          },
+          {
+            "constraintResidualEnclosures": {
+              "unit": "millimetre",
+              "value": {
+                "bottom:LOCKED": {
+                  "lower": -0.025700306561902198,
+                  "upper": -0.025529995253736393
+                },
+                "bottom:OPEN": {
+                  "lower": -0.23633054705503007,
+                  "upper": -0.23614779057427818
+                },
+                "diagonal:LOCKED": {
+                  "lower": -0.14518610612964974,
+                  "upper": -0.1450740536267847
+                },
+                "diagonal:OPEN": {
+                  "lower": -0.046545470832347,
+                  "upper": -0.046385311091332315
+                },
+                "upright:LOCKED": {
+                  "lower": -0.3264862078485669,
+                  "upper": -0.3263158965404011
+                },
+                "upright:OPEN": {
+                  "lower": -0.00017590060261657436,
+                  "upper": 6.855878135259008e-06
+                }
+              }
+            },
+            "interval": {
+              "unit": "degree",
+              "value": [
+                358.59100341796875,
+                358.59169006347656
+              ]
+            },
+            "maximumResidualEnclosure": {
+              "lower": -0.00017590060261657436,
+              "unit": "millimetre",
+              "upper": 6.855878135259008e-06
+            }
+          }
+        ],
+        "certifiedInvalidIntervals": {
+          "unit": "degree",
+          "value": [
+            [
+              1.40899658203125,
+              358.59100341796875
+            ]
+          ]
+        },
+        "certifiedValidInnerIntervals": {
+          "unit": "degree",
+          "value": [
+            [
+              0.0,
+              1.4083099365234375
+            ],
+            [
+              358.59169006347656,
+              360.0
+            ]
+          ]
+        },
+        "classificationTolerance": {
+          "unit": "degree",
+          "value": 0.001
+        },
+        "components": [
+          {
+            "boundaryBrackets": [
+              [
+                1.4083099365234375,
+                1.40899658203125
+              ],
+              [
+                358.59100341796875,
+                358.59169006347656
+              ]
+            ],
+            "id": "alpha0-seam",
+            "innerIntervals": [
+              [
+                0.0,
+                1.4083099365234375
+              ],
+              [
+                358.59169006347656,
+                360.0
+              ]
+            ],
+            "reachableFromAlpha0": true
+          }
+        ],
+        "continuousAlpha0PathForAllTheta": true,
+        "laneRadialAllowance": {
+          "unit": "millimetre",
+          "value": 0.375
+        },
+        "nonAlpha0Components": [],
+        "proofMethod": "endpoint-convex reduction plus Lipschitz interval branch-and-bound",
+        "rollDomain": {
+          "unit": "degree",
+          "value": [
+            0.0,
+            360.0
+          ]
+        },
+        "samplesUsedForProof": false,
+        "seamIdentification": "0 degree == 360 degree",
+        "thetaDomain": {
+          "unit": "degree",
+          "value": [
+            0.0,
+            27.0
+          ]
+        }
+      },
+      "fullS1AfterClear": {
+        "completeWorkpieceIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "liftEnd": 0.0,
+            "liftStart": 0.0
+          }
+        },
+        "diagnosticOnlyActualSolidSamples": [
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 0.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 15.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 30.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 45.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 60.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 75.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 90.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 105.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 120.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 135.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 150.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 165.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 180.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 195.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 210.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 225.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 240.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 255.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 270.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 285.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 300.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 315.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 330.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 345.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          },
+          {
+            "actualSolidOutsideAnalyticEnvelopeVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            },
+            "alpha": {
+              "unit": "degree",
+              "value": 360.0
+            },
+            "maximumActualSolidIntersectionVolume": {
+              "unit": "cubic_millimetre",
+              "value": 0.0
+            }
+          }
+        ],
+        "envelopeLabel": "proof_only_right_fixed_full_S1_coaxial_annular_swept_envelope",
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "proofConstituents": {
+          "actualRightFixedOccurrence": "right_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+          "completeWorkpieceOccurrences": [
+            "complete_connected_XT60_two_exact_90deg_leads_lift_0p00",
+            "complete_connected_XT60_two_exact_90deg_leads_lift_20p86"
+          ],
+          "mainOuterBlank": "coaxial_disc_D40p50_T2p80",
+          "persistentCutter": "coaxial_circular_journal_D4p80",
+          "remainingIntegralFeatures": [
+            "right_actuator_separate_D_keyed_shaft",
+            "shaft_keeper_C_journal_ID4p80"
+          ],
+          "remainingStructureOccurrences": [
+            "left_D_bore_cam_OD40p50_theta_0p00",
+            "left_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+            "right_D_bore_cam_actuator_OD40p50_theta_0p00",
+            "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00",
+            "round_C_shaft_keeper_OD9p60_ID4p80"
+          ],
+          "thrustLandOuterBlank": "coaxial_land_D10p00_T0p20"
+        },
+        "proofMethod": "coaxial outer blanks minus persistent circular journal; lanes and C-mouth omitted only conservatively",
+        "remainingStructureIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+            "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+            "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0,
+            "round_C_shaft_keeper_OD9p60_ID4p80": 0.0,
+            "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00": 0.0
+          }
+        },
+        "rollDomain": {
+          "unit": "degree",
+          "value": [
+            0.0,
+            360.0
+          ]
+        },
+        "samplesUsedForProof": false,
+        "seamIdentification": "0 degree == 360 degree"
+      },
+      "installedFiveDegreeCounterexample": {
+        "actualRodIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "bottom": 9.507832803698548,
+            "diagonal": 6.137255741782639,
+            "upright": 0.1629947854357878
+          }
+        },
+        "alpha": {
+          "unit": "degree",
+          "value": 5.0
+        },
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 9.507832803698548
+        }
+      },
+      "overlapVolumeTolerance": {
+        "unit": "cubic_millimetre",
+        "value": 1e-07
+      },
+      "proof": "stage-correlated engaged exact-lane component plus analytic full-S1 annular swept-BREP after exact rod-clear guard",
+      "schema": "P13RightFixedRollCertificate/v1",
+      "stageUnion": {
+        "admissibility": "stage-correlated union; never a Cartesian-independent S1 while any rod journal relation J_i is true",
+        "engagedComponentSummary": {
+          "componentIds": [
+            "alpha0-seam"
+          ],
+          "nonAlpha0Components": [],
+          "seamIdentification": "0 degree == 360 degree"
+        },
+        "projection": {
+          "completeS1": true,
+          "unit": "degree",
+          "value": [
+            0.0,
+            360.0
+          ],
+          "variable": "right_fixed_roll"
+        },
+        "schema": "P13RightFixedRollStageUnion/v1",
+        "stages": {
+          "D0-operate": {
+            "caps": "installed",
+            "rightFixedRoll": {
+              "certificatePath": "rightFixedRollCertificate.engagedComponent",
+              "componentId": "alpha0-seam",
+              "exactPredicateRequired": true
+            },
+            "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+            "theta": {
+              "unit": "degree",
+              "value": [
+                0.0,
+                27.0
+              ]
+            },
+            "withdrawalU": {
+              "unit": "millimetre",
+              "value": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "D1-caps-off": {
+            "caps": "right-caps-removed",
+            "rightFixedRoll": {
+              "certificatePath": "rightFixedRollCertificate.engagedComponent",
+              "componentId": "alpha0-seam",
+              "exactPredicateRequired": true
+            },
+            "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+            "theta": {
+              "unit": "degree",
+              "value": [
+                0.0,
+                27.0
+              ]
+            },
+            "withdrawalU": {
+              "unit": "millimetre",
+              "value": [
+                0.0,
+                0.0
+              ]
+            }
+          },
+          "D2-engaged-withdrawal": {
+            "rightFixedRoll": {
+              "certificatePath": "rightFixedRollCertificate.engagedComponent",
+              "componentId": "alpha0-seam",
+              "exactPredicateRequired": true
+            },
+            "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+            "theta": {
+              "unit": "degree",
+              "value": [
+                0.0,
+                27.0
+              ]
+            },
+            "withdrawalU": {
+              "lowerOpen": 0.0,
+              "unit": "millimetre",
+              "upperOpen": 11.9
+            }
+          },
+          "D3-rods-clear": {
+            "rightFixedRoll": {
+              "unit": "degree",
+              "value": [
+                0.0,
+                360.0
+              ]
+            },
+            "rodJournalRelations": "J_upright=J_bottom=J_diagonal=false",
+            "withdrawalU": {
+              "unit": "millimetre",
+              "value": [
+                11.9,
+                44.2
+              ]
+            }
+          },
+          "D4-workpiece-lift": {
+            "requires": "full-S1 right-fixed rotational envelope plus complete-workpiece +Z certificate",
+            "rightFixedRoll": {
+              "unit": "degree",
+              "value": [
+                0.0,
+                360.0
+              ]
+            },
+            "rodJournalRelations": "all J_i=false"
+          },
+          "D5-empty-service-prealign": {
+            "rightFixedRoll": {
+              "unit": "degree",
+              "value": [
+                0.0,
+                360.0
+              ]
+            },
+            "rodJournalRelations": "all J_i=false",
+            "workpiece": "removed-or-clear"
+          },
+          "D6-keeper-off-release": {
+            "keeper": "removed",
+            "motion": "right-fixed minus-Z service release",
+            "mouth": "up",
+            "rightFixedRoll": {
+              "unit": "degree",
+              "value": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "supportGuard": {
+          "relation": "all J_i are false iff rod_right_tip_X <= right_fixed_BREP_min_X",
+          "unit": "millimetre",
+          "value": 11.9,
+          "variable": "u_clear"
+        }
+      },
+      "supportGuard": {
+        "boundaryRows": {
+          "above": {
+            "axialClearance": {
+              "unit": "millimetre",
+              "value": 0.005000000000000782
+            },
+            "journalRelationJi": false,
+            "rightFixedBREPMinX": {
+              "unit": "millimetre",
+              "value": 13.099999999999994
+            },
+            "rodRightTipX": {
+              "unit": "millimetre",
+              "value": 13.094999999999994
+            },
+            "withdrawalU": {
+              "unit": "millimetre",
+              "value": 11.905000000000006
+            }
+          },
+          "at": {
+            "axialClearance": {
+              "unit": "millimetre",
+              "value": 0.0
+            },
+            "journalRelationJi": false,
+            "rightFixedBREPMinX": {
+              "unit": "millimetre",
+              "value": 13.099999999999994
+            },
+            "rodRightTipX": {
+              "unit": "millimetre",
+              "value": 13.099999999999994
+            },
+            "withdrawalU": {
+              "unit": "millimetre",
+              "value": 11.900000000000006
+            }
+          },
+          "below": {
+            "axialClearance": {
+              "unit": "millimetre",
+              "value": -0.005000000000000782
+            },
+            "journalRelationJi": true,
+            "rightFixedBREPMinX": {
+              "unit": "millimetre",
+              "value": 13.099999999999994
+            },
+            "rodRightTipX": {
+              "unit": "millimetre",
+              "value": 13.104999999999995
+            },
+            "withdrawalU": {
+              "unit": "millimetre",
+              "value": 11.895000000000005
+            }
+          }
+        },
+        "fullWithdrawalGap": {
+          "unit": "millimetre",
+          "value": 32.3
+        },
+        "rightFixedBREPMinX": {
+          "unit": "millimetre",
+          "value": 13.099999999999994
+        },
+        "source": "final right-fixed BREP bounding_box.min.X",
+        "uClear": {
+          "unit": "millimetre",
+          "value": 11.900000000000006
+        },
+        "uFull": {
+          "unit": "millimetre",
+          "value": 44.2
+        }
+      }
+    },
+    "rodLeftCapWithdrawal": {
+      "bottom": {
+        "certificateMargin": {
+          "unit": "cubic_millimetre",
+          "value": 1e-07
+        },
+        "completeWorkpieceIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "engagementDomain": {
+          "source": "Domain-A.variables.left_cap_engagement_each.bounds",
+          "unit": "millimetre",
+          "value": [
+            2.5,
+            3.0
+          ]
+        },
+        "envelopeLabels": [
+          "continuous_withdrawal_bottom_full_rod_envelope",
+          "continuous_withdrawal_bottom_permanent_left_cap_outer_envelope_engagement_2p50_to_3p00"
+        ],
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "otherWithdrawalEnvelopeIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "diagonal": 0.0,
+            "upright": 0.0
+          }
+        },
+        "structureIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+            "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+            "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0,
+            "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+            "round_C_shaft_keeper_OD9p60_ID4p80": 0.0,
+            "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00": 0.0
+          }
+        },
+        "synchronousWithdrawalEnvelopeIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "diagonal": 0.0,
+            "upright": 0.0
+          }
+        },
+        "translationDomainX": {
+          "unit": "millimetre",
+          "value": [
+            -44.2,
+            0.0
+          ]
+        }
+      },
+      "diagonal": {
+        "certificateMargin": {
+          "unit": "cubic_millimetre",
+          "value": 1e-07
+        },
+        "completeWorkpieceIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "engagementDomain": {
+          "source": "Domain-A.variables.left_cap_engagement_each.bounds",
+          "unit": "millimetre",
+          "value": [
+            2.5,
+            3.0
+          ]
+        },
+        "envelopeLabels": [
+          "continuous_withdrawal_diagonal_full_rod_envelope",
+          "continuous_withdrawal_diagonal_permanent_left_cap_outer_envelope_engagement_2p50_to_3p00"
+        ],
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "otherWithdrawalEnvelopeIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "bottom": 0.0,
+            "upright": 0.0
+          }
+        },
+        "structureIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+            "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+            "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0,
+            "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+            "round_C_shaft_keeper_OD9p60_ID4p80": 0.0,
+            "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00": 0.0
+          }
+        },
+        "synchronousWithdrawalEnvelopeIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "bottom": 0.0,
+            "upright": 0.0
+          }
+        },
+        "translationDomainX": {
+          "unit": "millimetre",
+          "value": [
+            -44.2,
+            0.0
+          ]
+        }
+      },
+      "upright": {
+        "certificateMargin": {
+          "unit": "cubic_millimetre",
+          "value": 1e-07
+        },
+        "completeWorkpieceIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "engagementDomain": {
+          "source": "Domain-A.variables.left_cap_engagement_each.bounds",
+          "unit": "millimetre",
+          "value": [
+            2.5,
+            3.0
+          ]
+        },
+        "envelopeLabels": [
+          "continuous_withdrawal_upright_full_rod_envelope",
+          "continuous_withdrawal_upright_permanent_left_cap_outer_envelope_engagement_2p50_to_3p00"
+        ],
+        "maximumIntersectionVolume": {
+          "unit": "cubic_millimetre",
+          "value": 0.0
+        },
+        "otherWithdrawalEnvelopeIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "bottom": 0.0,
+            "diagonal": 0.0
+          }
+        },
+        "structureIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+            "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+            "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0,
+            "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 0.0,
+            "round_C_shaft_keeper_OD9p60_ID4p80": 0.0,
+            "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00": 0.0
+          }
+        },
+        "synchronousWithdrawalEnvelopeIntersectionVolumes": {
+          "unit": "cubic_millimetre",
+          "value": {
+            "bottom": 0.0,
+            "diagonal": 0.0
+          }
+        },
+        "translationDomainX": {
+          "unit": "millimetre",
+          "value": [
+            -44.2,
+            0.0
+          ]
+        }
+      }
+    },
+    "rodLeftCapWithdrawalDomain": {
+      "domainLambda": {
+        "unit": "dimensionless",
+        "value": [
+          0.0,
+          1.0
+        ]
+      },
+      "endpointExitMargin": {
+        "unit": "millimetre",
+        "value": 0.5000000000000036
+      },
+      "endpointRightmostX": {
+        "unit": "millimetre",
+        "value": -19.200000000000003
+      },
+      "engagementDomain": {
+        "source": "Domain-A.variables.left_cap_engagement_each.bounds",
+        "unit": "millimetre",
+        "value": [
+          2.5,
+          3.0
+        ]
+      },
+      "leftCapStartExtentX": {
+        "unit": "millimetre",
+        "value": [
+          -26.3,
+          -22.0
+        ]
+      },
+      "leftCapSweepEnvelopeLength": {
+        "unit": "millimetre",
+        "value": 48.5
+      },
+      "proof": "continuous-range-expanded-conservative-swept-BREP-complete-rod-left-cap-units",
+      "rodSweepEnvelopeLength": {
+        "unit": "millimetre",
+        "value": 94.2
+      },
+      "targetRightmostX": {
+        "unit": "millimetre",
+        "value": -19.2
+      },
+      "translationX": {
+        "unit": "millimetre",
+        "value": [
+          -44.2,
+          0.0
+        ]
+      }
+    }
+  },
+  "schema": "P13ContinuousCertificates/v1",
+  "shaftServiceExtraction": {
+    "dInterfaceAngularLash": {
+      "acceptanceMaximumOneSided": {
+        "unit": "degree",
+        "value": 3.0
+      },
+      "method": "exact_male_D_endpoint_support_to_female_flat_contact",
+      "oneSided": {
+        "unit": "degree",
+        "value": 1.9325113632825863
+      },
+      "totalSymmetric": {
+        "unit": "degree",
+        "value": 3.8650227265651727
+      }
+    },
+    "directPlusXWithFixedGuidesInstalled": {
+      "actualSolidIntersectionVolumes": {
+        "unit": "cubic_millimetre",
+        "value": {
+          "left_fixed_OD40p50_integral_upward_C_journal_ID4p80": 7.300469154631463,
+          "right_fixed_OD40p50_integral_upward_C_journal_ID4p80": 7.30046915463142
+        }
+      },
+      "admissible": false
+    },
+    "journalToDBoreFlatClearance": {
+      "unit": "millimetre",
+      "value": 0.10000000000000009
+    },
+    "overlapVolumeTolerance": {
+      "unit": "cubic_millimetre",
+      "value": 1e-07
+    },
+    "schema": "P13StagedShaftServiceExtractionCertificate/v1",
+    "serviceOrder": [
+      "shaft_keeper_radially_off",
+      "both_upward_C_fixed_guides_release_minusZ",
+      "separate_D_shaft_extract_plusX_through_stationary_cams"
+    ],
+    "stagedPlusXAfterFixedGuidesClear": {
+      "actualSolidIntersectionVolumes": {
+        "unit": "cubic_millimetre",
+        "value": {
+          "left_D_bore_cam_OD40p50_theta_0p00": 0.0,
+          "right_D_bore_cam_actuator_OD40p50_theta_0p00": 0.0
+        }
+      },
+      "admissible": true,
+      "extractionDistance": {
+        "unit": "millimetre",
+        "value": 43.775
+      },
+      "maximumIntersectionVolume": {
+        "unit": "cubic_millimetre",
+        "value": 0.0
+      }
+    }
+  },
+  "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+}

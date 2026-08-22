@@ -1,0 +1,222 @@
+{
+  "allowedHashAliasGroups": [
+    [
+      "left_fixed",
+      "right_fixed"
+    ],
+    [
+      "rod_upright",
+      "rod_bottom",
+      "rod_diagonal"
+    ],
+    [
+      "left_cap_upright",
+      "left_cap_bottom",
+      "left_cap_diagonal"
+    ],
+    [
+      "right_cap_upright",
+      "right_cap_bottom",
+      "right_cap_diagonal"
+    ]
+  ],
+  "brepEntrySchema": {
+    "allowedExtensions": [
+      ".step",
+      ".stp"
+    ],
+    "freshProcessParse": true,
+    "pathMustExist": true,
+    "required": [
+      "role",
+      "path",
+      "sha256",
+      "registrationFrame",
+      "provenance"
+    ]
+  },
+  "measurementSchema": {
+    "finite": true,
+    "rangeOrderedAndContainsValue": true,
+    "required": [
+      "value",
+      "uncertainty",
+      "unit",
+      "range",
+      "method",
+      "measured_at_utc"
+    ]
+  },
+  "missingDataPolicy": "FAIL_CLOSED",
+  "registrationFrameSchema": {
+    "convention": "right-handed",
+    "transform": "finite-row-major-4x4-rigid-transform-det-plus-one",
+    "units": "millimetre"
+  },
+  "requiredBREPs": [
+    "left_cam",
+    "left_fixed",
+    "right_fixed",
+    "right_actuator",
+    "separate_D_shaft",
+    "shaft_keeper",
+    "rod_upright",
+    "rod_bottom",
+    "rod_diagonal",
+    "left_cap_upright",
+    "left_cap_bottom",
+    "left_cap_diagonal",
+    "right_cap_upright",
+    "right_cap_bottom",
+    "right_cap_diagonal",
+    "complete_workpiece",
+    "frame_esc_reference",
+    "iron_left",
+    "iron_right"
+  ],
+  "requiredRecords": [
+    "specimen_id",
+    "measurement_provenance",
+    "registration_frames",
+    "lane_profiles",
+    "bore_key_journal_keeper_geometry",
+    "rod_end_frames_and_straightness",
+    "left_cap_seated_engagements",
+    "movable_component_domains",
+    "breps"
+  ],
+  "rolePolicies": {
+    "complete_workpiece": {
+      "labelTokens": [
+        "workpiece"
+      ],
+      "minSolids": 1,
+      "minSpanZ": 35.0
+    },
+    "frame_esc_reference": {
+      "labelTokens": [
+        "esc"
+      ],
+      "minSolids": 2
+    },
+    "iron_left": {
+      "labelTokens": [
+        "iron"
+      ],
+      "minSolids": 2
+    },
+    "iron_right": {
+      "labelTokens": [
+        "iron"
+      ],
+      "minSolids": 2
+    },
+    "left_cam": {
+      "labelTokens": [
+        "left_cam"
+      ],
+      "minSolids": 1
+    },
+    "left_cap_bottom": {
+      "labelTokens": [
+        "left_cap"
+      ],
+      "maxSpan": 8.1,
+      "minSolids": 1
+    },
+    "left_cap_diagonal": {
+      "labelTokens": [
+        "left_cap"
+      ],
+      "maxSpan": 8.1,
+      "minSolids": 1
+    },
+    "left_cap_upright": {
+      "labelTokens": [
+        "left_cap"
+      ],
+      "maxSpan": 8.1,
+      "minSolids": 1
+    },
+    "left_fixed": {
+      "labelTokens": [
+        "fixed_guide"
+      ],
+      "minSolids": 1
+    },
+    "right_actuator": {
+      "labelTokens": [
+        "right",
+        "actuator"
+      ],
+      "minSolids": 1
+    },
+    "right_cap_bottom": {
+      "labelTokens": [
+        "right_cap"
+      ],
+      "maxSpan": 8.1,
+      "minSolids": 1
+    },
+    "right_cap_diagonal": {
+      "labelTokens": [
+        "right_cap"
+      ],
+      "maxSpan": 8.1,
+      "minSolids": 1
+    },
+    "right_cap_upright": {
+      "labelTokens": [
+        "right_cap"
+      ],
+      "maxSpan": 8.1,
+      "minSolids": 1
+    },
+    "right_fixed": {
+      "labelTokens": [
+        "fixed_guide"
+      ],
+      "minSolids": 1
+    },
+    "rod_bottom": {
+      "labelTokens": [
+        "rod",
+        "bottom"
+      ],
+      "minSolids": 1,
+      "minSpanX": 49.0
+    },
+    "rod_diagonal": {
+      "labelTokens": [
+        "rod",
+        "diagonal"
+      ],
+      "minSolids": 1,
+      "minSpanX": 49.0
+    },
+    "rod_upright": {
+      "labelTokens": [
+        "rod",
+        "upright"
+      ],
+      "minSolids": 1,
+      "minSpanX": 49.0
+    },
+    "separate_D_shaft": {
+      "labelTokens": [
+        "shaft"
+      ],
+      "minSolids": 1,
+      "minSpanX": 40.0
+    },
+    "shaft_keeper": {
+      "labelTokens": [
+        "shaft_keeper"
+      ],
+      "minSolids": 1
+    }
+  },
+  "schema": "P13PhysicalMeasuredRecord/v1",
+  "statusWhenAbsent": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+  "statusWhenCertified": "MEASURED_SPECIMEN_GEOMETRY_CERTIFIED"
+}

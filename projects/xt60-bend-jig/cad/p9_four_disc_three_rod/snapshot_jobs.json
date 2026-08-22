@@ -1,0 +1,34 @@
+{
+  "jobs": [
+    {
+      "input": "cad/p9_four_disc_three_rod/p9_loaded_open.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p9_four_disc_three_rod/p9_open_iso.png", "camera": "iso"},
+        {"path": "cad/p9_four_disc_three_rod/p9_open_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p9_four_disc_three_rod/p9_loaded_closed.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p9_four_disc_three_rod/p9_closed_iso.png", "camera": "iso"},
+        {"path": "cad/p9_four_disc_three_rod/p9_closed_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p9_four_disc_three_rod/p9_exploded.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p9_four_disc_three_rod/p9_exploded_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p9_four_disc_three_rod/p9_print_kit.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p9_four_disc_three_rod/p9_print_kit_top.png", "camera": "top"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    }
+  ]
+}

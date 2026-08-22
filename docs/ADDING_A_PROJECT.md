@@ -10,6 +10,7 @@ Before copying, identify:
 - intentional release artifacts;
 - local environments, caches, logs, and disposable generated data to exclude;
 - current CAD, slicer, and physical-validation status.
+- existing decisions, failed approaches, measured observations, and handoff material that must become durable project history.
 
 Do not modify the original project during this inventory.
 
@@ -20,6 +21,8 @@ Create `projects/<project-slug>/` and preserve the project's meaningful internal
 Keep the project `pyproject.toml`, but remove any project-local workspace declaration. The root workspace will own the shared lockfile and environment.
 
 Keep the project `package.json` when JavaScript is used, but remove any project-local npm workspace declaration. The root npm workspace will own dependency resolution, the lockfile, and the install.
+
+Create the continuity structure from `docs/templates/project-continuity/`. Preserve legacy handoff files under project-local `docs/legacy/`, then normalize their current facts into `PROJECT_STATE.md`, `NEXT_AGENT.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`, the decision index, and the migration iteration. Do not leave a legacy summary as the only source of current truth.
 
 ## 3. Register dependencies
 
@@ -41,7 +44,7 @@ At minimum:
 
 ```bash
 uv lock --check
-uv run --project projects/<project-slug> pytest
+uv run --project projects/<project-slug> pytest projects/<project-slug>/tests
 npm run test --workspace projects/<project-slug> --if-present
 npm run build --workspace projects/<project-slug> --if-present
 ```
@@ -57,5 +60,7 @@ Update the project README or handoff docs with:
 - accepted artifacts and checksums where appropriate;
 - known failures or rejected experiments;
 - remaining physical-print and assembly checks.
+
+Complete the active iteration's validation, review, and handoff records; update `PROJECT_STATE.md` and `NEXT_AGENT.md`; and verify that a new agent can identify the baseline, accepted evidence, unresolved risks, and next action without session history.
 
 Commit and push one migrated project before beginning the next migration.

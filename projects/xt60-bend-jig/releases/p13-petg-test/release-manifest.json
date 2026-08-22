@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "project": "xt60-bend-jig",
+  "iteration": "p13-r1-monorepo-migration",
+  "source_revision_sha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b",
+  "imported_on": "2026-08-22",
+  "status": "migration-regenerated-physical-fit-rejected",
+  "artifacts": [
+    {"path": "cad/p13_four_plate_three_rod/p13_print_kit.3mf", "sha256": "a3d1f546c66943703605ad9462d997f460b87f04ec09d75ab77a4b42c9de7571", "historical_import_sha256": "d163cb311a78fbf8ffbc231593c492930696c5a03e4826b55cb68728c89fab35", "role": "production-3mf"},
+    {"path": "cad/p13_four_plate_three_rod/p13_print_kit.step", "sha256": "e47ef3ea32db7cacf28177e668e4455613b7b88028859ecea12a8241bafed8d8", "historical_import_sha256": "52272f7ec3e57be6cb72b8c906a697684434cdbe9dcda71e48b470c7e08ef3ec", "role": "print-kit-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_motion.step", "sha256": "309e257a07320ec94ea8b8fb4e37d27cb0b1e46e5b94a1f559a12c147702531a", "historical_import_sha256": "61d33734c5e286aab44014705147ba9829021485c39c19694746a6300ebc5f20", "role": "motion-review-step"},
+    {"path": "cad/p13_four_plate_three_rod/p13_fit_coupons.3mf", "sha256": "276ba0fc07784a04bf55c775c51552df36b7cfc57f0cf8605f5f8e25bf2b03cb", "historical_import_sha256": "4e78b8dc5ecf2906ab53fc91e46f6666dd7932dfe8207be95872251bf7604db6", "role": "p13-fit-coupon-3mf"},
+    {"path": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.3mf", "sha256": "cb99aee000afb9043dc08ecbceaa1050c64184ceb6138cb4ca40267896b71970", "role": "rod-fit-calibration-3mf"},
+    {"path": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.step", "sha256": "f46769e355cb7c36659e40c903ec7bdfeb536e7501da92ebfa6616ea660190f6", "role": "rod-fit-calibration-step"},
+    {"path": "cad/p15_cap_fit_test/p15_cap_fit_test.3mf", "sha256": "c3566c77be7cc70efa22f808017fa8b74722381fa224fc9e84df3ce71552daed", "role": "cap-fit-calibration-3mf"},
+    {"path": "cad/p15_cap_fit_test/p15_cap_fit_test.step", "sha256": "27492704be2dc18bfe209207cae0f8184ac71749e0994ce3bffdd711c69884fc", "role": "cap-fit-calibration-step"},
+    {"path": "cad/p16_cap_throat_test/p16_cap_throat_test.3mf", "sha256": "ee4b53d3af2f119ba18a42aa2643969aa94fd6c209ba63ded7497dd7ec7bd756", "role": "cap-throat-calibration-3mf"},
+    {"path": "cad/p16_cap_throat_test/p16_cap_throat_test.step", "sha256": "33a9c8757a7c5f4bd6d9403f67d949b87c5ac36f132178f47be5ed043ea5c413", "role": "cap-throat-calibration-step"}
+  ],
+  "acceptance": {
+    "cad_source": "migration-baseline-passed",
+    "artifact": "regenerated-step-3mf-provenance-and-static-mesh-checks-passed",
+    "slicer": "historical-evidence-only-fresh-rerun-pending",
+    "physical": "failed-center-hole-fit-and-remaining-complete-p13-tests-pending"
+  }
+}

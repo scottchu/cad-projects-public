@@ -1,0 +1,16 @@
+.venv/
+.uv-cache/
+.python-version
+uv.lock
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+node_modules/
+package-lock.json
+npm-debug.log*
+dist/
+__cadgen__/
+cad/**/review/
+cad/**/snapshots/
+.DS_Store

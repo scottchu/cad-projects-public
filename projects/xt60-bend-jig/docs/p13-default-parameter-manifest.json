@@ -1,0 +1,1320 @@
+{
+  "briefPath": "docs/p13-four-plate-three-rod-brief.md",
+  "briefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
+  "cadSourceStatus": "CAD_SOURCE_DOMAIN_CERTIFIED",
+  "derived": {
+    "common_stroke": {
+      "unit": "millimetre",
+      "value": 4.014213562373095
+    },
+    "completed_workpiece_min_z": {
+      "unit": "millimetre",
+      "value": 27.85
+    },
+    "contact_stroke": {
+      "unit": "millimetre",
+      "value": 3.7642135623730946
+    },
+    "continuous_global_certificates": {
+      "motion": {
+        "contactThetaDegrees": {
+          "unit": "degree",
+          "value": [
+            0.0,
+            22.0
+          ]
+        },
+        "domainThetaDegrees": {
+          "unit": "degree",
+          "value": [
+            0.0,
+            27.0
+          ]
+        },
+        "maximumCutterInterval": {
+          "unit": "radian",
+          "value": 0.004363323129985824
+        },
+        "polygonKnotAnglesDegrees": {
+          "unit": "degree",
+          "value": [
+            0.0,
+            0.25,
+            0.5,
+            0.75,
+            1.0,
+            1.25,
+            1.5,
+            1.75,
+            2.0,
+            2.25,
+            2.5,
+            2.75,
+            3.0,
+            3.25,
+            3.5,
+            3.75,
+            4.0,
+            4.25,
+            4.5,
+            4.75,
+            5.0,
+            5.25,
+            5.5,
+            5.75,
+            6.0,
+            6.25,
+            6.5,
+            6.75,
+            7.0,
+            7.25,
+            7.5,
+            7.75,
+            8.0,
+            8.25,
+            8.5,
+            8.75,
+            9.0,
+            9.25,
+            9.5,
+            9.75,
+            10.0,
+            10.25,
+            10.5,
+            10.75,
+            11.0,
+            11.25,
+            11.5,
+            11.75,
+            12.0,
+            12.25,
+            12.5,
+            12.75,
+            13.0,
+            13.25,
+            13.5,
+            13.75,
+            14.0,
+            14.25,
+            14.5,
+            14.75,
+            15.0,
+            15.25,
+            15.5,
+            15.75,
+            16.0,
+            16.25,
+            16.5,
+            16.75,
+            17.0,
+            17.25,
+            17.5,
+            17.75,
+            18.0,
+            18.25,
+            18.5,
+            18.75,
+            19.0,
+            19.25,
+            19.5,
+            19.75,
+            20.0,
+            20.25,
+            20.5,
+            20.75,
+            21.0,
+            21.25,
+            21.5,
+            21.75,
+            22.0,
+            22.25,
+            22.5,
+            22.75,
+            23.0,
+            23.25,
+            23.5,
+            23.75,
+            24.0,
+            24.25,
+            24.5,
+            24.75,
+            25.0,
+            25.25,
+            25.5,
+            25.75,
+            26.0,
+            26.25,
+            26.5,
+            26.75,
+            27.0
+          ]
+        },
+        "preloadThetaDegrees": {
+          "unit": "degree",
+          "value": [
+            22.0,
+            27.0
+          ]
+        },
+        "proof": "global-analytic-piecewise-C2-chord-bound",
+        "rodAxialReachMargin": {
+          "unit": "millimetre",
+          "value": 6.300000000000001
+        },
+        "rods": {
+          "bottom": {
+            "camChordErrorBound": {
+              "unit": "millimetre",
+              "value": 0.0005750324064136159
+            },
+            "camInverseSecondDerivativeBound": {
+              "unit": "millimetre_per_radian_squared",
+              "value": 241.62816451035548
+            },
+            "camRadialMargin": {
+              "unit": "millimetre",
+              "value": 0.3744249675935864
+            },
+            "fixedCentreResidualBound": {
+              "unit": "millimetre",
+              "value": 0.0
+            },
+            "fixedRadialMargin": {
+              "unit": "millimetre",
+              "value": 0.375
+            },
+            "nominalRimMargin": {
+              "unit": "millimetre",
+              "value": 2.6252460780604814
+            },
+            "profileAllowanceRimMargin": {
+              "unit": "millimetre",
+              "value": 2.2716926874672074
+            }
+          },
+          "diagonal": {
+            "camChordErrorBound": {
+              "unit": "millimetre",
+              "value": 0.0005705451529820939
+            },
+            "camInverseSecondDerivativeBound": {
+              "unit": "millimetre_per_radian_squared",
+              "value": 239.74262415078906
+            },
+            "camRadialMargin": {
+              "unit": "millimetre",
+              "value": 0.3744294548470179
+            },
+            "fixedCentreResidualBound": {
+              "unit": "millimetre",
+              "value": 0.0
+            },
+            "fixedRadialMargin": {
+              "unit": "millimetre",
+              "value": 0.375
+            },
+            "nominalRimMargin": {
+              "unit": "millimetre",
+              "value": 4.5107864376269085
+            },
+            "profileAllowanceRimMargin": {
+              "unit": "millimetre",
+              "value": 4.1572330470336345
+            }
+          },
+          "upright": {
+            "camChordErrorBound": {
+              "unit": "millimetre",
+              "value": 0.0005750324064136159
+            },
+            "camInverseSecondDerivativeBound": {
+              "unit": "millimetre_per_radian_squared",
+              "value": 241.62816451035548
+            },
+            "camRadialMargin": {
+              "unit": "millimetre",
+              "value": 0.3744249675935864
+            },
+            "fixedCentreResidualBound": {
+              "unit": "millimetre",
+              "value": 0.0
+            },
+            "fixedRadialMargin": {
+              "unit": "millimetre",
+              "value": 0.375
+            },
+            "nominalRimMargin": {
+              "unit": "millimetre",
+              "value": 2.6252460780604796
+            },
+            "profileAllowanceRimMargin": {
+              "unit": "millimetre",
+              "value": 2.2716926874672057
+            }
+          }
+        },
+        "smoothstepMonotone": true
+      },
+      "rodLeftCapWithdrawal": {
+        "domainLambda": {
+          "unit": "dimensionless",
+          "value": [
+            0.0,
+            1.0
+          ]
+        },
+        "endpointExitMargin": {
+          "unit": "millimetre",
+          "value": 0.5000000000000036
+        },
+        "endpointRightmostX": {
+          "unit": "millimetre",
+          "value": -19.200000000000003
+        },
+        "engagementDomain": {
+          "source": "Domain-A.variables.left_cap_engagement_each.bounds",
+          "unit": "millimetre",
+          "value": [
+            2.5,
+            3.0
+          ]
+        },
+        "leftCapStartExtentX": {
+          "unit": "millimetre",
+          "value": [
+            -26.3,
+            -22.0
+          ]
+        },
+        "leftCapSweepEnvelopeLength": {
+          "unit": "millimetre",
+          "value": 48.5
+        },
+        "proof": "continuous-range-expanded-conservative-swept-BREP-complete-rod-left-cap-units",
+        "rodSweepEnvelopeLength": {
+          "unit": "millimetre",
+          "value": 94.2
+        },
+        "targetRightmostX": {
+          "unit": "millimetre",
+          "value": -19.2
+        },
+        "translationX": {
+          "unit": "millimetre",
+          "value": [
+            -44.2,
+            0.0
+          ]
+        }
+      },
+      "workpiecePlusZ": {
+        "arcRadialAlignmentInsideDomain": true,
+        "bendArcAngleDomain": {
+          "unit": "degree",
+          "value": [
+            -180.0,
+            -90.0
+          ]
+        },
+        "commandSource": "P13CADSourceRemovalCertificate/v1.globalRemovalCommand",
+        "domainLift": {
+          "unit": "millimetre",
+          "value": [
+            0.0,
+            20.855
+          ]
+        },
+        "globalMargin": {
+          "unit": "millimetre",
+          "value": 0.49999999999999956
+        },
+        "margins": {
+          "cupToShaft": {
+            "unit": "millimetre",
+            "value": 10.941235031622995
+          },
+          "keeperAxial": {
+            "unit": "millimetre",
+            "value": 13.024999999999999
+          },
+          "plateAxial": {
+            "unit": "millimetre",
+            "value": 5.1499999999999995
+          },
+          "solderSphereToShaft": {
+            "unit": "millimetre",
+            "value": 21.880440093131803
+          },
+          "strippedConductorToShaft": {
+            "unit": "millimetre",
+            "value": 17.250276343109388
+          },
+          "wireArcToShaft": {
+            "unit": "millimetre",
+            "value": 0.49999999999999956
+          },
+          "wireHorizontalToShaft": {
+            "unit": "millimetre",
+            "value": 3.4133742152894473
+          },
+          "wireVerticalToShaft": {
+            "unit": "millimetre",
+            "value": 3.4133742152894473
+          },
+          "xt60BodyToShaft": {
+            "unit": "millimetre",
+            "value": 17.29637264458597
+          }
+        },
+        "plusZClearanceMonotone": true,
+        "proof": "certified-global-analytic-primitive-decomposition",
+        "shaftToBendAngle": {
+          "unit": "degree",
+          "value": -135.0
+        },
+        "workpieceHalfX": {
+          "unit": "millimetre",
+          "value": 7.95
+        }
+      }
+    },
+    "global_removal_command": {
+      "unit": "millimetre",
+      "value": 20.855
+    },
+    "initial_arc_distance": {
+      "unit": "millimetre",
+      "value": 2.485281374238571
+    },
+    "locked_contact_offset": {
+      "unit": "millimetre",
+      "value": 3.9000000000000004
+    },
+    "mechanism_top_z": {
+      "unit": "millimetre",
+      "value": 48.15362735541403
+    },
+    "nominal_thrust_land_gap": {
+      "unit": "millimetre",
+      "value": 0.09999999999999998
+    },
+    "pivot_delta": {
+      "unit": "millimetre",
+      "value": 2.0963726445859683
+    },
+    "removal_lift": {
+      "acceptanceRole": "nominal-seed-only-not-a-removal-command",
+      "unit": "millimetre",
+      "value": 20.80362735541403
+    },
+    "removal_lift_nominal_seed_only": {
+      "unit": "millimetre",
+      "value": 20.80362735541403
+    },
+    "right_cap_min_radial_wall": {
+      "unit": "millimetre",
+      "value": 1.4
+    },
+    "right_cap_nominal_radial_clearance": {
+      "unit": "millimetre",
+      "value": 0.04999999999999982
+    },
+    "right_fixed_full_withdrawal_gap": {
+      "unit": "millimetre",
+      "value": 32.300000000000004
+    },
+    "right_fixed_rod_clearance_withdrawal": {
+      "unit": "millimetre",
+      "value": 11.9
+    },
+    "rod_withdrawal_distance": {
+      "unit": "millimetre",
+      "value": 44.2
+    },
+    "shaft_y": {
+      "unit": "millimetre",
+      "value": -2.0963726445859683
+    },
+    "shaft_z": {
+      "unit": "millimetre",
+      "value": 27.90362735541403
+    },
+    "stroke_requirements": {
+      "unit": "millimetre",
+      "value": {
+        "bottom": 0.0,
+        "diagonal": 3.7642135623730946,
+        "upright": 3.2035533905932736
+      }
+    },
+    "tangent_contact_offset": {
+      "unit": "millimetre",
+      "value": 4.15
+    }
+  },
+  "domainAmendmentPath": "docs/p13-cad-source-domain-amendment.md",
+  "domainAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+  "frozenTopology": {
+    "cam_phase_feature": "separate_D_keyed_shaft",
+    "fixed_journal_opening": "upward",
+    "right_cap_slit_count": 1
+  },
+  "parameters": {
+    "axial_endplay": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.275
+    },
+    "bend_arc_start_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": -90.0
+    },
+    "bend_arc_sweep_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": -90.0
+    },
+    "bend_center_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 6.0
+    },
+    "bend_center_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 36.0
+    },
+    "bend_radius": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 6.0
+    },
+    "boolean_axial_overcut": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.2
+    },
+    "boolean_plate_overcut": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.0
+    },
+    "boolean_radial_margin": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.0
+    },
+    "c_sw": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.5
+    },
+    "cam_band_segment_count": {
+      "class": "requires-regate",
+      "type": "int",
+      "unit": "count",
+      "value": 20
+    },
+    "cam_d_bore_across_flat": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 5.25
+    },
+    "cam_d_bore_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 5.7
+    },
+    "cam_hub_extension": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.0
+    },
+    "cam_hub_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 10.0
+    },
+    "cam_path_step_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 0.25
+    },
+    "cam_thickness": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.5
+    },
+    "cam_thrust_land_height": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.0
+    },
+    "cap_length": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 3.8
+    },
+    "cap_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 7.0
+    },
+    "cap_removed_offset_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 12.0
+    },
+    "cap_reverse_rotation_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 180.0
+    },
+    "clearance_margin": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.75
+    },
+    "continuous_overlap_volume_tolerance": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "cubic_millimetre",
+      "value": 1e-07
+    },
+    "cup_diameter": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 3.0
+    },
+    "cup_z0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 43.0
+    },
+    "cup_z1": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 48.0
+    },
+    "diagnostic_bore_coupon_x": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 16.0
+    },
+    "diagnostic_bore_coupon_y": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 16.0
+    },
+    "diagnostic_bore_pitch": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 5.0
+    },
+    "diagnostic_cam_across_flats": {
+      "class": "safe-retune",
+      "type": "tuple[float, float]",
+      "unit": "millimetre[]",
+      "value": [
+        5.2,
+        5.25
+      ]
+    },
+    "diagnostic_cam_bores": {
+      "class": "safe-retune",
+      "type": "tuple[float, float]",
+      "unit": "millimetre[]",
+      "value": [
+        5.65,
+        5.7
+      ]
+    },
+    "diagnostic_coupon_thickness": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 6.0
+    },
+    "diagnostic_journal_ods": {
+      "class": "safe-retune",
+      "type": "tuple[float, float, float]",
+      "unit": "millimetre[]",
+      "value": [
+        4.55,
+        4.6,
+        4.65
+      ]
+    },
+    "diagnostic_lane_coupon_x": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 20.0
+    },
+    "diagnostic_lane_coupon_y": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 20.0
+    },
+    "diagnostic_lane_pitch": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 5.5
+    },
+    "diagnostic_lane_widths": {
+      "class": "safe-retune",
+      "type": "tuple[float, float, float]",
+      "unit": "millimetre[]",
+      "value": [
+        4.55,
+        4.65,
+        4.75
+      ]
+    },
+    "exploded_cap_lane_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 12.0
+    },
+    "exploded_cap_pitch_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 10.0
+    },
+    "exploded_fixed_offset_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 8.0
+    },
+    "exploded_keeper_offset_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -12.0
+    },
+    "exploded_left_cap_lane_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -68.0
+    },
+    "exploded_plate_offset_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 50.0
+    },
+    "exploded_right_cap_lane_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -82.0
+    },
+    "exploded_rod_offset_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -52.0
+    },
+    "exploded_rod_pitch_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 8.0
+    },
+    "fixed_center_spacing": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 29.0
+    },
+    "fixed_groove_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.8
+    },
+    "fixed_groove_width": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 3.0
+    },
+    "fixed_thickness": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.8
+    },
+    "fixed_thrust_land_height": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.2
+    },
+    "follower_uncertainty_y": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.25
+    },
+    "follower_uncertainty_z": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.25
+    },
+    "horizontal_start_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 19.0
+    },
+    "horizontal_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 30.0
+    },
+    "iron_angle_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 35.0
+    },
+    "iron_barrel_length": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 35.0
+    },
+    "iron_barrel_radius": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.0
+    },
+    "iron_tip_length": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 12.0
+    },
+    "iron_tip_r0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.6
+    },
+    "iron_tip_r1": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.75
+    },
+    "journal_land_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.6
+    },
+    "journal_relief_diameter": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.0
+    },
+    "journal_throat": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.2
+    },
+    "journal_tip_width": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.2
+    },
+    "keeper_groove_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.6
+    },
+    "keeper_groove_width": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.2
+    },
+    "keeper_id": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.8
+    },
+    "keeper_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 9.6
+    },
+    "keeper_relief_diameter": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.2
+    },
+    "keeper_thickness": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.0
+    },
+    "keeper_throat": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.0
+    },
+    "keeper_tip_width": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.2
+    },
+    "lane_width": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.75
+    },
+    "left_cap_socket": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 3.9
+    },
+    "left_cap_socket_depth": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 3.0
+    },
+    "locked_angle_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 27.0
+    },
+    "main_face_gap": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.3
+    },
+    "nominal_cap_engagement": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.75
+    },
+    "open_angle_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 0.0
+    },
+    "pad_thickness_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.5
+    },
+    "pad_width_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 5.0
+    },
+    "pad_y0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 24.0
+    },
+    "pad_y1": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 25.5
+    },
+    "passage_half_width_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.25
+    },
+    "passage_z_min": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 34.0
+    },
+    "plate_diameter": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 40.5
+    },
+    "print_actuator_rotation_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 90.0
+    },
+    "print_actuator_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -26.0
+    },
+    "print_cap_left_x0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -52.0
+    },
+    "print_cap_pitch_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 10.0
+    },
+    "print_cap_right_x0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 32.0
+    },
+    "print_cap_rotation_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 90.0
+    },
+    "print_cap_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -36.0
+    },
+    "print_coupon_x_offset": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 25.0
+    },
+    "print_coupon_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -76.0
+    },
+    "print_keeper_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -48.0
+    },
+    "print_keeper_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -18.0
+    },
+    "print_plate_pitch_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 48.0
+    },
+    "print_plate_rotation_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 90.0
+    },
+    "print_shaft_rotation_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 0.0
+    },
+    "print_shaft_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.0
+    },
+    "print_shaft_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -52.0
+    },
+    "print_upper_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 28.0
+    },
+    "removal_end_clearance": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.5
+    },
+    "removal_review_sample_count": {
+      "class": "requires-regate",
+      "type": "int",
+      "unit": "count",
+      "value": 5
+    },
+    "right_cap_cavity": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.2
+    },
+    "right_cap_cavity_end": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 3.0
+    },
+    "right_cap_functional_overcut": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.03
+    },
+    "right_cap_slit_width": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.6
+    },
+    "right_cap_slit_z0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.995
+    },
+    "right_cap_slit_z1": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 3.5
+    },
+    "right_cap_throat": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.1
+    },
+    "right_cap_throat_depth": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.6
+    },
+    "rise_end_deg": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "degree",
+      "value": 22.0
+    },
+    "rod_diameter": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.0
+    },
+    "rod_exit_clearance": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.5
+    },
+    "rod_length": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 50.0
+    },
+    "service_fixed_offset_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": -26.0
+    },
+    "service_keeper_offset_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 12.0
+    },
+    "service_shaft_end_clearance": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.5
+    },
+    "shaft_d_across_flat": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 5.15
+    },
+    "shaft_head_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 9.6
+    },
+    "shaft_head_thickness": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.0
+    },
+    "shaft_left_end_margin": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.5
+    },
+    "shaft_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 5.6
+    },
+    "solder_radius": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 1.5
+    },
+    "stripped_diameter": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 2.3
+    },
+    "stripped_y0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 19.0
+    },
+    "stripped_y1": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 24.0
+    },
+    "thrust_land_od": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 10.0
+    },
+    "vertical_lead_z1": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 43.0
+    },
+    "wire_diameter_design": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.3
+    },
+    "wire_preload": {
+      "class": "safe-retune",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 0.25
+    },
+    "wire_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 4.0
+    },
+    "xt60_body_z0": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 48.0
+    },
+    "xt60_x": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 15.9
+    },
+    "xt60_y": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 8.1
+    },
+    "xt60_z": {
+      "class": "requires-regate",
+      "type": "float",
+      "unit": "millimetre",
+      "value": 20.5
+    }
+  },
+  "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+  "schema": "P13Parameters/v1"
+}

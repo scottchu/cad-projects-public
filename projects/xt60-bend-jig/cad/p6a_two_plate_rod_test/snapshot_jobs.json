@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "input": "cad/p6a_two_plate_rod_test/p6a_default_assembly.step.py",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p6a_two_plate_rod_test/snapshots/default_iso.png", "camera": "iso"},
+        {"path": "cad/p6a_two_plate_rod_test/snapshots/default_side.png", "camera": "right"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.16, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p6a_two_plate_rod_test/p6a_exploded.step.py",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p6a_two_plate_rod_test/snapshots/exploded_iso.png", "camera": "iso"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.16, "sizeProfile": "assembly"}
+    }
+  ]
+}

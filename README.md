@@ -20,11 +20,17 @@ design-projects/
 └── projects/
     └── <project-slug>/
         ├── README.md
+        ├── PROJECT_STATE.md
+        ├── NEXT_AGENT.md
         ├── pyproject.toml
         ├── package.json (when JavaScript is used)
         ├── src or CAD source
         ├── tests/
         └── docs/
+            ├── REQUIREMENTS.md
+            ├── EXPERIENCE.md
+            ├── decisions/
+            └── iterations/
 ```
 
 The first planned migrations are:
@@ -54,7 +60,7 @@ After pulling dependency changes, run both commands again. They update the exist
 Run a command for one workspace project from the repository root:
 
 ```bash
-uv run --project projects/<project-slug> pytest
+uv run --project projects/<project-slug> pytest projects/<project-slug>/tests
 uv run --project projects/<project-slug> python path/to/export.py
 npm run test --workspace projects/<project-slug>
 npm run build --workspace projects/<project-slug>
@@ -79,7 +85,9 @@ Project-specific commands belong in that project's README.
 - CAD acceptance, slicer acceptance, and physical print/assembly acceptance are separate states.
 - Each project documents inputs, purchased-part assumptions, tolerances, export commands, tests, and open physical-validation work.
 - Each project owns its Python and JavaScript dependency declarations, while the repository owns the shared environments, resolved lockfiles, and installs.
+- Project state, design reasoning, observed experience, validation, and next-agent instructions must live in the repository. Agent sessions are not project memory.
+- Every active project points to one current iteration whose brief, design record, validation, review, and handoff are sufficient for a fresh agent to continue.
 - Generated files are committed only when they are intentional release or review artifacts.
 - Migrations preserve history and working artifacts without importing local environments, caches, or disposable output.
 
-See [Architecture](docs/ARCHITECTURE.md), [CAD workflow](docs/CAD_WORKFLOW.md), and [Adding a project](docs/ADDING_A_PROJECT.md) for the repository contract.
+See [Architecture](docs/ARCHITECTURE.md), [Project continuity](docs/PROJECT_CONTINUITY.md), [CAD workflow](docs/CAD_WORKFLOW.md), and [Adding a project](docs/ADDING_A_PROJECT.md) for the repository contract.

@@ -1,0 +1,399 @@
+{
+  "certifiedBracket": {
+    "lower": 20.85,
+    "unit": "millimetre",
+    "upper": 20.855,
+    "width": 0.004999999999999005
+  },
+  "converged": true,
+  "coverageComplete": true,
+  "domain": {
+    "amendment": {
+      "path": "docs/p13-cad-source-domain-amendment.md",
+      "sha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590"
+    },
+    "correlations": {
+      "X_cam_lower": "left cam hub outer face >= keeper right face + axial_endplay",
+      "X_cam_upper": "X_cam <= X_fixed_left - 2.85 mm",
+      "openState": "theta_R_OPEN = open_angle_deg = 0 degree",
+      "rightCaps": "complete S1 is non-roll-invariant and is certified in Stage 1 before removal",
+      "rightFixedRoll": "projection is complete S1; admissibility is the staged correlated union D0..D6"
+    },
+    "coverage": {
+      "allPeriodicDomainProjectionsComplete": true,
+      "allVariablesBounded": true,
+      "coupledAxialConstraintsRetained": true,
+      "rightFixedRollNeverIndependentWhileRodsJournaled": true
+    },
+    "parentBrief": {
+      "path": "docs/p13-four-plate-three-rod-brief.md",
+      "sha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322"
+    },
+    "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+    "rightFixedRollAdmissibleUnion": {
+      "admissibility": "stage-correlated union; never a Cartesian-independent S1 while any rod journal relation J_i is true",
+      "engagedComponentSummary": {
+        "componentIds": [
+          "alpha0-seam"
+        ],
+        "nonAlpha0Components": [],
+        "seamIdentification": "0 degree == 360 degree"
+      },
+      "projection": {
+        "completeS1": true,
+        "unit": "degree",
+        "value": [
+          0.0,
+          360.0
+        ],
+        "variable": "right_fixed_roll"
+      },
+      "schema": "P13RightFixedRollStageUnion/v1",
+      "stages": {
+        "D0-operate": {
+          "caps": "installed",
+          "rightFixedRoll": {
+            "certificatePath": "rightFixedRollCertificate.engagedComponent",
+            "componentId": "alpha0-seam",
+            "exactPredicateRequired": true
+          },
+          "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+          "theta": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              27.0
+            ]
+          },
+          "withdrawalU": {
+            "unit": "millimetre",
+            "value": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D1-caps-off": {
+          "caps": "right-caps-removed",
+          "rightFixedRoll": {
+            "certificatePath": "rightFixedRollCertificate.engagedComponent",
+            "componentId": "alpha0-seam",
+            "exactPredicateRequired": true
+          },
+          "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+          "theta": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              27.0
+            ]
+          },
+          "withdrawalU": {
+            "unit": "millimetre",
+            "value": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "D2-engaged-withdrawal": {
+          "rightFixedRoll": {
+            "certificatePath": "rightFixedRollCertificate.engagedComponent",
+            "componentId": "alpha0-seam",
+            "exactPredicateRequired": true
+          },
+          "rodJournalRelations": "J_upright=J_bottom=J_diagonal=true",
+          "theta": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              27.0
+            ]
+          },
+          "withdrawalU": {
+            "lowerOpen": 0.0,
+            "unit": "millimetre",
+            "upperOpen": 11.9
+          }
+        },
+        "D3-rods-clear": {
+          "rightFixedRoll": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              360.0
+            ]
+          },
+          "rodJournalRelations": "J_upright=J_bottom=J_diagonal=false",
+          "withdrawalU": {
+            "unit": "millimetre",
+            "value": [
+              11.9,
+              44.2
+            ]
+          }
+        },
+        "D4-workpiece-lift": {
+          "requires": "full-S1 right-fixed rotational envelope plus complete-workpiece +Z certificate",
+          "rightFixedRoll": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              360.0
+            ]
+          },
+          "rodJournalRelations": "all J_i=false"
+        },
+        "D5-empty-service-prealign": {
+          "rightFixedRoll": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              360.0
+            ]
+          },
+          "rodJournalRelations": "all J_i=false",
+          "workpiece": "removed-or-clear"
+        },
+        "D6-keeper-off-release": {
+          "keeper": "removed",
+          "motion": "right-fixed minus-Z service release",
+          "mouth": "up",
+          "rightFixedRoll": {
+            "unit": "degree",
+            "value": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "supportGuard": {
+        "relation": "all J_i are false iff rod_right_tip_X <= right_fixed_BREP_min_X",
+        "unit": "millimetre",
+        "value": 11.9,
+        "variable": "u_clear"
+      }
+    },
+    "schema": "P13CADSourceRemovalDomain/v1",
+    "status": "CAD_SOURCE_DOMAIN_CERTIFIED",
+    "topology": {
+      "remainingDuringLift": [
+        "left_cam",
+        "left_fixed",
+        "right_fixed",
+        "right_actuator",
+        "separate_D_shaft",
+        "shaft_keeper"
+      ],
+      "removedBeforeLift": [
+        "three_right_caps",
+        "three_complete_rod_permanent_left_cap_units"
+      ],
+      "workpiece": "one complete connected XT60 plus two full 90-degree leads"
+    },
+    "variables": {
+      "X_cam_projection": {
+        "bounds": [
+          -17.75,
+          -17.25
+        ],
+        "kind": "coupled-projection",
+        "unit": "millimetre"
+      },
+      "X_fixed_left": {
+        "bounds": [
+          -14.6,
+          -14.4
+        ],
+        "kind": "closed-interval",
+        "unit": "millimetre"
+      },
+      "X_fixed_right": {
+        "bounds": [
+          14.4,
+          14.6
+        ],
+        "kind": "closed-interval",
+        "unit": "millimetre"
+      },
+      "X_keeper": {
+        "bounds": [
+          -21.575,
+          -21.374999999999996
+        ],
+        "kind": "derived-closed-interval",
+        "unit": "millimetre"
+      },
+      "c_sw": {
+        "bounds": [
+          0.5,
+          0.75
+        ],
+        "kind": "closed-interval",
+        "unit": "millimetre"
+      },
+      "keeper_roll": {
+        "bounds": [
+          0.0,
+          360.0
+        ],
+        "kind": "periodic-S1",
+        "unit": "degree"
+      },
+      "keeper_transverse_radius": {
+        "bounds": [
+          0.0,
+          0.10000000000000009
+        ],
+        "kind": "connected-component-enclosure",
+        "unit": "millimetre"
+      },
+      "left_cam_transverse_radius": {
+        "bounds": [
+          0.0,
+          0.050000000000000266
+        ],
+        "kind": "connected-component-enclosure",
+        "unit": "millimetre"
+      },
+      "left_cap_engagement_each": {
+        "bounds": [
+          2.5,
+          3.0
+        ],
+        "kind": "frozen-per-specimen-x3",
+        "unit": "millimetre"
+      },
+      "left_fixed_transverse_radius": {
+        "bounds": [
+          0.0,
+          0.10000000000000009
+        ],
+        "kind": "connected-component-enclosure",
+        "unit": "millimetre"
+      },
+      "right_cap_engagement_each": {
+        "bounds": [
+          2.5,
+          3.0
+        ],
+        "kind": "movable-before-removal-x3",
+        "unit": "millimetre"
+      },
+      "right_cap_roll_each": {
+        "bounds": [
+          0.0,
+          360.0
+        ],
+        "kind": "periodic-S1-x3-non-invariant",
+        "unit": "degree"
+      },
+      "right_fixed_roll": {
+        "bounds": [
+          0.0,
+          360.0
+        ],
+        "kind": "periodic-S1-projection-with-stage-correlated-admissibility",
+        "unit": "degree"
+      },
+      "right_fixed_transverse_radius": {
+        "bounds": [
+          0.0,
+          0.10000000000000009
+        ],
+        "kind": "connected-component-enclosure",
+        "unit": "millimetre"
+      },
+      "rod_roll_each": {
+        "bounds": [
+          0.0,
+          360.0
+        ],
+        "kind": "periodic-S1-x3",
+        "unit": "degree"
+      },
+      "source_profile_deviation": {
+        "bounds": [
+          0.0,
+          0.0
+        ],
+        "kind": "exact-source-only",
+        "unit": "millimetre"
+      },
+      "theta_R_OPEN": {
+        "bounds": [
+          0.0,
+          0.0
+        ],
+        "kind": "fixed-command",
+        "unit": "degree"
+      },
+      "wire_diameter_design": {
+        "bounds": [
+          4.2,
+          4.3
+        ],
+        "kind": "closed-interval",
+        "unit": "millimetre"
+      }
+    }
+  },
+  "endpointMargin": {
+    "unit": "millimetre",
+    "value": 0.001372644585973859
+  },
+  "epsGlobal": {
+    "unit": "millimetre",
+    "value": 0.005
+  },
+  "globalRemovalCommand": {
+    "unit": "millimetre",
+    "value": 20.855
+  },
+  "mechanismTopCandidates": {
+    "unit": "millimetre",
+    "value": {
+      "keeperAllS1": 32.80362735541403,
+      "leftCam": 48.20362735541403,
+      "leftFixed": 48.15362735541403,
+      "rightActuatorCam": 48.15362735541403,
+      "rightFixedAllS1": 48.15362735541403,
+      "shaft": 30.70362735541403
+    }
+  },
+  "nominalSeedOnly": {
+    "unit": "millimetre",
+    "value": 20.80362735541403
+  },
+  "objective": "max(0,Z_mech_top+c_remove_end-Z_payload_min)",
+  "payloadMinCandidates": {
+    "unit": "millimetre",
+    "value": {
+      "insulatedLead": 27.85,
+      "solderCup": 41.5,
+      "solderEnvelope": 28.5,
+      "strippedConductor": 28.85,
+      "xt60Body": 48.0
+    }
+  },
+  "physicalRecordStatus": "PHYSICAL_RECORD_NOT_INSTANTIATED",
+  "proofMethod": "closed-form monotone interval bound with directed outward 0.005-mm rounding",
+  "requiredLiftExactBound": {
+    "unit": "millimetre",
+    "value": 20.853627355414027
+  },
+  "rightCapStage1Coverage": {
+    "certificatePath": "removal.rightCapStage1Removal",
+    "engagementDomainSource": "domain.variables.right_cap_engagement_each.bounds",
+    "rollDomainSource": "domain.variables.right_cap_roll_each.bounds",
+    "status": "CERTIFIED_BY_CONTINUOUS_REMOVAL_CERTIFICATE"
+  },
+  "schema": "P13CADSourceRemovalCertificate/v1",
+  "status": "CAD_SOURCE_DOMAIN_CERTIFIED",
+  "worstCaseCorner": {
+    "c_sw": 0.5,
+    "leftCamTransverse": 0.050000000000000266,
+    "wire_diameter_design": 4.3
+  }
+}

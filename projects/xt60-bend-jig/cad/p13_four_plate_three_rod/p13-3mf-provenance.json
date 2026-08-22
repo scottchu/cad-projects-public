@@ -1,0 +1,584 @@
+{
+  "coupons": {
+    "allMeshesManifoldAndOriented": true,
+    "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+    "embeddedMetadata": {
+      "artifactRole": "diagnostic-fit-coupons-2-objects",
+      "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
+      "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+      "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
+      "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+    },
+    "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
+    "layout": {
+      "boundsXY": [
+        -10.0,
+        -86.0,
+        33.0,
+        -66.0
+      ],
+      "footprintXY": [
+        43.0,
+        20.0
+      ],
+      "pairwiseBoundingBoxOverlapCount": 0
+    },
+    "lib3mfRoundTripValid": true,
+    "objectCount": 2,
+    "objectLabels": [
+      "diagnostic_lane_width_coupon_role",
+      "diagnostic_D_bore_and_round_journal_coupon_role"
+    ],
+    "objects": [
+      {
+        "boundsXY": [
+          -10.0,
+          -86.0,
+          10.0,
+          -66.0
+        ],
+        "label": "diagnostic_lane_width_coupon_role",
+        "meshSignedVolume": 1380.855136102852,
+        "sourceBREPVolume": 1380.749533450961,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            6.0
+          ],
+          "coplanarZ0TriangleAreaMm2": 400.0,
+          "coplanarZ0TriangleCount": 2,
+          "maximumZMm": 6.0,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 3048,
+        "vertexCount": 1520,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            6.0
+          ],
+          "coplanarZ0TriangleAreaMm2": 400.0,
+          "coplanarZ0TriangleCount": 2,
+          "maximumZMm": 6.0,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          17.0,
+          -84.0,
+          33.0,
+          -68.0
+        ],
+        "label": "diagnostic_D_bore_and_round_journal_coupon_role",
+        "meshSignedVolume": 951.9154742560215,
+        "sourceBREPVolume": 951.8638725235548,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            6.0
+          ],
+          "coplanarZ0TriangleAreaMm2": 158.65257904266758,
+          "coplanarZ0TriangleCount": 1103,
+          "maximumZMm": 6.0,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 4400,
+        "vertexCount": 2194,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            6.0
+          ],
+          "coplanarZ0TriangleAreaMm2": 158.652576237655,
+          "coplanarZ0TriangleCount": 1103,
+          "maximumZMm": 6.0,
+          "minimumZMm": 0.0
+        }
+      }
+    ],
+    "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+    "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
+    "path": "cad/p13_four_plate_three_rod/p13_fit_coupons.3mf",
+    "principalBedContact": {
+      "labels": [],
+      "minimumRequiredCoplanarZ0TriangleAreaMm2": 1000.0,
+      "writtenRoundTripValidated": true,
+      "zToleranceMm": 1e-06
+    },
+    "sha256": "276ba0fc07784a04bf55c775c51552df36b7cfc57f0cf8605f5f8e25bf2b03cb",
+    "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+  },
+  "excludedFromProduction3MF": [
+    "three purchased uncut OD4x50 rods",
+    "XT60 and completed workpiece",
+    "ESC/electronics references",
+    "soldering iron/tool envelopes",
+    "all motion/removal proof envelopes"
+  ],
+  "geometryChangedForThreeMF": false,
+  "printingInitiated": false,
+  "production": {
+    "allMeshesManifoldAndOriented": true,
+    "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+    "embeddedMetadata": {
+      "artifactRole": "production-print-kit-12-objects-no-forming-rods-no-hardware-no-references",
+      "controllingAmendmentSha256": "b50e850ac5425fe7bad0e49555de10b0e30f63e04934bdbf66d4220f44e1f590",
+      "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
+      "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+      "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
+      "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+    },
+    "exporterSha256": "a6f69d3e1a0283fae382a0d31b608b1fad3e03805010da211c1df1c00f67b32c",
+    "layout": {
+      "boundsXY": [
+        -68.25,
+        -56.8,
+        68.01909546143558,
+        48.25
+      ],
+      "footprintXY": [
+        136.2690954614356,
+        105.05
+      ],
+      "pairwiseBoundingBoxOverlapCount": 0
+    },
+    "lib3mfRoundTripValid": true,
+    "objectCount": 12,
+    "objectLabels": [
+      "left_D_bore_cam_OD40p50_theta_0p00",
+      "left_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+      "right_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+      "right_D_bore_cam_actuator_OD40p50_theta_0p00",
+      "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00",
+      "round_C_shaft_keeper_OD9p60_ID4p80",
+      "print_permanent_left_cap_1",
+      "print_permanent_left_cap_2",
+      "print_permanent_left_cap_3",
+      "print_removable_right_cap_1",
+      "print_removable_right_cap_2",
+      "print_removable_right_cap_3"
+    ],
+    "objects": [
+      {
+        "boundsXY": [
+          -68.25,
+          7.75,
+          -27.75,
+          48.25
+        ],
+        "label": "left_D_bore_cam_OD40p50_theta_0p00",
+        "meshSignedVolume": 2882.9625049687265,
+        "sourceBREPVolume": 2883.288824651856,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            1.7763568394002505e-15,
+            4.500000000000011
+          ],
+          "coplanarZ0TriangleAreaMm2": 1110.0217136037138,
+          "coplanarZ0TriangleCount": 2258,
+          "maximumZMm": 4.500000000000011,
+          "minimumZMm": 1.7763568394002505e-15
+        },
+        "triangleCount": 10028,
+        "vertexCount": 5008,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            4.5
+          ],
+          "coplanarZ0TriangleAreaMm2": 1110.021716461457,
+          "coplanarZ0TriangleCount": 2258,
+          "maximumZMm": 4.5,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          -20.01909546143558,
+          7.75,
+          20.019095461435576,
+          48.25
+        ],
+        "label": "left_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+        "meshSignedVolume": 3060.310087021614,
+        "sourceBREPVolume": 3060.6425216604794,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            1.7763568394002505e-15,
+            3.000000000000014
+          ],
+          "coplanarZ0TriangleAreaMm2": 1089.9762410590517,
+          "coplanarZ0TriangleCount": 1239,
+          "maximumZMm": 3.000000000000014,
+          "minimumZMm": 1.7763568394002505e-15
+        },
+        "triangleCount": 6380,
+        "vertexCount": 3188,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.0
+          ],
+          "coplanarZ0TriangleAreaMm2": 1089.976238104055,
+          "coplanarZ0TriangleCount": 1239,
+          "maximumZMm": 3.0,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          27.980904538564427,
+          7.75,
+          68.01909546143558,
+          48.25
+        ],
+        "label": "right_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+        "meshSignedVolume": 3060.310087021623,
+        "sourceBREPVolume": 3060.6425216604794,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.000000000000009
+          ],
+          "coplanarZ0TriangleAreaMm2": 1089.9762410590517,
+          "coplanarZ0TriangleCount": 1239,
+          "maximumZMm": 3.000000000000009,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 6380,
+        "vertexCount": 3188,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.0
+          ],
+          "coplanarZ0TriangleAreaMm2": 1089.976235933841,
+          "coplanarZ0TriangleCount": 1239,
+          "maximumZMm": 3.0,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          -20.249999999999996,
+          -46.25,
+          20.250000000000004,
+          -5.75
+        ],
+        "label": "right_D_bore_cam_actuator_OD40p50_theta_0p00",
+        "meshSignedVolume": 2882.9625049687515,
+        "sourceBREPVolume": 2883.2888246518582,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            -3.552713678800501e-15,
+            4.5000000000000036
+          ],
+          "coplanarZ0TriangleAreaMm2": 1110.0217136037127,
+          "coplanarZ0TriangleCount": 2258,
+          "maximumZMm": 4.5000000000000036,
+          "minimumZMm": -3.552713678800501e-15
+        },
+        "triangleCount": 10028,
+        "vertexCount": 5008,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            4.5
+          ],
+          "coplanarZ0TriangleAreaMm2": 1110.0217139961408,
+          "coplanarZ0TriangleCount": 2258,
+          "maximumZMm": 4.5,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          -22.6375,
+          -56.8,
+          22.6375,
+          -47.2
+        ],
+        "label": "separate_printed_D_shaft_OD5p60_AF5p15_theta_0p00",
+        "meshSignedVolume": 1090.1988080027156,
+        "sourceBREPVolume": 1090.296286809405,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            1.0658141036401503e-14,
+            7.149626832006696
+          ],
+          "coplanarZ0TriangleAreaMm2": 126.57794400355297,
+          "coplanarZ0TriangleCount": 12,
+          "maximumZMm": 7.149626832006696,
+          "minimumZMm": 1.0658141036401503e-14
+        },
+        "triangleCount": 7004,
+        "vertexCount": 3504,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            7.149625778198242
+          ],
+          "coplanarZ0TriangleAreaMm2": 126.57803824971779,
+          "coplanarZ0TriangleCount": 12,
+          "maximumZMm": 7.149625778198242,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          -52.18885438199984,
+          -22.8,
+          -43.81114561800017,
+          -13.2
+        ],
+        "label": "round_C_shaft_keeper_OD9p60_ID4p80",
+        "meshSignedVolume": 41.984442511719124,
+        "sourceBREPVolume": 41.98899311588495,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            3.552713678800501e-15,
+            1.0000000000000036
+          ],
+          "coplanarZ0TriangleAreaMm2": 41.984442511718555,
+          "coplanarZ0TriangleCount": 564,
+          "maximumZMm": 1.0000000000000036,
+          "minimumZMm": 3.552713678800501e-15
+        },
+        "triangleCount": 2260,
+        "vertexCount": 1132,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            1.0
+          ],
+          "coplanarZ0TriangleAreaMm2": 41.98444330655366,
+          "coplanarZ0TriangleCount": 564,
+          "maximumZMm": 1.0,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          -55.5,
+          -39.5,
+          -48.5,
+          -32.5
+        ],
+        "label": "print_permanent_left_cap_1",
+        "meshSignedVolume": 110.3919811350546,
+        "sourceBREPVolume": 110.40341982877929,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.8000000000000034
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.480522697715465,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.8000000000000034,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 2012,
+        "vertexCount": 1008,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.799999952316284
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48051608924288,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.799999952316284,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          -45.5,
+          -39.5,
+          -38.5,
+          -32.5
+        ],
+        "label": "print_permanent_left_cap_2",
+        "meshSignedVolume": 110.39198113505431,
+        "sourceBREPVolume": 110.40341982877929,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.8000000000000034
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.480522697715465,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.8000000000000034,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 2012,
+        "vertexCount": 1008,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.799999952316284
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48051608924288,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.799999952316284,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          -35.5,
+          -39.5,
+          -28.5,
+          -32.5
+        ],
+        "label": "print_permanent_left_cap_3",
+        "meshSignedVolume": 110.39198113505869,
+        "sourceBREPVolume": 110.40341982877929,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.8000000000000034
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48052269771548,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.8000000000000034,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 2012,
+        "vertexCount": 1008,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.799999952316284
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48051848479372,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.799999952316284,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          28.5,
+          -39.5,
+          35.5,
+          -32.5
+        ],
+        "label": "print_removable_right_cap_1",
+        "meshSignedVolume": 102.50004303992583,
+        "sourceBREPVolume": 102.50710495747015,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.8
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48052269771546,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.8,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 2938,
+        "vertexCount": 1471,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.799999952316284
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48051848479372,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.799999952316284,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          38.5,
+          -39.5,
+          45.5,
+          -32.5
+        ],
+        "label": "print_removable_right_cap_2",
+        "meshSignedVolume": 102.50004303992819,
+        "sourceBREPVolume": 102.50710495747016,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.8
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48052269771546,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.8,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 2938,
+        "vertexCount": 1471,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.799999952316284
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48051608924288,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.799999952316284,
+          "minimumZMm": 0.0
+        }
+      },
+      {
+        "boundsXY": [
+          48.5,
+          -39.5,
+          55.5,
+          -32.5
+        ],
+        "label": "print_removable_right_cap_3",
+        "meshSignedVolume": 102.5000430399267,
+        "sourceBREPVolume": 102.50710495747016,
+        "sourceMeshBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.8
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48052269771546,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.8,
+          "minimumZMm": 0.0
+        },
+        "triangleCount": 2938,
+        "vertexCount": 1471,
+        "writtenRoundTripBedContact": {
+          "boundsZMm": [
+            0.0,
+            3.799999952316284
+          ],
+          "coplanarZ0TriangleAreaMm2": 38.48051608924288,
+          "coplanarZ0TriangleCount": 250,
+          "maximumZMm": 3.799999952316284,
+          "minimumZMm": 0.0
+        }
+      }
+    ],
+    "parameterManifestSha256": "af3acbefd96b3cffbb4ecf15889dabfe977289badf2383ffebcf3c07dd64d7d2",
+    "parentBriefSha256": "9c2102114cbf87ccabaa4388ed3814b91cdf3f8f654c775f5ddd8a5d05272322",
+    "path": "cad/p13_four_plate_three_rod/p13_print_kit.3mf",
+    "principalBedContact": {
+      "labels": [
+        "left_D_bore_cam_OD40p50_theta_0p00",
+        "left_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+        "right_fixed_OD40p50_integral_upward_C_journal_ID4p80",
+        "right_D_bore_cam_actuator_OD40p50_theta_0p00"
+      ],
+      "minimumRequiredCoplanarZ0TriangleAreaMm2": 1000.0,
+      "writtenRoundTripValidated": true,
+      "zToleranceMm": 1e-06
+    },
+    "sha256": "a3d1f546c66943703605ad9462d997f460b87f04ec09d75ab77a4b42c9de7571",
+    "sourceRevisionSha256": "e424fac8064d35713ed15748bb8a0e1f966ef429b507ba4be5a5dc31cfc7c72b"
+  },
+  "schema": "P13ThreeMFProvenance/v2",
+  "stepPrintKitCensus": {
+    "meaning": "12 production printable parts plus 2 diagnostic coupons",
+    "objectCount": 14,
+    "path": "cad/p13_four_plate_three_rod/p13_print_kit.step"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "boundsMm": [
+    47.8,
+    7.0,
+    3.8
+  ],
+  "generatorSha256": "a623abe6a202f1b2c50794b5370f537ff804640b9ad9908d54d23c04e37bc1b7",
+  "lib3mfRoundTripValid": true,
+  "meshManifoldAndOriented": true,
+  "minimumZMm": 0.0,
+  "objectCount": 3,
+  "objects": [
+    {
+      "meshSignedVolumeMm3": 140.91124514856486,
+      "name": "P16_cap_fixed_cavity_4p20_throat_4.05_label_405",
+      "sourceBrepVolumeMm3": 140.9191851472503,
+      "triangleCount": 3090,
+      "vertexCount": 1547
+    },
+    {
+      "meshSignedVolumeMm3": 142.1982173688052,
+      "name": "P16_cap_fixed_cavity_4p20_throat_4.10_label_410",
+      "sourceBrepVolumeMm3": 142.20613798852753,
+      "triangleCount": 3074,
+      "vertexCount": 1539
+    },
+    {
+      "meshSignedVolumeMm3": 141.49095070077047,
+      "name": "P16_cap_fixed_cavity_4p20_throat_4.15_label_415",
+      "sourceBrepVolumeMm3": 141.49885168596649,
+      "triangleCount": 3090,
+      "vertexCount": 1547
+    }
+  ],
+  "parameterManifest": {
+    "coordinateConvention": "XY printer bed; closed cap end Z=0; rod entry +Z",
+    "derived": {
+      "cavityDepthMm": 2.4,
+      "minimumRadialWallMm": 1.4
+    },
+    "labels": [
+      "405",
+      "410",
+      "415"
+    ],
+    "nozzleContract": {
+      "diameterMm": 0.4,
+      "engravingDepthMm": 0.4,
+      "minimumLabelStrokeMm": 0.8
+    },
+    "p15PhysicalFinding": "all P15 caps were far too tight; common 3.60 mm throat dominated",
+    "parameters": {
+      "boolean_overshoot": 0.03,
+      "cap_height": 3.8,
+      "cap_outer_diameter": 7.0,
+      "cavity_diameter": 4.2,
+      "closed_base_thickness": 0.8,
+      "digit_gap": 0.35,
+      "digit_height": 2.8,
+      "digit_stroke": 0.8,
+      "digit_width": 1.6,
+      "engraving_depth": 0.4,
+      "minimum_radial_wall": 1.4,
+      "slit_width": 0.6,
+      "station_pitch": 17.0,
+      "tag_length": 7.0,
+      "tag_overlap": 0.2,
+      "tag_thickness": 1.2,
+      "tag_width": 5.0,
+      "throat_depth": 0.6,
+      "throat_diameters": [
+        4.05,
+        4.1,
+        4.15
+      ]
+    },
+    "physicalValidationRequired": true,
+    "printOrientation": "three caps upright on closed ends; sockets face +Z",
+    "schema": "P16CapThroatTest/v1",
+    "stationOrderLeftToRight": [
+      "4.05",
+      "4.10",
+      "4.15"
+    ],
+    "testIntent": "hold 4.20 mm cavity and 0.60 mm slit constant; isolate throat diameter",
+    "units": "mm"
+  },
+  "parameterManifestSha256": "e271d1f90db462a95fbdccb1ed34d10121bc18309b1329da8806a80192f58fcb",
+  "schema": "P16CapThroatTestProvenance/v1",
+  "sourceRevisionSha256": "d23a72c279d057975ce87589ce1b787bbb5d840641278211899005f7ad193860",
+  "step": "cad/p16_cap_throat_test/p16_cap_throat_test.step",
+  "stepSha256": "33a9c8757a7c5f4bd6d9403f67d949b87c5ac36f132178f47be5ed043ea5c413",
+  "threeMf": "cad/p16_cap_throat_test/p16_cap_throat_test.3mf",
+  "threeMfSha256": "ee4b53d3af2f119ba18a42aa2643969aa94fd6c209ba63ded7497dd7ec7bd756",
+  "unit": "millimeter"
+}

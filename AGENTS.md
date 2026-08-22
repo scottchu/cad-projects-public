@@ -19,6 +19,11 @@ This is a multi-project repository for personal design work. Keep every design u
 ## Project boundaries
 
 - Every project must have its own `README.md`, `pyproject.toml`, tests, and documented generation commands.
+- Every project must satisfy `docs/PROJECT_CONTINUITY.md`. Agent sessions are disposable; repository files are the durable source of project state, rationale, evidence, experience, and handoff instructions.
+- Before changing a project, read its `PROJECT_STATE.md`, `NEXT_AGENT.md`, requirements, experience log, decision index, and active iteration record. Do not rely on prior chat context as authority.
+- Open or identify an iteration before material work. Record the exact baseline, intent, alternatives, decisions, validation, findings, unresolved risks, and next action while work is happening, not only at the end.
+- Before stopping or handing work to another agent, update `PROJECT_STATE.md`, the active iteration `HANDOFF.md`, and `NEXT_AGENT.md`. A new agent must be able to resume from repository files alone.
+- Keep durable reasoning and observed experience, but do not copy raw chat transcripts into the repository. Summarize decisions, rejected approaches, measurements, failures, and lessons that can affect later work.
 - Preserve unrelated projects and user changes.
 - Transfer existing projects one at a time and verify each migration before starting the next.
 - Treat parametric source as authoritative. Regenerate derived STEP, 3MF, STL, GLB, DXF, renders, manifests, and checksums from source; never hand-edit generated CAD artifacts.
@@ -41,5 +46,8 @@ This is a multi-project repository for personal design work. Keep every design u
 ## Documentation and handoff
 
 - Record major decisions, assumptions, exact commands, artifact paths, test evidence, and remaining physical-validation gaps in project-local docs.
+- Use stable requirement and decision identifiers. Preserve superseded decisions and closed iterations as history; point to their replacements instead of rewriting history.
+- Record physical observations separately from CAD inference. An observation log is append-only except for explicit factual corrections that retain the original entry and explain the correction.
+- Every release artifact must identify its source revision or manifest, generating command, parameters when relevant, checksum, and separate CAD, artifact/slicer, and physical acceptance states.
 - Keep root documentation about repository-wide policy only; project design decisions belong inside the relevant project.
 - Update `docs/ARCHITECTURE.md` only when the repository contract changes.

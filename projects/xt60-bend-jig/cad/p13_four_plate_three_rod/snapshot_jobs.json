@@ -1,0 +1,191 @@
+{
+  "jobs": [
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_open.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/open_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/open_opposite.png", "camera": {"direction": [-1, 1, -0.8]}},
+        {"path": "cad/p13_four_plate_three_rod/review/open_top.png", "camera": "top"},
+        {"path": "cad/p13_four_plate_three_rod/review/open_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_locked.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/locked_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/locked_opposite.png", "camera": {"direction": [-1, 1, -0.8]}},
+        {"path": "cad/p13_four_plate_three_rod/review/locked_top.png", "camera": "top"},
+        {"path": "cad/p13_four_plate_three_rod/review/locked_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_loaded.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/loaded_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/loaded_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_set_close.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/set_close_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/set_close_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_release.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/release_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/release_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_caps_off.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/caps_off_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/caps_off_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_rods_withdrawn.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/rods_withdrawn_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/rods_withdrawn_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_cool.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/cool_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/cool_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_remove.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/remove_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/remove_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_removal_sweep.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/removal_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/removal_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_print_kit.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/print_kit_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/print_kit_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_exploded.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/exploded_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/exploded_front.png", "camera": "front"},
+        {"path": "cad/p13_four_plate_three_rod/review/exploded_top.png", "camera": "top"},
+        {"path": "cad/p13_four_plate_three_rod/review/exploded_staged.png", "camera": {"direction": [-1, -1, -0.6]}}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_service_disassembly.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/service_disassembly_iso.png", "camera": "iso"},
+        {"path": "cad/p13_four_plate_three_rod/review/service_disassembly_front.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_solder_left.step",
+      "mode": "view",
+      "selection": {"hide": ["#o1.1.1", "#o1.1.2", "#o1.1.3", "#o1.1.4", "#o1.1.8", "#o1.1.9", "#o1.1.10", "#o1.1.11", "#o1.1.12", "#o1.1.13", "#o1.1.14"]},
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/solder_left_cutaway_front.png", "camera": {"preset": "front", "target": [-4, 24, 30], "zoom": 2.5}},
+        {"path": "cad/p13_four_plate_three_rod/review/solder_left_cutaway_side.png", "camera": {"preset": "left", "target": [-4, 24, 30], "zoom": 2.5}},
+        {"path": "cad/p13_four_plate_three_rod/review/solder_left_cutaway_iso.png", "camera": {"direction": [-1, -1, -0.5], "target": [-4, 24, 30], "zoom": 2.2}}
+      ],
+      "render": {"viewLabels": true, "padding": 0.08, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_solder_right.step",
+      "mode": "view",
+      "selection": {"hide": ["#o1.1.1", "#o1.1.2", "#o1.1.3", "#o1.1.4", "#o1.1.8", "#o1.1.9", "#o1.1.10", "#o1.1.11", "#o1.1.12", "#o1.1.13", "#o1.1.14"]},
+      "outputs": [
+        {"path": "cad/p13_four_plate_three_rod/review/solder_right_cutaway_front.png", "camera": {"preset": "front", "target": [4, 24, 30], "zoom": 2.5}},
+        {"path": "cad/p13_four_plate_three_rod/review/solder_right_cutaway_side.png", "camera": {"preset": "right", "target": [4, 24, 30], "zoom": 2.5}},
+        {"path": "cad/p13_four_plate_three_rod/review/solder_right_cutaway_iso.png", "camera": {"direction": [1, -1, -0.5], "target": [4, 24, 30], "zoom": 2.2}}
+      ],
+      "render": {"viewLabels": true, "padding": 0.08, "sizeProfile": "assembly"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_fixed_guide.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p13_four_plate_three_rod/review/fixed_guide_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_left_cam.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p13_four_plate_three_rod/review/left_cam_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_right_actuator.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p13_four_plate_three_rod/review/right_actuator_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_shaft_keeper.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p13_four_plate_three_rod/review/shaft_keeper_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_left_cap.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p13_four_plate_three_rod/review/left_cap_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_right_cap.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p13_four_plate_three_rod/review/right_cap_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic"}
+    },
+    {
+      "input": "cad/p13_four_plate_three_rod/p13_fit_coupons.step",
+      "mode": "view",
+      "outputs": [{"path": "cad/p13_four_plate_three_rod/review/fit_coupons_iso.png", "camera": "iso"}],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "diagnostic"}
+    }
+  ]
+}

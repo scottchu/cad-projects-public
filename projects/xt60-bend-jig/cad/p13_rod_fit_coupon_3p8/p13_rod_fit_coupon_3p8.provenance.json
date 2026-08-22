@@ -1,0 +1,68 @@
+{
+  "boundsMm": [
+    40.0000002,
+    28.0000002,
+    3.0000001
+  ],
+  "lib3mfRoundTripValid": true,
+  "meshManifoldAndOriented": true,
+  "meshSignedVolumeMm3": 3086.4143433897366,
+  "minimumZMm": 0.0,
+  "objectCount": 1,
+  "objectLabel": "P13_rod_3p80_compact_fit_coupon_7_bores_3p70_to_4p00",
+  "parameterManifest": {
+    "coordinateConvention": "XY printer bed; lower face Z=0; +Z thickness",
+    "interpretation": {
+      "3.70": "aggressive interference / expected failure bound",
+      "3.80": "nominal press-fit candidate",
+      "3.90": "nominal snug/removable candidate",
+      "4.00": "nominal sliding candidate"
+    },
+    "parameters": {
+      "clipped_corner_size": 4.0,
+      "diameter_font_size": 2.2,
+      "engraving_depth": 0.35,
+      "hole_diameters": [
+        3.7,
+        3.75,
+        3.8,
+        3.85,
+        3.9,
+        3.95,
+        4.0
+      ],
+      "horizontal_pitch": 9.5,
+      "label_offset_y": 5.55,
+      "measured_rod_diameter": 3.8,
+      "minimum_edge_wall": 3.0,
+      "minimum_ligament": 3.0,
+      "plate_depth": 28.0,
+      "plate_thickness": 3.0,
+      "plate_width": 40.0,
+      "row_offset_y": 5.5
+    },
+    "physicalValidationRequired": true,
+    "printOrientation": "flat on XY; bore axes +Z, matching flat-printed caps",
+    "schema": "P13RodFitCoupon3p8/v2",
+    "stationOrder": [
+      "3.70",
+      "3.75",
+      "3.80",
+      "3.85",
+      "3.90",
+      "3.95",
+      "4.00"
+    ],
+    "units": "mm"
+  },
+  "parameterManifestSha256": "270ed938f27c2365b7eead3d657853f949eb0980f36b64902177080c27b06184",
+  "schema": "P13RodFitCoupon3p8Provenance/v2",
+  "sourceBrepVolumeMm3": 3086.387271263614,
+  "sourceRevisionSha256": "ec6a64c5ec45be1120badd29a461a5bc29ddf2e8ff547fbee1ad1401544b47ae",
+  "step": "cad/p13_rod_fit_coupon_3p8/p13_rod_fit_coupon_3p8.step",
+  "threeMf": "cad/p13_rod_fit_coupon_3p8/p13_rod_fit_coupon_3p8.3mf",
+  "threeMfSha256": "e27bb7cb5d3e488fa9f6c6ea7d84969923acc6e2ca9fa2f3818f633529f3ce7c",
+  "triangleCount": 188986,
+  "unit": "millimeter",
+  "vertexCount": 94481
+}

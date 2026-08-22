@@ -1,0 +1,91 @@
+{
+  "boundsMm": [
+    31.0,
+    7.0,
+    3.8
+  ],
+  "generatorSha256": "c07494f875b5fd88eb0dde100d4cd4ed2078f92ad093e4942c8d712f02eadbb7",
+  "lib3mfRoundTripValid": true,
+  "meshManifoldAndOriented": true,
+  "minimumZMm": 0.0,
+  "objectCount": 3,
+  "objects": [
+    {
+      "meshSignedVolumeMm3": 106.25640046513438,
+      "name": "actual_slit_cap_socket_D4.05_notches_1",
+      "sourceBrepVolumeMm3": 106.2638817166071,
+      "triangleCount": 2944,
+      "vertexCount": 1474
+    },
+    {
+      "meshSignedVolumeMm3": 105.39641155499643,
+      "name": "actual_slit_cap_socket_D4.10_notches_2",
+      "sourceBrepVolumeMm3": 105.40457377182217,
+      "triangleCount": 2960,
+      "vertexCount": 1482
+    },
+    {
+      "meshSignedVolumeMm3": 104.55859669875124,
+      "name": "actual_slit_cap_socket_D4.15_notches_3",
+      "sourceBrepVolumeMm3": 104.5658661786535,
+      "triangleCount": 2972,
+      "vertexCount": 1488
+    }
+  ],
+  "parameterManifest": {
+    "coordinateConvention": "XY printer bed; closed cap end Z=0; rod entry +Z",
+    "derived": {
+      "cavityDepthMm": 2.4,
+      "minimumRadialWallMm": 1.4249999999999998,
+      "throatRadialInterferenceForNominal4mmRodMm": 0.19999999999999996
+    },
+    "identification": {
+      "4.05": "one exterior notch",
+      "4.10": "two exterior notches",
+      "4.15": "three exterior notches"
+    },
+    "parameters": {
+      "boolean_overshoot": 0.03,
+      "cap_height": 3.8,
+      "cap_outer_diameter": 7.0,
+      "closed_base_thickness": 0.8,
+      "identification_notch_depth": 0.35,
+      "identification_notch_height": 0.8,
+      "identification_notch_pitch": 0.75,
+      "identification_notch_width": 0.45,
+      "minimum_radial_wall": 1.4,
+      "slit_width": 0.6,
+      "socket_diameters": [
+        4.05,
+        4.1,
+        4.15
+      ],
+      "station_pitch": 12.0,
+      "throat_depth": 0.6,
+      "throat_diameter": 3.6
+    },
+    "physicalValidationRequired": true,
+    "printOrientation": "three caps upright on closed ends; sockets face +Z",
+    "priorRigidCouponObservation": {
+      "4.05": "extremely tight; coupon needed to push rod back out",
+      "4.10": "tight; hand push and pull possible",
+      "4.15": "preferred sliding fit with slight friction"
+    },
+    "schema": "P15ActualCapFitTest/v1",
+    "stationOrderLeftToRight": [
+      "4.05",
+      "4.10",
+      "4.15"
+    ],
+    "testIntent": "verify actual slit-sleeve compliance before mechanism integration",
+    "units": "mm"
+  },
+  "parameterManifestSha256": "bdb463d5a3689eb1e6f77e4a134150880997dbda9a5c1143ed485c9c41280c3c",
+  "schema": "P15CapFitTestProvenance/v1",
+  "sourceRevisionSha256": "241876aec4521d11b5b3a057de02a653556029c3136cfdcd70029cc591e219e2",
+  "step": "cad/p15_cap_fit_test/p15_cap_fit_test.step",
+  "stepSha256": "27492704be2dc18bfe209207cae0f8184ac71749e0994ce3bffdd711c69884fc",
+  "threeMf": "cad/p15_cap_fit_test/p15_cap_fit_test.3mf",
+  "threeMfSha256": "c3566c77be7cc70efa22f808017fa8b74722381fa224fc9e84df3ce71552daed",
+  "unit": "millimeter"
+}

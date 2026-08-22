@@ -1,0 +1,87 @@
+{
+  "boundsMm": [
+    40.0000002,
+    42.0000002,
+    3.0000001
+  ],
+  "generatorSha256": "e8fab1728ec04d181910379eaa36035c19f32dcbfa8bd050b661f05beb1aa26a",
+  "lib3mfRoundTripValid": true,
+  "meshManifoldAndOriented": true,
+  "meshSignedVolumeMm3": 4624.910105848742,
+  "minimumZMm": -2.1602299270688209e-16,
+  "objectCount": 1,
+  "objectLabel": "P14_PETG_rod_fit_coupon_3x3_4p00_to_4p40",
+  "parameterManifest": {
+    "chamfer": {
+      "axialDepthMm": 0.28,
+      "bothEntrances": true,
+      "cylindricalLandMm": 2.44,
+      "includedSlopeDegrees": 45.0,
+      "radialDepthMm": 0.28
+    },
+    "coordinateConvention": "XY printer bed; lower face Z=0; +Z thickness",
+    "derived": {
+      "minimumActualEdgeWallMm": 3.5199999999999996,
+      "minimumActualLigamentMm": 9.065,
+      "minimumLabelToOutlineClearanceMm": 1.5439085914062503
+    },
+    "interpretation": {
+      "4.00": "physical too-tight press control",
+      "4.05-4.40": "ascending candidates for PETG rod insertion"
+    },
+    "parameters": {
+      "boolean_overshoot": 0.02,
+      "clipped_corner_size": 4.0,
+      "diameter_font_size": 2.35,
+      "engraving_depth": 0.35,
+      "entrance_chamfer": 0.28,
+      "grid_pitch": 14.0,
+      "hole_diameters": [
+        4.0,
+        4.05,
+        4.1,
+        4.15,
+        4.2,
+        4.25,
+        4.3,
+        4.35,
+        4.4
+      ],
+      "label_offset_y": 4.65,
+      "minimum_cylindrical_land": 2.4,
+      "minimum_edge_wall": 3.0,
+      "minimum_label_outline_clearance": 1.0,
+      "minimum_ligament": 3.0,
+      "plate_depth": 42.0,
+      "plate_thickness": 3.0,
+      "plate_width": 40.0
+    },
+    "physicalValidationRequired": true,
+    "printOrientation": "flat on XY; bore axes +Z",
+    "schema": "P14RodFitCoupon/v1",
+    "stationOrder": [
+      "4.00",
+      "4.05",
+      "4.10",
+      "4.15",
+      "4.20",
+      "4.25",
+      "4.30",
+      "4.35",
+      "4.40"
+    ],
+    "stationTraversal": "row-major: left-to-right, top-to-bottom; clipped corner is upper-left start datum",
+    "units": "mm"
+  },
+  "parameterManifestSha256": "82430a7d24a92f01c9ecf27b1014d20dcaec13bbf421dab97da0820a2895cd3c",
+  "schema": "P14RodFitCouponProvenance/v1",
+  "sourceBrepVolumeMm3": 4624.855048520675,
+  "sourceRevisionSha256": "00a1c45cbdb5ff620c13569e6dc891aa0d00ea11abd38d8a0ba5be9745a0716a",
+  "step": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.step",
+  "stepSha256": "f46769e355cb7c36659e40c903ec7bdfeb536e7501da92ebfa6616ea660190f6",
+  "threeMf": "cad/p14_rod_fit_coupon/p14_rod_fit_coupon.3mf",
+  "threeMfSha256": "cb99aee000afb9043dc08ecbceaa1050c64184ceb6138cb4ca40267896b71970",
+  "triangleCount": 138270,
+  "unit": "millimeter",
+  "vertexCount": 69119
+}
