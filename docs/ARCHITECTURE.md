@@ -99,7 +99,7 @@ Project-owned Codex skills live under `.agents/skills/<skill-name>/`. The `desig
 
 ## Trunk delivery
 
-`main` is the trunk branch. Changes intended for trunk are made on a non-`main` branch and enter through a GitHub pull request linked to a GitHub Project item. Only an explicit user override for the specific change may bypass that route. `.github/repository-policy.toml` is the machine-readable statement of this repository contract; it does not claim that GitHub branch protection or another server-side rule currently enforces it.
+`main` is the trunk branch. Changes intended for trunk are made on a non-`main` branch and enter through a GitHub pull request. Only an explicit user override for the specific change may bypass that route. Pull requests capture a concise critical delivery summary, provenance, acceptance gaps, unresolved risks, next action, and what happened; repository continuity files remain authoritative. GitHub Projects are intentionally outside the repository architecture and are not used for planning, knowledge, or delivery tracking. `.github/repository-policy.toml` is the machine-readable statement of this repository contract; it does not claim that GitHub branch protection or another server-side rule currently enforces it.
 
 ## Artifact policy
 

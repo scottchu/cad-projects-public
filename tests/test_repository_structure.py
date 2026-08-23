@@ -110,7 +110,7 @@ def test_repository_delivery_policy_is_parseable() -> None:
     required = {
         "branch": "main",
         "pull_request_required": True,
-        "github_project_item_required": True,
+        "github_project_item_required": False,
         "override_authority": "explicit-user-per-change",
         "server_enforcement_claimed": False,
     }
