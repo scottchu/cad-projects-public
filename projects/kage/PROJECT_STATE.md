@@ -19,4 +19,4 @@
 
 ## Next action
 
-Complete delivery without changing the candidate: obtain the CAD Viewer link for the locked STEP, create or link the GitHub Project item, commit and push the feature branch, and open the pull request. After delivery, KAGE-EXP-001 is the sole design experiment.
+Migration delivery is complete on feature branch `codex/migrate-kage`: commit `b1fe19dc674e811e0e1287fade3748f7f26b1126`, pull request [#1](https://github.com/scottchu/design-projects/pull/1), and GitHub Project [Notebook](https://github.com/users/scottchu/projects/1). The sole next design action is `KAGE-EXP-001`.
