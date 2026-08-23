@@ -95,6 +95,18 @@ These are the required local or delegated validation gates: repository structure
 
 Project-specific commands belong in that project's README.
 
+## CAD preview
+
+Preview an existing Viewer-supported file from any directory:
+
+```sh
+bin/preview-cad [--sha256 EXPECTED] <workspace-dir> <file-relative-to-workspace>
+```
+
+Both path operands are interpreted from the caller's working directory. The file operand must remain relative to, and canonically contained by, the workspace; use absolute workspace paths when invoking the launcher outside this repository. The optional lowercase SHA-256 pins immutable artifacts before the launcher probes or changes a Viewer process.
+
+On success, stdout contains exactly two ready review links: the local `127.0.0.1:3245` URL and its HTTPS Tailscale Serve form. Startup and reachability diagnostics go to stderr. The launcher reuses only a sole listener positively identified as CAD Viewer by matching process and API PID evidence; otherwise it fails closed or replaces an identified stale Viewer with the newest complete installed runtime.
+
 ## Project standards
 
 - Parametric source is authoritative; STEP, 3MF, STL, GLB, renders, and previews must be regenerated from source.

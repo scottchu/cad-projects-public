@@ -1,0 +1,414 @@
+#!/bin/sh
+set -eu
+
+PROGRAM=preview-cad
+
+fail() {
+    printf '%s\n' "$PROGRAM: $*" >&2
+    exit 1
+}
+
+diagnose() {
+    printf '%s\n' "$PROGRAM: $*" >&2
+}
+
+ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+PYTHON="$ROOT/.venv/bin/python"
+[ -x "$PYTHON" ] || fail "root Python is unavailable: $PYTHON"
+
+EXPECTED=
+if [ "${1:-}" = "--sha256" ]; then
+    [ "$#" -ge 2 ] || fail "--sha256 requires a lowercase SHA-256 digest"
+    EXPECTED=$2
+    shift 2
+fi
+[ "$#" -eq 2 ] || fail "usage: $PROGRAM [--sha256 EXPECTED] <workspace-dir> <file-relative-to-workspace>"
+
+# Canonical containment, type support, and an optional immutable-file checksum are
+# intentionally completed before cache discovery, lsof, HTTP, launch, or signaling.
+VALIDATED=$(
+    "$PYTHON" - "$1" "$2" "$EXPECTED" <<'PY'
+from __future__ import annotations
+
+from hashlib import sha256
+from pathlib import Path, PurePosixPath
+import re
+import sys
+
+workspace_arg, relative_arg, expected = sys.argv[1:]
+if not relative_arg or "\n" in relative_arg or "\r" in relative_arg:
+    raise SystemExit("file must be a nonempty single-line relative path")
+relative = PurePosixPath(relative_arg)
+if relative.is_absolute() or ".." in relative.parts:
+    raise SystemExit("file must be relative and contain no '..' component")
+if expected and re.fullmatch(r"[0-9a-f]{64}", expected) is None:
+    raise SystemExit("sha256 must be exactly 64 lowercase hexadecimal characters")
+
+workspace = Path(workspace_arg).resolve(strict=True)
+if not workspace.is_dir():
+    raise SystemExit("workspace is not a directory")
+artifact = (workspace / relative_arg).resolve(strict=True)
+if not artifact.is_file():
+    raise SystemExit("artifact is not a regular file")
+try:
+    canonical_relative = artifact.relative_to(workspace)
+except ValueError:
+    raise SystemExit("artifact resolves outside workspace") from None
+
+name = canonical_relative.as_posix().lower()
+supported = (
+    ".step", ".stp", ".step.py", ".stp.py", ".glb", ".stl", ".3mf",
+    ".dxf", ".dxf.py", ".implicit.js", ".implicit.mjs", ".urdf", ".srdf", ".sdf",
+)
+if not name.endswith(supported):
+    raise SystemExit("artifact type is not supported by CAD Viewer")
+if expected and sha256(artifact.read_bytes()).hexdigest() != expected:
+    raise SystemExit("sha256 mismatch")
+if "\n" in str(workspace) or "\r" in str(workspace):
+    raise SystemExit("workspace path must be single-line")
+
+print(workspace)
+print(canonical_relative.as_posix())
+PY
+) || fail "input validation failed"
+
+WORKSPACE=$(printf '%s\n' "$VALIDATED" | sed -n '1p')
+FILE=$(printf '%s\n' "$VALIDATED" | sed -n '2p')
+
+PORT=${PREVIEW_CAD_PORT:-3245}
+case "$PORT" in
+    ''|*[!0-9]*) fail "port must be an integer from 1 through 65535" ;;
+esac
+[ "$PORT" -ge 1 ] && [ "$PORT" -le 65535 ] || fail "port must be an integer from 1 through 65535"
+
+CURL=${PREVIEW_CAD_CURL:-curl}
+LSOF=${PREVIEW_CAD_LSOF:-lsof}
+PS=${PREVIEW_CAD_PS:-ps}
+SIGNAL=${PREVIEW_CAD_KILL:-kill}
+SLEEP=${PREVIEW_CAD_SLEEP:-sleep}
+MAX_POLLS=${PREVIEW_CAD_MAX_POLLS:-20}
+case "$MAX_POLLS" in
+    ''|*[!0-9]*|0) fail "PREVIEW_CAD_MAX_POLLS must be a positive integer" ;;
+esac
+
+CACHE_ROOT=${PREVIEW_CAD_CACHE_ROOT:-${CODEX_HOME:-${HOME}/.codex}/plugins/cache/text-to-cad/cad}
+VIEWER=$(
+    "$PYTHON" - "$CACHE_ROOT" <<'PY'
+from pathlib import Path
+import re
+import sys
+
+root = Path(sys.argv[1])
+candidates = []
+for candidate in root.glob("*/skills/cad-viewer"):
+    version_text = candidate.parents[1].name
+    match = re.fullmatch(r"(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)", version_text)
+    if match is None:
+        continue
+    viewer = candidate / "scripts/viewer"
+    if (viewer / "package.json").is_file() and (viewer / "dist/index.html").is_file():
+        candidates.append((tuple(map(int, match.groups())), candidate))
+if not candidates:
+    raise SystemExit("no complete strict-semver CAD Viewer runtime found")
+print(max(candidates)[1])
+PY
+) || fail "CAD Viewer runtime discovery failed under: $CACHE_ROOT"
+VIEWER_VERSION=$(basename "$(dirname "$(dirname "$VIEWER")")")
+
+NPM=${PREVIEW_CAD_NPM:-}
+if [ -z "$NPM" ]; then
+    NPM=$(command -v npm 2>/dev/null || :)
+fi
+if [ -z "$NPM" ]; then
+    NPM=${PREVIEW_CAD_BUNDLED_NPM:-/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/npm}
+fi
+[ -x "$NPM" ] || fail "npm is unavailable on PATH and bundled npm is not executable"
+NPM_DIR=$(CDPATH= cd -- "$(dirname -- "$NPM")" && pwd)
+
+CB=${PREVIEW_CAD_CACHEBUSTER:-$(date +%s)}
+encode() {
+    "$PYTHON" -c 'from urllib.parse import quote; import sys; print(quote(sys.argv[1], safe=sys.argv[2]))' "$1" "$2"
+}
+WORKSPACE_PATH=$(encode "$WORKSPACE" /)
+WORKSPACE_QUERY=$(encode "$WORKSPACE" '')
+FILE_QUERY=$(encode "$FILE" '')
+CB_QUERY=$(encode "$CB" '')
+BASE_URL="http://127.0.0.1:$PORT"
+LOCAL_URL="$BASE_URL$WORKSPACE_PATH?file=$FILE_QUERY&cb=$CB_QUERY"
+SERVER_URL="$BASE_URL/__cad/server?dir=$WORKSPACE_QUERY"
+ARTIFACT_URL="$BASE_URL/__cad/artifact?dir=$WORKSPACE_QUERY&file=$FILE_QUERY"
+TAILSCALE_HOST=${TAILSCALE_HOST:-${PREVIEW_CAD_TAILSCALE_HOST:-mac-mini.duckbill-ionian.ts.net}}
+EXTERNAL_URL="https://$TAILSCALE_HOST$WORKSPACE_PATH?file=$FILE_QUERY&cb=$CB_QUERY"
+LOG_PATH=${PREVIEW_CAD_LOG_PATH:-${TMPDIR:-/tmp}/preview-cad-$$.log}
+
+listener_raw() {
+    "$LSOF" -nP -iTCP:"$PORT" -sTCP:LISTEN -Fpnc 2>/dev/null || :
+}
+
+listener_count() {
+    printf '%s\n' "$1" | sed -n 's/^p//p' | sort -u | sed '/^$/d' | wc -l | tr -d ' '
+}
+
+listener_pid() {
+    printf '%s\n' "$1" | sed -n 's/^p//p' | sort -u | sed -n '1p'
+}
+
+# The ownership token contains the sole PID, every byte lsof reported, and an
+# independently injected process start-time/command record. Any drift invalidates it.
+ownership_token() {
+    raw=$1
+    [ "$(listener_count "$raw")" -eq 1 ] || return 1
+    only_pid=$(listener_pid "$raw")
+    ps_record=$("$PS" -o lstart= -o command= -p "$only_pid" 2>/dev/null) || return 1
+    [ -n "$ps_record" ] || return 1
+    printf 'PID=%s\nLSOF-BEGIN\n%s\nLSOF-END\nPS-BEGIN\n%s\nPS-END\n' \
+        "$only_pid" "$raw" "$ps_record"
+}
+
+# A newly spawned process group is owned only after its group leader's exact
+# process generation (PID plus injected PS start-time/command) is captured.
+leader_token() {
+    leader_pid=$1
+    leader_ps_record=$("$PS" -o lstart= -o command= -p "$leader_pid" 2>/dev/null) || return 1
+    [ -n "$leader_ps_record" ] || return 1
+    printf 'PID=%s\nPS-BEGIN\n%s\nPS-END\n' "$leader_pid" "$leader_ps_record"
+}
+
+token_pid() {
+    printf '%s\n' "$1" | sed -n 's/^PID=//p' | sed -n '1p'
+}
+
+api_matches_pid() {
+    expected_pid=$1
+    body=$("$CURL" -fsS --max-time 2 "$SERVER_URL" 2>/dev/null) || return 1
+    printf '%s' "$body" | "$PYTHON" -c '
+import json, sys
+expected = int(sys.argv[1])
+try:
+    value = json.load(sys.stdin)
+except Exception:
+    raise SystemExit(1)
+raise SystemExit(0 if isinstance(value, dict) and value.get("app") == "cad-viewer" and value.get("pid") == expected else 1)
+' "$expected_pid"
+}
+
+page_ready() {
+    response=$("$CURL" -sS --max-time 2 -w '\n__PREVIEW_STATUS__:%{http_code}' "$LOCAL_URL" 2>/dev/null) || return 1
+    status=$(printf '%s\n' "$response" | sed -n 's/^__PREVIEW_STATUS__://p' | tail -n 1)
+    [ "$status" = 200 ] || return 1
+    printf '%s\n' "$response" | sed '/^__PREVIEW_STATUS__:/d' | grep -F 'id="root"' >/dev/null
+}
+
+assert_single_listener() {
+    raw=$1
+    count=$(listener_count "$raw")
+    [ "$count" -le 1 ] || fail "multiple listener PIDs on port $PORT; refusing process action"
+}
+
+OWNED_PGID=
+OWNED_TOKEN=
+CLEANUP_ARMED=0
+cleanup_owned() {
+    [ "$CLEANUP_ARMED" -eq 1 ] || return 0
+    CLEANUP_ARMED=0
+    cleanup_token=$(leader_token "$OWNED_PGID" 2>/dev/null || :)
+    if [ -z "$cleanup_token" ]; then
+        diagnose "owned group leader $OWNED_PGID is absent; no cleanup signal sent"
+        return 0
+    fi
+    if [ "$cleanup_token" != "$OWNED_TOKEN" ]; then
+        diagnose "owned group leader generation drifted; no cleanup signal sent"
+        return 0
+    fi
+    diagnose "sending TERM to matched owned startup process group -$OWNED_PGID"
+    "$SIGNAL" -TERM "-$OWNED_PGID" 2>/dev/null || return 0
+    cleanup_i=0
+    while [ "$cleanup_i" -lt "$MAX_POLLS" ]; do
+        observed_token=$(leader_token "$OWNED_PGID" 2>/dev/null || :)
+        if [ -z "$observed_token" ]; then
+            diagnose "owned group leader exited after TERM"
+            return 0
+        fi
+        if [ "$observed_token" != "$OWNED_TOKEN" ]; then
+            diagnose "owned group leader generation changed after TERM; observation stopped"
+            return 0
+        fi
+        cleanup_i=$((cleanup_i + 1))
+        "$SLEEP" 1
+    done
+    diagnose "matched owned group still present after bounded TERM observation; no further signal sent"
+}
+trap cleanup_owned EXIT
+trap 'exit 130' HUP INT TERM
+
+start_viewer() {
+    : >"$LOG_PATH" || fail "cannot create Viewer log: $LOG_PATH"
+    diagnose "starting CAD Viewer runtime $VIEWER_VERSION from $VIEWER"
+    diagnose "workspace: $WORKSPACE"
+    diagnose "startup log: $LOG_PATH"
+    OWNED_PGID=$(
+        PATH="$NPM_DIR:$PATH" \
+        VIEWER_CAD_PYTHON="$PYTHON" \
+        PREVIEW_CAD_START_WORKSPACE="$WORKSPACE" \
+        PREVIEW_CAD_START_LOG="$LOG_PATH" \
+        "$PYTHON" - "$NPM" "$VIEWER/scripts/viewer" "$PORT" <<'PY'
+import os
+import subprocess
+import sys
+
+npm, prefix, port = sys.argv[1:]
+log = open(os.environ["PREVIEW_CAD_START_LOG"], "ab", buffering=0)
+process = subprocess.Popen(
+    [npm, "--prefix", prefix, "run", "start", "--", "--host", "127.0.0.1", "--port", port],
+    cwd=os.environ["PREVIEW_CAD_START_WORKSPACE"],
+    env=os.environ.copy(),
+    stdout=log,
+    stderr=subprocess.STDOUT,
+    start_new_session=True,
+)
+print(process.pid)
+PY
+    ) || fail "failed to create CAD Viewer process (log: $LOG_PATH)"
+    case "$OWNED_PGID" in
+        ''|*[!0-9]*) fail "starter returned an invalid process-group leader" ;;
+    esac
+    leader_poll=0
+    OWNED_TOKEN=
+    while [ "$leader_poll" -lt "$MAX_POLLS" ]; do
+        OWNED_TOKEN=$(leader_token "$OWNED_PGID" 2>/dev/null || :)
+        [ -z "$OWNED_TOKEN" ] || break
+        leader_poll=$((leader_poll + 1))
+        "$SLEEP" 1
+    done
+    if [ -z "$OWNED_TOKEN" ]; then
+        diagnose "could not capture owned group-leader generation; no cleanup signal is authorized"
+        fail "owned Viewer process-group leader identity is unavailable"
+    fi
+    CLEANUP_ARMED=1
+}
+
+wait_for_started_viewer() {
+    poll=0
+    while [ "$poll" -lt "$MAX_POLLS" ]; do
+        raw=$(listener_raw)
+        assert_single_listener "$raw"
+        if [ "$(listener_count "$raw")" -eq 1 ]; then
+            token=$(ownership_token "$raw") || fail "listener process evidence is incomplete"
+            pid=$(token_pid "$token")
+            if api_matches_pid "$pid"; then
+                if page_ready; then
+                    CURRENT_TOKEN=$token
+                    return 0
+                fi
+            else
+                fail "started listener API identity/PID mismatch; refusing reuse"
+            fi
+        fi
+        poll=$((poll + 1))
+        "$SLEEP" 1
+    done
+    if [ -s "$LOG_PATH" ]; then
+        diagnose "last startup log lines:"
+        tail -n 20 "$LOG_PATH" >&2 || :
+    fi
+    fail "CAD Viewer did not become ready within $MAX_POLLS polls (log: $LOG_PATH)"
+}
+
+start_current_viewer() {
+    start_viewer
+    wait_for_started_viewer
+}
+
+INITIAL_RAW=$(listener_raw)
+assert_single_listener "$INITIAL_RAW"
+if [ "$(listener_count "$INITIAL_RAW")" -eq 0 ]; then
+    start_current_viewer
+else
+    INITIAL_TOKEN=$(ownership_token "$INITIAL_RAW") || fail "listener process evidence is incomplete; refusing signal"
+    INITIAL_PID=$(token_pid "$INITIAL_TOKEN")
+    api_matches_pid "$INITIAL_PID" || fail "listener is not CAD Viewer with matching API/listener PID; refusing signal"
+    if page_ready; then
+        diagnose "reusing healthy CAD Viewer PID $INITIAL_PID"
+        CURRENT_TOKEN=$INITIAL_TOKEN
+    else
+        diagnose "identified stale CAD Viewer PID $INITIAL_PID; revalidating before TERM"
+        PRE_TERM_RAW=$(listener_raw)
+        assert_single_listener "$PRE_TERM_RAW"
+        PRE_TERM_TOKEN=$(ownership_token "$PRE_TERM_RAW") || fail "listener disappeared or process evidence became incomplete before TERM"
+        [ "$PRE_TERM_TOKEN" = "$INITIAL_TOKEN" ] || fail "listener ownership token drift before TERM; refusing signal"
+        api_matches_pid "$INITIAL_PID" || fail "CAD Viewer API identity/PID drift before TERM; refusing signal"
+        if page_ready; then
+            diagnose "Viewer page recovered before TERM; reusing PID $INITIAL_PID"
+            CURRENT_TOKEN=$PRE_TERM_TOKEN
+        else
+            "$SIGNAL" -TERM "$INITIAL_PID" || fail "TERM failed for verified stale CAD Viewer PID $INITIAL_PID"
+            wait_i=0
+            PORT_FREED=0
+            while [ "$wait_i" -lt "$MAX_POLLS" ]; do
+                wait_raw=$(listener_raw)
+                assert_single_listener "$wait_raw"
+                if [ "$(listener_count "$wait_raw")" -eq 0 ]; then
+                    PORT_FREED=1
+                    break
+                fi
+                wait_token=$(ownership_token "$wait_raw") || fail "listener process evidence became incomplete after TERM"
+                [ "$wait_token" = "$INITIAL_TOKEN" ] || fail "listener ownership drift after TERM; refusing restart"
+                wait_i=$((wait_i + 1))
+                "$SLEEP" 1
+            done
+            [ "$PORT_FREED" -eq 1 ] || fail "same verified stale Viewer remained after bounded TERM wait; no further signal sent"
+            start_current_viewer
+        fi
+    fi
+fi
+
+parse_artifact() {
+    printf '%s' "$1" | "$PYTHON" -c '
+import json, sys
+try:
+    value = json.load(sys.stdin)
+except Exception:
+    raise SystemExit(1)
+if not isinstance(value, dict) or value.get("ok") is False:
+    raise SystemExit(1)
+state = value.get("state")
+if state not in {"ready", "generating", "error"}:
+    raise SystemExit(1)
+print(state)
+'
+}
+
+artifact_body=$("$CURL" -fsS --max-time 120 -X POST "$ARTIFACT_URL" 2>/dev/null) || fail "artifact build request failed"
+ARTIFACT_STATE=$(parse_artifact "$artifact_body") || fail "artifact build returned malformed, false, or unsupported state"
+if [ "$ARTIFACT_STATE" = "error" ]; then
+    fail "artifact build reported error"
+fi
+artifact_poll=0
+while [ "$ARTIFACT_STATE" = "generating" ]; do
+    [ "$artifact_poll" -lt "$MAX_POLLS" ] || fail "artifact generation timed out after $MAX_POLLS polls"
+    artifact_poll=$((artifact_poll + 1))
+    "$SLEEP" 1
+    artifact_body=$("$CURL" -fsS --max-time 10 "$ARTIFACT_URL" 2>/dev/null) || fail "artifact status request failed while generating"
+    ARTIFACT_STATE=$(parse_artifact "$artifact_body") || fail "artifact status returned malformed, false, or unsupported state"
+    [ "$ARTIFACT_STATE" != "error" ] || fail "artifact generation reported error"
+done
+[ "$ARTIFACT_STATE" = "ready" ] || fail "artifact did not become ready"
+
+# A ready artifact is only handed off while the same positively identified page
+# is still live. Owned cleanup remains armed through this final check.
+FINAL_RAW=$(listener_raw)
+assert_single_listener "$FINAL_RAW"
+FINAL_TOKEN=$(ownership_token "$FINAL_RAW") || fail "listener disappeared after artifact became ready"
+[ "$FINAL_TOKEN" = "$CURRENT_TOKEN" ] || fail "listener generation changed after artifact became ready"
+FINAL_PID=$(token_pid "$FINAL_TOKEN")
+api_matches_pid "$FINAL_PID" || fail "CAD Viewer identity/PID changed after artifact became ready"
+page_ready || fail "Viewer page became unavailable after artifact became ready"
+
+CLEANUP_ARMED=0
+OWNED_PGID=
+OWNED_TOKEN=
+if ! "$CURL" -fsS --max-time 3 "$EXTERNAL_URL" >/dev/null 2>&1; then
+    diagnose "warning: Tailscale URL is not reachable after local artifact readiness"
+fi
+
+printf '%s\n%s\n' "$LOCAL_URL" "$EXTERNAL_URL"

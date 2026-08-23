@@ -43,3 +43,14 @@ Serve the static page with any local HTTP server rooted at `projects/kage/`; `se
 - `manifests/`: exact provenance, inclusion/exclusion, workspace adaptation, and candidate hashes.
 
 Future CAD must begin in a new restart namespace, keep named parametric parameters and source authority, generate explicit targets from source, and record commands/hashes in a release manifest. Do not regenerate historical artifacts merely to match their hashes.
+
+## Locked-reference preview
+
+After the root workspace has been synchronized, run this checksum-pinned command from the repository root to launch a local CAD Viewer for the historical imported STEP:
+
+```sh
+bin/preview-cad --sha256 dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7 \
+  projects/kage/references locked-direct-gear/p3_v3_direct_gear_race_assembled.step
+```
+
+From another working directory, use absolute paths for both the launcher and workspace. The launcher safely reuses only a verified CAD Viewer on port 3245, otherwise starts the newest installed Viewer runtime and prints local and Tailscale URLs. This is a review aid for the locked reference, not restart CAD, slicer, or physical acceptance.
