@@ -1,6 +1,6 @@
 # Migration handoff
 
-Status: formal review accepted candidate `81b98d4c043560512076b2599b7200e3ffe90a6e84a5300b25ac9941c5e57fb0` for Kage migration integrity and GitHub delivery only. Delivery is complete on pull request [#1](https://github.com/scottchu/design-projects/pull/1), linked to GitHub Project [Notebook](https://github.com/users/scottchu/projects/1). Candidate `2901b2b7…` remains superseded; source authority remains `c838df4fb1edaa4077330db1fb8e24808a065e8738d5646cd76b26077a707cdd`.
+Status: formal review accepted candidate `81b98d4c043560512076b2599b7200e3ffe90a6e84a5300b25ac9941c5e57fb0` for Kage migration integrity and GitHub delivery only. Delivery is complete on pull request [#2](https://github.com/scottchu/design-projects/pull/2), linked to GitHub Project [Notebook](https://github.com/users/scottchu/projects/1). Pull request #1 was closed automatically by the branch rename and is superseded. Candidate `2901b2b7…` remains superseded; source authority remains `c838df4fb1edaa4077330db1fb8e24808a065e8738d5646cd76b26077a707cdd`.
 
 Next action: keep the candidate unchanged and run only `KAGE-EXP-001`. The locked assembled STEP is available in CAD Viewer at [this review link](https://mac-mini.duckbill-ionian.ts.net/Users/scottchu/.codex/worktrees/068351f6-bce2-42b2-bc1d-0cdf3c6e680e/design-projects/projects/kage?file=references%2Flocked-direct-gear%2Fp3_v3_direct_gear_race_assembled.step).
 
@@ -31,4 +31,4 @@ On repaired candidate `81b98d4c…`, `/root/kage_migration_critic` independently
 | KAGE-MIG-003 | `/root/kage_migration_critic` | passed, read-only | `81b98d4c…`; `CRIT-001..004` resolved, no new high/medium | formal join complete |
 | KAGE-MIG-004 | `/root/kage_migration_validator` | passed, read-only | `81b98d4c…`; 798/798, 7/68/11 tests, `VAL-001` resolved | formal join complete |
 | KAGE-MIG-005 | `/root/kage_migration_formal_review` | accepted migration integrity/delivery only | `81b98d4c…`; 798/798; only `REVIEW.md` changed | GitHub delivery |
-| KAGE-MIG-006 | `/root` | delivered | commit `b1fe19d…`; PR #1; Project Notebook; CAD Viewer HTTP 200 | `KAGE-EXP-001` |
+| KAGE-MIG-006 | `/root` | delivered | commit `b1fe19d…`; PR #2; Project Notebook; CAD Viewer HTTP 200 | `KAGE-EXP-001` |

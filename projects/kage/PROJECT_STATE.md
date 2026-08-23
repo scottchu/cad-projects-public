@@ -19,4 +19,4 @@
 
 ## Next action
 
-Migration delivery is complete on feature branch `codex/migrate-kage`: commit `b1fe19dc674e811e0e1287fade3748f7f26b1126`, pull request [#1](https://github.com/scottchu/design-projects/pull/1), and GitHub Project [Notebook](https://github.com/users/scottchu/projects/1). The sole next design action is `KAGE-EXP-001`.
+Migration delivery is complete on feature branch `migrate-kage`: migration commit `b1fe19dc674e811e0e1287fade3748f7f26b1126`, pull request [#2](https://github.com/scottchu/design-projects/pull/2), and GitHub Project [Notebook](https://github.com/users/scottchu/projects/1). Pull request #1 was closed automatically when the branch was renamed and is superseded by #2. The sole next design action is `KAGE-EXP-001`.

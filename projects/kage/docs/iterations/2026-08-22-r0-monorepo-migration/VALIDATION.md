@@ -71,9 +71,9 @@ KAGE-MIG-003 and KAGE-MIG-004 must both rerun on `81b98d4c…`. Artifact/slicer 
 
 ## Delivery receipt
 
-- Feature branch `codex/migrate-kage` was pushed at commit `b1fe19dc674e811e0e1287fade3748f7f26b1126`.
-- Pull request [#1](https://github.com/scottchu/design-projects/pull/1) records the review provenance, acceptance boundaries, unresolved risks, and next action.
-- PR #1 is an item in GitHub Project [Notebook](https://github.com/users/scottchu/projects/1).
+- Feature branch `migrate-kage` contains migration commit `b1fe19dc674e811e0e1287fade3748f7f26b1126`.
+- Pull request [#2](https://github.com/scottchu/design-projects/pull/2) records the review provenance, acceptance boundaries, unresolved risks, and next action. Pull request #1 was closed automatically by the branch rename and is superseded.
+- PR #2 is an item in GitHub Project [Notebook](https://github.com/users/scottchu/projects/1).
 - The locked STEP and all four selected Q3-R0 STEP/3MF review URLs returned HTTP 200 from the Tailscale CAD Viewer.
 - These delivery-only continuity edits are excluded from `manifests/candidate.sha256`; the reviewed candidate remains `81b98d4c043560512076b2599b7200e3ffe90a6e84a5300b25ac9941c5e57fb0`.
 
