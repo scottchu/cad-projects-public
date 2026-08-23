@@ -110,46 +110,55 @@ def test_repository_delivery_policy_is_parseable() -> None:
     required = {
         "branch": "main",
         "pull_request_required": True,
-        "github_project_item_required": False,
         "override_authority": "explicit-user-per-change",
         "server_enforcement_claimed": False,
     }
     assert required.items() <= delivery.items()
+    assert "github_project_item_required" not in delivery
 
 
-def test_pull_request_ci_targets_main_with_stable_job() -> None:
-    workflow = yaml.load(
-        (ROOT / ".github/workflows/validate.yml").read_text(), Loader=yaml.BaseLoader
-    )
+def test_repository_does_not_use_hosted_ci_workflows() -> None:
+    workflows = ROOT / ".github/workflows"
+    assert not (workflows / "validate.yml").exists()
+    assert not list(workflows.glob("*.yml"))
+    assert not list(workflows.glob("*.yaml"))
 
-    assert workflow["on"]["pull_request"]["branches"] == ["main"]
-    assert "workflow_dispatch" in workflow["on"]
-    assert workflow["permissions"] == {"contents": "read"}
-    job = workflow["jobs"]["repository-tests"]
-    assert job["timeout-minutes"] == "12"
-    steps = job["steps"]
-    step_names = [step["name"] for step in steps]
-    node_setup = next(step for step in steps if step["name"] == "Set up Node.js")
-    node_index = step_names.index("Set up Node.js")
-    assert node_index + 1 == step_names.index("Run XT60 supported P13 gate")
-    assert node_setup["uses"] == "actions/setup-node@v4"
-    assert node_setup["with"]["node-version"] == "22"
-    runs = [step["run"] for step in steps if "run" in step]
-    named_runs = {step["name"]: step["run"] for step in steps if "run" in step}
-    assert named_runs["Run repository structure tests"] == (
-        "uv run pytest tests/test_repository_structure.py"
-    )
-    supported = named_runs["Run XT60 supported P13 gate"]
-    assert supported.startswith(
-        "uv run --project projects/xt60-bend-jig pytest "
-    )
-    assert "test_p13_four_plate_three_rod.py::" in supported
-    assert "test_p13_motion.py::" in supported
-    assert "test_p13_rod_fit_coupon_3p8.py::" in supported
-    assert "projects/*/tests" not in supported
-    assert all("projects/*/tests" not in command for command in runs)
-    assert "npm test --workspaces --if-present" in runs
-    assert "npm run build --workspaces --if-present" in runs
+    for path in ("AGENTS.md", "README.md", "docs/ARCHITECTURE.md"):
+        text = (ROOT / path).read_text().lower()
+        assert "hosted ci workflows are not used" in text or "not hosted ci workflows" in text
+        assert "does not waive testing" in text
+
+
+def test_local_validation_command_contract() -> None:
+    readme = (ROOT / "README.md").read_text()
+
+    assert "Validate all currently registered workspace projects with Node.js 22 or newer:" in readme
+    for command in (
+        "uv lock --check",
+        "uv sync --all-packages --all-groups",
+        "uv run pytest tests/test_repository_structure.py",
+        "npm ci --ignore-scripts",
+        "git diff --exit-code -- package-lock.json",
+        "npm test --workspaces --if-present",
+        "npm run build --workspaces --if-present",
+    ):
+        assert command in readme
+
+    for test in (
+        "test_gate0_hash_p21_pivot_and_independent_stroke_derivations",
+        "test_one_connected_complete_workpiece_has_required_extrema_and_90_degree_path",
+        "test_three_rods_are_tangent_at_contact_then_apply_locked_wire_preload",
+        "test_exact_occurrence_census_and_upward_journal_topology",
+        "test_right_cap_physical_fit_contract_is_rigid_clear_and_floor_blocked",
+        "test_continuous_full_domain_motion_and_removal_certificates",
+        "test_motion_entry_has_exact_sixteen_stable_open_occurrences_and_envelope",
+        "test_javascript_solver_matches_python_kinematics_on_dense_grid",
+        "test_motion_contact_preload_directions_and_loop_are_exact",
+        "test_written_step_and_model_only_3mf_roundtrip_are_valid",
+    ):
+        assert test in readme
+
+    assert "projects/*/tests" not in readme
 
 
 def test_cad_policy_contains_core_evidence_categories() -> None:

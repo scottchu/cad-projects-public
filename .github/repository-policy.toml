@@ -1,6 +1,5 @@
 [trunk_delivery]
 branch = "main"
 pull_request_required = true
-github_project_item_required = false
 override_authority = "explicit-user-per-change"
 server_enforcement_claimed = false

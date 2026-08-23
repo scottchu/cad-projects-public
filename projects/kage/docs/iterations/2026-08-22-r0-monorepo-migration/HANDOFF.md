@@ -32,3 +32,7 @@ On repaired candidate `81b98d4c…`, `/root/kage_migration_critic` independently
 | KAGE-MIG-004 | `/root/kage_migration_validator` | passed, read-only | `81b98d4c…`; 798/798, 7/68/11 tests, `VAL-001` resolved | formal join complete |
 | KAGE-MIG-005 | `/root/kage_migration_formal_review` | accepted migration integrity/delivery only | `81b98d4c…`; 798/798; only `REVIEW.md` changed | GitHub delivery |
 | KAGE-MIG-006 | `/root` | delivered | commit `b1fe19d…`; PR #2; Project Notebook; CAD Viewer HTTP 200 | `KAGE-EXP-001` |
+
+## 2026-08-22 cleanup note
+
+The former Notebook Project item for PR #2 was removed and the repository was unlinked on 2026-08-22. GitHub Projects are no longer used. The delivery-time linkage above remains historical.

@@ -44,3 +44,7 @@ The repaired critic independently verified 798-row exact closure and reported al
 **Accepted for Kage migration integrity and GitHub delivery only.** Candidate `81b98d4c…` may proceed to delivery; it is not accepted as restart CAD, slicer-ready output, or physical proof. The next design action after delivery is only `KAGE-EXP-001`.
 
 Delivery is not complete until the root agent updates the excluded continuity status/receipt ledger, creates or links the GitHub Project item, commits and pushes this non-`main` branch, and opens the pull request with this provenance, the three acceptance boundaries, unresolved risks, and next action.
+
+## 2026-08-22 cleanup note
+
+The former Notebook Project item for PR #2 was removed and the repository was unlinked on 2026-08-22. GitHub Projects are no longer used. The delivery-time linkage and completion condition above remain historical.

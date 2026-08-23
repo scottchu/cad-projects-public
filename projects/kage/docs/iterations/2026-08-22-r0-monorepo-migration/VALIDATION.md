@@ -78,3 +78,7 @@ KAGE-MIG-003 and KAGE-MIG-004 must both rerun on `81b98d4c…`. Artifact/slicer 
 - These delivery-only continuity edits are excluded from `manifests/candidate.sha256`; the reviewed candidate remains `81b98d4c043560512076b2599b7200e3ffe90a6e84a5300b25ac9941c5e57fb0`.
 
 Migration delivery is complete. Candidate-changing edits require the independent gates to rerun; the sole next design action is `KAGE-EXP-001`.
+
+## 2026-08-22 cleanup note
+
+The former Notebook Project item for PR #2 was removed and the repository was unlinked on 2026-08-22. GitHub Projects are no longer used. The delivery-time linkage above remains historical.

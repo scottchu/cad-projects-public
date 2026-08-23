@@ -66,5 +66,5 @@ Every worker return is a receipt: status; verified fingerprint; changed paths/ar
 
 - Every change intended for trunk `main` must be developed on a non-`main` branch and delivered through a GitHub pull request unless the user explicitly overrides that route for that specific change.
 - Keep the pull request concise: record only the critical delivery summary, validation and independent-review provenance, acceptance gaps, unresolved risks, next action, and what happened. Repository continuity files remain the authority; do not duplicate raw reports in the pull request.
-- GitHub Projects are intentionally not used for planning, repository knowledge, or delivery tracking.
+- Repository-hosted CI workflows are not used. Run required validation locally or through the delegated validation workflow; the absence of hosted CI does not waive testing.
 - Do not claim repository-host enforcement from this documentation; `.github/repository-policy.toml` records the intended delivery contract.
