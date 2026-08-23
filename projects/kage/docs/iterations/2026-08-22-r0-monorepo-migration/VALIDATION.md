@@ -132,3 +132,9 @@ The cleanup documentation commit was rebased onto `origin/main` at `172af588c68c
 - Formal reviewer `/root/kage_cleanup_formal_review` independently accepted reversible legacy-path retirement and restart-worktree deregistration only. The acceptance does not authorize Trash emptying or permanent deletion and does not change CAD, slicer, or physical acceptance.
 
 Cleanup acceptance is complete. Do not empty Trash. After pull-request delivery, the sole next design action remains `KAGE-EXP-001`.
+
+## KAGE-CLEAN delivery receipt
+
+- Branch `codex/kage-retire-legacy-folders` was pushed after rebasing onto `origin/main` at `172af588c68cb6fc633c9c58e2b3abf7a6eac43a`.
+- Pull request [#5](https://github.com/scottchu/design-projects/pull/5) records the reversible cleanup boundary, independent provenance, validation, recovery risk, and next action.
+- These delivery-status edits remain in the candidate-declared excluded continuity paths; the reviewed 798-row candidate and all external quarantine content remain unchanged.

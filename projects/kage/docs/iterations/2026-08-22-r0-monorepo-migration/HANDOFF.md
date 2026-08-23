@@ -52,7 +52,7 @@ Each quarantine child contains 25,227 regular files, 4 symlinks, and 3,054 direc
 
 Rollback: do not empty the quarantine. Restore the original child only if its exact old destination is absent. To restore the restart child, first recreate `/Users/scottchu/Projects/personal/3d-print-kage-restart` from retained branch `kage/restart-20260822`, then move the child beneath that worktree's `design/` directory; stop if any destination exists.
 
-This cleanup changes no CAD, source, tests, artifacts, manifests, locks, branch contents, or acceptance layer. Distinct critic and validator reruns passed on integrated commit `f29a93c4473e9c61002018f3161d79550cc8dd9e`; formal review `KAGE-CLEAN-005` accepted reversible path retirement and worktree deregistration only, with no remaining finding. Do not empty Trash. After delivery, the sole next design action remains `KAGE-EXP-001`.
+This cleanup changes no CAD, source, tests, artifacts, manifests, locks, branch contents, or acceptance layer. Distinct critic and validator reruns passed on integrated commit `f29a93c4473e9c61002018f3161d79550cc8dd9e`; formal review `KAGE-CLEAN-005` accepted reversible path retirement and worktree deregistration only, with no remaining finding. Delivery is pull request [#5](https://github.com/scottchu/design-projects/pull/5). Do not empty Trash. The sole next design action remains `KAGE-EXP-001`.
 
 | Cleanup task | Owner | Final status | Evidence |
 |---|---|---|---|
