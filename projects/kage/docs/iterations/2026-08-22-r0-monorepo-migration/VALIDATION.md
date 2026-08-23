@@ -82,3 +82,59 @@ Migration delivery is complete. Candidate-changing edits require the independent
 ## 2026-08-22 cleanup note
 
 The former Notebook Project item for PR #2 was removed and the repository was unlinked on 2026-08-22. GitHub Projects are no longer used. The delivery-time linkage above remains historical.
+
+## KAGE-CLEAN-002 implementation self-check
+
+Owner: `/root/kage_cleanup_impl`; this is a final delivery cleanup extension and not independent acceptance.
+
+- Preflight: both exact legacy trees existed with 25,227 regular files, 4 symlinks, 3,054 directories, and `5.4G` reported size each. The quarantine target was absent.
+- Preflight hashes: both locked-reference STEP copies were `dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7`; both active assembled STEP copies were `e523eeaac4c0054b4fc06a33869e123248014a7892c4f582898c99765cd0b7a4`.
+- Created `/Users/scottchu/.Trash/kage-cleanup-2026-08-22` and used two exact `mv` operations to place the full trees at the uniquely named children recorded in `HANDOFF.md`. No copy, `rm`, permanent deletion, or Trash emptying occurred.
+- Post-move counts: 25,227 regular files, 4 symlinks, and 3,054 directories in each quarantine child; both checked STEP hashes reproduced exactly.
+- Both old active Kage paths are absent.
+- The restart worktree was clean after its Kage subtree moved. Normal `git worktree remove /Users/scottchu/Projects/personal/3d-print-kage-restart` passed without `--force`.
+- The restart path is absent; the old repository worktree list now contains only `/Users/scottchu/Projects/personal/3d-print` on `main`.
+- `git show-ref --verify refs/heads/kage/restart-20260822` passed at `96b055d4b8d0b87f3e6132fa3d90b23b3be4ed84`.
+- Unrelated pre-existing untracked paths in `/Users/scottchu/Projects/personal/3d-print` remain untouched.
+- Reviewed candidate and source/artifact evidence remained unchanged; no CAD/source/test/artifact/manifest/lock path was edited.
+- `sha256sum projects/kage/manifests/candidate.sha256` — `81b98d4c043560512076b2599b7200e3ffe90a6e84a5300b25ac9941c5e57fb0`; `sha256sum -c --quiet` passed all 798 rows.
+- `sha256sum projects/kage/references/locked-direct-gear/p3_v3_direct_gear_race_assembled.step` — unchanged at `dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7`.
+- `PYTHONDONTWRITEBYTECODE=1 uv run --package kage pytest -p no:cacheprovider projects/kage/tests` — 7 passed.
+- `PYTHONDONTWRITEBYTECODE=1 uv run pytest -p no:cacheprovider tests/test_repository_structure.py` — 11 passed.
+- `git diff --check` — passed.
+
+### Excluded-file preservation evidence
+
+The following quarantine-relative paths and full SHA-256 values were verified in both complete quarantine children, `original-japandi-shadow-clock-simulator` and `restart-japandi-shadow-clock-simulator`:
+
+| Quarantine-relative path | SHA-256 |
+|---|---|
+| `docs/mockups/base-joint-options.png` | `bcc8028ea0619611602f50b9f3e7d5f9673e03f68cd9310ee0948b2804c43a67` |
+| `docs/mockups/wide-centered-step-lap-detail.png` | `87f1955a639a2c4532139804ffef0b63de423d44f75071a47b9e37089e3008b7` |
+| `docs/mockups/wide-centered-step-lap-detail-v2.png` | `6af988227f76877ca7b1fe59d13cd5977344e1d4ee3287c1ff06933fa1145f2d` |
+| `rollback/p3_v3_direct_gear_race_guidance_r2_pre_independent_review_20260819T103455Z/source/p3_v3_direct_gear_race_guidance_r2_export.py` | `b96cf2077383723eec2a5f8e004b43a64ac5409d1f63495f7b6c2bd54193cca5` |
+| `rollback/p3_v3_direct_gear_race_guidance_r2_pre_independent_review_20260819T103455Z/source/p3_v3_direct_gear_race_guidance_r2_geometry.py` | `11007fbaebbb3c636179dcecab58a4d21273a21365ca5d4780938be1aba30cdd` |
+| `models/p3_v3_motor_station_assembly_sim/purchased/iso4762_socket_head_cap_screw_m2x4.step` | `089b80213c239f50cc036eccf16def39078fbaa68e10f10fd82c46753bcc42e6` |
+| `models/p3_v3_motor_station_assembly_sim/purchased/iso4762_socket_head_cap_screw_m3x8.step` | `be8177f1dad3e8a1c447c7d791171442352dd1668687bb6f27cf981b843f63a4` |
+| `models/parts/miter_gear_1to1_m0_8_16t.step` | `00c7386f24c0f89cf603dd5f276f1106ca2fd3e270a3039449a7f33d00ffaf25` |
+| `models/parts/miter_gear_1to1_m1_0_16t.step` | `9a9f41db33b4880777dcf34dca9505bb687c6ab0965fe422b156c85e694994a8` |
+
+Cleanup acceptance covers recoverable path retirement and worktree registration only. CAD/source acceptance remains migration-only; written artifact/slicer status is unchanged; physical print/assembly remains pending. Distinct critic, validator, and formal review are required before calling the cleanup accepted.
+
+## KAGE-CLEAN-002 delivery integration
+
+The cleanup documentation commit was rebased onto `origin/main` at `172af588c68cb6fc633c9c58e2b3abf7a6eac43a`. The four continuity files conflicted only because main had concurrently recorded removal of the former GitHub Project linkage; conflict resolution preserved that current policy note together with the complete cleanup receipt. No CAD, source, test, artifact, manifest, lock, or external quarantine content changed during integration.
+
+## KAGE-CLEAN independent acceptance
+
+- Critic `/root/kage_cleanup_critic` passed integrated commit `f29a93c4473e9c61002018f3161d79550cc8dd9e` with no remaining critical, high, medium, or low finding.
+- Validator `/root/kage_cleanup_validator` passed read-only: 798/798 candidate rows, Kage 7 passed, repository structure 12 passed, full quarantine parity, 18/18 excluded-file hash checks, both old paths absent, old worktree registration absent, and retained branch correct.
+- Formal reviewer `/root/kage_cleanup_formal_review` independently accepted reversible legacy-path retirement and restart-worktree deregistration only. The acceptance does not authorize Trash emptying or permanent deletion and does not change CAD, slicer, or physical acceptance.
+
+Cleanup acceptance is complete. Do not empty Trash. After pull-request delivery, the sole next design action remains `KAGE-EXP-001`.
+
+## KAGE-CLEAN delivery receipt
+
+- Branch `codex/kage-retire-legacy-folders` was pushed after rebasing onto `origin/main` at `172af588c68cb6fc633c9c58e2b3abf7a6eac43a`.
+- Pull request [#5](https://github.com/scottchu/design-projects/pull/5) records the reversible cleanup boundary, independent provenance, validation, recovery risk, and next action.
+- These delivery-status edits remain in the candidate-declared excluded continuity paths; the reviewed 798-row candidate and all external quarantine content remain unchanged.

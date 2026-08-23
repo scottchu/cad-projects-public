@@ -14,8 +14,11 @@ MUTABLE_CANDIDATE_EXCLUSIONS = {
     "projects/kage/docs/iterations/2026-08-22-r0-monorepo-migration/HANDOFF.md",
     "projects/kage/docs/iterations/2026-08-22-r0-monorepo-migration/REVIEW.md",
     "projects/kage/docs/iterations/2026-08-22-r0-monorepo-migration/VALIDATION.md",
+    "projects/kage/docs/iterations/2026-08-23-preview-launcher/HANDOFF.md",
+    "projects/kage/docs/iterations/2026-08-23-preview-launcher/REVIEW.md",
+    "projects/kage/docs/iterations/2026-08-23-preview-launcher/VALIDATION.md",
 }
-RUNTIME_DEBRIS_PARTS = {"__pycache__", ".pytest_cache", ".venv", "node_modules", ".uv-cache"}
+RUNTIME_DEBRIS_PARTS = {"__cadgen__", "__pycache__", ".pytest_cache", ".venv", "node_modules", ".uv-cache"}
 
 
 def digest(path: Path) -> str:
@@ -31,7 +34,14 @@ def parse_manifest(path: Path) -> list[tuple[str, str]]:
 
 
 def intended_candidate_paths() -> set[str]:
-    intended = {"package-lock.json", "uv.lock"}
+    intended = {
+        ".gitignore",
+        "README.md",
+        "bin/preview-cad",
+        "package-lock.json",
+        "tests/test_preview_cad_launcher.py",
+        "uv.lock",
+    }
     for path in ROOT.rglob("*"):
         if not path.is_file():
             continue
@@ -85,7 +95,9 @@ def test_selected_reference_artifacts_are_exact_and_bounded():
     actual_binary = {
         path.relative_to(ROOT).as_posix()
         for path in ROOT.rglob("*")
-        if path.is_file() and path.suffix.lower() in {".step", ".3mf", ".stl", ".glb", ".png"}
+        if path.is_file()
+        and path.suffix.lower() in {".step", ".3mf", ".stl", ".glb", ".png"}
+        and not RUNTIME_DEBRIS_PARTS.intersection(path.parts)
     }
     assert actual_binary == set(expected)
     for relative_path, expected_hash in expected.items():

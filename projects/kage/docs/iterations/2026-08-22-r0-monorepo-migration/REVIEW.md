@@ -48,3 +48,26 @@ Delivery is not complete until the root agent updates the excluded continuity st
 ## 2026-08-22 cleanup note
 
 The former Notebook Project item for PR #2 was removed and the repository was unlinked on 2026-08-22. GitHub Projects are no longer used. The delivery-time linkage and completion condition above remain historical.
+
+## KAGE-CLEAN-005 formal review
+
+### Provenance and scope
+
+- Reviewer: `/root/kage_cleanup_formal_review`; integrated commit: `f29a93c4473e9c61002018f3161d79550cc8dd9e`; parent and current `origin/main`: `172af588c68cb6fc633c9c58e2b3abf7a6eac43a`.
+- Identity separation holds: implementation `/root/kage_cleanup_impl`, critic `/root/kage_cleanup_critic`, validator `/root/kage_cleanup_validator`, and this reviewer are distinct. The final critic passed with no finding. The final validator passed read-only on the integrated commit with 798/798 candidate rows, Kage 7/7, repository structure 12/12, quarantine parity, excluded-file preservation, and worktree/branch checks.
+- The commit changes only `PROJECT_STATE.md`, `NEXT_AGENT.md`, and the active iteration's `HANDOFF.md` and `VALIDATION.md`. It changes no CAD, source, test, artifact, manifest, lock, branch content, or unrelated project path; `git diff --check` passes.
+
+### Traceability and recovery audit
+
+- Both former active paths are absent. Both complete retired trees remain recoverable under `/Users/scottchu/.Trash/kage-cleanup-2026-08-22`, each with 25,227 regular files, 4 symlinks, 3,054 directories, and `5.4G` reported size. A full recursive no-dereference comparison found no difference.
+- Both trees reproduce locked STEP hash `dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7`, active assembled STEP hash `e523eeaac4c0054b4fc06a33869e123248014a7892c4f582898c99765cd0b7a4`, and all nine documented excluded-file hashes. Candidate `81b98d4c043560512076b2599b7200e3ffe90a6e84a5300b25ac9941c5e57fb0` remains valid at 798/798 rows.
+- The obsolete restart worktree registration is absent. Branch `kage/restart-20260822` remains at `96b055d4b8d0b87f3e6132fa3d90b23b3be4ed84`; unrelated untracked paths in the original repository remain present. The documented restore procedure is bounded by destination-absence checks.
+- The preservation audit's objection to permanent deletion is correctly resolved by reversible quarantine only. This verdict prohibits Trash emptying or permanent deletion; recoverability depends on both quarantine children remaining intact.
+
+### Acceptance boundaries and verdict
+
+- **CAD/source:** cleanup integrity accepted only; prior migration integrity remains accepted, but no restart CAD candidate, geometry, fit, collision, motion, service, or manufacturing design is accepted.
+- **Written artifact/slicer:** unchanged; migration byte/structure evidence remains, while slicer profile, orientation, brim footprint, and print release remain pending.
+- **Physical print/assembly:** pending; PETG seam behavior and all other physical unknowns remain unproven.
+
+**Accepted for reversible Kage legacy-path retirement and restart-worktree deregistration only.** No critical, high, medium, or low cleanup finding remains. The root agent may update the excluded continuity status, commit this review on the non-`main` branch, and deliver through a pull request. Do not empty Trash. After delivery, the sole design action remains `KAGE-EXP-001`.

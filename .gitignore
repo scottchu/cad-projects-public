@@ -11,6 +11,7 @@ htmlcov/
 
 # CAD and mesh application caches
 .cadquery/
+__cadgen__/
 *.FCStd1
 
 # JavaScript dependencies and build output

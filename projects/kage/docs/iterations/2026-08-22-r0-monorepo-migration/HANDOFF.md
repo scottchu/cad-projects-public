@@ -36,3 +36,28 @@ On repaired candidate `81b98d4c…`, `/root/kage_migration_critic` independently
 ## 2026-08-22 cleanup note
 
 The former Notebook Project item for PR #2 was removed and the repository was unlinked on 2026-08-22. GitHub Projects are no longer used. The delivery-time linkage above remains historical.
+
+## Final delivery cleanup extension — KAGE-CLEAN-002
+
+Implementation owner `/root/kage_cleanup_impl` used monorepo baseline `7ca4d99ded0c0ccb0f67c0ee56494aa932596da1` and the unchanged reviewed 798-row candidate fingerprint `81b98d4c043560512076b2599b7200e3ffe90a6e84a5300b25ac9941c5e57fb0`.
+
+The inventory agent concluded **SAFE TO RETIRE** with one recoverable quarantine copy because both legacy trees were byte-identical and all declared migration selections were preserved. The independent preservation auditor concluded **FAIL for permanent deletion** but **CONDITIONAL PASS for reversible Trash quarantine** because three mockup PNGs, two unique rollback parametric sources, and four catalog STEP inputs were intentionally excluded from `projects/kage`. The resolution was to move both complete trees intact to unique Trash children, never empty Trash, unregister only the now-clean restart worktree, and retain its branch.
+
+Both former active paths are absent. The complete trees now remain recoverable at:
+
+- `/Users/scottchu/.Trash/kage-cleanup-2026-08-22/original-japandi-shadow-clock-simulator`
+- `/Users/scottchu/.Trash/kage-cleanup-2026-08-22/restart-japandi-shadow-clock-simulator`
+
+Each quarantine child contains 25,227 regular files, 4 symlinks, and 3,054 directories. Each locked-reference assembled STEP hashes to `dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7`; each active direct-gear assembled STEP hashes to `e523eeaac4c0054b4fc06a33869e123248014a7892c4f582898c99765cd0b7a4`. Normal `git worktree remove /Users/scottchu/Projects/personal/3d-print-kage-restart` succeeded without `--force`; the worktree is no longer registered, and retained branch `kage/restart-20260822` remains at `96b055d4b8d0b87f3e6132fa3d90b23b3be4ed84`.
+
+Rollback: do not empty the quarantine. Restore the original child only if its exact old destination is absent. To restore the restart child, first recreate `/Users/scottchu/Projects/personal/3d-print-kage-restart` from retained branch `kage/restart-20260822`, then move the child beneath that worktree's `design/` directory; stop if any destination exists.
+
+This cleanup changes no CAD, source, tests, artifacts, manifests, locks, branch contents, or acceptance layer. Distinct critic and validator reruns passed on integrated commit `f29a93c4473e9c61002018f3161d79550cc8dd9e`; formal review `KAGE-CLEAN-005` accepted reversible path retirement and worktree deregistration only, with no remaining finding. Delivery is pull request [#5](https://github.com/scottchu/design-projects/pull/5). Do not empty Trash. The sole next design action remains `KAGE-EXP-001`.
+
+| Cleanup task | Owner | Final status | Evidence |
+|---|---|---|---|
+| `KAGE-CLEAN-001` | `/root/kage_cleanup_inventory`, `/root/kage_cleanup_preservation_audit` | complete, read-only | byte parity plus reversible-only preservation boundary |
+| `KAGE-CLEAN-002` | `/root/kage_cleanup_impl` | complete | two intact Trash moves; normal worktree removal; no permanent deletion |
+| `KAGE-CLEAN-003` | `/root/kage_cleanup_critic` | passed, read-only | no remaining critical/high/medium/low finding |
+| `KAGE-CLEAN-004` | `/root/kage_cleanup_validator` | passed, read-only | 798/798; Kage 7; repository 12; full quarantine parity |
+| `KAGE-CLEAN-005` | `/root/kage_cleanup_formal_review` | accepted | reversible cleanup only; `REVIEW.md` |
