@@ -1,0 +1,11 @@
+{
+  "title": "KAGE P3 V3 stacked three-motor 90-degree drive",
+  "status": "visualization prototype; purchased-part fit and gear performance unverified",
+  "gear_coupon": "p3_v3_m1_259T_12T_mesh_coupon.3mf",
+  "physical_gates": {
+    "100_forward_reverse_cycles": "PENDING",
+    "24_hour_seconds_speed_run": "PENDING",
+    "printed_axial_runout_le_0p2_mm": "PENDING"
+  },
+  "warning": "The miter gears are envelope visualizations, not printable tooth geometry."
+}

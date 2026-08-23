@@ -1,0 +1,226 @@
+{
+  "status": "communication_geometry_not_print_ready",
+  "namespace": "p3_v3_exp_half_z_architecture_r1",
+  "locked_source": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818/p3_v3_direct_gear_race_assembled.step",
+  "locked_sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7",
+  "locked_files_modified": false,
+  "led_module_included": false,
+  "architectures": {
+    "D": {
+      "claim": "repaired_complete_clock_compact_split_plane_locked_transmission",
+      "status": "CAD_COMMUNICATION_CANDIDATE_NOT_PRINT_READY",
+      "miter_geometry": "real_16T_straight_miter_teeth_reused_from_locked_transmission_source",
+      "motor_shaft_plane_source": "derived_from_actual_motor_envelope_center",
+      "guide_contact": "D4p2_bored_relief_spools_on_D4_posts_and_tooth_free_lower_carrier_race",
+      "guide_retention": "D6_rear_collar_seated_in_D6p2_chassis_counterbore_plus_removable_keeper_cap",
+      "motor_retention": "serviceable_U_cradle_4xM2_face_2xM3_chassis_per_station",
+      "ring_teeth": [
+        260,
+        260,
+        260
+      ],
+      "pinion_teeth": 16,
+      "pitch_radii": [
+        130.0,
+        130.0,
+        130.0
+      ],
+      "pinion_axes": [
+        122.0,
+        122.0,
+        122.0
+      ],
+      "carrier_layers": [
+        [
+          0.8,
+          3.45
+        ],
+        [
+          3.8,
+          6.45
+        ],
+        [
+          6.8,
+          9.45
+        ]
+      ],
+      "fin_tip_zs": [
+        8.873,
+        11.074,
+        12.646
+      ],
+      "expected_z_envelope": 31.846,
+      "led_source_to_mask": 20.75,
+      "optical_led_clearance_risk_mm": 8.1,
+      "optical_status": "RISK_REQUIRES_PHYSICAL_LIGHT_CONE_TEST"
+    },
+    "E": {
+      "claim": "rejected_comparison_only_not_a_complete_drive",
+      "status": "REJECTED_COMPARISON_LAYOUT_ONLY",
+      "miter_geometry": "smooth_reference_cones_not_functional_teeth",
+      "ring_teeth": [
+        270,
+        216,
+        162
+      ],
+      "pinion_teeth": 16,
+      "pitch_radii": [
+        135.0,
+        108.0,
+        81.0
+      ],
+      "pinion_axes": [
+        127.0,
+        100.0,
+        73.0
+      ],
+      "radial_envelopes": [
+        [
+          134.0,
+          143.9
+        ],
+        [
+          107.0,
+          116.9
+        ],
+        [
+          80.0,
+          89.9
+        ]
+      ],
+      "fin_tip_zs": [
+        6.88,
+        9.84,
+        11.954
+      ],
+      "expected_z_envelope": 31.954,
+      "led_source_to_mask": 16.0,
+      "optical_led_clearance_risk_mm": 4.046,
+      "optical_status": "HIGHER_RISK_REQUIRES_PHYSICAL_LIGHT_CONE_TEST"
+    }
+  },
+  "artifacts": {
+    "D_compact_split_plane_complete.step": {
+      "scope": "primary_complete_candidate",
+      "solids": 70,
+      "bounds": [
+        -150.0,
+        -150.0,
+        -19.2,
+        150.0,
+        150.0,
+        12.646
+      ],
+      "z_envelope": [
+        -19.2,
+        12.646
+      ]
+    },
+    "D_true_side_section.step": {
+      "scope": "true_side_section",
+      "solids": 28,
+      "bounds": [
+        -150.0,
+        -9.0,
+        -19.2,
+        150.0,
+        9.0,
+        11.75
+      ],
+      "z_envelope": [
+        -19.2,
+        11.75
+      ]
+    },
+    "D_true_exploded_installation_order.step": {
+      "scope": "true_exploded_installation_order",
+      "solids": 70,
+      "bounds": [
+        -150.0,
+        -150.0,
+        -46.5,
+        150.0,
+        150.0,
+        77.75
+      ],
+      "z_envelope": [
+        -46.5,
+        77.75
+      ]
+    },
+    "D_LED_keepout_reference_not_hardware.step": {
+      "scope": "optical_keepout_reference_not_hardware",
+      "solids": 1,
+      "bounds": [
+        -61.0,
+        -61.0,
+        0.0,
+        61.0,
+        61.0,
+        20.75
+      ],
+      "z_envelope": [
+        0.0,
+        20.75
+      ]
+    },
+    "E_REJECTED_coplanar_radial_lanes_comparison.step": {
+      "scope": "rejected_comparison",
+      "solids": 40,
+      "bounds": [
+        -150.0,
+        -150.0,
+        -20.0,
+        150.0,
+        150.0,
+        11.954
+      ],
+      "z_envelope": [
+        -20.0,
+        11.954
+      ]
+    },
+    "E_REJECTED_true_side_section_comparison.step": {
+      "scope": "rejected_comparison",
+      "solids": 21,
+      "bounds": [
+        -150.0,
+        -9.0,
+        -20.0,
+        150.0,
+        9.0,
+        3.75
+      ],
+      "z_envelope": [
+        -20.0,
+        3.75
+      ]
+    },
+    "p3_v3_exp_half_z_architecture_r1_side_by_side.step": {
+      "scope": "side_by_side_comparison",
+      "solids": 110,
+      "bounds": [
+        -330.0,
+        -150.0,
+        -20.0,
+        330.0,
+        150.0,
+        12.646
+      ],
+      "z_envelope": [
+        -20.0,
+        12.646
+      ]
+    }
+  },
+  "comparison_layout": {
+    "D_to_E_gap_x": 60.0,
+    "non_overlapping": true
+  },
+  "LED_keepout": {
+    "included_in_primary_physical_envelope": false,
+    "LED_module_included": false,
+    "reference_artifact": "D_LED_keepout_reference_not_hardware.step",
+    "center_remains_open": true
+  }
+}

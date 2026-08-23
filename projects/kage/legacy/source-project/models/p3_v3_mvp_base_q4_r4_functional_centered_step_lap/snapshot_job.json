@@ -1,0 +1,12 @@
+{
+  "input": "models/p3_v3_mvp_base_q4_r4_functional_centered_step_lap/p3_v3_mvp_base_q4_r4_functional_centered_step_lap_assembled.step.py",
+  "mode": "view",
+  "outputs": [
+    {"path": "models/p3_v3_mvp_base_q4_r4_functional_centered_step_lap/snapshots/assembled_iso.png", "camera": "iso"},
+    {"path": "models/p3_v3_mvp_base_q4_r4_functional_centered_step_lap/snapshots/assembled_top.png", "camera": "top"},
+    {"path": "models/p3_v3_mvp_base_q4_r4_functional_centered_step_lap/snapshots/assembled_underside.png", "camera": {"direction": [-1, 1, -0.8]}},
+    {"path": "models/p3_v3_mvp_base_q4_r4_functional_centered_step_lap/snapshots/assembled_front.png", "camera": "front"}
+  ],
+  "render": {"viewLabels": true, "padding": 0.10, "sizeProfile": "assembly"},
+  "display": {"mode": "solid"}
+}

@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "input": "models/p2r3_module_b_rail_coupon/p2r3_module_b_installed.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_installed_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_installed_top.png", "camera": "top"},
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_installed_profile.png", "camera": "front"},
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_installed_opposite.png", "camera": {"direction": [-1, 1, -0.8]}}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p2r3_module_b_rail_coupon/p2r3_module_b_radial_z_section.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_radial_z_section.png", "camera": "front"},
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_radial_z_section_iso.png", "camera": "iso"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p2r3_module_b_rail_coupon/p2r3_module_b_exploded.step",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_exploded_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_exploded_profile.png", "camera": "front"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    },
+    {
+      "input": "models/p2r3_module_b_rail_coupon/print/p2r3_module_b_r135_three_part_coupon.3mf",
+      "mode": "view",
+      "outputs": [
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_print_plate_iso.png", "camera": "iso"},
+        {"path": "models/p2r3_module_b_rail_coupon/snapshots/p2r3_module_b_print_plate_top.png", "camera": "top"}
+      ],
+      "render": {"viewLabels": true, "padding": 0.12, "sizeProfile": "assembly"},
+      "display": {"mode": "solid", "projection": "orthographic"}
+    }
+  ]
+}

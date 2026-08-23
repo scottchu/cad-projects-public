@@ -1,0 +1,608 @@
+{
+  "allObjects": [
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_moving_carrier_quadrant_04",
+      "printing": false,
+      "sourceBrepDigest": "426429b0f28112c3196d964ceedc2ce32febbaff8a385e8804332861625235ee",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_04"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_moving_carrier_quadrant_08",
+      "printing": false,
+      "sourceBrepDigest": "ab53225116387cdc0d7eb4ea44c72389a8e828b1ef11bfcf8f7e5cde9267a09c",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_08"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_moving_carrier_quadrant_12",
+      "printing": false,
+      "sourceBrepDigest": "37e91839d364f3e37d192bda2f576c9e392c0c106d4525c6ddc4213aaed0b299",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_12"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_tower_300_structural_spine_01",
+      "printing": true,
+      "sourceBrepDigest": "cb9aa6830d14be71b1e4b61176cbddc2560f152294ab9efbac7b10056ab73a5f",
+      "sourceOccurrence": "r2_tower_300_structural_spine_01"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_tower_300_role_slider_cassette_01",
+      "printing": true,
+      "sourceBrepDigest": "d2d21613a433ec3fe8f3255c0856e5905035a8c9b04b17f65152416e18168fec",
+      "sourceOccurrence": "r2_tower_300_role_slider_cassette_01"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_tower_300_role_slider_cassette_02",
+      "printing": true,
+      "sourceBrepDigest": "2cf32af72723f2f2979bea913ed841e858fa703015c4eea567bdab6d24e48cad",
+      "sourceOccurrence": "r2_tower_300_role_slider_cassette_02"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_tower_300_role_slider_cassette_03",
+      "printing": true,
+      "sourceBrepDigest": "899dd10d72c1ee2b6fc841b065d75ea987a91075983652f82ab4b748bc032a22",
+      "sourceOccurrence": "r2_tower_300_role_slider_cassette_03"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_tower_300_three_window_stop_plate_01",
+      "printing": true,
+      "sourceBrepDigest": "7e6dfed8dad3ca147eb97f137b4313e6ef72865fadc0df1f83a914b55df52f22",
+      "sourceOccurrence": "r2_tower_300_three_window_stop_plate_01"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_complete_station_coupon",
+      "name": "r2_balance_pocket_cap_08",
+      "printing": false,
+      "sourceBrepDigest": "79bbc2ed755e6cf5ca7897c76b7db3af2596e6a9dd917fb737c48d7be3e8e159",
+      "sourceOccurrence": "r2_balance_pocket_cap_08"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "reference_datum",
+      "name": "r2_complete_station_reference_datum_nonprinting",
+      "printing": false,
+      "sourceBrepDigest": "5957753fd6cc5f1e1cf32a29f55c3e389c13f77dbee187e49cc1475cc526c11e",
+      "sourceOccurrence": "r2_complete_station_reference_datum_nonprinting"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_01",
+      "printing": false,
+      "sourceBrepDigest": "e2cfb0f91ba39de5b736fdb6f6ff5ee75037d936fa235bbe1fbb0c1d1d12d6a2",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_01"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_02",
+      "printing": false,
+      "sourceBrepDigest": "9896fd7dc05164039200805468c5c3b7a119ee7997a2c99158d3b307cc775b74",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_02"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_03",
+      "printing": false,
+      "sourceBrepDigest": "5a695fd096fa8a9c4faff5ed50134ea80bdf53842d20214d2dec34608d1151bc",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_03"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_05",
+      "printing": false,
+      "sourceBrepDigest": "c6938994f8d9501ca52ca43a88e2a30dee8dacd32ae4c6e19ae2cdf76f07e33e",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_05"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_06",
+      "printing": false,
+      "sourceBrepDigest": "77dbd40e428f0c079c001f0034ae6cae16647fc5570ef032ca0640ac8878a50f",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_06"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_07",
+      "printing": false,
+      "sourceBrepDigest": "0040dc91b011a655d19ee92efcfb191123e446d9d189cfa8f51cfc25fb90f435",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_07"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_09",
+      "printing": false,
+      "sourceBrepDigest": "6dd4ed7fd527bfa9f3b8faab4072e62f903bbae758c0683685c32fd844a9a64f",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_09"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_10",
+      "printing": false,
+      "sourceBrepDigest": "c72ba35c062f57f227a2daf09428af6895a424a1382b753054042935e270ba96",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_10"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_carrier_quadrant",
+      "name": "r2_coupon_reference_r2_moving_carrier_quadrant_11",
+      "printing": false,
+      "sourceBrepDigest": "81ae3a77ad4cae6f7b70e6328fc07cde8ce7f6762c6811fa960103da409c7b67",
+      "sourceOccurrence": "r2_moving_carrier_quadrant_11"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_01",
+      "printing": false,
+      "sourceBrepDigest": "5b692d322ec3100af7bbee9827d7c58227b293c32ae13ed016f02eb6028e6e76",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_01"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_02",
+      "printing": false,
+      "sourceBrepDigest": "3886402869353b675f608c37b49aeae3228a3878addded15d0953c963df7e764",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_02"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_03",
+      "printing": false,
+      "sourceBrepDigest": "360630973bf4b7333180b398201722339c31f701f12dc1acc59431ae21620af3",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_03"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_04",
+      "printing": false,
+      "sourceBrepDigest": "200805aa56bbf27fe2c4c74fcc8f5608b1cec4971e9034918f2affba6b6ba544",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_04"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_05",
+      "printing": false,
+      "sourceBrepDigest": "cd300b5590e840d1842f763c24631678caffa887ece7efdc854fef393c44cc67",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_05"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_06",
+      "printing": false,
+      "sourceBrepDigest": "f406520c263cde164a5c4bcedf22c37f5ac2021131ba122d4f333fdb196770a3",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_06"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_07",
+      "printing": false,
+      "sourceBrepDigest": "8f7082f636663a8870226c35cc772abe173cca43c9de9454b40fc1c88fe0a2f9",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_07"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_08",
+      "printing": false,
+      "sourceBrepDigest": "abf991d4b85a291aabd8f3355d81e622e9a7ad5eb50a87a59747bd0724a81a34",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_08"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_09",
+      "printing": false,
+      "sourceBrepDigest": "2899c3c26f37fcda8edc2265d9a0dae3e094f2482fcf8565b1270a290bf3b61f",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_09"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_10",
+      "printing": false,
+      "sourceBrepDigest": "a585409c9263cc226c92be010e297394e0a5afa8cda220749bfeee1c75c3ad6e",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_10"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_11",
+      "printing": false,
+      "sourceBrepDigest": "2b3f47221dc6d0288e5858a7f4167b17cec4532ac202870b59fbf197c50d052c",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_11"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "moving_recessed_seam_plate",
+      "name": "r2_coupon_reference_r2_moving_recessed_seam_plate_12",
+      "printing": false,
+      "sourceBrepDigest": "3bb0d29993b1fe3a638da0af0e850cdd9add2a7331ed836cc43ece364907da02",
+      "sourceOccurrence": "r2_moving_recessed_seam_plate_12"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "rear_stationary_quadrant",
+      "name": "r2_coupon_reference_r2_rear_stationary_quadrant_01",
+      "printing": false,
+      "sourceBrepDigest": "7c4c7cfb83da33f81f289827098fbe7b7b20ed2f1f7c45b9c2029937b0cab041",
+      "sourceOccurrence": "r2_rear_stationary_quadrant_01"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "rear_stationary_quadrant",
+      "name": "r2_coupon_reference_r2_rear_stationary_quadrant_02",
+      "printing": false,
+      "sourceBrepDigest": "6b32b1b7be919779fbe9ea439d0d25730e3ed165d4dc59d7236d87b37385e1fa",
+      "sourceOccurrence": "r2_rear_stationary_quadrant_02"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_coupon.3mf",
+      "interfaceFamily": "rear_stationary_quadrant",
+      "name": "r2_coupon_reference_r2_rear_stationary_quadrant_03",
+      "printing": false,
+      "sourceBrepDigest": "8cc6330e3d9198e42bfbeb94c7d8a0520bbed0a34fb58f7b117c6fb66736a598",
+      "sourceOccurrence": "r2_rear_stationary_quadrant_03"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-1",
+      "name": "r2_station_ladder_family_1_fit_1",
+      "printing": true,
+      "sourceBrepDigest": "c79677901a16ce908ecaeeec38a5ba626c399ff582b72de7828fe5ba2673bed5",
+      "sourceOccurrence": "r2_station_ladder_family_1_fit_1"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-1",
+      "name": "r2_station_ladder_family_1_fit_2",
+      "printing": true,
+      "sourceBrepDigest": "4341e7b1bccc1a2074a89cd38cd4fc5c825c7061a1ee29f65e293db578024483",
+      "sourceOccurrence": "r2_station_ladder_family_1_fit_2"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-1",
+      "name": "r2_station_ladder_family_1_fit_3",
+      "printing": true,
+      "sourceBrepDigest": "831f48f1cbb85f31bc26b34102c533519f6eb76a904754b9fffd19ecb9d2ded2",
+      "sourceOccurrence": "r2_station_ladder_family_1_fit_3"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-2",
+      "name": "r2_station_ladder_family_2_fit_1",
+      "printing": true,
+      "sourceBrepDigest": "58ac5a8f6fc4ef37176c8b1433bb3b387c4247ec7b382f81abcb466cc347cd64",
+      "sourceOccurrence": "r2_station_ladder_family_2_fit_1"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-2",
+      "name": "r2_station_ladder_family_2_fit_2",
+      "printing": true,
+      "sourceBrepDigest": "4d2488fc08e496a9ef6cfead8aa6442a1fbeda5d8fb5e9a640090cf1dda440a8",
+      "sourceOccurrence": "r2_station_ladder_family_2_fit_2"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-2",
+      "name": "r2_station_ladder_family_2_fit_3",
+      "printing": true,
+      "sourceBrepDigest": "60fe501435413f89f6442ae3a29c01c2ff79df10b7fb4b72ab8f30f124fad7e9",
+      "sourceOccurrence": "r2_station_ladder_family_2_fit_3"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-3",
+      "name": "r2_station_ladder_family_3_fit_1",
+      "printing": true,
+      "sourceBrepDigest": "bdd97ec20bde841073cbde2a1038159c16a7c774fb17c05c646ba120100ee9a8",
+      "sourceOccurrence": "r2_station_ladder_family_3_fit_1"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-3",
+      "name": "r2_station_ladder_family_3_fit_2",
+      "printing": true,
+      "sourceBrepDigest": "19bc5669c3a804411ebd7f98f2c13475082e04ee6d0ec56a918f9a5c66d7b242",
+      "sourceOccurrence": "r2_station_ladder_family_3_fit_2"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-3",
+      "name": "r2_station_ladder_family_3_fit_3",
+      "printing": true,
+      "sourceBrepDigest": "6fa5b9cb98660df5e0e45f712ec631ba173cf9701944499d7053e9116973655a",
+      "sourceOccurrence": "r2_station_ladder_family_3_fit_3"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-4",
+      "name": "r2_station_ladder_family_4_fit_1",
+      "printing": true,
+      "sourceBrepDigest": "7e02b8830658dc331aed6b0ac9becdd09ed96ee1d78539906e71e3d92acc37fe",
+      "sourceOccurrence": "r2_station_ladder_family_4_fit_1"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-4",
+      "name": "r2_station_ladder_family_4_fit_2",
+      "printing": true,
+      "sourceBrepDigest": "0cdcccc44a8effed2c1c64a4f82b4db1fe9c8f3b006d4e98f3244a97955138c8",
+      "sourceOccurrence": "r2_station_ladder_family_4_fit_2"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-4",
+      "name": "r2_station_ladder_family_4_fit_3",
+      "printing": true,
+      "sourceBrepDigest": "e0a9e6d2effc5fe40f85b67fbb68b99bbed39dc5c55f1d6f815dbf997174d593",
+      "sourceOccurrence": "r2_station_ladder_family_4_fit_3"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-5",
+      "name": "r2_station_ladder_family_5_fit_1",
+      "printing": true,
+      "sourceBrepDigest": "a35bff8b7711f5165a672b0630aaf69eee16456495d298902cc36d0576361c76",
+      "sourceOccurrence": "r2_station_ladder_family_5_fit_1"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-5",
+      "name": "r2_station_ladder_family_5_fit_2",
+      "printing": true,
+      "sourceBrepDigest": "ede3837ace796f895ef4526ba5f421107b08d3611b0e8d57e2432030469846e1",
+      "sourceOccurrence": "r2_station_ladder_family_5_fit_2"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-5",
+      "name": "r2_station_ladder_family_5_fit_3",
+      "printing": true,
+      "sourceBrepDigest": "3b31dcbd5d81da0b2c411cde229d6f7dc1ac47cef53a73c18549bb8254f7884f",
+      "sourceOccurrence": "r2_station_ladder_family_5_fit_3"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-6",
+      "name": "r2_station_ladder_family_6_fit_1",
+      "printing": true,
+      "sourceBrepDigest": "63e5c50e530699eaf35891da156d0cd9f8fc626616ba9540d66b7e180bf5e8c4",
+      "sourceOccurrence": "r2_station_ladder_family_6_fit_1"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-6",
+      "name": "r2_station_ladder_family_6_fit_2",
+      "printing": true,
+      "sourceBrepDigest": "2658cb4ce271bee0c0bb1e52eb41e2735c2b74760112d89b1ba52a602629e67b",
+      "sourceOccurrence": "r2_station_ladder_family_6_fit_2"
+    },
+    {
+      "file": "p3_v3_r2_complete_station_fit_ladder.3mf",
+      "interfaceFamily": "station-interface-6",
+      "name": "r2_station_ladder_family_6_fit_3",
+      "printing": true,
+      "sourceBrepDigest": "fdd13ac4dd91b6c5f8631f0a179ac2c6ffd89204aa7d082ebee5306910a12932",
+      "sourceOccurrence": "r2_station_ladder_family_6_fit_3"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_fixed_tower_leaf_01",
+      "printing": true,
+      "sourceBrepDigest": "2e7d9c52efc835495bfd37934bbe3e04f4d3fe515bf634663b6222497b35e7c4",
+      "sourceOccurrence": "r2_fixed_tower_leaf_01"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_fixed_tower_leaf_02",
+      "printing": true,
+      "sourceBrepDigest": "155e20df9238dac68b2d9e65b2f5e8755046aaccfffc1f6ea117f42779091cae",
+      "sourceOccurrence": "r2_fixed_tower_leaf_02"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_fixed_tower_upper_bridge_01",
+      "printing": true,
+      "sourceBrepDigest": "978774fe4743e67f4059ca459b63c81653a71f02ef5290de592dcafaad48efbb",
+      "sourceOccurrence": "r2_fixed_tower_upper_bridge_01"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_fixed_tower_upper_bridge_02",
+      "printing": true,
+      "sourceBrepDigest": "012de6778436eb26d613797deec90b8ab9d4d453e5b17c3b048673f18fbcfda5",
+      "sourceOccurrence": "r2_fixed_tower_upper_bridge_02"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_selected_fixed_tower_shim_01",
+      "printing": true,
+      "sourceBrepDigest": "74cf0c53bc9ad564e6bde785a6f801781992d7270d1dbc035484dbffc760f7b7",
+      "sourceOccurrence": "r2_selected_fixed_tower_shim_01"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_selected_fixed_tower_shim_02",
+      "printing": true,
+      "sourceBrepDigest": "54959d1fde2555c8bc539634900c98f4a91744c011f2460a7ec5a1b623a63a38",
+      "sourceOccurrence": "r2_selected_fixed_tower_shim_02"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_selected_fixed_tower_shim_03",
+      "printing": true,
+      "sourceBrepDigest": "b3cb3b45e08319c3e0814ddcb2df505423c5106c556e8101d7636e88b661854c",
+      "sourceOccurrence": "r2_selected_fixed_tower_shim_03"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_coupon.3mf",
+      "interfaceFamily": "p3_v3_r2_fixed_tower_coupon",
+      "name": "r2_selected_fixed_tower_shim_04",
+      "printing": true,
+      "sourceBrepDigest": "0193243b4eaf4f917a8dd497cb491da96107910207b4b77e4a37d0145739ada1",
+      "sourceOccurrence": "r2_selected_fixed_tower_shim_04"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_01",
+      "printing": true,
+      "sourceBrepDigest": "d07d83b57db766035c35ff2f2a03adbf96923351e841942a46876f9392bfdb57",
+      "sourceOccurrence": "r2_fixed_ladder_cell_01"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_02",
+      "printing": true,
+      "sourceBrepDigest": "8585b87783e471d7669f56ede0bed04c4021ee7a513dc6227f0fd11c2aada64a",
+      "sourceOccurrence": "r2_fixed_ladder_cell_02"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_03",
+      "printing": true,
+      "sourceBrepDigest": "b57e209617c0d50a3b3ba9a50c4309c36574d885fd23bd2c7f420061f9b6fe36",
+      "sourceOccurrence": "r2_fixed_ladder_cell_03"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_04",
+      "printing": true,
+      "sourceBrepDigest": "e6eefebc5f34769726689675caabc2d0fe370489adf39ce00bc9856d28dd38f1",
+      "sourceOccurrence": "r2_fixed_ladder_cell_04"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_05",
+      "printing": true,
+      "sourceBrepDigest": "78ec7285cb40949fd5c195c5b634e664aaf6ade4dba006beadafdc9f77ffc104",
+      "sourceOccurrence": "r2_fixed_ladder_cell_05"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_06",
+      "printing": true,
+      "sourceBrepDigest": "06d8b59db4de51094a40483eed5df3decf1508525d59475a2c43541da796b902",
+      "sourceOccurrence": "r2_fixed_ladder_cell_06"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_07",
+      "printing": true,
+      "sourceBrepDigest": "df92e5a2172db7ff0f1223044b04d25939a35f83f11f896b344e1d664a8e1e6c",
+      "sourceOccurrence": "r2_fixed_ladder_cell_07"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_08",
+      "printing": true,
+      "sourceBrepDigest": "0f4a2cf49e399aa6f43a9dcca19e4e57a15ccdbd2104c140e70facc0257f69c4",
+      "sourceOccurrence": "r2_fixed_ladder_cell_08"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "keyed-shim-pair",
+      "name": "r2_fixed_ladder_cell_09",
+      "printing": true,
+      "sourceBrepDigest": "4392587b7704e3ba629d30bb1b8ebb0106d6d8666f406edaeb6f68b78f23f4df",
+      "sourceOccurrence": "r2_fixed_ladder_cell_09"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "paired-bore-cell",
+      "name": "r2_fixed_ladder_cell_10",
+      "printing": true,
+      "sourceBrepDigest": "4a10e9b5dce55cc42273ce4592b47ab77f62b0210570a6a5a7e07d3a64d03688",
+      "sourceOccurrence": "r2_fixed_ladder_cell_10"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "paired-bore-cell",
+      "name": "r2_fixed_ladder_cell_11",
+      "printing": true,
+      "sourceBrepDigest": "49fd25c62977c1a8914c691aa4292508ab93a928d25d38b99191553a93bac34c",
+      "sourceOccurrence": "r2_fixed_ladder_cell_11"
+    },
+    {
+      "file": "p3_v3_r2_fixed_tower_fit_ladder.3mf",
+      "interfaceFamily": "paired-bore-cell",
+      "name": "r2_fixed_ladder_cell_12",
+      "printing": true,
+      "sourceBrepDigest": "d912b38c437f98216b33f64e849b5e9cbb5f9f3f7375e137976df876c3d79bb3",
+      "sourceOccurrence": "r2_fixed_ladder_cell_12"
+    }
+  ],
+  "canonicalBrepDigestAlgorithm": "build123d-export-brep-sha256-v1",
+  "canonicalCropToolDigest": "689638b38e7d991edfa7d5892677aa5ffa1e5d230c2e6d1bca2ec91fdbae0551",
+  "completeStation": {
+    "printingOccurrenceCount": 5,
+    "referenceOccurrenceCount": 29
+  },
+  "fixedLadder": {
+    "keyedShimPairCount": 9,
+    "pairedBoreCellCount": 3
+  },
+  "orcaReload": {
+    "status": "passed",
+    "tool": "Snapmaker Orca CLI"
+  },
+  "sourceOccurrenceDigests": {
+    "r2_balance_pocket_cap_08": "c6f10def6342a2c0225e3abf2ddc85d3cb365eb1f24c3136f61627c52f3ca347",
+    "r2_moving_carrier_quadrant_04": "c76146a801a54dbe6bc21fefe60dd620e23abefce896ca9ead072d8f0e0279d3",
+    "r2_moving_carrier_quadrant_08": "8f1d34100e109f83b6b1c8bc7be297baec9e9f83eb6c9bb8ca6553a7cadee5d9",
+    "r2_moving_carrier_quadrant_12": "0f3f59bc97e98197c7cacbc6a720bf6cce073c8a76929d71142d8ecae04e624e",
+    "r2_tower_300_role_slider_cassette_01": "c0735fc38925b1951c764f5e98f0608cb5297c4faf2c5b013ae80af48fd40721",
+    "r2_tower_300_role_slider_cassette_02": "b3b847a431f11f2707816d9d6f681aea86c7ec621ae3729342c879a79b377959",
+    "r2_tower_300_role_slider_cassette_03": "873de57fed0198c1ce1eafd3669b25909f1c8996e74cbea197a0ce68f2b5cade",
+    "r2_tower_300_structural_spine_01": "e03f5fc8e69e5f937b5f87e9dfbd3f926eb5c23968d1fafcc824af71864cf0a6",
+    "r2_tower_300_three_window_stop_plate_01": "bdc776a28c0b5d24002bad154ff278a99b6b666271d9b2d994b3c69bcb4d7722"
+  },
+  "stationLadder": {
+    "cellCount": 18
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "method": "three_fresh_process_I1_build_export_import_observed_max_times_two",
+  "margin_multiplier": 2.0,
+  "notes": [
+    "Each run rebuilt the 203-occurrence I1 assembly in a fresh uv Python process, exported a temporary STEP, reimported it, and compared ordered source/imported occurrences.",
+    "Different STEP byte hashes are expected because the serializer writes header metadata; all measured geometry deltas were identical across the three runs.",
+    "This calibration applies only to I1 source-vs-import representation drift. Phase1 tolerances and protected imported-vs-imported Boolean parity remain unchanged."
+  ],
+  "fresh_process_runs": [
+    {
+      "run": 1,
+      "temporary_step_sha256": "5ede8a6cf574798e29fad6769786d5331db1cc0e191994a4c8f2bdfa9fa67242",
+      "occurrence_count": 203,
+      "observed_maxima": {
+        "transform": 7.005951374594588e-12,
+        "aabb_mm": 0.0,
+        "area_mm2": 0.0,
+        "volume_mm3": 1.1548000003358538e-05
+      },
+      "maximum_occurrences": {
+        "transform": "occurrence_026",
+        "aabb_mm": "",
+        "area_mm2": "",
+        "volume_mm3": "occurrence_027"
+      },
+      "notable_occurrence_deltas": {
+        "occurrence_026": {"transform": 7.005951374594588e-12, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 0.0},
+        "occurrence_027": {"transform": 0.0, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 1.1548000003358538e-05},
+        "occurrence_044": {"transform": 0.0, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 3.5680000110005494e-06}
+      }
+    },
+    {
+      "run": 2,
+      "temporary_step_sha256": "d70b558452b462168d7da64f29d155f153c8db9c3af2c5dc932f37b50224c701",
+      "occurrence_count": 203,
+      "observed_maxima": {
+        "transform": 7.005951374594588e-12,
+        "aabb_mm": 0.0,
+        "area_mm2": 0.0,
+        "volume_mm3": 1.1548000003358538e-05
+      },
+      "maximum_occurrences": {
+        "transform": "occurrence_026",
+        "aabb_mm": "",
+        "area_mm2": "",
+        "volume_mm3": "occurrence_027"
+      },
+      "notable_occurrence_deltas": {
+        "occurrence_026": {"transform": 7.005951374594588e-12, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 0.0},
+        "occurrence_027": {"transform": 0.0, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 1.1548000003358538e-05},
+        "occurrence_044": {"transform": 0.0, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 3.5680000110005494e-06}
+      }
+    },
+    {
+      "run": 3,
+      "temporary_step_sha256": "370a7d3f0e1856565b4dd518779d2f3833e99356c5b22e12342000b6e5d9f604",
+      "occurrence_count": 203,
+      "observed_maxima": {
+        "transform": 7.005951374594588e-12,
+        "aabb_mm": 0.0,
+        "area_mm2": 0.0,
+        "volume_mm3": 1.1548000003358538e-05
+      },
+      "maximum_occurrences": {
+        "transform": "occurrence_026",
+        "aabb_mm": "",
+        "area_mm2": "",
+        "volume_mm3": "occurrence_027"
+      },
+      "notable_occurrence_deltas": {
+        "occurrence_026": {"transform": 7.005951374594588e-12, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 0.0},
+        "occurrence_027": {"transform": 0.0, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 1.1548000003358538e-05},
+        "occurrence_044": {"transform": 0.0, "aabb_mm": 0.0, "area_mm2": 0.0, "volume_mm3": 3.5680000110005494e-06}
+      }
+    }
+  ]
+}

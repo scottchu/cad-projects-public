@@ -1,0 +1,48 @@
+{
+  "title": "KAGE P3 V1 aligned six-lobe multi-material wheels",
+  "unit": "millimeter",
+  "bed_mm": [
+    256.0,
+    256.0
+  ],
+  "brim_mm": 5.0,
+  "packages": [
+    {
+      "file": "p3_v1_drive_wheel_PETG_TPU.3mf",
+      "role": "drive",
+      "objects": [
+        "drive_PETG_hub",
+        "drive_TPU_tread"
+      ],
+      "materials": [
+        "PETG",
+        "TPU"
+      ],
+      "material_assignments_embedded": true,
+      "shared_transform": [
+        11.0,
+        11.0,
+        -2.9
+      ]
+    },
+    {
+      "file": "p3_v1_idler_wheel_PETG_TPU.3mf",
+      "role": "idler",
+      "objects": [
+        "idler_PETG_hub",
+        "idler_TPU_tread"
+      ],
+      "materials": [
+        "PETG",
+        "TPU"
+      ],
+      "material_assignments_embedded": true,
+      "shared_transform": [
+        9.0,
+        9.0,
+        -2.9
+      ]
+    }
+  ],
+  "note": "Each 3MF has two aligned volumes and explicit core basematerial assignments. Confirm filament/tool mapping in the slicer before printing."
+}

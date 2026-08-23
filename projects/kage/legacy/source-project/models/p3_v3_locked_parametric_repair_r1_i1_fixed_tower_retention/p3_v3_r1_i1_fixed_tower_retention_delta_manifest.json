@@ -1,0 +1,6640 @@
+{
+  "allowed_delta_containment": {
+    "tower_1_axle_hardware": {
+      "has_expected_local_delta": true,
+      "name": "tower_1_axle_hardware",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_1_leaf_seat": {
+      "has_expected_local_delta": true,
+      "name": "tower_1_leaf_seat",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_leaves"
+    },
+    "tower_1_service_path": {
+      "has_expected_local_delta": true,
+      "name": "tower_1_service_path",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_1_shim_stack": {
+      "has_expected_local_delta": true,
+      "name": "tower_1_shim_stack",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_shims"
+    },
+    "tower_1_upper_bridge": {
+      "has_expected_local_delta": true,
+      "name": "tower_1_upper_bridge",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_bridges"
+    },
+    "tower_2_axle_hardware": {
+      "has_expected_local_delta": true,
+      "name": "tower_2_axle_hardware",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_2_leaf_seat": {
+      "has_expected_local_delta": true,
+      "name": "tower_2_leaf_seat",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_leaves"
+    },
+    "tower_2_service_path": {
+      "has_expected_local_delta": true,
+      "name": "tower_2_service_path",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_2_shim_stack": {
+      "has_expected_local_delta": true,
+      "name": "tower_2_shim_stack",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_shims"
+    },
+    "tower_2_upper_bridge": {
+      "has_expected_local_delta": true,
+      "name": "tower_2_upper_bridge",
+      "outside_envelope_delta_mm3": 0.0,
+      "owner_group": "fixed_tower_bridges"
+    }
+  },
+  "allowed_delta_envelopes": {
+    "tower_1_axle_hardware": {
+      "aabb_mm": [
+        58.739999900000015,
+        104.67618807494705,
+        -5.21,
+        66.76000010000001,
+        112.9059596630659,
+        24.810000000000002
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_018",
+        "occurrence_019",
+        "occurrence_020",
+        "occurrence_021",
+        "occurrence_022",
+        "occurrence_026",
+        "occurrence_027",
+        "occurrence_028"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_1_axle_hardware",
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_1_leaf_seat": {
+      "aabb_mm": [
+        58.740000000000016,
+        104.67618817494704,
+        -6.71,
+        66.76000000000002,
+        112.69618817494705,
+        -2.1900000000000004
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_018",
+        "occurrence_019",
+        "occurrence_020",
+        "occurrence_021",
+        "occurrence_022",
+        "occurrence_026",
+        "occurrence_027",
+        "occurrence_028"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_1_leaf_seat",
+      "owner_group": "fixed_tower_leaves"
+    },
+    "tower_1_service_path": {
+      "aabb_mm": [
+        59.490000000000016,
+        105.42618817494704,
+        23.939999999999998,
+        66.01000000000002,
+        111.94618817494705,
+        54.809999999999995
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_018",
+        "occurrence_019",
+        "occurrence_020",
+        "occurrence_021",
+        "occurrence_022",
+        "occurrence_026",
+        "occurrence_027",
+        "occurrence_028"
+      ],
+      "diameter_mm": 6.5,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_1_service_path",
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_1_shim_stack": {
+      "aabb_mm": [
+        58.740000000000016,
+        104.67618817494704,
+        19.689999999999998,
+        66.76000000000002,
+        112.69618817494705,
+        19.86
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_018",
+        "occurrence_019",
+        "occurrence_020",
+        "occurrence_021",
+        "occurrence_022",
+        "occurrence_026",
+        "occurrence_027",
+        "occurrence_028"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_1_shim_stack",
+      "owner_group": "fixed_tower_shims"
+    },
+    "tower_1_upper_bridge": {
+      "aabb_mm": [
+        52.65987298107782,
+        96.21689603142599,
+        14.49,
+        69.34012701892222,
+        115.09330249197701,
+        19.71
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_018",
+        "occurrence_019",
+        "occurrence_020",
+        "occurrence_021",
+        "occurrence_022",
+        "occurrence_026",
+        "occurrence_027",
+        "occurrence_028"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_1_upper_bridge",
+      "owner_group": "fixed_tower_bridges"
+    },
+    "tower_2_axle_hardware": {
+      "aabb_mm": [
+        -129.51000009999998,
+        -4.010000099999984,
+        -5.21,
+        -121.4899999,
+        4.010000100000015,
+        24.810000000000002
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_035",
+        "occurrence_036",
+        "occurrence_037",
+        "occurrence_038",
+        "occurrence_039",
+        "occurrence_043",
+        "occurrence_044",
+        "occurrence_045"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_2_axle_hardware",
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_2_leaf_seat": {
+      "aabb_mm": [
+        -129.51,
+        -4.009999999999985,
+        -6.71,
+        -121.49,
+        4.010000000000015,
+        -2.1900000000000004
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_035",
+        "occurrence_036",
+        "occurrence_037",
+        "occurrence_038",
+        "occurrence_039",
+        "occurrence_043",
+        "occurrence_044",
+        "occurrence_045"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_2_leaf_seat",
+      "owner_group": "fixed_tower_leaves"
+    },
+    "tower_2_service_path": {
+      "aabb_mm": [
+        -128.76,
+        -3.2599999999999842,
+        23.939999999999998,
+        -122.24,
+        3.2600000000000153,
+        54.809999999999995
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_035",
+        "occurrence_036",
+        "occurrence_037",
+        "occurrence_038",
+        "occurrence_039",
+        "occurrence_043",
+        "occurrence_044",
+        "occurrence_045"
+      ],
+      "diameter_mm": 6.5,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_2_service_path",
+      "owner_group": "fixed_tower_hardware"
+    },
+    "tower_2_shim_stack": {
+      "aabb_mm": [
+        -129.51,
+        -4.009999999999985,
+        19.689999999999998,
+        -121.49,
+        4.010000000000015,
+        19.86
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_035",
+        "occurrence_036",
+        "occurrence_037",
+        "occurrence_038",
+        "occurrence_039",
+        "occurrence_043",
+        "occurrence_044",
+        "occurrence_045"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_2_shim_stack",
+      "owner_group": "fixed_tower_shims"
+    },
+    "tower_2_upper_bridge": {
+      "aabb_mm": [
+        -130.01,
+        -5.009999999999986,
+        14.49,
+        -113.99,
+        5.010000000000016,
+        19.71
+      ],
+      "baseline_occurrence_names": [
+        "occurrence_035",
+        "occurrence_036",
+        "occurrence_037",
+        "occurrence_038",
+        "occurrence_039",
+        "occurrence_043",
+        "occurrence_044",
+        "occurrence_045"
+      ],
+      "diameter_mm": null,
+      "maximum_outside_delta_mm3": 1e-07,
+      "name": "tower_2_upper_bridge",
+      "owner_group": "fixed_tower_bridges"
+    }
+  },
+  "allowed_fixed_tower_baseline_occurrence_names": [
+    "occurrence_018",
+    "occurrence_019",
+    "occurrence_020",
+    "occurrence_021",
+    "occurrence_022",
+    "occurrence_026",
+    "occurrence_027",
+    "occurrence_028",
+    "occurrence_035",
+    "occurrence_036",
+    "occurrence_037",
+    "occurrence_038",
+    "occurrence_039",
+    "occurrence_043",
+    "occurrence_044",
+    "occurrence_045"
+  ],
+  "assembled_step": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_locked_parametric_repair_r1_i1_fixed_tower_retention/p3_v3_r1_i1_fixed_tower_retention_assembled.step",
+  "assembled_step_sha256": "8bc30cab75f83380b6b53fb967b935a9198b36f814368ce53826e574f9649724",
+  "baseline_occurrence_count": 201,
+  "baseline_policy": "immutable accepted R1 STEP; all non-I1 occurrences protected exact",
+  "candidate_occurrence_count": 203,
+  "candidate_occurrences": [
+    {
+      "aabb_mm": [
+        0.0,
+        -0.0,
+        -28.0,
+        145.0,
+        145.0,
+        -25.5
+      ],
+      "area_mm2": 27441.3795618,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_rear_chassis_Q1_two_fixed_one_adjustable_tower",
+      "name": "occurrence_000",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 24,
+        "faces": 10,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 16
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 32638.712936492
+    },
+    {
+      "aabb_mm": [
+        -145.0,
+        0.0,
+        -28.0,
+        0.0,
+        145.0,
+        -25.5
+      ],
+      "area_mm2": 27449.924693817,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_rear_chassis_Q2_two_fixed_one_adjustable_tower",
+      "name": "occurrence_001",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 27,
+        "faces": 11,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 18
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 32616.01492957
+    },
+    {
+      "aabb_mm": [
+        -145.0,
+        -145.0,
+        -28.0,
+        -0.0,
+        0.0,
+        -25.5
+      ],
+      "area_mm2": 27449.924693817,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_rear_chassis_Q3_two_fixed_one_adjustable_tower",
+      "name": "occurrence_002",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 27,
+        "faces": 11,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 18
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 32616.01492957
+    },
+    {
+      "aabb_mm": [
+        -0.0,
+        -145.0,
+        -28.0,
+        145.0,
+        -0.0,
+        -25.5
+      ],
+      "area_mm2": 27439.5795618,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_rear_chassis_Q4_two_fixed_one_adjustable_tower",
+      "name": "occurrence_003",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 42,
+        "faces": 16,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 28
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 32630.212936492
+    },
+    {
+      "aabb_mm": [
+        0.0,
+        -0.0,
+        -6.45,
+        150.0,
+        150.0,
+        -4.05
+      ],
+      "area_mm2": 3453.048381393,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_frame_quadrant_Q1",
+      "name": "occurrence_004",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 2780.309498427
+    },
+    {
+      "aabb_mm": [
+        -150.0,
+        0.0,
+        -6.45,
+        0.0,
+        150.0,
+        -4.05
+      ],
+      "area_mm2": 3453.048381393,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_frame_quadrant_Q2",
+      "name": "occurrence_005",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        90.0
+      ],
+      "volume_mm3": 2780.309498427
+    },
+    {
+      "aabb_mm": [
+        -150.0,
+        -150.0,
+        -6.45,
+        -0.0,
+        0.0,
+        -4.05
+      ],
+      "area_mm2": 3453.048381393,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_frame_quadrant_Q3",
+      "name": "occurrence_006",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 2780.309498427
+    },
+    {
+      "aabb_mm": [
+        -0.0,
+        -150.0,
+        -6.45,
+        150.0,
+        -0.0,
+        -4.05
+      ],
+      "area_mm2": 3453.048381393,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_frame_quadrant_Q4",
+      "name": "occurrence_007",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "volume_mm3": 2780.309498427
+    },
+    {
+      "aabb_mm": [
+        140.974059378,
+        36.675809153,
+        -4.05,
+        143.974059378,
+        39.675809153,
+        12.8
+      ],
+      "area_mm2": 172.94467558,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_post_1",
+      "name": "occurrence_008",
+      "owner_group": "global_envelope",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        142.47405937763,
+        38.175809152622,
+        -4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 119.105631479
+    },
+    {
+      "aabb_mm": [
+        36.675809153,
+        140.974059378,
+        -4.05,
+        39.675809153,
+        143.974059378,
+        12.8
+      ],
+      "area_mm2": 172.94467558,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_post_2",
+      "name": "occurrence_009",
+      "owner_group": "global_envelope",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        38.175809152622,
+        142.47405937763,
+        -4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 119.105631479
+    },
+    {
+      "aabb_mm": [
+        -105.798250225,
+        102.798250225,
+        -4.05,
+        -102.798250225,
+        105.798250225,
+        12.8
+      ],
+      "area_mm2": 172.94467558,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_post_3",
+      "name": "occurrence_010",
+      "owner_group": "global_envelope",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -104.298250225,
+        104.29825022501,
+        -4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 119.105631479
+    },
+    {
+      "aabb_mm": [
+        -143.974059378,
+        -39.675809153,
+        -4.05,
+        -140.974059378,
+        -36.675809153,
+        12.8
+      ],
+      "area_mm2": 172.94467558,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_post_4",
+      "name": "occurrence_011",
+      "owner_group": "global_envelope",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -142.4740593776,
+        -38.17580915262,
+        -4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 119.105631479
+    },
+    {
+      "aabb_mm": [
+        -39.675809153,
+        -143.974059378,
+        -4.05,
+        -36.675809153,
+        -140.974059378,
+        12.8
+      ],
+      "area_mm2": 172.94467558,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_post_5",
+      "name": "occurrence_012",
+      "owner_group": "global_envelope",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -38.17580915262,
+        -142.4740593776,
+        -4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 119.105631479
+    },
+    {
+      "aabb_mm": [
+        102.798250225,
+        -105.798250225,
+        -4.05,
+        105.798250225,
+        -102.798250225,
+        12.8
+      ],
+      "area_mm2": 172.94467558,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_post_6",
+      "name": "occurrence_013",
+      "owner_group": "global_envelope",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        104.29825022501,
+        -104.298250225,
+        -4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 119.105631479
+    },
+    {
+      "aabb_mm": [
+        0.0,
+        -0.0,
+        12.8,
+        150.0,
+        150.0,
+        13.8
+      ],
+      "area_mm2": 2788.927197659,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_quadrant_Q1",
+      "name": "occurrence_014",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 1150.85963679
+    },
+    {
+      "aabb_mm": [
+        -150.0,
+        0.0,
+        12.8,
+        0.0,
+        150.0,
+        13.8
+      ],
+      "area_mm2": 2789.618348043,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_quadrant_Q2",
+      "name": "occurrence_015",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 15,
+        "faces": 7,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 10
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 1154.6609639
+    },
+    {
+      "aabb_mm": [
+        -150.0,
+        -150.0,
+        12.8,
+        -0.0,
+        0.0,
+        13.8
+      ],
+      "area_mm2": 2788.927197659,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_quadrant_Q3",
+      "name": "occurrence_016",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 1150.85963679
+    },
+    {
+      "aabb_mm": [
+        -0.0,
+        -150.0,
+        12.8,
+        150.0,
+        -0.0,
+        13.8
+      ],
+      "area_mm2": 2789.618348043,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_stationary_outer_front_ring_quadrant_Q4",
+      "name": "occurrence_017",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 15,
+        "faces": 7,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 10
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 1154.6609639
+    },
+    {
+      "aabb_mm": [
+        48.337822174,
+        90.723563932,
+        -25.5,
+        72.762177827,
+        119.027788865,
+        19.7
+      ],
+      "area_mm2": 3306.970944129,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_inner_tower_1_fixed_round_mounts_connected_two_sided_yoke_I1_blind_seat_upper_bridge",
+      "name": "occurrence_018",
+      "owner_group": "fixed_tower_leaves",
+      "topology": {
+        "edges": 111,
+        "faces": 42,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 74
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 2822.121534552
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        105.686188175,
+        2.15,
+        65.75,
+        111.686188175,
+        3.4
+      ],
+      "area_mm2": 68.895126893,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_1_D6x1p25_spacer_1",
+      "name": "occurrence_019",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 18.02488785
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        105.686188175,
+        7.7,
+        65.75,
+        111.686188175,
+        8.95
+      ],
+      "area_mm2": 68.895126893,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_1_D6x1p25_spacer_2",
+      "name": "occurrence_020",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 18.02488785
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        105.686188175,
+        -2.35,
+        65.75,
+        111.686188175,
+        -2.15
+      ],
+      "area_mm2": 35.248669573,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_1_lower_0p20_thrust_washer",
+      "name": "occurrence_021",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 2.883982056
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        105.686188175,
+        13.25,
+        65.75,
+        111.686188175,
+        13.45
+      ],
+      "area_mm2": 35.248669573,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_1_upper_0p20_thrust_washer",
+      "name": "occurrence_022",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 2.883982056
+    },
+    {
+      "aabb_mm": [
+        55.85,
+        101.786188175,
+        -2.15,
+        69.65,
+        115.586188175,
+        2.15
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_hour_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_023",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        55.85,
+        101.786188175,
+        3.4,
+        69.65,
+        115.586188175,
+        7.7
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_minute_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_024",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        55.85,
+        101.786188175,
+        8.95,
+        69.65,
+        115.586188175,
+        13.25
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_second_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_025",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        60.755,
+        106.691188175,
+        -5.2,
+        64.745,
+        110.681188175,
+        24.2514
+      ],
+      "area_mm2": 394.179199095,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_r1_i1_tower_1_D3p99_stock30_installed_trimmed_to_locked_envelope",
+      "name": "occurrence_026",
+      "owner_group": "fixed_tower_hardware",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        62.75,
+        108.686188174947,
+        -5.2,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 368.249034582
+    },
+    {
+      "aabb_mm": [
+        58.7499999,
+        104.686188075,
+        19.9499999,
+        66.7500001,
+        112.686188275,
+        23.9500001
+      ],
+      "area_mm2": 241.05758975,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_r1_i1_tower_1_intact_D4_D8x4_M3_set_screw_collar",
+      "name": "occurrence_027",
+      "owner_group": "fixed_tower_hardware",
+      "topology": {
+        "edges": 11,
+        "faces": 7,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 7
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 141.221027343
+    },
+    {
+      "aabb_mm": [
+        62.448461894,
+        109.663908855,
+        20.45,
+        66.046538106,
+        112.895959663,
+        23.45
+      ],
+      "area_mm2": 35.454895263,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_r1_i1_tower_1_ISO4026_M3x2_flat_point_set_screw_REFERENCE",
+      "name": "occurrence_028",
+      "owner_group": "fixed_tower_hardware",
+      "topology": {
+        "edges": 21,
+        "faces": 10,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 13.211602291
+    },
+    {
+      "aabb_mm": [
+        60.897114317,
+        98.490035752,
+        -31.0,
+        66.397114317,
+        103.990035752,
+        -20.0
+      ],
+      "area_mm2": 174.751091356,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_M3_mount_screw_1_REFERENCE",
+      "name": "occurrence_029",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 127.823551093
+    },
+    {
+      "aabb_mm": [
+        60.147114317,
+        97.740035752,
+        -23.5,
+        67.147114317,
+        104.740035752,
+        -23.0
+      ],
+      "area_mm2": 75.146896274,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_M3_washer_1_REFERENCE",
+      "name": "occurrence_030",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 14.702653619
+    },
+    {
+      "aabb_mm": [
+        60.897114317,
+        98.064609272,
+        -23.0,
+        66.397114317,
+        104.415462233,
+        -20.6
+      ],
+      "area_mm2": 106.602978413,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_M3_hex_nut_1_REFERENCE",
+      "name": "occurrence_031",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 21,
+        "faces": 9,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 45.908843985
+    },
+    {
+      "aabb_mm": [
+        53.102885683,
+        102.990035752,
+        -31.0,
+        58.602885683,
+        108.490035752,
+        -20.0
+      ],
+      "area_mm2": 174.751091356,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_M3_mount_screw_2_REFERENCE",
+      "name": "occurrence_032",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 127.823551093
+    },
+    {
+      "aabb_mm": [
+        52.352885683,
+        102.240035752,
+        -23.5,
+        59.352885683,
+        109.240035752,
+        -23.0
+      ],
+      "area_mm2": 75.146896274,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_M3_washer_2_REFERENCE",
+      "name": "occurrence_033",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 14.702653619
+    },
+    {
+      "aabb_mm": [
+        53.102885683,
+        102.564609272,
+        -23.0,
+        58.602885683,
+        108.915462233,
+        -20.6
+      ],
+      "area_mm2": 106.602978413,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_1_M3_hex_nut_2_REFERENCE",
+      "name": "occurrence_034",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 21,
+        "faces": 9,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        59.999999999987
+      ],
+      "volume_mm3": 45.908843985
+    },
+    {
+      "aabb_mm": [
+        -133.4,
+        -7.0,
+        -25.5,
+        -108.8,
+        7.0,
+        19.7
+      ],
+      "area_mm2": 3306.970944129,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_inner_tower_2_fixed_round_mounts_connected_two_sided_yoke_I1_blind_seat_upper_bridge",
+      "name": "occurrence_035",
+      "owner_group": "fixed_tower_leaves",
+      "topology": {
+        "edges": 111,
+        "faces": 42,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 74
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 2822.121534552
+    },
+    {
+      "aabb_mm": [
+        -128.5,
+        -3.0,
+        2.15,
+        -122.5,
+        3.0,
+        3.4
+      ],
+      "area_mm2": 68.895126893,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_2_D6x1p25_spacer_1",
+      "name": "occurrence_036",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 18.02488785
+    },
+    {
+      "aabb_mm": [
+        -128.5,
+        -3.0,
+        7.7,
+        -122.5,
+        3.0,
+        8.95
+      ],
+      "area_mm2": 68.895126893,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_2_D6x1p25_spacer_2",
+      "name": "occurrence_037",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 18.02488785
+    },
+    {
+      "aabb_mm": [
+        -128.5,
+        -3.0,
+        -2.35,
+        -122.5,
+        3.0,
+        -2.15
+      ],
+      "area_mm2": 35.248669573,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_2_lower_0p20_thrust_washer",
+      "name": "occurrence_038",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 2.883982056
+    },
+    {
+      "aabb_mm": [
+        -128.5,
+        -3.0,
+        13.25,
+        -122.5,
+        3.0,
+        13.45
+      ],
+      "area_mm2": 35.248669573,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_direct_race_tower_2_upper_0p20_thrust_washer",
+      "name": "occurrence_039",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 2.883982056
+    },
+    {
+      "aabb_mm": [
+        -132.4,
+        -6.9,
+        -2.15,
+        -118.6,
+        6.9,
+        2.15
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_hour_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_040",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        -132.4,
+        -6.9,
+        3.4,
+        -118.6,
+        6.9,
+        7.7
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_minute_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_041",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        -132.4,
+        -6.9,
+        8.95,
+        -118.6,
+        6.9,
+        13.25
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_second_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_042",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        -127.495,
+        -1.995,
+        -5.2,
+        -123.505,
+        1.995,
+        24.2514
+      ],
+      "area_mm2": 394.179199095,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_r1_i1_tower_2_D3p99_stock30_installed_trimmed_to_locked_envelope",
+      "name": "occurrence_043",
+      "owner_group": "fixed_tower_hardware",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -125.5,
+        0.0,
+        -5.2,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 368.249034582
+    },
+    {
+      "aabb_mm": [
+        -129.5000001,
+        -4.0000001,
+        19.9499999,
+        -121.4999999,
+        4.0000001,
+        23.9500001
+      ],
+      "area_mm2": 241.058734197,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_r1_i1_tower_2_intact_D4_D8x4_M3_set_screw_collar",
+      "name": "occurrence_044",
+      "owner_group": "fixed_tower_hardware",
+      "topology": {
+        "edges": 11,
+        "faces": 7,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 7
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 141.221462867
+    },
+    {
+      "aabb_mm": [
+        -129.495,
+        -1.5,
+        20.45,
+        -127.495,
+        1.5,
+        23.45
+      ],
+      "area_mm2": 35.454895263,
+      "classification": "allowed_local_delta",
+      "label": "p3_v3_r1_i1_tower_2_ISO4026_M3x2_flat_point_set_screw_REFERENCE",
+      "name": "occurrence_045",
+      "owner_group": "fixed_tower_hardware",
+      "topology": {
+        "edges": 21,
+        "faces": 10,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 13.211602291
+    },
+    {
+      "aabb_mm": [
+        -122.25,
+        1.75,
+        -31.0,
+        -116.75,
+        7.25,
+        -20.0
+      ],
+      "area_mm2": 174.751091356,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_M3_mount_screw_1_REFERENCE",
+      "name": "occurrence_046",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 127.823551093
+    },
+    {
+      "aabb_mm": [
+        -123.0,
+        1.0,
+        -23.5,
+        -116.0,
+        8.0,
+        -23.0
+      ],
+      "area_mm2": 75.146896274,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_M3_washer_1_REFERENCE",
+      "name": "occurrence_047",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 14.702653619
+    },
+    {
+      "aabb_mm": [
+        -122.25,
+        1.324573519,
+        -23.0,
+        -116.75,
+        7.675426481,
+        -20.6
+      ],
+      "area_mm2": 106.602978413,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_M3_hex_nut_1_REFERENCE",
+      "name": "occurrence_048",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 21,
+        "faces": 9,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 45.908843985
+    },
+    {
+      "aabb_mm": [
+        -122.25,
+        -7.25,
+        -31.0,
+        -116.75,
+        -1.75,
+        -20.0
+      ],
+      "area_mm2": 174.751091356,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_M3_mount_screw_2_REFERENCE",
+      "name": "occurrence_049",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 127.823551093
+    },
+    {
+      "aabb_mm": [
+        -123.0,
+        -8.0,
+        -23.5,
+        -116.0,
+        -1.0,
+        -23.0
+      ],
+      "area_mm2": 75.146896274,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_M3_washer_2_REFERENCE",
+      "name": "occurrence_050",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 14.702653619
+    },
+    {
+      "aabb_mm": [
+        -122.25,
+        -7.675426481,
+        -23.0,
+        -116.75,
+        -1.324573519,
+        -20.6
+      ],
+      "area_mm2": 106.602978413,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_2_M3_hex_nut_2_REFERENCE",
+      "name": "occurrence_051",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 21,
+        "faces": 9,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 45.908843985
+    },
+    {
+      "aabb_mm": [
+        48.337822174,
+        -119.027788865,
+        -25.5,
+        72.762177827,
+        -90.723563932,
+        14.75
+      ],
+      "area_mm2": 2784.203584471,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_inner_tower_3_adjustable_plus_minus_0p25_connected_two_sided_yoke",
+      "name": "occurrence_052",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 90,
+        "faces": 35,
+        "shells": 2,
+        "solids": 1,
+        "vertices": 60
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 2306.039824879
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        -111.686188175,
+        2.15,
+        65.75,
+        -105.686188175,
+        3.4
+      ],
+      "area_mm2": 68.895126893,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_D6x1p25_spacer_1",
+      "name": "occurrence_053",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 18.02488785
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        -111.686188175,
+        7.7,
+        65.75,
+        -105.686188175,
+        8.95
+      ],
+      "area_mm2": 68.895126893,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_D6x1p25_spacer_2",
+      "name": "occurrence_054",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 18.02488785
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        -111.686188175,
+        -2.35,
+        65.75,
+        -105.686188175,
+        -2.15
+      ],
+      "area_mm2": 35.248669573,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_lower_0p20_thrust_washer",
+      "name": "occurrence_055",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 2.883982056
+    },
+    {
+      "aabb_mm": [
+        59.75,
+        -111.686188175,
+        13.25,
+        65.75,
+        -105.686188175,
+        13.45
+      ],
+      "area_mm2": 35.248669573,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_upper_0p20_thrust_washer",
+      "name": "occurrence_056",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 2.883982056
+    },
+    {
+      "aabb_mm": [
+        55.85,
+        -115.586188175,
+        -2.15,
+        69.65,
+        -101.786188175,
+        2.15
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_hour_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_057",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        55.85,
+        -115.586188175,
+        3.4,
+        69.65,
+        -101.786188175,
+        7.7
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_minute_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_058",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        55.85,
+        -115.586188175,
+        8.95,
+        69.65,
+        -101.786188175,
+        13.25
+      ],
+      "area_mm2": 861.177148113,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_second_RELIEVED_spool_carrier_root_land_only",
+      "name": "occurrence_059",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 18,
+        "faces": 12,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 239.237401367
+    },
+    {
+      "aabb_mm": [
+        60.75,
+        -110.686188175,
+        -5.0,
+        64.75,
+        -106.686188175,
+        20.0
+      ],
+      "area_mm2": 339.292006588,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_D4x25_polished_axle_REFERENCE",
+      "name": "occurrence_060",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        62.75,
+        -108.6861881749,
+        -5.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 314.159265359
+    },
+    {
+      "aabb_mm": [
+        57.7499999,
+        -113.686188275,
+        14.9999999,
+        67.7500001,
+        -103.686188075,
+        19.0000001
+      ],
+      "area_mm2": 319.307741866,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_purchased_D4x10x4_metal_M2_set_screw_collar_REFERENCE",
+      "name": "occurrence_061",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 13,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 254.591031931
+    },
+    {
+      "aabb_mm": [
+        61.883974596,
+        -112.65028979,
+        16.0,
+        65.616025404,
+        -108.186188175,
+        18.0
+      ],
+      "area_mm2": 31.415926536,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_M2_collar_set_screw_REFERENCE",
+      "name": "occurrence_062",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        62.75,
+        -108.6861881749,
+        17.0,
+        90.0,
+        30.000000000013,
+        -90.0
+      ],
+      "volume_mm3": 12.566370614
+    },
+    {
+      "aabb_mm": [
+        53.102885683,
+        -108.490035752,
+        -31.0,
+        58.602885683,
+        -102.990035752,
+        -20.0
+      ],
+      "area_mm2": 174.751091356,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_M3_mount_screw_1_REFERENCE",
+      "name": "occurrence_063",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 127.823551093
+    },
+    {
+      "aabb_mm": [
+        52.352885683,
+        -109.240035752,
+        -23.5,
+        59.352885683,
+        -102.240035752,
+        -23.0
+      ],
+      "area_mm2": 75.146896274,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_M3_washer_1_REFERENCE",
+      "name": "occurrence_064",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 14.702653619
+    },
+    {
+      "aabb_mm": [
+        53.102885683,
+        -108.915462233,
+        -23.0,
+        58.602885683,
+        -102.564609272,
+        -20.6
+      ],
+      "area_mm2": 106.602978413,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_M3_hex_nut_1_REFERENCE",
+      "name": "occurrence_065",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 21,
+        "faces": 9,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 45.908843985
+    },
+    {
+      "aabb_mm": [
+        60.897114317,
+        -103.990035752,
+        -31.0,
+        66.397114317,
+        -98.490035752,
+        -20.0
+      ],
+      "area_mm2": 174.751091356,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_M3_mount_screw_2_REFERENCE",
+      "name": "occurrence_066",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 127.823551093
+    },
+    {
+      "aabb_mm": [
+        60.147114317,
+        -104.740035752,
+        -23.5,
+        67.147114317,
+        -97.740035752,
+        -23.0
+      ],
+      "area_mm2": 75.146896274,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_M3_washer_2_REFERENCE",
+      "name": "occurrence_067",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 14.702653619
+    },
+    {
+      "aabb_mm": [
+        60.897114317,
+        -104.415462233,
+        -23.0,
+        66.397114317,
+        -98.064609272,
+        -20.6
+      ],
+      "area_mm2": 106.602978413,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_tower_3_M3_hex_nut_2_REFERENCE",
+      "name": "occurrence_068",
+      "owner_group": "fixed_towers",
+      "topology": {
+        "edges": 21,
+        "faces": 9,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 14
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -59.999999999987
+      ],
+      "volume_mm3": 45.908843985
+    },
+    {
+      "aabb_mm": [
+        78.0,
+        -16.5,
+        -26.45,
+        134.0,
+        16.5,
+        -4.3
+      ],
+      "area_mm2": 5156.857176926,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_ONE_CONNECTED_open_yoke_integral_motor_face_chassis_foot_two_MR84_seats_RADIAL_SLOT_q+0_00_SERVICE_plus_minus_2p50",
+      "name": "occurrence_069",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 415,
+        "faces": 133,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 276
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 4370.364072835
+    },
+    {
+      "aabb_mm": [
+        -81.289419162,
+        59.299981495,
+        -25.5,
+        -24.710580838,
+        124.297404107,
+        -2.15
+      ],
+      "area_mm2": 5447.089973157,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_ONE_CONNECTED_open_yoke_integral_motor_face_chassis_foot_two_MR84_seats_RADIAL_SLOT_q+0_00_SERVICE_plus_minus_2p50",
+      "name": "occurrence_070",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 409,
+        "faces": 133,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 272
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 4683.141184797
+    },
+    {
+      "aabb_mm": [
+        -81.289419162,
+        -124.297404107,
+        -25.5,
+        -24.710580838,
+        -59.299981495,
+        0.0
+      ],
+      "area_mm2": 5780.892437081,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_ONE_CONNECTED_open_yoke_integral_motor_face_chassis_foot_two_MR84_seats_RADIAL_SLOT_q+0_00_SERVICE_plus_minus_2p50",
+      "name": "occurrence_071",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 433,
+        "faces": 143,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 288
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 4898.28732107
+    },
+    {
+      "aabb_mm": [
+        85.25,
+        -14.75,
+        -32.5,
+        90.75,
+        -9.25,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_inner_negative_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_072",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        84.5,
+        -15.5,
+        -23.0,
+        91.5,
+        -8.5,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_inner_negative_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_073",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        84.824573519,
+        -14.75,
+        -30.4,
+        91.175426481,
+        -9.25,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_inner_negative_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_074",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        88.0,
+        -12.0,
+        -30.4,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        85.25,
+        9.25,
+        -32.5,
+        90.75,
+        14.75,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_inner_positive_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_075",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        84.5,
+        8.5,
+        -23.0,
+        91.5,
+        15.5,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_inner_positive_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_076",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        84.824573519,
+        9.25,
+        -30.4,
+        91.175426481,
+        14.75,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_inner_positive_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_077",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        88.0,
+        12.0,
+        -30.4,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        123.25,
+        -14.75,
+        -32.5,
+        128.75,
+        -9.25,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_outer_negative_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_078",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        122.5,
+        -15.5,
+        -23.0,
+        129.5,
+        -8.5,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_outer_negative_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_079",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        122.824573519,
+        -14.75,
+        -30.4,
+        129.175426481,
+        -9.25,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_outer_negative_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_080",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        126.0,
+        -12.0,
+        -30.4,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        123.25,
+        9.25,
+        -32.5,
+        128.75,
+        14.75,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_outer_positive_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_081",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        122.5,
+        8.5,
+        -23.0,
+        129.5,
+        15.5,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_outer_positive_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_082",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        122.824573519,
+        9.25,
+        -30.4,
+        129.175426481,
+        14.75,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_clamp_outer_positive_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_083",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        126.0,
+        12.0,
+        -30.4,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -36.357695155,
+        79.460235533,
+        -32.5,
+        -30.857695155,
+        84.960235533,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_inner_negative_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_084",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -37.107695155,
+        78.710235533,
+        -23.0,
+        -30.107695155,
+        85.710235533,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_inner_negative_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_085",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -36.783121635,
+        79.460235533,
+        -30.4,
+        -30.432268674,
+        84.960235533,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_inner_negative_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_086",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -33.60769515458,
+        82.210235533031,
+        -30.4,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -57.142304845,
+        67.460235533,
+        -32.5,
+        -51.642304845,
+        72.960235533,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_inner_positive_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_087",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -57.892304845,
+        66.710235533,
+        -23.0,
+        -50.892304845,
+        73.710235533,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_inner_positive_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_088",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -57.567731326,
+        67.460235533,
+        -30.4,
+        -51.216878365,
+        72.960235533,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_inner_positive_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_089",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -54.39230484541,
+        70.210235533031,
+        -30.4,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -55.357695155,
+        112.369200877,
+        -32.5,
+        -49.857695155,
+        117.869200877,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_outer_negative_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_090",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -56.107695155,
+        111.619200877,
+        -23.0,
+        -49.107695155,
+        118.619200877,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_outer_negative_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_091",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -55.783121635,
+        112.369200877,
+        -30.4,
+        -49.432268674,
+        117.869200877,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_outer_negative_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_092",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -52.60769515458,
+        115.11920087683,
+        -30.4,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -76.142304845,
+        100.369200877,
+        -32.5,
+        -70.642304845,
+        105.869200877,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_outer_positive_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_093",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -76.892304845,
+        99.619200877,
+        -23.0,
+        -69.892304845,
+        106.619200877,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_outer_positive_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_094",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -76.567731326,
+        100.369200877,
+        -30.4,
+        -70.216878365,
+        105.869200877,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_clamp_outer_positive_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_095",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -73.39230484541,
+        103.11920087683,
+        -30.4,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -57.142304845,
+        -72.960235533,
+        -32.5,
+        -51.642304845,
+        -67.460235533,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_inner_negative_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_096",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -57.892304845,
+        -73.710235533,
+        -23.0,
+        -50.892304845,
+        -66.710235533,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_inner_negative_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_097",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -57.567731326,
+        -72.960235533,
+        -30.4,
+        -51.216878365,
+        -67.460235533,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_inner_negative_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_098",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -54.39230484541,
+        -70.21023553303,
+        -30.4,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -36.357695155,
+        -84.960235533,
+        -32.5,
+        -30.857695155,
+        -79.460235533,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_inner_positive_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_099",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -37.107695155,
+        -85.710235533,
+        -23.0,
+        -30.107695155,
+        -78.710235533,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_inner_positive_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_100",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -36.783121635,
+        -84.960235533,
+        -30.4,
+        -30.432268674,
+        -79.460235533,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_inner_positive_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_101",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -33.60769515458,
+        -82.21023553303,
+        -30.4,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -76.142304845,
+        -105.869200877,
+        -32.5,
+        -70.642304845,
+        -100.369200877,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_outer_negative_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_102",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -76.892304845,
+        -106.619200877,
+        -23.0,
+        -69.892304845,
+        -99.619200877,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_outer_negative_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_103",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -76.567731326,
+        -105.869200877,
+        -30.4,
+        -70.216878365,
+        -100.369200877,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_outer_negative_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_104",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -73.39230484541,
+        -103.1192008768,
+        -30.4,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -55.357695155,
+        -117.869200877,
+        -32.5,
+        -49.857695155,
+        -112.369200877,
+        -19.5
+      ],
+      "area_mm2": 193.600647277,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_outer_positive_tangent_M3x10_screw_REFERENCE",
+      "name": "occurrence_105",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 141.960718034
+    },
+    {
+      "aabb_mm": [
+        -56.107695155,
+        -118.619200877,
+        -23.0,
+        -49.107695155,
+        -111.619200877,
+        -22.5
+      ],
+      "area_mm2": 76.90618816,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_outer_positive_tangent_D7x0p50_washer_REFERENCE",
+      "name": "occurrence_106",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 15.221016407
+    },
+    {
+      "aabb_mm": [
+        -55.783121635,
+        -117.869200877,
+        -30.4,
+        -49.432268674,
+        -112.369200877,
+        -28.0
+      ],
+      "area_mm2": 98.120678249,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_clamp_outer_positive_tangent_M3_AF5p50_nut_REFERENCE",
+      "name": "occurrence_107",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        -52.60769515458,
+        -115.1192008768,
+        -30.4,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 62.873444315
+    },
+    {
+      "aabb_mm": [
+        -1e-07,
+        -1e-07,
+        -1.5000001,
+        138.9,
+        138.9,
+        1.5000001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+      "name": "occurrence_108",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        -138.9,
+        -1e-07,
+        -1.5000001,
+        1e-07,
+        138.9,
+        1.5000001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+      "name": "occurrence_109",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        90.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        -138.9,
+        -138.9,
+        -1.5000001,
+        1e-07,
+        1e-07,
+        1.5000001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q3_65T_BARE_carrier_race",
+      "name": "occurrence_110",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        -1e-07,
+        -138.9,
+        -1.5000001,
+        138.9,
+        1e-07,
+        17.152
+      ],
+      "area_mm2": 5650.737284364,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q4_65T_BARE_carrier_race",
+      "name": "occurrence_111",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1254,
+        "faces": 420,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 836
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 5331.51107086
+    },
+    {
+      "aabb_mm": [
+        135.8,
+        -6.0,
+        -2.5,
+        138.8,
+        6.0,
+        -1.5
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_1_underside_splice",
+      "name": "occurrence_112",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        135.55,
+        -1.45,
+        -1.5,
+        138.45,
+        1.45,
+        1.5
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_1_3mm_registration_dowel",
+      "name": "occurrence_113",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        137.0,
+        0.0,
+        -1.5,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        135.5,
+        -6.215838297,
+        -3.3,
+        139.3,
+        -2.415838297,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_1_M2_screw_1_REFERENCE",
+      "name": "occurrence_114",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        135.5,
+        2.415838297,
+        -3.3,
+        139.3,
+        6.215838297,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_1_M2_screw_2_REFERENCE",
+      "name": "occurrence_115",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.0,
+        135.8,
+        -2.5,
+        6.0,
+        138.8,
+        -1.5
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_2_underside_splice",
+      "name": "occurrence_116",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        90.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -1.45,
+        135.55,
+        -1.5,
+        1.45,
+        138.45,
+        1.5
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_2_3mm_registration_dowel",
+      "name": "occurrence_117",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        0.0,
+        137.0,
+        -1.5,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        2.415838297,
+        135.5,
+        -3.3,
+        6.215838297,
+        139.3,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_2_M2_screw_1_REFERENCE",
+      "name": "occurrence_118",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.215838297,
+        135.5,
+        -3.3,
+        -2.415838297,
+        139.3,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_2_M2_screw_2_REFERENCE",
+      "name": "occurrence_119",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -138.8,
+        -6.0,
+        -2.5,
+        -135.8,
+        6.0,
+        -1.5
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_3_underside_splice",
+      "name": "occurrence_120",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -138.45,
+        -1.45,
+        -1.5,
+        -135.55,
+        1.45,
+        1.5
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_3_3mm_registration_dowel",
+      "name": "occurrence_121",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -137.0,
+        0.0,
+        -1.5,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        -139.3,
+        2.415838297,
+        -3.3,
+        -135.5,
+        6.215838297,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_3_M2_screw_1_REFERENCE",
+      "name": "occurrence_122",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -139.3,
+        -6.215838297,
+        -3.3,
+        -135.5,
+        -2.415838297,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_3_M2_screw_2_REFERENCE",
+      "name": "occurrence_123",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.0,
+        -138.8,
+        -2.5,
+        6.0,
+        -135.8,
+        -1.5
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_4_underside_splice",
+      "name": "occurrence_124",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -1.45,
+        -138.45,
+        -1.5,
+        1.45,
+        -135.55,
+        1.5
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_4_3mm_registration_dowel",
+      "name": "occurrence_125",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -0.0,
+        -137.0,
+        -1.5,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        -6.215838297,
+        -139.3,
+        -3.3,
+        -2.415838297,
+        -135.5,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_4_M2_screw_1_REFERENCE",
+      "name": "occurrence_126",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        2.415838297,
+        -139.3,
+        -3.3,
+        6.215838297,
+        -135.5,
+        -0.7
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_hour_seam_4_M2_screw_2_REFERENCE",
+      "name": "occurrence_127",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        72.45,
+        -10.15,
+        -26.45,
+        111.75,
+        10.15,
+        -6.15
+      ],
+      "area_mm2": 4015.34,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_NEMA8_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_128",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        111.75,
+        0.0,
+        -26.45,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 16195.137
+    },
+    {
+      "aabb_mm": [
+        111.75,
+        -2.0,
+        -18.3,
+        118.75,
+        2.0,
+        -14.8
+      ],
+      "area_mm2": 109.567788752,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_NEMA8_D4x7_shaft_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_129",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.5,
+        0.0,
+        -4.3,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 81.618229745
+    },
+    {
+      "aabb_mm": [
+        112.3,
+        -8.560954838,
+        -24.860954838,
+        119.5,
+        8.560954838,
+        -7.739045162
+      ],
+      "area_mm2": 770.443784392,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_horizontal_16T_miter_RIGID_q+0_00",
+      "name": "occurrence_130",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 306,
+        "faces": 106,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 204
+      },
+      "transform": [
+        0.5,
+        0.0,
+        -4.3,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 568.943064684
+    },
+    {
+      "aabb_mm": [
+        113.325043131,
+        -8.674956869,
+        -11.091585122,
+        130.674956869,
+        8.541238204,
+        -7.399999993
+      ],
+      "area_mm2": 618.303870901,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_vertical_16T_miter_RIGID_q+0_00",
+      "name": "occurrence_131",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 312,
+        "faces": 105,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 208
+      },
+      "transform": [
+        0.5,
+        0.0,
+        -4.3,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 360.327819402
+    },
+    {
+      "aabb_mm": [
+        120.0,
+        -2.0,
+        -29.3,
+        124.0,
+        1.5,
+        10.7
+      ],
+      "area_mm2": 516.16689158,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_D4x40_output_shaft_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_132",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.5,
+        0.0,
+        -4.3,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 466.389884256
+    },
+    {
+      "aabb_mm": [
+        118.0,
+        -4.0,
+        -25.3,
+        126.0,
+        4.0,
+        -22.3
+      ],
+      "area_mm2": 188.495559215,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_lower_MR84ZZ_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_133",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        122.0,
+        0.0,
+        -4.3,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 113.097335529
+    },
+    {
+      "aabb_mm": [
+        118.0,
+        -4.0,
+        -7.3,
+        126.0,
+        4.0,
+        -4.3
+      ],
+      "area_mm2": 188.495559215,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_upper_MR84ZZ_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_134",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        122.0,
+        0.0,
+        -4.3,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 113.097335529
+    },
+    {
+      "aabb_mm": [
+        119.1,
+        -2.9,
+        -4.25,
+        124.9,
+        2.9,
+        -0.7
+      ],
+      "area_mm2": 136.659280431,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_ONLY_role_height_spacer_RIGID_q+0_00",
+      "name": "occurrence_135",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 44.610615681
+    },
+    {
+      "aabb_mm": [
+        113.123743098,
+        -8.876256902,
+        -0.7000001,
+        130.876256902,
+        8.876256902,
+        1.4000001
+      ],
+      "area_mm2": 594.474540386,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_16T_output_pinion_RIGID_q+0_00",
+      "name": "occurrence_136",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 294,
+        "faces": 100,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 196
+      },
+      "transform": [
+        2.344195790806,
+        -23.80101928596,
+        0.0,
+        -0.0,
+        0.0,
+        11.249999999995
+      ],
+      "volume_mm3": 378.826546858
+    },
+    {
+      "aabb_mm": [
+        117.0,
+        -5.0,
+        -27.9500001,
+        127.0,
+        5.0,
+        -25.3499999
+      ],
+      "area_mm2": 256.694425319,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_lower_datum_split_collar_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_137",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 11,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 7
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 165.348518074
+    },
+    {
+      "aabb_mm": [
+        117.9999999,
+        -4.0000001,
+        1.4499999,
+        126.0000001,
+        4.0000001,
+        4.0500001
+      ],
+      "area_mm2": 179.014230122,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_hour_upper_safety_split_collar_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_138",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 13,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 91.887683948
+    },
+    {
+      "aabb_mm": [
+        -1e-07,
+        -1e-07,
+        4.0499999,
+        138.9,
+        138.9,
+        21.1867
+      ],
+      "area_mm2": 5589.979157774,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+      "name": "occurrence_139",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1242,
+        "faces": 417,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 828
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 5297.922769027
+    },
+    {
+      "aabb_mm": [
+        -138.9,
+        -1e-07,
+        4.0499999,
+        1e-07,
+        138.9,
+        7.0500001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+      "name": "occurrence_140",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        90.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        -138.9,
+        -138.9,
+        4.0499999,
+        1e-07,
+        1e-07,
+        7.0500001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_M1_260T_quadrant_Q3_65T_BARE_carrier_race",
+      "name": "occurrence_141",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        -1e-07,
+        -138.9,
+        4.0499999,
+        138.9,
+        1e-07,
+        7.0500001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_M1_260T_quadrant_Q4_65T_BARE_carrier_race",
+      "name": "occurrence_142",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        135.8,
+        -6.0,
+        3.05,
+        138.8,
+        6.0,
+        4.05
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_1_underside_splice",
+      "name": "occurrence_143",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        135.55,
+        -1.45,
+        4.05,
+        138.45,
+        1.45,
+        7.05
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_1_3mm_registration_dowel",
+      "name": "occurrence_144",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        137.0,
+        0.0,
+        4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        135.5,
+        -6.215838297,
+        2.25,
+        139.3,
+        -2.415838297,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_1_M2_screw_1_REFERENCE",
+      "name": "occurrence_145",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        135.5,
+        2.415838297,
+        2.25,
+        139.3,
+        6.215838297,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_1_M2_screw_2_REFERENCE",
+      "name": "occurrence_146",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.0,
+        135.8,
+        3.05,
+        6.0,
+        138.8,
+        4.05
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_2_underside_splice",
+      "name": "occurrence_147",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        90.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -1.45,
+        135.55,
+        4.05,
+        1.45,
+        138.45,
+        7.05
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_2_3mm_registration_dowel",
+      "name": "occurrence_148",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        0.0,
+        137.0,
+        4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        2.415838297,
+        135.5,
+        2.25,
+        6.215838297,
+        139.3,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_2_M2_screw_1_REFERENCE",
+      "name": "occurrence_149",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.215838297,
+        135.5,
+        2.25,
+        -2.415838297,
+        139.3,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_2_M2_screw_2_REFERENCE",
+      "name": "occurrence_150",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -138.8,
+        -6.0,
+        3.05,
+        -135.8,
+        6.0,
+        4.05
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_3_underside_splice",
+      "name": "occurrence_151",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -138.45,
+        -1.45,
+        4.05,
+        -135.55,
+        1.45,
+        7.05
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_3_3mm_registration_dowel",
+      "name": "occurrence_152",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -137.0,
+        0.0,
+        4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        -139.3,
+        2.415838297,
+        2.25,
+        -135.5,
+        6.215838297,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_3_M2_screw_1_REFERENCE",
+      "name": "occurrence_153",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -139.3,
+        -6.215838297,
+        2.25,
+        -135.5,
+        -2.415838297,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_3_M2_screw_2_REFERENCE",
+      "name": "occurrence_154",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.0,
+        -138.8,
+        3.05,
+        6.0,
+        -135.8,
+        4.05
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_4_underside_splice",
+      "name": "occurrence_155",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -1.45,
+        -138.45,
+        4.05,
+        1.45,
+        -135.55,
+        7.05
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_4_3mm_registration_dowel",
+      "name": "occurrence_156",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -0.0,
+        -137.0,
+        4.05,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        -6.215838297,
+        -139.3,
+        2.25,
+        -2.415838297,
+        -135.5,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_4_M2_screw_1_REFERENCE",
+      "name": "occurrence_157",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        2.415838297,
+        -139.3,
+        2.25,
+        6.215838297,
+        -135.5,
+        4.85
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_minute_seam_4_M2_screw_2_REFERENCE",
+      "name": "occurrence_158",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -64.665157848,
+        57.668540504,
+        -24.3,
+        -27.434842152,
+        101.853338873,
+        -4.0
+      ],
+      "area_mm2": 4015.34,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_NEMA8_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_159",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        -55.875,
+        96.778338872911,
+        -24.3,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 16195.137
+    },
+    {
+      "aabb_mm": [
+        -61.107050808,
+        95.778338873,
+        -16.15,
+        -54.142949192,
+        103.840516699,
+        -12.65
+      ],
+      "area_mm2": 109.567788752,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_NEMA8_D4x7_shaft_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_160",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -0.25,
+        0.433012701892,
+        -2.15,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 81.618229745
+    },
+    {
+      "aabb_mm": [
+        -64.782712428,
+        94.382258731,
+        -22.710954838,
+        -49.954703661,
+        105.365035752,
+        -5.589045162
+      ],
+      "area_mm2": 770.443784392,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_horizontal_16T_miter_RIGID_q+0_00",
+      "name": "occurrence_161",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 306,
+        "faces": 106,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 204
+      },
+      "transform": [
+        -0.25,
+        0.433012701892,
+        -2.15,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 568.943064684
+    },
+    {
+      "aabb_mm": [
+        -69.634304616,
+        97.020794646,
+        -8.941585122,
+        -52.365695384,
+        114.289403878,
+        -5.249999993
+      ],
+      "area_mm2": 618.303870901,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_vertical_16T_miter_RIGID_q+0_00",
+      "name": "occurrence_162",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 312,
+        "faces": 105,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 208
+      },
+      "transform": [
+        -0.25,
+        0.433012701892,
+        -2.15,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 360.327819402
+    },
+    {
+      "aabb_mm": [
+        -62.960475933,
+        103.655099262,
+        -27.15,
+        -59.0,
+        107.655099262,
+        12.85
+      ],
+      "area_mm2": 516.16689158,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_D4x40_output_shaft_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_163",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -0.25,
+        0.433012701892,
+        -2.15,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 466.389884256
+    },
+    {
+      "aabb_mm": [
+        -65.0,
+        101.655099262,
+        -23.15,
+        -57.0,
+        109.655099262,
+        -20.15
+      ],
+      "area_mm2": 188.495559215,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_lower_MR84ZZ_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_164",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -61.0,
+        105.6550992617,
+        -2.15,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 113.097335529
+    },
+    {
+      "aabb_mm": [
+        -65.0,
+        101.655099262,
+        -5.15,
+        -57.0,
+        109.655099262,
+        -2.15
+      ],
+      "area_mm2": 188.495559215,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_upper_MR84ZZ_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_165",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -61.0,
+        105.6550992617,
+        -2.15,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 113.097335529
+    },
+    {
+      "aabb_mm": [
+        -63.9,
+        102.755099262,
+        -2.1,
+        -58.1,
+        108.555099262,
+        4.85
+      ],
+      "area_mm2": 243.473430653,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_ONLY_role_height_spacer_RIGID_q+0_00",
+      "name": "occurrence_166",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 87.33627577
+    },
+    {
+      "aabb_mm": [
+        -69.994451071,
+        96.660648191,
+        4.8499999,
+        -52.005548929,
+        114.649550333,
+        6.9500001
+      ],
+      "area_mm2": 594.474540386,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_16T_output_pinion_RIGID_q+0_00",
+      "name": "occurrence_167",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 294,
+        "faces": 100,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 196
+      },
+      "transform": [
+        -176.5254757984,
+        144.87071402868,
+        0.0,
+        0.0,
+        0.0,
+        -18.749999999993
+      ],
+      "volume_mm3": 378.826546858
+    },
+    {
+      "aabb_mm": [
+        -66.0,
+        100.655099262,
+        -25.8000001,
+        -56.0,
+        110.655099262,
+        -23.1999999
+      ],
+      "area_mm2": 256.694425321,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_lower_datum_split_collar_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_168",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 11,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 7
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 165.348518073
+    },
+    {
+      "aabb_mm": [
+        -65.0000001,
+        101.655099162,
+        6.9999999,
+        -56.9999999,
+        109.655099362,
+        9.6000001
+      ],
+      "area_mm2": 179.014230124,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_minute_upper_safety_split_collar_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_169",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 13,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        120.000000000013
+      ],
+      "volume_mm3": 91.887683946
+    },
+    {
+      "aabb_mm": [
+        -1e-07,
+        -1e-07,
+        9.5999999,
+        138.9,
+        138.9,
+        12.6000001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+      "name": "occurrence_170",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        -138.9,
+        -1e-07,
+        9.5999999,
+        1e-07,
+        138.9,
+        24.2514
+      ],
+      "area_mm2": 5521.350874712,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+      "name": "occurrence_171",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1224,
+        "faces": 411,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 816
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 5263.031360486
+    },
+    {
+      "aabb_mm": [
+        -138.9,
+        -138.9,
+        9.5999999,
+        1e-07,
+        1e-07,
+        12.6000001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_M1_260T_quadrant_Q3_65T_BARE_carrier_race",
+      "name": "occurrence_172",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        -1e-07,
+        -138.9,
+        9.5999999,
+        138.9,
+        1e-07,
+        12.6000001
+      ],
+      "area_mm2": 5465.424154709,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_M1_260T_quadrant_Q4_65T_BARE_carrier_race",
+      "name": "occurrence_173",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 1212,
+        "faces": 406,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 808
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "volume_mm3": 5246.253344489
+    },
+    {
+      "aabb_mm": [
+        135.8,
+        -6.0,
+        8.6,
+        138.8,
+        6.0,
+        9.6
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_1_underside_splice",
+      "name": "occurrence_174",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        135.55,
+        -1.45,
+        9.6,
+        138.45,
+        1.45,
+        12.6
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_1_3mm_registration_dowel",
+      "name": "occurrence_175",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        137.0,
+        0.0,
+        9.6,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        135.5,
+        -6.215838297,
+        7.8,
+        139.3,
+        -2.415838297,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_1_M2_screw_1_REFERENCE",
+      "name": "occurrence_176",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        135.5,
+        2.415838297,
+        7.8,
+        139.3,
+        6.215838297,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_1_M2_screw_2_REFERENCE",
+      "name": "occurrence_177",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.0,
+        135.8,
+        8.6,
+        6.0,
+        138.8,
+        9.6
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_2_underside_splice",
+      "name": "occurrence_178",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        90.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -1.45,
+        135.55,
+        9.6,
+        1.45,
+        138.45,
+        12.6
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_2_3mm_registration_dowel",
+      "name": "occurrence_179",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        0.0,
+        137.0,
+        9.6,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        2.415838297,
+        135.5,
+        7.8,
+        6.215838297,
+        139.3,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_2_M2_screw_1_REFERENCE",
+      "name": "occurrence_180",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.215838297,
+        135.5,
+        7.8,
+        -2.415838297,
+        139.3,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_2_M2_screw_2_REFERENCE",
+      "name": "occurrence_181",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -138.8,
+        -6.0,
+        8.6,
+        -135.8,
+        6.0,
+        9.6
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_3_underside_splice",
+      "name": "occurrence_182",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        180.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -138.45,
+        -1.45,
+        9.6,
+        -135.55,
+        1.45,
+        12.6
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_3_3mm_registration_dowel",
+      "name": "occurrence_183",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -137.0,
+        0.0,
+        9.6,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        -139.3,
+        2.415838297,
+        7.8,
+        -135.5,
+        6.215838297,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_3_M2_screw_1_REFERENCE",
+      "name": "occurrence_184",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -139.3,
+        -6.215838297,
+        7.8,
+        -135.5,
+        -2.415838297,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_3_M2_screw_2_REFERENCE",
+      "name": "occurrence_185",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -6.0,
+        -138.8,
+        8.6,
+        6.0,
+        -135.8,
+        9.6
+      ],
+      "area_mm2": 100.617699232,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_4_underside_splice",
+      "name": "occurrence_186",
+      "owner_group": "role_rings",
+      "topology": {
+        "edges": 18,
+        "faces": 8,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 12
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "volume_mm3": 28.397345778
+    },
+    {
+      "aabb_mm": [
+        -1.45,
+        -138.45,
+        9.6,
+        1.45,
+        -135.55,
+        12.6
+      ],
+      "area_mm2": 40.542253195,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_4_3mm_registration_dowel",
+      "name": "occurrence_187",
+      "owner_group": "stationary_joints",
+      "topology": {
+        "edges": 3,
+        "faces": 3,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 2
+      },
+      "transform": [
+        -0.0,
+        -137.0,
+        9.6,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 19.815595663
+    },
+    {
+      "aabb_mm": [
+        -6.215838297,
+        -139.3,
+        7.8,
+        -2.415838297,
+        -135.5,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_4_M2_screw_1_REFERENCE",
+      "name": "occurrence_188",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        2.415838297,
+        -139.3,
+        7.8,
+        6.215838297,
+        -135.5,
+        10.4
+      ],
+      "area_mm2": 41.280527468,
+      "classification": "protected_exact",
+      "label": "p3_v3_r2_second_seam_4_M2_screw_2_REFERENCE",
+      "name": "occurrence_189",
+      "owner_group": "hardware",
+      "topology": {
+        "edges": 6,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 12.692034321
+    },
+    {
+      "aabb_mm": [
+        -64.665157848,
+        -101.853338873,
+        -22.15,
+        -27.434842152,
+        -57.668540504,
+        -1.85
+      ],
+      "area_mm2": 4015.34,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_NEMA8_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_190",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 12,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        -55.875,
+        -96.77833887291,
+        -22.15,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 16195.137
+    },
+    {
+      "aabb_mm": [
+        -61.107050808,
+        -103.840516699,
+        -14.0,
+        -54.142949192,
+        -95.778338873,
+        -10.5
+      ],
+      "area_mm2": 109.567788752,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_NEMA8_D4x7_shaft_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_191",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -0.25,
+        -0.433012701892,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 81.618229745
+    },
+    {
+      "aabb_mm": [
+        -64.782712428,
+        -105.365035752,
+        -20.560954838,
+        -49.954703661,
+        -94.382258731,
+        -3.439045162
+      ],
+      "area_mm2": 770.443784392,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_horizontal_16T_miter_RIGID_q+0_00",
+      "name": "occurrence_192",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 306,
+        "faces": 106,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 204
+      },
+      "transform": [
+        -0.25,
+        -0.433012701892,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 568.943064684
+    },
+    {
+      "aabb_mm": [
+        -69.634304616,
+        -114.289403878,
+        -6.791585122,
+        -52.365695384,
+        -97.020794646,
+        -3.099999993
+      ],
+      "area_mm2": 618.303870901,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_vertical_16T_miter_RIGID_q+0_00",
+      "name": "occurrence_193",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 312,
+        "faces": 105,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 208
+      },
+      "transform": [
+        -0.25,
+        -0.433012701892,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 360.327819402
+    },
+    {
+      "aabb_mm": [
+        -63.0,
+        -107.655099262,
+        -25.0,
+        -59.039524067,
+        -103.655099262,
+        15.0
+      ],
+      "area_mm2": 516.16689158,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_D4x40_output_shaft_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_194",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -0.25,
+        -0.433012701892,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 466.389884256
+    },
+    {
+      "aabb_mm": [
+        -65.0,
+        -109.655099262,
+        -21.0,
+        -57.0,
+        -101.655099262,
+        -18.0
+      ],
+      "area_mm2": 188.495559215,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_lower_MR84ZZ_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_195",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -61.0,
+        -105.6550992617,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 113.097335529
+    },
+    {
+      "aabb_mm": [
+        -65.0,
+        -109.655099262,
+        -3.0,
+        -57.0,
+        -101.655099262,
+        0.0
+      ],
+      "area_mm2": 188.495559215,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_upper_MR84ZZ_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_196",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        -61.0,
+        -105.6550992617,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 113.097335529
+    },
+    {
+      "aabb_mm": [
+        -63.9,
+        -108.555099262,
+        0.05,
+        -58.1,
+        -102.755099262,
+        10.4
+      ],
+      "area_mm2": 350.287580875,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_ONLY_role_height_spacer_RIGID_q+0_00",
+      "name": "occurrence_197",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 130.061935859
+    },
+    {
+      "aabb_mm": [
+        -69.994451071,
+        -114.649550333,
+        10.3999999,
+        -52.005548929,
+        -96.660648191,
+        12.5000001
+      ],
+      "area_mm2": 594.474540386,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_16T_output_pinion_RIGID_q+0_00",
+      "name": "occurrence_198",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 294,
+        "faces": 100,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 196
+      },
+      "transform": [
+        -141.4401894422,
+        -13.93064274926,
+        0.0,
+        0.0,
+        0.0,
+        -48.750000000004
+      ],
+      "volume_mm3": 378.826546858
+    },
+    {
+      "aabb_mm": [
+        -66.0,
+        -110.655099262,
+        -23.6500001,
+        -56.0,
+        -100.655099262,
+        -21.0499999
+      ],
+      "area_mm2": 256.694425321,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_lower_datum_split_collar_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_199",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 11,
+        "faces": 6,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 7
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 165.348518073
+    },
+    {
+      "aabb_mm": [
+        -65.0000001,
+        -109.655099362,
+        12.5499999,
+        -56.9999999,
+        -101.655099162,
+        15.1500001
+      ],
+      "area_mm2": 179.014230122,
+      "classification": "protected_exact",
+      "label": "p3_v3_direct_race_second_upper_safety_split_collar_REFERENCE_RIGID_q+0_00",
+      "name": "occurrence_200",
+      "owner_group": "motor_stations",
+      "topology": {
+        "edges": 13,
+        "faces": 5,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 8
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -120.000000000013
+      ],
+      "volume_mm3": 91.887683948
+    },
+    {
+      "aabb_mm": [
+        58.75,
+        104.686188175,
+        19.7,
+        66.75,
+        112.686188175,
+        19.85
+      ],
+      "area_mm2": 81.053090463,
+      "classification": "new_authorized",
+      "label": "p3_v3_r1_i1_tower_1_D8x0p15_upper_washer",
+      "name": "i1_new_tower_1_upper_washer",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 5.654866776
+    },
+    {
+      "aabb_mm": [
+        -129.5,
+        -4.0,
+        19.7,
+        -121.5,
+        4.0,
+        19.85
+      ],
+      "area_mm2": 81.053090463,
+      "classification": "new_authorized",
+      "label": "p3_v3_r1_i1_tower_2_D8x0p15_upper_washer",
+      "name": "i1_new_tower_2_upper_washer",
+      "owner_group": "fixed_tower_shims",
+      "topology": {
+        "edges": 6,
+        "faces": 4,
+        "shells": 1,
+        "solids": 1,
+        "vertices": 4
+      },
+      "transform": [
+        0.0,
+        0.0,
+        0.0,
+        -0.0,
+        0.0,
+        -0.0
+      ],
+      "volume_mm3": 5.654866776
+    }
+  ],
+  "imported_assembled_max_z_mm": 24.2514,
+  "imported_step_occurrence_count": 203,
+  "locked_exterior_max_z_mm": 24.2514,
+  "locked_step": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818/p3_v3_direct_gear_race_assembled.step",
+  "locked_step_sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7",
+  "phase": "Phase-2A I1 fixed-tower axle retention only",
+  "phase1_step": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_locked_parametric_repair_r1/p3_v3_locked_parametric_repair_r1_zero_delta_wip.step",
+  "phase1_step_sha256": "96b29312fb681cfac2ad69bf43e8463aeacada6e989dcd5e1c4c427b8e388edd",
+  "protected_occurrence_count": 185,
+  "protected_symmetric_difference": {
+    "checked_occurrence_count": 185,
+    "failures": [],
+    "maximum_a_minus_b_mm3": 0.0,
+    "maximum_b_minus_a_mm3": 0.0
+  },
+  "source_assembled_max_z_mm": 24.2514
+}

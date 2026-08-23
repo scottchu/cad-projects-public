@@ -1,0 +1,78 @@
+{
+  "namespace": "p3_v3_mvp_electronics_b6_r0_universal_backbone",
+  "revision": "B6-R0",
+  "status": "frozen_for_independent_review",
+  "frozen_at_utc": "2026-08-20T11:04:23Z",
+  "scope": {
+    "printed_part": "one removable PETG universal electronics backbone",
+    "printed_solid_count": 1,
+    "mount_interface": "eight existing R4 seam axes",
+    "board_specific_hole_patterns": false,
+    "electronics_geometry": "replaceable envelopes and non-print witnesses only",
+    "next_revision_included": false
+  },
+  "validation": {
+    "focused_pytest": "8 passed",
+    "predecessor_hashes_unchanged": true,
+    "backbone_valid_positive_solids": 1,
+    "backbone_bbox_with_5mm_brim_mm_max": 259.0307,
+    "seam_axes_count": 8,
+    "seam_axis_max_delta_mm": 0.0,
+    "m3_engagement_mm": 2.4,
+    "m3_tip_clearance_above_underside_mm": 0.5,
+    "universal_slots_count": 14,
+    "side_load_nut_channels_count": 14,
+    "minimum_board_gap_mm": 5.0,
+    "stationary_and_sequential_insert_poses": 21,
+    "stationary_and_sequential_insert_max_intersection_mm3": 0.0,
+    "moving_ring_q_sweep": [-2.5, -0.35, 0.0, 0.1, 2.5],
+    "moving_ring_q_sweep_pose_count": 15,
+    "moving_ring_q_sweep_max_intersection_mm3": 0.0,
+    "moving_ring_q_sweep_min_clearance_mm": 0.2,
+    "full_ring_rotation_min_clearance_mm": {
+      "hour": 3.8,
+      "minute": 10.5,
+      "second": 17.2
+    },
+    "assembled_step_occurrences": 228,
+    "assembled_step_failures": 0,
+    "exploded_step_occurrences": 98,
+    "exploded_step_failures": 0,
+    "assembly_order_steps_present": 11,
+    "assembly_order_strictly_increasing": true,
+    "b4_moving_rings_last": true,
+    "model_only_3mf_objects": 1,
+    "model_only_3mf_build_items": 1,
+    "model_only_3mf_manifold_oriented": true,
+    "source_export_parity_max_bounds_error_mm": 6.906475391588174e-12,
+    "source_export_parity_max_volume_error_mm3": 4.933099262416363e-9,
+    "step_validation_note": "Assembly STEP validation used skip-self-intersection because of inherited assembly cost; actual B6 validity and collision gates were run separately."
+  },
+  "predecessor_sha256": {
+    "R4": "9cae6479cca23c38bdfff1bd28e4a7f30b422abede6f28fb6f1ccf4f86f28c3a",
+    "B1": "675de24de9afa6afbcd7a6ba6c0079a1f60e72507a6e4cbe803f732d1c55e2df",
+    "B2_R3": "bf0bbf3d320c395c9530a39a2de9ccd41c21abc876f40507c70cbc40c6cccb72",
+    "B3_R1": "9b384da3c608c69e205b5221a8495098fc775a7cc8e20772c1032790db846a71",
+    "B4_R2": "7b2087184ca58ca128f76b8d35465ed0e5e1e7c8c97536d3ee2897705361f02c",
+    "B5A": "b69715b9a867667c79a3f19587820758a95fd8c37878d027d7f4a9644617704d"
+  },
+  "artifact_sha256": {
+    "p3_v3_mvp_electronics_b6_r0_universal_backbone_assembled.step": "cd46c1c8809b2b339bd8b9eeab4caaccbfb96c4c66de4535be4117cb2b819c33",
+    "p3_v3_mvp_electronics_b6_r0_universal_backbone_assembly_order_exploded.step": "650160eeda36cf7a9ef92deaa6804e941326b69889e09e4c45ceb8ffd13b76ea",
+    "p3_v3_mvp_electronics_b6_r0_universal_backbone_one_backbone_model_only.3mf": "167b3f43e76e562b885b10fb7e11c4345a33a9ca76d80c5b5a23b8b2f106c6b2",
+    "README.md": "009b7b517fcec50de1fe822c4e89a4ed9b037e8940ff461b68fbf57dfe875796",
+    "STEP_PARTS_SEARCH.md": "444e9aabf3f5190cf7f0c94a11f93b1d264945696a5f0702dab5f136f8cea536",
+    "review_snapshots/assembled_b6_focus_iso_20260820T105702Z.png": "50de3f5d036faa3b0f9a18ad4ce715974debc65f766ec7e4c6d5c98bc7d35ee9",
+    "review_snapshots/assembled_b6_focus_top_20260820T105702Z.png": "e0e5d48c2298921a6e7d347707865d3ed43225bed230bd766001c6bbc84fdd47",
+    "review_snapshots/exploded_assembly_order_iso_20260820T105702Z.png": "f9e47800048f1d21322b9b2d6602f70691eb5ee5b1c5a996f4c81195d2ed31f8"
+  },
+  "physical_proof_remaining": [
+    "printed seam-axis fit and M3 nut insertion",
+    "actual electronics dimensions and adapter fit",
+    "PETG stiffness and long-term creep",
+    "motor-driver and LED-driver thermal behavior",
+    "Wi-Fi performance near the installed structure",
+    "cable bend, strain relief, and service-loop behavior",
+    "powered motion and full assembly usability"
+  ]
+}

@@ -1,0 +1,11 @@
+initiative: kage-low-z-exploration
+status: design_planning
+active_phase: phase-01-low-z-concepts
+locked_baseline: models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818
+experimental_slug: p3_v3_exp_low_z_drive_comparison_r0
+roles:
+  orchestrator: root
+  planner: low_z_planner
+  generator: pending
+  evaluator: pending
+

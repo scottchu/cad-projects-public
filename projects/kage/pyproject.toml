@@ -1,0 +1,39 @@
+[project]
+name = "kage"
+version = "0.1.0"
+description = "Kage shadow-clock simulator and clean-restart CAD provenance"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "build123d>=0.10.0",
+  "py-gearworks",
+  "trimesh>=4.9.0",
+]
+
+[project.scripts]
+kage-clock = "kage_cli:main"
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = [
+  "kage_cli",
+  "optical_spec",
+  "p3_v3_mvp_base_q4_r1_physical_contract",
+  "p3_v3_mvp_base_q4_r1_spec",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]
+
+[tool.uv.sources]
+py-gearworks = { git = "https://github.com/GarryBGoode/py_gearworks.git", rev = "2fc2a13d82a9997a65f30c870498f0bb3be62318" }

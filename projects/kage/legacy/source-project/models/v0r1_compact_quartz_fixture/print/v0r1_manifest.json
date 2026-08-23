@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "review_status": "accepted_for_physical_test",
+  "independent_review": {
+    "verdict": "ACCEPT",
+    "scope": "V0R1 geometry, motion, artifact integrity, print package, and implementation evidence",
+    "note": "Accepted for physical optics and fit testing; real quartz fit, LED heat, friction, wear, runout, and shadow readability remain physical gates."
+  },
+  "implementation_may_self_approve": false,
+  "units": "millimeter",
+  "printable_part_count": 4,
+  "printable_parts": [
+    "fake_standard_quartz_body",
+    "hour_carrier_hand",
+    "minute_carrier_hand",
+    "second_carrier_hand"
+  ],
+  "primary_step": {
+    "assembled": {
+      "path": "models/v0r1_compact_quartz_fixture/v0r1_assembled.step",
+      "sha256": "a11c2f01c2c0c80a0abcd50902216c6d63acf1a9bd61fe460e1ace9d8ec8a678",
+      "bbox_mm": [
+        80.6,
+        80.6,
+        43.846153846
+      ],
+      "volume_mm3": 54041.23930455291,
+      "solid_count": 4
+    },
+    "exploded": {
+      "path": "models/v0r1_compact_quartz_fixture/v0r1_exploded.step",
+      "sha256": "7442d87ea3c1f9a812d82aee853ff3d591b3e881a90436c7d546f8a82bb67555",
+      "bbox_mm": [
+        80.6,
+        80.6,
+        59.882352941
+      ],
+      "volume_mm3": 54041.23930455291,
+      "solid_count": 4
+    }
+  },
+  "parts": {
+    "fake_standard_quartz_body": {
+      "step": {
+        "path": "models/v0r1_compact_quartz_fixture/fake_standard_quartz_body.step",
+        "sha256": "aacfc9c3361173509e98683d175efcd41a8319fc8ed791ff7a4e2e34c31ca595",
+        "bbox_mm": [
+          56.0,
+          56.7,
+          33.200000000000074
+        ],
+        "volume_mm3": 51594.60805826797,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r1_compact_quartz_fixture/print/fake_standard_quartz_body.stl",
+        "sha256": "86b9f120bc3880c356d0df3e19ff999ec087b75f866b1401040a8304cdb7ef9d",
+        "bbox_mm": [
+          56.0,
+          56.7,
+          33.199999999999996
+        ],
+        "volume_mm3": 51594.608058267826,
+        "solid_count": 1
+      }
+    },
+    "hour_carrier_hand": {
+      "step": {
+        "path": "models/v0r1_compact_quartz_fixture/hour_carrier_hand.step",
+        "sha256": "c6a1ecbe8086bd34c7d316b64d2d811c0870602d1b67aef58af6bf99b8881f3e",
+        "bbox_mm": [
+          61.6,
+          61.6,
+          12.082352941
+        ],
+        "volume_mm3": 688.3550199623677,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r1_compact_quartz_fixture/print/hour_carrier_hand.stl",
+        "sha256": "d958727c03a0c89ae3dd57e8a535e12b22c0bb7599dd75cce38c62f2e2fecc53",
+        "bbox_mm": [
+          61.599999999999994,
+          61.6,
+          12.082352941
+        ],
+        "volume_mm3": 688.3550199622837,
+        "solid_count": 1
+      }
+    },
+    "minute_carrier_hand": {
+      "step": {
+        "path": "models/v0r1_compact_quartz_fixture/minute_carrier_hand.step",
+        "sha256": "06a1bbd9d7710622448ee6398d7c7728c9acba4130494da70acdd251563e638b",
+        "bbox_mm": [
+          71.1,
+          71.1,
+          17.521969697000003
+        ],
+        "volume_mm3": 812.4055027540612,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r1_compact_quartz_fixture/print/minute_carrier_hand.stl",
+        "sha256": "1dd4b1076b42650b4173f3c5715234d8622fc2779ad2a270b550b9cd8e3822d0",
+        "bbox_mm": [
+          71.10000000000001,
+          71.1,
+          17.521969697000003
+        ],
+        "volume_mm3": 812.405502754057,
+        "solid_count": 1
+      }
+    },
+    "second_carrier_hand": {
+      "step": {
+        "path": "models/v0r1_compact_quartz_fixture/second_carrier_hand.step",
+        "sha256": "1e788a52bb468208802fca05be80821bdcdb6b7390e91ad811dd10d4787032e2",
+        "bbox_mm": [
+          80.6,
+          80.6,
+          21.962820513
+        ],
+        "volume_mm3": 945.8707235685052,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r1_compact_quartz_fixture/print/second_carrier_hand.stl",
+        "sha256": "4ce4df891b4e39c70b29eb191f59d9260f21195534223b6d4e59996f4ed20055",
+        "bbox_mm": [
+          80.60000000000002,
+          80.6,
+          21.962820513
+        ],
+        "volume_mm3": 945.8707235681052,
+        "solid_count": 1
+      }
+    }
+  },
+  "three_mf": {
+    "path": "models/v0r1_compact_quartz_fixture/print/v0r1_four_part_compact_test.3mf",
+    "sha256": "325d3a2730658b7788fd49df6905012117c0f13b98de0f104ee711a339da9458",
+    "object_count": 4,
+    "object_names": [
+      "fake_standard_quartz_body",
+      "hour_carrier_hand",
+      "minute_carrier_hand",
+      "second_carrier_hand"
+    ]
+  },
+  "snapshots": [
+    {
+      "path": "models/v0r1_compact_quartz_fixture/snapshots/v0r1_assembled_iso_20260812T015030Z.png",
+      "sha256": "6ad30a0c741f51241f7678fb8f266efc1e785c12ba60a78eccf6abeee205c67e"
+    },
+    {
+      "path": "models/v0r1_compact_quartz_fixture/snapshots/v0r1_assembled_opposite_20260812T015033Z.png",
+      "sha256": "e9e02e6de35c6c924093d7d3c0046acbfc8be9fc949c8b730beffd4503c0d84b"
+    },
+    {
+      "path": "models/v0r1_compact_quartz_fixture/snapshots/v0r1_assembled_side_20260812T015035Z.png",
+      "sha256": "bd69c419478b87ef40e366f9692cabb4a51e6d72f9a6fce9e0e541486a7193f6"
+    },
+    {
+      "path": "models/v0r1_compact_quartz_fixture/snapshots/v0r1_assembled_top_20260812T015034Z.png",
+      "sha256": "4c570a0402ac75ad15af0ccd3d2a8151b50a6f5fafc56458dd791dc8e2d5661d"
+    },
+    {
+      "path": "models/v0r1_compact_quartz_fixture/snapshots/v0r1_exploded_iso_20260812T015037Z.png",
+      "sha256": "9b970ebda7c03fd0ca844fa672d96a2aeb8eab2b1ee8af931217d99abba774d5"
+    }
+  ],
+  "implementation_validation": {
+    "source_geometry_motion_tests": {
+      "command": "UV_CACHE_DIR=.uv-cache uv run pytest tests/test_v0r1_compact_quartz_fixture.py -q -rA",
+      "passed": 6,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "artifact_tests": {
+      "command": "UV_CACHE_DIR=.uv-cache uv run pytest tests/test_v0r1_compact_quartz_fixture_artifacts.py -q -rA",
+      "passed": 3,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "snapmaker_orca_load": {
+      "binary": "/Applications/Snapmaker Orca.app/Contents/MacOS/Snapmaker_Orca",
+      "command": "Snapmaker_Orca --datadir <temporary-directory> --info models/v0r1_compact_quartz_fixture/print/v0r1_four_part_compact_test.3mf",
+      "exit_code": 0,
+      "reported_component_records": 4,
+      "all_reported_manifold": true,
+      "temporary_datadir": true,
+      "nonfatal_diagnostic": "calc_exclude_triangles:Unable to create exclude triangles"
+    },
+    "persistent_server_started": false
+  },
+  "frozen_spec": {
+    "source_z": 40.0,
+    "representative_body": [
+      56.0,
+      56.7,
+      16.0
+    ],
+    "body_corner_radius": 3.0,
+    "arbor_global_top": 17.2,
+    "carrier_radii": [
+      30.0,
+      34.75,
+      39.5
+    ],
+    "ring_section": [
+      1.6,
+      1.2
+    ],
+    "fin_section": [
+      1.6,
+      2.4
+    ],
+    "carrier_z": {
+      "hour": [
+        13.8,
+        15.0,
+        25.882352941
+      ],
+      "minute": [
+        9.841666667,
+        11.041666667,
+        27.363636364
+      ],
+      "second": [
+        5.8833333329999995,
+        7.083333333,
+        27.846153846
+      ]
+    },
+    "shadow_targets": {
+      "hour": [
+        48.0,
+        85.0
+      ],
+      "minute": [
+        48.0,
+        110.0
+      ],
+      "second": [
+        48.0,
+        130.0
+      ]
+    },
+    "required_led_half_angle_degrees": 72.89727103094764
+  },
+  "physical_test_only": [
+    "carrier fit and free rotation",
+    "friction and wear",
+    "axial retention",
+    "runout and wobble",
+    "LED heat and electrical safety",
+    "real shadow sharpness and readability"
+  ],
+  "notes": [
+    "Manual optics proof with a representative quartz envelope; no purchased movement fit is certified.",
+    "Do not install on a real quartz movement until shaft, torque, mass, and interface measurements are verified.",
+    "Independent artifact review accepted V0R1 for physical testing; physical behavior is not certified by CAD review."
+  ]
+}

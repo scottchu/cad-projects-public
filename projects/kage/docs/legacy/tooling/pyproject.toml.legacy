@@ -1,0 +1,50 @@
+[project]
+name = "japandi-shadow-clock-simulator"
+version = "0.1.0"
+description = "Validation contract for the dependency-free Kage shadow-clock simulator"
+requires-python = ">=3.12"
+dependencies = [
+  "build123d>=0.10.0",
+  "py-gearworks",
+  "trimesh>=4.9.0",
+]
+
+[project.scripts]
+kage-clock = "kage_cli:main"
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = [
+  "kage_cli",
+  "optical_spec",
+  "p0_optics_fixture_spec",
+  "p0_optics_fixture_geometry",
+  "p0_optics_fixture_export",
+  "v0_upright_fin_fixture_spec",
+  "v0_upright_fin_fixture_geometry",
+  "v0_upright_fin_fixture_export",
+  "v0r1_compact_quartz_fixture_spec",
+  "v0r1_compact_quartz_fixture_geometry",
+  "v0r1_compact_quartz_fixture_export",
+  "p1_adjustable_led_cartridge_spec",
+  "p1_adjustable_led_cartridge_geometry",
+  "p1_adjustable_led_cartridge_export",
+  "p3_v3_mvp_base_q4_r1_spec",
+  "p3_v3_mvp_base_q4_r1_physical_contract",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]
+
+[tool.uv.sources]
+py-gearworks = { git = "https://github.com/GarryBGoode/py_gearworks.git", rev = "2fc2a13d82a9997a65f30c870498f0bb3be62318" }

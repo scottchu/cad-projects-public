@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#efe9de">
+  <title>Kage — sculptural shadow clock</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="sim-shell">
+    <section class="workspace">
+      <section class="viewer" id="heroVisual" aria-labelledby="viewTitle">
+        <canvas id="heroCanvas3d" aria-label="Interactive three-dimensional Kage sculptural shadow clock"></canvas>
+        <canvas id="heroCanvas2d" class="is-hidden" aria-label="Two-dimensional Kage clock projection"></canvas>
+
+        <header class="viewer-header">
+          <div class="brand-lockup"><span class="brand-mark">K</span><div><b>KAGE</b><small>light · object · time</small></div></div>
+          <div class="viewer-actions">
+            <div class="renderer-switch renderer-overlay" role="group" aria-label="Simulation renderer">
+              <button id="renderer3dButton" class="is-active" type="button" aria-pressed="true">3D</button>
+              <button id="renderer2dButton" type="button" aria-pressed="false">2D</button>
+            </div>
+          </div>
+        </header>
+
+        <div class="mode-label"><span id="viewTitle">STACKED MOTOR ASSEMBLY</span><small id="viewDescription">Three 300 mm geared carriers: hour bottom, minute middle, second top.</small></div>
+
+        <aside class="optical-inset is-collapsed" id="opticalInset" aria-label="Live optical side section">
+          <div class="inset-heading"><span>LIVE OPTICAL SECTION</span><b id="insetScale">LED 40 mm</b><button id="collapseInsetButton" type="button" aria-expanded="false" aria-controls="sectionCanvas">+</button></div>
+          <canvas id="sectionCanvas" width="420" height="240"></canvas>
+        </aside>
+
+        <div class="shadow-readout" id="shadowReadout">H 162–250 · M 177–300 · S 197–350 mm</div>
+        <div class="material-legend" aria-label="Upright fin profile legend"><span class="hour-key">H</span><span class="minute-key">M</span><span class="second-key">S</span></div>
+      </section>
+
+      <aside class="controls" aria-label="Simulation controls">
+        <div class="control-heading">
+          <div><span class="eyebrow">KAGE / OBJECT 01</span><h1>Shadow clock</h1><small>Source → wall <b id="sourceReadout">40.0 mm</b></small></div>
+          <button id="resetButton" type="button">Reset</button>
+        </div>
+
+        <section class="primary-controls" aria-label="Primary clock controls">
+          <div class="section-kicker">Time</div>
+          <div class="view-toolbar time-source" role="group" aria-label="Time source">
+            <button type="button" data-time-source="manual" class="is-active" aria-pressed="true">Manual</button>
+            <button type="button" data-time-source="realtime" aria-pressed="false">Real time</button>
+          </div>
+          <div class="time-grid">
+            <label><span>Hour</span><input id="manualHour" type="number" min="0" max="23" value="10"></label>
+            <label><span>Minute</span><input id="manualMinute" type="number" min="0" max="59" value="10"></label>
+            <label><span>Second</span><input id="manualSecond" type="number" min="0" max="59" value="35"></label>
+          </div>
+
+          <div class="section-kicker">View</div>
+          <div class="view-toolbar camera-toolbar" id="threeCameraToolbar" role="group" aria-label="3D inspection camera">
+            <button type="button" data-camera-view="assembly" class="is-active" aria-pressed="true">Assembly / cutaway</button>
+            <button type="button" data-camera-view="wall" aria-pressed="false">Wall shadow</button>
+            <button type="button" data-camera-view="section" aria-pressed="false">Side section</button>
+            <button type="button" data-camera-view="orbital" aria-pressed="false">Orbital close-up</button>
+            <button type="button" id="reset3dButton">Reset view</button>
+          </div>
+        </section>
+
+        <details class="control-section" open><summary>Design layers</summary><div class="control-group">
+          <p class="control-note">One-shot visibility actions. They never change dimensions or time.</p>
+          <div class="preset-actions" role="group" aria-label="Visibility preset actions">
+            <button type="button" data-preset="structure">Structure</button>
+            <button type="button" data-preset="mechanism">Mechanism</button>
+            <button type="button" data-preset="optics">Optics</button>
+          </div>
+          <select id="presetSelect" class="visually-hidden" aria-label="Preset action"><option value="">Choose…</option><option value="structure">Structure</option><option value="mechanism">Mechanism</option><option value="optics">Optics</option></select>
+          <div class="view-toolbar arrangement-toolbar" role="group" aria-label="Stack arrangement">
+            <button type="button" data-arrangement="assembled" class="is-active" aria-pressed="true">Assembled</button>
+            <button type="button" data-arrangement="exploded" aria-pressed="false">Exploded</button>
+          </div>
+        </div></details>
+
+        <details class="control-section"><summary>Components</summary><div class="control-group visibility-grid">
+          <label class="toggle"><input id="toggle-showQuartz" data-visibility="showQuartz" type="checkbox"><span>Legacy center keepout</span></label>
+          <label class="toggle"><input id="toggle-showShell" data-visibility="showShell" type="checkbox" checked><span>Sculptural body</span></label>
+          <label class="toggle"><input id="toggle-showPhysicalMask" data-visibility="showPhysicalMask" type="checkbox"><span>Physical mask</span></label>
+          <label class="toggle"><input id="toggle-showCarriers" data-visibility="showCarriers" type="checkbox"><span>Orbital carriers + fins</span></label>
+          <label class="toggle"><input id="toggle-showSourceHardware" data-visibility="showSourceHardware" type="checkbox"><span>LED hardware</span></label>
+          <label class="toggle"><input id="toggle-showGlareCap" data-visibility="showGlareCap" type="checkbox" checked><span>Charcoal center cap</span></label>
+          <label class="toggle"><input id="toggle-showProjectionRays" data-visibility="showProjectionRays" type="checkbox"><span>Projection rays</span></label>
+          <label class="toggle"><input id="toggle-showHandShadows" data-visibility="showHandShadows" type="checkbox" checked><span>Hand shadows</span></label>
+          <label class="toggle"><input id="toggle-showMaskShadow" data-visibility="showMaskShadow" type="checkbox" checked><span>Mask shadow</span></label>
+          <label class="toggle"><input id="toggle-showWallHalo" data-visibility="showWallHalo" type="checkbox" checked><span>Warm wall halo</span></label>
+          <label class="toggle"><input id="toggle-lightEnabled" data-visibility="lightEnabled" type="checkbox" checked><span>LED emission</span></label>
+        </div></details>
+
+        <details class="control-section"><summary>Light & projection</summary><div class="control-group">
+          <div class="view-toolbar optical-mode-toolbar" role="group" aria-label="Optical calculation mode">
+            <button type="button" data-optical-mode="fixedHardware" class="is-active" aria-pressed="true">Fixed hardware</button>
+            <button type="button" data-optical-mode="solveTargets" aria-pressed="false">Solve targets</button>
+          </div>
+          <p class="control-note">Fixed hardware moves the LED and shows the real projection. Solve targets is a design calculator that re-sizes the fins.</p>
+          <div id="opticsControls"></div>
+        </div></details>
+        <details class="control-section"><summary>Hand geometry</summary><div class="control-group" id="finControls"></div></details>
+        <details class="control-section"><summary>Body geometry</summary><div class="control-group" id="bodyControls"></div></details>
+        <details class="control-section engineering"><summary>Engineering readout</summary><div class="control-group">
+          <div id="threeStatus" class="status" role="status" aria-live="polite">Loading local Three.js…</div>
+          <section class="derived" aria-live="polite">
+            <div><span>Mask</span><b id="maskReadout">r50 wall shadow</b></div>
+            <div><span>Ring gap</span><b id="pitchReadout">Ring axial gap: 0.40 mm</b></div>
+            <div><span>Fin radii H/M/S</span><b id="radiiReadout">138.1 / 136.5 / 134.9 mm</b></div>
+            <div><span>LED → nearest fin</span><b id="sourceGapReadout">15.4 mm</b></div>
+            <div><span>Optical depth</span><b id="opticalDepthReadout">46.0 mm</b></div>
+            <div><span>Lane clearance</span><b id="clearanceReadout">0.40 / 0.40 / 2.30 mm</b></div>
+            <div><span>Required full cone</span><b id="coneRequiredReadout">167.0°</b></div>
+            <div><span>Full-angle margin</span><b id="coneMarginReadout">13.0°</b></div>
+          </section>
+          <div id="warnings" class="warnings" role="status"></div>
+        </div></details>
+      </aside>
+    </section>
+  </main>
+
+  <script src="vendor/kage-three.bundle.js?v=p3v3-zoom-fix-20260815"></script>
+  <script src="simulator.js?v=p3v3-zoom-fix-20260815"></script>
+</body>
+</html>

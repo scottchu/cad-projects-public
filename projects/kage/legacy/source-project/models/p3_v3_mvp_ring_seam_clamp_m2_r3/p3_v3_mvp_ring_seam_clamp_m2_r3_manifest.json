@@ -1,0 +1,106 @@
+{
+  "artifacts": {
+    "coupon_step": {
+      "path": "models/p3_v3_mvp_ring_seam_clamp_m2_r3/hour_q1_q2_full_radial_u_clamp_m2_coupon.step",
+      "sha256": "162758a535308cef1faa6ac344311f82235453462c5f3b82d8e96d990b38e7d8"
+    },
+    "stack_step": {
+      "path": "models/p3_v3_mvp_ring_seam_clamp_m2_r3/three_ring_full_radial_u_clamp_m2_review.step",
+      "sha256": "789a2c995aa7b338d0ceeee1f83af3221c455d563165c120e5ca9015cbf27bf5"
+    },
+    "three_mf": {
+      "objects": [
+        "hour_Q1_65T_r3_full_radial_valley_side_loaded_M2_nut",
+        "hour_Q2_65T_r3_full_radial_valley_side_loaded_M2_nut",
+        "hour_R3_FULL_RADIAL_ONE_PIECE_U_CLAMP_M2"
+      ],
+      "path": "models/p3_v3_mvp_ring_seam_clamp_m2_r3/hour_q1_q2_full_radial_u_clamp_m2_print_layout.3mf",
+      "sha256": "d17b652efc13947c9f6531d258d6f5520c5f13acefcd43ac606b7d000cb1302d"
+    }
+  },
+  "authority": {
+    "locked_step_path": "models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818/p3_v3_direct_gear_race_assembled.step",
+    "locked_step_sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7"
+  },
+  "fastener": {
+    "inner_radial_edge_distance_mm": 2.8000000000000114,
+    "nut": "side-loaded AF4 M2 hex nut captured in 3 mm ring-end land",
+    "outer_radial_edge_distance_mm": 2.4999999999999885,
+    "screw": "M2x4 90-degree flat head; nominal length includes head"
+  },
+  "namespace": "p3_v3_mvp_ring_seam_clamp_m2_r3",
+  "physical_validation_required": [
+    "M2 flat-head and side-loaded nut fit",
+    "printed lateral U-clamp slide fit",
+    "loaded seam rigidity",
+    "full three-ring rotation through pinion and roller stations"
+  ],
+  "print_layout": [
+    {
+      "aabb_mm": [
+        5.0,
+        5.0,
+        0.0,
+        149.532932653,
+        142.390994374,
+        3.0000002
+      ],
+      "label": "hour_Q1_65T_r3_full_radial_valley_side_loaded_M2_nut",
+      "translation_mm": [
+        10.643072134378187,
+        3.414742690075225,
+        1.5000001
+      ]
+    },
+    {
+      "aabb_mm": [
+        110.0,
+        110.0,
+        0.0,
+        247.31474269,
+        250.56815514,
+        3.0000002
+      ],
+      "label": "hour_Q2_65T_r3_full_radial_valley_side_loaded_M2_nut",
+      "translation_mm": [
+        248.9,
+        111.67829472072071,
+        1.5000001
+      ]
+    },
+    {
+      "aabb_mm": [
+        230.0,
+        10.0,
+        0.0,
+        254.644023964,
+        18.363163636,
+        5.3
+      ],
+      "label": "hour_R3_FULL_RADIAL_ONE_PIECE_U_CLAMP_M2",
+      "translation_mm": [
+        244.00945792852497,
+        -121.83683636404743,
+        2.5
+      ]
+    }
+  ],
+  "radial_coverage_mm": {
+    "exposed_tooth_profile_width": 3.5,
+    "r2_coverage_percent": 67.18750000000013,
+    "r2_covered_width": 4.300000000000011,
+    "r3_coverage_percent": 100.0,
+    "r3_covered_width": 6.400000000000006,
+    "ring_outer_smooth_radius": 138.9,
+    "tooth_root_radius": 132.5,
+    "tooth_tip_radius": 129.0
+  },
+  "schema": "kage.p3-v3.mvp-ring-seam-clamp-m2-r3.v1",
+  "scope": "isolated full-radial seam-clamp branch; locked baseline and r2 unchanged",
+  "stack_math_mm": {
+    "clamp_total_height": 5.300000000000001,
+    "ring_layer_pitch": 5.55,
+    "worst_case_adjacent_clamp_clearance": 0.0499999999999991
+  },
+  "status": "REVIEW_PENDING_NOT_PRINT_READY"
+}

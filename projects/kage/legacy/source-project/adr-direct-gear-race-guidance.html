@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#eee8dc">
+  <title>KAGE ADR — direct carrier-race guidance</title>
+  <link rel="stylesheet" href="adr-direct-gear-race-guidance.css">
+</head>
+<body class="spinner-adr direct-race-adr">
+  <main class="adr-shell">
+    <section class="adr-workspace" aria-labelledby="adrTitle">
+      <section class="adr-viewer" id="adrViewer" aria-label="Interactive direct carrier-race guidance decision model">
+        <canvas id="adrCanvas" aria-label="Three-dimensional comparison of direct carrier-race rollers and legacy keepers"></canvas>
+        <header class="adr-canvas-header">
+          <div class="adr-brand"><span>K</span><div><b>KAGE</b><small>mechanism decision · ADR 05 fork</small></div></div>
+          <div class="adr-canvas-switches">
+            <div class="adr-segment" role="group" aria-label="Guidance concept comparison">
+              <button id="comparisonProposed" class="is-active" type="button" aria-pressed="true">Direct race</button>
+              <button id="comparisonLegacy" type="button" aria-pressed="false">Legacy keepers</button>
+            </div>
+            <div class="adr-segment" role="group" aria-label="Assembly arrangement">
+              <button class="is-active" type="button" data-arrangement="assembled" aria-pressed="true">Assembled</button>
+              <button type="button" data-arrangement="cutaway" aria-pressed="false">Cutaway</button>
+              <button type="button" data-arrangement="exploded" aria-pressed="false">Exploded</button>
+            </div>
+          </div>
+        </header>
+        <div class="adr-canvas-copy">
+          <span id="adrCanvasKicker">PROPOSED / CARRIER ITSELF IS THE RACE</span>
+          <b id="adrCanvasTitle">Nine relieved rollers capture three bare carrier rings below the teeth.</b>
+        </div>
+        <div class="adr-contract-strip" aria-label="Frozen geometry summary">
+          <span><b>R131.60</b> race</span><span><b>Ø12.10</b> running</span><span><b>0.05</b> mm gap</span><span><b>0.80</b> mm capture</span>
+        </div>
+        <div id="adrStatus" class="adr-status" role="status" aria-live="polite">Loading local Three.js decision model…</div>
+      </section>
+
+      <aside class="adr-controls" aria-label="Direct carrier-race decision controls">
+        <header class="adr-heading">
+          <span class="adr-eyebrow">ISOLATED FORK · CAD/CONCEPT ONLY</span>
+          <h1 id="adrTitle">Direct carrier-race guidance</h1>
+          <p>Use the existing 260-tooth carrier body as the running race. Each roller contacts only the smooth lower inner cylinder, below the tooth face.</p>
+        </header>
+
+        <section class="adr-panel" aria-labelledby="inspectHeading">
+          <div class="adr-section-heading"><span>01</span><h2 id="inspectHeading">Inspect</h2></div>
+          <div class="adr-field">
+            <span>Carrier focus</span>
+            <div class="adr-segment adr-wide" role="group" aria-label="Selected carrier">
+              <button class="is-active" type="button" data-hand="all" aria-pressed="true">All</button>
+              <button type="button" data-hand="hour" aria-pressed="false">H</button>
+              <button type="button" data-hand="minute" aria-pressed="false">M</button>
+              <button type="button" data-hand="second" aria-pressed="false">S</button>
+            </div>
+          </div>
+          <label class="adr-range">
+            <span><b>Rotate rings</b><output id="rotationReadout">0°</output></span>
+            <input id="rotationInput" type="range" min="0" max="360" step="1" value="0">
+          </label>
+          <label class="adr-range">
+            <span><b>Tower 3 radial adjustment</b><output id="towerAdjustmentReadout">0.00 mm</output></span>
+            <input id="towerAdjustmentInput" type="range" min="-0.25" max="0.25" step="0.01" value="0">
+            <small>Only the 300° tower adjusts. Towers at 60° and 180° define the datum.</small>
+          </label>
+          <div class="adr-toggle-grid">
+            <label><input id="toggleLabels" type="checkbox" checked><span>Contact labels</span></label>
+            <label><input id="toggleForces" type="checkbox" checked><span>Capture arrows</span></label>
+          </div>
+        </section>
+
+        <section class="adr-panel" aria-labelledby="assemblyHeading">
+          <div class="adr-section-heading"><span>02</span><h2 id="assemblyHeading">Assembly sequence</h2></div>
+          <div class="adr-stepper">
+            <button id="assemblyPrev" type="button" aria-label="Previous assembly step">←</button>
+            <div><b id="assemblyStepReadout">Step 0 · bare carrier rings</b><small id="assemblyStepDetail">Start with the three bare 260T carrier rings.</small></div>
+            <button id="assemblyNext" type="button" aria-label="Next assembly step">→</button>
+          </div>
+          <ol class="adr-step-list" id="assemblyStepList">
+            <li class="is-active">Bare carriers</li><li>Two fixed towers</li><li>Adjustable tower</li><li>Nine rollers</li><li>Contact check</li>
+          </ol>
+        </section>
+
+        <section class="adr-panel adr-contract" aria-labelledby="contractHeading">
+          <div class="adr-section-heading"><span>03</span><h2 id="contractHeading">Frozen interface</h2></div>
+          <dl>
+            <div><dt>Carrier race</dt><dd>R131.60 mm</dd></div>
+            <div><dt>H contact</dt><dd>−1.40 → −0.80 mm</dd></div>
+            <div><dt>M contact</dt><dd>4.15 → 4.75 mm</dd></div>
+            <div><dt>S contact</dt><dd>9.70 → 10.30 mm</dd></div>
+            <div><dt>Axial relief</dt><dd>0.15 mm</dd></div>
+            <div><dt>Running / flange</dt><dd>Ø12.10 / Ø13.80</dd></div>
+            <div><dt>Tooth contact</dt><dd>forbidden</dd></div>
+          </dl>
+        </section>
+      </aside>
+    </section>
+
+    <section class="adr-record" aria-label="Architecture decision record">
+      <article><span>CONTEXT</span><h2>The prior concept added geometry solely for guidance.</h2><p>The user intent is simpler: the existing carrier must do double duty as gear body and running race. The tooth face remains a separate non-contact drive envelope.</p></article>
+      <article><span>DECISION</span><h2>Run relieved rollers on the smooth lower carrier root land.</h2><p>Three towers sit at 60°, 180°, and 300°. The running land reaches R131.55, leaving 0.05 mm nominal gap to the R131.60 carrier cylinder. Flanges provide 0.80 mm radial capture.</p></article>
+      <article><span>CONSEQUENCES</span><h2>Fewer parts and no added guidance feature.</h2><p>The same carrier body now supplies rotation, drive teeth, and a lower contact land. Accurate axial relief and tooth clearance become critical, especially at the adjustable tower.</p></article>
+      <article><span>TESTS</span><h2>Carrier-only contact is necessary but not physical proof.</h2><p>CAD must verify tooth clearance, axial relief, and free rotation. Printed seam bump, friction, wear, noise, and adjustment remain physical test gates.</p></article>
+    </section>
+  </main>
+  <script src="vendor/kage-direct-gear-race-adr.bundle.js?v=adr05"></script>
+  <script src="adr-direct-gear-race-guidance-ui.js?v=adr05"></script>
+</body>
+</html>

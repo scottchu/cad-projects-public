@@ -1,0 +1,47 @@
+{
+  "title": "KAGE P3 V0 motor outer-ring prototype",
+  "bed_mm": [
+    256,
+    256
+  ],
+  "brim_mm": 5,
+  "note": "Nine independent plates; assembly and exploded models are STEP review files only.",
+  "plates": [
+    {
+      "file": "plate_01_carrier_a.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_02_carrier_b_hall.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_03_carrier_c_fin.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_04_frame_a.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_05_frame_b_hall.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_06_frame_c.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_07_frame_d_motor.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_08_small_petg_hardware.3mf",
+      "material": "PETG"
+    },
+    {
+      "file": "plate_09_tpu_tires.3mf",
+      "material": "TPU"
+    }
+  ]
+}

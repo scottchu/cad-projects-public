@@ -1,0 +1,3 @@
+# B3-R1 blind-axle roller towers
+
+CAD-only MVP evidence for the corrected M3x25 top-retained blind axle. Contains an assembled witness STEP, an assembly-order exploded STEP, and a twenty-two-object printed-only 3MF. The 3MF contains only inherited base and drive prints, the second reusable fixed riser, three C-bar towers, and nine rollers. Purchased bearings, washers, axles, nuts, and mounting screws are STEP witnesses only. Ring geometry is an explicit non-print STEP witness and is excluded from the 3MF. Hall parts, fins, LEDs, motors, and electronics are not printed deliverables and are not present as assembly components.

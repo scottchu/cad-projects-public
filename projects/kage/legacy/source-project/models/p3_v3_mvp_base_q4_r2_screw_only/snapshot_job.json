@@ -1,0 +1,65 @@
+{
+  "jobs": [
+    {
+      "input": "models/p3_v3_mvp_base_q4_r2_screw_only/p3_v3_mvp_base_q4_r2_screw_only_assembled.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r2_screw_only/snapshots/assembled_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r2_screw_only/snapshots/assembled_under_iso.png",
+          "camera": {"direction": [-1, 1, -0.8]}
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r2_screw_only/snapshots/assembled_top.png",
+          "camera": "top"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r2_screw_only/snapshots/assembled_front.png",
+          "camera": "front"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "assembly"
+      }
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q4_r2_screw_only/p3_v3_mvp_base_q4_r2_screw_only_service_exploded.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r2_screw_only/snapshots/service_exploded_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "assembly"
+      }
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q4_r2_screw_only/p3_v3_mvp_base_q4_r2_screw_only_clamp_C1_bottom_down.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r2_screw_only/snapshots/clamp_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r2_screw_only/snapshots/clamp_top.png",
+          "camera": "top"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.16,
+        "sizeProfile": "diagnostic"
+      }
+    }
+  ]
+}

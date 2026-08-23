@@ -1,0 +1,80 @@
+{
+  "base": {
+    "bounds_mm": [
+      [
+        194.5457030527303,
+        194.7906520270086,
+        6.0
+      ]
+    ],
+    "build_item_count": 1,
+    "bytes": 58625,
+    "object_count": 1,
+    "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_free_roller_r0_three_station/derivative_q3_sector_print_qty3.3mf",
+    "print_quantity": 3,
+    "printer_process_profiles_embedded": false,
+    "sha256": "402b5a038b86ed16239d587a7ea9adae8080cddb47280870bb11403779474794"
+  },
+  "canonical_base_policy": {
+    "artifact_build_item_count": 1,
+    "artifact_object_count": 1,
+    "copies_per_clock": 3,
+    "copies_share_one_canonical_file": true,
+    "three_copies_fit_one_u1_bed": false
+  },
+  "effective_totals": {
+    "derivative_sector": 3,
+    "flanged_spool": 9,
+    "spacer": 6,
+    "station_frame": 3,
+    "upper_bridge": 3
+  },
+  "namespace": "p3_v3_mvp_free_roller_r0_three_station",
+  "one_station_kit": {
+    "bounds_mm": [
+      [
+        22.5,
+        29.7,
+        39.05
+      ],
+      [
+        23.30000000000001,
+        15.4,
+        1.299999999999999
+      ],
+      [
+        13.799999999999997,
+        13.8,
+        4.3
+      ],
+      [
+        13.800000000000004,
+        13.8,
+        4.3
+      ],
+      [
+        13.800000000000011,
+        13.8,
+        4.3
+      ],
+      [
+        6.0,
+        6.0,
+        0.8
+      ],
+      [
+        6.0,
+        6.0,
+        0.8
+      ]
+    ],
+    "build_item_count": 7,
+    "bytes": 129371,
+    "object_count": 7,
+    "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_free_roller_r0_three_station/one_station_print_kit_print_qty3.3mf",
+    "print_quantity": 3,
+    "printer_process_profiles_embedded": false,
+    "sha256": "5f0abe3f0fae0a484d57377e3d71afedd7b8cd02da392f43fa67923bdc611d16"
+  },
+  "physical_gate": "CAD accepted only; friction, wear and motion require the printed prototype"
+}

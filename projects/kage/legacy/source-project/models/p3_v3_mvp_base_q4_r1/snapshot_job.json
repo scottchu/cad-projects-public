@@ -1,0 +1,46 @@
+{
+  "jobs": [
+    {
+      "input": "models/p3_v3_mvp_base_q4_r1/p3_v3_mvp_base_q4_r1_assembled.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r1/snapshots/assembled_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r1/snapshots/assembled_under_iso.png",
+          "camera": {"direction": [-1, 1, -0.8]}
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r1/snapshots/assembled_top.png",
+          "camera": "top"
+        },
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r1/snapshots/assembled_front.png",
+          "camera": "front"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "assembly"
+      }
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q4_r1/p3_v3_mvp_base_q4_r1_service_exploded.step.py",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q4_r1/snapshots/service_exploded_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "assembly"
+      }
+    }
+  ]
+}

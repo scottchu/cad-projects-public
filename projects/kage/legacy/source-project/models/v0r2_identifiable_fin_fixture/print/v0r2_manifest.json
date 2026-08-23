@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "review_status": "accepted_for_physical_test",
+  "independent_review": {
+    "verdict": "ACCEPT",
+    "scope": "V0R2 fin-identity geometry, preserved V0R1 interfaces, generated STEP/STL/3MF artifacts, and review snapshots",
+    "evidence": [
+      "Distinct H/M/S stem and crown profiles match the frozen brief.",
+      "Projection math, 5-degree motion sweep, source-to-STEP equality, mesh manifold, and Orca-load checks passed.",
+      "Independent visual review found no CAD blocker for a physical shadow test."
+    ],
+    "caveat": "Exact collinear opaque shadows necessarily occlude shared pixels; physical LED testing must confirm readability from unequal widths and 85/110/130 mm endpoints."
+  },
+  "implementation_may_self_approve": false,
+  "units": "millimeter",
+  "printable_part_count": 4,
+  "printable_parts": [
+    "fake_standard_quartz_body",
+    "hour_carrier_hand",
+    "minute_carrier_hand",
+    "second_carrier_hand"
+  ],
+  "primary_step": {
+    "assembled": {
+      "path": "models/v0r2_identifiable_fin_fixture/v0r2_assembled.step",
+      "sha256": "6424353da6468e784b07f7f00ff29505677077297146533fc6f8fa2886f673db",
+      "bbox_mm": [
+        80.6,
+        80.6,
+        43.846153846
+      ],
+      "volume_mm3": 54080.3027216185,
+      "solid_count": 4
+    },
+    "exploded": {
+      "path": "models/v0r2_identifiable_fin_fixture/v0r2_exploded.step",
+      "sha256": "d74e8be655f088d789b6999b112de80934ba2e417ce16d90ecc348e6b62f1212",
+      "bbox_mm": [
+        80.6,
+        80.6,
+        59.882352941
+      ],
+      "volume_mm3": 54080.30272161851,
+      "solid_count": 4
+    }
+  },
+  "parts": {
+    "fake_standard_quartz_body": {
+      "step": {
+        "path": "models/v0r2_identifiable_fin_fixture/fake_standard_quartz_body.step",
+        "sha256": "37cf2931583462e6ae5da76d2536782bf55aa1f7c0bbbba20728aec4a081c4d3",
+        "bbox_mm": [
+          56.0,
+          56.7,
+          33.200000000000074
+        ],
+        "volume_mm3": 51594.60805826797,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r2_identifiable_fin_fixture/print/fake_standard_quartz_body.stl",
+        "sha256": "86b9f120bc3880c356d0df3e19ff999ec087b75f866b1401040a8304cdb7ef9d",
+        "bbox_mm": [
+          56.0,
+          56.7,
+          33.199999999999996
+        ],
+        "volume_mm3": 51594.608058267826,
+        "solid_count": 1
+      }
+    },
+    "hour_carrier_hand": {
+      "step": {
+        "path": "models/v0r2_identifiable_fin_fixture/hour_carrier_hand.step",
+        "sha256": "4fe6d08e33efab432a1ce5daf1056a33637417fc35868e050dbdb99362f6ab45",
+        "bbox_mm": [
+          61.6,
+          61.6,
+          12.082352941
+        ],
+        "volume_mm3": 730.9970741913704,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r2_identifiable_fin_fixture/print/hour_carrier_hand.stl",
+        "sha256": "4b442c276d1e964b9edcc7e9a9a9e7992fa706a12a854bab26a4e1ed1c01a195",
+        "bbox_mm": [
+          61.599999999999994,
+          61.6,
+          12.082352941
+        ],
+        "volume_mm3": 730.9970741913182,
+        "solid_count": 1
+      }
+    },
+    "minute_carrier_hand": {
+      "step": {
+        "path": "models/v0r2_identifiable_fin_fixture/minute_carrier_hand.step",
+        "sha256": "1894f018ecf0f184720e28ef163327de29d3cd55d54cba24d56c954fa722f0c2",
+        "bbox_mm": [
+          71.1,
+          71.1,
+          17.521969697
+        ],
+        "volume_mm3": 834.1296770994686,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r2_identifiable_fin_fixture/print/minute_carrier_hand.stl",
+        "sha256": "9e9d103835e59820f7d598489d5ce8e7c11661dc074c7bdca4e1c80e10278ead",
+        "bbox_mm": [
+          71.10000000000001,
+          71.1,
+          17.521969697000003
+        ],
+        "volume_mm3": 834.129677099473,
+        "solid_count": 1
+      }
+    },
+    "second_carrier_hand": {
+      "step": {
+        "path": "models/v0r2_identifiable_fin_fixture/second_carrier_hand.step",
+        "sha256": "51232243e16de1480ba097da0122d0d682916fb21fef3c12d519b64a895c057a",
+        "bbox_mm": [
+          80.6,
+          80.6,
+          21.962820513
+        ],
+        "volume_mm3": 920.5679120596919,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0r2_identifiable_fin_fixture/print/second_carrier_hand.stl",
+        "sha256": "c20f3e96a3b81577764b223f023cbc1444ae48523e9631953ff3da4096b1a2be",
+        "bbox_mm": [
+          80.60000000000002,
+          80.6,
+          21.962820513
+        ],
+        "volume_mm3": 920.5679120592972,
+        "solid_count": 1
+      }
+    }
+  },
+  "three_mf": {
+    "path": "models/v0r2_identifiable_fin_fixture/print/v0r2_four_part_identifiable_fin_test.3mf",
+    "sha256": "4279e5e5fcc0494ba18890764a1de973224daaad9196bda1d69893ffbd79379a",
+    "object_count": 4,
+    "object_names": [
+      "fake_standard_quartz_body",
+      "hour_carrier_hand",
+      "minute_carrier_hand",
+      "second_carrier_hand"
+    ]
+  },
+  "snapshots": [
+    {
+      "path": "models/v0r2_identifiable_fin_fixture/snapshots/v0r2_assembled_iso_20260812T023509Z.png",
+      "sha256": "2e6fb5514189a29a3ad170541eecf54e6f12db1c02f184288421ba7ed7d6d131"
+    },
+    {
+      "path": "models/v0r2_identifiable_fin_fixture/snapshots/v0r2_assembled_profile_20260812T023448Z.png",
+      "sha256": "8f456cae1a18580e9dbf5ee581a7f53c530604371ba8f379f57c11ea313717e4"
+    },
+    {
+      "path": "models/v0r2_identifiable_fin_fixture/snapshots/v0r2_exploded_iso_20260812T023509Z.png",
+      "sha256": "9b3f2014a1b7c416278de3b772df91df9ebe041c7e7796e1df3cf993b74809cf"
+    },
+    {
+      "path": "models/v0r2_identifiable_fin_fixture/snapshots/v0r2_print_plate_top_20260812T023509Z.png",
+      "sha256": "3a8c58d8a8c857b544a806296504625cf4d5e6021b23e619779d2b45321180b7"
+    }
+  ],
+  "frozen_spec": {
+    "source_z": 40.0,
+    "representative_body": [
+      56.0,
+      56.7,
+      16.0
+    ],
+    "carrier_radii": [
+      30.0,
+      34.75,
+      39.5
+    ],
+    "carrier_z": {
+      "hour": [
+        13.8,
+        15.0,
+        25.882352941
+      ],
+      "minute": [
+        9.841666667,
+        11.041666667,
+        27.363636364
+      ],
+      "second": [
+        5.8833333329999995,
+        7.083333333,
+        27.846153846
+      ]
+    },
+    "fin_radial_thickness": 1.6,
+    "fin_identity": {
+      "hour": {
+        "physical_profile_mm": {
+          "stem_width": 4.8,
+          "crown_height": 0.8,
+          "crown_width": 3.2
+        },
+        "projected_width_base_mid_tip_mm": [
+          7.6190476190476195,
+          9.766606822218284,
+          9.066666666553331
+        ],
+        "projected_width_at_wall_radius_60_80_mm": [
+          9.6,
+          12.8
+        ]
+      },
+      "minute": {
+        "physical_profile_mm": {
+          "stem_width": 3.2,
+          "crown_height": 0.8,
+          "crown_width": 1.6
+        },
+        "projected_width_base_mid_tip_mm": [
+          4.389825664525748,
+          6.125178995552487,
+          5.064748201584593
+        ],
+        "projected_width_at_wall_radius_60_80_mm": [
+          5.525179856115107,
+          7.366906474820144
+        ]
+      },
+      "second": {
+        "physical_profile_mm": {
+          "stem_width": 1.6,
+          "crown_height": 0.6,
+          "crown_width": 0.4
+        },
+        "projected_width_base_mid_tip_mm": [
+          1.932561650710291,
+          2.82744753756409,
+          1.3164556961858578
+        ],
+        "projected_width_at_wall_radius_60_80_mm": [
+          2.430379746835443,
+          3.240506329113924
+        ]
+      }
+    }
+  },
+  "implementation_validation": {
+    "source_geometry_motion_tests": {
+      "command": "UV_CACHE_DIR=.uv-cache uv run pytest tests/test_v0r2_identifiable_fin_fixture.py -q -rA",
+      "passed": 7,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "artifact_tests": {
+      "command": "UV_CACHE_DIR=.uv-cache uv run pytest tests/test_v0r2_identifiable_fin_fixture_artifacts.py -q -rA",
+      "passed": 3,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "snapmaker_orca_load": {
+      "binary": "/Applications/Snapmaker Orca.app/Contents/MacOS/Snapmaker_Orca",
+      "command": "Snapmaker_Orca --datadir <temporary-directory> --info models/v0r2_identifiable_fin_fixture/print/v0r2_four_part_identifiable_fin_test.3mf",
+      "exit_code": 0,
+      "reported_component_records": 4,
+      "all_reported_manifold": true,
+      "temporary_datadir": true,
+      "nonfatal_diagnostic": "calc_exclude_triangles:Unable to create exclude triangles"
+    },
+    "persistent_server_started": false
+  },
+  "physical_test_only": [
+    "real shadow contrast and identity under overlap",
+    "carrier fit, friction, free rotation, and wear",
+    "LED source extent, sharpness, temperature, and electrical safety"
+  ],
+  "notes": [
+    "V0R2 preserves all accepted V0R1 mechanics and changes only the fin silhouette.",
+    "Perfectly coincident opaque shadows still occlude shared pixels; unequal endpoints and widths preserve identity outside the overlap.",
+    "Independent CAD review accepted V0R2 for physical testing; real shadow readability remains a print-and-light experiment."
+  ]
+}

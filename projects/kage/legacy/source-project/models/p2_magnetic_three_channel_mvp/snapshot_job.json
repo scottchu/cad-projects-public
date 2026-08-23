@@ -1,0 +1,11 @@
+{
+  "input": "models/p2_magnetic_three_channel_mvp/p2_assembled_t1p5.step",
+  "mode": "view",
+  "outputs": [
+    {"path": "models/p2_magnetic_three_channel_mvp/snapshots/p2_t1p5_iso.png", "camera": "iso"},
+    {"path": "models/p2_magnetic_three_channel_mvp/snapshots/p2_t1p5_front.png", "camera": "top"},
+    {"path": "models/p2_magnetic_three_channel_mvp/snapshots/p2_t1p5_rear.png", "camera": {"direction": [0, 0, -1]}},
+    {"path": "models/p2_magnetic_three_channel_mvp/snapshots/p2_t1p5_side.png", "camera": "front"}
+  ],
+  "render": {"viewLabels": true, "padding": 0.10, "sizeProfile": "assembly"}
+}

@@ -1,0 +1,85 @@
+{
+  "jobs": [
+    {
+      "input": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/p3_v3_mvp_base_q3_r2_assembled.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/assembled_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/assembled_iso_opposite.png",
+          "camera": {
+            "direction": [-1, 1, -0.8]
+          }
+        },
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/assembled_top.png",
+          "camera": "top"
+        },
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/assembled_front.png",
+          "camera": "front"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "assembly"
+      },
+      "display": {
+        "mode": "solid"
+      }
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/p3_v3_mvp_base_q3_r2_canonical_roller_mount.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/canonical_roller_mount_iso.png",
+          "camera": "iso"
+        },
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/canonical_roller_mount_top.png",
+          "camera": "top"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.16,
+        "sizeProfile": "diagnostic"
+      }
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/p3_v3_mvp_base_q3_r2_canonical_sector.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/canonical_sector_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "diagnostic"
+      }
+    },
+    {
+      "input": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/p3_v3_mvp_base_q3_r2_service_exploded.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/snapshots/service_exploded_iso.png",
+          "camera": "iso"
+        }
+      ],
+      "render": {
+        "viewLabels": true,
+        "padding": 0.12,
+        "sizeProfile": "assembly"
+      }
+    }
+  ]
+}

@@ -1,0 +1,940 @@
+{
+  "authority": {
+    "locked_generator_sha256": "a71d06ad5713e040295329dddb81fc8b8b2b72138d82a1b5a3798523bc7f4cac",
+    "locked_step_path": "models/p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818/p3_v3_direct_gear_race_assembled.step",
+    "locked_step_sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7",
+    "parity_manifest_path": "models/p3_v3_locked_parametric_repair_r1/p3_v3_locked_parametric_repair_r1_zero_delta_parity.json",
+    "parity_manifest_sha256": "89426c12ea433547f06f8c2bcd68e0c1ce66b006afe3bd4ea02ccd83b8bc4411"
+  },
+  "bed_margin_mm": 5.0,
+  "build_volume_mm": [
+    260.0,
+    260.0,
+    260.0
+  ],
+  "deferred_review_only_pack": null,
+  "geometry_policy": "STEP exact assembly-frame occurrences; 3MF translation-only print layout",
+  "namespace": "p3_v3_locked_stage_a_print_exports",
+  "packs": [
+    {
+      "description": "Minimum adjacent rear-chassis Q1/Q2 pair for the frozen flat seam.",
+      "name": "base_joinery",
+      "objects": [
+        {
+          "frozen_aabb_mm": [
+            0.0,
+            -0.0,
+            -28.0,
+            145.0,
+            145.0,
+            -25.5
+          ],
+          "frozen_brep_sha256": "d5591872640d43fa5fc9db6fe856fc59ce3f3e4f7a88dab85f9019c953c9cb5a",
+          "frozen_dimensions_mm": [
+            145.0,
+            145.0,
+            2.5
+          ],
+          "frozen_generator_function": "make_chassis_segments()[0]",
+          "frozen_label": "p3_v3_direct_race_rear_chassis_Q1_two_fixed_one_adjustable_tower",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 24,
+            "faces": 10,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 16
+          },
+          "frozen_volume_mm3": 32638.712936492,
+          "occurrence_name": "occurrence_000",
+          "print_aabb_mm": [
+            5.0,
+            5.0,
+            0.0,
+            150.0,
+            150.0,
+            2.5
+          ],
+          "print_translation_mm": [
+            5.0,
+            5.0,
+            28.0
+          ],
+          "step_object_name": "p3_v3_direct_race_rear_chassis_Q1_two_fixed_one_adjustable_tower",
+          "three_mf_object_name": "p3_v3_direct_race_rear_chassis_Q1_two_fixed_one_adjustable_tower",
+          "three_mf_triangle_count": 1532,
+          "three_mf_vertex_count": 1536
+        },
+        {
+          "frozen_aabb_mm": [
+            -145.0,
+            0.0,
+            -28.0,
+            0.0,
+            145.0,
+            -25.5
+          ],
+          "frozen_brep_sha256": "8ca358dcb42bcf077bf1d82166a187959aa532dd15dcda4f7882b0a317d6eecf",
+          "frozen_dimensions_mm": [
+            145.0,
+            145.0,
+            2.5
+          ],
+          "frozen_generator_function": "make_chassis_segments()[1]",
+          "frozen_label": "p3_v3_direct_race_rear_chassis_Q2_two_fixed_one_adjustable_tower",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 27,
+            "faces": 11,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 18
+          },
+          "frozen_volume_mm3": 32616.01492957,
+          "occurrence_name": "occurrence_001",
+          "print_aabb_mm": [
+            110.0,
+            110.0,
+            0.0,
+            255.0,
+            255.0,
+            2.5
+          ],
+          "print_translation_mm": [
+            255.0,
+            110.0,
+            28.0
+          ],
+          "step_object_name": "p3_v3_direct_race_rear_chassis_Q2_two_fixed_one_adjustable_tower",
+          "three_mf_object_name": "p3_v3_direct_race_rear_chassis_Q2_two_fixed_one_adjustable_tower",
+          "three_mf_triangle_count": 1872,
+          "three_mf_vertex_count": 1874
+        }
+      ],
+      "status": "STAGE_A_TEST_PACK",
+      "step": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/base_joinery.step",
+        "sha256": "74d8e498956884ccca2487e141777812e5a84f440c50aacb0778200c1ea73d64"
+      },
+      "three_mf": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/base_joinery.3mf",
+        "sha256": "60d8bc1d43dd0d9d956dc745591a8dcd8621381e557fc97371d2f9efb25dfb07"
+      },
+      "warning": null
+    },
+    {
+      "description": "One frozen tower-1 printable yoke, spacers, washers, and three role rollers.",
+      "name": "roller_tower",
+      "objects": [
+        {
+          "frozen_aabb_mm": [
+            48.337822174,
+            90.723563932,
+            -25.5,
+            72.762177827,
+            119.027788865,
+            14.75
+          ],
+          "frozen_brep_sha256": "d9ed3e0d88a68365814ed39857b1032214288380d780d53df6a04e489748f6ef",
+          "frozen_dimensions_mm": [
+            24.424355653,
+            28.304224933,
+            40.25
+          ],
+          "frozen_generator_function": "make_roller_tower_yoke(0)",
+          "frozen_label": "p3_v3_direct_race_inner_tower_1_fixed_round_mounts_connected_two_sided_yoke",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 72,
+            "faces": 29,
+            "shells": 2,
+            "solids": 1,
+            "vertices": 48
+          },
+          "frozen_volume_mm3": 2312.839824879,
+          "occurrence_name": "occurrence_018",
+          "print_aabb_mm": [
+            5.0,
+            5.0,
+            0.0,
+            29.424355653,
+            33.304224933,
+            40.25
+          ],
+          "print_translation_mm": [
+            -43.337822174,
+            -85.723563932,
+            25.5
+          ],
+          "step_object_name": "p3_v3_direct_race_inner_tower_1_fixed_round_mounts_connected_two_sided_yoke",
+          "three_mf_object_name": "p3_v3_direct_race_inner_tower_1_fixed_round_mounts_connected_two_sided_yoke",
+          "three_mf_triangle_count": 1428,
+          "three_mf_vertex_count": 1472
+        },
+        {
+          "frozen_aabb_mm": [
+            59.75,
+            105.686188175,
+            2.15,
+            65.75,
+            111.686188175,
+            3.4
+          ],
+          "frozen_brep_sha256": "5c3bbd9af01f746840e12a0c7b115a4344810a4fd432354e3d81b5a6b4450c32",
+          "frozen_dimensions_mm": [
+            6.0,
+            6.0,
+            1.25
+          ],
+          "frozen_generator_function": "make_tower_spacers(0)[0]",
+          "frozen_label": "p3_v3_direct_race_tower_1_D6x1p25_spacer_1",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 6,
+            "faces": 4,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 4
+          },
+          "frozen_volume_mm3": 18.02488785,
+          "occurrence_name": "occurrence_019",
+          "print_aabb_mm": [
+            32.424355653,
+            5.0,
+            0.0,
+            38.424355653,
+            11.0,
+            1.25
+          ],
+          "print_translation_mm": [
+            -27.325644347,
+            -100.686188175,
+            -2.15
+          ],
+          "step_object_name": "p3_v3_direct_race_tower_1_D6x1p25_spacer_1",
+          "three_mf_object_name": "p3_v3_direct_race_tower_1_D6x1p25_spacer_1",
+          "three_mf_triangle_count": 672,
+          "three_mf_vertex_count": 676
+        },
+        {
+          "frozen_aabb_mm": [
+            59.75,
+            105.686188175,
+            7.7,
+            65.75,
+            111.686188175,
+            8.95
+          ],
+          "frozen_brep_sha256": "f87ff8e9b3aea062b985055fa581c891372d5baa54bda312e53416899a961578",
+          "frozen_dimensions_mm": [
+            6.0,
+            6.0,
+            1.2499999999999991
+          ],
+          "frozen_generator_function": "make_tower_spacers(0)[1]",
+          "frozen_label": "p3_v3_direct_race_tower_1_D6x1p25_spacer_2",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 6,
+            "faces": 4,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 4
+          },
+          "frozen_volume_mm3": 18.02488785,
+          "occurrence_name": "occurrence_020",
+          "print_aabb_mm": [
+            41.424355653,
+            5.0,
+            0.0,
+            47.424355653,
+            11.0,
+            1.2499999999999991
+          ],
+          "print_translation_mm": [
+            -18.325644347,
+            -100.686188175,
+            -7.7
+          ],
+          "step_object_name": "p3_v3_direct_race_tower_1_D6x1p25_spacer_2",
+          "three_mf_object_name": "p3_v3_direct_race_tower_1_D6x1p25_spacer_2",
+          "three_mf_triangle_count": 672,
+          "three_mf_vertex_count": 676
+        },
+        {
+          "frozen_aabb_mm": [
+            59.75,
+            105.686188175,
+            -2.35,
+            65.75,
+            111.686188175,
+            -2.15
+          ],
+          "frozen_brep_sha256": "d4f739a9ce44bcfafcf9e2a5252553ef111a3299c72c412f98e9a3e3c413dd23",
+          "frozen_dimensions_mm": [
+            6.0,
+            6.0,
+            0.20000000000000018
+          ],
+          "frozen_generator_function": "make_tower_thrust_washers(0)[0]",
+          "frozen_label": "p3_v3_direct_race_tower_1_lower_0p20_thrust_washer",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 6,
+            "faces": 4,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 4
+          },
+          "frozen_volume_mm3": 2.883982056,
+          "occurrence_name": "occurrence_021",
+          "print_aabb_mm": [
+            50.424355653,
+            5.0,
+            0.0,
+            56.424355653,
+            11.0,
+            0.20000000000000018
+          ],
+          "print_translation_mm": [
+            -9.325644347,
+            -100.686188175,
+            2.35
+          ],
+          "step_object_name": "p3_v3_direct_race_tower_1_lower_0p20_thrust_washer",
+          "three_mf_object_name": "p3_v3_direct_race_tower_1_lower_0p20_thrust_washer",
+          "three_mf_triangle_count": 672,
+          "three_mf_vertex_count": 676
+        },
+        {
+          "frozen_aabb_mm": [
+            59.75,
+            105.686188175,
+            13.25,
+            65.75,
+            111.686188175,
+            13.45
+          ],
+          "frozen_brep_sha256": "d71db1c33e3d9916ba08392f67141053d1ad6a7a1129364868f045a7c23afb61",
+          "frozen_dimensions_mm": [
+            6.0,
+            6.0,
+            0.1999999999999993
+          ],
+          "frozen_generator_function": "make_tower_thrust_washers(0)[1]",
+          "frozen_label": "p3_v3_direct_race_tower_1_upper_0p20_thrust_washer",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 6,
+            "faces": 4,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 4
+          },
+          "frozen_volume_mm3": 2.883982056,
+          "occurrence_name": "occurrence_022",
+          "print_aabb_mm": [
+            59.424355653,
+            5.0,
+            0.0,
+            65.42435565299999,
+            11.0,
+            0.1999999999999993
+          ],
+          "print_translation_mm": [
+            -0.3256443470000008,
+            -100.686188175,
+            -13.25
+          ],
+          "step_object_name": "p3_v3_direct_race_tower_1_upper_0p20_thrust_washer",
+          "three_mf_object_name": "p3_v3_direct_race_tower_1_upper_0p20_thrust_washer",
+          "three_mf_triangle_count": 672,
+          "three_mf_vertex_count": 676
+        },
+        {
+          "frozen_aabb_mm": [
+            55.85,
+            101.786188175,
+            -2.15,
+            69.65,
+            115.586188175,
+            2.15
+          ],
+          "frozen_brep_sha256": "f382fef650add2128baa69955798585a8b0a817c11fd23330284e2a7e89fb815",
+          "frozen_dimensions_mm": [
+            13.800000000000004,
+            13.799999999999997,
+            4.3
+          ],
+          "frozen_generator_function": "make_roller(0, 0)",
+          "frozen_label": "p3_v3_direct_race_tower_1_hour_RELIEVED_spool_carrier_root_land_only",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 18,
+            "faces": 12,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 12
+          },
+          "frozen_volume_mm3": 239.237401367,
+          "occurrence_name": "occurrence_023",
+          "print_aabb_mm": [
+            68.42435565299999,
+            5.0,
+            0.0,
+            82.224355653,
+            18.799999999999997,
+            4.3
+          ],
+          "print_translation_mm": [
+            12.57435565299999,
+            -96.786188175,
+            2.15
+          ],
+          "step_object_name": "p3_v3_direct_race_tower_1_hour_RELIEVED_spool_carrier_root_land_only",
+          "three_mf_object_name": "p3_v3_direct_race_tower_1_hour_RELIEVED_spool_carrier_root_land_only",
+          "three_mf_triangle_count": 2016,
+          "three_mf_vertex_count": 2028
+        },
+        {
+          "frozen_aabb_mm": [
+            55.85,
+            101.786188175,
+            3.4,
+            69.65,
+            115.586188175,
+            7.7
+          ],
+          "frozen_brep_sha256": "3fa326c45f692b6710c4dc689056e36e0f0b597b2f4d37aea87b5479d58102b6",
+          "frozen_dimensions_mm": [
+            13.800000000000004,
+            13.799999999999997,
+            4.300000000000001
+          ],
+          "frozen_generator_function": "make_roller(1, 0)",
+          "frozen_label": "p3_v3_direct_race_tower_1_minute_RELIEVED_spool_carrier_root_land_only",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 18,
+            "faces": 12,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 12
+          },
+          "frozen_volume_mm3": 239.237401367,
+          "occurrence_name": "occurrence_024",
+          "print_aabb_mm": [
+            85.224355653,
+            5.0,
+            0.0,
+            99.02435565300001,
+            18.799999999999997,
+            4.300000000000001
+          ],
+          "print_translation_mm": [
+            29.374355653000002,
+            -96.786188175,
+            -3.4
+          ],
+          "step_object_name": "p3_v3_direct_race_tower_1_minute_RELIEVED_spool_carrier_root_land_only",
+          "three_mf_object_name": "p3_v3_direct_race_tower_1_minute_RELIEVED_spool_carrier_root_land_only",
+          "three_mf_triangle_count": 2016,
+          "three_mf_vertex_count": 2028
+        },
+        {
+          "frozen_aabb_mm": [
+            55.85,
+            101.786188175,
+            8.95,
+            69.65,
+            115.586188175,
+            13.25
+          ],
+          "frozen_brep_sha256": "bc9b07b6372b9790daf9d0376118d80bb687b668d07b420b614e5550347512e9",
+          "frozen_dimensions_mm": [
+            13.800000000000004,
+            13.799999999999997,
+            4.300000000000001
+          ],
+          "frozen_generator_function": "make_roller(2, 0)",
+          "frozen_label": "p3_v3_direct_race_tower_1_second_RELIEVED_spool_carrier_root_land_only",
+          "frozen_owner_group": "fixed_towers",
+          "frozen_topology": {
+            "edges": 18,
+            "faces": 12,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 12
+          },
+          "frozen_volume_mm3": 239.237401367,
+          "occurrence_name": "occurrence_025",
+          "print_aabb_mm": [
+            102.02435565300001,
+            5.0,
+            0.0,
+            115.82435565300003,
+            18.799999999999997,
+            4.300000000000001
+          ],
+          "print_translation_mm": [
+            46.17435565300001,
+            -96.786188175,
+            -8.95
+          ],
+          "step_object_name": "p3_v3_direct_race_tower_1_second_RELIEVED_spool_carrier_root_land_only",
+          "three_mf_object_name": "p3_v3_direct_race_tower_1_second_RELIEVED_spool_carrier_root_land_only",
+          "three_mf_triangle_count": 2016,
+          "three_mf_vertex_count": 2028
+        }
+      ],
+      "status": "STAGE_A_TEST_PACK",
+      "step": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/roller_tower.step",
+        "sha256": "0351baf0cda084629e0d8c65908b908d1e4aaa3f723f5ca2901895b44d27f0c2"
+      },
+      "three_mf": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/roller_tower.3mf",
+        "sha256": "07608e0ecfab7ba20da62e370dbe4cd014aeb81d66233ff2c2565754d1a1fa13"
+      },
+      "warning": null
+    },
+    {
+      "description": "Frozen hour-station printable subset; purchased/reference solids excluded.",
+      "name": "motor_station",
+      "objects": [
+        {
+          "frozen_aabb_mm": [
+            78.0,
+            -16.5,
+            -26.45,
+            134.0,
+            16.5,
+            -4.3
+          ],
+          "frozen_brep_sha256": "8daa1d0c2fffef126aebd3e8de78e2c9ad0c5465a88047eea01cac9c14ddcf30",
+          "frozen_dimensions_mm": [
+            56.0,
+            33.0,
+            22.15
+          ],
+          "frozen_generator_function": "make_unibody_drive_yoke(0)",
+          "frozen_label": "p3_v3_direct_race_hour_ONE_CONNECTED_open_yoke_integral_motor_face_chassis_foot_two_MR84_seats_RADIAL_SLOT_q+0_00_SERVICE_plus_minus_2p50",
+          "frozen_owner_group": "motor_stations",
+          "frozen_topology": {
+            "edges": 415,
+            "faces": 133,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 276
+          },
+          "frozen_volume_mm3": 4370.364072835,
+          "occurrence_name": "occurrence_069",
+          "print_aabb_mm": [
+            5.0,
+            5.0,
+            0.0,
+            61.0,
+            38.0,
+            22.15
+          ],
+          "print_translation_mm": [
+            -73.0,
+            21.5,
+            26.45
+          ],
+          "step_object_name": "p3_v3_direct_race_hour_ONE_CONNECTED_open_yoke_integral_motor_face_chassis_foot_two_MR84_seats_RADIAL_SLOT_q+0_00_SERVICE_plus_minus_2p50",
+          "three_mf_object_name": "p3_v3_direct_race_hour_ONE_CONNECTED_open_yoke_integral_motor_face_chassis_foot_two_MR84_seats_RADIAL_SLOT_q+0_00_SERVICE_plus_minus_2p50",
+          "three_mf_triangle_count": 3778,
+          "three_mf_vertex_count": 4016
+        },
+        {
+          "frozen_aabb_mm": [
+            112.3,
+            -8.560954838,
+            -24.860954838,
+            119.5,
+            8.560954838,
+            -7.739045162
+          ],
+          "frozen_brep_sha256": "055146aa0fcc067b5b2a3884e0d503a4e0841fe34d5600f4ba9d9629fcb136dc",
+          "frozen_dimensions_mm": [
+            7.200000000000003,
+            17.121909676,
+            17.121909676
+          ],
+          "frozen_generator_function": "make_motor_station_parts(0)[2]",
+          "frozen_label": "p3_v3_direct_race_hour_horizontal_16T_miter_RIGID_q+0_00",
+          "frozen_owner_group": "motor_stations",
+          "frozen_topology": {
+            "edges": 306,
+            "faces": 106,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 204
+          },
+          "frozen_volume_mm3": 568.943064684,
+          "occurrence_name": "occurrence_130",
+          "print_aabb_mm": [
+            64.0,
+            5.0,
+            0.0,
+            71.2,
+            22.121909676,
+            17.121909676
+          ],
+          "print_translation_mm": [
+            -48.3,
+            13.560954838,
+            24.860954838
+          ],
+          "step_object_name": "p3_v3_direct_race_hour_horizontal_16T_miter_RIGID_q+0_00",
+          "three_mf_object_name": "p3_v3_direct_race_hour_horizontal_16T_miter_RIGID_q+0_00",
+          "three_mf_triangle_count": 5900,
+          "three_mf_vertex_count": 5978
+        },
+        {
+          "frozen_aabb_mm": [
+            113.325043131,
+            -8.674956869,
+            -11.091585122,
+            130.674956869,
+            8.541238204,
+            -7.399999993
+          ],
+          "frozen_brep_sha256": "cf62cfad87a80949ea560f7a16c09ca19fe759996a0cc8b7cc716e1a3d248f12",
+          "frozen_dimensions_mm": [
+            17.349913737999998,
+            17.216195073,
+            3.691585129
+          ],
+          "frozen_generator_function": "make_motor_station_parts(0)[3]",
+          "frozen_label": "p3_v3_direct_race_hour_vertical_16T_miter_RIGID_q+0_00",
+          "frozen_owner_group": "motor_stations",
+          "frozen_topology": {
+            "edges": 312,
+            "faces": 105,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 208
+          },
+          "frozen_volume_mm3": 360.327819402,
+          "occurrence_name": "occurrence_131",
+          "print_aabb_mm": [
+            74.2,
+            5.0,
+            0.0,
+            91.549913738,
+            22.216195073,
+            3.691585129
+          ],
+          "print_translation_mm": [
+            -39.125043131,
+            13.674956869,
+            11.091585122
+          ],
+          "step_object_name": "p3_v3_direct_race_hour_vertical_16T_miter_RIGID_q+0_00",
+          "three_mf_object_name": "p3_v3_direct_race_hour_vertical_16T_miter_RIGID_q+0_00",
+          "three_mf_triangle_count": 8070,
+          "three_mf_vertex_count": 7049
+        },
+        {
+          "frozen_aabb_mm": [
+            119.1,
+            -2.9,
+            -4.25,
+            124.9,
+            2.9,
+            -0.7
+          ],
+          "frozen_brep_sha256": "ecb6ec2b0f20930d39697fae97634560c5558480ece0d08c0ab5bf568f9304b2",
+          "frozen_dimensions_mm": [
+            5.800000000000011,
+            5.8,
+            3.55
+          ],
+          "frozen_generator_function": "make_motor_station_parts(0)[7]",
+          "frozen_label": "p3_v3_direct_race_hour_ONLY_role_height_spacer_RIGID_q+0_00",
+          "frozen_owner_group": "motor_stations",
+          "frozen_topology": {
+            "edges": 6,
+            "faces": 4,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 4
+          },
+          "frozen_volume_mm3": 44.610615681,
+          "occurrence_name": "occurrence_135",
+          "print_aabb_mm": [
+            94.549913738,
+            5.0,
+            0.0,
+            100.34991373800001,
+            10.8,
+            3.55
+          ],
+          "print_translation_mm": [
+            -24.550086261999994,
+            7.9,
+            4.25
+          ],
+          "step_object_name": "p3_v3_direct_race_hour_ONLY_role_height_spacer_RIGID_q+0_00",
+          "three_mf_object_name": "p3_v3_direct_race_hour_ONLY_role_height_spacer_RIGID_q+0_00",
+          "three_mf_triangle_count": 672,
+          "three_mf_vertex_count": 676
+        },
+        {
+          "frozen_aabb_mm": [
+            113.123743098,
+            -8.876256902,
+            -0.7000001,
+            130.876256902,
+            8.876256902,
+            1.4000001
+          ],
+          "frozen_brep_sha256": "557d0c19ff54c030502ab918acbe691f4cdddc681e8db49d6637180e5c04a307",
+          "frozen_dimensions_mm": [
+            17.75251380399999,
+            17.752513804,
+            2.1000002
+          ],
+          "frozen_generator_function": "make_motor_station_parts(0)[8]",
+          "frozen_label": "p3_v3_direct_race_hour_16T_output_pinion_RIGID_q+0_00",
+          "frozen_owner_group": "motor_stations",
+          "frozen_topology": {
+            "edges": 294,
+            "faces": 100,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 196
+          },
+          "frozen_volume_mm3": 378.826546858,
+          "occurrence_name": "occurrence_136",
+          "print_aabb_mm": [
+            103.34991373800001,
+            5.0,
+            0.0,
+            121.102427542,
+            22.752513804,
+            2.1000002
+          ],
+          "print_translation_mm": [
+            -9.773829359999993,
+            13.876256902,
+            0.7000001
+          ],
+          "step_object_name": "p3_v3_direct_race_hour_16T_output_pinion_RIGID_q+0_00",
+          "three_mf_object_name": "p3_v3_direct_race_hour_16T_output_pinion_RIGID_q+0_00",
+          "three_mf_triangle_count": 5208,
+          "three_mf_vertex_count": 5404
+        }
+      ],
+      "status": "STAGE_A_TEST_PACK",
+      "step": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/motor_station.step",
+        "sha256": "1093b40d104d45f17a6c109cadce1ecd1ee8efea047028118d6debcff00e6be8"
+      },
+      "three_mf": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/motor_station.3mf",
+        "sha256": "76daf1ad6a0148dfda69d85fd2e9ba6033f1439a97cf93ad4f982c9b7a4b620e"
+      },
+      "warning": null
+    },
+    {
+      "description": "Exact frozen hour Q1/Q2 seam-2 occurrence set.",
+      "name": "ring_seam_review_only",
+      "objects": [
+        {
+          "frozen_aabb_mm": [
+            -1e-07,
+            -1e-07,
+            -1.5000001,
+            138.9,
+            138.9,
+            1.5000001
+          ],
+          "frozen_brep_sha256": "a2d06377665713c24a720521b5662680c52273c7f3f8194a166fb7c7a0ad10aa",
+          "frozen_dimensions_mm": [
+            138.9000001,
+            138.9000001,
+            3.0000002
+          ],
+          "frozen_generator_function": "make_ring_quadrant(0, 0)",
+          "frozen_label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+          "frozen_owner_group": "role_rings",
+          "frozen_topology": {
+            "edges": 1212,
+            "faces": 406,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 808
+          },
+          "frozen_volume_mm3": 5246.253344489,
+          "occurrence_name": "occurrence_108",
+          "print_aabb_mm": [
+            5.0,
+            5.0,
+            0.0,
+            143.9000001,
+            143.9000001,
+            3.0000002
+          ],
+          "print_translation_mm": [
+            5.0000001,
+            5.0000001,
+            1.5000001
+          ],
+          "step_object_name": "p3_v3_direct_race_hour_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+          "three_mf_object_name": "p3_v3_direct_race_hour_M1_260T_quadrant_Q1_65T_BARE_carrier_race",
+          "three_mf_triangle_count": 12732,
+          "three_mf_vertex_count": 13536
+        },
+        {
+          "frozen_aabb_mm": [
+            -138.9,
+            -1e-07,
+            -1.5000001,
+            1e-07,
+            138.9,
+            1.5000001
+          ],
+          "frozen_brep_sha256": "e90943a193a0dd55926a7949acdb97dd651bbb7f6389caff6eb72d73bf89f088",
+          "frozen_dimensions_mm": [
+            138.9000001,
+            138.9000001,
+            3.0000002
+          ],
+          "frozen_generator_function": "make_ring_quadrant(0, 1)",
+          "frozen_label": "p3_v3_direct_race_hour_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+          "frozen_owner_group": "role_rings",
+          "frozen_topology": {
+            "edges": 1212,
+            "faces": 406,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 808
+          },
+          "frozen_volume_mm3": 5246.253344489,
+          "occurrence_name": "occurrence_109",
+          "print_aabb_mm": [
+            110.0,
+            110.0,
+            0.0,
+            248.9000001,
+            248.9000001,
+            3.0000002
+          ],
+          "print_translation_mm": [
+            248.9,
+            110.0000001,
+            1.5000001
+          ],
+          "step_object_name": "p3_v3_direct_race_hour_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+          "three_mf_object_name": "p3_v3_direct_race_hour_M1_260T_quadrant_Q2_65T_BARE_carrier_race",
+          "three_mf_triangle_count": 12732,
+          "three_mf_vertex_count": 13536
+        },
+        {
+          "frozen_aabb_mm": [
+            -6.0,
+            135.8,
+            -2.5,
+            6.0,
+            138.8,
+            -1.5
+          ],
+          "frozen_brep_sha256": "beeeee1e80331321329f485d4b4e752ed56ffa1caf4524692039a9d5b526a776",
+          "frozen_dimensions_mm": [
+            12.0,
+            3.0,
+            1.0
+          ],
+          "frozen_generator_function": "make_seam_hardware(0)[4]",
+          "frozen_label": "p3_v3_r2_hour_seam_2_underside_splice",
+          "frozen_owner_group": "role_rings",
+          "frozen_topology": {
+            "edges": 18,
+            "faces": 8,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 12
+          },
+          "frozen_volume_mm3": 28.397345778,
+          "occurrence_name": "occurrence_116",
+          "print_aabb_mm": [
+            230.0,
+            10.0,
+            0.0,
+            242.0,
+            13.0,
+            1.0
+          ],
+          "print_translation_mm": [
+            236.0,
+            -125.80000000000001,
+            2.5
+          ],
+          "step_object_name": "p3_v3_r2_hour_seam_2_underside_splice",
+          "three_mf_object_name": "p3_v3_r2_hour_seam_2_underside_splice",
+          "three_mf_triangle_count": 692,
+          "three_mf_vertex_count": 700
+        },
+        {
+          "frozen_aabb_mm": [
+            -1.45,
+            135.55,
+            -1.5,
+            1.45,
+            138.45,
+            1.5
+          ],
+          "frozen_brep_sha256": "52141e8224983782afdd63487cbc9b2b0858820498a1d58d58342bea96451ce4",
+          "frozen_dimensions_mm": [
+            2.9,
+            2.8999999999999773,
+            3.0
+          ],
+          "frozen_generator_function": "make_seam_hardware(0)[5]",
+          "frozen_label": "p3_v3_r2_hour_seam_2_3mm_registration_dowel",
+          "frozen_owner_group": "stationary_joints",
+          "frozen_topology": {
+            "edges": 3,
+            "faces": 3,
+            "shells": 1,
+            "solids": 1,
+            "vertices": 2
+          },
+          "frozen_volume_mm3": 19.815595663,
+          "occurrence_name": "occurrence_117",
+          "print_aabb_mm": [
+            245.0,
+            10.0,
+            0.0,
+            247.89999999999998,
+            12.899999999999977,
+            3.0
+          ],
+          "print_translation_mm": [
+            246.45,
+            -125.55000000000001,
+            1.5
+          ],
+          "step_object_name": "p3_v3_r2_hour_seam_2_3mm_registration_dowel",
+          "three_mf_object_name": "p3_v3_r2_hour_seam_2_3mm_registration_dowel",
+          "three_mf_triangle_count": 332,
+          "three_mf_vertex_count": 338
+        }
+      ],
+      "status": "REVIEW_ONLY_DO_NOT_PRINT",
+      "step": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/ring_seam_review_only.step",
+        "sha256": "c49b23978e2b50edc43505a99d89f5f28c2943075cee7b3d9bec0328bbf901d3"
+      },
+      "three_mf": {
+        "path": "models/p3_v3_locked_stage_a_print_exports/ring_seam_review_only.3mf",
+        "sha256": "86dfe1a5eeb396a626ce4a20fc874506fc99dc6fcea846e4ff213aca17403af6"
+      },
+      "warning": "Contains the frozen 3 mm alignment dowel contrary to the current user preference. A later intentional, versioned screw-only redesign is required before printing."
+    }
+  ],
+  "schema": "kage.p3-v3.locked-stage-a-print-exports.v1"
+}

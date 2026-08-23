@@ -1,0 +1,50 @@
+{
+  "derived_directly_from": "p3_v3_mvp_base_q3_r0_roller_seam_diagonal_preview",
+  "hardware_envelopes_printable": false,
+  "namespace": "p3_v3_mvp_base_q3_r2_roller_mount_inner_screws",
+  "printable_artifacts_only": [
+    "canonical_sector",
+    "canonical_roller_mount"
+  ],
+  "rejected_predecessor": {
+    "namespace": "p3_v3_mvp_base_q3_r1_canonical_four_hole_seam_clamp",
+    "reason": "standalone four-hole seam clamp contradicts the r2 roller-mount/inner-screws contract"
+  },
+  "roller_mount": {
+    "bounds_mm": [
+      9.300000000000011,
+      28.850000000000005,
+      3.0
+    ],
+    "build_item_count": 1,
+    "bytes": 9532,
+    "manifold_and_oriented": true,
+    "object_count": 1,
+    "object_name": "p3_v3_mvp_base_q3_r2_roller_mount_inner_screws_CANONICAL_ROLLER_MOUNT_PRINT_QTY_3",
+    "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws_canonical_roller_mount_print_qty3.3mf",
+    "print_quantity": 3,
+    "printer_process_profiles_embedded": false,
+    "sha256": "70346db2300d3b994f2dba55bf04d2f78c9a777d651d04ecab6e5150ef3caace",
+    "triangles": 692,
+    "vertices": 344
+  },
+  "sector": {
+    "bounds_mm": [
+      194.54570305273023,
+      194.7906520270086,
+      6.0
+    ],
+    "build_item_count": 1,
+    "bytes": 58013,
+    "manifold_and_oriented": true,
+    "object_count": 1,
+    "object_name": "p3_v3_mvp_base_q3_r2_roller_mount_inner_screws_CANONICAL_R0_SECTOR_PRINT_QTY_3",
+    "path": "/Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator/models/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws/p3_v3_mvp_base_q3_r2_roller_mount_inner_screws_canonical_sector_print_qty3.3mf",
+    "print_quantity": 3,
+    "printer_process_profiles_embedded": false,
+    "sha256": "3b2084666c20e69d9c128f54ed90aec0e962abab7b989d7d6eadb30a5ff2b5d1",
+    "triangles": 4400,
+    "vertices": 2178
+  },
+  "status": "CAD_VALIDATED_PHYSICAL_FIT_AND_STRENGTH_UNPROVEN"
+}

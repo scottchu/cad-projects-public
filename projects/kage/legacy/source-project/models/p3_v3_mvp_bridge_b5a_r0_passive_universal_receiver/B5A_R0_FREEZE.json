@@ -1,0 +1,48 @@
+{
+  "freeze": "B5A-R0",
+  "status": "frozen_for_independent_review",
+  "timestamp_utc": "2026-08-20T10:20:00Z",
+  "scope": {
+    "printed_solids": [
+      "H_bridge_receiver",
+      "M_bridge_receiver",
+      "S_bridge_receiver",
+      "alignment_gauge"
+    ],
+    "printed_solid_count": 4,
+    "sensor_or_electronics_geometry": false,
+    "sensing_claim": false,
+    "b5b_included": false
+  },
+  "validation": {
+    "pytest": "10 passed",
+    "assembled_step_occurrences": 193,
+    "exploded_step_occurrences": 194,
+    "invalid_step_occurrences": 0,
+    "three_mf_objects": 4,
+    "three_mf_build_items": 4,
+    "three_mf_model_only": true,
+    "source_export_parity_max_bounds_error_mm": 9.487166607868858e-11,
+    "source_export_parity_max_volume_error_mm3": 2.8378508432069793e-09
+  },
+  "artifact_sha256": {
+    "p3_v3_mvp_bridge_b5a_r0_passive_universal_receiver_assembled.step": "e7a16789a301102a090aee28b77f353ac9d2e481dd81c2d9f43e38790f876e15",
+    "p3_v3_mvp_bridge_b5a_r0_passive_universal_receiver_assembly_order_exploded.step": "cffca5df5f4b43d35b7815b645fdfd72fc1772f31a13442e861e44fafb5ae593",
+    "p3_v3_mvp_bridge_b5a_r0_passive_universal_receiver_four_printed_objects_model_only.3mf": "dce4d5428bfec6a96a3554e74197b021fe06437c9bacc883662c83491501092d",
+    "README.md": "f84b9976ef001f1e8db68acc14e5ba43420e20b3894c150fbd32ee7fa8895492",
+    "review_snapshots/assembled_iso_20260820T101116Z.png": "cf0d7e0310cecf6fdd0932f17896579e29eb3a2d00bb11b95cb437a9c00e2355",
+    "review_snapshots/assembled_top_20260820T101123Z.png": "b419d4d3254c0e2b216fb53830cc3a325ce384538e8635355539b545aa52af52",
+    "review_snapshots/exploded_iso_20260820T101131Z.png": "9e4e483abf168fc0764a7611e72112c5522cd74a46830cc32bd7cc76767c8190"
+  },
+  "predecessor_sha256": {
+    "R4": "9cae6479cca23c38bdfff1bd28e4a7f30b422abede6f28fb6f1ccf4f86f28c3a",
+    "B1": "675de24de9afa6afbcd7a6ba6c0079a1f60e72507a6e4cbe803f732d1c55e2df",
+    "B2-R2": "ac47fc19eb54cd65dc5aedef57bcb8e87ae6048397752def8ec9a45b91a57705",
+    "B2-R3": "bf0bbf3d320c395c9530a39a2de9ccd41c21abc876f40507c70cbc40c6cccb72",
+    "B3-R1": "9b384da3c608c69e205b5221a8495098fc775a7cc8e20772c1032790db846a71",
+    "B4-R0": "c8bdf02cd21e5af35e90ebe6dec49025097687ee4752ac7c4c2acdb852bf0da2",
+    "B4-R1": "fdc8f459730747bff59b036f1e8614afea717d720d07d0e5012f06c536cc5f03",
+    "B4-R2": "7b2087184ca58ca128f76b8d35465ed0e5e1e7c8c97536d3ee2897705361f02c"
+  },
+  "review_boundary": "CAD acceptance only; print fit, fastener retention, motion, stiffness, wear, and usability remain physical-test obligations."
+}

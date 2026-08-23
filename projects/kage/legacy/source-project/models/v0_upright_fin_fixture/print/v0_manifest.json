@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "review_status": "pending_independent_review",
+  "implementation_may_self_approve": false,
+  "units": "millimeter",
+  "printable_part_count": 4,
+  "printable_parts": [
+    "fake_quartz_mask_body",
+    "hour_carrier_hand",
+    "minute_carrier_hand",
+    "second_carrier_hand"
+  ],
+  "primary_step": {
+    "assembled": {
+      "path": "models/v0_upright_fin_fixture/v0_assembled.step",
+      "sha256": "ff51a69c6f97512f82c4f2704dd475990d225da68b830db20ab97c92520832a1",
+      "bbox_mm": [
+        90.0,
+        90.0,
+        41.769230769
+      ],
+      "volume_mm3": 41530.89867263227,
+      "solid_count": 4
+    },
+    "exploded": {
+      "path": "models/v0_upright_fin_fixture/v0_exploded.step",
+      "sha256": "baccbe87f1d67aaaabb24f031d9bbf19eeb1baa01b793088c7e07351e1c02afc",
+      "bbox_mm": [
+        90.0,
+        90.0,
+        62.823529412
+      ],
+      "volume_mm3": 41530.89867263228,
+      "solid_count": 4
+    }
+  },
+  "parts": {
+    "fake_quartz_mask_body": {
+      "step": {
+        "path": "models/v0_upright_fin_fixture/fake_quartz_mask_body.step",
+        "sha256": "16e27766ba87a48f4ca855617791ea4e4b9fcf7d39c713e3cbdeff4fb3fb13fe",
+        "bbox_mm": [
+          90.0,
+          90.0,
+          24.300000000000068
+        ],
+        "volume_mm3": 38883.14252018581,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0_upright_fin_fixture/print/fake_quartz_mask_body.stl",
+        "sha256": "a80fae4e41d9176d4faf6e74ee626205119e0a2d01a7433627ddeee145124518",
+        "bbox_mm": [
+          90.0,
+          90.0,
+          24.3
+        ],
+        "volume_mm3": 38883.142520184454,
+        "solid_count": 1
+      }
+    },
+    "hour_carrier_hand": {
+      "step": {
+        "path": "models/v0_upright_fin_fixture/hour_carrier_hand.step",
+        "sha256": "dd14e7099cb3cdfe69215ae004206c382ad923ae6e169f5a74e04a36f4217c7c",
+        "bbox_mm": [
+          61.6,
+          61.6,
+          17.523529412000002
+        ],
+        "volume_mm3": 709.2491376110086,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0_upright_fin_fixture/print/hour_carrier_hand.stl",
+        "sha256": "aabf275a15945d5cb69f09c5bca4f512cb4efdc79ef86853450491b5f1cb21bb",
+        "bbox_mm": [
+          61.60000000000001,
+          61.6,
+          17.523529412000002
+        ],
+        "volume_mm3": 709.2491376109244,
+        "solid_count": 1
+      }
+    },
+    "minute_carrier_hand": {
+      "step": {
+        "path": "models/v0_upright_fin_fixture/minute_carrier_hand.step",
+        "sha256": "233c0745237dcaf9efc9411fe88b4a674572fdb84a8eb3abd46c35a3ab5b57e8",
+        "bbox_mm": [
+          71.1,
+          71.1,
+          25.682954545
+        ],
+        "volume_mm3": 891.7290579927999,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0_upright_fin_fixture/print/minute_carrier_hand.stl",
+        "sha256": "22b8de3347ae2c3d4729ed6b2ab0958279aff209aafc2b318434901ac629a7ae",
+        "bbox_mm": [
+          71.10000000000002,
+          71.1,
+          25.682954544999998
+        ],
+        "volume_mm3": 891.7290579927794,
+        "solid_count": 1
+      }
+    },
+    "second_carrier_hand": {
+      "step": {
+        "path": "models/v0_upright_fin_fixture/second_carrier_hand.step",
+        "sha256": "d4b9cd59fe1e58970a355da96a5339decc74246ef49ae7d498015af434d67271",
+        "bbox_mm": [
+          80.6,
+          80.6,
+          32.344230769
+        ],
+        "volume_mm3": 1046.777956842659,
+        "solid_count": 1
+      },
+      "stl": {
+        "path": "models/v0_upright_fin_fixture/print/second_carrier_hand.stl",
+        "sha256": "555a3448d2dcace60e32741cbed034689c0c6142f63cb3ecd97e25ec5904a1bf",
+        "bbox_mm": [
+          80.60000000000002,
+          80.6,
+          32.344230769000006
+        ],
+        "volume_mm3": 1046.7779568422332,
+        "solid_count": 1
+      }
+    }
+  },
+  "three_mf": {
+    "path": "models/v0_upright_fin_fixture/print/v0_four_part_manual_optics.3mf",
+    "sha256": "18c3a2ac6d0aa6c610c67b61ffbeb4b2a21b01f84b0d9006be0208d17208e80e",
+    "object_count": 4
+  },
+  "snapshots": [
+    {
+      "path": "models/v0_upright_fin_fixture/snapshots/v0_assembled_iso_20260812T011800Z.png",
+      "sha256": "76a66be79e1e4ac9c304c8d7534a50b38cdd948e258683e081b86116e9441ffb"
+    },
+    {
+      "path": "models/v0_upright_fin_fixture/snapshots/v0_assembled_opposite_20260812T011824Z.png",
+      "sha256": "50e839641bdc53a047654dd1c57d7af68531558fee787462ecc32cbc9281bf6e"
+    },
+    {
+      "path": "models/v0_upright_fin_fixture/snapshots/v0_assembled_side_20260812T011826Z.png",
+      "sha256": "5e5ea49f1f043d480155b139d10b6fc51d406db9ec1fe365f30fa60eb683daa9"
+    },
+    {
+      "path": "models/v0_upright_fin_fixture/snapshots/v0_assembled_top_20260812T011825Z.png",
+      "sha256": "2697d5a77a02dd2d4a7bc37e5e5de3804e342149cc4a8167ba80d28ee9dad436"
+    },
+    {
+      "path": "models/v0_upright_fin_fixture/snapshots/v0_exploded_iso_20260812T011827Z.png",
+      "sha256": "4c77ae2fd8e776dfefe27ad21222f5b74fd99f6d1b2fdf2e7b314b009c1f9164"
+    }
+  ],
+  "frozen_spec": {
+    "source_z": 60.0,
+    "body": [
+      90.0,
+      90.0,
+      6.0
+    ],
+    "arbor_height": 24.3,
+    "carrier_radii": [
+      30.0,
+      34.75,
+      39.5
+    ],
+    "ring_section": [
+      1.6,
+      1.2
+    ],
+    "fin_section": [
+      1.6,
+      2.4
+    ],
+    "carrier_z": {
+      "hour": [
+        21.3,
+        22.5,
+        38.823529412
+      ],
+      "minute": [
+        15.3625,
+        16.5625,
+        41.045454545
+      ],
+      "second": [
+        9.425,
+        10.625,
+        41.769230769
+      ]
+    },
+    "shadow_targets": {
+      "hour": [
+        48.0,
+        85.0
+      ],
+      "minute": [
+        48.0,
+        110.0
+      ],
+      "second": [
+        48.0,
+        130.0
+      ]
+    },
+    "required_led_half_angle_degrees": 65.22485943116808
+  },
+  "physical_test_only": [
+    "force",
+    "friction",
+    "wear",
+    "runout",
+    "real shadow quality"
+  ],
+  "notes": [
+    "Manual optics proof only; not compatible with a real quartz movement.",
+    "Implementation is pending independent geometry and physical review."
+  ]
+}

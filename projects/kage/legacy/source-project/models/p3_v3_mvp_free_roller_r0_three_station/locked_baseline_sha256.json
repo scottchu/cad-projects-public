@@ -1,0 +1,40 @@
+{
+  "algorithm": "sha256",
+  "excluded": [
+    ".DS_Store",
+    "__pycache__/**",
+    "__cadgen__/**"
+  ],
+  "files": [
+    {"bytes": 313, "path": "p3_v3_direct_gear_race_SERVICE_disengaged_q-2p50.step.py", "sha256": "b735906e33576d740932554387885548eb0dd7a197d432a65d2488488036a398"},
+    {"bytes": 329, "path": "p3_v3_direct_gear_race_SERVICE_outward_q+2p50_RINGS_REMOVED.step.py", "sha256": "475fbbc5e196824860262eb72c45df4f8a603bc51cc941108646628e75400bff"},
+    {"bytes": 44429558, "path": "p3_v3_direct_gear_race_assembled.step", "sha256": "dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7"},
+    {"bytes": 286, "path": "p3_v3_direct_gear_race_assembled.step.py", "sha256": "a71d06ad5713e040295329dddb81fc8b8b2b72138d82a1b5a3798523bc7f4cac"},
+    {"bytes": 44429736, "path": "p3_v3_direct_gear_race_powered_max_q+0p10.step", "sha256": "1e828e5717d458838bca4d39858778e03ac010b4bde6b22592249bad8c5fb0ee"},
+    {"bytes": 291, "path": "p3_v3_direct_gear_race_powered_max_q+0p10.step.py", "sha256": "83a62c838c97d605978e1a4e27dc01be8b29d0796db1c5c30af8d22376440dde"},
+    {"bytes": 44429735, "path": "p3_v3_direct_gear_race_powered_min_q-0p35.step", "sha256": "909cbeaa36576d8cc36322f1e53bc443338960506b13c32c959a2892b379ae69"},
+    {"bytes": 290, "path": "p3_v3_direct_gear_race_powered_min_q-0p35.step.py", "sha256": "cb8df23daad8031023aed0e9cc724156b12b3de3a23e2b8341441a60a835fd7c"},
+    {"bytes": 44431038, "path": "p3_v3_direct_gear_race_service_exploded.step", "sha256": "fe6a38f4a602024515d8b49df0a1dd847d4eec69e10b06de7f79377655ed245c"},
+    {"bytes": 305, "path": "p3_v3_direct_gear_race_service_exploded.step.py", "sha256": "4cd499fa555b6114ce621ba3a8c4f73a07af0f66295d5468b6c86f1676b9db56"},
+    {"bytes": 457088, "path": "snapshots/p3_v3_direct_gear_race_assembled_20260818T151742Z.png", "sha256": "80021c8b864d0f839d326bbbbde80af9964b88a619ae8b6e51921afb669fc7cd"},
+    {"bytes": 397118, "path": "snapshots/p3_v3_direct_gear_race_clearance_overall_20260818T164821Z.png", "sha256": "dff003ec4c513da4ba1a4eee1a157ff07c305a6bd390f89d0f91e99f58209cf2"},
+    {"bytes": 235952, "path": "snapshots/p3_v3_direct_gear_race_motor_cap_detail_20260818T164835Z.png", "sha256": "27193e40e1721612ff253e35b0c2dd8570b582525a8c61e46875649da99d2417"},
+    {"bytes": 494612, "path": "snapshots/p3_v3_direct_gear_race_service_exploded_20260818T151808Z.png", "sha256": "15003daf83aa3ff566bfb5164923209269e90f441b608a22a0d40632d89ff60c"},
+    {"bytes": 825696, "path": "snapshots/radial_adjustment_SERVICE_disengaged_q-2p50_20260818T201352Z.png", "sha256": "efe7e54a6d8d88f3eaa4a3953d9ba4e6a20b9f0a372fc33db51698e9b4cbf123"},
+    {"bytes": 575864, "path": "snapshots/radial_adjustment_SERVICE_outward_q+2p50_RINGS_REMOVED_20260818T201516Z.png", "sha256": "e3462888db5a6e9eba03a4db92883b969b8ca57bd1beb5db0229cbd50e75447e"},
+    {"bytes": 824729, "path": "snapshots/radial_adjustment_nominal_overall_20260818T201050Z.png", "sha256": "f026506ec3cfc21cfcbd0e6eecc175590701e1b8b328e5f38ce7dfd664096b21"},
+    {"bytes": 130175, "path": "snapshots/radial_adjustment_powered_max_q+0p10_20260818T201322Z.png", "sha256": "7c2887e0b237140c6841e06071dc5c447287304fb3fdba149fe217bba61d7181"},
+    {"bytes": 130918, "path": "snapshots/radial_adjustment_powered_min_q-0p35_20260818T201314Z.png", "sha256": "e5650f5613a27b97d2d57920d73f7c7fc535b99bb451b735888aa14fb38bd99a"},
+    {"bytes": 381307, "path": "snapshots/radial_adjustment_slot_detail_20260818T201103Z.png", "sha256": "32033fe83634497ec5e7bcffa37a47f5f8d14a015b26705b6a687e169a362c7f"},
+    {"bytes": 214235, "path": "snapshots/radial_adjustment_slot_detail_isolated_20260818T201142Z.png", "sha256": "50222b74073c3fcf77f498b2e59c392d63e7f85a18d0a55f9e4aa1aab1f2e8b5"},
+    {"bytes": 98459, "path": "snapshots/radial_adjustment_slot_top_20260818T201228Z.png", "sha256": "d78e338a9210abb690cd65ffc76f25145987146780ec8adb397628ed80598639"},
+    {"bytes": 174639, "path": "snapshots/radial_slots_export_review_20260819T020951Z.png", "sha256": "677d7923f3b154a117a8a82e94e8c5ac3b30e91bb030eec2fb2f9f72bae22c1a"},
+    {"bytes": 1548, "path": "source_snapshot/p3_v3_direct_gear_race_guidance_export.py", "sha256": "af3aea16d31a98fd0837f3302950451f0bb0069bb1147a944de181e99c820433"},
+    {"bytes": 23983, "path": "source_snapshot/p3_v3_direct_gear_race_guidance_geometry.py", "sha256": "a435865878c59fbadd48ee14aa6bd3f3dd9b08aee032bb64537b9d948104ec52"},
+    {"bytes": 10691, "path": "source_snapshot/p3_v3_direct_gear_race_guidance_spec.py", "sha256": "76122f22de604ec50292bb3fceff6d5be545cdd52a4769a448bda995c8793773"},
+    {"bytes": 18104, "path": "tests_snapshot/test_p3_v3_direct_gear_race_guidance.py", "sha256": "f892a80c3c9470d76973bad798a19f17170614f110c99aa14b82d2d5005b58a5"},
+    {"bytes": 13182, "path": "tests_snapshot/test_p3_v3_direct_gear_race_guidance_artifacts.py", "sha256": "4f72b8aaf02d7b26aefca996b958003eebd6f5f14feaf836d3b5998102265ed0"},
+    {"bytes": 4738, "path": "tests_snapshot/test_p3_v3_motor_radial_adjustment.py", "sha256": "3f67b2e55b0cf95ed9e62fbc38e0121ddf17bbb8e94b86a04df2a97a1e328323"}
+  ],
+  "locked_root": "p3_v3_direct_gear_race_guidance_locked_pre_radial_visibility_20260818"
+}

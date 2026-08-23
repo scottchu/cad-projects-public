@@ -1,0 +1,1706 @@
+{
+  "assemblies": [
+    {
+      "extentDeltaMm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "file": {
+        "bytes": 1343112,
+        "path": "p3_v3_r2_seam_race_coupon.step",
+        "sha256": "22dfbf2ff1a6d6d1b95a0cf41c93f0c0d60a3a84ae3ea3a61b460e998db36816"
+      },
+      "importedSolids": 14,
+      "name": "seam_race_coupon",
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            142.2,
+            70.0,
+            3.0
+          ],
+          "min": [
+            96.0,
+            -40.032395,
+            -1.55
+          ]
+        },
+        "label": "p3_v3_r2_A_seam_race_progressive_coupon",
+        "solids": 14,
+        "volumeMm3": 3355.938194
+      }
+    },
+    {
+      "extentDeltaMm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "file": {
+        "bytes": 5061610,
+        "path": "p3_v3_r2_motor_station_coupon.step",
+        "sha256": "f2916704077a1942f27edc5badf345346012151c4541af796975c93054c8e360"
+      },
+      "importedSolids": 19,
+      "name": "motor_station_coupon",
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            140.0,
+            40.032395,
+            22.8
+          ],
+          "min": [
+            72.0,
+            -41.1,
+            -25.2
+          ]
+        },
+        "label": "p3_v3_r2_B_24T_horizontal_NEMA8_motor_station_coupon",
+        "solids": 19,
+        "volumeMm3": 29626.973808
+      }
+    }
+  ],
+  "assemblyNote": "Coupon B is a complete horizontal NEMA8 retention and transmission fit assembly. The two M1 16T miter gears, M1 16T output pinion, saddle, two clamp straps, bearing housing/cap, guide shoes, fin, fit gauges, and 24T ring arc are printed. The motor, both shafts, two MR84 bearings, screws, nuts, heat-set inserts, pins, washers, and shaft collar are purchased and are excluded from the printable-only 3MF.",
+  "coordinateSystem": "XY clock plane; +Z viewer; angle-zero station on +X",
+  "declaredContacts": [
+    "output shaft D-flat to output-pinion D-bore",
+    "motor shaft D-flat to horizontal-miter D-bore",
+    "output shaft D-flat to vertical-miter D-bore",
+    "bearing outer races to housing/cap shoulders",
+    "motor body underside to saddle top",
+    "motor body top to both printable M3 clamp straps",
+    "seam lap split plane and stationary joiner mating faces"
+  ],
+  "frozenTransmission": {
+    "bearingCenterSpanMm": 18.0,
+    "centerDistanceMm": 122.0,
+    "module": 1.0,
+    "motorArcAngleDegrees": 33.230769230769226,
+    "motorArcOuterChordMm": 80.06478995163299,
+    "pinionPitchRadiusMm": 8.0,
+    "pinionTeeth": 16,
+    "pressureAngleDegrees": 20.0,
+    "ringPitchRadiusMm": 130.0,
+    "ringTeeth": 260
+  },
+  "individualPrintableStl": [
+    {
+      "file": {
+        "bytes": 242184,
+        "path": "print/stl/p3_v3_r2_seam_lower_real_12t_arc_half.stl",
+        "sha256": "865b7fb7ef1defbe25c58a84fe7cb06bca644a66e5436c12aca890583d2b189d"
+      },
+      "group": "A_seam_race",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "broad carrier/lap face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            16.386288,
+            47.032395,
+            3.0
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_seam_lower_real_12T_arc_half",
+        "solids": 1,
+        "volumeMm3": 950.439945
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            140.0,
+            7.0,
+            3.0
+          ],
+          "min": [
+            123.613712,
+            -40.032395,
+            -0.0
+          ]
+        },
+        "label": "p3_v3_r2_seam_lower_real_12T_arc_half",
+        "solids": 1,
+        "volumeMm3": 950.439945
+      }
+    },
+    {
+      "file": {
+        "bytes": 313684,
+        "path": "print/stl/p3_v3_r2_seam_upper_real_12t_arc_half.stl",
+        "sha256": "7e9ef925bec0b46f5d8ed8d6f15f2ab86ab218c0675f43d4b1cd7818e04fc0a2"
+      },
+      "group": "A_seam_race",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "broad carrier/lap face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            16.386288,
+            47.032395,
+            3.0
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_seam_upper_real_12T_arc_half",
+        "solids": 1,
+        "volumeMm3": 957.768154
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            140.0,
+            40.032395,
+            3.0
+          ],
+          "min": [
+            123.613712,
+            -7.0,
+            -0.0
+          ]
+        },
+        "label": "p3_v3_r2_seam_upper_real_12T_arc_half",
+        "solids": 1,
+        "volumeMm3": 957.768154
+      }
+    },
+    {
+      "file": {
+        "bytes": 1684,
+        "path": "print/stl/p3_v3_r2_guide_shoe_clearance_0_15mm.stl",
+        "sha256": "cbd7dce9e93512aab0e9a00433063bfad1c90d8068e79d78956201b21f13889e"
+      },
+      "group": "A_seam_race",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "flat guide base on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            6.4,
+            12.0,
+            3.5
+          ],
+          "min": [
+            -0.0,
+            -0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.15mm",
+        "solids": 1,
+        "volumeMm3": 238.44
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            142.2,
+            34.0,
+            2.15
+          ],
+          "min": [
+            135.8,
+            22.0,
+            -1.35
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.15mm",
+        "solids": 1,
+        "volumeMm3": 238.44
+      }
+    },
+    {
+      "file": {
+        "bytes": 1684,
+        "path": "print/stl/p3_v3_r2_guide_shoe_clearance_0_25mm.stl",
+        "sha256": "823962c95c736c1ace2a5c6d1d32f40880d2b3b00e08860910a898436c066050"
+      },
+      "group": "A_seam_race",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "flat guide base on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            6.4,
+            12.0,
+            3.7
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.25mm",
+        "solids": 1,
+        "volumeMm3": 245.16
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            142.2,
+            52.0,
+            2.25
+          ],
+          "min": [
+            135.8,
+            40.0,
+            -1.45
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.25mm",
+        "solids": 1,
+        "volumeMm3": 245.16
+      }
+    },
+    {
+      "file": {
+        "bytes": 1684,
+        "path": "print/stl/p3_v3_r2_guide_shoe_clearance_0_35mm.stl",
+        "sha256": "649ae8189a46d16283316ec1d516aa3a63d24481f413e7ddd064d4e9f54df133"
+      },
+      "group": "A_seam_race",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "flat guide base on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            6.4,
+            12.0,
+            3.9
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.35mm",
+        "solids": 1,
+        "volumeMm3": 250.92
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            142.2,
+            70.0,
+            2.35
+          ],
+          "min": [
+            135.8,
+            58.0,
+            -1.55
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.35mm",
+        "solids": 1,
+        "volumeMm3": 250.92
+      }
+    },
+    {
+      "file": {
+        "bytes": 34884,
+        "path": "print/stl/p3_v3_r2_stationary_joiner_male_6x4x1p2_step.stl",
+        "sha256": "bf7377a4f4c49fef8dc64d562e6e2c78d5b0bf5a5b97bf8bdaeabe826f31795b"
+      },
+      "group": "A_seam_race",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "stationary joiner body face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            15.0,
+            12.0,
+            3.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_stationary_joiner_male_6x4x1p2_step",
+        "solids": 1,
+        "volumeMm3": 329.633937
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            6.0,
+            6.0,
+            3.0
+          ],
+          "min": [
+            -9.0,
+            -6.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_stationary_joiner_male_6x4x1p2_step",
+        "solids": 1,
+        "volumeMm3": 329.633937
+      }
+    },
+    {
+      "file": {
+        "bytes": 33284,
+        "path": "print/stl/p3_v3_r2_stationary_joiner_female_clearance_0p25.stl",
+        "sha256": "5cc840e693dc2d0c65d7f75e3a0d4afea50c67371d9990cfe71fb00d37ac50a5"
+      },
+      "group": "A_seam_race",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "stationary joiner body face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            9.0,
+            12.0,
+            3.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_stationary_joiner_female_clearance_0p25",
+        "solids": 1,
+        "volumeMm3": 269.336444
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            9.0,
+            6.0,
+            3.0
+          ],
+          "min": [
+            0.0,
+            -6.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_stationary_joiner_female_clearance_0p25",
+        "solids": 1,
+        "volumeMm3": 269.336444
+      }
+    },
+    {
+      "file": {
+        "bytes": 485684,
+        "path": "print/stl/p3_v3_r2_b_real_m1_260t_24t_motor_station_arc.stl",
+        "sha256": "c9f10254aab2e7cc0ff2f3e14e3177a0db545fed44cba741864b6ac3a48c1739"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "carrier top annulus on bed; bosses, race, and teeth face upward",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            16.386288,
+            80.06479,
+            6.2
+          ],
+          "min": [
+            -0.0,
+            -0.0,
+            -0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_real_M1_260T_24T_motor_station_arc",
+        "solids": 1,
+        "volumeMm3": 2208.509274
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            140.0,
+            40.032395,
+            5.8
+          ],
+          "min": [
+            123.613712,
+            -40.032395,
+            -0.4
+          ]
+        },
+        "label": "p3_v3_r2_B_real_M1_260T_24T_motor_station_arc",
+        "solids": 1,
+        "volumeMm3": 2208.509274
+      }
+    },
+    {
+      "file": {
+        "bytes": 309784,
+        "path": "print/stl/p3_v3_r2_b_two_mr84_18mm_span_bearing_housing.stl",
+        "sha256": "8b39344fe4d5b6bd529d39f31c6b0199eb37ae92c323ff6c3fee3d6256d414fa"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "broad mounting foot on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            14.0,
+            27.0,
+            25.2
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_two_MR84_18mm_span_bearing_housing",
+        "solids": 1,
+        "volumeMm3": 2578.041067
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            129.0,
+            13.5,
+            0.0
+          ],
+          "min": [
+            115.0,
+            -13.5,
+            -25.2
+          ]
+        },
+        "label": "p3_v3_r2_B_two_MR84_18mm_span_bearing_housing",
+        "solids": 1,
+        "volumeMm3": 2578.041067
+      }
+    },
+    {
+      "file": {
+        "bytes": 89284,
+        "path": "print/stl/p3_v3_r2_b_mr84_removable_cap_d6p4_aperture.stl",
+        "sha256": "045b9c934dbe130058753b338bc837a901085e29093b7e9e959912b9856b9a19"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "broad planar face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            14.0,
+            22.0,
+            1.6
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_removable_cap_D6p4_aperture",
+        "solids": 1,
+        "volumeMm3": 332.730767
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            129.0,
+            11.0,
+            1.6
+          ],
+          "min": [
+            115.0,
+            -11.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_removable_cap_D6p4_aperture",
+        "solids": 1,
+        "volumeMm3": 332.730767
+      }
+    },
+    {
+      "file": {
+        "bytes": 137484,
+        "path": "print/stl/p3_v3_r2_b_nema8_3mm_saddle_four_m3_slotted_clamps.stl",
+        "sha256": "0b995bee6bf99f344fc2a6b3aa49aa5748dd2312a9cdfef45805a3ec5f4646d3"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "broad planar face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            43.0,
+            36.0,
+            3.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_3mm_saddle_four_M3_slotted_clamps",
+        "solids": 1,
+        "volumeMm3": 4304.359229
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            115.0,
+            18.0,
+            -22.15
+          ],
+          "min": [
+            72.0,
+            -18.0,
+            -25.15
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_3mm_saddle_four_M3_slotted_clamps",
+        "solids": 1,
+        "volumeMm3": 4304.359229
+      }
+    },
+    {
+      "file": {
+        "bytes": 64284,
+        "path": "print/stl/p3_v3_r2_b_nema8_m3_clamp_strap_1.stl",
+        "sha256": "33c8ec5c52068bbac6e62f98f04d9c92520043a167f97d50a284dbc754bff5ec"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "broad planar face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            6.0,
+            36.0,
+            3.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_M3_clamp_strap_1",
+        "solids": 1,
+        "volumeMm3": 593.524783
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            83.0,
+            18.0,
+            1.15
+          ],
+          "min": [
+            77.0,
+            -18.0,
+            -1.85
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_M3_clamp_strap_1",
+        "solids": 1,
+        "volumeMm3": 593.524783
+      }
+    },
+    {
+      "file": {
+        "bytes": 64284,
+        "path": "print/stl/p3_v3_r2_b_nema8_m3_clamp_strap_2.stl",
+        "sha256": "33c8ec5c52068bbac6e62f98f04d9c92520043a167f97d50a284dbc754bff5ec"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "broad planar face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            6.0,
+            36.0,
+            3.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_M3_clamp_strap_2",
+        "solids": 1,
+        "volumeMm3": 593.524783
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            106.0,
+            18.0,
+            1.15
+          ],
+          "min": [
+            100.0,
+            -18.0,
+            -1.85
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_M3_clamp_strap_2",
+        "solids": 1,
+        "volumeMm3": 593.524783
+      }
+    },
+    {
+      "file": {
+        "bytes": 548084,
+        "path": "print/stl/p3_v3_r2_b_print_m1_16t_horizontal_miter.stl",
+        "sha256": "efeb15abc440a544c8bf220445a9d363d03b5d51373c2d7652d8bb6a5be94e16"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        -90.0,
+        0.0
+      ],
+      "orientationIntent": "gear axis vertical with broad back face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            17.12191,
+            17.12191,
+            7.2
+          ],
+          "min": [
+            -0.0,
+            -0.0,
+            -0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_horizontal_miter",
+        "solids": 1,
+        "volumeMm3": 568.943065
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            119.5,
+            8.560955,
+            -3.439045
+          ],
+          "min": [
+            112.3,
+            -8.560955,
+            -20.560955
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_horizontal_miter",
+        "solids": 1,
+        "volumeMm3": 568.943065
+      }
+    },
+    {
+      "file": {
+        "bytes": 1165684,
+        "path": "print/stl/p3_v3_r2_b_print_m1_16t_vertical_miter.stl",
+        "sha256": "3c900b52b2dda7c9bd9adc10c4e1c92ee7d36c1c7f7e6db9c316c88fcbc054c5"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "gear axis vertical with hub/back face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            17.349914,
+            17.216195,
+            3.691585
+          ],
+          "min": [
+            -0.0,
+            -0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_vertical_miter",
+        "solids": 1,
+        "volumeMm3": 360.327833
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            130.674957,
+            8.541238,
+            -3.1
+          ],
+          "min": [
+            113.325043,
+            -8.674957,
+            -6.791585
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_vertical_miter",
+        "solids": 1,
+        "volumeMm3": 360.327833
+      }
+    },
+    {
+      "file": {
+        "bytes": 455084,
+        "path": "print/stl/p3_v3_r2_b_print_m1_16t_output_pinion_d4p1.stl",
+        "sha256": "9de6cbe99845fdfdbb4cb422d8eeb3c1d13b249add37b802453d9c595c1a2278"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "gear axis vertical with hub/back face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            17.752514,
+            17.752514,
+            2.1
+          ],
+          "min": [
+            -0.0,
+            -0.0,
+            -0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_output_pinion_D4p1",
+        "solids": 1,
+        "volumeMm3": 378.826547
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            130.876257,
+            8.876257,
+            5.7
+          ],
+          "min": [
+            113.123743,
+            -8.876257,
+            3.6
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_output_pinion_D4p1",
+        "solids": 1,
+        "volumeMm3": 378.826547
+      }
+    },
+    {
+      "file": {
+        "bytes": 63284,
+        "path": "print/stl/p3_v3_r2_b_mr84_fit_gauge_d8_00.stl",
+        "sha256": "cd0a6aa7604b78405e6cbe4082bd5db8e373bffa6548c9d572d384839038c389"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "annular gauge face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            12.0,
+            12.0,
+            3.1
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_fit_gauge_D8.00",
+        "solids": 1,
+        "volumeMm3": 194.778745
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            96.0,
+            -29.0,
+            3.1
+          ],
+          "min": [
+            84.0,
+            -41.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_fit_gauge_D8.00",
+        "solids": 1,
+        "volumeMm3": 194.778745
+      }
+    },
+    {
+      "file": {
+        "bytes": 63284,
+        "path": "print/stl/p3_v3_r2_b_mr84_fit_gauge_d8_20.stl",
+        "sha256": "2ce4d711b575adb50914a95926c4884930d174bc7d23826f790efbda0760d8d5"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "annular gauge face on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            12.2,
+            12.2,
+            3.1
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_fit_gauge_D8.20",
+        "solids": 1,
+        "volumeMm3": 198.674319
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            110.1,
+            -28.9,
+            3.1
+          ],
+          "min": [
+            97.9,
+            -41.1,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_fit_gauge_D8.20",
+        "solids": 1,
+        "volumeMm3": 198.674319
+      }
+    },
+    {
+      "file": {
+        "bytes": 2284,
+        "path": "print/stl/p3_v3_r2_b_petg_guide_shoe_0p25_clearance.stl",
+        "sha256": "7613f9db5940bc6d31162bef8bb792a9327b8a8ed7d30e6fe950205f81edb972"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "flat guide base on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            12.266281,
+            10.498771,
+            5.2
+          ],
+          "min": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PETG_guide_shoe_0p25_clearance",
+        "solids": 1,
+        "volumeMm3": 80.603
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            139.154,
+            -23.749097,
+            3.2
+          ],
+          "min": [
+            126.887719,
+            -34.247869,
+            -2.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PETG_guide_shoe_0p25_clearance",
+        "solids": 1,
+        "volumeMm3": 80.603
+      }
+    },
+    {
+      "file": {
+        "bytes": 2284,
+        "path": "print/stl/p3_v3_r2_b_tpu95a_guide_shoe_0p25_clearance.stl",
+        "sha256": "590289e08cbf851f915522c7eab5e1c43edeef2e98eb78757813eec1c9e5aa32"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "flat guide base on bed",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            12.266281,
+            10.498771,
+            5.2
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_TPU95A_guide_shoe_0p25_clearance",
+        "solids": 1,
+        "volumeMm3": 80.603
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            139.154,
+            34.247869,
+            3.2
+          ],
+          "min": [
+            126.887719,
+            23.749097,
+            -2.0
+          ]
+        },
+        "label": "p3_v3_r2_B_TPU95A_guide_shoe_0p25_clearance",
+        "solids": 1,
+        "volumeMm3": 80.603
+      }
+    },
+    {
+      "file": {
+        "bytes": 97084,
+        "path": "print/stl/p3_v3_r2_b_fin_6x14x2_r1_15mm_blade.stl",
+        "sha256": "e988f3332d96e4280ac277e478c73bfc7fb9593eec0337e3ef3bb5f30f1e9e32"
+      },
+      "group": "B_motor_station",
+      "meshBodies": 1,
+      "orientationEulerDegreesXYZ": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orientationIntent": "rounded 6x14 foot on bed; blade prints vertically",
+      "printFacts": {
+        "boundsMm": {
+          "max": [
+            6.0,
+            14.0,
+            17.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_fin_6x14x2_R1_15mm_blade",
+        "solids": 1,
+        "volumeMm3": 184.187612
+      },
+      "sourceFacts": {
+        "boundsMm": {
+          "max": [
+            138.0,
+            7.0,
+            22.8
+          ],
+          "min": [
+            132.0,
+            -7.0,
+            5.8
+          ]
+        },
+        "label": "p3_v3_r2_B_fin_6x14x2_R1_15mm_blade",
+        "solids": 1,
+        "volumeMm3": 184.187612
+      }
+    }
+  ],
+  "physicalGates": {
+    "MR84PocketAndCapFit": "PENDING",
+    "NEMA8AdjustmentAndMiterMesh": "PENDING",
+    "alignmentPinInsertionAndRemoval": "PENDING",
+    "finStiffnessAndShadowQuality": "PENDING",
+    "guideClearanceSelection": "PENDING",
+    "seamClampTorqueAndSlip": "PENDING"
+  },
+  "printableOnly3mf": {
+    "file": {
+      "bytes": 975071,
+      "path": "print/p3_v3_r2_printable_coupons.3mf",
+      "sha256": "d7ddc2b763c01bec1182425c7d6eeb5ee09715664a29dea568975e1fe1882966"
+    },
+    "items": 21,
+    "objects": 21,
+    "placements": [
+      {
+        "boundsMm": {
+          "max": [
+            21.386288,
+            52.032395,
+            3.0
+          ],
+          "min": [
+            5.0,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_seam_lower_real_12T_arc_half",
+        "objectId": 1,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "broad carrier/lap face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -118.613712 45.032395 1.28607846e-17"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            42.772576,
+            52.032395,
+            3.0
+          ],
+          "min": [
+            26.386288,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_seam_upper_real_12T_arc_half",
+        "objectId": 2,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "broad carrier/lap face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -97.2274239 12 1.28609557e-17"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            54.172576,
+            17.0,
+            3.5
+          ],
+          "min": [
+            47.772576,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.15mm",
+        "objectId": 3,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "flat guide base on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -88.0274239 -17 1.35"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            65.572576,
+            17.0,
+            3.7
+          ],
+          "min": [
+            59.172576,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.25mm",
+        "objectId": 4,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "flat guide base on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -76.6274239 -35 1.45"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            76.972576,
+            17.0,
+            3.9
+          ],
+          "min": [
+            70.572576,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_guide_shoe_clearance_0.35mm",
+        "objectId": 5,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "flat guide base on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -65.2274239 -53 1.55"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            96.972576,
+            17.0,
+            3.0
+          ],
+          "min": [
+            81.972576,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_stationary_joiner_male_6x4x1p2_step",
+        "objectId": 6,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "stationary joiner body face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 90.9725761 11 0"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            110.972576,
+            17.0,
+            3.0
+          ],
+          "min": [
+            101.972576,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_stationary_joiner_female_clearance_0p25",
+        "objectId": 7,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "stationary joiner body face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 101.972576 11 0"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            132.332702,
+            85.06479,
+            6.2
+          ],
+          "min": [
+            115.972576,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_real_M1_260T_24T_motor_station_arc",
+        "objectId": 8,
+        "orientationEulerDegreesXYZ": [
+          180.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "carrier top annulus on bed; bosses, race, and teeth face upward",
+        "transform3mf": "1 0 0 0 -1 1.2246468e-16 0 -1.2246468e-16 -1 -7.64113587 45.032395 5.8"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            151.332702,
+            32.0,
+            25.2
+          ],
+          "min": [
+            137.332702,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_two_MR84_18mm_span_bearing_housing",
+        "objectId": 9,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "broad mounting foot on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 22.3327017 18.5 25.2"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            170.329936,
+            27.0,
+            1.6
+          ],
+          "min": [
+            156.332702,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_removable_cap_D6p4_aperture",
+        "objectId": 10,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "broad planar face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 41.331319 16 0"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            218.329936,
+            41.0,
+            3.0
+          ],
+          "min": [
+            175.329936,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_3mm_saddle_four_M3_slotted_clamps",
+        "objectId": 11,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "broad planar face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 103.329936 23 25.15"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            229.329936,
+            41.0,
+            3.0
+          ],
+          "min": [
+            223.329936,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_M3_clamp_strap_1",
+        "objectId": 12,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "broad planar face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 146.329936 23 1.85"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            240.329936,
+            41.0,
+            3.0
+          ],
+          "min": [
+            234.329936,
+            5.0,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_NEMA8_M3_clamp_strap_2",
+        "objectId": 13,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "broad planar face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 134.329936 23 1.85"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            22.121909,
+            107.186699,
+            7.2
+          ],
+          "min": [
+            5.0,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_horizontal_miter",
+        "objectId": 14,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          -90.0,
+          0.0
+        ],
+        "orientationIntent": "gear axis vertical with broad back face on bed",
+        "transform3mf": "6.123234e-17 0 1 0 1 0 -1 0 6.123234e-17 1.56095474 98.6257447 -112.3"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            44.471264,
+            107.280426,
+            3.691585
+          ],
+          "min": [
+            27.121909,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_vertical_miter",
+        "objectId": 15,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "gear axis vertical with hub/back face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -86.2036926 98.7391879 6.79158502"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            67.223778,
+            107.817304,
+            2.1
+          ],
+          "min": [
+            49.471264,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PRINT_M1_16T_output_pinion_D4p1",
+        "objectId": 16,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "gear axis vertical with hub/back face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -63.6524791 98.9410468 -3.6"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            84.223778,
+            102.062418,
+            3.1
+          ],
+          "min": [
+            72.223778,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_fit_gauge_D8.00",
+        "objectId": 17,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "annular gauge face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -11.7762222 131.063604 0"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            101.423778,
+            102.262378,
+            3.1
+          ],
+          "min": [
+            89.223778,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_MR84_fit_gauge_D8.20",
+        "objectId": 18,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "annular gauge face on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -8.67622225 131.163584 0"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            118.690058,
+            100.563561,
+            5.2
+          ],
+          "min": [
+            106.423778,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_PETG_guide_shoe_0p25_clearance",
+        "objectId": 19,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "flat guide base on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -20.4639412 124.312659 2"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            135.956339,
+            100.563561,
+            5.2
+          ],
+          "min": [
+            123.690058,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_TPU95A_guide_shoe_0p25_clearance",
+        "objectId": 20,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "flat guide base on bed",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 -3.19766045 66.3156925 2"
+      },
+      {
+        "boundsMm": {
+          "max": [
+            146.956339,
+            104.06479,
+            17.0
+          ],
+          "min": [
+            140.956339,
+            90.06479,
+            0.0
+          ]
+        },
+        "label": "p3_v3_r2_B_fin_6x14x2_R1_15mm_blade",
+        "objectId": 21,
+        "orientationEulerDegreesXYZ": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "orientationIntent": "rounded 6x14 foot on bed; blade prints vertically",
+        "transform3mf": "1 0 0 0 1 0 0 0 1 8.95633922 97.06479 -5.8"
+      }
+    ],
+    "plateSizeMm": [
+      250.0,
+      112.817
+    ],
+    "xmlValidation": "ElementTree parsed all XML members; every mesh has nonempty triangles"
+  },
+  "purchasedBom": [
+    {
+      "item": "NEMA8 horizontal stepper motor",
+      "quantity": 1,
+      "specification": "20.3 mm square face x 39.3 mm body; integrated 4 x 7 mm D-shaft, 3.5 mm across-flat"
+    },
+    {
+      "item": "output D-shaft",
+      "quantity": 1,
+      "specification": "4.00 mm diameter x 40.0 mm long, 3.5 mm across-flat"
+    },
+    {
+      "item": "MR84ZZ bearing",
+      "quantity": 2,
+      "specification": "4 x 8 x 3 mm"
+    },
+    {
+      "item": "M2 heat-set insert",
+      "quantity": 4,
+      "specification": "3.2 mm OD x 3.0 mm long; two bearing-cap and two fin-foot bosses"
+    },
+    {
+      "item": "M2 socket-head screw",
+      "quantity": 2,
+      "specification": "M2 x 6 mm for removable bearing cap"
+    },
+    {
+      "item": "M2 socket-head screw",
+      "quantity": 2,
+      "specification": "M2 x 8 mm for removable fin foot"
+    },
+    {
+      "item": "M2 cup-point grub screw",
+      "quantity": 3,
+      "specification": "M2 x 3 mm for two miter hubs and output-pinion hub"
+    },
+    {
+      "item": "M3 socket-head screw",
+      "quantity": 4,
+      "specification": "M3 x 30 mm for two motor clamp straps"
+    },
+    {
+      "item": "M3 hex nut",
+      "quantity": 4,
+      "specification": "AF 5.5 mm captive in saddle slots"
+    },
+    {
+      "item": "M3 washer",
+      "quantity": 4,
+      "specification": "3.2 mm ID x 7 mm OD under clamp-strap screw heads"
+    },
+    {
+      "item": "split shaft collar",
+      "quantity": 1,
+      "specification": "4.0 mm bore x 8 mm OD x 5 mm wide with M2 clamp screw"
+    },
+    {
+      "item": "M2 countersunk screw",
+      "quantity": 1,
+      "specification": "M2 x 5 mm for seam half-lap"
+    },
+    {
+      "item": "M2 hex nut",
+      "quantity": 1,
+      "specification": "AF 4.0 mm for seam half-lap"
+    },
+    {
+      "item": "alignment pin",
+      "quantity": 2,
+      "specification": "2.0 mm diameter x 3.0 mm hardened dowel"
+    }
+  ],
+  "sourceHashes": {
+    "p3_v3_r2_print_coupon_export.py": "a06c363e6eb50b9da75f9a2fa77cdf208d7c8c3b03a242c3f7cbacc31009a6a7",
+    "p3_v3_r2_print_coupon_geometry.py": "9d2d89e2beb27a1caa5f652136c88e11d0994b21babeaabb0f7d0d37ceeb59c1",
+    "p3_v3_r2_print_coupon_spec.py": "f8091ac5c66f16775f9f4c2817aa8c6a2ac02c18498f599aee01195bbac5e79b"
+  },
+  "status": "CAD acceptance only; dimensional fit, wear, load, noise, and print-process behavior are unverified",
+  "title": "KAGE P3 V3 R2 progressive print coupons"
+}

@@ -1,0 +1,8 @@
+status: complete
+initiative: v0-upright-fin-fixture
+documents_root: /Users/scottchu/Projects/personal/3d-print/design/japandi-shadow-clock-simulator
+repository: /Users/scottchu/Projects/personal/3d-print
+active_phase: phases/phase-01-four-part-manual-optics
+planner: orbital_mechanism_design
+generator: upright_fin_simulator
+evaluator: p0_fixture_review
