@@ -66,7 +66,7 @@ npm run test --workspace projects/<project-slug>
 npm run build --workspace projects/<project-slug>
 ```
 
-Validate all currently registered workspace projects:
+Validate all currently registered workspace projects with Node.js 22 or newer:
 
 ```bash
 uv lock --check
@@ -86,11 +86,12 @@ uv run --project projects/xt60-bend-jig pytest \
   projects/xt60-bend-jig/tests/test_p13_rod_fit_coupon_3p8.py::test_written_step_and_model_only_3mf_roundtrip_are_valid
 
 npm ci --ignore-scripts
+git diff --exit-code -- package-lock.json
 npm test --workspaces --if-present
 npm run build --workspaces --if-present
 ```
 
-These are the required pull-request gates: repository structure, the current supported P13 architecture/regression subset, and declared JavaScript workspace tests/builds. The complete XT60 Python suite contains historical P1–P16 export diagnostics and is intentionally manual because unsupported historical outputs make it slow and non-green; run it only when investigating migration history. Workspace-wide npm commands run scripts only where a project declares them.
+These are the required local or delegated validation gates: repository structure, the current supported P13 architecture/regression subset, and declared JavaScript workspace tests/builds. This repository does not use hosted CI workflows; their absence does not waive testing. The complete XT60 Python suite contains historical P1–P16 export diagnostics and is intentionally manual because unsupported historical outputs make it slow and non-green; run it only when investigating migration history. Workspace-wide npm commands run scripts only where a project declares them.
 
 Project-specific commands belong in that project's README.
 
@@ -109,4 +110,4 @@ See [Architecture](docs/ARCHITECTURE.md), [Project continuity](docs/PROJECT_CONT
 
 ## Contributing changes
 
-Start trunk-bound work from a non-`main` branch and use the [pull request template](.github/pull_request_template.md) for the critical delivery summary and evidence pointers. Repository continuity files remain authoritative. The machine-readable delivery contract is in [`.github/repository-policy.toml`](.github/repository-policy.toml); only an explicit user override for a specific change bypasses the pull-request route. GitHub Projects are intentionally not used.
+Start trunk-bound work from a non-`main` branch and use the [pull request template](.github/pull_request_template.md) for the critical delivery summary and evidence pointers. Repository continuity files remain authoritative. The machine-readable delivery contract is in [`.github/repository-policy.toml`](.github/repository-policy.toml); only an explicit user override for a specific change bypasses the pull-request route. Required validation runs locally or through delegated validation, not hosted CI workflows.
