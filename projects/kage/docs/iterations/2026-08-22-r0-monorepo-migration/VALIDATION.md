@@ -123,4 +123,12 @@ Cleanup acceptance covers recoverable path retirement and worktree registration 
 
 ## KAGE-CLEAN-002 delivery integration
 
-The cleanup documentation commit was rebased onto `origin/main` at `172af588c68cb6fc633c9c58e2b3abf7a6eac43a`. The four continuity files conflicted only because main had concurrently recorded removal of the former GitHub Project linkage; conflict resolution preserved that current policy note together with the complete cleanup receipt. No CAD, source, test, artifact, manifest, lock, or external quarantine content changed during integration. The focused independent gates must recheck this integrated commit before formal review.
+The cleanup documentation commit was rebased onto `origin/main` at `172af588c68cb6fc633c9c58e2b3abf7a6eac43a`. The four continuity files conflicted only because main had concurrently recorded removal of the former GitHub Project linkage; conflict resolution preserved that current policy note together with the complete cleanup receipt. No CAD, source, test, artifact, manifest, lock, or external quarantine content changed during integration.
+
+## KAGE-CLEAN independent acceptance
+
+- Critic `/root/kage_cleanup_critic` passed integrated commit `f29a93c4473e9c61002018f3161d79550cc8dd9e` with no remaining critical, high, medium, or low finding.
+- Validator `/root/kage_cleanup_validator` passed read-only: 798/798 candidate rows, Kage 7 passed, repository structure 12 passed, full quarantine parity, 18/18 excluded-file hash checks, both old paths absent, old worktree registration absent, and retained branch correct.
+- Formal reviewer `/root/kage_cleanup_formal_review` independently accepted reversible legacy-path retirement and restart-worktree deregistration only. The acceptance does not authorize Trash emptying or permanent deletion and does not change CAD, slicer, or physical acceptance.
+
+Cleanup acceptance is complete. Do not empty Trash. After pull-request delivery, the sole next design action remains `KAGE-EXP-001`.
