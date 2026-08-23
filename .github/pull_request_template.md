@@ -3,7 +3,7 @@
 - Project / iteration:
 - Baseline branch and revision:
 - Candidate fingerprint:
-- In scope / explicit non-goals:
+- Critical scope / explicit non-goals:
 
 ## Requirements and evidence
 
@@ -23,4 +23,4 @@
 
 - Unresolved risks:
 - Next smallest action:
-- GitHub Project item:
+- What happened:

@@ -109,4 +109,4 @@ See [Architecture](docs/ARCHITECTURE.md), [Project continuity](docs/PROJECT_CONT
 
 ## Contributing changes
 
-Start trunk-bound work from a non-`main` branch, use the [pull request template](.github/pull_request_template.md), and link the pull request to its GitHub Project item. The machine-readable delivery contract is in [`.github/repository-policy.toml`](.github/repository-policy.toml); only an explicit user override for a specific change bypasses the pull-request route.
+Start trunk-bound work from a non-`main` branch and use the [pull request template](.github/pull_request_template.md) for the critical delivery summary and evidence pointers. Repository continuity files remain authoritative. The machine-readable delivery contract is in [`.github/repository-policy.toml`](.github/repository-policy.toml); only an explicit user override for a specific change bypasses the pull-request route. GitHub Projects are intentionally not used.

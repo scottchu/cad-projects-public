@@ -65,5 +65,6 @@ Every worker return is a receipt: status; verified fingerprint; changed paths/ar
 ## GitHub delivery
 
 - Every change intended for trunk `main` must be developed on a non-`main` branch and delivered through a GitHub pull request unless the user explicitly overrides that route for that specific change.
-- Link the pull request to a GitHub Project item and record the validation, independent review provenance, acceptance boundaries, unresolved risks, and next action in the pull request template.
+- Keep the pull request concise: record only the critical delivery summary, validation and independent-review provenance, acceptance gaps, unresolved risks, next action, and what happened. Repository continuity files remain the authority; do not duplicate raw reports in the pull request.
+- GitHub Projects are intentionally not used for planning, repository knowledge, or delivery tracking.
 - Do not claim repository-host enforcement from this documentation; `.github/repository-policy.toml` records the intended delivery contract.
