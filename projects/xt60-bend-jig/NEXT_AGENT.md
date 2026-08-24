@@ -15,45 +15,36 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
   `VALIDATION.md`, `REVIEW.md`, and `HANDOFF.md`.
 - Architecture authority: `docs/decisions/ADR-0003-p17-counter-twist-permanent-caps.md`.
 
-## Immediate task
+## Immediate task — skip simulation
 
-Obtain user review of the live P17 simulator. Verify that only the two outer
-plates rotate, they rotate in opposite global directions, both inner plates and
-the yoke remain fixed, the right primary outer plate reads as slightly larger,
-all six permanent caps remain visible, rods remain straight, and the endpoint
-detent/hard-stop concept is understandable.
+The user rejected the P17 simulator because the holes or slots appeared to move
+with the animation and explicitly instructed the project to skip simulation.
+Do not repair, rerun, validate, or present the simulator again.
 
-When a Browser-plugin surface is available, rerun only the blocked
-visual/interactive portion of `P17-V01` against the same fingerprint. Record
-open, mid, closed, and locked views; nonblank canvas and console state; slider,
-open/close/cycle, lock/unlock, and camera interactions.
+Open a new mechanism/CAD iteration. Start from the physical observations and
+hard user requirements, then design real counter-rotation hardware, a grounded
+reaction path, endpoint locking, plate spacing, rod/stack lengths, and permanent
+cap retention. Use separate design, implementation, critic, validator, and
+formal-review owners as required by repository policy.
 
 ## Preserve and do not assume
 
 - Preserve the user requirement: two inner plates fixed; two outer plates
   counter-rotate; right primary outer is slightly larger; all six caps are
   permanent.
-- Preserve signed complementary track math and zero rod-end skew. A scene-only
-  sign flip is not an accepted mechanism.
-- Treat the `18.5 mm` clear span, `64/60/50 mm` diameters, opposed-bevel
-  relation, and detent as provisional simulator design choices.
-- Do not claim the schematic opposed-bevel display is buildable hardware.
+- Do not inherit simulator slot paths, animation transforms, the `18.5 mm`
+  span, `64/60/50 mm` diameters, opposed-bevel depiction, or detent geometry as
+  accepted CAD input.
+- A scene-only sign flip or prescribed motion is not an accepted mechanism.
 - Do not claim cap fit, lock force, self-locking, fixture stiffness, heat,
   wear, springback, or physical assembly acceptance.
-- Do not generate or modify P17 CAD, STEP, 3MF, slicer, or print artifacts
-  before user simulator-motion approval.
+- Regenerate any future CAD/export artifacts only from the new authoritative
+  parametric source after its independent gates.
 - Use only the root `uv` and npm workspaces. Never edit generated artifacts by
   hand.
 
-## Run the simulator
+## Retired service
 
-From the repository root:
-
-```sh
-PATH=/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:$PATH \
-  npm test --workspace projects/xt60-bend-jig
-PATH=/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:$PATH \
-  npm run dev --workspace projects/xt60-bend-jig
-```
-
-Open `http://127.0.0.1:4173/projects/xt60-bend-jig/`.
+The P17 simulator LaunchAgent is disabled/stopped, and its Tailscale `:8443`
+handler is removed. Do not re-enable it unless the user explicitly reverses the
+decision.

@@ -1,6 +1,6 @@
 # P17 R1 review record
 
-Status: conditional pass for simulator-review PR delivery; Browser-plugin visual/runtime validation remains blocked and CAD/print work is not authorized.
+Status: superseded by user rejection on `2026-08-24`; simulator phase skipped.
 
 ## Critic record: `P17-C01`
 
@@ -130,3 +130,11 @@ Deliver the branch in a concise PR for user simulator review, clearly marking br
 ## Design-owner self-scope note
 
 `P17-D01` produced the architecture contract and initialized this review file. It did not implement, validate, critique, or approve the future candidate.
+
+## User review disposition — `2026-08-24`
+
+The user rejected the live simulator because its holes or slots appeared to
+move with the animation and directed the project to skip simulation. This
+observation supersedes the conditional simulator-review delivery gate. The
+candidate is not accepted as product direction or CAD input; no repair or
+browser rerun is requested.

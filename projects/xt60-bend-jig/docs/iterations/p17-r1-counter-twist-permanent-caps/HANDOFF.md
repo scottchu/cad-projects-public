@@ -1,7 +1,7 @@
 # P17 R1 handoff
 
-Status: deterministic simulator candidate complete and conditionally approved
-for user review; independent browser visual/runtime validation remains blocked.
+Status: rejected by user on `2026-08-24`; simulation phase skipped. Do not
+repair, rerun, or use this candidate as CAD direction.
 
 ## Completed by `P17-D01`
 
@@ -130,3 +130,20 @@ Have the user review
 running. Rerun the browser portion of `P17-V01` when a browser surface is
 available. Begin a new CAD/mechanism iteration only after user acceptance of
 the counter-twist motion.
+
+## Post-review user rejection — `2026-08-24`
+
+- User finding: the holes or slots visibly moved with the animation, making the
+  simulator unacceptable.
+- User direction: skip simulation; do not repair it.
+- Final iteration disposition: rejected for user/product acceptance. Earlier
+  deterministic passes and conditional independent review remain historical
+  records only and do not override the user observation.
+- Service disposition: disabled/stopped
+  `com.scottchu.xt60-p17-simulator`; removed only the Tailscale `:8443`
+  simulator handler while preserving the unrelated `:443` CAD Viewer handler.
+- Delivery disposition: close PR `#7` without merge.
+- Next action: open a new mechanism/CAD iteration and re-derive actual hardware
+  directly from the user's fixed-inner, opposite-outer, larger-primary, and six
+  permanent-cap requirements plus P13 physical evidence. Do not inherit P17 R1
+  simulator geometry or provisional dimensions.

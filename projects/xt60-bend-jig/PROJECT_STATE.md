@@ -1,6 +1,6 @@
 # XT60 bend jig project state
 
-Last updated: `2026-08-23`
+Last updated: `2026-08-24`
 
 ## Baseline
 
@@ -21,7 +21,7 @@ Last updated: `2026-08-23`
   `docs/iterations/p17-r1-counter-twist-permanent-caps/HANDOFF.md`.
 - Development branch: `codex/xt60-p17-counter-twist`.
 
-## Current result
+## Current result — rejected simulator
 
 P17 replaces the P13 same-direction shared-D-shaft motion with one relative
 twist input. The two smaller inner plates remain fixed and grounded. The left
@@ -38,43 +38,34 @@ The simulator shows:
 - a fixed-carrier opposed-bevel relation as a kinematic concept; and
 - a grounded endpoint detent/hard stop at `theta_rel = 54 deg`.
 
-The `18.5 mm` span, opposed-bevel relation, detent, and cap geometry are
-simulator concepts, not accepted CAD dimensions or physical mechanisms.
+The user reviewed the live simulator on `2026-08-24` and rejected it because
+the holes or slots appeared to move with the animation. The user explicitly
+directed the project to skip simulation rather than repair it. The
+`18.5 mm` span, opposed-bevel relation, detent, cap geometry, and all other P17
+simulator-specific visual choices are rejected as product-direction evidence.
 
 ## Acceptance state
 
-- Deterministic simulator: accepted for the candidate fingerprint above.
-  Independent tests report `18 passed`, build succeeds, signed left/right track
-  reconstruction has effectively zero skew, and sampled rod states have no
-  collisions.
-- Independent critic: pass/no-blocker for simulator review only.
-- Formal review: conditional pass for PR delivery to user simulator review.
-- Visual/runtime: blocked, not accepted. The validation environment exposed no
-  Browser-plugin surface, so canvas screenshots, console checks, and live UI
-  interaction could not be independently recorded.
-- CAD/STEP/3MF/slicer: not started and not authorized before user simulator
-  motion review.
+- Deterministic simulator: historical evidence only; tests passed but the user
+  rejected the rendered behavior and skipped the phase.
+- Independent critic/formal review: superseded by the user's rejection. Their
+  conditional simulator-review dispositions are not product acceptance.
+- Visual/runtime: rejected by user observation.
+- CAD/STEP/3MF/slicer: not started for the replacement mechanism.
 - Physical: not accepted. Cap fit, grip effort, fixture stiffness, bevel
   hardware, lock force/self-lock, heat, wear, cycling, assembly, and springback
   remain unknown.
 
-## Live simulator
+## Retired simulator service
 
-From the repository root:
-
-```sh
-PATH=/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:$PATH \
-  npm run dev --workspace projects/xt60-bend-jig
-```
-
-Then open `http://127.0.0.1:4173/projects/xt60-bend-jig/`.
+The dedicated LaunchAgent `com.scottchu.xt60-p17-simulator` is disabled and
+stopped. The Tailscale `:8443` simulator handler was removed; the unrelated
+`:443` CAD Viewer handler remains unchanged.
 
 ## Next action
 
-The user must review the live P17 outer-plate counter-twist motion, fixed inner
-plates, primary/secondary size hierarchy, six permanent caps, and endpoint lock
-concept. When a Browser-plugin surface is available, rerun only the visual and
-interactive portion of `P17-V01`. If user review and browser validation pass,
-open the next design iteration for real counter-rotation hardware, grounded
-fixture geometry, lock mechanics, cap-fit experiments, and CAD. Do not generate
-P17 STEP/3MF or print parts before that gate.
+Do not repair or rerun the simulator. Open a new mechanism/CAD iteration from
+the user's fixed-inner/opposite-outer/permanent-cap requirements and the actual
+P13 physical observations. Re-derive the counter-rotation hardware, ground and
+reaction path, lock mechanics, plate spacing, rod length/stack, and cap fit
+without inheriting rejected simulator dimensions or animation geometry.

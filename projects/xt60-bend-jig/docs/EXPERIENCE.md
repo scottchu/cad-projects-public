@@ -59,3 +59,18 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
   - Photo 3 shows the physical P13 assembly with rods protruding, caps on rod ends, and a large middle spacing between the principal plates.
 - Limitation: the photos and hand observations do not prove cap retention, final cap interference, lock force, wire holding force, heat response, cycling durability, or springback.
 - Design implication: P17 must supersede the P13 shared same-direction actuator architecture in a simulator before CAD, represent permanent caps without removable-cap wording, and treat cap fit as process-variable until a focused physical coupon or assembly observation resolves it.
+
+## `2026-08-24` — P17 simulator rejected; simulation phase skipped
+
+- Context: the user reviewed the live P17 Three.js simulator over Tailscale.
+- User observation: the simulator was unacceptable because the visible holes or
+  slots appeared to move with the animation.
+- User decision: skip simulation rather than repair or iterate it.
+- Disposition: P17 R1 simulator evidence is rejected for product-direction
+  approval even though its deterministic tests passed. It must not be used as
+  motion, architecture, CAD, or physical acceptance evidence.
+- Next-direction implication: preserve the user requirements—fixed inner
+  plates, opposite-rotating outer plates, a slightly larger primary force-side
+  outer plate, and six permanent caps—but reopen the actual mechanism directly
+  in a new design/CAD iteration. Do not copy the rejected simulator geometry or
+  its provisional `18.5/64/60/50 mm` choices into CAD as accepted dimensions.
