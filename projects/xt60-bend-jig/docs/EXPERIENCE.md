@@ -191,3 +191,25 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
   - fixed-axle reconstruction error was `7.11e-15 mm` and mirror error zero.
 - Limitation: these are design-search and source-BREP results from a WIP
   implementation, not independent candidate validation or physical proof.
+
+## `2026-08-24` — Current lock rejected for removal and rod/axle identity clarified
+
+- The user marked two Viewer regions. Full-resolution correction identifies
+  the first as the orange fork-like right-outer lock nose and the second as the
+  green `left_outer_secondary_grip_block`, an integral finger/force tab on the
+  green outer plate. The second circle is not the receiver or lock geometry.
+- Source inspection independently identifies the nose's actual grounded lock
+  counterpart as the right-inner receiver/bridge/catch assembly.
+- User direction: remove the complete mechanism first and add no replacement
+  lock in this bounded iteration. Therefore remove the first screenshot's
+  nose and its source-identified receiver, but retain the green grip tab.
+- Design consequence: retain `0..32 deg` counter-twist motion as travel only;
+  do not claim a hard stop, detent, over-center capture, or self-lock.
+- Dimension clarification: the user's stainless rods are `50.00 mm` physical
+  stock. The accepted P17 source currently models a re-derived `40.60 mm` rod
+  target. The purple printed axle is independently derived as `34.90 mm` to
+  span the `32.00 mm` four-plate stack plus `1.45 mm` keeper clearance/seat per
+  side. The axle is not supposed to reach the rod caps.
+- Boundary: deciding whether P17 must return to uncut `50.00 mm` stainless
+  rods is a separate rod/cap-stack decision. The lock-removal iteration must
+  not silently change either rod length or axle length.

@@ -5,9 +5,9 @@ fixed inner guide plates are grounded by one stepped center axle. Left and
 right outer plates are separate hand-operated occurrences rotating equal
 magnitude and opposite sign about X on round journals.
 
-This module is CAD/source evidence only. Cap retention, lock force, heat
-response, wear, vibration, wire holding, and final physical acceptance remain
-physical gates.
+This module is CAD/source evidence only. Cap retention, endpoint retention,
+heat response, wear, vibration, wire holding, and final physical acceptance
+remain physical gates.
 """
 
 from __future__ import annotations
@@ -50,16 +50,14 @@ ArtifactName = Literal[
     "print_kit",
     "permanent_cap_coupon",
     "center_axle_coupon",
-    "lock_closeup",
 ]
 
 ROD_NAMES: tuple[RodName, ...] = ("upright", "bottom", "diagonal")
+PHYSICAL_STAINLESS_STOCK_LENGTH_MM = 50.00
 STATE_THETA: dict[StateName, float] = {"open": 0.0, "mid": 16.0, "locked": 32.0}
-P17_R2_DESIGN_CONTRACT_PATH = (
-    "docs/iterations/p17-r2-fixed-reaction-rod-motion/DESIGN.md"
-)
+P17_R2_DESIGN_CONTRACT_PATH = "docs/iterations/p17-r2-lock-removal/DESIGN.md"
 P17_R2_DESIGN_CONTRACT_SHA256 = (
-    "f7462b5916a5fb7972df8b9fa47d03eea56a5bb1b4725f9ded452bfdbb2b21e1"
+    "2e356565cbdb2b094f41464c07f5c17152a95a4b2f99418137d911e39b97d471"
 )
 
 
@@ -127,35 +125,20 @@ class P17R2Parameters:
     cap_socket_ladder_ids: tuple[float, ...] = (3.96, 4.00, 4.04, 4.08, 4.12)
     cap_socket_ladder_depths: tuple[float, ...] = (3.50, 4.00, 4.50)
 
-    # Plates, slots, lock, and print allowances.
+    # Plates, slots, endpoint travel, and print allowances.
     inner_plate_diameter: float = 54.00
     left_outer_secondary_grip_diameter: float = 60.00
     right_outer_primary_grip_diameter: float = 63.00
-    lock_nose_orbit_radius: float = 30.00
-    lock_nose_radius: float = 2.00
-    lock_nose_axial_thickness: float = 1.60
-    lock_contact_clearance: float = 0.02
-    lock_over_center_capture: float = 0.40
-    lock_receiver_stop_depth: float = 2.00
-    lock_receiver_normal_width: float = 4.00
-    lock_receiver_release_shift: float = 5.00
-    lock_receiver_closing_deflection: float = 4.50
-    lock_receiver_bridge_radius: float = 37.00
-    lock_receiver_bridge_diameter: float = 3.20
-    lock_flexure_width: float = 1.60
-    lock_lead_in_length: float = 4.00
-    lock_thumb_tab_length: float = 6.00
     fixed_slot_width: float = 4.20
     outer_slot_width: float = 4.20
     slot_endpoint_margin: float = 1.40
     slot_sample_count: int = 33
     theta_lock_deg: float = 32.00
-    hard_stop_dwell_deg: float = 3.00
     min_web_mm: float = 2.20
 
     # D06 separates the unchanged outer-rotation datum C from the fixed purple
     # stepped-axle datum A.  Inner plate outlines and every frozen white-rod/
-    # lock construction remain authored about C; only the inner hex bores,
+    # guide/cam construction remain authored about C; only the inner hex bores,
     # stepped axle and keepers move to A.
     outer_rotation_center_y: float = -10.60
     outer_rotation_center_z: float = 17.00
@@ -332,8 +315,11 @@ class P17R2Parameters:
     def __post_init__(self) -> None:
         if not 17.90 <= self.inner_clear_span <= 19.50:
             raise ValueError("P17 R2 inner clear span must stay in 17.90..19.50 mm")
-        if self.rod_length_target >= 45.0:
-            raise ValueError("P17 R2 rod length must not inherit the rejected 50 mm rod")
+        if abs(self.rod_length_target - 40.60) > 1.0e-9:
+            raise ValueError(
+                "P17 R2 current modeled rod target must remain 40.60 mm; "
+                "physical stainless stock/use remains a separate unresolved decision"
+            )
         if self.cap_socket_id < self.rod_diameter:
             raise ValueError("P17 R2 permanent cap default must not be an interference socket")
         if (self.follower_head_diameter - self.cap_socket_id) / 2.0 < 1.20:
@@ -360,12 +346,6 @@ class P17R2Parameters:
             raise ValueError("P17 D05 requires keeper OD10.00 / bore7.55 mm")
         if self.keeper_radial_wall_min < 1.20:
             raise ValueError("keeper radial wall must be at least 1.20 mm")
-        if self.lock_nose_orbit_radius + self.lock_nose_radius > self.right_outer_primary_grip_diameter / 2.0 + self.min_web_mm:
-            raise ValueError("integral lock nose must retain a printable root on the right outer")
-        if not 0.30 <= self.lock_over_center_capture <= 0.60:
-            raise ValueError("P17 D04 lock capture must stay in the named 0.30..0.60 mm range")
-        if self.lock_receiver_release_shift <= 2.0 * self.lock_nose_radius:
-            raise ValueError("modeled thumb release must move the retaining shoulder clear of the lock nose")
         if self.slot_sample_count < 5 or self.slot_sample_count % 2 == 0:
             raise ValueError("slot_sample_count must be odd and at least 5")
         if self.fixed_axle_guide_sample_count < 33 or self.fixed_axle_guide_sample_count % 2 == 0:
@@ -599,207 +579,6 @@ def _slot_capsule_cutter(points: tuple[PointYZ, ...], width: float, length_x: fl
     return result
 
 
-def _segment_box_yz(
-    first: PointYZ,
-    second: PointYZ,
-    *,
-    x: float,
-    thickness_x: float,
-    width: float,
-) -> Shape:
-    """A rectangular member whose long axis follows one YZ segment."""
-    dy = second.y - first.y
-    dz = second.z - first.z
-    length = hypot(dy, dz)
-    if length <= 1.0e-9:
-        raise ValueError("YZ segment must have positive length")
-    angle = degrees(atan2(dz, dy))
-    return (
-        Pos(x, (first.y + second.y) / 2.0, (first.z + second.z) / 2.0)
-        * Rot(angle, 0.0, 0.0)
-        * Box(
-            thickness_x,
-            length,
-            width,
-            align=(Align.CENTER, Align.CENTER, Align.CENTER),
-        )
-    )
-
-
-def _lock_unit_vectors(p: P17R2Parameters) -> tuple[PointYZ, PointYZ]:
-    angle = radians(p.theta_lock_deg)
-    normal = PointYZ(cos(angle), sin(angle))
-    tangent = PointYZ(-sin(angle), cos(angle))
-    return normal, tangent
-
-
-def _lock_center_at_lock(p: P17R2Parameters) -> PointYZ:
-    normal, _ = _lock_unit_vectors(p)
-    return PointYZ(
-        normal.y * p.lock_nose_orbit_radius,
-        normal.z * p.lock_nose_orbit_radius,
-    )
-
-
-def _lock_nose_local(p: P17R2Parameters) -> Shape:
-    """Integral round nose on the right outer, authored in outer-local YZ."""
-    x = p.outer_plate_thickness / 2.0 + p.lock_nose_axial_thickness / 2.0 - 0.20
-    nose = _x_cylinder(
-        2.0 * p.lock_nose_radius,
-        p.lock_nose_axial_thickness,
-        x,
-        p.lock_nose_orbit_radius,
-        0.0,
-    )
-    return _label(nose, "right_outer_integral_lock_nose_over_center", "#2D6FA8")
-
-
-def _lock_receiver_components_local(
-    p: P17R2Parameters,
-    *,
-    condition: Literal["seated", "closing_unreleased", "released"] = "seated",
-) -> dict[str, Shape]:
-    """One grounded receiver solid with a connected compliant latch arm.
-
-    ``closing_unreleased`` is the same occurrence with nose-driven ramp
-    deflection; ``released`` is the same flexure deflected by the thumb tab.
-    Neither condition translates the receiver datum or substitutes a second
-    part.  The seated shape is the snapped-back locked/back-drive condition.
-    """
-    normal, tangent = _lock_unit_vectors(p)
-    center = _lock_center_at_lock(p)
-    outer_offset_x = p.right_outer_x - p.right_inner_x
-    nose_x = outer_offset_x + p.outer_plate_thickness / 2.0 + p.lock_nose_axial_thickness / 2.0 - 0.20
-    receiver_x = (
-        outer_offset_x
-        + p.outer_plate_thickness / 2.0
-        + 0.20
-        + p.lock_nose_axial_thickness / 2.0
-    )
-
-    def along(origin: PointYZ, direction: PointYZ, distance: float) -> PointYZ:
-        return PointYZ(origin.y + direction.y * distance, origin.z + direction.z * distance)
-
-    # A single radial load path overlaps the fixed disk from r=24 mm and
-    # crosses axially outside the rotating disk.  Both stop and flexure remain
-    # connected to this grounded bridge in every modeled condition.
-    ground_inner = PointYZ(normal.y * 24.0, normal.z * 24.0)
-    bridge_center = PointYZ(
-        normal.y * p.lock_receiver_bridge_radius,
-        normal.z * p.lock_receiver_bridge_radius,
-    )
-    ground_arm = _segment_box_yz(
-        ground_inner,
-        bridge_center,
-        x=0.0,
-        thickness_x=p.inner_plate_thickness,
-        width=p.lock_receiver_bridge_diameter,
-    )
-    axial_bridge = _x_cylinder(
-        p.lock_receiver_bridge_diameter,
-        receiver_x + p.lock_nose_axial_thickness / 2.0,
-        (receiver_x + p.lock_nose_axial_thickness / 2.0) / 2.0,
-        bridge_center.y,
-        bridge_center.z,
-    )
-    hard_face = along(
-        center,
-        tangent,
-        p.lock_nose_radius + p.lock_contact_clearance,
-    )
-    hard_center = along(hard_face, tangent, p.lock_receiver_stop_depth / 2.0)
-    hard_stop = _segment_box_yz(
-        along(hard_center, normal, -p.lock_receiver_normal_width / 2.0),
-        along(hard_center, normal, p.lock_receiver_normal_width / 2.0),
-        x=receiver_x,
-        thickness_x=p.lock_nose_axial_thickness,
-        width=p.lock_receiver_stop_depth,
-    )
-
-    catch_face = along(
-        center,
-        tangent,
-        -(p.lock_nose_radius + p.lock_over_center_capture),
-    )
-    catch_center = along(catch_face, tangent, -p.lock_receiver_stop_depth / 2.0)
-    deflection = 0.0
-    if condition == "closing_unreleased":
-        deflection = p.lock_receiver_closing_deflection
-    elif condition == "released":
-        deflection = p.lock_receiver_release_shift
-    catch_center = along(catch_center, normal, deflection)
-
-    retaining_catch = _segment_box_yz(
-        along(catch_center, normal, -p.lock_receiver_normal_width / 2.0),
-        along(catch_center, normal, p.lock_receiver_normal_width / 2.0),
-        x=receiver_x,
-        thickness_x=p.lock_nose_axial_thickness,
-        width=p.lock_receiver_stop_depth,
-    )
-
-    # Sloped lead-in is part of the compliant arm.  During normal closing the
-    # nose moves this ramp outward; after the nose passes the zero-penetration
-    # throat, the undercut/catch snaps back to the seated location.
-    ramp_outer = along(
-        along(catch_center, tangent, -p.lock_lead_in_length),
-        normal,
-        p.lock_receiver_normal_width / 2.0,
-    )
-    lead_in_ramp = _segment_box_yz(
-        along(catch_center, normal, p.lock_receiver_normal_width / 2.0),
-        ramp_outer,
-        x=receiver_x,
-        thickness_x=p.lock_nose_axial_thickness,
-        width=p.lock_flexure_width,
-    )
-
-    flexure_root = bridge_center
-    flexure_beam = _segment_box_yz(
-        flexure_root,
-        along(catch_center, normal, p.lock_receiver_normal_width / 2.0),
-        x=receiver_x,
-        thickness_x=p.lock_nose_axial_thickness,
-        width=p.lock_flexure_width,
-    )
-    stop_rib = _segment_box_yz(
-        bridge_center,
-        along(hard_center, normal, p.lock_receiver_normal_width / 2.0),
-        x=receiver_x,
-        thickness_x=p.lock_nose_axial_thickness,
-        width=p.lock_receiver_bridge_diameter,
-    )
-    thumb_tab = _segment_box_yz(
-        along(catch_center, normal, p.lock_receiver_normal_width / 2.0),
-        along(catch_center, normal, p.lock_receiver_normal_width / 2.0 + p.lock_thumb_tab_length),
-        x=receiver_x,
-        thickness_x=p.lock_nose_axial_thickness,
-        width=p.lock_receiver_bridge_diameter,
-    )
-    return {
-        "ground_arm": ground_arm,
-        "axial_bridge": axial_bridge,
-        "hard_stop": hard_stop + stop_rib,
-        "flexure_beam": flexure_beam,
-        "lead_in_ramp": lead_in_ramp,
-        "retaining_shoulder": retaining_catch,
-        "thumb_release_tab": thumb_tab,
-    }
-
-
-def _lock_receiver_local(
-    p: P17R2Parameters,
-    *,
-    condition: Literal["seated", "closing_unreleased", "released"] = "seated",
-) -> Shape:
-    components = list(_lock_receiver_components_local(p, condition=condition).values())
-    receiver = components[0] + components[1:]
-    return _label(
-        receiver,
-        f"right_inner_same_solid_one_way_receiver_ramp_throat_hard_stop_undercut_{condition}",
-        "#D89A19",
-    )
-
-
 def _completed_pigtail_window_cutter_local(p: P17R2Parameters) -> Shape:
     """Rounded fixed-inner production window authored from world dimensions."""
     front_edge_y = p.pivot_y + p.inner_plate_diameter / 2.0
@@ -858,11 +637,7 @@ def _inner_plate_local(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> 
     for name in ROD_NAMES:
         part = part - _slot_capsule_cutter(fixed_guide_local_locus(name, p), p.fixed_slot_width, p.inner_plate_thickness + 2.0)
     part = part - _completed_pigtail_window_cutter_local(p)
-    if side == "right":
-        part = part + _lock_receiver_local(p)
-        part.label = "right_inner_fixed_guide_hex_keyed_with_completed_pigtail_window_and_receiver"
-    else:
-        part.label = "left_inner_fixed_guide_hex_keyed_with_completed_pigtail_window"
+    part.label = f"{side}_inner_fixed_guide_hex_keyed_with_completed_pigtail_window"
     return part
 
 
@@ -873,7 +648,7 @@ def _outer_plate_local(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> 
         if side == "left"
         else p.right_outer_primary_grip_diameter
     )
-    label = "left_outer_secondary_cam_mirrored_fixed_axle_guide" if side == "left" else "right_outer_primary_actuator_larger_integrated_lock_nose_mirrored_fixed_axle_guide"
+    label = "left_outer_secondary_cam_mirrored_fixed_axle_guide" if side == "left" else "right_outer_primary_actuator_larger_mirrored_fixed_axle_guide"
     color = "#377A3A" if side == "left" else "#2D6FA8"
     axle_guide = _slot_capsule_cutter(
         fixed_axle_guide_locus(side, p),
@@ -889,9 +664,7 @@ def _outer_plate_local(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> 
     )
     for name in ROD_NAMES:
         part = part - _slot_capsule_cutter(outer_slot_locus(side, name, p), p.outer_slot_width, p.outer_plate_thickness + 2.0)
-    if side == "right":
-        part = part + _lock_nose_local(p)
-    else:
+    if side == "left":
         grip = Pos(0.0, -28.0, 0.0) * Box(4.0, 4.0, 11.0, align=(Align.CENTER, Align.CENTER, Align.CENTER))
         part = part + grip
     part.label = label
@@ -916,47 +689,6 @@ def build_outer_plate(side: SideName, theta_deg: float, p: P17R2Parameters = P17
         Pos(x, pivot.y, pivot.z) * Rot(rotation_for_side(side, theta_deg), 0.0, 0.0) * copy(_outer_plate_local(side, p)),
         _outer_plate_local(side, p).label,
         color,
-    )
-
-
-def build_lock_nose(theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
-    """Standalone actual-solid lock nose in its assembled world transform."""
-    pivot = outer_rotation_center_yz(p)
-    return _label(
-        Pos(p.right_outer_x, pivot.y, pivot.z)
-        * Rot(alpha_right(theta_deg), 0.0, 0.0)
-        * copy(_lock_nose_local(p)),
-        f"right_outer_lock_nose_theta_{theta_deg:.2f}",
-        "#2D6FA8",
-    )
-
-
-def build_lock_receiver(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-    *,
-    condition: Literal["seated", "closing_unreleased", "released"] = "seated",
-) -> Shape:
-    """Standalone occurrence of the same grounded receiver/flexure solid."""
-    pivot = outer_rotation_center_yz(p)
-    return _label(
-        Pos(p.right_inner_x, pivot.y, pivot.z) * _lock_receiver_local(p, condition=condition),
-        f"right_inner_same_receiver_{condition}",
-        "#D89A19",
-    )
-
-
-def build_lock_receiver_component(
-    name: Literal["hard_stop", "retaining_shoulder", "lead_in_ramp", "flexure_beam", "thumb_release_tab"],
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-    *,
-    condition: Literal["seated", "closing_unreleased", "released"] = "seated",
-) -> Shape:
-    pivot = outer_rotation_center_yz(p)
-    component = _lock_receiver_components_local(p, condition=condition)[name]
-    return _label(
-        Pos(p.right_inner_x, pivot.y, pivot.z) * component,
-        f"right_inner_{name}_{condition}",
-        "#D89A19",
     )
 
 
@@ -1084,7 +816,7 @@ def build_workpiece_reference(theta_deg: float, p: P17R2Parameters = P17_R2_DEFA
 def completed_pigtail_removal_waypoints(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> tuple[PointYZ, ...]:
-    """Persisted D05 release/open/lift/+Y extraction dogleg centerline."""
+    """Persisted D05 full-open/lift/+Y extraction dogleg centerline."""
     return (
         PointYZ(p.xt60_body_center_y, p.xt60_body_center_z),
         PointYZ(p.xt60_body_center_y, p.completed_pigtail_window_center_z),
@@ -1132,7 +864,7 @@ def _completed_pigtail_at(
 def completed_pigtail_removal_states(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> tuple[tuple[str, Shape], ...]:
-    """Dense actual-solid samples for the released-open dogleg sweep."""
+    """Dense actual-solid samples for the full-open dogleg sweep."""
     waypoints = completed_pigtail_removal_waypoints(p)
     rows: list[tuple[str, Shape]] = []
     sample_index = 0
@@ -1158,7 +890,7 @@ def build_completed_pigtail_removal_sweep(
     children = [shape for _, shape in completed_pigtail_removal_states(p)]
     return Compound(
         children=children,
-        label="completed_pigtail_actual_released_open_lift_then_plusY_removal_sweep",
+        label="completed_pigtail_actual_full_open_lift_then_plusY_removal_sweep",
     )
 
 
@@ -1358,16 +1090,6 @@ def build_center_axle_coupon(p: P17R2Parameters = P17_R2_DEFAULTS) -> Compound:
     )
 
 
-def build_lock_closeup(p: P17R2Parameters = P17_R2_DEFAULTS) -> Compound:
-    return Compound(
-        children=[
-            build_inner_plate("right", p),
-            build_outer_plate("right", p.theta_lock_deg, p),
-        ],
-        label="P17_R2_lock_closeup_same_right_inner_receiver_and_right_outer_nose",
-    )
-
-
 def build_artifact(name: ArtifactName, p: P17R2Parameters = P17_R2_DEFAULTS) -> Compound:
     builders = {
         "open": lambda: build_motion_state("open", p),
@@ -1377,25 +1099,11 @@ def build_artifact(name: ArtifactName, p: P17R2Parameters = P17_R2_DEFAULTS) -> 
         "print_kit": lambda: build_print_kit(p),
         "permanent_cap_coupon": lambda: build_permanent_cap_coupon(p),
         "center_axle_coupon": lambda: build_center_axle_coupon(p),
-        "lock_closeup": lambda: build_lock_closeup(p),
     }
     if name not in builders:
         raise ValueError(f"unknown P17 R2 artifact {name!r}")
     artifact = builders[name]()
     return Compound(children=[artifact], label=f"P17_R2_ARTIFACT_{name}__{provenance_token(p)}")
-
-
-def lock_contact_gap_y(theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> float:
-    """Signed closing-direction nose-to-hard-stop clearance in millimetres."""
-    _, tangent = _lock_unit_vectors(p)
-    center = _rotate_yz(PointYZ(p.lock_nose_orbit_radius, 0.0), alpha_right(theta_deg))
-    locked_center = _lock_center_at_lock(p)
-    hard_face = PointYZ(
-        locked_center.y + tangent.y * (p.lock_nose_radius + p.lock_contact_clearance),
-        locked_center.z + tangent.z * (p.lock_nose_radius + p.lock_contact_clearance),
-    )
-    center_to_face = PointYZ(hard_face.y - center.y, hard_face.z - center.z)
-    return center_to_face.y * tangent.y + center_to_face.z * tangent.z - p.lock_nose_radius
 
 
 def _intersection_volume(first: Shape, second: Shape) -> float:
@@ -1408,7 +1116,7 @@ def _intersection_volume(first: Shape, second: Shape) -> float:
 
 
 def service_clearance_evidence(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
-    """Actual-solid pivot service and released-open extraction evidence."""
+    """Actual-solid pivot service and full-open extraction evidence."""
     fixed = {
         "center_axle": build_center_axle(p),
         "left_keeper": build_keeper("left", p),
@@ -1459,7 +1167,7 @@ def service_clearance_evidence(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str
         "minimumActualMm": minimum,
         "passes": minimum + 1.0e-9 >= p.service_clearance_min,
         "pivotServiceRows": rows,
-        "removalSequence": "release -> full open -> lift to window centerline -> +Y extraction",
+        "removalSequence": "move to full open -> lift to window centerline -> +Y extraction",
         "removalWaypointsYZ": [point.as_tuple() for point in completed_pigtail_removal_waypoints(p)],
         "removalMinimumActualMm": removal_minimum,
         "removalZeroIntersection": all(row["zeroIntersection"] for row in removal_rows.values()),
@@ -1562,7 +1270,6 @@ def _fixed_axle_feature_gap_evidence(
         for name in ROD_NAMES
     ]
     inner_neighbors.append(_completed_pigtail_window_cutter_local(p))
-    inner_neighbors.extend(_lock_receiver_components_local(p).values())
     distances = [float(inner_hex.distance(neighbor)) for neighbor in inner_neighbors]
     intersections = [
         _intersection_volume(inner_hex, neighbor) for neighbor in inner_neighbors
@@ -1586,8 +1293,6 @@ def _fixed_axle_feature_gap_evidence(
                 Pos(0.0, -28.0, 0.0)
                 * Box(4.0, 4.0, 11.0, align=(Align.CENTER, Align.CENTER, Align.CENTER))
             )
-        else:
-            outer_neighbors.append(_lock_nose_local(p))
         distances.extend(
             float(axle_guide.distance(neighbor)) for neighbor in outer_neighbors
         )
@@ -1988,6 +1693,9 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
             "roles": ROD_NAMES,
             "moving": True,
             "fixedReactionMember": False,
+            "modeledTargetLengthMm": p.rod_length_target,
+            "physicalStockLengthMm": PHYSICAL_STAINLESS_STOCK_LENGTH_MM,
+            "stockUseDecision": "unresolved and separate from this candidate's modeled length",
         },
         "parameters": asdict(p),
         "derived": {
@@ -2015,7 +1723,6 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
                 "theta_deg": theta,
                 "alpha_left_deg": alpha_left(theta),
                 "alpha_right_deg": alpha_right(theta),
-                "right_lock_contact_gap_y": lock_contact_gap_y(theta, p),
             }
             for state, theta in STATE_THETA.items()
         },
@@ -2029,7 +1736,7 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
         },
         "centerAxle": {
             "fixedMember": "purple printed stepped axle",
-            "whiteRods": "all three OD4 rods remain moving forming/locking rods",
+            "whiteRods": "all three OD4 rods remain moving forming rods",
             "onePiece": True,
             "worldInvariant": True,
             "outerRotationCenterYZ": outer_rotation_center_yz(p).as_tuple(),
@@ -2063,15 +1770,15 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
             "widths": p.slot_fit_coupon_widths,
             "forms": ("straight", "curved"),
         },
-        "lock": {
-            "geometry": "integral right-outer nose plus same-solid right-inner ramp/throat/hard-stop/undercut receiver",
-            "overCenterCapture": p.lock_over_center_capture,
-            "contactClearance": p.lock_contact_clearance,
-            "releaseShift": p.lock_receiver_release_shift,
-            "releaseFeature": "connected flexure and thumb tab; no alternate receiver occurrence",
+        "endpoint": {
+            "thetaDeg": p.theta_lock_deg,
+            "meaning": "end-of-travel only",
+            "retentionFeature": None,
+            "selfLockClaimed": False,
+            "compatibilityNames": ("locked", "theta_lock_deg", "GuidePath.locked"),
         },
         "service": {
-            "sequence": "release -> full open -> lift -> +Y completed-pigtail extraction",
+            "sequence": "move to full open -> lift -> +Y completed-pigtail extraction",
             "completedPigtailWindowStartY": p.completed_pigtail_window_start_y,
             "completedPigtailWindowCenterZ": p.completed_pigtail_window_center_z,
             "completedPigtailWindowWidthZ": p.completed_pigtail_window_width_z,
@@ -2088,6 +1795,7 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
             "animation_sidecar",
             "shared_D_shaft",
             "removable_caps",
+            "endpoint_lock",
             "yoke_bars",
         ),
     }
@@ -2110,93 +1818,10 @@ def clear_geometry_caches() -> None:
     _outer_plate_local.cache_clear()
 
 
-def lock_backdrive_evidence(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
-    theta = p.theta_lock_deg
-    result: dict[str, object] = {
-        "thetaDeg": theta,
-        "side": "right",
-        "rightLockContactGapY": lock_contact_gap_y(theta, p),
-        "rodChecks": {},
-    }
-    hard_stop = build_lock_receiver_component("hard_stop", p)
-    shoulder = build_lock_receiver_component("retaining_shoulder", p)
-    released_shoulder = build_lock_receiver_component(
-        "retaining_shoulder", p, condition="released"
-    )
-    closing_rows: dict[str, object] = {}
-    for closing_theta in (0.0, 4.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 30.0, 31.0, 31.5, 31.8):
-        nose = build_lock_nose(closing_theta, p)
-        receiver = build_lock_receiver(p, condition="closing_unreleased")
-        catch = build_lock_receiver_component(
-            "retaining_shoulder", p, condition="closing_unreleased"
-        )
-        closing_rows[f"theta_{closing_theta:.1f}"] = {
-            "receiverIntersectionMm3": _intersection_volume(nose, receiver),
-            "catchClearanceMm": float(nose.distance(catch)),
-            "condition": "same_receiver_nose_driven_flexure_unreleased",
-        }
-    released_rows: dict[str, object] = {}
-    for opening_theta in (32.0, 31.5, 31.0, 30.0):
-        nose = build_lock_nose(opening_theta, p)
-        receiver = build_lock_receiver(p, condition="released")
-        released_rows[f"theta_{opening_theta:.1f}"] = {
-            "receiverIntersectionMm3": _intersection_volume(nose, receiver),
-            "catchClearanceMm": float(nose.distance(released_shoulder)),
-            "condition": "same_receiver_thumb_tab_deflected",
-        }
-    overclose_receiver = build_lock_receiver(p, condition="seated")
-    overclose_nose = build_lock_nose(theta + 1.0, p)
-    overclose_total = _intersection_volume(overclose_nose, overclose_receiver)
-    overclose_hard = _intersection_volume(overclose_nose, hard_stop)
-    result["solidLockChecks"] = {
-        "lockedHardStopIntersectionMm3": _intersection_volume(build_lock_nose(theta, p), hard_stop),
-        "overclosedHardStopIntersectionMm3": _intersection_volume(build_lock_nose(theta + 1.0, p), hard_stop),
-        "lockedShoulderIntersectionMm3": _intersection_volume(build_lock_nose(theta, p), shoulder),
-        "opening1degShoulderIntersectionMm3": _intersection_volume(build_lock_nose(theta - 1.0, p), shoulder),
-        "opening2degShoulderIntersectionMm3": _intersection_volume(build_lock_nose(theta - 2.0, p), shoulder),
-        "releasedOpening2degShoulderIntersectionMm3": _intersection_volume(build_lock_nose(theta - 2.0, p), released_shoulder),
-        "overclosedReceiverIntersectionMm3": overclose_total,
-        "overclosedNonHardStopIntersectionMm3": max(0.0, overclose_total - overclose_hard),
-        "overCenterCaptureMm": p.lock_over_center_capture,
-    }
-    result["normalClosingSweep"] = closing_rows
-    result["releasedOpeningSweep"] = released_rows
-    result["sameReceiverOccurrence"] = {
-        "worldDatumXYZ": (p.right_inner_x, p.pivot_y, p.pivot_z),
-        "connectedSolidCountSeated": len(build_lock_receiver(p, condition="seated").solids()),
-        "connectedSolidCountClosing": len(build_lock_receiver(p, condition="closing_unreleased").solids()),
-        "connectedSolidCountReleased": len(build_lock_receiver(p, condition="released").solids()),
-        "releaseFeature": "connected radial flexure, lead-in ramp, undercut catch, and thumb tab",
-    }
-    total_torque = 0.0
-    for name in ROD_NAMES:
-        before = reconstruct_world_from_outer("right", name, theta - p.hard_stop_dwell_deg, p)
-        at_lock = reconstruct_world_from_outer("right", name, theta, p)
-        tangent = PointYZ(at_lock.y - before.y, at_lock.z - before.z)
-        length = hypot(tangent.y, tangent.z)
-        tangent_u = PointYZ(tangent.y / length, tangent.z / length)
-        normal = PointYZ(-tangent_u.z, tangent_u.y)
-        reaction = PointYZ(0.0, -1.0)
-        center = at_lock
-        torque = center.y * reaction.z - center.z * reaction.y
-        normal_dot_reaction = normal.y * reaction.y + normal.z * reaction.z
-        total_torque += torque
-        result["rodChecks"][name] = {
-            "worldCenter": center.as_tuple(),
-            "slotTangent": tangent_u.as_tuple(),
-            "slotNormal": normal.as_tuple(),
-            "nominalReaction": reaction.as_tuple(),
-            "normalDotReaction": normal_dot_reaction,
-            "torqueAboutHub": torque,
-        }
-    result["summedTorqueAboutRightHub"] = total_torque
-    result["claimBoundary"] = "CAD receiver-pocket/contact proof only; physical self-lock not claimed"
-    return result
-
-
 __all__ = [
     "P17R2Parameters",
     "P17_R2_DEFAULTS",
+    "PHYSICAL_STAINLESS_STOCK_LENGTH_MM",
     "GUIDES",
     "ROD_NAMES",
     "STATE_THETA",
@@ -2208,9 +1833,6 @@ __all__ = [
     "build_fixed_axle_focus_state",
     "build_full_motion_open",
     "build_completed_pigtail_removal_sweep",
-    "build_lock_nose",
-    "build_lock_receiver",
-    "build_lock_receiver_component",
     "build_motion_state",
     "build_service_envelopes",
     "build_slot_fit_coupon",
@@ -2224,8 +1846,6 @@ __all__ = [
     "fixed_axle_guide_locus",
     "fixed_occurrence_transform_evidence",
     "fixed_guide_locus",
-    "lock_backdrive_evidence",
-    "lock_contact_gap_y",
     "manifest_sha256",
     "outer_slot_local_center",
     "outer_slot_locus",

@@ -17,7 +17,7 @@ ROOT = Path(__file__).parents[1]
 
 
 @pytest.fixture(autouse=True)
-def _release_occ_memory_after_test():
+def _clear_occ_memory_after_test():
     yield
     p17.clear_geometry_caches()
     gc.collect()
@@ -69,7 +69,8 @@ def test_contract_hash_and_core_dimensions_do_not_regress() -> None:
     assert p.principal_stack_width == pytest.approx(32.00)
     assert p.rod_length_raw == pytest.approx(40.60)
     assert p.rod_length_target == pytest.approx(40.60)
-    assert p.rod_length_target != pytest.approx(50.00)
+    assert p17.PHYSICAL_STAINLESS_STOCK_LENGTH_MM == pytest.approx(50.00)
+    assert p.rod_length_target != pytest.approx(p17.PHYSICAL_STAINLESS_STOCK_LENGTH_MM)
     assert p.center_axle_total_length == pytest.approx(34.90)
     assert p.cap_socket_id == pytest.approx(4.04)
     assert p.cap_socket_id >= p.rod_diameter
@@ -230,10 +231,7 @@ def test_print_kit_uses_flat_local_plate_occurrences_and_includes_axle_parts() -
         or child.label.startswith("print_right_outer")
     }
     assert len(plate_z_sizes) == 4
-    assert max(value for label, value in plate_z_sizes.items() if "right_inner" not in label) <= 5.01
-    # The right-inner receiver's 8.6 mm axial bridge is the named grounded
-    # lock load path, not nonfunctional rail bulk.
-    assert next(value for label, value in plate_z_sizes.items() if "right_inner" in label) <= 8.61
+    assert max(plate_z_sizes.values()) <= 5.01
     assert len([label for label in labels if label.endswith("_permanent_cap")]) == 6
     assert any("print_stepped_center_axle" in label for label in labels)
     assert len([label for label in labels if "press_fit_outer_keeper" in label]) == 2
@@ -245,46 +243,75 @@ def test_print_kit_uses_flat_local_plate_occurrences_and_includes_axle_parts() -
     assert axle_z and max(axle_z) <= 11.0
 
 
-def test_lock_has_same_solid_one_way_flexure_capture_release_and_no_self_lock_claim() -> None:
+def test_current_lock_geometry_api_manifest_and_artifact_are_absent() -> None:
+    source = Path(p17.__file__).read_text()
+    tree = ast.parse(source)
+    function_names = {
+        node.name
+        for node in tree.body
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+    }
+    forbidden_functions = {
+        "_lock_nose_local",
+        "_lock_receiver_local",
+        "_lock_receiver_components_local",
+        "build_lock_nose",
+        "build_lock_receiver",
+        "build_lock_receiver_component",
+        "build_lock_closeup",
+        "lock_contact_gap_y",
+        "lock_backdrive_evidence",
+    }
+    assert function_names.isdisjoint(forbidden_functions)
+    assert not any(field.name.startswith("lock_") for field in __import__("dataclasses").fields(p17.P17R2Parameters))
+
     labels = _labels(p17.build_motion_state("locked"))
-    assert any("completed_pigtail_window_and_receiver" in label for label in labels)
-    assert any("right_outer_primary_actuator_larger_integrated_lock_nose" in label for label in labels)
+    forbidden_label_tokens = (
+        "lock_nose",
+        "receiver",
+        "ground_arm",
+        "axial_bridge",
+        "hard_stop",
+        "flexure",
+        "lead_in",
+        "retaining_shoulder",
+        "thumb_release",
+    )
+    assert not [label for label in labels if any(token in label for token in forbidden_label_tokens)]
 
+    manifest = p17.p17_r2_manifest()
+    assert "lock" not in manifest
+    assert manifest["endpoint"] == {
+        "thetaDeg": 32.0,
+        "meaning": "end-of-travel only",
+        "retentionFeature": None,
+        "selfLockClaimed": False,
+        "compatibilityNames": ("locked", "theta_lock_deg", "GuidePath.locked"),
+    }
+    with pytest.raises(ValueError, match="unknown P17 R2 artifact"):
+        p17.build_artifact("lock_closeup")  # type: ignore[arg-type]
+
+
+def test_only_right_lock_additions_are_removed_from_plate_solids() -> None:
     p = p17.P17_R2_DEFAULTS
-    assert p.lock_nose_orbit_radius + p.lock_nose_radius <= p.right_outer_primary_grip_diameter / 2.0 + p.min_web_mm
-    assert p.lock_nose_axial_thickness >= 1.00
-    assert p.lock_over_center_capture == pytest.approx(0.40)
-    assert p17.lock_contact_gap_y(0.0, p) > 10.0
-    assert p17.lock_contact_gap_y(16.0, p) > 7.0
-    assert p17.lock_contact_gap_y(p.theta_lock_deg, p) == pytest.approx(0.02)
-    assert p17.lock_contact_gap_y(p.theta_lock_deg + 1.0, p) < 0.0
-
-    receiver = p17.build_lock_receiver(p, condition="seated")
-    assert _intersection_volume(receiver, p17.build_outer_plate("right", 0.0, p)) <= 1.0e-7
-    assert _intersection_volume(receiver, p17.build_outer_plate("right", 16.0, p)) <= 1.0e-7
-    assert _intersection_volume(receiver, p17.build_outer_plate("right", p.theta_lock_deg, p)) <= 1.0e-7
-
-    evidence = p17.lock_backdrive_evidence()
-    assert evidence["claimBoundary"].startswith("CAD receiver-pocket/contact proof only")
-    assert evidence["rightLockContactGapY"] == pytest.approx(0.02)
-    solids = evidence["solidLockChecks"]
-    assert solids["lockedHardStopIntersectionMm3"] <= 1.0e-7
-    assert solids["overclosedHardStopIntersectionMm3"] > 0.01
-    assert solids["lockedShoulderIntersectionMm3"] <= 1.0e-7
-    assert solids["opening1degShoulderIntersectionMm3"] > 0.01
-    assert solids["opening2degShoulderIntersectionMm3"] > solids["opening1degShoulderIntersectionMm3"]
-    assert solids["releasedOpening2degShoulderIntersectionMm3"] <= 1.0e-7
-    assert solids["overclosedNonHardStopIntersectionMm3"] <= 1.0e-7
-    assert solids["overCenterCaptureMm"] == pytest.approx(0.40)
-    assert max(row["receiverIntersectionMm3"] for row in evidence["normalClosingSweep"].values()) <= 1.0e-7
-    assert min(row["catchClearanceMm"] for row in evidence["normalClosingSweep"].values()) >= 0.20
-    assert max(row["receiverIntersectionMm3"] for row in evidence["releasedOpeningSweep"].values()) <= 1.0e-7
-    assert min(row["catchClearanceMm"] for row in evidence["releasedOpeningSweep"].values()) >= 0.20
-    assert evidence["sameReceiverOccurrence"]["connectedSolidCountSeated"] == 1
-    assert evidence["sameReceiverOccurrence"]["connectedSolidCountClosing"] == 1
-    assert evidence["sameReceiverOccurrence"]["connectedSolidCountReleased"] == 1
-    for row in evidence["rodChecks"].values():
-        assert hypot(*row["slotTangent"]) == pytest.approx(1.0)
+    volumes = {
+        "left_inner": float(p17.build_inner_plate("left", p).volume),
+        "right_inner": float(p17.build_inner_plate("right", p).volume),
+        "left_outer": float(p17.build_outer_plate("left", 0.0, p).volume),
+        "right_outer": float(p17.build_outer_plate("right", 0.0, p).volume),
+    }
+    baseline = {
+        "left_inner": 6401.617269691559,
+        "right_inner": 6643.953172798893,
+        "left_outer": 8306.767693237123,
+        "right_outer": 8870.838945923684,
+    }
+    assert volumes["left_inner"] == pytest.approx(baseline["left_inner"], abs=1.0e-6)
+    assert volumes["left_outer"] == pytest.approx(baseline["left_outer"], abs=1.0e-6)
+    assert baseline["right_inner"] - volumes["right_inner"] == pytest.approx(242.335903107333, abs=1.0e-6)
+    assert baseline["right_outer"] - volumes["right_outer"] == pytest.approx(17.779325567500, abs=1.0e-6)
+    assert len(p17.build_inner_plate("right", p).solids()) == 1
+    assert len(p17.build_outer_plate("right", 0.0, p).solids()) == 1
 
 
 def test_source_does_not_define_world_space_only_outer_slots_or_p17_sidecar() -> None:
@@ -300,7 +327,8 @@ def test_source_does_not_define_world_space_only_outer_slots_or_p17_sidecar() ->
     assert "build_simulator" not in function_names
     assert "build_animation" not in function_names
     assert "Three" not in source
-    assert "50.00" not in source
+    assert "rejected 50" not in source.lower()
+    assert "must not inherit" not in source.lower()
     assert "ID3.90" not in source
 
 
@@ -314,10 +342,11 @@ def test_source_export_entrypoints_exist_for_primary_p17_r2_artifacts() -> None:
         "p17_r2_print_kit",
         "p17_r2_permanent_cap_coupon",
         "p17_r2_center_axle_coupon",
-        "p17_r2_lock_closeup",
     ):
         assert (cad / f"{name}.step.py").exists()
         assert f'build_artifact("{name.removeprefix("p17_r2_")}"' in (cad / f"{name}.step.py").read_text()
+    assert not (cad / "p17_r2_lock_closeup.step.py").exists()
+    assert not (cad / "p17_r2_lock_closeup.step").exists()
 
 
 def test_d04_offset_shared_pivot_drives_axle_plates_and_complementary_slot_reconstruction() -> None:
@@ -386,7 +415,8 @@ def test_d04_service_envelopes_have_actual_solid_clearance_above_target() -> Non
     assert evidence["minimumActualMm"] >= evidence["minimumRequiredMm"]
     assert evidence["passes"] is True
     assert all(row["zeroIntersection"] is True for row in evidence["rows"].values())
-    assert evidence["removalSequence"] == "release -> full open -> lift to window centerline -> +Y extraction"
+    assert evidence["removalSequence"] == "move to full open -> lift to window centerline -> +Y extraction"
+    assert "release" not in evidence["removalSequence"].lower()
     assert evidence["removalZeroIntersection"] is True
     assert evidence["removalMinimumActualMm"] >= evidence["minimumRequiredMm"]
     assert evidence["removalWaypointsYZ"] == pytest.approx(
@@ -471,26 +501,6 @@ def _d06_frozen_scope_semantics() -> dict[str, object]:
                 "cap_socket_ladder_depths",
             )
         },
-        "lock": {
-            name: getattr(p, name)
-            for name in (
-                "lock_nose_orbit_radius",
-                "lock_nose_radius",
-                "lock_nose_axial_thickness",
-                "lock_contact_clearance",
-                "lock_over_center_capture",
-                "lock_receiver_stop_depth",
-                "lock_receiver_normal_width",
-                "lock_receiver_release_shift",
-                "lock_receiver_closing_deflection",
-                "lock_receiver_bridge_radius",
-                "lock_receiver_bridge_diameter",
-                "lock_flexure_width",
-                "lock_lead_in_length",
-                "lock_thumb_tab_length",
-                "hard_stop_dwell_deg",
-            )
-        },
         "axial_stack": {
             name: getattr(p, name)
             for name in (
@@ -522,12 +532,12 @@ def _d06_frozen_scope_semantics() -> dict[str, object]:
     }
 
 
-def test_d06_frozen_white_rod_lock_stack_and_plate_semantics_do_not_change() -> None:
+def test_i06_frozen_white_rod_stack_and_plate_semantics_do_not_change() -> None:
     encoded = json.dumps(
         _d06_frozen_scope_semantics(), sort_keys=True, separators=(",", ":")
     ).encode()
     assert sha256(encoded).hexdigest() == (
-        "a6c25c8977c2c9debe9838c0c60ee74bb9f28dbe0e1c1a9167c29d9ce594dec5"
+        "197f1156e085356836acf514d96a21405f84f8bcec500dc9294bf3bdb6455046"
     )
 
 
@@ -541,6 +551,9 @@ def test_d06_fixed_identity_is_purple_axle_and_all_white_rods_remain_moving() ->
         "roles": ("upright", "bottom", "diagonal"),
         "moving": True,
         "fixedReactionMember": False,
+        "modeledTargetLengthMm": 40.60,
+        "physicalStockLengthMm": 50.00,
+        "stockUseDecision": "unresolved and separate from this candidate's modeled length",
     }
 
 
@@ -628,7 +641,8 @@ def test_d06_motion_entry_is_source_declared_self_contained_and_targets_only_out
     assert sidecar.exists()
     assert '"params": "p17_r2_fixed_axle_motion.params.js"' in entry.read_text()
     js = sidecar.read_text()
-    assert "open_to_lock" in js
+    assert "open_to_end" in js
+    assert "open_to_lock" not in js
     assert "import " not in js
     assert "effects.transform(\"left_outer\"" in js
     assert "effects.transform(\"right_outer\"" in js
@@ -643,3 +657,16 @@ def test_d06_motion_entry_is_source_declared_self_contained_and_targets_only_out
         "diagonal_rod",
     ):
         assert f'effects.transform("{forbidden}"' not in js
+
+
+def test_i06_full_motion_uses_same_single_end_of_travel_control() -> None:
+    cad = ROOT / "cad" / "p17_r2_direct_counter_twist"
+    entry = cad / "p17_r2_full_motion.step.py"
+    sidecar = cad / "p17_r2_full_motion.params.js"
+    assert '"params": "p17_r2_full_motion.params.js"' in entry.read_text()
+    js = sidecar.read_text()
+    assert js.count("open_to_end:") == 1
+    assert "OPEN to END OF TRAVEL" in js
+    assert "OPEN - END - OPEN" in js
+    assert "open_to_lock" not in js
+    assert "OPEN to LOCK" not in js

@@ -1,10 +1,34 @@
 {
-  "baselineCommit": "cb020f6cf01876e01d1e6501fec8861a527aa248",
-  "candidateId": "P17-I05",
-  "implementationInputManifestSha256": "c9085b63a5512ef61f8c01f6191d6445765cd7cc1a2107575e3c0badbfc357c3",
-  "source": {"path": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py", "sha256": "3df2574dc571ba37f24125d6cc1028d67273841d7c4951359f676fd07de46000"},
-  "tests": {"path": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py", "sha256": "20145cfea70b483cb0b1e7efc7f418d6bea744fbc713a18e6500612702e0aeb7", "focusedD07Result": "8 passed", "fullFocusedFileResult": "31 passed"},
+  "baselineCommit": "ea416dc2c120f362cdf079b4b82bb8722c58682a",
+  "candidateId": "P17-I06-R1",
+  "implementationInputManifestSha256": "60873c78ff74f5bb40010826c9ba9af690ca15d650043d258b66ba8fc4702f7a",
+  "source": {
+    "path": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py",
+    "sha256": "371c9beff6909517b71d33ef5882df54997145e9373a1357d6d19bb34e29133b"
+  },
+  "tests": {
+    "path": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
+    "sha256": "b626047b6c2f6c764cb6a4107e5b64b1155054559c06f6dc6ac0ffc3d1e2429d",
+    "fullFocusedFileResult": "33 tests reached 100 percent with no failure"
+  },
+  "removedLock": {
+    "rightInnerBaselineVolumeMm3": 6643.953172798893,
+    "rightInnerCandidateVolumeMm3": 6401.61726969156,
+    "rightInnerRemovedVolumeMm3": 242.335903107333,
+    "rightOuterBaselineVolumeMm3": 8870.838945923684,
+    "rightOuterCandidateVolumeMm3": 8853.059620356184,
+    "rightOuterRemovedVolumeMm3": 17.7793255675,
+    "leftInnerVolumeMm3Unchanged": 6401.617269691559,
+    "leftOuterVolumeMm3Unchanged": 8306.767693237123,
+    "replacementAdded": false,
+    "endpointMeaning": "32 degree end-of-travel only; no endpoint retention or self-lock claim"
+  },
   "digitalEvidence": {
+    "principalStackWidthMm": 32.0,
+    "modeledWhiteRodTargetLengthMm": 40.6,
+    "physicalStainlessStockLengthMmUnresolved": 50.0,
+    "purpleCenterAxleLengthMm": 34.9,
+    "perSideCenterAxleLengthMm": 8.25,
     "outerRotationCenterYZ": [-10.6, 17.0],
     "fixedAxleCenterYZ": [-29.0, 17.0],
     "fixedAxleEccentricityMm": 18.4,
@@ -14,55 +38,56 @@
     "boundaryWebsInnerLeftRightMm": [3.894595306104552, 7.650000000000002, 9.150000000000002],
     "minimumAxleGuideRadialClearanceMm": 0.1499999999999999,
     "minimumKeeperRadialCaptureMm": 1.0500000000000003,
-    "minimumXt60AndServiceClearanceMm": 19.17649730810374,
-    "maximumAxleReconstructionErrorMm": 7.11e-15,
-    "maximumMirrorErrorMm": 0.0,
-    "combinedContactClosurePass": true,
+    "maximumContactResidualMm": 3.428879600755256e-15,
     "minimumRank3Minor": 0.0003600686127215046,
     "maximumPerturbedPoseError": 7.306488747360618e-12,
+    "combinedContactClosurePass": true,
     "all33StateCollisionGatesPass": true,
-    "sourceExportMaxBoundDeltaMm": 0.0
+    "sourceExportMaxBoundDeltaMm": 6.252776074688882e-12,
+    "sourceExportMaxSummedSolidVolumeDeltaMm3": 2.2118911147117615e-09
+  },
+  "semanticRepair": {
+    "serviceSequence": "move to full open -> lift to window centerline -> +Y extraction",
+    "serviceStartState": "full_open",
+    "modeledRodTargetLengthMm": 40.6,
+    "physicalStainlessStockLengthMm": 50.0,
+    "physicalStockUseDecision": "unresolved and separate from this candidate's modeled length",
+    "geometryChanged": false
   },
   "stepSha256": {
-    "p17_r2_center_axle_coupon.step": "4c53b3f1c97c3a9acd9059dc7a4278c2ea36f37531644aedc084ad927a31e01f",
-    "p17_r2_exploded.step": "534dfcf5efd794500c2d7ca82e64f4da817671bb56faa9ae11229a5551df695f",
-    "p17_r2_fixed_axle_motion.step": "ba2993781fcb4b9e5539a36c4aae6e18da260502d24fb4096d7403c4da300e7c",
-    "p17_r2_full_motion.step": "a09f19a7a654dccd865e7941ad7d355e48ef89cc1de6ab6d9b3fd0d164dda1f8",
-    "p17_r2_lock_closeup.step": "3c45e1d44d0024eb07a922742c8028eb3ddb75fbaf01d454b9dc82106d24e057",
-    "p17_r2_locked.step": "bbd11f8ac8c9d7131505c3b4fabbc2d3bc6258791cc8ffa864603fbaac7ae6ca",
-    "p17_r2_mid.step": "e0def9c072a4b62e0885532ecd31617092aca9e02304c5b2b9371fbb57c0807c",
-    "p17_r2_open.step": "0b323613bd106af2c4981311d73e42b6c15b9e6897e293afee075063b057ab6e",
-    "p17_r2_permanent_cap_coupon.step": "a5affbf83a33b5b8897fb564e3c41c51c966ab4d84002ead4c09e9be7722c264",
-    "p17_r2_print_kit.step": "aef6761a688e3ff13e11bde19871a121c8c4dcd65945c12a5e05b99241e3847b"
+    "p17_r2_center_axle_coupon.step": "7e94f7b2ecfa0b0df07d9d916cf20a62996ea6f525ea415a617f10a456d11e42",
+    "p17_r2_exploded.step": "2334557165f775f58b977141d8b3dc76aa1aeca201c83a50909d0e433c6a9fe7",
+    "p17_r2_fixed_axle_motion.step": "b1d190430f86d1243842048a28d3357aa9ff4c0a8d99bd8a84a389f898e4aeab",
+    "p17_r2_full_motion.step": "22b4877ae75366b36f50b021aed53a944191320f3616f3e4ff4c84348a5b9800",
+    "p17_r2_locked.step": "2b59fcf1426d8956769a6de9bae0d193c67c45b6261975ac6559e3a851c08fc5",
+    "p17_r2_mid.step": "540993964ddedf5d70e46450d0b0259d8e59a35958fec8c663f0b4448cc75c47",
+    "p17_r2_open.step": "fc6c172daddae98b92136fa12a3eb6f83e2cf5e1cb809fc45d99362887155a25",
+    "p17_r2_permanent_cap_coupon.step": "be0c83a8697bbbb1a2f6cdf3e924eb0fcd2edc56f129a3eeedeecda09aea59fc",
+    "p17_r2_print_kit.step": "e26b43af4942ecd563d9c18be8fb26ca05dbb5c7c104820fbd62591a39b3e32b"
   },
   "motionSourceSha256": {
     "p17_r2_fixed_axle_motion.step.py": "5df821aea698153885f7b379e79e482679b0e6fba64522f03730bc16dc453876",
-    "p17_r2_fixed_axle_motion.params.js": "a0bde0d8edd7872a4a89d10ea365b939d554d6c40c864657df9dc647d9b8f1cf",
+    "p17_r2_fixed_axle_motion.params.js": "7f5e6906bf73a019b2908430d0d58d348aeac0528a087d57ffede7fb62c346e7",
     "p17_r2_full_motion.step.py": "1151a9ba1c7871a977b1ae92f6f55940b0b62ae2315d4f241b0d316f1c5ba7dc",
-    "p17_r2_full_motion.params.js": "4c99f20208249463d0d9909c865cb7e929f4e1b8328494e33aabc435ce1456d7"
+    "p17_r2_full_motion.params.js": "82bd917d61458415e98406984d7dba490d76e565c232bb16447305ad055685f1"
   },
   "snapshotSha256": {
-    "p17_r2_d07_center_axle_coupon_20260824T203922Z.png": "28ef6147835f69fe3638c7d245dfd0c9ba32f465e88a856371d1620a2283bfe1",
-    "p17_r2_d07_exploded_20260824T203919Z.png": "9426f054918a286a8138e89f6186b3a4deaa34be16f5f54f865ff551f8435077",
-    "p17_r2_d07_fixed_axle_motion_20260824T203939Z.gif": "acc81b892c1f8efaac73c7bfab2737a9d345a3b727123b50381cfa4fcda19980",
-    "p17_r2_d07_fixed_axle_t0.5_20260824T203936Z.png": "82809443c7d452f71f14a938152c16a3fdfb8f8bc9d9b5175121a6df4b84d130",
-    "p17_r2_d07_fixed_axle_t0_20260824T203935Z.png": "62250b7b33cec3ce58525558037de4beb86a8824c7bea9a90adc08727712f4e9",
-    "p17_r2_d07_fixed_axle_t1_20260824T203938Z.png": "7ef99d4a34b9d749c0bed50e0974117e82d9386faf75ed368d75e4ad46366bd9",
-    "p17_r2_d07_full_motion_20260824T203948Z.gif": "cfdc02e94640f12c8dd99abad2ee794ebf83a7856f66b15702f0c44c6174b7e5",
-    "p17_r2_d07_lock_closeup_20260824T203924Z.png": "aecfb47c0919857487c2f97481fcb7326a388141ad7360f9ab9376d253b8312e",
-    "p17_r2_d07_locked_20260824T203917Z.png": "522009186e4972e087eb0177aa1cb361453552e877e95ccc3b91d4ecc04ee210",
-    "p17_r2_d07_mid_20260824T203915Z.png": "19ce28075a0389dd7ebfd71b836f77602c1a116b66291f88f7c2caf52718aac7",
-    "p17_r2_d07_open_20260824T203910Z.png": "9946a3dcc123d640587b604bb47278901b7c27e7da69c1e1211cadf1e0d839c7",
-    "p17_r2_d07_permanent_cap_coupon_20260824T203921Z.png": "52bdc1d5d65d5a7be2bfb55170e7cd4de0500f40f51af2d1f6a97170765d754c",
-    "p17_r2_d07_print_kit_20260824T203920Z.png": "948038394feb4f68368afe85315c4b441048a3f23f58bf7958e46d313a27120a"
+    "p17_r2_i06_fixed_end_iso_20260824T222951Z.png": "62b824fb7835bad6f91dcc1bf6ddcca4f3f49e194dc37ac4bffd7d2870e2bbc0",
+    "p17_r2_i06_fixed_end_opposite_20260824T222951Z.png": "584fe7e0642632db1722d2deb63c8e7804b3713e7fae2aa77301551a3dd32344",
+    "p17_r2_i06_fixed_mid_20260824T222951Z.png": "5cad7e6e3e450637301172fa38c46d812160466b58bc6256db1bfcc2e6ea6ade",
+    "p17_r2_i06_fixed_motion_20260824T223033Z.gif": "9ebcb026b013ca404eb608033ee899f3ee6cbffa25e4f183c26653001b9ff3a7",
+    "p17_r2_i06_fixed_open_20260824T222951Z.png": "b73831128d2b910433eb4d000bf937ff3b853f631f7289fb2821a978ba65e1bf",
+    "p17_r2_i06_full_end_20260824T223057Z.png": "9b740d9ce20eac2d5f0c57e71d51b69c94e7c55328f1b0c61d202f83105ce668",
+    "p17_r2_i06_full_motion_20260824T223033Z.gif": "181fd4260194c6b4f386e3a075f82e323bfa8f34c39af6d387a681020e4b3c20"
   },
   "validation": {
-    "stepValidate": "all ten STEP files ok:true failureCount:0",
-    "sourceExportParity": "all ten source/export occurrence counts, topology summaries and bounds match exactly",
-    "snapshots": "eleven PNG and two GIF review artifacts rendered with warnings:[] and visually inspected",
-    "visualFinding": "purple stepped axle and keepers stay fixed at the rear offset datum; inner plates stay fixed; left/right outer plates visibly counter-rotate on mirrored axle-guide arcs; C has no decorative hole; all three white rods remain present and move only in the full assembly review; no added bar, boss or linkage is present",
+    "stepValidate": "all nine retained STEP files PASS; all solids valid, closed and positive volume",
+    "sourceExportParity": "all nine source/export solid counts match; maximum bounds delta 6.253e-12 mm and maximum summed-solid volume delta 2.212e-9 mm3",
+    "artifactHashInvariance": "all nine STEP hashes and all seven selected PNG/GIF hashes are unchanged from blocked fingerprint c831a819...3780",
+    "snapshots": "five PNG and two 72-frame GIF review artifacts rendered with warnings empty and visually inspected",
+    "visualFinding": "orange right-outer fork nose and complete right-inner receiver bridge catch are absent in focused open, mid and end views and full end/motion evidence; no replacement endpoint feature appears; purple axle, keepers, fixed inner plates, outer counter-rotation, XT60 reference, three rods and caps remain",
     "cadViewer": "deferred to root singleton Viewer handoff owner"
   },
-  "status": "P17-I05 implementation candidate; independent critic, validator, formal review, Viewer handoff and physical proof pending",
-  "physicalBoundary": "No PETG print, keeper/cap retention, lock force, release effort, heat, wear, vibration, wire holding, solder ergonomics, springback, slicer, 3MF, or physical acceptance is claimed."
+  "status": "P17-I06-R1 semantic-repair candidate; fresh independent critic, validator, formal review, Viewer handoff and physical proof pending",
+  "physicalBoundary": "No PETG print, keeper/cap retention, 50 mm stock decision, endpoint retention, force, heat, wear, vibration, wire holding, solder ergonomics, slicer, 3MF, or physical acceptance is claimed."
 }

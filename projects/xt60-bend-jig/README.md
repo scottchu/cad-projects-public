@@ -7,9 +7,10 @@ Parametric PETG jig and Three.js mechanism study for holding and forming two ins
 The digitally accepted review baseline is P17 R2: four principal plates, a
 fixed purple printed stepped axle and fixed inner pair, two independently
 counter-rotating outer plates, and three moving `OD4.00 mm` stainless
-forming/locking rods. The active P17-I05 correction moves the fixed axle behind
-the XT60 service region and adds mirrored eccentric guides to the outer plates
-without adding a stability bar, yoke, linkage, or shared coupling.
+forming rods. The accepted P17-I06-R1 correction removes the current lock nose
+and receiver completely while preserving the fixed axle, mirrored guides,
+counter-twist motion, and green left-outer force grip. The 32-degree state is
+end-of-travel only, not a lock claim.
 
 Start with [PROJECT_STATE.md](PROJECT_STATE.md),
 [NEXT_AGENT.md](NEXT_AGENT.md), and the iteration named by
@@ -18,18 +19,20 @@ candidates remain design history; they are not the current review candidate.
 
 ## Acceptance boundary
 
-- CAD/source and ten STEP exports: accepted for exact P17-I05 fingerprint
-  `b4ad7e49b198c189c5a32fdeecef7cf231b0306ef26d2404ae662711b22ff5b5`.
+- CAD/source and nine STEP exports: accepted for exact P17-I06-R1 fingerprint
+  `20fc5068814e5c3f5d9c58fdaffbb98bb5dba0eb8b4dffabc7eea59ff3e0cba1`.
 - Live Viewer motion: accepted for user visual review.
 - Mesh/DfAM/slicer/3MF and all physical claims: pending. Nominal closure and a
   clean animation do not prove force, fit, friction, wobble, retention, or
-  self-lock.
+  endpoint retention. Physical `50.00 mm` stainless stock remains distinct
+  from the current modeled `40.60 mm` rods; the purple axle remains
+  `34.90 mm` and is not physically accepted yet.
 
 ## Authoritative P17 R2 source
 
 - `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`
 - `tests/test_p17_r2_direct_counter_twist.py`
-- `docs/iterations/p17-r2-fixed-reaction-rod-motion/`
+- `docs/iterations/p17-r2-lock-removal/`
 - `cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py`
 - `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`
 - `cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json`

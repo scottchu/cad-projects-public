@@ -42,6 +42,18 @@ cams, with negative required webs. The corrected datum is
 white-rod paths, lock, caps, stack, plate dimensions, mirrored-rail equations,
 motion-review contract, and P17 R2 identity remain unchanged.
 
+P17-D08 is a user-directed bounded correction inside P17 R2. The complete
+current endpoint-lock geometry is removed: both the right-outer integral nose
+and the right-inner receiver/ground-arm/bridge/catch assembly. No replacement
+lock is authorized in this iteration. `REQ-016` and the endpoint-lock portion
+of `CHOICE-005` are therefore suspended for the active intermediate candidate;
+the `32 deg` pose is end-of-travel only and carries no hard-stop, detent,
+over-center, or self-lock claim. The right outer remains the larger primary
+force side. All axle, plate, rod, cap, guide, XT60, stack, and motion geometry
+remain frozen. The green `left_outer_secondary_grip_block` circled in the
+second supplied screenshot is a finger/force tab, not lock geometry, and must
+remain unchanged in this repair.
+
 ## Historical P13 outcome and use sequence
 
 Historical P13 flow: load two insulated XT60 pigtail wires, close one rotary
@@ -168,6 +180,12 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
   plates, and stationary physical slot geometry. Review animation is evidence
   of the prescribed rigid transforms only, not proof of force, constraint
   closure, self-lock, or physical fit.
+- `REQ-026`: The active P17 R2 intermediate candidate must contain no current
+  lock nose, receiver, ground arm, axial bridge, hard stop, flexure, lead-in
+  ramp, retaining shoulder, release tab, lock-only artifact, or lock evidence
+  API. The `0..32 deg` trajectory remains for motion review but its endpoint is
+  not a locked state. A future lock requires a separate user-authorized design
+  step. The green left-secondary finger/force grip tab is explicitly retained.
 
 ## Active P17 R2 derived constraints
 
@@ -283,6 +301,10 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
   `CON-019` and a permanent press-fit keeper ring on a real end seat/groove as
   the smallest responsible retained-keeper strategy. Keeper retention remains
   physically gated.
+- `CHOICE-011`: P17-D08 preserves the larger right primary actuator for force
+  affordance but removes its current endpoint lock. Internal legacy endpoint
+  names may remain narrowly for generation compatibility; user-visible motion
+  wording must say `open_to_end` and must not imply self-lock.
 
 ## Active P17 R2 non-goals
 
@@ -308,6 +330,9 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
   cooled bend angle, and springback.
 - `PHYS-012`: Exact best rod length for the re-derived stack and cap
   engagement.
+- `PHYS-013`: A future endpoint retention architecture and its force,
+  back-drive, release, vibration, heat, creep, and wear behavior remain
+  unselected after P17-D08 removes the current lock.
 
 ## Active P17 R2 evidence mapping
 
@@ -315,6 +340,7 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
 |---|---|---|
 | `REQ-009`–`REQ-021`, `CON-008`–`CON-023` | `docs/iterations/p17-r2-direct-cad-counter-twist/BRIEF.md`, `DESIGN.md`, `ADR-0003` | prior design contract; P17-I04 visually rejected |
 | `REQ-022`–`REQ-025`, `CON-024`–`CON-030` | `docs/iterations/p17-r2-fixed-reaction-rod-motion/BRIEF.md`, `DESIGN.md`, supplied Viewer screenshots, D07 BREP search evidence | active D07 focused repair contract |
+| `REQ-026`, `CHOICE-011`, `PHYS-013` | `docs/iterations/p17-r2-lock-removal/BRIEF.md`, `DESIGN.md`, two supplied annotated Viewer screenshots | P17-D08 design complete; implementation pending |
 | `REQ-009`–`REQ-025` | Future repaired P17 R2 source, tests, STEP/artifact validation, critic, and formal review | pending |
 | `REQ-013`, `REQ-014`, `PHYS-007` | Future permanent-cap coupon | pending physical |
 | `PHYS-008`–`PHYS-012` | Future PETG assembly and use tests | pending physical |

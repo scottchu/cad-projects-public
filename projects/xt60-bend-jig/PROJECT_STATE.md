@@ -6,17 +6,17 @@ Last updated: `2026-08-24`
 
 - Canonical project: `projects/xt60-bend-jig`.
 - Development baseline: `05e0152b045bd82a41ea07a715f2361606c1ec99`.
-- Active iteration: `p17-r2-fixed-reaction-rod-motion`.
-- Current design contract: `P17-D07`.
-- Accepted digital candidate: `P17-I05`, formally accepted by `P17-R05`.
+- Active iteration: `p17-r2-lock-removal`.
+- Current design contract: `P17-D08`.
+- Accepted digital candidate: `P17-I06-R1`, formally accepted by `P17-R06`.
 - Candidate fingerprint:
-  `b4ad7e49b198c189c5a32fdeecef7cf231b0306ef26d2404ae662711b22ff5b5`.
+  `20fc5068814e5c3f5d9c58fdaffbb98bb5dba0eb8b4dffabc7eea59ff3e0cba1`.
 - Candidate manifest SHA-256:
-  `df92325baba8d39f8f511819c93467ac3cf8c5c4535bbde762755889acccddc8`.
+  `be993fa2a713abc86895aad95eb670eeb342237ff1e2d8e4799289cf07ef2590`.
 - Artifact provenance SHA-256:
-  `4de4d236f67729b142b0ae0752ef41fe3087a9c191890947695f7ff72dc4be37`.
+  `d51bc72aafffead0360f3e037ac932b8d64dface19a2b00a803093ccaab4b047`.
 - Canonical handoff:
-  `docs/iterations/p17-r2-fixed-reaction-rod-motion/HANDOFF.md`.
+  `docs/iterations/p17-r2-lock-removal/HANDOFF.md`.
 
 This is still P17 R2. A product version represents an intentional product
 baseline or architecture/interface change; an implementation correction,
@@ -25,19 +25,29 @@ itself increment P or R.
 
 ## Accepted digital result
 
-The exact P17-I05 candidate preserves the P17 four-plate architecture and
-repairs the fixed-member identity one issue at a time:
+The exact P17-I06-R1 candidate preserves the accepted P17 four-plate
+architecture and removes the rejected current lock one issue at a time:
 
 - the fixed member is the purple printed one-piece stepped axle at
   `A=(-29.00,17.00) mm`;
 - both inner plates and both keepers are world-fixed to that axle;
-- all three white `OD4.00 mm` stainless rods remain moving forming/locking
-  rods on their frozen paths;
+- all three white `OD4.00 mm` stainless rods remain moving forming rods on
+  their frozen paths;
 - the two outer plates counter-rotate independently by `-theta/+theta` about
   `C=(-10.60,17.00) mm`;
 - each outer plate has a mirrored `7.90 mm` arcuate guide around the eccentric
   fixed axle (`e=18.40 mm`);
 - the old decorative opening at `C` is filled;
+- the orange right-outer lock nose and its right-inner receiver counterpart
+  are completely removed, with no replacement catch, stop, bridge, bar, or
+  linkage;
+- the green left-outer finger/force grip remains; it is not lock geometry;
+- `32 deg` is end-of-travel only and the Viewer exposes one `open_to_end`
+  control, with no retention or self-lock claim;
+- the physical stainless stock is `50.00 mm`, while the current CAD rod target
+  remains `40.60 mm`; deciding whether to use uncut stock is still pending;
+- the purple axle remains `34.90 mm`, spanning the `32.00 mm` plate stack plus
+  `1.45 mm` each side for keeper clearance/seat;
 - no stability bar, yoke, boss, linkage, separate pivot part, frame, or shared
   outer coupling was added;
 - legacy XT60 reference and white-rod-path issues were deliberately not
@@ -45,17 +55,17 @@ repairs the fixed-member identity one issue at a time:
 
 ## Independent evidence
 
-- `P17-C05` distinct critic: pass/no blocker for the exact fingerprint.
-- `P17-V05` distinct validator: pass for digital CAD/source and written
+- `P17-C06-R1` distinct critic: pass/no blocker for the exact fingerprint.
+- `P17-V06-R1` distinct validator: pass for digital CAD/source and written
   STEP/export.
-- `P17-R05` distinct formal reviewer: accept for digital CAD/export and live
+- `P17-R06` distinct formal reviewer: accept for digital CAD/export and live
   preview delivery with physical boundaries preserved.
-- Focused regressions: `8 passed`; full focused test file: `31 passed`.
-- Ten STEP exports: every `inspect validate` result was `ok:true` with
+- Full focused test file: `33 passed`.
+- Nine retained STEP exports: every `inspect validate` result was `ok:true` with
   `failureCount:0`; source/export occurrence, topology, and bounds parity
   passed.
-- All ten STEP, four motion source/sidecar, eleven PNG, and two 72-frame GIF
-  hashes matched provenance.
+- All nine STEP and seven selected PNG/GIF hashes matched provenance; the
+  semantic repair left every STEP and visual hash byte-identical.
 - Closure: 66 side/state rows, rank 3; maximum residual `3.43e-15 mm`;
   maximum perturbed pose error `7.31e-12`.
 - Actual solids: exact frozen-feature gap `3.6500 mm`; minimum analytic web
@@ -72,9 +82,10 @@ repairs the fixed-member identity one issue at a time:
   `cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py`.
 - Full-assembly visible motion:
   `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
-- Open, mid, locked, exploded, print-kit, lock-closeup, cap coupon, center-axle
-  coupon, and both motion STEP exports are under
+- Open, mid, legacy-named `locked` (end-of-travel), exploded, print-kit, cap
+  coupon, center-axle coupon, and both motion STEP exports are under
   `cad/p17_r2_direct_counter_twist/`.
+- The obsolete lock-closeup generator/export was deleted.
 - Parametric authority:
   `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
 - Focused regression:
@@ -97,15 +108,16 @@ repairs the fixed-member identity one issue at a time:
 
 ## Acceptance boundary
 
-- CAD/source: accepted for fingerprint `b4ad7e49...`.
-- Written STEP/export: accepted for the ten provenance-recorded artifacts.
+- CAD/source: accepted for fingerprint `20fc5068...`.
+- Written STEP/export: accepted for the nine provenance-recorded artifacts.
 - Live preview: accepted for user visual review.
 - Mesh/DfAM/slicer/3MF: not generated or accepted for this repair.
 - Physical: not accepted. The `7.90 mm` guide around the `7.60 mm` axle
   journal leaves `0.150 mm` radial running clearance and `1.050 mm` keeper
   capture; PETG fit, friction, force, wobble, backlash, wear, retention,
-  self-lock, heat, creep, vibration, solder ergonomics, and durability require
-  physical evidence.
+  endpoint retention, heat, creep, vibration, solder ergonomics, and durability
+  require physical evidence. The physical `50.00 mm` rod-stock decision also
+  remains open.
 
 ## Repository delivery
 
@@ -117,8 +129,8 @@ repairs the fixed-member identity one issue at a time:
 ## Next action
 
 Deliver the exact focused Viewer URL for user visual review. Do not change the
-accepted fingerprint while collecting feedback. If the user accepts this
-fixed-axle step and authorizes printing, the smallest physical experiment is a
-PETG axle-guide/keeper coupon before a full assembly. If the user instead
-chooses the next visible issue, open a new bounded iteration without silently
-changing white-rod paths or the XT60 reference in this accepted candidate.
+accepted fingerprint while collecting feedback. The next one-at-a-time design
+decision is separate: keep the green force grip or remove it, decide whether
+the physical `50.00 mm` stainless stock must remain uncut, or physically test
+the `34.90 mm` axle/keeper engagement. Do not combine those decisions or
+silently change rod paths, axle geometry, or the XT60 reference.

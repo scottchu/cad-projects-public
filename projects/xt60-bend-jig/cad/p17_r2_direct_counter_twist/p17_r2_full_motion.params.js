@@ -40,9 +40,9 @@ const definition = {
     schemaVersion: 1,
     step: { path: "cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step" },
     parameters: {
-      open_to_lock: {
+      open_to_end: {
         type: "number",
-        label: "OPEN to LOCK",
+        label: "OPEN to END OF TRAVEL",
         unit: "normalized",
         min: 0.0,
         max: 1.0,
@@ -52,18 +52,18 @@ const definition = {
     },
     features: FEATURES,
     animations: {
-      open_lock_open: {
-        label: "OPEN - LOCK - OPEN",
+      open_end_open: {
+        label: "OPEN - END - OPEN",
         durationSeconds: 6.0,
         loop: true,
         update({ elapsedSec, set }) {
-          set("open_to_lock", pingPong(elapsedSec));
+          set("open_to_end", pingPong(elapsedSec));
         },
       },
     },
   },
   update({ params, effects }) {
-    const travel = clamp01(params.open_to_lock);
+    const travel = clamp01(params.open_to_end);
     const thetaDeg = 32.0 * travel;
     effects.transform("left_outer", {
       rotate: { axis: AXIS, origin: ORIGIN, angleDeg: -thetaDeg },

@@ -1,37 +1,41 @@
 {
   "schema": "xt60-bend-jig.p17-r2.candidate-fingerprint.v2",
   "project": "projects/xt60-bend-jig",
-  "iteration": "p17-r2-fixed-reaction-rod-motion",
-  "candidateId": "P17-I05",
-  "baselineCommit": "cb020f6cf01876e01d1e6501fec8861a527aa248",
-  "implementationInputManifestSha256": "c9085b63a5512ef61f8c01f6191d6445765cd7cc1a2107575e3c0badbfc357c3",
+  "iteration": "p17-r2-lock-removal",
+  "candidateId": "P17-I06-R1",
+  "baselineCommit": "ea416dc2c120f362cdf079b4b82bb8722c58682a",
+  "implementationInputManifestSha256": "60873c78ff74f5bb40010826c9ba9af690ca15d650043d258b66ba8fc4702f7a",
+  "repairBaselineFingerprintSha256": "c831a81999919746c4fb73e85b5ddac6201eb9d2535ca7b44143a0642ede3780",
   "frozenInputs": {
-    "projects/xt60-bend-jig/docs/REQUIREMENTS.md": "9a2742a31513526f382bc84a7ed1f7624819430bad0591d4505dac7914ced84c",
-    "projects/xt60-bend-jig/docs/EXPERIENCE.md": "cf61fae5f12ceca01d96cffd91181ff2a75d8a2303d8b3a21238147526679799",
-    "projects/xt60-bend-jig/docs/iterations/p17-r2-fixed-reaction-rod-motion/BRIEF.md": "b50b03d2c4277a71caff98b4fff50d78cad2a93df6784fb0747ad62022668598",
-    "projects/xt60-bend-jig/docs/iterations/p17-r2-fixed-reaction-rod-motion/DESIGN.md": "f7462b5916a5fb7972df8b9fa47d03eea56a5bb1b4725f9ded452bfdbb2b21e1"
+    "projects/xt60-bend-jig/docs/REQUIREMENTS.md": "5b434f6cecdd55adc9af9663f99b56a623140718c14eb2e39d6d135aa4771541",
+    "projects/xt60-bend-jig/docs/EXPERIENCE.md": "e39bfbc003c2e97efd1725d556742a9a969e4f0fd96c554ebf50aca66c8aa684",
+    "projects/xt60-bend-jig/docs/iterations/p17-r2-lock-removal/BRIEF.md": "89f0fcfa4d33251c0870c111ad87e55e7b4129af5aea7e6c1179de422854cdf5",
+    "projects/xt60-bend-jig/docs/iterations/p17-r2-lock-removal/DESIGN.md": "2e356565cbdb2b094f41464c07f5c17152a95a4b2f99418137d911e39b97d471"
   },
   "authoritativeSource": {
-    "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py": "3df2574dc571ba37f24125d6cc1028d67273841d7c4951359f676fd07de46000",
-    "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py": "20145cfea70b483cb0b1e7efc7f418d6bea744fbc713a18e6500612702e0aeb7"
+    "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py": "371c9beff6909517b71d33ef5882df54997145e9373a1357d6d19bb34e29133b",
+    "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py": "b626047b6c2f6c764cb6a4107e5b64b1155054559c06f6dc6ac0ffc3d1e2429d"
   },
   "generators": {
     "p17_r2_center_axle_coupon.step.py": "cd46ce0aaa458fb17da259ae82973086b76062cb0865264df574083221bb35c0",
     "p17_r2_exploded.step.py": "28698d36509c0177a8fdd26c1d2238f78919b04426e27096f56e892950518b8c",
     "p17_r2_fixed_axle_motion.step.py": "5df821aea698153885f7b379e79e482679b0e6fba64522f03730bc16dc453876",
-    "p17_r2_fixed_axle_motion.params.js": "a0bde0d8edd7872a4a89d10ea365b939d554d6c40c864657df9dc647d9b8f1cf",
+    "p17_r2_fixed_axle_motion.params.js": "7f5e6906bf73a019b2908430d0d58d348aeac0528a087d57ffede7fb62c346e7",
     "p17_r2_full_motion.step.py": "1151a9ba1c7871a977b1ae92f6f55940b0b62ae2315d4f241b0d316f1c5ba7dc",
-    "p17_r2_full_motion.params.js": "4c99f20208249463d0d9909c865cb7e929f4e1b8328494e33aabc435ce1456d7",
-    "p17_r2_lock_closeup.step.py": "359b1141cbeafb3a07cc83dd8e0fa835bd946909141e1c92f6831dfa939d10d9",
+    "p17_r2_full_motion.params.js": "82bd917d61458415e98406984d7dba490d76e565c232bb16447305ad055685f1",
     "p17_r2_locked.step.py": "61cf954bb240dbb23edb907a2c2738a840adaf918bbec6eb881d41494d94fe28",
     "p17_r2_mid.step.py": "3bc4690ac85bf7503698c06dde015f38e19db8fa0a6e8376d641a075217fb2b3",
     "p17_r2_open.step.py": "1fc295f3c24f6814a1cebc2d9b3012b6336ed3d0571b8393d4ee78dbc63ee58e",
     "p17_r2_permanent_cap_coupon.step.py": "7b2643e423ff935ef620f220f7574b838394b1da7f4e39579219b34a996c0263",
     "p17_r2_print_kit.step.py": "0a4de24a57f3dca1861b6fc145d72dad2f33ac59aa26938a3ca602dfcf4e7b9f"
   },
+  "retired": {
+    "p17_r2_lock_closeup.step.py": "deleted",
+    "p17_r2_lock_closeup.step": "deleted"
+  },
   "artifactProvenance": {
     "path": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json",
-    "sha256": "4de4d236f67729b142b0ae0752ef41fe3087a9c191890947695f7ff72dc4be37"
+    "sha256": "d51bc72aafffead0360f3e037ac932b8d64dface19a2b00a803093ccaab4b047"
   },
   "claimBoundary": "implementation candidate only; independent critique, validation, review, Viewer handoff and physical testing pending"
 }
