@@ -93,6 +93,14 @@ Formal evidence is recorded in the active iteration `REVIEW.md`,
   wobble, cap/keeper retention, latch force, release effort, heat, creep, wear,
   vibration, self-lock, solder ergonomics, removal ergonomics, or springback.
 
+## Repository delivery
+
+- Branch: `codex/xt60-p17-r2-direct-cad`.
+- Accepted-candidate commit: `ff1351e`.
+- Pull request: <https://github.com/scottchu/design-projects/pull/8>.
+- The unrelated user-modified legacy P13 `p13_print_kit.3mf` remains outside
+  this worktree and was not changed by P17 R2 delivery.
+
 ## Open risks
 
 - The closing and release paths depend on modeled PETG flexure. Rigid geometry
@@ -108,7 +116,6 @@ Formal evidence is recorded in the active iteration `REVIEW.md`,
 
 ## Next action
 
-Complete repository delivery for the exact accepted fingerprint: commit on a
-correctly named non-main P17 R2 branch and open the pull request. After that,
-the smallest physical next experiment is the slot/cap/keeper coupon set before
-any full assembly print.
+Review and merge PR #8 without changing the accepted design fingerprint. After
+delivery, the smallest physical next experiment is the slot/cap/keeper coupon
+set before any full assembly print.

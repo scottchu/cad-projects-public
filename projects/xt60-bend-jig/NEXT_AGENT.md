@@ -28,13 +28,15 @@ fingerprint for CAD/source and written STEP/export only.
 
 ## Immediate task
 
-If repository delivery is not yet complete, finish the non-main branch pull
-request. The exact Tailscale Viewer page and final locked artifact were already
-verified HTTP `200` / state `ready` on `2026-08-24`; reverify only if the
-backend, path, or artifact changes. Do not redesign or increment the P-version
-for delivery-only work.
+Repository delivery is open as PR #8:
+<https://github.com/scottchu/design-projects/pull/8>, from branch
+`codex/xt60-p17-r2-direct-cad`; accepted-candidate commit `ff1351e`. Review and
+merge it without changing the accepted fingerprint. The exact Tailscale Viewer
+page and final locked artifact were verified HTTP `200` / state `ready` on
+`2026-08-24`; reverify only if the backend, path, or artifact changes. Do not
+redesign or increment the P-version for delivery-only work.
 
-If delivery is complete and the user asks to proceed toward printing, run the
+If PR #8 is merged and the user asks to proceed toward printing, run the
 smallest falsifiable physical workflow first:
 
 1. create/validate the mesh or 3MF only from authoritative source;

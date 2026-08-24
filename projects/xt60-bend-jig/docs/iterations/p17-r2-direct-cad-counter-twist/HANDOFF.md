@@ -17,6 +17,8 @@ claim remain pending.
 - `P17-R04`: formal pass with the same bounded acceptance.
 - Tailscale CAD Viewer on `2026-08-24`: exact page HTTP `200`; final locked
   STEP artifact state `ready`.
+- Repository delivery: branch `codex/xt60-p17-r2-direct-cad`, accepted-candidate
+  commit `ff1351e`, PR <https://github.com/scottchu/design-projects/pull/8>.
 - Regression result: `29 passed`; all eight STEP topology checks returned
   `ok:true`, `failureCount:0`.
 - Physical PETG flexure, fit, wobble, retention, heat, wear, vibration,
