@@ -6,72 +6,65 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p17-r2-direct-cad-counter-twist`.
-- Current contract: `P17-D05`.
-- Accepted digital candidate: `P17-I04`.
+- Active iteration: `p17-r2-fixed-reaction-rod-motion`.
+- Contract: `P17-D07`.
+- Accepted digital candidate: `P17-I05`; formal gate `P17-R05` ACCEPT.
 - Exact fingerprint:
-  `24f5d7524303671a914eec18148b7cee0a8a297cca1403b2c2c68c714fdefabb`.
-- Candidate manifest:
-  `cad/p17_r2_direct_counter_twist/p17-r2-candidate-manifest.json`, SHA-256
-  `c5fbeaaee626ad3adafb4f2cb5ca195c27e84683c4c4db9b2b27e25fa5241ae2`.
-- Source:
-  `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
-- Tests:
-  `tests/test_p17_r2_direct_counter_twist.py`.
-- Artifact provenance:
-  `cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json`.
-- Canonical implementation and decision history:
-  `docs/iterations/p17-r2-direct-cad-counter-twist/HANDOFF.md`.
+  `b4ad7e49b198c189c5a32fdeecef7cf231b0306ef26d2404ae662711b22ff5b5`.
+- Candidate manifest SHA-256:
+  `df92325baba8d39f8f511819c93467ac3cf8c5c4535bbde762755889acccddc8`.
+- Artifact provenance SHA-256:
+  `4de4d236f67729b142b0ae0752ef41fe3087a9c191890947695f7ff72dc4be37`.
+- Source: `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
+- Tests: `tests/test_p17_r2_direct_counter_twist.py`.
+- Focused motion:
+  `cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py`.
+- Full motion:
+  `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
 
-Independent `P17-C04`, `P17-V04`, and formal `P17-R04` all pass the exact
-fingerprint for CAD/source and written STEP/export only.
+Distinct `P17-C05`, `P17-V05`, and `P17-R05` all pass the unchanged candidate
+for digital CAD/source, written STEP/export, and live preview delivery only.
+
+## What is fixed and what moves
+
+- Fixed: purple printed stepped axle, both keepers, both inner plates.
+- Moving: all three white stainless forming/locking rods and their caps.
+- Rotating: left and right outer plates in opposite directions around `C`,
+  constrained by mirrored guides around fixed eccentric axle `A` plus the
+  unchanged white-rod contact network.
+- Forbidden in this candidate: stability bar, yoke, boss, linkage, separate
+  pivot, frame, shared outer coupling, decorative hole at `C`, or silent
+  redesign of frozen white-rod paths/XT60 reference.
 
 ## Immediate task
 
-Repository delivery is open as PR #8:
-<https://github.com/scottchu/design-projects/pull/8>, from branch
-`codex/xt60-p17-r2-direct-cad`; accepted-candidate commit `ff1351e`. Review and
-merge it without changing the accepted fingerprint. The exact Tailscale Viewer
-page and final locked artifact were verified HTTP `200` / state `ready` on
-`2026-08-24`; reverify only if the backend, path, or artifact changes. Do not
-redesign or increment the P-version for delivery-only work.
+Keep the exact fingerprint unchanged and collect the user's visual review from
+the focused Viewer motion. The singleton service is already installed and is
+managed through `~/.local/bin/cad-viewer`; do not launch an ad-hoc competing
+Viewer. Claim readiness only after exact page HTTP `200`, exact artifact state
+`ready`, and descriptor/module/component assets HTTP `200` are reverified if
+the path, backend, or artifact changes.
 
-If PR #8 is merged and the user asks to proceed toward printing, run the
-smallest falsifiable physical workflow first:
-
-1. create/validate the mesh or 3MF only from authoritative source;
-2. perform DfAM and slicer validation with the actual printer/material profile;
-3. print the straight/curved `4.10..4.30 mm` slot ladder plus cap and keeper
-   fit coupons;
-4. record actual rod fit, wobble, cap insertion, keeper retention, and PETG
-   latch force before a full assembly print.
+Do not proceed to mesh, 3MF, slicer, or a full print without explicit user
+authorization. If authorized, test a PETG axle-guide/keeper coupon first: the
+nominal radial running clearance is only `0.150 mm` and keeper capture is
+`1.050 mm`.
 
 ## Preserve
 
-- P17 R2 identity and the recorded version semantics. Simulation status is an
-  evidence layer, not a version trigger.
-- Four plates: inner pair fixed, outer pair independently counter-rotating.
-- One offset stepped axle: central spacer and inner hex keys, outer round
-  journals, retained keepers.
-- Pivot behind XT60 on `-Y`, away from solder/wire/service envelopes.
-- `4.20 mm` continuous curved production slots and coupon ladder; never restore
-  the rejected `4.90/7.55 mm` loose slots.
-- Larger right force plate, six permanent caps, real release path, service
-  windows, and dogleg pigtail removal.
-- No yoke/stability bars, shared outer coupling, simulator sidecar, or
-  unnecessary new structure.
-- Parametric source is authoritative; never hand-edit STEP/mesh/3MF outputs.
+- P17 R2 version identity; simulation/viewer/export status is evidence, not a
+  version trigger.
+- Four plates; inner pair fixed; outer pair independently counter-rotating.
+- Purple printed stepped axle as the fixed reaction member at
+  `A=(-29.00,17.00)`; outer rotation datum `C=(-10.60,17.00)`.
+- All three white rods remain moving on the frozen P17 paths.
+- Parametric source remains authoritative; never hand-edit STEP/mesh/3MF.
+- Legacy P13 user-modified `p13_print_kit.3mf` in canonical main remains
+  untouched.
 
 ## Acceptance boundary
 
-- CAD/source and the eight written STEP files: accepted for fingerprint
-  `24f5d752...`.
-- Viewer: only claim ready after exact page HTTP `200` and exact artifact state
-  `ready` are verified in the current session.
-- Mesh/DfAM/slicer/3MF: pending.
-- Physical: pending. Do not describe flexure lock, keeper/cap retention, slot
-  fit, wobble, heat, wear, vibration, solder/removal ergonomics, springback, or
-  self-lock as proven.
-
-The canonical `main` checkout contains a user-modified legacy P13
-`p13_print_kit.3mf`. It is unrelated to P17 R2 and must remain untouched.
+CAD/source, ten STEP exports, and live preview are digitally accepted for
+`b4ad7e49...`. Physical force, friction, fit, wobble, backlash, PETG tolerance,
+keeper retention, self-lock, heat, wear, vibration, solder/removal ergonomics,
+mesh, DfAM, slicer, and 3MF remain unaccepted.

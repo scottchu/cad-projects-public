@@ -4,15 +4,35 @@ Parametric PETG jig and Three.js mechanism study for holding and forming two ins
 
 ## Current baseline
 
-The supported prototype is P13: four principal circular plates, one rotary input, and three purchased uncut 304 stainless rods of `OD4.00 x 50.00 mm`. The rods have equal scalar travel along different guide directions. `0 deg` is open, first nominal wire contact is near `22 deg`, and `27 deg` is locked with a geometric preload proxy of `0.25 mm`.
+The digitally accepted review baseline is P17 R2: four principal plates, a
+fixed purple printed stepped axle and fixed inner pair, two independently
+counter-rotating outer plates, and three moving `OD4.00 mm` stainless
+forming/locking rods. The active P17-I05 correction moves the fixed axle behind
+the XT60 service region and adds mirrored eccentric guides to the outer plates
+without adding a stability bar, yoke, linkage, or shared coupling.
 
-Start with [PROJECT_STATE.md](PROJECT_STATE.md), [NEXT_AGENT.md](NEXT_AGENT.md), and the iteration named by [docs/iterations/CURRENT](docs/iterations/CURRENT). Earlier prototypes remain as design history and parametric source; they are not the current release.
+Start with [PROJECT_STATE.md](PROJECT_STATE.md),
+[NEXT_AGENT.md](NEXT_AGENT.md), and the iteration named by
+[docs/iterations/CURRENT](docs/iterations/CURRENT). Earlier P13 and P17
+candidates remain design history; they are not the current review candidate.
 
 ## Acceptance boundary
 
-- CAD/source: historical P13 evidence was imported and is being reproduced in the monorepo.
-- Written artifact/slicer: the corrected historical P13 print kit is retained as comparison evidence until regenerated and revalidated here.
-- Physical: the latest printed version exposed a center-hole fit defect: the user's "middle stick" is too thick for the center hole. The exact printed interface must be identified before changing source. Complete P13 physical acceptance remains pending.
+- CAD/source and ten STEP exports: accepted for exact P17-I05 fingerprint
+  `b4ad7e49b198c189c5a32fdeecef7cf231b0306ef26d2404ae662711b22ff5b5`.
+- Live Viewer motion: accepted for user visual review.
+- Mesh/DfAM/slicer/3MF and all physical claims: pending. Nominal closure and a
+  clean animation do not prove force, fit, friction, wobble, retention, or
+  self-lock.
+
+## Authoritative P17 R2 source
+
+- `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`
+- `tests/test_p17_r2_direct_counter_twist.py`
+- `docs/iterations/p17-r2-fixed-reaction-rod-motion/`
+- `cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py`
+- `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`
+- `cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json`
 
 ## Authoritative P13 source
 
@@ -33,7 +53,6 @@ Parametric source is authoritative. Never hand-edit generated STEP or 3MF files.
 Run all setup and commands from the repository root:
 
 ```bash
-uv lock
 uv sync --all-packages --all-groups
 npm install
 ```
@@ -50,23 +69,41 @@ npm run build --workspace projects/xt60-bend-jig
 
 The Python suite includes historical prototypes and the focused P13 math, requirements, actual-solid, motion, provenance, STEP, and 3MF checks. Passing tests are CAD or artifact evidence only unless a test explicitly records a physical observation.
 
-## Generate current P13 STEP and 3MF
+## Generate current P17 R2 STEP review artifacts
 
 Use the installed CAD skill runtime rather than copying its environment into the project. The current installation is shown below; update `CAD_SKILL` if the plugin version changes.
 
 ```bash
-CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.21/skills/cad
+CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.25/skills/cad
 
-uv run --project projects/xt60-bend-jig python "$CAD_SKILL/scripts/gen" \
-  projects/xt60-bend-jig/cad/p13_four_plate_three_rod/p13_print_kit.step.py \
-  projects/xt60-bend-jig/cad/p13_four_plate_three_rod/p13_motion.step.py \
+uv run python "$CAD_SKILL/scripts/gen" \
+  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_open.step.py \
+  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_mid.step.py \
+  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_locked.step.py \
+  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py \
+  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py \
   --write
-
-uv run --project projects/xt60-bend-jig python \
-  projects/xt60-bend-jig/scripts/export_p13_3mf.py
 ```
 
-Regeneration must be followed by focused tests, STEP inspection, source/export parity, snapshot review, 3MF validation, and the intended printer/slicer check before replacing an accepted artifact manifest.
+Regeneration must be followed by focused tests, STEP inspection,
+source/export parity, snapshot/motion review, and a new provenance fingerprint.
+Do not infer mesh, slicer, 3MF, or physical acceptance from STEP generation.
+
+## Singleton CAD Viewer
+
+The per-user Viewer is managed by `~/.local/bin/cad-viewer`; do not start a
+competing ad-hoc server on port `3245`.
+
+```bash
+cad-viewer status
+cad-viewer restart
+cad-viewer url --workspace "$PWD" \
+  --file projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py \
+  --tailscale
+```
+
+The service always uses the canonical repository uv interpreter at
+`/Users/scottchu/Projects/personal/design-projects/.venv/bin/python3`.
 
 ## Three.js simulator
 

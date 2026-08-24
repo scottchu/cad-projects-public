@@ -18,7 +18,7 @@ from copy import copy
 from dataclasses import asdict, dataclass, fields, replace
 from functools import lru_cache
 from hashlib import sha256
-from math import atan2, cos, degrees, hypot, radians, sin
+from math import atan2, cos, degrees, hypot, radians, sin, sqrt
 from pathlib import Path
 from typing import Literal
 
@@ -56,10 +56,10 @@ ArtifactName = Literal[
 ROD_NAMES: tuple[RodName, ...] = ("upright", "bottom", "diagonal")
 STATE_THETA: dict[StateName, float] = {"open": 0.0, "mid": 16.0, "locked": 32.0}
 P17_R2_DESIGN_CONTRACT_PATH = (
-    "docs/iterations/p17-r2-direct-cad-counter-twist/DESIGN.md"
+    "docs/iterations/p17-r2-fixed-reaction-rod-motion/DESIGN.md"
 )
 P17_R2_DESIGN_CONTRACT_SHA256 = (
-    "d46b5f906fc377a3fa7370b4338aa3728e442f2cd10ca2b5a79c32b1b1d3cf48"
+    "f7462b5916a5fb7972df8b9fa47d03eea56a5bb1b4725f9ded452bfdbb2b21e1"
 )
 
 
@@ -153,11 +153,15 @@ class P17R2Parameters:
     hard_stop_dwell_deg: float = 3.00
     min_web_mm: float = 2.20
 
-    # One shared offset pivot datum.  It is behind the connector (-Y), inside
-    # its XZ shadow, and drives every axle, plate, fixed guide, moving slot and
-    # lock construction; do not translate only the axle.
-    pivot_y: float = -10.60
-    pivot_z: float = 17.00
+    # D06 separates the unchanged outer-rotation datum C from the fixed purple
+    # stepped-axle datum A.  Inner plate outlines and every frozen white-rod/
+    # lock construction remain authored about C; only the inner hex bores,
+    # stepped axle and keepers move to A.
+    outer_rotation_center_y: float = -10.60
+    outer_rotation_center_z: float = 17.00
+    fixed_axle_center_y: float = -29.00
+    fixed_axle_center_z: float = 17.00
+    fixed_axle_guide_sample_count: int = 33
 
     # Reference-only workpiece envelopes.
     xt60_body_y: float = 8.10
@@ -260,6 +264,27 @@ class P17R2Parameters:
         return self.outer_journal_diameter + self.outer_journal_clearance_diametral
 
     @property
+    def fixed_axle_guide_slot_width(self) -> float:
+        return self.outer_journal_diameter + self.outer_journal_clearance_diametral
+
+    @property
+    def fixed_axle_eccentricity(self) -> float:
+        return hypot(
+            self.fixed_axle_center_y - self.outer_rotation_center_y,
+            self.fixed_axle_center_z - self.outer_rotation_center_z,
+        )
+
+    @property
+    def pivot_y(self) -> float:
+        """Compatibility alias for the frozen outer-rotation center C."""
+        return self.outer_rotation_center_y
+
+    @property
+    def pivot_z(self) -> float:
+        """Compatibility alias for the frozen outer-rotation center C."""
+        return self.outer_rotation_center_z
+
+    @property
     def slot_center_slop_nominal(self) -> float:
         return (self.fixed_slot_width - self.rod_diameter) / 2.0
 
@@ -317,8 +342,8 @@ class P17R2Parameters:
             raise ValueError("cap engagement must leave a closed-end wall")
         if self.right_primary_extra_lever_radius <= 0.0:
             raise ValueError("right primary actuator must have larger grip leverage")
-        if self.outer_bearing_bore_diameter <= self.outer_journal_diameter:
-            raise ValueError("outer bearing bore must clear round journal")
+        if self.fixed_axle_guide_slot_width <= self.outer_journal_diameter:
+            raise ValueError("outer axle guide must clear round journal")
         if self.outer_journal_diameter >= self.inner_hex_bore_af:
             raise ValueError("round journal must slide through the fixed-inner hex bore")
         if self.center_axle_inner_hex_af >= self.inner_hex_bore_af:
@@ -343,10 +368,14 @@ class P17R2Parameters:
             raise ValueError("modeled thumb release must move the retaining shoulder clear of the lock nose")
         if self.slot_sample_count < 5 or self.slot_sample_count % 2 == 0:
             raise ValueError("slot_sample_count must be odd and at least 5")
+        if self.fixed_axle_guide_sample_count < 33 or self.fixed_axle_guide_sample_count % 2 == 0:
+            raise ValueError("fixed axle guide requires an odd sample count of at least 33")
         if self.fixed_slot_width != 4.20 or self.outer_slot_width != 4.20:
             raise ValueError("P17 D04 requires 4.20 mm low-wobble production slots")
         if self.pivot_y >= -self.xt60_body_y / 2.0:
             raise ValueError("P17 D04 pivot must remain behind the XT60 on -Y")
+        if abs(self.fixed_axle_eccentricity - 18.40) > 1.0e-9:
+            raise ValueError("P17 D07 fixed axle eccentricity must remain 18.40 mm")
         if self.completed_pigtail_window_width_z < 8.00:
             raise ValueError("completed-pigtail window must retain the D05 8.00 mm minimum width")
 
@@ -398,18 +427,28 @@ def _rotate_yz(point: PointYZ, angle_deg: float) -> PointYZ:
     )
 
 
+def outer_rotation_center_yz(p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
+    """World YZ center C for both independently rotating outer plates."""
+    return PointYZ(p.outer_rotation_center_y, p.outer_rotation_center_z)
+
+
+def fixed_axle_center_yz(p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
+    """World YZ center A of the fixed purple stepped axle."""
+    return PointYZ(p.fixed_axle_center_y, p.fixed_axle_center_z)
+
+
 def pivot_yz(p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
-    """The sole world YZ datum for the stepped pivot and plate transforms."""
-    return PointYZ(p.pivot_y, p.pivot_z)
+    """Compatibility name for the frozen outer-rotation center C."""
+    return outer_rotation_center_yz(p)
 
 
 def _relative_to_pivot(point: PointYZ, p: P17R2Parameters) -> PointYZ:
-    pivot = pivot_yz(p)
+    pivot = outer_rotation_center_yz(p)
     return PointYZ(point.y - pivot.y, point.z - pivot.z)
 
 
 def _world_from_pivot(local: PointYZ, p: P17R2Parameters) -> PointYZ:
-    pivot = pivot_yz(p)
+    pivot = outer_rotation_center_yz(p)
     return PointYZ(local.y + pivot.y, local.z + pivot.z)
 
 
@@ -437,6 +476,43 @@ def outer_slot_locus(side: SideName, name: RodName, p: P17R2Parameters = P17_R2_
     return tuple(
         outer_slot_local_center(side, name, p.theta_lock_deg * index / (p.slot_sample_count - 1), p)
         for index in range(p.slot_sample_count)
+    )
+
+
+def fixed_axle_guide_local_center(
+    side: SideName,
+    theta_deg: float,
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> PointYZ:
+    """Part-local center of fixed axle A in an outer plate at ``theta_deg``."""
+    center = outer_rotation_center_yz(p)
+    axle = fixed_axle_center_yz(p)
+    offset = PointYZ(axle.y - center.y, axle.z - center.z)
+    return _rotate_yz(offset, -rotation_for_side(side, theta_deg))
+
+
+def fixed_axle_guide_locus(
+    side: SideName,
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> tuple[PointYZ, ...]:
+    return tuple(
+        fixed_axle_guide_local_center(
+            side,
+            p.theta_lock_deg * index / (p.fixed_axle_guide_sample_count - 1),
+            p,
+        )
+        for index in range(p.fixed_axle_guide_sample_count)
+    )
+
+
+def reconstruct_fixed_axle_from_outer(
+    side: SideName,
+    theta_deg: float,
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> PointYZ:
+    local = fixed_axle_guide_local_center(side, theta_deg, p)
+    return _world_from_pivot(
+        _rotate_yz(local, rotation_for_side(side, theta_deg)), p
     )
 
 
@@ -763,7 +839,15 @@ def _plate_blank(
 
 @lru_cache(maxsize=None)
 def _inner_plate_local(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
-    hex_bore = _x_hex_prism(p.inner_hex_bore_af, p.inner_plate_thickness + 2.0, 0.0)
+    center = outer_rotation_center_yz(p)
+    axle = fixed_axle_center_yz(p)
+    hex_bore = _x_hex_prism(
+        p.inner_hex_bore_af,
+        p.inner_plate_thickness + 2.0,
+        0.0,
+        axle.y - center.y,
+        axle.z - center.z,
+    )
     part = _plate_blank(
         p.inner_plate_diameter,
         p.inner_plate_thickness,
@@ -789,15 +873,19 @@ def _outer_plate_local(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> 
         if side == "left"
         else p.right_outer_primary_grip_diameter
     )
-    label = "left_outer_secondary_cam_round_bearing" if side == "left" else "right_outer_primary_actuator_larger_integrated_lock_nose_round_bearing"
+    label = "left_outer_secondary_cam_mirrored_fixed_axle_guide" if side == "left" else "right_outer_primary_actuator_larger_integrated_lock_nose_mirrored_fixed_axle_guide"
     color = "#377A3A" if side == "left" else "#2D6FA8"
-    bore = _x_cylinder(p.outer_bearing_bore_diameter, p.outer_plate_thickness + 2.0, 0.0, 0.0, 0.0)
+    axle_guide = _slot_capsule_cutter(
+        fixed_axle_guide_locus(side, p),
+        p.fixed_axle_guide_slot_width,
+        p.outer_plate_thickness + 2.0,
+    )
     part = _plate_blank(
         diameter,
         p.outer_plate_thickness,
         label,
         color,
-        bore=bore,
+        bore=axle_guide,
     )
     for name in ROD_NAMES:
         part = part - _slot_capsule_cutter(outer_slot_locus(side, name, p), p.outer_slot_width, p.outer_plate_thickness + 2.0)
@@ -812,7 +900,7 @@ def _outer_plate_local(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> 
 
 def build_inner_plate(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
     x = p.left_inner_x if side == "left" else p.right_inner_x
-    pivot = pivot_yz(p)
+    pivot = outer_rotation_center_yz(p)
     return _label(
         Pos(x, pivot.y, pivot.z) * copy(_inner_plate_local(side, p)),
         _inner_plate_local(side, p).label,
@@ -823,7 +911,7 @@ def build_inner_plate(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> S
 def build_outer_plate(side: SideName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
     x = p.left_outer_x if side == "left" else p.right_outer_x
     color = "#377A3A" if side == "left" else "#2D6FA8"
-    pivot = pivot_yz(p)
+    pivot = outer_rotation_center_yz(p)
     return _label(
         Pos(x, pivot.y, pivot.z) * Rot(rotation_for_side(side, theta_deg), 0.0, 0.0) * copy(_outer_plate_local(side, p)),
         _outer_plate_local(side, p).label,
@@ -833,7 +921,7 @@ def build_outer_plate(side: SideName, theta_deg: float, p: P17R2Parameters = P17
 
 def build_lock_nose(theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
     """Standalone actual-solid lock nose in its assembled world transform."""
-    pivot = pivot_yz(p)
+    pivot = outer_rotation_center_yz(p)
     return _label(
         Pos(p.right_outer_x, pivot.y, pivot.z)
         * Rot(alpha_right(theta_deg), 0.0, 0.0)
@@ -849,7 +937,7 @@ def build_lock_receiver(
     condition: Literal["seated", "closing_unreleased", "released"] = "seated",
 ) -> Shape:
     """Standalone occurrence of the same grounded receiver/flexure solid."""
-    pivot = pivot_yz(p)
+    pivot = outer_rotation_center_yz(p)
     return _label(
         Pos(p.right_inner_x, pivot.y, pivot.z) * _lock_receiver_local(p, condition=condition),
         f"right_inner_same_receiver_{condition}",
@@ -863,7 +951,7 @@ def build_lock_receiver_component(
     *,
     condition: Literal["seated", "closing_unreleased", "released"] = "seated",
 ) -> Shape:
-    pivot = pivot_yz(p)
+    pivot = outer_rotation_center_yz(p)
     component = _lock_receiver_components_local(p, condition=condition)[name]
     return _label(
         Pos(p.right_inner_x, pivot.y, pivot.z) * component,
@@ -873,7 +961,7 @@ def build_lock_receiver_component(
 
 
 def build_center_axle(p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
-    pivot = pivot_yz(p)
+    pivot = fixed_axle_center_yz(p)
     central = _x_hex_prism(p.center_axle_central_hex_af, p.inner_clear_span, 0.0, pivot.y, pivot.z)
     left_key = _x_hex_prism(
         p.center_axle_inner_hex_af,
@@ -917,7 +1005,7 @@ def _keeper_local(p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
 
 def build_keeper(side: SideName, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
     x = p.keeper_left_x if side == "left" else p.keeper_right_x
-    pivot = pivot_yz(p)
+    pivot = fixed_axle_center_yz(p)
     keeper = Pos(x, pivot.y, pivot.z) * _keeper_local(p)
     return _label(
         keeper,
@@ -1380,10 +1468,527 @@ def service_clearance_evidence(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str
     }
 
 
+def _point_segment_distance_yz(point: PointYZ, first: PointYZ, second: PointYZ) -> float:
+    dy = second.y - first.y
+    dz = second.z - first.z
+    denominator = dy * dy + dz * dz
+    if denominator <= 1.0e-18:
+        return point.distance_to(first)
+    u = max(
+        0.0,
+        min(
+            1.0,
+            ((point.y - first.y) * dy + (point.z - first.z) * dz)
+            / denominator,
+        ),
+    )
+    nearest = PointYZ(first.y + u * dy, first.z + u * dz)
+    return point.distance_to(nearest)
+
+
+def _segment_distance_yz(
+    first_a: PointYZ,
+    first_b: PointYZ,
+    second_a: PointYZ,
+    second_b: PointYZ,
+) -> float:
+    return min(
+        _point_segment_distance_yz(first_a, second_a, second_b),
+        _point_segment_distance_yz(first_b, second_a, second_b),
+        _point_segment_distance_yz(second_a, first_a, first_b),
+        _point_segment_distance_yz(second_b, first_a, first_b),
+    )
+
+
+def _polyline_distance_yz(
+    first: tuple[PointYZ, ...], second: tuple[PointYZ, ...]
+) -> float:
+    return min(
+        _segment_distance_yz(a0, a1, b0, b1)
+        for a0, a1 in zip(first, first[1:])
+        for b0, b1 in zip(second, second[1:])
+    )
+
+
+def fixed_occurrence_transform_evidence(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> dict[str, object]:
+    center = outer_rotation_center_yz(p)
+    axle = fixed_axle_center_yz(p)
+    fixed_frames = {
+        "stepped_center_axle": (0.0, axle.y, axle.z, 0.0),
+        "left_inner_fixed_guide": (p.left_inner_x, center.y, center.z, 0.0),
+        "right_inner_fixed_guide": (p.right_inner_x, center.y, center.z, 0.0),
+        "left_keeper": (p.keeper_left_x, axle.y, axle.z, 0.0),
+        "right_keeper": (p.keeper_right_x, axle.y, axle.z, 0.0),
+    }
+    states = {
+        state: {
+            "fixedFramesXYZAngleDeg": fixed_frames,
+            "leftOuterAngleDeg": alpha_left(theta),
+            "rightOuterAngleDeg": alpha_right(theta),
+            "outerRotationCenterYZ": center.as_tuple(),
+        }
+        for state, theta in STATE_THETA.items()
+    }
+    return {
+        "fixedOccurrenceNames": tuple(fixed_frames),
+        "states": states,
+        "allFixedWorldInvariant": all(
+            row["fixedFramesXYZAngleDeg"] == fixed_frames for row in states.values()
+        ),
+    }
+
+
+def _fixed_axle_feature_gap_evidence(
+    p: P17R2Parameters,
+) -> tuple[float, bool]:
+    center = outer_rotation_center_yz(p)
+    axle = fixed_axle_center_yz(p)
+    offset = PointYZ(axle.y - center.y, axle.z - center.z)
+    inner_hex = _x_hex_prism(
+        p.inner_hex_bore_af,
+        p.inner_plate_thickness + 2.0,
+        0.0,
+        offset.y,
+        offset.z,
+    )
+    inner_neighbors: list[Shape] = [
+        _slot_capsule_cutter(
+            fixed_guide_local_locus(name, p),
+            p.fixed_slot_width,
+            p.inner_plate_thickness + 2.0,
+        )
+        for name in ROD_NAMES
+    ]
+    inner_neighbors.append(_completed_pigtail_window_cutter_local(p))
+    inner_neighbors.extend(_lock_receiver_components_local(p).values())
+    distances = [float(inner_hex.distance(neighbor)) for neighbor in inner_neighbors]
+    intersections = [
+        _intersection_volume(inner_hex, neighbor) for neighbor in inner_neighbors
+    ]
+    for side in ("left", "right"):
+        axle_guide = _slot_capsule_cutter(
+            fixed_axle_guide_locus(side, p),
+            p.fixed_axle_guide_slot_width,
+            p.outer_plate_thickness + 2.0,
+        )
+        outer_neighbors: list[Shape] = [
+            _slot_capsule_cutter(
+                outer_slot_locus(side, name, p),
+                p.outer_slot_width,
+                p.outer_plate_thickness + 2.0,
+            )
+            for name in ROD_NAMES
+        ]
+        if side == "left":
+            outer_neighbors.append(
+                Pos(0.0, -28.0, 0.0)
+                * Box(4.0, 4.0, 11.0, align=(Align.CENTER, Align.CENTER, Align.CENTER))
+            )
+        else:
+            outer_neighbors.append(_lock_nose_local(p))
+        distances.extend(
+            float(axle_guide.distance(neighbor)) for neighbor in outer_neighbors
+        )
+        intersections.extend(
+            _intersection_volume(axle_guide, neighbor)
+            for neighbor in outer_neighbors
+        )
+    return min(distances), max(intersections) <= 1.0e-7
+
+
+def fixed_axle_actual_solid_evidence(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> dict[str, object]:
+    center = outer_rotation_center_yz(p)
+    axle_center = fixed_axle_center_yz(p)
+    offset = PointYZ(axle_center.y - center.y, axle_center.z - center.z)
+    inner_hex_radius = p.inner_hex_bore_af / sqrt(3.0)
+    inner_boundary_web = (
+        p.inner_plate_diameter / 2.0
+        - (p.fixed_axle_eccentricity + inner_hex_radius)
+    )
+    left_boundary_web = (
+        p.left_outer_secondary_grip_diameter / 2.0
+        - (p.fixed_axle_eccentricity + p.fixed_axle_guide_slot_width / 2.0)
+    )
+    right_boundary_web = (
+        p.right_outer_primary_grip_diameter / 2.0
+        - (p.fixed_axle_eccentricity + p.fixed_axle_guide_slot_width / 2.0)
+    )
+    analytic_webs = [inner_boundary_web, left_boundary_web, right_boundary_web]
+    for name in ROD_NAMES:
+        first, second = fixed_guide_local_locus(name, p)
+        analytic_webs.append(
+            _point_segment_distance_yz(offset, first, second)
+            - (inner_hex_radius + p.fixed_slot_width / 2.0)
+        )
+    for side in ("left", "right"):
+        axle_locus = fixed_axle_guide_locus(side, p)
+        for name in ROD_NAMES:
+            analytic_webs.append(
+                _polyline_distance_yz(axle_locus, outer_slot_locus(side, name, p))
+                - (p.fixed_axle_guide_slot_width + p.outer_slot_width) / 2.0
+            )
+
+    exact_gap, exact_cutters_clear = _fixed_axle_feature_gap_evidence(p)
+    axle = build_center_axle(p)
+    body = build_xt60_reference(p)
+    samples = tuple(
+        index * p.theta_lock_deg / (p.fixed_axle_guide_sample_count - 1)
+        for index in range(p.fixed_axle_guide_sample_count)
+    )
+    all_axle_outer_clear = True
+    all_keeper_outer_clear = True
+    all_axle_rod_clear = True
+    all_keeper_cap_clear = True
+    all_service_clear = True
+    minimum_service_clearance = float("inf")
+    center_filled = True
+    for theta in samples:
+        for side in ("left", "right"):
+            outer = build_outer_plate(side, theta, p)
+            keeper = build_keeper(side, p)
+            all_axle_outer_clear &= _intersection_volume(axle, outer) <= 1.0e-7
+            all_keeper_outer_clear &= _intersection_volume(keeper, outer) <= 1.0e-7
+            probe = _x_cylinder(
+                1.0,
+                p.outer_plate_thickness,
+                p.left_outer_x if side == "left" else p.right_outer_x,
+                center.y,
+                center.z,
+            )
+            center_filled &= _intersection_volume(probe, outer) > 0.10
+        for name in ROD_NAMES:
+            rod = build_rod(name, theta, p)
+            all_axle_rod_clear &= _intersection_volume(axle, rod) <= 1.0e-7
+            for side in ("left", "right"):
+                all_keeper_cap_clear &= (
+                    _intersection_volume(
+                        build_keeper(side, p), build_cap(side, name, theta, p)
+                    )
+                    <= 1.0e-7
+                )
+        service_targets = [body, *build_service_envelopes(theta, p).children]
+        for fixed in (axle, build_keeper("left", p), build_keeper("right", p)):
+            for target in service_targets:
+                distance = float(fixed.distance(target))
+                minimum_service_clearance = min(minimum_service_clearance, distance)
+                all_service_clear &= (
+                    _intersection_volume(fixed, target) <= 1.0e-7
+                )
+    minimum_analytic_web = min(analytic_webs)
+    return {
+        "minimumRequiredWebMm": p.min_web_mm,
+        "minimumAnalyticWebMm": minimum_analytic_web,
+        "minimumActualOuterGuideWebMm": min(analytic_webs[6:]),
+        "minimumActualInnerHexWebMm": inner_boundary_web,
+        "leftOuterBoundaryWebMm": left_boundary_web,
+        "rightOuterBoundaryWebMm": right_boundary_web,
+        "minimumExactFrozenFeatureGapMm": exact_gap,
+        "allFrozenFeatureCuttersClear": exact_cutters_clear,
+        "minimumAxleGuideRadialClearanceMm": (
+            p.fixed_axle_guide_slot_width - p.outer_journal_diameter
+        )
+        / 2.0,
+        "minimumKeeperRadialCaptureMm": (
+            p.keeper_outer_diameter - p.fixed_axle_guide_slot_width
+        )
+        / 2.0,
+        "minimumXt60AndServiceClearanceMm": minimum_service_clearance,
+        "sampleCount": len(samples),
+        "allAxleOuterPlateIntersectionsZero": all_axle_outer_clear,
+        "allKeeperOuterPlateIntersectionsZero": all_keeper_outer_clear,
+        "allAxleGuideProbeIntersectionsZero": all_axle_outer_clear,
+        "allAxleWhiteRodIntersectionsZero": all_axle_rod_clear,
+        "allKeeperCapIntersectionsZero": all_keeper_cap_clear,
+        "allXt60AndServiceIntersectionsZero": all_service_clear,
+        "centerAtCHasNoDecorativeHole": center_filled,
+    }
+
+
+def _determinant_3x3(matrix: list[list[float]]) -> float:
+    return (
+        matrix[0][0]
+        * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
+        - matrix[0][1]
+        * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0])
+        + matrix[0][2]
+        * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0])
+    )
+
+
+def _solve_3x3(matrix: list[list[float]], vector: list[float]) -> list[float]:
+    augmented = [list(matrix[row]) + [vector[row]] for row in range(3)]
+    for column in range(3):
+        pivot = max(range(column, 3), key=lambda row: abs(augmented[row][column]))
+        augmented[column], augmented[pivot] = augmented[pivot], augmented[column]
+        divisor = augmented[column][column]
+        if abs(divisor) <= 1.0e-14:
+            raise ValueError("combined contact normal equations are singular")
+        for index in range(column, 4):
+            augmented[column][index] /= divisor
+        for row in range(3):
+            if row == column:
+                continue
+            factor = augmented[row][column]
+            for index in range(column, 4):
+                augmented[row][index] -= factor * augmented[column][index]
+    return [augmented[row][3] for row in range(3)]
+
+
+def _contact_curve_local(
+    side: SideName,
+    contact: str,
+    travel: float,
+    p: P17R2Parameters,
+) -> PointYZ:
+    theta = p.theta_lock_deg * travel
+    if contact == "fixed_axle":
+        return fixed_axle_guide_local_center(side, theta, p)
+    return outer_slot_local_center(side, contact, theta, p)  # type: ignore[arg-type]
+
+
+def _combined_contact_residuals(
+    side: SideName,
+    travel: float,
+    pose: tuple[float, float, float],
+    p: P17R2Parameters,
+) -> tuple[float, ...]:
+    """Four nominal centerline normal residuals for one outer rigid pose.
+
+    ``pose`` is ``(delta_y, delta_z, angle_radians)`` relative to C.  Slot
+    tangent travel is eliminated locally, leaving one scalar path constraint
+    per fixed contact.  This is a local mobility proof, not a force/fit claim.
+    """
+    center = outer_rotation_center_yz(p)
+    world_contacts: tuple[tuple[str, PointYZ], ...] = (
+        ("fixed_axle", fixed_axle_center_yz(p)),
+        *((name, rod_center(name, p.theta_lock_deg * travel, p)) for name in ROD_NAMES),
+    )
+    delta_y, delta_z, angle_radians = pose
+    result: list[float] = []
+    epsilon = 1.0e-5
+    lower = max(0.0, travel - epsilon)
+    upper = min(1.0, travel + epsilon)
+    for contact, world in world_contacts:
+        before = _contact_curve_local(side, contact, lower, p)
+        after = _contact_curve_local(side, contact, upper, p)
+        tangent = PointYZ(after.y - before.y, after.z - before.z)
+        tangent_length = hypot(tangent.y, tangent.z)
+        normal = PointYZ(-tangent.z / tangent_length, tangent.y / tangent_length)
+        local = _rotate_yz(
+            PointYZ(
+                world.y - center.y - delta_y,
+                world.z - center.z - delta_z,
+            ),
+            -degrees(angle_radians),
+        )
+        target = _contact_curve_local(side, contact, travel, p)
+        result.append(
+            normal.y * (local.y - target.y) + normal.z * (local.z - target.z)
+        )
+    return tuple(result)
+
+
+def _combined_contact_jacobian(
+    side: SideName,
+    travel: float,
+    pose: tuple[float, float, float],
+    p: P17R2Parameters,
+) -> tuple[tuple[float, float, float], ...]:
+    base = _combined_contact_residuals(side, travel, pose, p)
+    step = 1.0e-6
+    columns: list[tuple[float, ...]] = []
+    for column in range(3):
+        perturbed = list(pose)
+        perturbed[column] += step
+        values = _combined_contact_residuals(
+            side, travel, tuple(perturbed), p  # type: ignore[arg-type]
+        )
+        columns.append(tuple((values[row] - base[row]) / step for row in range(4)))
+    return tuple(
+        (columns[0][row], columns[1][row], columns[2][row])
+        for row in range(4)
+    )
+
+
+def _solve_combined_contact_pose(
+    side: SideName,
+    travel: float,
+    initial: tuple[float, float, float],
+    p: P17R2Parameters,
+) -> tuple[tuple[float, float, float], float]:
+    pose = list(initial)
+    for _ in range(60):
+        residual = _combined_contact_residuals(
+            side, travel, tuple(pose), p  # type: ignore[arg-type]
+        )
+        jacobian = _combined_contact_jacobian(
+            side, travel, tuple(pose), p  # type: ignore[arg-type]
+        )
+        normal_matrix = [
+            [
+                sum(jacobian[row][a] * jacobian[row][b] for row in range(4))
+                + (1.0e-12 if a == b else 0.0)
+                for b in range(3)
+            ]
+            for a in range(3)
+        ]
+        right_hand = [
+            -sum(jacobian[row][column] * residual[row] for row in range(4))
+            for column in range(3)
+        ]
+        correction = _solve_3x3(normal_matrix, right_hand)
+        pose = [pose[index] + correction[index] for index in range(3)]
+        if max(abs(value) for value in correction) <= 1.0e-12:
+            break
+    final_residual = _combined_contact_residuals(
+        side, travel, tuple(pose), p  # type: ignore[arg-type]
+    )
+    return (
+        tuple(pose),  # type: ignore[return-value]
+        sqrt(sum(value * value for value in final_residual)),
+    )
+
+
+def combined_contact_closure_evidence(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> dict[str, object]:
+    rows: dict[str, object] = {}
+    all_pass = True
+    sample_count = p.fixed_axle_guide_sample_count
+    for side in ("left", "right"):
+        sign = -1.0 if side == "left" else 1.0
+        for index in range(sample_count):
+            travel = index / (sample_count - 1)
+            prescribed = (0.0, 0.0, sign * radians(p.theta_lock_deg * travel))
+            residual = _combined_contact_residuals(side, travel, prescribed, p)
+            jacobian = _combined_contact_jacobian(side, travel, prescribed, p)
+            row_sets = ((0, 1, 2), (0, 1, 3), (0, 2, 3), (1, 2, 3))
+            maximum_minor = max(
+                abs(_determinant_3x3([list(jacobian[row]) for row in rows3]))
+                for rows3 in row_sets
+            )
+            solve_rows: list[dict[str, object]] = []
+            for delta in (
+                (0.40, -0.30, radians(2.0)),
+                (-0.50, 0.40, radians(-2.5)),
+            ):
+                initial = tuple(prescribed[i] + delta[i] for i in range(3))
+                solved, solved_residual = _solve_combined_contact_pose(
+                    side, travel, initial, p
+                )
+                pose_error = max(abs(solved[i] - prescribed[i]) for i in range(3))
+                solve_rows.append(
+                    {
+                        "pose": solved,
+                        "poseError": pose_error,
+                        "residualNormMm": solved_residual,
+                    }
+                )
+            maximum_pose_error = max(row["poseError"] for row in solve_rows)
+            converged = all(
+                row["poseError"] <= 1.0e-6
+                and row["residualNormMm"] <= 1.0e-6
+                for row in solve_rows
+            )
+            row_pass = (
+                sqrt(sum(value * value for value in residual)) <= 1.0e-6
+                and maximum_minor > 1.0e-6
+                and converged
+            )
+            all_pass &= row_pass
+            rows[f"{side}:sample_{index:02d}"] = {
+                "travel": travel,
+                "thetaDeg": p.theta_lock_deg * travel,
+                "contactResidualNormMm": sqrt(
+                    sum(value * value for value in residual)
+                ),
+                "mobilityJacobianRank": 3 if maximum_minor > 1.0e-6 else 2,
+                "maximumRank3Minor": maximum_minor,
+                "perturbedSolves": solve_rows,
+                "allPerturbedSolvesConvergedToPrescribedPose": converged,
+                "maximumPerturbedPoseError": maximum_pose_error,
+                "passes": row_pass,
+            }
+    return {
+        "passes": all_pass,
+        "sampleCountPerSide": sample_count,
+        "rows": rows,
+        "claimBoundary": (
+            "nominal centerline local-mobility closure only; slot clearance, "
+            "force, friction, self-lock and physical fit are not proven"
+        ),
+    }
+
+
+def _motion_occurrence(shape: Shape, label: str) -> Shape:
+    shape.label = label
+    return shape
+
+
+def build_fixed_axle_focus_state(
+    theta_deg: float = 0.0,
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> Compound:
+    children = [
+        _motion_occurrence(build_center_axle(p), "motion_fixed_stepped_center_axle"),
+        _motion_occurrence(build_keeper("left", p), "motion_fixed_left_keeper"),
+        _motion_occurrence(build_keeper("right", p), "motion_fixed_right_keeper"),
+        _motion_occurrence(build_inner_plate("left", p), "motion_fixed_left_inner"),
+        _motion_occurrence(build_inner_plate("right", p), "motion_fixed_right_inner"),
+        _motion_occurrence(build_outer_plate("left", theta_deg, p), "motion_rotating_left_outer"),
+        _motion_occurrence(build_outer_plate("right", theta_deg, p), "motion_rotating_right_outer"),
+        _motion_occurrence(build_xt60_reference(p), "motion_fixed_xt60_reference"),
+    ]
+    return Compound(
+        children=children,
+        label=f"P17_R2_fixed_axle_focus_theta_{theta_deg:.2f}__{provenance_token(p)}",
+    )
+
+
+def build_full_motion_open(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> Compound:
+    children: list[Shape] = [
+        _motion_occurrence(build_center_axle(p), "motion_full_fixed_stepped_center_axle"),
+        _motion_occurrence(build_keeper("left", p), "motion_full_fixed_left_keeper"),
+        _motion_occurrence(build_keeper("right", p), "motion_full_fixed_right_keeper"),
+        _motion_occurrence(build_inner_plate("left", p), "motion_full_fixed_left_inner"),
+        _motion_occurrence(build_inner_plate("right", p), "motion_full_fixed_right_inner"),
+        _motion_occurrence(build_outer_plate("left", 0.0, p), "motion_full_rotating_left_outer"),
+        _motion_occurrence(build_outer_plate("right", 0.0, p), "motion_full_rotating_right_outer"),
+        _motion_occurrence(build_xt60_reference(p), "motion_full_fixed_xt60_reference"),
+        _motion_occurrence(build_workpiece_reference(0.0, p), "motion_full_fixed_workpiece_reference"),
+    ]
+    for name in ROD_NAMES:
+        children.extend(
+            (
+                _motion_occurrence(build_rod(name, 0.0, p), f"motion_full_{name}_rod"),
+                _motion_occurrence(build_cap("left", name, 0.0, p), f"motion_full_left_{name}_cap"),
+                _motion_occurrence(build_cap("right", name, 0.0, p), f"motion_full_right_{name}_cap"),
+            )
+        )
+    return Compound(
+        children=children,
+        label=f"P17_R2_full_motion_open__{provenance_token(p)}",
+    )
+
+
 def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
     return {
         "contractPath": P17_R2_DESIGN_CONTRACT_PATH,
         "contractSha256": P17_R2_DESIGN_CONTRACT_SHA256,
+        "fixedMember": "purple printed stepped center axle",
+        "whiteRods": {
+            "count": 3,
+            "color": "white stainless",
+            "roles": ROD_NAMES,
+            "moving": True,
+            "fixedReactionMember": False,
+        },
         "parameters": asdict(p),
         "derived": {
             "inner_clear_span": p.inner_clear_span,
@@ -1423,7 +2028,13 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
             for name in ROD_NAMES
         },
         "centerAxle": {
+            "fixedMember": "purple printed stepped axle",
+            "whiteRods": "all three OD4 rods remain moving forming/locking rods",
             "onePiece": True,
+            "worldInvariant": True,
+            "outerRotationCenterYZ": outer_rotation_center_yz(p).as_tuple(),
+            "fixedAxleCenterYZ": fixed_axle_center_yz(p).as_tuple(),
+            "eccentricity": p.fixed_axle_eccentricity,
             "centralHexSpacerAf": p.center_axle_central_hex_af,
             "centralHexLength": p.inner_clear_span,
             "innerHexKeyAf": p.center_axle_inner_hex_af,
@@ -1594,6 +2205,8 @@ __all__ = [
     "build_artifact",
     "build_center_axle",
     "build_center_axle_coupon",
+    "build_fixed_axle_focus_state",
+    "build_full_motion_open",
     "build_completed_pigtail_removal_sweep",
     "build_lock_nose",
     "build_lock_receiver",
@@ -1604,15 +2217,23 @@ __all__ = [
     "clear_geometry_caches",
     "completed_pigtail_removal_states",
     "completed_pigtail_removal_waypoints",
+    "combined_contact_closure_evidence",
+    "fixed_axle_actual_solid_evidence",
+    "fixed_axle_center_yz",
+    "fixed_axle_guide_local_center",
+    "fixed_axle_guide_locus",
+    "fixed_occurrence_transform_evidence",
     "fixed_guide_locus",
     "lock_backdrive_evidence",
     "lock_contact_gap_y",
     "manifest_sha256",
     "outer_slot_local_center",
     "outer_slot_locus",
+    "outer_rotation_center_yz",
     "parameters_from_env",
     "parameters_from_overrides",
     "p17_r2_manifest",
+    "reconstruct_fixed_axle_from_outer",
     "reconstruct_world_from_outer",
     "rod_center",
     "rotation_for_side",

@@ -26,6 +26,22 @@ to slide over the outer round journal before seating on the inner hex key. The
 P17-D02 provisional `AF6` key/bore with `OD8` journal combination is
 superseded as unassemblable.
 
+P17-D06 is a focused correction inside P17 R2 after visual review of P17-I04.
+The fixed member is the purple printed stepped center axle, not any white
+`OD4.00 mm` stainless forming rod. The axle remains fixed to both inner plates
+but is separated from the outer-plate rotation-center datum and moved farther
+behind the XT60. Each outer plate receives its own mirrored arcuate axle-guide
+slot. This does not authorize changes to the white rods, their existing guide
+paths, the lock, caps, plate spacing, or the XT60 reference.
+
+P17-D07 supersedes only D06's provisional fixed-axle datum
+`A=(-18.00,17.00) mm`. Actual-solid implementation evidence showed that datum
+cutting through the frozen upright inner guide and both frozen upright outer
+cams, with negative required webs. The corrected datum is
+`A=(-29.00,17.00) mm`; fixed/moving identities, outer rotation center, frozen
+white-rod paths, lock, caps, stack, plate dimensions, mirrored-rail equations,
+motion-review contract, and P17 R2 identity remain unchanged.
+
 ## Historical P13 outcome and use sequence
 
 Historical P13 flow: load two insulated XT60 pigtail wires, close one rotary
@@ -97,8 +113,10 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
   rotate in opposite directions as a real twist action. P17 R2 selects
   two-hand direct counter-twist rather than a geared/linkage synchronizer.
 - `REQ-011`: P17 R2 must not use a scene-only sign flip, a shared same-direction
-  actuator shaft, moving holes in fixed parts, Three.js, JS animation sidecars,
-  or simulator evidence as CAD authority.
+  actuator shaft, moving holes in fixed parts, Three.js, or simulator evidence
+  as CAD authority. A source-declared, self-contained CAD Viewer parameter
+  sidecar may pose already-authored rigid occurrences for review only; Python/
+  build123d geometry and static generated STEP states remain authoritative.
 - `REQ-012`: Both outer plates are larger than the inner plates. The primary
   force/actuator side must be slightly larger or provide a quantitatively
   larger grip/lever affordance.
@@ -132,6 +150,24 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
   axle section first, then seats on the inner hex key against the central
   spacer shoulder. Keeper geometry must be physically retained, not a floating
   ring.
+- `REQ-022`: The purple printed stepped center axle is world-invariant and
+  positively fixes both inner plates. The three white `OD4.00 mm` stainless
+  rods remain moving forming/locking rods; none becomes a fixed reaction rod.
+- `REQ-023`: The fixed axle is off the outer-plate geometric/rotation center
+  and farther behind the XT60 on `-Y`. Each outer plate has a dedicated
+  side-specific arcuate guide slot for the axle, with left and right loci
+  mirrored so the permitted open-to-lock rotations have equal magnitude and
+  opposite sign.
+- `REQ-024`: A fixed pin in one curved slot is not by itself a complete planar
+  revolute constraint. P17 R2 must not claim that the axle slot alone forces
+  pure twist. Full mechanism closure must use the already-existing rod/slot
+  contact network or an independently approved integral pivot feature; D06
+  must not add stability bars or new separate parts.
+- `REQ-025`: The focused fixed-axle review artifact must provide visible
+  open-to-lock motion with fixed inner plates and axle, opposite-moving outer
+  plates, and stationary physical slot geometry. Review animation is evidence
+  of the prescribed rigid transforms only, not proof of force, constraint
+  closure, self-lock, or physical fit.
 
 ## Active P17 R2 derived constraints
 
@@ -189,6 +225,40 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
   key AF.
 - `CON-023`: P17-D02's provisional center-axle numeric table is superseded
   inside P17 R2 wherever it conflicts with `CON-018` through `CON-022`.
+- `CON-024`: P17-D06 separates two world `YZ` datums. The existing outer
+  rotation center remains `C = (-10.60, 17.00) mm`; the fixed stepped-axle
+  center is corrected by P17-D07 to `A = (-29.00, 17.00) mm`. The default
+  eccentricity is `e = |A - C| = 18.40 mm`. D06's provisional
+  `A=(-18.00,17.00)` / `e=7.40` is rejected as geometrically infeasible.
+- `CON-025`: With normalized travel `t in [0,1]`, `theta = 32 deg * t`,
+  `alpha_left = -theta`, and `alpha_right = +theta`. The fixed-axle guide
+  centerline in each outer plate's local `YZ` frame is
+  `q_s(theta) = R(-alpha_s(theta)) * (A - C)`. Reconstruction must satisfy
+  `C + R(alpha_s(theta)) * q_s(theta) = A` within `0.05 mm` at open, mid,
+  locked, and intermediate samples.
+- `CON-026`: The dedicated axle-guide slot width defaults to
+  `fixed_axle_guide_slot_width = outer_journal_diameter + 0.30 mm = 7.90 mm`.
+  It is a continuous swept arc over `0..32 deg` with closed capsule ends and
+  at least 33 centerline samples. The left and right local loci are mirror
+  images, not one copied same-direction slot.
+- `CON-027`: The axle, both inner plates, their hex bores, and both keepers
+  have identical world transforms for every review state. Only the two outer
+  plate occurrences receive viewer-time rotations about `C`.
+- `CON-028`: The centered outer bearing bore at `C` is not retained as an
+  empty or decorative hole in the focused geometry. A future integral
+  pivot boss/bore at `C` requires an explicit design decision; this design
+  relies on the unchanged existing rod/slot network for eventual mechanism
+  closure and keeps that closure claim pending independent validation.
+- `CON-029`: At the D07 datum, analytic minimum web to the frozen feature set
+  must be at least `2.20 mm`; the selected scan result is `3.849 mm`. Exact
+  BREP cutter/feature distance must also be at least `2.20 mm`; the selected
+  result is `3.650 mm`. Inner, left-outer, and right-outer boundary webs are
+  respectively `3.8946`, `7.650`, and `9.150 mm`.
+- `CON-030`: Across 33 samples from `0..32 deg`, axle/outer,
+  keeper/outer, axle/white-rod, and keeper/cap unintended intersection volumes
+  must remain zero. Nominal diametral axle-guide clearance is `0.30 mm`
+  (`0.15 mm` radial), and the `OD10.00 mm` keeper over a `7.90 mm` slot gives
+  `1.05 mm` radial axial-capture overlap; physical retention remains pending.
 
 ## Active P17 R2 design choices
 
@@ -243,7 +313,8 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
 
 | IDs | Evidence | Status |
 |---|---|---|
-| `REQ-009`–`REQ-021`, `CON-008`–`CON-023` | `docs/iterations/p17-r2-direct-cad-counter-twist/BRIEF.md`, `DESIGN.md`, `ADR-0003` | design contract |
-| `REQ-009`–`REQ-021` | Future P17 R2 source, tests, STEP/artifact validation, critic, and formal review | pending |
+| `REQ-009`–`REQ-021`, `CON-008`–`CON-023` | `docs/iterations/p17-r2-direct-cad-counter-twist/BRIEF.md`, `DESIGN.md`, `ADR-0003` | prior design contract; P17-I04 visually rejected |
+| `REQ-022`–`REQ-025`, `CON-024`–`CON-030` | `docs/iterations/p17-r2-fixed-reaction-rod-motion/BRIEF.md`, `DESIGN.md`, supplied Viewer screenshots, D07 BREP search evidence | active D07 focused repair contract |
+| `REQ-009`–`REQ-025` | Future repaired P17 R2 source, tests, STEP/artifact validation, critic, and formal review | pending |
 | `REQ-013`, `REQ-014`, `PHYS-007` | Future permanent-cap coupon | pending physical |
 | `PHYS-008`–`PHYS-012` | Future PETG assembly and use tests | pending physical |

@@ -122,3 +122,72 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
 - Limitation: these are CAD defaults and assembly invariants. Print fit,
   keeper installation/retention, PETG wear, and real force behavior remain
   physical gates.
+
+## `2026-08-24` — P17-I04 visual rejection and fixed-axle identity correction
+
+- Context: the user reviewed the live P17-I04 locked/exploded Viewer artifact
+  on a phone and supplied four screenshots.
+- Screenshot references and SHA-256:
+  - `/tmp/codex-remote-attachments/01a02c54-c344-75f0-a983-e2e2dd8162a7/53219609-F596-40A5-8E14-0867D84C2208/1-Pasted-Image-1.jpg`: `71d4c407ae645a32cf616c6fc7f0e34f2c8c5ac1bd47e77ec8fec2a445a280e8`.
+  - `/tmp/codex-remote-attachments/01a02c54-c344-75f0-a983-e2e2dd8162a7/53219609-F596-40A5-8E14-0867D84C2208/2-Pasted-Image-2.jpg`: `6064cb5005bfb50f92c61ae9b48fd201efc6a8e898b875650a217c912e7b5bbb`.
+  - `/tmp/codex-remote-attachments/01a02c54-c344-75f0-a983-e2e2dd8162a7/53219609-F596-40A5-8E14-0867D84C2208/3-Pasted-Image-3.jpg`: `d2e59057a67dc348708812adb33e0ef47b7912faff50c6484974a5b58f2d06b1`.
+  - `/tmp/codex-remote-attachments/01a02c54-c344-75f0-a983-e2e2dd8162a7/B55E60F8-583B-4FAB-B574-A448109DDDBE/1-Pasted-Image-1.jpg`: `2a0b9383f9cbc990b78aadefdaac9daaf5f4b443c6a68fdbee05f4d977f4779d`.
+- Observed visual failures: the purple printed stepped axle still read as a
+  large centered axle through the outer plates; the lower white stainless rod
+  appeared floating; and the static locked entry did not show motion.
+- User identity correction: the fixed member is the purple printed stepped
+  axle shown in the exploded screenshot. It is fixed to both inner plates.
+  White stainless rods remain moving forming/locking rods and are not the
+  fixed reaction rod.
+- User motion correction: move the purple axle farther behind/off the outer
+  plate center. Give each outer plate its own axle guide rail, mirrored so one
+  permits clockwise and the other counter-clockwise travel. Inner plates and
+  axle stay fixed; outer plates move.
+- Rejected interpretation: the initial D06 reading that proposed fixing the
+  lower white stainless rod was wrong and was stopped before source or
+  artifact implementation.
+- Mechanical limitation: one fixed pin in one arcuate slot does not alone
+  reduce a free planar plate to one rotational degree of freedom. The smallest
+  no-new-part closure is to retain the existing rod/slot contact network; a
+  focused motion preview may prescribe the intended rigid transforms but must
+  not call the rail alone a complete physical constraint.
+- Version implication: this is a focused P17 R2 repair, not a P or R bump.
+  Viewer/simulation quality and a bounded geometry correction are evidence and
+  implementation changes, not new product-version identities.
+
+## `2026-08-24` — P17-D07 provisional axle-datum failure and repair
+
+- Context: the first D06 implementation probe kept the outer rotation center,
+  all white-rod paths, and all plate dimensions frozen while moving the purple
+  axle to the provisional `A=(-18.00,17.00) mm`.
+- Actual-solid failure evidence at that datum:
+  - inner hex-bore cutter vs frozen upright fixed-guide cutter:
+    `68.3212367 mm^3` intersection;
+  - left outer axle-guide cutter vs frozen upright cam cutter:
+    `34.0035540 mm^3` intersection;
+  - right outer axle-guide cutter vs frozen upright cam cutter:
+    `128.9744351 mm^3` intersection;
+  - analytic signed webs: inner `-3.915 mm`, left outer `-2.195 mm`, right
+    outer `-5.042 mm`, against required `+2.20 mm`.
+- Scope disposition: this invalidates only D06's provisional axle location.
+  It does not invalidate the purple-fixed/white-moving identity, off-center
+  axle architecture, mirrored guide equations, opposite outer motion, or P17
+  R2 version.
+- Feasible-region evidence with `C=(-10.60,17.00)` and frozen features:
+  a same-Z analytic scan found `>=2.20 mm` minimum web from approximately
+  `A_y=-27.5` through `-30.5 mm`; `A=(-29.00,17.00)` maximized the sampled
+  minimum near `3.849 mm` while moving the axle farther behind.
+- Independent exact BREP evidence at `A=(-29.00,17.00)`:
+  - all inner hex-to-guide/window/receiver and outer guide-to-cam/grip/lock-
+    nose cutter intersections were zero;
+  - minimum exact frozen-feature distance was `3.650 mm`;
+  - all four local plate results were valid single solids;
+  - over 33 motion samples, axle/outer, keeper/outer, axle/rod, and keeper/cap
+    unintended intersections were zero;
+  - minimum axle-to-outer guide clearance was `0.150 mm`; keeper radial
+    capture was `1.050 mm`;
+  - sampled XT60/service minimum clearance was `19.1764973 mm`, with zero
+    intersection;
+  - fixed-axle reconstruction error was `7.11e-15 mm` and mirror error zero.
+- Limitation: these are design-search and source-BREP results from a WIP
+  implementation, not independent candidate validation or physical proof.

@@ -1,1 +1,68 @@
-{"baselineCommit":"05e0152b045bd82a41ea07a715f2361606c1ec99","digitalEvidence":{"camReconstructionToleranceMm":0.05,"completedPigtailRemovalIntersectionCount":0,"completedPigtailRemovalWaypointsYZ":[[0.0,21.0],[0.0,22.5],[8.0,22.5],[20.0,22.5],[34.0,22.5]],"keeperBoreDiameterMm":7.55,"keeperOuterDiameterMm":10.0,"keeperRadialWallMm":1.225,"lockedCatchIntersectionMm3":0.0,"lockedHardStopIntersectionMm3":0.0,"minimumRequiredServiceClearanceMm":0.75,"minimumServiceClearanceMm":0.7764973081037425,"normalClosingMaxIntersectionMm3":0.0,"normalClosingMinimumCatchClearanceMm":0.5913644618595516,"overCenterCaptureMm":0.4,"overcloseNonHardStopIntersectionMm3":0.0,"productionSlotWidthMm":4.2,"releasedOpeningMaxIntersectionMm3":0.0,"releasedOpeningMinimumCatchClearanceMm":1.3076630688494169,"sameReceiverConnectedSolidCounts":[1,1,1],"sourceExportMaxBoundDeltaMm":0.0,"unreleasedOpening30CatchIntersectionMm3":1.5819943041307774,"unreleasedOpening31CatchIntersectionMm3":0.1377097379440117},"frozenDocManifestSha256":"64c6db4496520007f4b31c0050809fad29ce949e34e7c806a387107c099946cd","physicalBoundary":"No PETG print, keeper/cap retention, lock force, release effort, heat, wear, vibration, wire holding, solder ergonomics, springback, slicer, 3MF, or physical acceptance is claimed.","snapshotSha256":{"p17_r2_center_axle_coupon_20260824T175525Z.png":"0295c7a310c7c27180026fe0e4b32b2c3b1e39da576593e3fb642201554d4931","p17_r2_exploded_20260824T175526Z.png":"acad3375801b79c6e82f1ff2737a9238ab6c12e7c36c3acecae505916e616a6e","p17_r2_lock_closeup_20260824T175512Z.png":"5d94374ded8b84263b5e85ee3e71be42ec40959d82e3584ea9d6c9fca85fdcaa","p17_r2_locked_20260824T175527Z.png":"9a8923f0ead6f2752cb8467d22085ecbbc7e9991b4d6645c554634a922cdc17e","p17_r2_mid_20260824T175529Z.png":"fed355d8e9708c56e8a30088379fd4a13f4edf45e021d7c2e4ef3ae406876180","p17_r2_open_20260824T175531Z.png":"6733b20e66e8534e6dd1083d9b11e431a0973dbed2716018ec34e662f1097103","p17_r2_permanent_cap_coupon_20260824T175534Z.png":"4e3fe79fc75d858833430dfe243fe580f93ca9e43b97d09b5e5545523550ed5c","p17_r2_print_kit_20260824T175535Z.png":"a7653b599b9b51af0507787e3a6c3fed6f767a6d017cd3b905062047d17c0468"},"source":{"path":"projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py","sha256":"7d6250693bacbcfe962649406b65c6917ac3a187b3f3537f215d5150fbfb43a3"},"status":"P17-I04 implementation candidate; independent review and physical proof pending","stepSha256":{"p17_r2_center_axle_coupon.step":"61e6b5579fbfec6519e90a08fd4fb83f285498c403ee4667ddc83ba3de8e0241","p17_r2_exploded.step":"49028de1ecbca59a25178dc538adc32b318defd57298bd3e5cb1bb68f61dfed2","p17_r2_lock_closeup.step":"dd555503e49d1d83c0a84ba1e2b0e503083166a9674ab232084646ca5c9a82f7","p17_r2_locked.step":"c8a9407946f951d41de6dd94a4c06488ec2f1ce82541fc6bd1626518c8d520e2","p17_r2_mid.step":"fe92076f5896f4891d6382ae1a604f5541e0f2cf251cd23fb622842267af27ea","p17_r2_open.step":"4aff043f91143f677eed19021e1403083642834c0172b4aebd130b46c9c5316c","p17_r2_permanent_cap_coupon.step":"8f374e00b72cdd968ff51fbcb6c9f5ad9dc16059f2dddc20614e3ccb916575f5","p17_r2_print_kit.step":"f164094c6daf897fc11e39c863aa3b41d34c74c5e372de79c23cc6b4ade14113"},"tests":{"focusedAndRelatedResult":"29 passed with projects/xt60-bend-jig/tests/test_parameters.py","focusedResult":"23 passed","path":"projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py","sha256":"e7fd569f83cecc5f43225327dbcc7943cb6a37f7d485e675052ba67b12a75455"},"validation":{"cadViewer":"deferred to root handoff owner","snapshots":"all eight final snapshots rendered with warnings:[] and visually inspected","sourceExportParity":"all eight occurrence counts, dot-normalized labels and bounds match; maximum bound delta 0.000000000 mm","stepValidate":"all eight final STEP files ok:true failureCount:0","visualFinding":"four plates, offset stepped axle, narrow curved slots, permanent caps, OD10 keepers, fixed-inner service windows and compact same-solid receiver are present; no stability bars or missing/overlapping printed parts observed"},"verifiedInputs":{"BRIEF.md":"d79381a27ad3030e7d07e2c7a496cd9b71ce37b532f1162d787ee90f430dfa13","DESIGN.md":"d46b5f906fc377a3fa7370b4338aa3728e442f2cd10ca2b5a79c32b1b1d3cf48","docs/REQUIREMENTS.md":"567e315522a0d5269daef52f95ff91cb67da3c1dd8b41ec5be5aa99ea646a2f5"}}
+{
+  "baselineCommit": "cb020f6cf01876e01d1e6501fec8861a527aa248",
+  "candidateId": "P17-I05",
+  "implementationInputManifestSha256": "c9085b63a5512ef61f8c01f6191d6445765cd7cc1a2107575e3c0badbfc357c3",
+  "source": {"path": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py", "sha256": "3df2574dc571ba37f24125d6cc1028d67273841d7c4951359f676fd07de46000"},
+  "tests": {"path": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py", "sha256": "20145cfea70b483cb0b1e7efc7f418d6bea744fbc713a18e6500612702e0aeb7", "focusedD07Result": "8 passed", "fullFocusedFileResult": "31 passed"},
+  "digitalEvidence": {
+    "outerRotationCenterYZ": [-10.6, 17.0],
+    "fixedAxleCenterYZ": [-29.0, 17.0],
+    "fixedAxleEccentricityMm": 18.4,
+    "guideSamplesPerSide": 33,
+    "minimumAnalyticWebMm": 3.8486841908873135,
+    "minimumExactFrozenFeatureGapMm": 3.650000000000002,
+    "boundaryWebsInnerLeftRightMm": [3.894595306104552, 7.650000000000002, 9.150000000000002],
+    "minimumAxleGuideRadialClearanceMm": 0.1499999999999999,
+    "minimumKeeperRadialCaptureMm": 1.0500000000000003,
+    "minimumXt60AndServiceClearanceMm": 19.17649730810374,
+    "maximumAxleReconstructionErrorMm": 7.11e-15,
+    "maximumMirrorErrorMm": 0.0,
+    "combinedContactClosurePass": true,
+    "minimumRank3Minor": 0.0003600686127215046,
+    "maximumPerturbedPoseError": 7.306488747360618e-12,
+    "all33StateCollisionGatesPass": true,
+    "sourceExportMaxBoundDeltaMm": 0.0
+  },
+  "stepSha256": {
+    "p17_r2_center_axle_coupon.step": "4c53b3f1c97c3a9acd9059dc7a4278c2ea36f37531644aedc084ad927a31e01f",
+    "p17_r2_exploded.step": "534dfcf5efd794500c2d7ca82e64f4da817671bb56faa9ae11229a5551df695f",
+    "p17_r2_fixed_axle_motion.step": "ba2993781fcb4b9e5539a36c4aae6e18da260502d24fb4096d7403c4da300e7c",
+    "p17_r2_full_motion.step": "a09f19a7a654dccd865e7941ad7d355e48ef89cc1de6ab6d9b3fd0d164dda1f8",
+    "p17_r2_lock_closeup.step": "3c45e1d44d0024eb07a922742c8028eb3ddb75fbaf01d454b9dc82106d24e057",
+    "p17_r2_locked.step": "bbd11f8ac8c9d7131505c3b4fabbc2d3bc6258791cc8ffa864603fbaac7ae6ca",
+    "p17_r2_mid.step": "e0def9c072a4b62e0885532ecd31617092aca9e02304c5b2b9371fbb57c0807c",
+    "p17_r2_open.step": "0b323613bd106af2c4981311d73e42b6c15b9e6897e293afee075063b057ab6e",
+    "p17_r2_permanent_cap_coupon.step": "a5affbf83a33b5b8897fb564e3c41c51c966ab4d84002ead4c09e9be7722c264",
+    "p17_r2_print_kit.step": "aef6761a688e3ff13e11bde19871a121c8c4dcd65945c12a5e05b99241e3847b"
+  },
+  "motionSourceSha256": {
+    "p17_r2_fixed_axle_motion.step.py": "5df821aea698153885f7b379e79e482679b0e6fba64522f03730bc16dc453876",
+    "p17_r2_fixed_axle_motion.params.js": "a0bde0d8edd7872a4a89d10ea365b939d554d6c40c864657df9dc647d9b8f1cf",
+    "p17_r2_full_motion.step.py": "1151a9ba1c7871a977b1ae92f6f55940b0b62ae2315d4f241b0d316f1c5ba7dc",
+    "p17_r2_full_motion.params.js": "4c99f20208249463d0d9909c865cb7e929f4e1b8328494e33aabc435ce1456d7"
+  },
+  "snapshotSha256": {
+    "p17_r2_d07_center_axle_coupon_20260824T203922Z.png": "28ef6147835f69fe3638c7d245dfd0c9ba32f465e88a856371d1620a2283bfe1",
+    "p17_r2_d07_exploded_20260824T203919Z.png": "9426f054918a286a8138e89f6186b3a4deaa34be16f5f54f865ff551f8435077",
+    "p17_r2_d07_fixed_axle_motion_20260824T203939Z.gif": "acc81b892c1f8efaac73c7bfab2737a9d345a3b727123b50381cfa4fcda19980",
+    "p17_r2_d07_fixed_axle_t0.5_20260824T203936Z.png": "82809443c7d452f71f14a938152c16a3fdfb8f8bc9d9b5175121a6df4b84d130",
+    "p17_r2_d07_fixed_axle_t0_20260824T203935Z.png": "62250b7b33cec3ce58525558037de4beb86a8824c7bea9a90adc08727712f4e9",
+    "p17_r2_d07_fixed_axle_t1_20260824T203938Z.png": "7ef99d4a34b9d749c0bed50e0974117e82d9386faf75ed368d75e4ad46366bd9",
+    "p17_r2_d07_full_motion_20260824T203948Z.gif": "cfdc02e94640f12c8dd99abad2ee794ebf83a7856f66b15702f0c44c6174b7e5",
+    "p17_r2_d07_lock_closeup_20260824T203924Z.png": "aecfb47c0919857487c2f97481fcb7326a388141ad7360f9ab9376d253b8312e",
+    "p17_r2_d07_locked_20260824T203917Z.png": "522009186e4972e087eb0177aa1cb361453552e877e95ccc3b91d4ecc04ee210",
+    "p17_r2_d07_mid_20260824T203915Z.png": "19ce28075a0389dd7ebfd71b836f77602c1a116b66291f88f7c2caf52718aac7",
+    "p17_r2_d07_open_20260824T203910Z.png": "9946a3dcc123d640587b604bb47278901b7c27e7da69c1e1211cadf1e0d839c7",
+    "p17_r2_d07_permanent_cap_coupon_20260824T203921Z.png": "52bdc1d5d65d5a7be2bfb55170e7cd4de0500f40f51af2d1f6a97170765d754c",
+    "p17_r2_d07_print_kit_20260824T203920Z.png": "948038394feb4f68368afe85315c4b441048a3f23f58bf7958e46d313a27120a"
+  },
+  "validation": {
+    "stepValidate": "all ten STEP files ok:true failureCount:0",
+    "sourceExportParity": "all ten source/export occurrence counts, topology summaries and bounds match exactly",
+    "snapshots": "eleven PNG and two GIF review artifacts rendered with warnings:[] and visually inspected",
+    "visualFinding": "purple stepped axle and keepers stay fixed at the rear offset datum; inner plates stay fixed; left/right outer plates visibly counter-rotate on mirrored axle-guide arcs; C has no decorative hole; all three white rods remain present and move only in the full assembly review; no added bar, boss or linkage is present",
+    "cadViewer": "deferred to root singleton Viewer handoff owner"
+  },
+  "status": "P17-I05 implementation candidate; independent critic, validator, formal review, Viewer handoff and physical proof pending",
+  "physicalBoundary": "No PETG print, keeper/cap retention, lock force, release effort, heat, wear, vibration, wire holding, solder ergonomics, springback, slicer, 3MF, or physical acceptance is claimed."
+}

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ast
 import gc
+import json
 from hashlib import sha256
 from math import hypot
 from pathlib import Path
@@ -440,3 +441,205 @@ def test_d04_rejected_slot_widths_and_straight_cam_shortcut_are_absent() -> None
             chord = locus[0].distance_to(locus[-1])
             polyline = sum(first.distance_to(second) for first, second in zip(locus, locus[1:]))
             assert polyline > chord + 0.01
+
+
+def _d06_frozen_scope_semantics() -> dict[str, object]:
+    """The exact P17-I04 semantics D06 is forbidden to redesign."""
+    p = p17.P17_R2_DEFAULTS
+    return {
+        "guides": {
+            name: [p17.GUIDES[name].open.as_tuple(), p17.GUIDES[name].locked.as_tuple()]
+            for name in p17.ROD_NAMES
+        },
+        "white_cam_loci": {
+            f"{side}:{name}": [
+                [round(point.y, 9), round(point.z, 9)]
+                for point in p17.outer_slot_locus(side, name, p)
+            ]
+            for side in ("left", "right")
+            for name in p17.ROD_NAMES
+        },
+        "rod_cap": {
+            name: getattr(p, name)
+            for name in (
+                "rod_diameter",
+                "follower_head_diameter",
+                "follower_head_length",
+                "cap_closed_end_wall",
+                "cap_socket_id",
+                "cap_socket_ladder_ids",
+                "cap_socket_ladder_depths",
+            )
+        },
+        "lock": {
+            name: getattr(p, name)
+            for name in (
+                "lock_nose_orbit_radius",
+                "lock_nose_radius",
+                "lock_nose_axial_thickness",
+                "lock_contact_clearance",
+                "lock_over_center_capture",
+                "lock_receiver_stop_depth",
+                "lock_receiver_normal_width",
+                "lock_receiver_release_shift",
+                "lock_receiver_closing_deflection",
+                "lock_receiver_bridge_radius",
+                "lock_receiver_bridge_diameter",
+                "lock_flexure_width",
+                "lock_lead_in_length",
+                "lock_thumb_tab_length",
+                "hard_stop_dwell_deg",
+            )
+        },
+        "axial_stack": {
+            name: getattr(p, name)
+            for name in (
+                "xt60_body_width_x",
+                "xt60_side_clearance_each",
+                "inner_plate_thickness",
+                "outer_plate_thickness",
+                "inner_outer_running_gap",
+                "cap_to_outer_running_gap",
+                "cap_rod_engagement",
+                "keeper_seat_length",
+                "outer_keeper_thickness",
+                "keeper_axial_running_clearance",
+            )
+        },
+        "plates_and_white_slots": {
+            name: getattr(p, name)
+            for name in (
+                "inner_plate_diameter",
+                "left_outer_secondary_grip_diameter",
+                "right_outer_primary_grip_diameter",
+                "fixed_slot_width",
+                "outer_slot_width",
+                "slot_endpoint_margin",
+                "slot_sample_count",
+                "theta_lock_deg",
+            )
+        },
+    }
+
+
+def test_d06_frozen_white_rod_lock_stack_and_plate_semantics_do_not_change() -> None:
+    encoded = json.dumps(
+        _d06_frozen_scope_semantics(), sort_keys=True, separators=(",", ":")
+    ).encode()
+    assert sha256(encoded).hexdigest() == (
+        "a6c25c8977c2c9debe9838c0c60ee74bb9f28dbe0e1c1a9167c29d9ce594dec5"
+    )
+
+
+def test_d06_fixed_identity_is_purple_axle_and_all_white_rods_remain_moving() -> None:
+    manifest = p17.p17_r2_manifest()
+    assert manifest["fixedMember"] == "purple printed stepped center axle"
+    assert manifest["centerAxle"]["worldInvariant"] is True
+    assert manifest["whiteRods"] == {
+        "count": 3,
+        "color": "white stainless",
+        "roles": ("upright", "bottom", "diagonal"),
+        "moving": True,
+        "fixedReactionMember": False,
+    }
+
+
+def test_d06_split_rotation_and_fixed_axle_datums_are_exact() -> None:
+    p = p17.P17_R2_DEFAULTS
+    assert p17.outer_rotation_center_yz(p).as_tuple() == pytest.approx((-10.60, 17.00))
+    assert p17.fixed_axle_center_yz(p).as_tuple() == pytest.approx((-29.00, 17.00))
+    assert p.fixed_axle_eccentricity == pytest.approx(18.40)
+    assert p.fixed_axle_guide_slot_width == pytest.approx(7.90)
+    assert p.fixed_axle_guide_sample_count >= 33
+
+
+def test_d06_axle_guides_are_mirrored_constant_radius_and_reconstruct_fixed_world_axle() -> None:
+    p = p17.P17_R2_DEFAULTS
+    left = p17.fixed_axle_guide_locus("left", p)
+    right = p17.fixed_axle_guide_locus("right", p)
+    assert len(left) == len(right) == p.fixed_axle_guide_sample_count
+    for index, (left_point, right_point) in enumerate(zip(left, right)):
+        theta = p.theta_lock_deg * index / (len(left) - 1)
+        assert left_point.y == pytest.approx(right_point.y, abs=1.0e-9)
+        assert left_point.z == pytest.approx(-right_point.z, abs=1.0e-9)
+        assert hypot(left_point.y, left_point.z) == pytest.approx(
+            p.fixed_axle_eccentricity, abs=0.05
+        )
+        for side in ("left", "right"):
+            reconstructed = p17.reconstruct_fixed_axle_from_outer(side, theta, p)
+            assert reconstructed.as_tuple() == pytest.approx(
+                p17.fixed_axle_center_yz(p).as_tuple(), abs=0.05
+            )
+
+
+def test_d06_axle_inner_and_keeper_frames_are_world_invariant_while_outers_counter_rotate() -> None:
+    p = p17.P17_R2_DEFAULTS
+    evidence = p17.fixed_occurrence_transform_evidence(p)
+    assert evidence["fixedOccurrenceNames"] == (
+        "stepped_center_axle",
+        "left_inner_fixed_guide",
+        "right_inner_fixed_guide",
+        "left_keeper",
+        "right_keeper",
+    )
+    assert evidence["allFixedWorldInvariant"] is True
+    for row in evidence["states"].values():
+        assert row["leftOuterAngleDeg"] == pytest.approx(-row["rightOuterAngleDeg"])
+
+
+def test_d06_actual_solids_keep_axle_in_guides_with_required_web_and_keeper_capture() -> None:
+    p = p17.P17_R2_DEFAULTS
+    evidence = p17.fixed_axle_actual_solid_evidence(p)
+    assert evidence["minimumRequiredWebMm"] == pytest.approx(2.20)
+    assert evidence["minimumExactFrozenFeatureGapMm"] == pytest.approx(3.6500, abs=0.001)
+    assert evidence["minimumAnalyticWebMm"] == pytest.approx(3.849, abs=0.01)
+    assert evidence["minimumActualInnerHexWebMm"] == pytest.approx(3.8946, abs=0.001)
+    assert evidence["leftOuterBoundaryWebMm"] == pytest.approx(7.650, abs=0.001)
+    assert evidence["rightOuterBoundaryWebMm"] == pytest.approx(9.150, abs=0.001)
+    assert evidence["minimumAxleGuideRadialClearanceMm"] == pytest.approx(0.150)
+    assert evidence["minimumKeeperRadialCaptureMm"] == pytest.approx(1.050)
+    assert evidence["sampleCount"] == 33
+    assert evidence["allAxleOuterPlateIntersectionsZero"] is True
+    assert evidence["allKeeperOuterPlateIntersectionsZero"] is True
+    assert evidence["allAxleGuideProbeIntersectionsZero"] is True
+    assert evidence["allAxleWhiteRodIntersectionsZero"] is True
+    assert evidence["allKeeperCapIntersectionsZero"] is True
+    assert evidence["allXt60AndServiceIntersectionsZero"] is True
+    assert evidence["centerAtCHasNoDecorativeHole"] is True
+
+
+def test_d06_combined_existing_white_rod_contacts_and_axle_guide_close_uniquely() -> None:
+    evidence = p17.combined_contact_closure_evidence()
+    assert evidence["claimBoundary"].startswith("nominal centerline local-mobility")
+    assert evidence["passes"] is True
+    assert evidence["sampleCountPerSide"] == 33
+    for row in evidence["rows"].values():
+        assert row["contactResidualNormMm"] <= 1.0e-6
+        assert row["mobilityJacobianRank"] == 3
+        assert row["allPerturbedSolvesConvergedToPrescribedPose"] is True
+        assert row["maximumPerturbedPoseError"] <= 1.0e-6
+
+
+def test_d06_motion_entry_is_source_declared_self_contained_and_targets_only_outers() -> None:
+    cad = ROOT / "cad" / "p17_r2_direct_counter_twist"
+    entry = cad / "p17_r2_fixed_axle_motion.step.py"
+    sidecar = cad / "p17_r2_fixed_axle_motion.params.js"
+    assert entry.exists()
+    assert sidecar.exists()
+    assert '"params": "p17_r2_fixed_axle_motion.params.js"' in entry.read_text()
+    js = sidecar.read_text()
+    assert "open_to_lock" in js
+    assert "import " not in js
+    assert "effects.transform(\"left_outer\"" in js
+    assert "effects.transform(\"right_outer\"" in js
+    for forbidden in (
+        "stepped_center_axle",
+        "left_inner_fixed_guide",
+        "right_inner_fixed_guide",
+        "left_keeper",
+        "right_keeper",
+        "upright_rod",
+        "bottom_rod",
+        "diagonal_rod",
+    ):
+        assert f'effects.transform("{forbidden}"' not in js
