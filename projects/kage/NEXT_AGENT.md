@@ -2,7 +2,7 @@
 
 Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`, `docs/decisions/README.md`, and every file in the iteration named by `docs/iterations/CURRENT`. Recompute `manifests/candidate.sha256` and require SHA-256 `da3bcedc68ed5324cf805f42ff0bca48cd1ccbcf89db7aa9207908b5df27f631` with 805 rows before acting.
 
-Pull request [#5](https://github.com/scottchu/design-projects/pull/5) records the formally accepted reversible Kage cleanup plus the now-superseded generic preview launcher. Do not restore that launcher. Use the installed `cad-viewer` workflow directly with:
+Pull request [#5](https://github.com/scottchu/design-projects/pull/5) records the formally accepted reversible Kage cleanup plus the now-superseded generic preview launcher. Pull request [#6](https://github.com/scottchu/design-projects/pull/6) records its removal and the accepted direct-Viewer workflow. Do not restore that launcher. Use the installed `cad-viewer` workflow directly with:
 
 ```text
 workspace: projects/kage/references
