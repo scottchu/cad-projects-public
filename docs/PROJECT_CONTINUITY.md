@@ -34,6 +34,34 @@ Release artifacts should live in a project-owned release location and carry a ma
 
 Use a stable, sortable iteration identifier such as `p13-r1-monorepo-migration` or `2026-08-22-p17-preload-retune`. Do not reuse an identifier for unrelated work.
 
+## Version and evidence-status policy
+
+For design projects that use `P` and `R` labels, `P` identifies the core
+product-design baseline and `R` identifies a revision of that same baseline.
+Use the labels for design meaning, not for the success or failure of a single
+artifact.
+
+- Increment `P` only when the core product-design baseline changes: mechanism
+  architecture, user-facing workflow, external interface, fundamental part
+  count/roles, or another decision that makes later work incompatible with the
+  prior product design.
+- Increment `R` for geometry, fit, tolerance, manufacturing, source
+  implementation, documentation, artifact, or validation refinement that keeps
+  the same core product design.
+- Track evidence status independently from version: simulator, CAD/source,
+  STEP, mesh/3MF, slicer, and physical acceptance are separate evidence layers.
+  A failed simulator, failed STEP export, bad 3MF, or failed physical print can
+  reject that artifact or evidence layer without automatically creating a new
+  `P` version.
+- Every proposed `P` bump must include a durable justification in the active
+  iteration brief or an ADR. The justification must name the product-design
+  baseline being superseded, the incompatible architecture/interface/workflow
+  change, rejected alternatives, and why an `R` revision would be insufficient.
+
+When correcting version labels, preserve the historical evidence record. Add an
+explicit correction note instead of erasing failed artifacts, rejected reviews,
+or earlier mistaken labels.
+
 Before material work begins:
 
 1. create or identify the iteration directory;

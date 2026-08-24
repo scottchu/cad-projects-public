@@ -6,47 +6,70 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p13-r2-center-hole-fit-repair`.
-- Final digital candidate fingerprint:
-  `9f123ad24f46d60fcb89ae305455ba1a0c3b38d4738f82766ec91d02c1350db9`.
-- Authoritative P13 source:
-  `src/xt60_bend_jig/p13_four_plate_three_rod.py`, SHA-256
-  `7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067`.
-- Canonical evidence: iteration `VALIDATION.md`, `REVIEW.md`, and `HANDOFF.md`.
-- Production 3MF:
-  `cad/p13_four_plate_three_rod/p13_print_kit.3mf`, SHA-256
-  `588f11e47c89a64221e527085e560453d4e7e75a7b6ecc00cf448f7d22bf75a7`.
+- Active iteration: `p17-r2-direct-cad-counter-twist`.
+- Current contract: `P17-D05`.
+- Accepted digital candidate: `P17-I04`.
+- Exact fingerprint:
+  `24f5d7524303671a914eec18148b7cee0a8a297cca1403b2c2c68c714fdefabb`.
+- Candidate manifest:
+  `cad/p17_r2_direct_counter_twist/p17-r2-candidate-manifest.json`, SHA-256
+  `c5fbeaaee626ad3adafb4f2cb5ca195c27e84683c4c4db9b2b27e25fa5241ae2`.
+- Source:
+  `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
+- Tests:
+  `tests/test_p17_r2_direct_counter_twist.py`.
+- Artifact provenance:
+  `cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json`.
+- Canonical implementation and decision history:
+  `docs/iterations/p17-r2-direct-cad-counter-twist/HANDOFF.md`.
+
+Independent `P17-C04`, `P17-V04`, and formal `P17-R04` all pass the exact
+fingerprint for CAD/source and written STEP/export only.
 
 ## Immediate task
 
-Do not redesign or further enlarge the fit before physical evidence. Reprint
-the repaired `left_cam` and `right_actuator` plates and test them with the
-unchanged printed shallow-D shaft. Record whether the shaft passes through both
-bores by hand without forcing, binding, visible damage, or unacceptable play.
-If that focused fit passes, complete the documented P13 assembly, dry-motion,
-retention, cycling, wire, heat, removal, cooled-angle, and springback sequence.
-Append the observations to `docs/EXPERIENCE.md` and update all three acceptance
-layers. If it fails, open a new iteration and preserve this one as history.
+If repository delivery is not yet complete, finish the non-main branch pull
+request. The exact Tailscale Viewer page and final locked artifact were already
+verified HTTP `200` / state `ready` on `2026-08-24`; reverify only if the
+backend, path, or artifact changes. Do not redesign or increment the P-version
+for delivery-only work.
 
-## Preserve and do not assume
+If delivery is complete and the user asks to proceed toward printing, run the
+smallest falsifiable physical workflow first:
 
-- Preserve the four-plate/three-purchased-rod architecture, fixed 90-degree
-  outcome, three uncut `OD4 x 50 mm` rods, role-specific rod fits, service
-  order, and source-defined print orientation.
-- The repair changed only the two shared cam D-bore controls to
-  `OD5.75 / AF5.30 mm`; the shaft remains `OD5.60 / AF5.15 mm`.
-- The final relevant digital suite is `60 passed`; digital acceptance is not
-  physical proof.
-- Unchanged thin caps and keeper retain conservative generic DfAM warnings and
-  should be inspected during the repaired print.
-- Use only the root `uv` and npm workspaces. Never edit generated CAD by hand
-  or modify legacy source directories.
+1. create/validate the mesh or 3MF only from authoritative source;
+2. perform DfAM and slicer validation with the actual printer/material profile;
+3. print the straight/curved `4.10..4.30 mm` slot ladder plus cap and keeper
+   fit coupons;
+4. record actual rod fit, wobble, cap insertion, keeper retention, and PETG
+   latch force before a full assembly print.
 
-## Live CAD review
+## Preserve
 
-The Viewer was independently confirmed over Tailscale at:
+- P17 R2 identity and the recorded version semantics. Simulation status is an
+  evidence layer, not a version trigger.
+- Four plates: inner pair fixed, outer pair independently counter-rotating.
+- One offset stepped axle: central spacer and inner hex keys, outer round
+  journals, retained keepers.
+- Pivot behind XT60 on `-Y`, away from solder/wire/service envelopes.
+- `4.20 mm` continuous curved production slots and coupon ladder; never restore
+  the rejected `4.90/7.55 mm` loose slots.
+- Larger right force plate, six permanent caps, real release path, service
+  windows, and dogleg pigtail removal.
+- No yoke/stability bars, shared outer coupling, simulator sidecar, or
+  unnecessary new structure.
+- Parametric source is authoritative; never hand-edit STEP/mesh/3MF outputs.
 
-<http://100.70.144.56:3245/Users/scottchu/.codex/worktrees/79caa408-e84c-4bfe-adfd-fa9ba1a1e186/design-projects/projects/xt60-bend-jig?file=cad%2Fp13_four_plate_three_rod%2Fp13_print_kit.step.py>
+## Acceptance boundary
 
-Viewer restart and artifact-resolution commands are recorded in the active
-iteration's `VALIDATION.md` if the current process is no longer running.
+- CAD/source and the eight written STEP files: accepted for fingerprint
+  `24f5d752...`.
+- Viewer: only claim ready after exact page HTTP `200` and exact artifact state
+  `ready` are verified in the current session.
+- Mesh/DfAM/slicer/3MF: pending.
+- Physical: pending. Do not describe flexure lock, keeper/cap retention, slot
+  fit, wobble, heat, wear, vibration, solder/removal ergonomics, springback, or
+  self-lock as proven.
+
+The canonical `main` checkout contains a user-modified legacy P13
+`p13_print_kit.3mf`. It is unrelated to P17 R2 and must remain untouched.

@@ -39,3 +39,86 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
 
 - The latest print has not passed assembly because of the center-hole fit failure.
 - After repair, record actual wire OD, dry `0..27 deg` motion, first contact, locked preload, binding, cap retention/removal, insulation condition, XT60 body loading, soldering access, PETG heat response, completed-part removal, cooled angle, and springback.
+
+## `2026-08-23` — P13 physical assembly and counter-twist requirements
+
+- Context: user supplied three photos after handling the printed P13 assembly.
+- Photo references and SHA-256:
+  - `/tmp/codex-remote-attachments/01a02c54-c344-75f0-a983-e2e2dd8162a7/B931B501-4470-4E89-82E8-BD46F0E51353/1-Photo-1.jpg`: `8604131d1b6ba3e636492a964d0c3d92811041bbf93696afefe0a8a20a976f93`.
+  - `/tmp/codex-remote-attachments/01a02c54-c344-75f0-a983-e2e2dd8162a7/B931B501-4470-4E89-82E8-BD46F0E51353/2-Photo-2.jpg`: `d740f4e252e0bd1636dd674480c865949c3dbde21c6c6e2522d3a4e602c362ec`.
+  - `/tmp/codex-remote-attachments/01a02c54-c344-75f0-a983-e2e2dd8162a7/B931B501-4470-4E89-82E8-BD46F0E51353/3-Photo-3.jpg`: `8d12c39427823ff36c4205e70716db6df1f166aab87d113b7a0a767bb7f079fe`.
+- User observations and requirements:
+  - Six rod-end caps are permanent; none are removable/service caps.
+  - Four physical P13 caps fit the nominal rods; two were too tight to push onto the same nominal rods.
+  - Two inner plates are fixed/grounded and do not rotate.
+  - Two outer plates are the user-gripped rotating elements and rotate in opposite directions as a relative twist.
+  - Outer plates must be larger than inner plates. The primary force/actuator outer plate should be slightly larger or provide a quantitatively larger grip/lever affordance.
+  - P13's prescribed `LOCKED` pose is not proof of locking; a new design needs an explicit ground/reaction path and lock concept.
+- Photo observations:
+  - Photos 1 and 2 show CAD Viewer states with central shaft/keeper and colored slot/plate geometry that can read as moving holes or slots.
+  - Photo 3 shows the physical P13 assembly with rods protruding, caps on rod ends, and a large middle spacing between the principal plates.
+- Verified P13 nominal context supplied for P17 R2:
+  - inner clear span `26.2 mm` vs XT60 body width `15.9 mm`;
+  - rod length `50.0 mm`;
+  - printed D-shaft total `45.275 mm`;
+  - principal plate stack `37.4 mm`;
+  - left cap `ID3.90` on `OD4.00` rod equals `0.10 mm` diametral interference.
+- Limitation: the photos and hand observations do not prove cap retention, final cap interference, lock force, wire holding force, heat response, cycling durability, or springback.
+- Design implication: P17 R2 must re-derive inner spacing, stack, rod length, cap engagement, fixed/moving roles, and lock path together. Do not preserve the `50.0 mm` rod freeze or `ID3.90` cap interference as accepted.
+
+## `2026-08-24` — P17 simulator rejected; simulation skipped
+
+- Context: the user reviewed the live P17 simulator over Tailscale.
+- User observation: the simulator was unacceptable because the visible holes or slots appeared to move with the animation.
+- User decision: skip simulation rather than repair or iterate it.
+- Disposition: P17 R1 simulator evidence is rejected for product-direction approval even though its deterministic tests had passed. It must not be used as motion, architecture, CAD, or physical acceptance evidence.
+- Version implication: this rejects the P17 R1 simulator artifact and its evidence, not the P17 counter-twist design version. Direct CAD, fit, lock, yoke, hub, rod, and cap refinements continue as P17 R2.
+- Next-direction implication: preserve the physical mechanism requirements: fixed inner plates, opposite-rotating outer plates, a slightly larger primary force-side outer plate or quantified larger primary grip, six permanent caps, re-derived rod/stack/cap geometry, and real lock/reaction architecture. Do not copy the rejected simulator geometry or its provisional `18.5/64/60/50 mm` choices into P17 R2 CAD as accepted dimensions.
+
+## `2026-08-24` — P17-D02 center-bar architecture correction
+
+- Context: user clarified that P17 R2 should not add three yoke/stability bars
+  and should instead use the original good four-plate plus one center-bar
+  architecture.
+- User decision: this is a refinement based on the prior version, not a
+  redesign and not a new `P` number.
+- Architecture direction:
+  - one-piece stepped center axle;
+  - larger central hex spacer section sets the fixed-inner clear span and
+    provides axial shoulders;
+  - smaller hex key sections pass through matching inner-plate hex bores so
+    both inner plates are rotationally fixed and seated against the shoulders;
+  - outer round journal sections support independent opposite rotation of the
+    two outer plates;
+  - thin outer keepers retain the axial stack;
+  - no shared same-direction actuator coupling through the axle.
+- Design implication: remove yoke/stability bars and yoke socket/tenon
+  requirements from P17 R2 docs. Re-derive stack, rod, journal, keeper, and
+  collision/service gates around the stepped center axle, especially because it
+  crosses the XT60/wire span.
+
+## `2026-08-24` — P17-D03 center-axle numeric/assembly correction
+
+- Context: a read-only audit of the first center-axle implementation attempt
+  exposed an impossible assembly path in the P17-D02 provisional defaults.
+- Observation: an inner hex key/bore around `AF6` cannot slide over a round
+  journal around `OD8`, contradicting the intended assembly sequence where the
+  fixed inner plate is pushed over the outer round section before seating on
+  the inner hex key.
+- User decision: this is a focused P17 R2 refinement, not a new `P` version.
+- Corrected design implication:
+  - the round journal OD must be smaller than the fixed-inner hex bore
+    inscribed diameter, which is the across-flats dimension for a regular hex
+    bore;
+  - coherent provisional defaults are central spacer hex `AF10`, inner key
+    `AF8`, fixed-inner hex bore about `AF8.15`, round journal about `OD7.60`,
+    and outer bearing bore about `7.90`;
+  - the per-side axle segment must run from central spacer shoulder through
+    full inner hex key engagement, running gap, full outer plate thickness,
+    keeper clearance, and an actual retained keeper seat;
+  - the axle solid must extend under the keeper, and a keeper must be retained
+    by modeled press fit, seat/groove, split keeper, or equivalent actual
+    geometry rather than represented as a floating ring.
+- Limitation: these are CAD defaults and assembly invariants. Print fit,
+  keeper installation/retention, PETG wear, and real force behavior remain
+  physical gates.
