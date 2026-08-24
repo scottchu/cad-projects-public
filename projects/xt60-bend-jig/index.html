@@ -6,57 +6,57 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#111512">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111512'/%3E%3Cpath d='M17 19h30v26H17z' fill='%23f1bd2c'/%3E%3Cpath d='M23 25h18v14H23z' fill='%23111512'/%3E%3C/svg%3E">
-  <title>XT60 three-rod cam bender</title>
+  <title>XT60 counter-twist bend jig</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="sim-shell">
     <section class="workspace">
       <section class="viewer" aria-labelledby="sceneTitle">
-        <canvas id="mechanismCanvas" aria-label="Interactive three-dimensional XT60 three-rod cam bending mechanism"></canvas>
+        <canvas id="mechanismCanvas" aria-label="Interactive three-dimensional XT60 counter-twist three-rod bending mechanism"></canvas>
         <header class="viewer-header">
-          <div class="brand-lockup"><span class="brand-mark">X60</span><div><b>CAM LAB</b><small>one shaft / three synchronized rods</small></div></div>
+          <div class="brand-lockup"><span class="brand-mark">X60</span><div><b>TWIST LAB</b><small>grounded inner guides / opposed outer plates</small></div></div>
           <div class="camera-toolbar" role="group" aria-label="Camera view">
             <button type="button" data-camera="iso" class="is-active" aria-pressed="true">ISO</button>
             <button type="button" data-camera="side" aria-pressed="false">SIDE</button>
             <button type="button" data-camera="top" aria-pressed="false">TOP</button>
           </div>
         </header>
-        <div class="dimension-chip">3 × Ø4×50 · 6 CAM SLOTS · 1 SHAFT</div>
-        <div class="scene-caption"><span id="sceneTitle">MECHANISM OPEN</span><small id="sceneDescription">All three rods are retracted. The ESC remains below the flight controller and the leads begin horizontal.</small></div>
+        <div class="dimension-chip">3 × Ø4×50 · 6 PERMANENT CAPS · 18.5 mm INNER SPAN</div>
+        <div class="scene-caption"><span id="sceneTitle">GROUNDED INNER GUIDES · OPEN</span><small id="sceneDescription">Only the outer plates rotate; the yoke and inner guide tracks remain grounded.</small></div>
         <div class="viewer-legend" aria-label="Scene legend">
           <span><i class="legend-dot rod"></i>moving rods</span>
-          <span><i class="legend-dot cam"></i>cam plates</span>
+          <span><i class="legend-dot cam"></i>outer counter-twist plates</span>
           <span><i class="legend-dot wire"></i>XT60 leads</span>
-          <span><i class="legend-dot lock"></i>shaft lock</span>
+          <span><i class="legend-dot lock"></i>grounded detent concept</span>
         </div>
       </section>
 
       <aside class="controls" aria-label="Cam mechanism controls">
         <header class="control-heading">
-          <div><span class="eyebrow">FPV STACK / JIG 03</span><h1>Three-rod cam bender</h1><small>Three rods move together from one dial</small></div>
+          <div><span class="eyebrow">P17 / SIMULATOR-FIRST</span><h1>Counter-twist bend jig</h1><small>One relative twist drives complementary tracks</small></div>
           <button id="resetButton" class="button-quiet" type="button">Reset</button>
         </header>
 
         <section class="drive-panel" aria-labelledby="driveTitle">
-          <div class="section-heading"><span id="driveTitle">Shared cam drive</span><b id="lockReadout">UNLOCKED</b></div>
-          <label class="range-label" for="angleSlider"><span>Dial angle</span><output id="angleReadout">0°</output></label>
-          <input id="angleSlider" type="range" min="0" max="80" step="0.5" value="0">
-          <div class="range-scale"><span>OPEN · 0°</span><span>RISE · 70°</span><span>DWELL · 80°</span></div>
+          <div class="section-heading"><span id="driveTitle">Relative counter-twist</span><b id="lockReadout">UNLOCKED</b></div>
+          <label class="range-label" for="angleSlider"><span>Relative twist θ</span><output id="angleReadout">0°</output></label>
+          <input id="angleSlider" type="range" min="0" max="54" step="0.5" value="0">
+          <div class="range-scale"><span>OPEN · 0°</span><span>CONTACT · 44°</span><span>STOP · 54°</span></div>
           <div class="drive-actions">
             <button id="openButton" type="button">Open</button>
-            <button id="cycleButton" class="button-primary" type="button">Run bend</button>
+            <button id="cycleButton" class="button-primary" type="button">Run counter-twist</button>
             <button id="closeButton" type="button">Close</button>
           </div>
-          <button id="lockButton" class="lock-button" type="button" aria-pressed="false">Lock shaft here</button>
-          <p class="drive-note">The lock captures the shared shaft at any dial angle. Unlock before changing position.</p>
+          <button id="lockButton" class="lock-button" type="button" aria-pressed="false">Lock at 54° hard stop</button>
+          <p class="drive-note">Kinematic lock concept only: a grounded detent at the right primary plate freezes the hard-stop pose. Physical lock force and self-lock remain pending.</p>
         </section>
 
         <section class="readout-panel" aria-labelledby="readoutTitle">
           <div class="section-heading"><span id="readoutTitle">Live geometry</span><b>MM</b></div>
           <dl class="readout-grid">
             <div><dt>Common travel</dt><dd id="travelReadout">0.00</dd></div>
-            <div><dt>Cam progress</dt><dd id="progressReadout">0%</dd></div>
+            <div><dt>Counter-twist progress</dt><dd id="progressReadout">0%</dd></div>
             <div><dt>Rod hardware</dt><dd>3 × Ø4 × 50</dd></div>
             <div><dt>Modeled skew</dt><dd id="skewReadout">0.000</dd></div>
             <div><dt>Wire target</dt><dd>12 AWG · Ø4.3</dd></div>
@@ -65,18 +65,18 @@
         </section>
 
         <section class="architecture-panel" aria-labelledby="architectureTitle">
-          <div class="section-heading"><span id="architectureTitle">Architecture</span><b>1 DOF</b></div>
+          <div class="section-heading"><span id="architectureTitle">Kinematic concept</span><b>1 DOF</b></div>
           <ol class="architecture-list">
-            <li><b>Two mirrored cam plates</b><span>Three curved grooves on each side rotate on the same keyed shaft.</span></li>
-            <li><b>Six straight guides</b><span>Each rod end stays on its prescribed approach line while the cam turns.</span></li>
-            <li><b>Bottom ESC → 90° up</b><span>Red and black leads leave the power pads horizontally and rise to the XT60.</span></li>
+            <li><b>Fixed inner frame</b><span>Two grounded inner plates carry straight tracks and react rod load through the yoke.</span></li>
+            <li><b>Complementary outer tracks</b><span>Right primary (+θ/2) and left secondary (−θ/2) counter-rotate while reconstructing common rod poses.</span></li>
+            <li><b>Opposed-bevel relation</b><span>Equal-pitch side bevels with a grounded carrier/idler depict a 1:1 opposite relation; physical proof is pending.</span></li>
           </ol>
         </section>
 
-        <footer class="scope-note">KINEMATIC VISUALIZATION · 12 AWG PROFILE · HEAT / FORCE REQUIRE PHYSICAL TESTING</footer>
+        <footer class="scope-note">KINEMATIC CONCEPT · 90° TARGET · CAP FIT / LOCK FORCE / SELF-LOCK / HEAT REQUIRE PHYSICAL TESTING</footer>
       </aside>
     </section>
   </main>
-  <script src="dist/xt60-bend-jig.bundle.js?v=three-cam-v1"></script>
+  <script src="dist/xt60-bend-jig.bundle.js?v=p17-counter-twist-v1"></script>
 </body>
 </html>

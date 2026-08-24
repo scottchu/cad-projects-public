@@ -39,3 +39,23 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
 
 - The latest print has not passed assembly because of the center-hole fit failure.
 - After repair, record actual wire OD, dry `0..27 deg` motion, first contact, locked preload, binding, cap retention/removal, insulation condition, XT60 body loading, soldering access, PETG heat response, completed-part removal, cooled angle, and springback.
+
+## `2026-08-23` — P13 physical assembly and P17 counter-twist requirements
+
+- Context: user supplied three photos and corrected the next direction to simulator-first P17 counter-twist architecture.
+- Photo references and SHA-256:
+  - `1-Photo-1.jpg`: `8604131d1b6ba3e636492a964d0c3d92811041bbf93696afefe0a8a20a976f93`.
+  - `2-Photo-2.jpg`: `d740f4e252e0bd1636dd674480c865949c3dbde21c6c6e2522d3a4e602c362ec`.
+  - `3-Photo-3.jpg`: `8d12c39427823ff36c4205e70716db6df1f166aab87d113b7a0a767bb7f079fe`.
+- User observations and requirements:
+  - Six rod-end caps are permanent; none are removable/service caps.
+  - Four physical P13 caps fit the nominal rods; two were too tight to push onto the same nominal rods.
+  - Two inner plates are fixed/grounded and do not rotate.
+  - Two outer plates are the user-gripped rotating elements and rotate in opposite directions as a relative twist.
+  - Outer plates must be larger than inner plates. The primary force/actuator outer plate should be slightly larger and visually obvious.
+  - P13's prescribed `LOCKED` pose is not proof of locking; a new design needs an explicit ground/reaction path and lock concept.
+- Photo observations:
+  - Photos 1 and 2 show the P13 CAD viewer state with a central shaft/keeper concept and same-direction keyed rotating-plate architecture.
+  - Photo 3 shows the physical P13 assembly with rods protruding, caps on rod ends, and a large middle spacing between the principal plates.
+- Limitation: the photos and hand observations do not prove cap retention, final cap interference, lock force, wire holding force, heat response, cycling durability, or springback.
+- Design implication: P17 must supersede the P13 shared same-direction actuator architecture in a simulator before CAD, represent permanent caps without removable-cap wording, and treat cap fit as process-variable until a focused physical coupon or assembly observation resolves it.

@@ -1,334 +1,44 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
-import { allRodPoses, CAM, camProgressFromAngle, camSlotSamples, RODS, sharedCamAngleRadians, WIRE } from "./cam-contract.js";
+import { allRodPoses, CAM, RODS, sideRotationRadians, sideSlotSamples, WIRE } from "./cam-contract.js";
 
 const MAX_BUFFER_PIXELS = 2_073_600;
-const SIDE_X = CAM.sidePlateOuterSpan / 2;
-export const RENDER_GEOMETRY = Object.freeze({
-  escPadCenterY: -5.55,
-  escPadHeight: 0.7,
-  escPadSurfaceY: -5.2,
-  wireCenterY: -3.05,
-  mechanismYOffset: -3.05,
-  leadLength: 44,
-});
-
-export const CAMERA_PRESETS = Object.freeze({
-  iso: Object.freeze({ position: [102, 67, 92], target: [0, 1, 15] }),
-  side: Object.freeze({ position: [122, 3, 15], target: [0, 1, 15] }),
-  top: Object.freeze({ position: [0.01, 132, 13], target: [0, -1, 13] }),
-});
-
-export function boundedBufferSize(cssWidth, cssHeight, devicePixelRatio = 1) {
-  const width = Math.max(1, Math.round(Number(cssWidth) || 0));
-  const height = Math.max(1, Math.round(Number(cssHeight) || 0));
-  let dpr = Math.min(1.6, Math.max(1, Number(devicePixelRatio) || 1));
-  if (width * height * dpr * dpr > MAX_BUFFER_PIXELS) dpr *= Math.sqrt(MAX_BUFFER_PIXELS / (width * height * dpr * dpr));
-  return { width, height, dpr, bufferPixels: Math.floor(width * dpr) * Math.floor(height * dpr) };
+const INNER_X = CAM.innerClearSpan / 2 + 1.4;
+const OUTER_X = 18;
+export const RENDER_GEOMETRY = Object.freeze({ innerClearSpan: CAM.innerClearSpan, xt60EnvelopeWidth: CAM.xt60EnvelopeWidth, leadLength: 44 });
+export const P17_VISUAL_COUNTS = Object.freeze({ fixedInnerPlates: 2, outerGripPlates: 2, permanentRodEndCaps: 6 });
+export const CAMERA_PRESETS = Object.freeze({ iso: Object.freeze({ position: [104, 70, 92], target: [0, 0, 13] }), side: Object.freeze({ position: [118, 7, 15], target: [0, 0, 13] }), top: Object.freeze({ position: [0.01, 132, 13], target: [0, 0, 13] }) });
+export function boundedBufferSize(cssWidth, cssHeight, devicePixelRatio = 1) { const width = Math.max(1, Math.round(Number(cssWidth) || 0)); const height = Math.max(1, Math.round(Number(cssHeight) || 0)); let dpr = Math.min(1.6, Math.max(1, Number(devicePixelRatio) || 1)); if (width * height * dpr * dpr > MAX_BUFFER_PIXELS) dpr *= Math.sqrt(MAX_BUFFER_PIXELS / (width * height * dpr * dpr)); return { width, height, dpr, bufferPixels: Math.floor(width * dpr) * Math.floor(height * dpr) }; }
+function roundedBox(width, height, depth, radius, material) { const mesh = new THREE.Mesh(new RoundedBoxGeometry(width, height, depth, 4, radius), material); mesh.castShadow = true; mesh.receiveShadow = true; return mesh; }
+function cylinderAlongX(radius, length, material, segments = 40) { const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, length, segments), material); mesh.rotation.z = Math.PI / 2; mesh.castShadow = true; mesh.receiveShadow = true; return mesh; }
+function tube(points, radius, material) { const path = new THREE.CurvePath(); for (let i = 1; i < points.length; i += 1) path.add(new THREE.LineCurve3(points[i - 1], points[i])); const mesh = new THREE.Mesh(new THREE.TubeGeometry(path, Math.max(1, points.length * 2), radius, 8, false), material); mesh.castShadow = true; return mesh; }
+function outerPlate(side, materials) { const sideName = side < 0 ? "left-secondary" : "right-primary"; const diameter = side < 0 ? CAM.secondaryOuterDiameter : CAM.primaryOuterDiameter; const group = new THREE.Group(); group.name = `${sideName}-outer-counterrotating-grip-plate`; group.position.set(side * OUTER_X, CAM.center.y, CAM.center.z);
+  const disk = cylinderAlongX(diameter / 2, 3.2, materials.outer, 72); disk.name = `${sideName}-outer-plate-diameter-${diameter}`; group.add(disk);
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(diameter / 2 - 2, 1.35, 12, 72), materials.grip); rim.rotation.y = Math.PI / 2; rim.name = `${sideName}-grip-rim`; group.add(rim);
+  for (const rod of RODS) { const points = sideSlotSamples(rod.id, side < 0 ? "left" : "right", 121).map(p => new THREE.Vector3(side * 1.8, p.y, p.z)); const groove = tube(points, 1.55, materials.slot); groove.name = `${sideName}-complementary-cam-slot-${rod.id}`; group.add(groove); }
+  const hub = cylinderAlongX(5, 5, materials.hub); hub.name = `${sideName}-equal-pitch-bevel-hub`; group.add(hub); return group;
 }
-
-function roundedBox(width, height, depth, radius, material) {
-  const mesh = new THREE.Mesh(new RoundedBoxGeometry(width, height, depth, 4, radius), material);
-  mesh.castShadow = true;
-  mesh.receiveShadow = true;
-  return mesh;
-}
-
-function cylinderAlongX(radius, length, material, segments = 36) {
-  const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, length, segments), material);
-  mesh.rotation.z = Math.PI / 2;
-  mesh.castShadow = true;
-  mesh.receiveShadow = true;
-  return mesh;
-}
-
-function tubeFromPoints(points, radius, material, segments = 48) {
-  const path = new THREE.CurvePath();
-  for (let index = 1; index < points.length; index += 1) path.add(new THREE.LineCurve3(points[index - 1], points[index]));
-  const mesh = new THREE.Mesh(new THREE.TubeGeometry(path, Math.max(1, segments), radius, 10, false), material);
-  mesh.castShadow = true;
-  mesh.receiveShadow = true;
-  return mesh;
-}
-
-function makeGuide(side, rod, materials) {
-  const group = new THREE.Group();
-  group.name = `${side < 0 ? "left" : "right"}-straight-guide-${rod.id}`;
-  const x = side * (SIDE_X + 2.7);
-  const start = new THREE.Vector3(x, rod.open.y + RENDER_GEOMETRY.mechanismYOffset, rod.open.z);
-  const end = new THREE.Vector3(x, rod.closed.y + RENDER_GEOMETRY.mechanismYOffset, rod.closed.z);
-  const rail = tubeFromPoints([start, end], 3.1, materials.guide, 12);
-  rail.name = `${group.name}-body`;
-  const channel = tubeFromPoints([start, end], 1.8, materials.guideChannel, 12);
-  channel.name = `${group.name}-channel`;
-  group.add(rail, channel);
-  return group;
-}
-
-function makeCamPlate(side, materials) {
-  const sideName = side < 0 ? "left" : "right";
-  const group = new THREE.Group();
-  group.name = `${sideName}-rotating-three-slot-cam-plate`;
-  group.position.set(side * SIDE_X, CAM.center.y + RENDER_GEOMETRY.mechanismYOffset, CAM.center.z);
-
-  const disk = cylinderAlongX(CAM.camPlateDiameter / 2, 2.8, materials.cam, 72);
-  disk.name = `${sideName}-cam-plate-body`;
-  group.add(disk);
-
-  const faceX = side * 1.55;
-  for (const rod of RODS) {
-    const points = camSlotSamples(rod.id, 121).map(sample => new THREE.Vector3(faceX, sample.y, sample.z));
-    const groove = tubeFromPoints(points, CAM.grooveWidth / 2, materials.groove, 120);
-    groove.name = `${sideName}-curved-cam-slot-${rod.id}`;
-    const centerline = tubeFromPoints(points, 0.34, materials.slotCenter, 120);
-    centerline.name = `${sideName}-cam-slot-centerline-${rod.id}`;
-    group.add(groove, centerline);
-  }
-
-  const hub = cylinderAlongX(CAM.shaftDiameter / 2 + 1.7, 4.2, materials.hub, 40);
-  hub.name = `${sideName}-keyed-shaft-hub`;
-  group.add(hub);
-  return group;
-}
-
-export function wirePathPoints(angleRadians, x = 0) {
-  const horizontalRun = 16;
-  const arcLength = WIRE.bendRadius * angleRadians;
-  const tail = Math.max(0, RENDER_GEOMETRY.leadLength - horizontalRun - arcLength);
-  const baseY = RENDER_GEOMETRY.wireCenterY;
-  const points = [new THREE.Vector3(x, baseY, 0), new THREE.Vector3(x, baseY, horizontalRun)];
-  const samples = 18;
-  for (let index = 1; index <= samples; index += 1) {
-    const q = angleRadians * index / samples;
-    const phi = -Math.PI / 2 + q;
-    points.push(new THREE.Vector3(x, baseY + WIRE.bendCenter.y + WIRE.bendRadius * Math.sin(phi), WIRE.bendCenter.z + WIRE.bendRadius * Math.cos(phi)));
-  }
-  const end = points.at(-1);
-  points.push(new THREE.Vector3(x, end.y + tail * Math.sin(angleRadians), end.z + tail * Math.cos(angleRadians)));
-  return points;
-}
-
-function makeBoard(width, depth, material, name) {
-  const group = new THREE.Group();
-  group.name = name;
-  const board = roundedBox(width, 2.2, depth, 1.3, material);
-  group.add(board);
-  return group;
-}
-
-function makeXt60(materials) {
-  const group = new THREE.Group();
-  group.name = "xt60-connector-following-bent-leads";
-  const body = roundedBox(16, 10, 11, 2, materials.xt60);
-  body.name = "xt60-yellow-body";
-  group.add(body);
-  for (const x of [-4.2, 4.2]) {
-    const socket = cylinderAlongX(1.8, 0.8, materials.socket, 24);
-    socket.position.set(x, 0, -5.55);
-    group.add(socket);
-  }
-  return group;
-}
-
+function fixedInnerPlate(side, materials) { const group = new THREE.Group(); const name = side < 0 ? "left" : "right"; group.name = `${name}-fixed-grounded-inner-guide-plate`; group.position.set(side * INNER_X, CAM.center.y, CAM.center.z); const disk = cylinderAlongX(CAM.innerDiameter / 2, 2.8, materials.inner, 64); disk.name = `${name}-fixed-inner-diameter-50`; group.add(disk); for (const rod of RODS) { const open = rod.open; const closed = { z: open.z + CAM.totalStroke * rod.direction.z, y: open.y + CAM.totalStroke * rod.direction.y }; const track = tube([new THREE.Vector3(side * 1.55, open.y - CAM.center.y, open.z - CAM.center.z), new THREE.Vector3(side * 1.55, closed.y - CAM.center.y, closed.z - CAM.center.z)], 1.25, materials.guideTrack); track.name = `${name}-fixed-straight-guide-track-${rod.id}`; group.add(track); } return group; }
+function wirePathPoints(angleRadians, x) { const horizontal = 15; const arc = WIRE.bendRadius * angleRadians; const tail = Math.max(0, RENDER_GEOMETRY.leadLength - horizontal - arc); const points = [new THREE.Vector3(x, -7, 0), new THREE.Vector3(x, -7, horizontal)]; for (let i = 1; i <= 18; i += 1) { const q = angleRadians * i / 18; points.push(new THREE.Vector3(x, -7 + 7 + WIRE.bendRadius * Math.sin(-Math.PI / 2 + q), 16 + WIRE.bendRadius * Math.cos(-Math.PI / 2 + q))); } const end = points.at(-1); points.push(new THREE.Vector3(x, end.y + tail * Math.sin(angleRadians), end.z + tail * Math.cos(angleRadians))); return points; }
 export function mount({ canvas, onReady } = {}) {
-  if (!canvas?.parentElement) throw new Error("A bounded canvas is required");
-  const reducedMotion = globalThis.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: "high-performance" });
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.08;
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.setClearColor(0xd5d2c8, 1);
-
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xd5d2c8);
-  scene.fog = new THREE.Fog(0xd5d2c8, 125, 210);
-  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 400);
-  const controls = new OrbitControls(camera, canvas);
-  controls.enableDamping = !reducedMotion;
-  controls.dampingFactor = 0.075;
-  controls.enablePan = false;
-  controls.minDistance = 52;
-  controls.maxDistance = 175;
-  controls.maxPolarAngle = Math.PI * 0.51;
-
-  const materials = {
-    steel: new THREE.MeshStandardMaterial({ color: 0xbcc8c8, roughness: 0.2, metalness: 0.9 }),
-    cam: new THREE.MeshPhysicalMaterial({ color: 0x2e7650, roughness: 0.5, metalness: 0.04, transparent: true, opacity: 0.26, depthWrite: false, side: THREE.DoubleSide }),
-    groove: new THREE.MeshStandardMaterial({ color: 0x101713, roughness: 0.82 }),
-    slotCenter: new THREE.MeshBasicMaterial({ color: 0xffcb3d }),
-    guide: new THREE.MeshStandardMaterial({ color: 0x244031, roughness: 0.62 }),
-    guideChannel: new THREE.MeshStandardMaterial({ color: 0x75877b, roughness: 0.55 }),
-    hub: new THREE.MeshStandardMaterial({ color: 0x17231c, roughness: 0.42, metalness: 0.35 }),
-    follower: new THREE.MeshStandardMaterial({ color: 0xebb52c, roughness: 0.38, metalness: 0.2 }),
-    shaft: new THREE.MeshStandardMaterial({ color: 0x555f5d, roughness: 0.24, metalness: 0.8 }),
-    dial: new THREE.MeshStandardMaterial({ color: 0x151a16, roughness: 0.5 }),
-    lock: new THREE.MeshStandardMaterial({ color: 0xf1bd2c, roughness: 0.38 }),
-    esc: new THREE.MeshStandardMaterial({ color: 0x202421, roughness: 0.76 }),
-    fc: new THREE.MeshStandardMaterial({ color: 0x353a36, roughness: 0.68 }),
-    pad: new THREE.MeshStandardMaterial({ color: 0xd6a636, roughness: 0.3, metalness: 0.72 }),
-    red: new THREE.MeshStandardMaterial({ color: 0xd83e36, roughness: 0.6 }),
-    black: new THREE.MeshStandardMaterial({ color: 0x171918, roughness: 0.68 }),
-    xt60: new THREE.MeshStandardMaterial({ color: 0xe7a91f, roughness: 0.52 }),
-    socket: new THREE.MeshStandardMaterial({ color: 0x343934, roughness: 0.38, metalness: 0.55 }),
-    carbon: new THREE.MeshStandardMaterial({ color: 0x171a18, roughness: 0.7, metalness: 0.18 }),
-  };
-
-  const mechanism = new THREE.Group();
-  mechanism.name = "three-rods-two-mirrored-cams-one-shared-shaft";
-  scene.add(mechanism);
-
-  const camPlates = [-1, 1].map(side => makeCamPlate(side, materials));
-  mechanism.add(...camPlates);
-  for (const side of [-1, 1]) for (const rod of RODS) mechanism.add(makeGuide(side, rod, materials));
-
-  const shaft = cylinderAlongX(CAM.shaftDiameter / 2, 68, materials.shaft, 40);
-  shaft.name = "single-shared-keyed-cam-shaft";
-  const shaftWorldY = CAM.center.y + RENDER_GEOMETRY.mechanismYOffset;
-  shaft.position.set(0, shaftWorldY, CAM.center.z);
-  mechanism.add(shaft);
-
-  const dial = new THREE.Group();
-  dial.name = "single-left-hand-dial";
-  dial.position.set(-36, shaftWorldY, CAM.center.z);
-  const dialBody = cylinderAlongX(8.2, 6, materials.dial, 40);
-  dial.add(dialBody);
-  const dialMarker = roundedBox(6.2, 2.2, 2.2, .5, materials.lock);
-  dialMarker.position.set(-3.3, 6.3, 0);
-  dial.add(dialMarker);
-  mechanism.add(dial);
-
-  const brake = new THREE.Group();
-  brake.name = "stationary-split-shaft-brake-grounded-to-left-frame";
-  brake.position.set(-30.5, shaftWorldY, CAM.center.z);
-  const brakeAnchor = roundedBox(11, 4, 5, .8, materials.guide);
-  brakeAnchor.name = "fixed-brake-anchor-to-side-mechanism";
-  brakeAnchor.position.x = 5.2;
-  brake.add(brakeAnchor);
-  for (const rotation of [0, Math.PI]) {
-    const geometry = new THREE.TorusGeometry(4.3, 1.25, 12, 32, Math.PI * .86);
-    geometry.rotateY(Math.PI / 2);
-    geometry.rotateX(rotation);
-    const half = new THREE.Mesh(geometry, materials.guide);
-    half.name = "fixed-split-brake-half";
-    brake.add(half);
-  }
-  const brakeShoe = roundedBox(4.4, 2.4, 6.2, .7, materials.lock);
-  brakeShoe.name = "shaft-brake-shoe-closes-without-rotating";
-  brakeShoe.position.y = 6.2;
-  brake.add(brakeShoe);
-  mechanism.add(brake);
-
-  const rodMeshes = new Map();
-  const followerMeshes = new Map();
-  for (const rod of RODS) {
-    const mesh = cylinderAlongX(CAM.rodDiameter / 2, CAM.rodLength, materials.steel, 44);
-    mesh.name = `moving-purchased-rod-${rod.id}-diameter4-length50`;
-    mechanism.add(mesh);
-    rodMeshes.set(rod.id, mesh);
-    const followers = [-1, 1].map(side => {
-      const follower = new THREE.Mesh(new THREE.SphereGeometry(2.55, 24, 16), materials.follower);
-      follower.name = `${side < 0 ? "left" : "right"}-cam-follower-${rod.id}`;
-      follower.position.x = side * 25.1;
-      mechanism.add(follower);
-      return follower;
-    });
-    followerMeshes.set(rod.id, followers);
-  }
-
-  const fpv = new THREE.Group();
-  fpv.name = "fpv-frame-with-bottom-esc-power-stack";
-  scene.add(fpv);
-  const armA = roundedBox(80, 2.6, 10, 2, materials.carbon); armA.rotation.y = Math.PI / 4; armA.position.set(0, -13, -12);
-  const armB = roundedBox(80, 2.6, 10, 2, materials.carbon); armB.rotation.y = -Math.PI / 4; armB.position.set(0, -13, -12);
-  fpv.add(armA, armB);
-  const esc = makeBoard(36, 30, materials.esc, "bottom-esc-board-with-power-pads"); esc.position.set(0, -7, -15); fpv.add(esc);
-  const fc = makeBoard(32, 27, materials.fc, "flight-controller-above-esc"); fc.position.set(0, -1, -15); fpv.add(fc);
-  for (const x of [-14, 14]) for (const z of [-25, -5]) {
-    const post = new THREE.Mesh(new THREE.CylinderGeometry(1.8, 1.8, 6, 20), materials.follower);
-    post.position.set(x, -4, z);
-    fpv.add(post);
-  }
-  for (const x of [-4.2, 4.2]) { const pad = roundedBox(6.2, RENDER_GEOMETRY.escPadHeight, 5, .6, materials.pad); pad.name = `bottom-esc-${x < 0 ? "negative" : "positive"}-solder-pad`; pad.position.set(x, RENDER_GEOMETRY.escPadCenterY, -1.8); fpv.add(pad); }
-
-  const wireMeshes = [
-    { x: -4.2, material: materials.black, name: "black-horizontal-to-vertical-lead", mesh: null },
-    { x: 4.2, material: materials.red, name: "red-horizontal-to-vertical-lead", mesh: null },
-  ];
-  const xt60 = makeXt60(materials);
-  scene.add(xt60);
-
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(250, 220), new THREE.MeshStandardMaterial({ color: 0xc4c1b8, roughness: 1 }));
-  ground.rotation.x = -Math.PI / 2; ground.position.y = -15; ground.receiveShadow = true; scene.add(ground);
-  const grid = new THREE.GridHelper(190, 19, 0x8c918b, 0xa5a59d); grid.position.y = -14.9; grid.material.opacity = .2; grid.material.transparent = true; scene.add(grid);
-  scene.add(new THREE.HemisphereLight(0xfffae9, 0x536057, 2.45));
-  const key = new THREE.DirectionalLight(0xffedd0, 4.1); key.position.set(-65, 92, 72); key.castShadow = true; key.shadow.mapSize.set(1536, 1536); scene.add(key);
-  const rim = new THREE.DirectionalLight(0xb9e0ce, 1.7); rim.position.set(70, 35, -55); scene.add(rim);
-
-  let disposed = false;
-  let resizeKey = "";
-  let cameraTween = null;
-
-  function setCamera(name = "iso", instant = false) {
-    const preset = CAMERA_PRESETS[name] || CAMERA_PRESETS.iso;
-    const targetPosition = new THREE.Vector3(...preset.position);
-    const targetLook = new THREE.Vector3(...preset.target);
-    if (instant || reducedMotion) { camera.position.copy(targetPosition); controls.target.copy(targetLook); controls.update(); cameraTween = null; return; }
-    cameraTween = { fromPosition: camera.position.clone(), fromTarget: controls.target.clone(), targetPosition, targetLook, start: performance.now(), duration: 420 };
-  }
-
-  function update(state = {}) {
-    const angle = Number(state.angle) || 0;
-    const angleRadians = sharedCamAngleRadians(angle);
-    const progress = camProgressFromAngle(angle);
-    camPlates.forEach(plate => { plate.rotation.x = -angleRadians; });
-    dial.rotation.x = -angleRadians;
-    brakeShoe.position.y = state.locked ? 3.6 : 6.2;
-
-    for (const pose of allRodPoses(angle)) {
-      const worldY = pose.y + RENDER_GEOMETRY.mechanismYOffset;
-      const mesh = rodMeshes.get(pose.id); mesh.position.set(0, worldY, pose.z);
-      followerMeshes.get(pose.id).forEach(follower => { follower.position.y = worldY; follower.position.z = pose.z; });
-    }
-
-    const bendAngle = progress * Math.PI / 2;
-    for (const wire of wireMeshes) {
-      const points = wirePathPoints(bendAngle, wire.x);
-      const replacement = tubeFromPoints(points, WIRE.radius, wire.material, 80);
-      replacement.name = wire.name;
-      if (wire.mesh) { scene.remove(wire.mesh); wire.mesh.geometry.dispose(); }
-      wire.mesh = replacement;
-      scene.add(replacement);
-    }
-    const end = wirePathPoints(bendAngle, 0).at(-1);
-    xt60.position.set(0, end.y + Math.sin(bendAngle) * 6, end.z + Math.cos(bendAngle) * 6);
-    xt60.rotation.x = -bendAngle;
-  }
-
-  function resize() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    const next = boundedBufferSize(rect.width, rect.height, globalThis.devicePixelRatio || 1);
-    const keyValue = `${next.width}:${next.height}:${next.dpr.toFixed(3)}`;
-    if (keyValue === resizeKey) return;
-    resizeKey = keyValue; renderer.setPixelRatio(next.dpr); renderer.setSize(next.width, next.height, false); camera.aspect = next.width / next.height; camera.updateProjectionMatrix();
-  }
-
-  function draw(time) {
-    if (disposed) return;
-    resize();
-    if (cameraTween) { const raw = Math.min(1, (time - cameraTween.start) / cameraTween.duration); const t = raw * raw * (3 - 2 * raw); camera.position.lerpVectors(cameraTween.fromPosition, cameraTween.targetPosition, t); controls.target.lerpVectors(cameraTween.fromTarget, cameraTween.targetLook, t); if (raw >= 1) cameraTween = null; }
-    controls.update(); renderer.render(scene, camera);
-  }
-
-  const resizeObserver = new ResizeObserver(resize); resizeObserver.observe(canvas.parentElement);
-  setCamera("iso", true); update({ angle: 0, locked: false }); renderer.setAnimationLoop(draw); onReady?.();
-
-  function dispose() {
-    disposed = true; renderer.setAnimationLoop(null); resizeObserver.disconnect(); controls.dispose();
-    scene.traverse(object => { object.geometry?.dispose?.(); if (Array.isArray(object.material)) object.material.forEach(material => material.dispose()); else object.material?.dispose?.(); });
-    renderer.dispose();
-  }
-  return { update, setCamera, dispose };
+  if (!canvas?.parentElement) throw new Error("A bounded canvas is required"); const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: "high-performance" }); renderer.outputColorSpace = THREE.SRGBColorSpace; renderer.shadowMap.enabled = true; renderer.setClearColor(0xd5d2c8, 1);
+  const scene = new THREE.Scene(); scene.background = new THREE.Color(0xd5d2c8); const camera = new THREE.PerspectiveCamera(35, 1, .1, 400); const controls = new OrbitControls(camera, canvas); controls.enableDamping = true; controls.enablePan = false; controls.minDistance = 52; controls.maxDistance = 175;
+  const materials = { steel: new THREE.MeshStandardMaterial({ color: 0xbcc8c8, roughness: .2, metalness: .9 }), outer: new THREE.MeshPhysicalMaterial({ color: 0x317a53, roughness: .48, transparent: true, opacity: .42, side: THREE.DoubleSide }), inner: new THREE.MeshStandardMaterial({ color: 0x334b3d, roughness: .64 }), slot: new THREE.MeshStandardMaterial({ color: 0x172119, roughness: .8 }), guideTrack: new THREE.MeshBasicMaterial({ color: 0xf1bd2c }), grip: new THREE.MeshStandardMaterial({ color: 0x17231c, roughness: .38 }), hub: new THREE.MeshStandardMaterial({ color: 0xd6a636, metalness: .48, roughness: .3 }), cap: new THREE.MeshStandardMaterial({ color: 0xf1bd2c, roughness: .42 }), frame: new THREE.MeshStandardMaterial({ color: 0x244031, roughness: .65 }), lock: new THREE.MeshStandardMaterial({ color: 0xd83e36, roughness: .4 }), wire: new THREE.MeshStandardMaterial({ color: 0xd83e36, roughness: .6 }), xt60: new THREE.MeshStandardMaterial({ color: 0xe7a91f, roughness: .5 }) };
+  const mechanism = new THREE.Group(); mechanism.name = "p17-grounded-inner-frame-counter-twist-mechanism"; scene.add(mechanism);
+  const inners = [-1, 1].map(side => fixedInnerPlate(side, materials)); mechanism.add(...inners);
+  const yoke = new THREE.Group(); yoke.name = "fixed-grounded-inner-yoke-reaction-path"; const bridge = roundedBox(CAM.innerClearSpan + 10, 3.4, 5.2, .8, materials.frame); bridge.position.set(0, CAM.center.y - 22, CAM.center.z); yoke.add(bridge); for (const side of [-1, 1]) { const strut = roundedBox(3.4, 40, 4.2, .8, materials.frame); strut.position.set(side * INNER_X, CAM.center.y - 2, CAM.center.z); yoke.add(strut); } mechanism.add(yoke);
+  const outerLeft = outerPlate(-1, materials); const outerRight = outerPlate(1, materials); mechanism.add(outerLeft, outerRight);
+  const relation = new THREE.Group(); relation.name = "fixed-carrier-opposed-bevel-differential-idler-one-to-one-relation"; const carrier = roundedBox(OUTER_X * 2 + 4, 2.6, 3.2, .6, materials.frame); carrier.position.set(0, CAM.center.y + 24, CAM.center.z); relation.add(carrier); for (const x of [-OUTER_X, OUTER_X]) { const bevel = new THREE.Mesh(new THREE.ConeGeometry(5.8, 3.8, 28), materials.hub); bevel.rotation.z = x < 0 ? -Math.PI / 2 : Math.PI / 2; bevel.position.set(x, CAM.center.y + 20.5, CAM.center.z); bevel.name = `equal-pitch-side-bevel-${x < 0 ? "left" : "right"}`; relation.add(bevel); } const idler = new THREE.Mesh(new THREE.CylinderGeometry(4.2, 4.2, 3.2, 28), materials.hub); idler.rotation.x = Math.PI / 2; idler.position.set(0, CAM.center.y + 22, CAM.center.z); idler.name = "grounded-carrier-opposed-bevel-idler"; relation.add(idler); mechanism.add(relation);
+  const detent = new THREE.Group(); detent.name = "grounded-detent-and-hard-stop-on-right-primary-outer"; const anchor = roundedBox(7, 10, 4, .6, materials.frame); anchor.position.set(OUTER_X - 8, CAM.center.y + 27, CAM.center.z); detent.add(anchor); const pawl = roundedBox(4, 3, 8, .5, materials.lock); pawl.name = "grounded-detent-pawl-kinematic-lock-concept"; pawl.position.set(OUTER_X - 3, CAM.center.y + 23, CAM.center.z); detent.add(pawl); mechanism.add(detent);
+  const rods = new Map(); const caps = []; for (const rod of RODS) { const mesh = cylinderAlongX(CAM.rodDiameter / 2, CAM.rodLength, materials.steel); mesh.name = `purchased-rod-${rod.id}-diameter4-length50`; mechanism.add(mesh); rods.set(rod.id, mesh); for (const side of [-1, 1]) { const cap = cylinderAlongX(3.25, 3, materials.cap); cap.name = `${side < 0 ? "left" : "right"}-permanent-rod-end-cap-${rod.id}`; mechanism.add(cap); caps.push({ side, cap }); } }
+  const xt60 = roundedBox(15.9, 8, 11, 2, materials.xt60); xt60.name = "xt60-envelope-not-clamped-load"; xt60.position.set(0, 0, 16); scene.add(xt60); const wires = [{ x: -4.2, mesh: null }, { x: 4.2, mesh: null }];
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(240, 210), new THREE.MeshStandardMaterial({ color: 0xc4c1b8, roughness: 1 })); ground.rotation.x = -Math.PI / 2; ground.position.y = -31; scene.add(ground); scene.add(new THREE.HemisphereLight(0xfffae9, 0x536057, 2.4)); const key = new THREE.DirectionalLight(0xffedd0, 3.8); key.position.set(-65, 90, 72); key.castShadow = true; scene.add(key);
+  let disposed = false; let resizeKey = "";
+  function setCamera(name = "iso") { const preset = CAMERA_PRESETS[name] || CAMERA_PRESETS.iso; camera.position.set(...preset.position); controls.target.set(...preset.target); controls.update(); }
+  function update(state = {}) { const thetaRel = Number(state.thetaRel) || 0; outerLeft.rotation.x = sideRotationRadians("left", thetaRel); outerRight.rotation.x = sideRotationRadians("right", thetaRel); inners.forEach(inner => { inner.rotation.x = 0; }); detent.children[1].position.y = state.locked ? CAM.center.y + 20.5 : CAM.center.y + 23; for (const pose of allRodPoses(thetaRel)) { rods.get(pose.id).position.set(0, pose.y, pose.z); for (const entry of caps.filter(item => item.cap.name.endsWith(`-${pose.id}`))) entry.cap.position.set(entry.side * (CAM.rodLength / 2 + 1.5), pose.y, pose.z); } const bend = thetaRel / CAM.maxAngleDegrees * Math.PI / 2; for (const wire of wires) { const next = tube(wirePathPoints(bend, wire.x), WIRE.radius, materials.wire); if (wire.mesh) { scene.remove(wire.mesh); wire.mesh.geometry.dispose(); } wire.mesh = next; scene.add(next); } }
+  function resize() { const rect = canvas.parentElement.getBoundingClientRect(); const next = boundedBufferSize(rect.width, rect.height, globalThis.devicePixelRatio || 1); const keyValue = `${next.width}:${next.height}:${next.dpr.toFixed(3)}`; if (keyValue === resizeKey) return; resizeKey = keyValue; renderer.setPixelRatio(next.dpr); renderer.setSize(next.width, next.height, false); camera.aspect = next.width / next.height; camera.updateProjectionMatrix(); }
+  function draw() { if (disposed) return; resize(); controls.update(); renderer.render(scene, camera); }
+  const observer = new ResizeObserver(resize); observer.observe(canvas.parentElement); setCamera("iso"); update({ thetaRel: 0, locked: false }); renderer.setAnimationLoop(draw); onReady?.();
+  return { update, setCamera, dispose() { disposed = true; renderer.setAnimationLoop(null); observer.disconnect(); controls.dispose(); scene.traverse(object => { object.geometry?.dispose?.(); object.material?.dispose?.(); }); renderer.dispose(); } };
 }

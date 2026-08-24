@@ -6,47 +6,54 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p13-r2-center-hole-fit-repair`.
-- Final digital candidate fingerprint:
-  `9f123ad24f46d60fcb89ae305455ba1a0c3b38d4738f82766ec91d02c1350db9`.
-- Authoritative P13 source:
-  `src/xt60_bend_jig/p13_four_plate_three_rod.py`, SHA-256
-  `7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067`.
-- Canonical evidence: iteration `VALIDATION.md`, `REVIEW.md`, and `HANDOFF.md`.
-- Production 3MF:
-  `cad/p13_four_plate_three_rod/p13_print_kit.3mf`, SHA-256
-  `588f11e47c89a64221e527085e560453d4e7e75a7b6ecc00cf448f7d22bf75a7`.
+- Active iteration: `p17-r1-counter-twist-permanent-caps`.
+- Branch: `codex/xt60-p17-counter-twist`.
+- Baseline commit: `7ca4d99ded0c0ccb0f67c0ee56494aa932596da1`.
+- Deterministic simulator candidate fingerprint:
+  `8c57e19ac3ef1f46a4bcab299a679935c638daea0dfe5e0a6fde106f243cb537`.
+- Canonical evidence: current iteration `BRIEF.md`, `DESIGN.md`,
+  `VALIDATION.md`, `REVIEW.md`, and `HANDOFF.md`.
+- Architecture authority: `docs/decisions/ADR-0003-p17-counter-twist-permanent-caps.md`.
 
 ## Immediate task
 
-Do not redesign or further enlarge the fit before physical evidence. Reprint
-the repaired `left_cam` and `right_actuator` plates and test them with the
-unchanged printed shallow-D shaft. Record whether the shaft passes through both
-bores by hand without forcing, binding, visible damage, or unacceptable play.
-If that focused fit passes, complete the documented P13 assembly, dry-motion,
-retention, cycling, wire, heat, removal, cooled-angle, and springback sequence.
-Append the observations to `docs/EXPERIENCE.md` and update all three acceptance
-layers. If it fails, open a new iteration and preserve this one as history.
+Obtain user review of the live P17 simulator. Verify that only the two outer
+plates rotate, they rotate in opposite global directions, both inner plates and
+the yoke remain fixed, the right primary outer plate reads as slightly larger,
+all six permanent caps remain visible, rods remain straight, and the endpoint
+detent/hard-stop concept is understandable.
+
+When a Browser-plugin surface is available, rerun only the blocked
+visual/interactive portion of `P17-V01` against the same fingerprint. Record
+open, mid, closed, and locked views; nonblank canvas and console state; slider,
+open/close/cycle, lock/unlock, and camera interactions.
 
 ## Preserve and do not assume
 
-- Preserve the four-plate/three-purchased-rod architecture, fixed 90-degree
-  outcome, three uncut `OD4 x 50 mm` rods, role-specific rod fits, service
-  order, and source-defined print orientation.
-- The repair changed only the two shared cam D-bore controls to
-  `OD5.75 / AF5.30 mm`; the shaft remains `OD5.60 / AF5.15 mm`.
-- The final relevant digital suite is `60 passed`; digital acceptance is not
-  physical proof.
-- Unchanged thin caps and keeper retain conservative generic DfAM warnings and
-  should be inspected during the repaired print.
-- Use only the root `uv` and npm workspaces. Never edit generated CAD by hand
-  or modify legacy source directories.
+- Preserve the user requirement: two inner plates fixed; two outer plates
+  counter-rotate; right primary outer is slightly larger; all six caps are
+  permanent.
+- Preserve signed complementary track math and zero rod-end skew. A scene-only
+  sign flip is not an accepted mechanism.
+- Treat the `18.5 mm` clear span, `64/60/50 mm` diameters, opposed-bevel
+  relation, and detent as provisional simulator design choices.
+- Do not claim the schematic opposed-bevel display is buildable hardware.
+- Do not claim cap fit, lock force, self-locking, fixture stiffness, heat,
+  wear, springback, or physical assembly acceptance.
+- Do not generate or modify P17 CAD, STEP, 3MF, slicer, or print artifacts
+  before user simulator-motion approval.
+- Use only the root `uv` and npm workspaces. Never edit generated artifacts by
+  hand.
 
-## Live CAD review
+## Run the simulator
 
-The Viewer was independently confirmed over Tailscale at:
+From the repository root:
 
-<http://100.70.144.56:3245/Users/scottchu/.codex/worktrees/79caa408-e84c-4bfe-adfd-fa9ba1a1e186/design-projects/projects/xt60-bend-jig?file=cad%2Fp13_four_plate_three_rod%2Fp13_print_kit.step.py>
+```sh
+PATH=/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:$PATH \
+  npm test --workspace projects/xt60-bend-jig
+PATH=/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:$PATH \
+  npm run dev --workspace projects/xt60-bend-jig
+```
 
-Viewer restart and artifact-resolution commands are recorded in the active
-iteration's `VALIDATION.md` if the current process is no longer running.
+Open `http://127.0.0.1:4173/projects/xt60-bend-jig/`.

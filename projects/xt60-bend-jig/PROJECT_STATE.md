@@ -1,77 +1,80 @@
 # XT60 bend jig project state
 
-Last updated: `2026-08-22`
+Last updated: `2026-08-23`
 
 ## Baseline
 
 - Canonical project: `projects/xt60-bend-jig`.
-- Requested repair baseline: `b0b79253373c7cf80943e99df8ab799958c50d49`.
-- Repository workflow baselines integrated without overlap or loss:
-  `a5e21e6760d383f900ee30e4457edfb13267e09d` and
-  `1484955cc1cfa64164dbdd1ca1222be658933c8e`.
-- Supported design: P13 four-plate, three-purchased-rod equal-travel mechanism.
-- Authoritative source:
-  `src/xt60_bend_jig/p13_four_plate_three_rod.py`, SHA-256
-  `7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067`.
+- Repository baseline commit: `7ca4d99ded0c0ccb0f67c0ee56494aa932596da1`.
+- Historical fabrication candidate: P13 four-plate, three-rod mechanism. P13
+  remains evidence, but the latest physical assembly observations reject its
+  architecture for the next design.
+- Current architecture decision: `ADR-0003`, P17 simulator-first counter-twist
+  with permanent caps.
 
 ## Active iteration
 
-- Current candidate fingerprint:
-  `9f123ad24f46d60fcb89ae305455ba1a0c3b38d4738f82766ec91d02c1350db9`.
-- Active iteration: `p13-r2-center-hole-fit-repair`; canonical handoff:
-  `docs/iterations/p13-r2-center-hole-fit-repair/HANDOFF.md`.
+- Active iteration: `p17-r1-counter-twist-permanent-caps`.
+- Deterministic simulator candidate fingerprint:
+  `8c57e19ac3ef1f46a4bcab299a679935c638daea0dfe5e0a6fde106f243cb537`.
+- Canonical handoff:
+  `docs/iterations/p17-r1-counter-twist-permanent-caps/HANDOFF.md`.
+- Development branch: `codex/xt60-p17-counter-twist`.
 
 ## Current result
 
-The user's printed "middle stick" is the separate printed shallow-D actuator
-shaft (`OD5.60 / AF5.15 mm`). The failed "center hole" is the one repeated
-printed interface formed by the matching D bores in `left_cam` and
-`right_actuator`. It is not any of the three purchased-rod lanes, fixed C
-journals, keeper, or caps.
+P17 replaces the P13 same-direction shared-D-shaft motion with one relative
+twist input. The two smaller inner plates remain fixed and grounded. The left
+secondary outer plate rotates `-theta_rel / 2`; the larger right primary outer
+plate rotates `+theta_rel / 2`. Complementary side-local tracks reconstruct the
+same world position at both ends of each straight rod.
 
-The smallest source repair enlarged only the named shared cam-D-bore profile:
-`cam_d_bore_od 5.70 -> 5.75 mm` and
-`cam_d_bore_across_flat 5.25 -> 5.30 mm`. The shaft, three uncut
-`OD4.00 x 50.00 mm` rods, architecture, motion/service contract, other fits,
-and source-authored print orientation remain unchanged.
+The simulator shows:
+
+- fixed `50 mm` inner plates tied by a grounded yoke;
+- a `60 mm` left secondary outer grip and `64 mm` right primary outer grip;
+- six permanent rod-end caps, with no removable-cap service role;
+- a provisional `18.5 mm` inner clear span around the `15.9 mm` XT60 envelope;
+- a fixed-carrier opposed-bevel relation as a kinematic concept; and
+- a grounded endpoint detent/hard stop at `theta_rel = 54 deg`.
+
+The `18.5 mm` span, opposed-bevel relation, detent, and cap geometry are
+simulator concepts, not accepted CAD dimensions or physical mechanisms.
 
 ## Acceptance state
 
-- CAD/source: accepted by independent critic, validator, and formal reviewer
-  for the P13 R2 repaired-print candidate. Focused failing-before/passing-after
-  evidence is recorded; the final relevant suite is `60 passed`.
-- Written artifact/slicer: accepted for a repaired Snapmaker U1 PETG test
-  print. Actual STEP solids, motion/service states, source/export parity,
-  snapshots, exact production 3MF integrity/orientation, DfAM, and OrcaSlicer
-  2.4.2 were checked. The unchanged thin caps and keeper retain documented
-  generic DfAM/manufacturing risks.
-- Physical: failed/pending. The latest printed P13 did not assemble at this
-  interface. The repaired cams have not yet been printed, fitted, cycled, or
-  used; no physical acceptance is claimed.
+- Deterministic simulator: accepted for the candidate fingerprint above.
+  Independent tests report `18 passed`, build succeeds, signed left/right track
+  reconstruction has effectively zero skew, and sampled rod states have no
+  collisions.
+- Independent critic: pass/no-blocker for simulator review only.
+- Formal review: conditional pass for PR delivery to user simulator review.
+- Visual/runtime: blocked, not accepted. The validation environment exposed no
+  Browser-plugin surface, so canvas screenshots, console checks, and live UI
+  interaction could not be independently recorded.
+- CAD/STEP/3MF/slicer: not started and not authorized before user simulator
+  motion review.
+- Physical: not accepted. Cap fit, grip effort, fixture stiffness, bevel
+  hardware, lock force/self-lock, heat, wear, cycling, assembly, and springback
+  remain unknown.
 
-## Primary release and live review
+## Live simulator
 
-- Release manifest: `releases/p13-petg-test/release-manifest.json`, SHA-256
-  `406325612e34c5c6fce95d96a2fe074591fdf502f592f172c47d016df5a54356`.
-- Production 3MF: `cad/p13_four_plate_three_rod/p13_print_kit.3mf`, SHA-256
-  `588f11e47c89a64221e527085e560453d4e7e75a7b6ecc00cf448f7d22bf75a7`.
-- Primary STEP: `cad/p13_four_plate_three_rod/p13_print_kit.step`, SHA-256
-  `5237fe9bc908781ae5793c9ab004f4fc51d24720244b26846bb1dacba63256b7`.
-- Tailscale CAD Viewer:
-  <http://100.70.144.56:3245/Users/scottchu/.codex/worktrees/79caa408-e84c-4bfe-adfd-fa9ba1a1e186/design-projects/projects/xt60-bend-jig?file=cad%2Fp13_four_plate_three_rod%2Fp13_print_kit.step.py>
+From the repository root:
 
-## Open risks
+```sh
+PATH=/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:$PATH \
+  npm run dev --workspace projects/xt60-bend-jig
+```
 
-- Digital allowance is `0.15 mm` diametral on both D-profile controls, but a
-  printed-to-printed fit remains sensitive to seam, elephant foot, shrinkage,
-  and orientation.
-- CAD lash and hub-wall margins pass but are small; printed play, torque
-  transfer, hub cracking, wear, and heat response remain unknown.
+Then open `http://127.0.0.1:4173/projects/xt60-bend-jig/`.
 
 ## Next action
 
-Reprint the two repaired cam plates, reuse the unchanged printed D shaft, and
-first verify hand insertion through both stationary bores without forcing or
-damage. If that passes, assemble in the certified service order and run the
-complete dry-motion, retention, cycling, wire, heat, removal, cooled-angle, and
-springback observation sequence before changing acceptance to physical.
+The user must review the live P17 outer-plate counter-twist motion, fixed inner
+plates, primary/secondary size hierarchy, six permanent caps, and endpoint lock
+concept. When a Browser-plugin surface is available, rerun only the visual and
+interactive portion of `P17-V01`. If user review and browser validation pass,
+open the next design iteration for real counter-rotation hardware, grounded
+fixture geometry, lock mechanics, cap-fit experiments, and CAD. Do not generate
+P17 STEP/3MF or print parts before that gate.
