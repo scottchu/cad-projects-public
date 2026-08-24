@@ -97,15 +97,18 @@ Project-specific commands belong in that project's README.
 
 ## CAD preview
 
-Preview an existing Viewer-supported file from any directory:
+Use the installed `cad-viewer` workflow directly with the explicit file to review. The
+workflow starts one Viewer and constructs a link from an absolute workspace path plus
+the artifact path relative to that workspace. Do not add a repository launcher or pin
+an installed plugin-cache version here; the installed workflow is the runtime authority.
 
-```sh
-bin/preview-cad [--sha256 EXPECTED] <workspace-dir> <file-relative-to-workspace>
-```
-
-Both path operands are interpreted from the caller's working directory. The file operand must remain relative to, and canonically contained by, the workspace; use absolute workspace paths when invoking the launcher outside this repository. The optional lowercase SHA-256 pins immutable artifacts before the launcher probes or changes a Viewer process.
-
-On success, stdout contains exactly two ready review links: the local `127.0.0.1:3245` URL and its HTTPS Tailscale Serve form. Startup and reachability diagnostics go to stderr. The launcher reuses only a sole listener positively identified as CAD Viewer by matching process and API PID evidence; otherwise it fails closed or replaces an identified stale Viewer with the newest complete installed runtime.
+A started server or printed URL is not proof that a preview works. Before reporting a
+preview as ready, require both the exact review page to return HTTP `200` and the exact
+artifact endpoint to return HTTP `200` with JSON `state == "ready"`. After inspecting
+the loaded page or snapshot, the general visual claim is limited to “the requested
+artifact rendered with no visible error state.” Any feature-specific visual claim must
+name the inspected features and views. Keep preview readiness separate from CAD,
+slicer, and physical acceptance.
 
 ## Project standards
 

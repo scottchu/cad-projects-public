@@ -209,6 +209,20 @@ Do not use a slicer workaround to hide a source-geometry defect.
 
 After deterministic checks, render and inspect the primary STEP and the views needed to understand it: assembled, exploded/service, and critical closeups. This visual inspection checks intent, usability, and obvious omissions; it does not replace measurements or collision tests, and it is not the formal independent reviewer role described below.
 
+Use the installed `cad-viewer` workflow directly for live review; do not maintain a
+repository wrapper around its runtime or process lifecycle. Give it the explicit file,
+choose an absolute workspace directory, and use the file path relative to that
+workspace in the review URL.
+
+Viewer startup and URL production are not preview-success evidence. Before calling a
+preview ready, independently require the exact review page to return HTTP `200` and
+the exact artifact endpoint to return HTTP `200` with JSON `state == "ready"`. An HTTP
+`200` page alone can still contain an artifact-build error. After visual inspection of
+the loaded page or a snapshot, the general claim is limited to “the requested artifact
+rendered with no visible error state.” Any feature-specific visual claim must name the
+inspected features and views. Record endpoint readiness and visual observations
+separately, and never promote either to CAD, slicer, or physical acceptance.
+
 ### Defect regression
 
 Every concrete defect found by a reviewer, slicer, print, photo, or assembly attempt should produce one focused regression when it can be represented digitally. Keep that regression after the repair. Do not preserve large obsolete suites for rejected designs unless they protect a still-supported baseline.
