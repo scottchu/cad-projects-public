@@ -46,11 +46,20 @@ Future CAD must begin in a new restart namespace, keep named parametric paramete
 
 ## Locked-reference preview
 
-After the root workspace has been synchronized, run this checksum-pinned command from the repository root to launch a local CAD Viewer for the historical imported STEP:
+Use the installed `cad-viewer` workflow directly with this imported STEP:
 
-```sh
-bin/preview-cad --sha256 dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7 \
-  projects/kage/references locked-direct-gear/p3_v3_direct_gear_race_assembled.step
+```text
+projects/kage/references/locked-direct-gear/p3_v3_direct_gear_race_assembled.step
 ```
 
-From another working directory, use absolute paths for both the launcher and workspace. The launcher safely reuses only a verified CAD Viewer on port 3245, otherwise starts the newest installed Viewer runtime and prints local and Tailscale URLs. This is a review aid for the locked reference, not restart CAD, slicer, or physical acceptance.
+Its frozen SHA-256 remains
+`dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7`.
+Use the absolute `projects/kage/references` directory as the Viewer workspace and
+`locked-direct-gear/p3_v3_direct_gear_race_assembled.step` as its relative file.
+
+Do not report this preview as ready until the exact review page returns HTTP `200` and
+the exact artifact endpoint returns HTTP `200` with JSON `state == "ready"`. After
+inspecting the loaded page or snapshot, the general visual claim is limited to “the
+requested artifact rendered with no visible error state.” Any feature-specific visual
+claim must name the inspected features and views. This remains a historical review aid,
+not restart CAD, slicer, or physical acceptance.

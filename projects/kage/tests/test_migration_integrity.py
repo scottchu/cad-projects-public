@@ -17,6 +17,9 @@ MUTABLE_CANDIDATE_EXCLUSIONS = {
     "projects/kage/docs/iterations/2026-08-23-preview-launcher/HANDOFF.md",
     "projects/kage/docs/iterations/2026-08-23-preview-launcher/REVIEW.md",
     "projects/kage/docs/iterations/2026-08-23-preview-launcher/VALIDATION.md",
+    "projects/kage/docs/iterations/2026-08-23-direct-cad-viewer/HANDOFF.md",
+    "projects/kage/docs/iterations/2026-08-23-direct-cad-viewer/REVIEW.md",
+    "projects/kage/docs/iterations/2026-08-23-direct-cad-viewer/VALIDATION.md",
 }
 RUNTIME_DEBRIS_PARTS = {"__cadgen__", "__pycache__", ".pytest_cache", ".venv", "node_modules", ".uv-cache"}
 
@@ -37,9 +40,8 @@ def intended_candidate_paths() -> set[str]:
     intended = {
         ".gitignore",
         "README.md",
-        "bin/preview-cad",
+        "docs/CAD_WORKFLOW.md",
         "package-lock.json",
-        "tests/test_preview_cad_launcher.py",
         "uv.lock",
     }
     for path in ROOT.rglob("*"):
