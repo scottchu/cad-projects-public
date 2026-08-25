@@ -82,3 +82,37 @@ Implementation must verify
 `/tmp/p17-d10-r2-implementation-input-manifest.txt` and every listed entry before
 editing source. Any mismatch in the frozen D10 design files or authoritative
 source/tests invalidates this handoff.
+
+## P17-I08-R2 implementation receipt
+
+- Status: implementation candidate complete; independent critique, validation,
+  formal review, and physical proof remain pending.
+- Frozen input verified: `/tmp/p17-d10-r2-implementation-input-manifest.txt`
+  SHA-256 `2eb7184b774735f796169dc3efc039d68e7b60ef869fb105eba125467e1ebc2e`;
+  every entry matched before D10-R2 writes.
+- Implemented the true front-view `└` orientation, exact OPEN/contact/END rod
+  states, stationary inner tracks, exact opposed inverse rails about
+  `C=(3.00,12.00)`, 65-state continuous `+0.30 mm` support strips, actual-solid
+  collision/contact, and the rederived P17-D10-R1 service path. No mechanism,
+  hardware topology, product version, mesh, 3MF, or slicer change was added.
+- `uv run --project projects/xt60-bend-jig pytest -q projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py`:
+  `19 passed`.
+- Ten explicit generators rebuilt their STEP targets; ten of ten written STEP
+  files passed CAD validation. Source/import parity passed ten of ten with
+  maximum bounds delta `8.811e-12 mm` and maximum summed-volume delta
+  `1.339e-8 mm3`.
+- Digital gates: maximum rail residual `5.687e-15 mm`; minimum web
+  `3.630990 mm`; combined rank `3`; maximum normalized condition `12.821633`;
+  unintended intersection `0`; minimum XT60 clearance `0.750000 mm`; service
+  BREP/analytic minima `1.250000/0.933816 mm` over `1001` samples per segment.
+- Visual packet: three front orientation views with only the two front review
+  plates hidden, one opposite-side END view, and a visually inspected 72-frame
+  opposed-twist GIF. All render warnings were empty.
+- Independent gate manifest:
+  `/tmp/p17-i08-independent-gate-manifest.txt`, 30 entries, all verified,
+  SHA-256 `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`.
+- Candidate records are under
+  `cad/p17_r2_direct_counter_twist/p17-r2-{artifact-provenance,candidate-manifest,candidate-fingerprint}.*`.
+- Physical boundary: cap retention, force, endpoint holding/self-lock, heat,
+  wear, vibration, soldered-wire behavior, print fit, and PETG acceptance are
+  not proven digitally.

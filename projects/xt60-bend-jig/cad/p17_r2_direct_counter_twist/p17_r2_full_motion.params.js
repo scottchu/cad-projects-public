@@ -2,12 +2,12 @@
 // on their selected straight paths while the two outer plates rotate in
 // opposite senses. Geometry travel is linear; animation time does not alter it.
 
-const ORIGIN = Object.freeze([0.0, 1.75, 6.25]);
+const ORIGIN = Object.freeze([0.0, 3.0, 12.0]);
 const AXIS = Object.freeze([1.0, 0.0, 0.0]);
 const PATHS = Object.freeze({
-  upright: Object.freeze({ open: [35.5, 9.0], end: [22.7, 9.0] }),
-  bottom: Object.freeze({ open: [6.8, 37.7], end: [6.8, 24.9] }),
-  diagonal: Object.freeze({ open: [5.2339574413, 7.4339574413], end: [14.2849242405, 16.4849242405] }),
+  upright: Object.freeze({ open: [22.235, -2.0502813742], end: [22.235, 8.535] }),
+  bottom: Object.freeze({ open: [-4.2502813742, 24.435], end: [6.335, 24.435] }),
+  diagonal: Object.freeze({ open: [22.235, 24.435], end: [14.7500757595, 16.9500757595] }),
 });
 
 const FEATURES = {

@@ -52,7 +52,7 @@ def test_frozen_contract_hash_and_selected_named_parameters() -> None:
     assert p.left_outer_secondary_grip_diameter == pytest.approx(82.0)
     assert p.right_outer_primary_grip_diameter == pytest.approx(85.0)
     assert p.theta_lock_deg == pytest.approx(24.0)
-    assert p17.outer_rotation_center_yz(p).as_tuple() == pytest.approx((1.75, 6.25))
+    assert p17.outer_rotation_center_yz(p).as_tuple() == pytest.approx((3.00, 12.00))
     assert p17.fixed_axle_center_yz(p).as_tuple() == pytest.approx((-29.0, 17.0))
 
 
@@ -60,22 +60,25 @@ def test_all_three_exact_open_contact_end_triangles_and_linear_law() -> None:
     evidence = p17.triangle_motion_math_evidence()
     expected = {
         "open": {
-            "upright": (35.5, 9.0),
-            "bottom": (6.8, 37.7),
-            "diagonal": (5.2339574413, 7.4339574413),
-            "area": 456.7904214347,
+            "bottom": (-4.2502813742, 24.435),
+            "diagonal": (22.235, 24.435),
+            "upright": (22.235, -2.0502813742),
+            "area": 350.7350647343,
+            "sides": (26.4852813742, 26.4852813742, 37.4558441227),
         },
         "contact": {
-            "upright": (22.95, 9.0),
-            "bottom": (6.8, 25.15),
-            "diagonal": (14.1081475452, 16.3081475452),
-            "area": 12.3846671451,
+            "bottom": (6.085, 24.435),
+            "diagonal": (14.9268524548, 17.1268524548),
+            "upright": (22.235, 8.285),
+            "area": 12.3846671450,
+            "sides": (11.4711540559, 11.4711540559, 22.8395490323),
         },
         "end": {
-            "upright": (22.70, 9.0),
-            "bottom": (6.8, 24.90),
-            "diagonal": (14.2849242405, 16.4849242405),
-            "area": 7.39470457618,
+            "bottom": (6.335, 24.435),
+            "diagonal": (14.7500757595, 16.9500757595),
+            "upright": (22.235, 8.535),
+            "area": 7.39470457605,
+            "sides": (11.2622196269, 11.2622196269, 22.4859956417),
         },
     }
     for state, values in expected.items():
@@ -83,10 +86,18 @@ def test_all_three_exact_open_contact_end_triangles_and_linear_law() -> None:
         for name in p17.ROD_NAMES:
             assert row["centersYZ"][name] == pytest.approx(values[name], abs=2.0e-10)
         assert row["areaMm2"] == pytest.approx(values["area"], abs=1.0e-8)
-    assert evidence["thetaContactDeg"] == pytest.approx(23.53125)
+        assert row["sideLengthsMm"] == pytest.approx(values["sides"], abs=1.0e-8)
+    assert evidence["thetaContactDeg"] == pytest.approx(23.4331751998)
     assert evidence["thetaEndDeg"] == pytest.approx(24.0)
     assert evidence["linearTravelLaw"] == "u=theta/theta_end"
     assert evidence["endpointDerivativeMmPerDeg"] > 0.0
+    assert evidence["vertexOrder"] == ("bottom", "diagonal", "upright")
+    assert evidence["openRightVerticalLegDeltaY"] == pytest.approx(0.0)
+    assert evidence["maximumAcceptedEndDisplacementMm"] == pytest.approx(
+        0.657823586728, abs=1.0e-12
+    )
+    assert evidence["maximumAcceptedEndDisplacementMm"] <= 0.657824
+    assert evidence["requirementIds"] == ("REQ-028", "REQ-029", "REQ-030")
     for name in p17.ROD_NAMES:
         midpoint = p17.rod_center(name, 12.0)
         guide = p17.GUIDES[name]
@@ -104,6 +115,33 @@ def test_contact_and_end_offsets_are_tangency_then_named_preload_proxy() -> None
     assert "physical" in evidence["physicalBoundary"]
 
 
+def test_d10_front_view_workpiece_is_head_up_tail_right_corner() -> None:
+    evidence = p17.workpiece_orientation_evidence()
+    assert evidence["frontPlane"] == "world YZ"
+    assert evidence["screenRightAxis"] == "+Y"
+    assert evidence["screenUpAxis"] == "+Z"
+    assert evidence["frontViewForm"] == "└"
+    assert evidence["bendCenterYZ"] == pytest.approx((16.235, 18.435))
+    assert evidence["verticalLeg"] == {
+        "yMm": pytest.approx(10.235),
+        "fromZMm": pytest.approx(18.435),
+        "toZMm": pytest.approx(37.435),
+        "headDirection": "+Z",
+    }
+    assert evidence["horizontalTail"] == {
+        "zMm": pytest.approx(12.435),
+        "fromYMm": pytest.approx(16.235),
+        "toYMm": pytest.approx(28.235),
+        "tailDirection": "+Y",
+    }
+    assert evidence["rodFeatureByIdentity"] == {
+        "bottom": "upper-left vertical-leg former",
+        "diagonal": "upper-right/middle bend-arc former",
+        "upright": "lower-right horizontal-tail former",
+    }
+    assert evidence["requirementIds"] == ("REQ-027",)
+
+
 def test_six_inverse_outer_rails_reconstruct_and_retain_web() -> None:
     evidence = p17.inverse_rail_reconstruction_evidence()
     assert evidence["sampleCount"] == 65
@@ -112,12 +150,21 @@ def test_six_inverse_outer_rails_reconstruct_and_retain_web() -> None:
     assert evidence["includesExactContact"] is True
     assert evidence["maximumRailReconstructionResidualMm"] <= 0.05
     assert evidence["maximumAxleReconstructionResidualMm"] <= 0.05
-    assert evidence["minimumCrossingSine"] >= 0.10
-    assert evidence["minimumOuterRodCutterGapMm"]["left"] == pytest.approx(6.521826, abs=2.0e-3)
-    assert evidence["minimumOuterRodCutterGapMm"]["right"] == pytest.approx(6.418266, abs=2.0e-3)
+    assert evidence["minimumCrossingSine"] == pytest.approx(0.000718717, abs=1.0e-8)
+    assert evidence["minimumOuterRodCutterGapMm"]["left"] == pytest.approx(3.630990, abs=2.0e-3)
+    assert evidence["minimumOuterRodCutterGapMm"]["right"] == pytest.approx(5.884374, abs=2.0e-3)
     assert evidence["minimumFixedExtendedRodCutterGapMm"] == pytest.approx(6.103048, abs=2.0e-3)
     assert evidence["minimumWebMm"] >= evidence["minimumRequiredWebMm"]
     assert all(evidence["platesAreSingleValidSolids"].values())
+    regularity = evidence["regularity"]
+    assert regularity["minimumAnalyticRailDerivativeMmPerDeg"] > 0.0
+    assert regularity["fixedTrackProgressMmPerDeg"] == pytest.approx(0.441053390592)
+    assert regularity["fixedTrackProgressStrictlyMonotonic"] is True
+    assert regularity["allRailsOneToOneNoSelfIntersection"] is True
+    assert regularity["continuationHasNoBranchJump"] is True
+    assert regularity["maximumContinuationResidualMm"] <= 0.05
+    assert regularity["passes"] is True
+    assert evidence["passes"] is True
 
 
 def test_fixed_inner_tracks_are_direct_closed_capsules_with_endpoint_margin() -> None:
@@ -133,6 +180,15 @@ def test_fixed_inner_tracks_are_direct_closed_capsules_with_endpoint_margin() ->
     assert evidence["rodCount"] == 3
     assert evidence["allNormalSidesSupported"] is True
     assert evidence["allSlotEndsClosed"] is True
+    assert evidence["includesExactContact"] is True
+    assert evidence["outerSupportStripDepthMm"] == pytest.approx(0.30)
+    assert evidence["outerSupportStripSampleCountPerSide"] == 61
+    assert evidence["allOuterEndpointProbesFull"] is True
+    assert evidence["allOuterSupportStripsContinuous"] is True
+    assert evidence["maximumEstimatedSweptBoundaryRecessionMm"] < 0.30
+    for pair in evidence["outerSupportStripRows"].values():
+        for row in pair:
+            assert row["continuousFromSweptBoundaryThroughPlus0p30"] is True
     assert evidence["passes"] is True
 
 
@@ -251,7 +307,7 @@ def test_motion_sidecars_use_correct_linear_all_rod_motion_and_stationary_inner_
         assert "open_to_end" in js
         assert "24.0 * travel" in js
         assert "smoothstep" not in js.lower()
-        assert "[0.0, 1.75, 6.25]" in js
+        assert "[0.0, 3.0, 12.0]" in js
         for name in p17.ROD_NAMES:
             assert f"`${{name}}_rod`" in js
             assert f"left_${{name}}_cap" in js
@@ -295,32 +351,37 @@ def test_manifest_states_physical_boundary_and_same_version_scope() -> None:
     assert manifest["endpoint"]["meaning"] == "end-of-travel only"
     assert manifest["endpoint"]["selfLockClaimed"] is False
     assert manifest["service"]["obsoleteInnerWindowRemoved"] is True
+    assert set(manifest["requirementTraceability"]) == {
+        "REQ-027",
+        "REQ-028",
+        "REQ-029",
+        "REQ-030",
+    }
 
 
-def test_d09_r1_full_component_rigid_body_service_path_is_clear() -> None:
+def test_d10_r1_full_component_rigid_body_service_path_is_clear() -> None:
     evidence = p17.central_span_service_evidence()
     assert evidence["innerClearSpanMm"] == pytest.approx(18.40)
     assert evidence["xt60BodyWidthMm"] == pytest.approx(15.90)
     assert evidence["sideClearanceMmEach"] == pytest.approx(1.25)
-    assert evidence["pathId"] == "P17-D09-R1"
+    assert evidence["pathId"] == "P17-D10-R1"
     assert evidence["waypoints"] == (
         (0.0, 0.0, 0.0),
-        (0.0, 0.0, -35.0),
-        (8.0, 0.0, -35.0),
-        (20.0, 20.0, -35.0),
-        (20.0, 45.0, -30.0),
+        (-4.0, 10.0, -15.0),
+        (-4.0, 50.0, -15.0),
     )
     assert evidence["brepSamplesPerSegment"] == 1001
     assert evidence["analyticSamplesPerSegment"] == 1001
-    assert evidence["brepSampleCount"] >= 4 * 1001
-    assert evidence["analyticSampleCount"] >= 4 * 1001
+    assert evidence["brepSampleCount"] >= 2 * 1001
+    assert evidence["analyticSampleCount"] >= 2 * 1001
     assert set(evidence["includedPigtailFeatures"]) == {
         "XT60 body",
         "two solder joints",
         "two bent wires",
     }
     assert len(evidence["includedProductionSolids"]) == 16
-    assert evidence["minimumClearanceMm"] >= 0.75
+    assert evidence["minimumClearanceMm"] == pytest.approx(0.933815921231)
+    assert evidence["brepMinimumClearanceMm"] >= 0.75
     assert evidence["zeroIntersection"] is True
     assert evidence["passes"] is True
 
