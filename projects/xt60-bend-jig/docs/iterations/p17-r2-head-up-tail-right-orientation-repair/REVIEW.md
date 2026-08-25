@@ -173,3 +173,139 @@ None found.
 
 P17-C08 critic gate: pass / no blocker for I08-R2 digital candidate. Proceed to
 the next independent validation/review step. Do not route as physical acceptance.
+
+## P17-R08 final formal review
+
+Status: ACCEPT for the exact P17-I08-R2 immutable candidate fingerprint
+`f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5` for CAD
+source, written STEP/export evidence, and the frozen static visual/motion
+packet. Physical manufacture and printed operation are not accepted.
+
+Owner/role: `P17-R08`, distinct formal reviewer and acceptance-boundary
+arbiter. This role did not design, implement, critique, validate, repair,
+regenerate artifacts, mutate Viewer state, or change git/continuity records.
+
+### Provenance and candidate identity
+
+- Branch/commit verified before formal join:
+  `codex/xt60-p17-r2-orientation-repair` at
+  `d7fefd8323b2a41394001cf69da774842d239197`.
+- Formal review input file:
+  `projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/FORMAL_REVIEW_INPUT.sha256`,
+  SHA-256
+  `3ed77df36dfb274cf32b6077592312526e2346482afe437962e5f371c43e515c`;
+  all `3` listed entries matched.
+- Nested independent gate manifest:
+  `/tmp/p17-i08-independent-gate-manifest.txt`, SHA-256
+  `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`;
+  all `30` entries matched.
+- Joined C08 receipt: this `REVIEW.md` pre-formal SHA-256
+  `46d8979a4617e87281521813973777ccdec0d2c6f9a0ab92064ee55a2b7a5e8f`,
+  `P17-C08` PASS/no blocker on the same exact fingerprint.
+- Joined V08 receipt: `VALIDATION.md` SHA-256
+  `00ecd2fe6d65aae19397497b057adbd5f37f9d300b39a6469ae97f270c530985`,
+  `P17-V08` PASS on the same exact fingerprint.
+- Source SHA-256:
+  `6b9004c7fb7d102c320c1c4184a78bbfc717540a91e5ea4f03b5a1fe1637e49b`.
+- Test SHA-256:
+  `b713552b6b5fdefe7259d67b3dde1d464e46be85702a85f926cfd055bdb88c99`.
+- Candidate records matched V08: artifact provenance
+  `97dccfad274fd82724f06c8e1ec15cd4ccc25659b6aa652dca7b8b9ecefb6b4b`,
+  candidate manifest
+  `0eaa98ffdc26baea5f409867929ffb9df317030bfa902cf20cd2b770919deb25`,
+  candidate-fingerprint JSON
+  `2b84cf88b9079edd8766a03d3fa9fe9fb251b6b1afeed7647124061f157a2fe5`,
+  and fingerprint text
+  `74a8c72100949170e05f3eba71d63d3a92049892a995b044ef9d4ae952b7d255`.
+
+### Requirement coverage joined
+
+- `REQ-027`: ACCEPT digitally. The workpiece-relative front frame is preserved:
+  `+Z` is XT60 mating head/up and `+Y` is solder-tail/both-wires/right; this is
+  not a camera-pose reinterpretation.
+- `REQ-028`: ACCEPT digitally. OPEN topology is upper-left, upper-right, and
+  lower-right, with the upper-right/lower-right rods on the exact right
+  vertical leg and fixed-inner guides stationary.
+- `REQ-029`: ACCEPT digitally. CLAMPED/END topology converges
+  upper-left -> middle -> lower-right on one diagonal three-point wire wrap,
+  with contact and END offset evidence accepted by V08.
+- `REQ-030`: ACCEPT digitally as endpoint-only semantics. `locked` remains
+  compatibility/colloquial wording only; no hard-stop, retention, detent,
+  over-center, physical holding, or self-lock claim is accepted.
+
+### Evidence boundaries
+
+- CAD/source and prescribed motion: ACCEPT for exact fingerprint only. V08
+  independently recomputed D10-R2 math, actual-solid support/motion/contact,
+  service path, cap/stock closure, and endpoint-conditioning gates; focused
+  tests passed `19/19`.
+- Written STEP/export: ACCEPT for the `10` manifest-frozen written STEP exports
+  and source/import parity recorded by V08. V08 isolated each STEP byte stream
+  before inspection to avoid same-stem `.step.py` resolution.
+- Static visual/motion packet: ACCEPT. R08 inspected the critical OPEN,
+  contact, END front, and END opposite PNGs named in V08; they show the true
+  `└` workpiece, head-up/tail-right orientation, OPEN right vertical rod pair,
+  contact/END diagonal wrap, four plates, fixed eccentric purple axle/keepers,
+  larger right force plate, three rods/six caps, and no added yoke/bar/link/
+  lock receiver. R08 also inspected the GIF metadata and sampled frame
+  differences: SHA-256
+  `461aeb86ae7aa1212e8cccee129e70f4f2fcb0f8cfd3ccf7e24a9d35bc4dd11c`,
+  `72` frames, `900 x 650`, and non-empty differences across V08's sampled
+  frame indices.
+- Viewer/live/browser interaction: NOT part of this R08 acceptance. This review
+  did not mutate Viewer state and does not claim a live slider/browser gate.
+- Physical acceptance: NOT TESTED and NOT ACCEPTED. PETG print tolerance, guide
+  wear, rod wobble under hand load, cap/coupon retention, keeper press fit,
+  insulation marking/damage, hand torque, holding force, soldering heat,
+  PETG stiffness/creep/wear, vibration, bend springback, cooled 90-degree bend,
+  endpoint holding, self-lock, slicer/3MF, and assembled operation remain
+  physical/manufacturing gates.
+
+### Finding severities
+
+- Blockers: none.
+- Majors: none.
+- Minors/nonblocking:
+  1. C08 endpoint terminology ambiguity remains nonblocking because tests and
+     manifest keep `locked` bounded to endpoint/preload proxy semantics with
+     `selfLockClaimed: False`.
+  2. Contact and END front snapshots are visually close because END is only
+     `0.25 mm` of additional geometric overtravel after contact; numeric
+     evidence is the acceptance authority for that distinction.
+  3. C08 text cites candidate records under `docs/provenance/...`, but the
+     frozen manifest and actual files are under
+     `cad/p17_r2_direct_counter_twist/`. This is a citation/path slip, not a
+     candidate mismatch, because the manifest and V08 hashes bind the
+     authoritative files used for this formal join.
+
+### Commands and read-only results
+
+```text
+git rev-parse --abbrev-ref HEAD
+  -> codex/xt60-p17-r2-orientation-repair
+git rev-parse HEAD
+  -> d7fefd8323b2a41394001cf69da774842d239197
+shasum -a 256 FORMAL_REVIEW_INPUT.sha256
+  -> 3ed77df36dfb274cf32b6077592312526e2346482afe437962e5f371c43e515c
+Python manifest verifier over FORMAL_REVIEW_INPUT.sha256
+  -> 3/3 entries OK
+shasum -a 256 /tmp/p17-i08-independent-gate-manifest.txt
+  -> f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5
+Python manifest verifier over /tmp/p17-i08-independent-gate-manifest.txt
+  -> 30/30 entries OK
+shasum -a 256 REVIEW.md before append
+  -> 46d8979a4617e87281521813973777ccdec0d2c6f9a0ab92064ee55a2b7a5e8f
+shasum -a 256 VALIDATION.md
+  -> 00ecd2fe6d65aae19397497b057adbd5f37f9d300b39a6469ae97f270c530985
+PIL GIF probe on p17_r2_i08_full_motion_20260825T123129Z.gif
+  -> 72 frames, 900 x 650, non-empty sampled frame differences
+```
+
+### Final disposition and next action
+
+Formal gate disposition: ACCEPT the unchanged P17-I08-R2 digital candidate for
+delivery/continuity as CAD source, prescribed motion, written STEP/export
+evidence, and frozen static visual/motion evidence. Any candidate-input change
+invalidates C08, V08, and this R08 join. Next action is coordinating-owner
+continuity/delivery update, followed by generating/slicing only the approved
+print package and running the documented physical fit and operation checks.
