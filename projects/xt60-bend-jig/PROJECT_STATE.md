@@ -109,7 +109,7 @@ It means CLAMPED/END of prescribed travel and makes no retention claim.
 ## Repository delivery
 
 - Branch: `codex/xt60-p17-r2-orientation-repair`.
-- Pull request: pending creation/merge in the current delivery step.
+- Pull request: <https://github.com/scottchu/design-projects/pull/9>.
 - Preserve the unrelated user-modified P13 `p13_print_kit.3mf` in the canonical
   main checkout.
 
