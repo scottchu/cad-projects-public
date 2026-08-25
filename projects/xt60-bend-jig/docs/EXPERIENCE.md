@@ -237,3 +237,24 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
 - Physical fit, cap/keeper retention, hand force, wobble, wire marks, thermal
   behavior, springback, endpoint retention, and self-lock remain untested. The
   candidate intentionally contains no lock.
+
+## `2026-08-25` — P17-I08-R2 orientation and OPEN topology corrected
+
+- User-fixed rationale is now a durable requirement, not a camera convention:
+  in the workpiece-relative front frame `+Z` is XT60 mating-head/up and `+Y` is
+  solder-tail/both-wires/outward-right.
+- OPEN must be upper-left, upper-right, lower-right with the two right rod
+  centers on one exact vertical leg. CLAMPED/END must converge upper-left,
+  middle, lower-right on the accepted diagonal. These are the same three rod
+  identities throughout; no role swap, crossing, mirroring, or reversal is a
+  numeric refinement.
+- The corrected datum `C=(3,12)` restores continuous two-sided material behind
+  the derived outer rails without changing the four-plate/three-rod architecture,
+  `A=(-29,17)`, `24 deg` END, three `OD4 x 50 mm` rods, six permanent caps, or
+  the larger right force plate.
+- Independent C08/V08 and formal R08 accepted fingerprint `f5bc383f...` for CAD,
+  ten STEP exports, actual-solid support/motion/service evidence, and the frozen
+  visual packet. The persistent Viewer transport is separately HTTP-ready.
+- `locked` remains compatibility wording for CLAMPED/END only. Physical cap fit,
+  force, wobble, wire damage, heat, springback, endpoint retention, self-lock,
+  slicer, and 3MF remain untested.

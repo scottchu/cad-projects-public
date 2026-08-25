@@ -196,6 +196,24 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
   API. The `0..32 deg` trajectory remains for motion review but its endpoint is
   not a locked state. A future lock requires a separate user-authorized design
   step. The green left-secondary finger/force grip tab is explicitly retained.
+- `REQ-027`: P17 workpiece orientation uses a workpiece-relative front frame,
+  independent of Viewer camera pose: `+Z` is XT60 mating-head/up and `+Y` is
+  solder-tail/both-wires/right. This frame may not be mirrored, reversed, or
+  reinterpreted by camera orientation without explicit design reopening.
+- `REQ-028`: OPEN/UNLOCKED rod topology is upper-left, upper-right, and
+  lower-right, with upper-right and lower-right on one exact right vertical
+  leg. These are outward/retracted positions of the same three rod identities
+  along their contact normals. Rod roles may not swap or cross; both fixed
+  inner plates use direct stationary straight guide lines.
+- `REQ-029`: CLAMPED/END rod topology converges upper-left -> middle ->
+  lower-right on one diagonal. The middle rod addresses the bend arc and the
+  two end rods address the two straight-leg contact features, creating a
+  three-point wire wrap while XT60 plastic is absent from the reaction/load
+  path. These functional roles survive later numeric refinement.
+- `REQ-030`: “Locked” is only colloquial shorthand for CLAMPED/END geometry.
+  It carries no hard-stop, retention, detent, over-center, or self-lock claim.
+  Requirements `REQ-027` through `REQ-030` may not be mirrored or reversed by
+  a numeric refinement; that requires explicit design reopening.
 
 ## Active P17 R2 derived constraints
 

@@ -1,13 +1,13 @@
 {
-  "schema": "xt60-bend-jig.p17-r2.candidate-fingerprint.v3",
+  "schema": "xt60-bend-jig.p17-r2.candidate-fingerprint.v4",
   "project": "projects/xt60-bend-jig",
-  "iteration": "p17-r2-three-rod-triangle-motion",
-  "candidateId": "P17-I07-R1",
-  "implementationBaselineCommit": "b09d0f31583fcae15ef71bca4c92e4ad37aa62af",
-  "frozenDesignCommit": "3585340299e7dae3227b5fc14c8759b7f8854875",
-  "implementationInputManifestSha256": "a309e0d836454ac4b9e2f48b8ab3de3cf450b41e96909e6ef96aa47dc277930a",
-  "candidateFingerprintSha256": "5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87",
-  "fingerprintedManifest": "/tmp/p17-i07-independent-gate-manifest.txt",
+  "iteration": "p17-r2-head-up-tail-right-orientation-repair",
+  "candidateId": "P17-I08-R2",
+  "implementationBaselineCommit": "5b2ee7d70b811a51eaff8bd766abc1da164d39a8",
+  "frozenDesignCommit": "5b2ee7d70b811a51eaff8bd766abc1da164d39a8",
+  "implementationInputManifestSha256": "2eb7184b774735f796169dc3efc039d68e7b60ef869fb105eba125467e1ebc2e",
+  "candidateFingerprintSha256": "f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5",
+  "fingerprintedManifest": "/tmp/p17-i08-independent-gate-manifest.txt",
   "entryCount": 30,
   "claimBoundary": "implementation candidate only; independent critique, validation, review and physical testing pending"
 }

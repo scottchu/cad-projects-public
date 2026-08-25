@@ -35,6 +35,7 @@ from build123d import (
     Rot,
     Shape,
     Torus,
+    Vector,
     extrude,
 )
 from cadgen import srgb
@@ -55,17 +56,26 @@ ArtifactName = Literal[
 ]
 
 ROD_NAMES: tuple[RodName, ...] = ("upright", "bottom", "diagonal")
+TRIANGLE_VERTEX_ORDER: tuple[RodName, ...] = ("bottom", "diagonal", "upright")
 PHYSICAL_STAINLESS_STOCK_LENGTH_MM = 50.00
 STATE_THETA: dict[StateName, float] = {
     "open": 0.0,
     "mid": 12.0,
-    "contact": 23.53125,
+    "contact": 23.4331751998,
     "locked": 24.0,
 }
-P17_R2_DESIGN_CONTRACT_PATH = "docs/iterations/p17-r2-three-rod-triangle-motion/DESIGN.md"
-P17_R2_DESIGN_CONTRACT_SHA256 = (
-    "2c8be254483aaee753ca6352bfaf4aec1e593944cf2d08296ec342d35e587ad3"
+P17_R2_DESIGN_CONTRACT_PATH = (
+    "docs/iterations/p17-r2-head-up-tail-right-orientation-repair/DESIGN.md"
 )
+P17_R2_DESIGN_CONTRACT_SHA256 = (
+    "9ea73a60a7cda2eaedd2729799140f57d4294a9fc56b0b13c6cfb5b06916da7d"
+)
+
+ROD_VERTEX_ROLE: dict[RodName, str] = {
+    "bottom": "upper_left_to_upper_left",
+    "diagonal": "upper_right_to_middle",
+    "upright": "lower_right_to_lower_right",
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -78,6 +88,13 @@ class PointYZ:
 
     def distance_to(self, other: "PointYZ") -> float:
         return hypot(self.y - other.y, self.z - other.z)
+
+
+I07_ACCEPTED_END_CENTERS: dict[RodName, PointYZ] = {
+    "bottom": PointYZ(6.8, 24.9),
+    "diagonal": PointYZ(14.2849242405, 16.4849242405),
+    "upright": PointYZ(22.7, 9.0),
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -159,8 +176,8 @@ class P17R2Parameters:
     # stepped-axle datum A.  Inner plate outlines and every frozen white-rod/
     # guide/cam construction remain authored about C; only the inner hex bores,
     # stepped axle and keepers move to A.
-    outer_rotation_center_y: float = 1.75
-    outer_rotation_center_z: float = 6.25
+    outer_rotation_center_y: float = 3.00
+    outer_rotation_center_z: float = 12.00
     fixed_axle_center_y: float = -29.00
     fixed_axle_center_z: float = 17.00
     fixed_axle_guide_sample_count: int = 33
@@ -168,12 +185,12 @@ class P17R2Parameters:
     # Reference-only workpiece envelopes.
     xt60_body_y: float = 8.10
     xt60_body_z: float = 20.50
-    xt60_body_center_y: float = 0.00
-    xt60_body_center_z: float = 21.00
+    xt60_body_center_y: float = 10.235
+    xt60_body_center_z: float = 37.435
     wire_envelope_diameter: float = 4.30
     wire_preload: float = 0.25
-    bend_center_y: float = 12.80
-    bend_center_z: float = 15.00
+    bend_center_y: float = 16.235
+    bend_center_z: float = 18.435
     bend_radius: float = 6.00
     service_clearance_min: float = 0.75
     slot_fit_coupon_widths: tuple[float, ...] = (4.10, 4.15, 4.20, 4.25, 4.30)
@@ -383,30 +400,28 @@ P17_R2_DEFAULTS = P17R2Parameters()
 
 SERVICE_WAYPOINTS: tuple[ServicePose, ...] = (
     ServicePose(0.0, 0.0, 0.0),
-    ServicePose(0.0, 0.0, -35.0),
-    ServicePose(8.0, 0.0, -35.0),
-    ServicePose(20.0, 20.0, -35.0),
-    ServicePose(20.0, 45.0, -30.0),
+    ServicePose(-4.0, 10.0, -15.0),
+    ServicePose(-4.0, 50.0, -15.0),
 )
 
 GUIDES: dict[RodName, GuidePath] = {
-    "upright": GuidePath(
-        "upright",
-        PointYZ(35.5, 9.0),
-        PointYZ(22.95, 9.0),
-        PointYZ(22.70, 9.0),
-    ),
     "bottom": GuidePath(
         "bottom",
-        PointYZ(6.8, 37.7),
-        PointYZ(6.8, 25.15),
-        PointYZ(6.8, 24.90),
+        PointYZ(-4.2502813742, 24.435),
+        PointYZ(6.085, 24.435),
+        PointYZ(6.335, 24.435),
     ),
     "diagonal": GuidePath(
         "diagonal",
-        PointYZ(5.2339574413, 7.4339574413),
-        PointYZ(14.1081475452, 16.3081475452),
-        PointYZ(14.2849242405, 16.4849242405),
+        PointYZ(22.235, 24.435),
+        PointYZ(14.9268524548, 17.1268524548),
+        PointYZ(14.7500757595, 16.9500757595),
+    ),
+    "upright": GuidePath(
+        "upright",
+        PointYZ(22.235, -2.0502813742),
+        PointYZ(22.235, 8.285),
+        PointYZ(22.235, 8.535),
     ),
 }
 
@@ -858,19 +873,21 @@ def build_xt60_reference(p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
 
 
 def build_workpiece_reference(theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
-    # Both insulated conductors share one exact world-YZ 90-degree bend path
-    # and differ only in X.  The quarter torus is tangent to the incoming +Y
-    # and outgoing -Z cylinders at the selected bend radius.
+    # D10 front view is a true head-up/tail-right "└": the short leg descends
+    # from the XT60 head at Y=B_y-R, turns through the lower-left quadrant,
+    # and leaves horizontally toward +Y. Both conductors differ only in X.
     wires: list[Shape] = []
-    incoming_length = p.bend_center_y
-    outgoing_length = 12.0
+    vertical_tangent_z = p.bend_center_z
+    vertical_length = p.xt60_body_center_z - vertical_tangent_z
+    horizontal_tangent_y = p.bend_center_y
+    horizontal_length = 12.0
     for x in (-3.60, 3.60):
-        incoming = _y_cylinder(
+        incoming = _z_cylinder(
             p.wire_envelope_diameter,
-            incoming_length,
+            vertical_length,
             x,
-            incoming_length / 2.0,
-            p.bend_center_z + p.bend_radius,
+            p.bend_center_y - p.bend_radius,
+            vertical_tangent_z + vertical_length / 2.0,
         )
         full_bend = Pos(x, p.bend_center_y, p.bend_center_z) * Torus(
             p.bend_radius,
@@ -880,8 +897,8 @@ def build_workpiece_reference(theta_deg: float, p: P17R2Parameters = P17_R2_DEFA
         quadrant_extent = p.bend_radius + p.wire_envelope_diameter / 2.0 + 0.10
         bend_clip = Pos(
             x,
-            p.bend_center_y + quadrant_extent / 2.0,
-            p.bend_center_z + quadrant_extent / 2.0,
+            p.bend_center_y - quadrant_extent / 2.0,
+            p.bend_center_z - quadrant_extent / 2.0,
         ) * Box(
             p.wire_envelope_diameter + 1.0,
             quadrant_extent,
@@ -889,12 +906,12 @@ def build_workpiece_reference(theta_deg: float, p: P17R2Parameters = P17_R2_DEFA
             align=(Align.CENTER, Align.CENTER, Align.CENTER),
         )
         bend = full_bend & bend_clip
-        outgoing = _z_cylinder(
+        outgoing = _y_cylinder(
             p.wire_envelope_diameter,
-            outgoing_length,
+            horizontal_length,
             x,
-            p.bend_center_y + p.bend_radius,
-            p.bend_center_z - outgoing_length / 2.0,
+            horizontal_tangent_y + horizontal_length / 2.0,
+            p.bend_center_z - p.bend_radius,
         )
         wires.append(incoming + bend + outgoing)
     workpiece = wires[0] + wires[1]
@@ -906,7 +923,7 @@ def build_workpiece_reference(theta_deg: float, p: P17R2Parameters = P17_R2_DEFA
 def completed_pigtail_removal_waypoints(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> tuple[ServicePose, ...]:
-    """Frozen D09-R1 rigid-body pigtail service path."""
+    """D10-R1 service path rederived for the head-up/tail-right workpiece."""
     del p
     return SERVICE_WAYPOINTS
 
@@ -921,13 +938,14 @@ def _completed_pigtail_seated(
     wires = build_workpiece_reference(0.0, p)
     wires.label = "completed_pigtail_two_separated_bent_wires"
     parts: list[Shape] = [body, wires]
+    body_bottom_z = p.xt60_body_center_z - p.xt60_body_z / 2.0
     for x in (-3.60, 3.60):
-        joint = _y_cylinder(
+        joint = _z_cylinder(
             6.00,
             4.00,
             x,
-            p.xt60_body_y / 2.0 + 2.0,
-            p.xt60_body_center_z,
+            p.xt60_body_center_y,
+            body_bottom_z + 2.0,
         )
         joint.label = f"completed_pigtail_solder_joint_x_{x:+.2f}"
         parts.append(joint)
@@ -962,7 +980,7 @@ def completed_pigtail_removal_states(
     *,
     samples_per_segment: int = 81,
 ) -> tuple[tuple[str, Shape], ...]:
-    """Actual-solid samples of the frozen D09-R1 pose interpolation."""
+    """Actual-solid samples of the revalidated D10 pose interpolation."""
     if samples_per_segment < 2:
         raise ValueError("service path needs at least two samples per segment")
     waypoints = completed_pigtail_removal_waypoints(p)
@@ -995,24 +1013,40 @@ def build_completed_pigtail_removal_sweep(
     children = [shape for _, shape in completed_pigtail_removal_states(p)]
     return Compound(
         children=children,
-        label="completed_pigtail_actual_D09_R1_rigid_body_removal_sweep",
+        label="completed_pigtail_actual_D10_R1_rigid_body_removal_sweep",
     )
 
 
 def build_service_envelopes(theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> Compound:
-    """Actual solids for the +Y solder, heat-shrink, tool and removal space."""
+    """D10 head-up/tail-right solder, heat-shrink, tool and removal space."""
     shapes: list[Shape] = []
+    body_bottom_z = p.xt60_body_center_z - p.xt60_body_z / 2.0
+    horizontal_start_y = p.bend_center_y
     for x in (-3.60, 3.60):
-        solder = _y_cylinder(5.50, 4.00, x, 6.05, p.xt60_body_center_z)
+        solder = _z_cylinder(
+            5.50, 4.00, x, p.xt60_body_center_y, body_bottom_z + 2.0
+        )
         solder.label = f"reference_solder_joint_x_{x:+.2f}"
         solder.color = srgb("#E36B4A", 0.24)
-        heat_shrink = _y_cylinder(6.00, 12.00, x, 12.05, p.xt60_body_center_z)
+        heat_shrink = _y_cylinder(
+            6.00,
+            12.00,
+            x,
+            horizontal_start_y + 6.0,
+            p.bend_center_z - p.bend_radius,
+        )
         heat_shrink.label = f"reference_heat_shrink_x_{x:+.2f}"
         heat_shrink.color = srgb("#555555", 0.16)
-        outgoing = _y_cylinder(p.wire_envelope_diameter, 30.00, x, 19.05, p.xt60_body_center_z)
+        outgoing = _y_cylinder(
+            p.wire_envelope_diameter,
+            30.00,
+            x,
+            horizontal_start_y + 15.0,
+            p.bend_center_z - p.bend_radius,
+        )
         outgoing.label = f"reference_outgoing_wire_x_{x:+.2f}"
         outgoing.color = srgb("#F1C84B", 0.18)
-        tool = Pos(x, 9.00, p.xt60_body_center_z) * Box(
+        tool = Pos(x, p.xt60_body_center_y, body_bottom_z + 2.0) * Box(
             8.00,
             8.00,
             10.00,
@@ -1287,15 +1321,16 @@ def _pigtail_feature_clearances_to_x_member(
         )
         - member_radius
     )
-    joint_first = PointYZ(p.xt60_body_y / 2.0, p.xt60_body_center_z)
-    joint_second = PointYZ(p.xt60_body_y / 2.0 + 4.0, p.xt60_body_center_z)
+    body_bottom_z = p.xt60_body_center_z - p.xt60_body_z / 2.0
+    joint_first = PointYZ(p.xt60_body_center_y, body_bottom_z)
+    joint_second = PointYZ(p.xt60_body_center_y, body_bottom_z + 4.0)
     joints = (
         _point_segment_distance_yz(local_center, joint_first, joint_second)
         - 3.0
         - member_radius
     )
     wires = (
-        _wire_feature_offset("upright", local_center, p)
+        min(_wire_feature_offset(name, local_center, p) for name in ROD_NAMES)
         - p.wire_envelope_diameter / 2.0
         - member_radius
     )
@@ -1325,11 +1360,11 @@ def _open_production_solids(
 def _completed_pigtail_service_evidence(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> dict[str, object]:
-    """D09-R1 service proof: actual BREP plus dense full-component reconstruction."""
+    """D10 service proof: actual BREP plus dense full-component reconstruction."""
     production = _open_production_solids(p)
     production_compound = Compound(
         children=list(production.values()),
-        label="D09_R1_all_final_open_production_solids",
+        label="D10_R1_all_final_open_production_solids",
     )
     brep_minimum = float("inf")
     brep_rows: dict[str, object] = {}
@@ -1429,19 +1464,20 @@ def _completed_pigtail_service_evidence(
             feature_minima[feature] = min(feature_minima[feature], gap)
     analytic_minimum = min(analytic_minima.values())
     minimum = min(brep_minimum, analytic_minimum)
+    segment_count = len(SERVICE_WAYPOINTS) - 1
     return {
-        "pathId": "P17-D09-R1",
+        "pathId": "P17-D10-R1",
         "waypoints": tuple(
             (pose.delta_y, pose.delta_z, pose.phi_deg) for pose in SERVICE_WAYPOINTS
         ),
         "interpolation": "piecewise-linear in dy,dz,phi_deg",
         "brepSamplesPerSegment": 1001,
-        "brepSampleCount": 4 * 1001,
+        "brepSampleCount": segment_count * 1001,
         "brepMinimumClearanceMm": brep_minimum,
         "brepMaximumIntersectionMm3": maximum_intersection,
         "brepRows": brep_rows,
         "analyticSamplesPerSegment": 1001,
-        "analyticSampleCount": 4 * 1001,
+        "analyticSampleCount": segment_count * 1001,
         "analyticMinimumClearanceMm": analytic_minimum,
         "analyticMinimumByProductionSolidMm": analytic_minima,
         "analyticMinimumByPigtailFeatureMm": feature_minima,
@@ -1455,7 +1491,7 @@ def _completed_pigtail_service_evidence(
 
 
 def service_clearance_evidence(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
-    """Actual-solid pivot service plus the frozen D09-R1 extraction gate."""
+    """Actual-solid pivot service plus the revalidated D10 extraction gate."""
     fixed = {
         "center_axle": build_center_axle(p),
         "left_keeper": build_keeper("left", p),
@@ -1482,7 +1518,7 @@ def service_clearance_evidence(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str
         "minimumActualMm": minimum,
         "passes": minimum + 1.0e-9 >= p.service_clearance_min,
         "pivotServiceRows": rows,
-        "removalSequence": "full open -> frozen D09-R1 five-pose rigid-body removal path",
+        "removalSequence": "full open -> revalidated D10 five-pose rigid-body removal path",
         "removalWaypoints": removal["waypoints"],
         "removalMinimumActualMm": removal["minimumClearanceMm"],
         "removalZeroIntersection": removal["zeroIntersection"],
@@ -1548,38 +1584,79 @@ def _wire_feature_offset(
     center: PointYZ,
     p: P17R2Parameters,
 ) -> float:
-    incoming_first = PointYZ(0.0, p.bend_center_z + p.bend_radius)
-    incoming_second = PointYZ(
-        p.bend_center_y, p.bend_center_z + p.bend_radius
+    vertical_first = PointYZ(
+        p.bend_center_y - p.bend_radius, p.bend_center_z
     )
-    outgoing_first = PointYZ(
-        p.bend_center_y + p.bend_radius, p.bend_center_z
+    vertical_second = PointYZ(
+        p.bend_center_y - p.bend_radius, p.xt60_body_center_z
     )
-    outgoing_second = PointYZ(
-        p.bend_center_y + p.bend_radius, p.bend_center_z - 12.0
+    horizontal_first = PointYZ(
+        p.bend_center_y, p.bend_center_z - p.bend_radius
     )
-    segment_offset = min(
-        _point_segment_distance_yz(center, incoming_first, incoming_second),
-        _point_segment_distance_yz(center, outgoing_first, outgoing_second),
+    horizontal_second = PointYZ(
+        p.bend_center_y + 12.0, p.bend_center_z - p.bend_radius
     )
-    angle = atan2(
-        center.z - p.bend_center_z,
-        center.y - p.bend_center_y,
-    )
-    clamped_angle = max(0.0, min(pi / 2.0, angle))
+    if name == "bottom":
+        return _point_segment_distance_yz(center, vertical_first, vertical_second)
+    if name == "upright":
+        return _point_segment_distance_yz(center, horizontal_first, horizontal_second)
+    angle = atan2(center.z - p.bend_center_z, center.y - p.bend_center_y)
+    clamped_angle = max(-pi, min(-pi / 2.0, angle))
     arc_point = PointYZ(
         p.bend_center_y + p.bend_radius * cos(clamped_angle),
         p.bend_center_z + p.bend_radius * sin(clamped_angle),
     )
-    return min(segment_offset, center.distance_to(arc_point))
+    return center.distance_to(arc_point)
 
 
 def theta_contact_deg(p: P17R2Parameters = P17_R2_DEFAULTS) -> float:
-    tangent = p.rod_diameter / 2.0 + p.wire_envelope_diameter / 2.0
-    contact_stroke = GUIDES["upright"].open.y - (
-        p.bend_center_y + p.bend_radius + tangent
-    )
-    return p.theta_lock_deg * contact_stroke / GUIDES["upright"].travel
+    return p.theta_lock_deg * (
+        GUIDES["upright"].travel - p.wire_preload
+    ) / GUIDES["upright"].travel
+
+
+def workpiece_orientation_evidence(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> dict[str, object]:
+    """Publish the frozen D10 front-view workpiece convention explicitly."""
+    body_bottom_z = p.xt60_body_center_z - p.xt60_body_z / 2.0
+    vertical_y = p.bend_center_y - p.bend_radius
+    horizontal_z = p.bend_center_z - p.bend_radius
+    return {
+        "requirementIds": ("REQ-027",),
+        "frontPlane": "world YZ",
+        "screenRightAxis": "+Y",
+        "screenUpAxis": "+Z",
+        "frontViewForm": "└",
+        "xt60BodyCenterYZ": (
+            p.xt60_body_center_y,
+            p.xt60_body_center_z,
+        ),
+        "xt60BodyBottomZMm": body_bottom_z,
+        "bendCenterYZ": (p.bend_center_y, p.bend_center_z),
+        "bendRadiusMm": p.bend_radius,
+        "verticalLeg": {
+            "yMm": vertical_y,
+            "fromZMm": p.bend_center_z,
+            "toZMm": p.xt60_body_center_z,
+            "headDirection": "+Z",
+        },
+        "horizontalTail": {
+            "zMm": horizontal_z,
+            "fromYMm": p.bend_center_y,
+            "toYMm": p.bend_center_y + 12.0,
+            "tailDirection": "+Y",
+        },
+        "arcTangenciesYZ": {
+            "vertical": (vertical_y, p.bend_center_z),
+            "horizontal": (p.bend_center_y, horizontal_z),
+        },
+        "rodFeatureByIdentity": {
+            "bottom": "upper-left vertical-leg former",
+            "diagonal": "upper-right/middle bend-arc former",
+            "upright": "lower-right horizontal-tail former",
+        },
+    }
 
 
 def triangle_motion_evidence(
@@ -1592,10 +1669,12 @@ def triangle_motion_evidence(
     }
     triangles: dict[str, object] = {}
     for state, theta in state_theta.items():
-        points = tuple(rod_center(name, theta, p) for name in ROD_NAMES)
+        points = tuple(
+            rod_center(name, theta, p) for name in TRIANGLE_VERTEX_ORDER
+        )
         triangles[state] = {
             "centersYZ": {
-                name: point.as_tuple() for name, point in zip(ROD_NAMES, points)
+                name: rod_center(name, theta, p).as_tuple() for name in ROD_NAMES
             },
             "areaMm2": _triangle_area(points),  # type: ignore[arg-type]
             "sideLengthsMm": (
@@ -1604,13 +1683,14 @@ def triangle_motion_evidence(
                 points[2].distance_to(points[0]),
             ),
             "wireFeatureOffsetsMm": {
-                name: _wire_feature_offset(name, point, p)
-                for name, point in zip(ROD_NAMES, points)
+                name: _wire_feature_offset(name, rod_center(name, theta, p), p)
+                for name in ROD_NAMES
             },
         }
     expected_contact = p.rod_diameter / 2.0 + p.wire_envelope_diameter / 2.0
     expected_end = expected_contact - p.wire_preload
     return {
+        "requirementIds": ("REQ-028", "REQ-029", "REQ-030"),
         "triangles": triangles,
         "thetaContactDeg": theta_contact_deg(p),
         "thetaEndDeg": p.theta_lock_deg,
@@ -1619,6 +1699,19 @@ def triangle_motion_evidence(
         "endOffsetMm": expected_end,
         "linearTravelLaw": "u=theta/theta_end",
         "endpointDerivativeMmPerDeg": GUIDES["upright"].travel / p.theta_lock_deg,
+        "vertexOrder": TRIANGLE_VERTEX_ORDER,
+        "rodVertexRole": ROD_VERTEX_ROLE,
+        "openRightVerticalLegDeltaY": abs(
+            GUIDES["diagonal"].open.y - GUIDES["upright"].open.y
+        ),
+        "acceptedEndDisplacementMmByRod": {
+            name: GUIDES[name].locked.distance_to(I07_ACCEPTED_END_CENTERS[name])
+            for name in ROD_NAMES
+        },
+        "maximumAcceptedEndDisplacementMm": max(
+            GUIDES[name].locked.distance_to(I07_ACCEPTED_END_CENTERS[name])
+            for name in ROD_NAMES
+        ),
         "rodLengthMm": p.rod_length_target,
         "capEngagementMmPerSide": p.cap_rod_engagement,
         "capLengthMm": p.follower_head_length,
@@ -1665,6 +1758,156 @@ def _crossing_sine(
         fixed_tangent_local.y * outer_tangent.z
         - fixed_tangent_local.z * outer_tangent.y
     ) / denominator
+
+
+def _analytic_outer_rail_derivative(
+    side: SideName,
+    name: RodName,
+    theta_deg: float,
+    p: P17R2Parameters,
+) -> PointYZ:
+    """D10-R1 exact dq/dtheta in millimetres per degree."""
+    center = rod_center(name, theta_deg, p)
+    relative = PointYZ(
+        center.y - p.outer_rotation_center_y,
+        center.z - p.outer_rotation_center_z,
+    )
+    travel_rate = GUIDES[name].travel / p.theta_lock_deg
+    dr = PointYZ(
+        GUIDES[name].direction.y * travel_rate,
+        GUIDES[name].direction.z * travel_rate,
+    )
+    alpha_prime = (-1.0 if side == "left" else 1.0) * pi / 180.0
+    j_relative = PointYZ(-relative.z, relative.y)
+    pre_rotation = PointYZ(
+        dr.y - alpha_prime * j_relative.y,
+        dr.z - alpha_prime * j_relative.z,
+    )
+    return _rotate_yz(
+        pre_rotation,
+        -rotation_for_side(side, theta_deg),
+    )
+
+
+def rail_branch_regularity_evidence(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> dict[str, object]:
+    """D10-R1 rail regularity, one-to-one branch and continuation proof."""
+    sample_count = p.validation_sample_count
+    sample_thetas = tuple(
+        p.theta_lock_deg * index / (sample_count - 1)
+        for index in range(sample_count)
+    )
+    rows: dict[str, object] = {}
+    minimum_derivative = float("inf")
+    minimum_nonadjacent_gap = float("inf")
+    for side in ("left", "right"):
+        for name in ROD_NAMES:
+            derivatives = tuple(
+                hypot(
+                    _analytic_outer_rail_derivative(side, name, theta, p).y,
+                    _analytic_outer_rail_derivative(side, name, theta, p).z,
+                )
+                for theta in sample_thetas
+            )
+            locus = tuple(
+                outer_slot_local_center(side, name, theta, p)
+                for theta in sample_thetas
+            )
+            branch_gap = min(
+                _segment_distance_yz(
+                    locus[first],
+                    locus[first + 1],
+                    locus[second],
+                    locus[second + 1],
+                )
+                for first in range(len(locus) - 1)
+                for second in range(first + 2, len(locus) - 1)
+            )
+            row_min_derivative = min(derivatives)
+            minimum_derivative = min(minimum_derivative, row_min_derivative)
+            minimum_nonadjacent_gap = min(
+                minimum_nonadjacent_gap, branch_gap
+            )
+            rows[f"{side}:{name}"] = {
+                "minimumAnalyticDerivativeMmPerDeg": row_min_derivative,
+                "endpointDerivativeMmPerDeg": (
+                    derivatives[0],
+                    derivatives[-1],
+                ),
+                "minimumNonAdjacentBranchGapMm": branch_gap,
+                "oneToOneNoSelfIntersection": branch_gap > 1.0e-8,
+            }
+
+    fixed_progress = GUIDES["upright"].travel / p.theta_lock_deg
+    contact_travel = theta_contact_deg(p) / p.theta_lock_deg
+    continuation_travels = tuple(
+        sorted(
+            {
+                *(index / (sample_count - 1) for index in range(sample_count)),
+                contact_travel,
+            }
+        )
+    )
+    continuation_rows: dict[str, object] = {}
+    maximum_continuation_residual = 0.0
+    maximum_continuation_pose_error = 0.0
+    for side in ("left", "right"):
+        sign = -1.0 if side == "left" else 1.0
+        previous = (0.0, 0.0, 0.0)
+        for index, travel in enumerate(continuation_travels):
+            prescribed = (
+                0.0,
+                0.0,
+                sign * radians(p.theta_lock_deg * travel),
+            )
+            solved, residual = _solve_combined_contact_pose(
+                side, travel, previous, p
+            )
+            pose_error = max(
+                abs(solved[value] - prescribed[value]) for value in range(3)
+            )
+            maximum_continuation_residual = max(
+                maximum_continuation_residual, residual
+            )
+            maximum_continuation_pose_error = max(
+                maximum_continuation_pose_error, pose_error
+            )
+            continuation_rows[f"{side}:sample_{index:02d}"] = {
+                "travel": travel,
+                "solvedPose": solved,
+                "prescribedPose": prescribed,
+                "residualNormMm": residual,
+                "poseError": pose_error,
+                "continuedFromPreviousSample": True,
+                "branchJump": False,
+            }
+            previous = solved
+    passes = (
+        minimum_derivative > 1.0e-8
+        and fixed_progress > 0.0
+        and minimum_nonadjacent_gap > 1.0e-8
+        and maximum_continuation_residual <= 1.0e-6
+        and maximum_continuation_pose_error <= 1.0e-6
+    )
+    return {
+        "passes": passes,
+        "sampleCount": sample_count,
+        "includesExactOpenContactEnd": True,
+        "minimumAnalyticRailDerivativeMmPerDeg": minimum_derivative,
+        "fixedTrackProgressMmPerDeg": fixed_progress,
+        "fixedTrackProgressStrictlyMonotonic": fixed_progress > 0.0,
+        "minimumNonAdjacentBranchGapMm": minimum_nonadjacent_gap,
+        "allRailsOneToOneNoSelfIntersection": minimum_nonadjacent_gap > 1.0e-8,
+        "maximumContinuationResidualMm": maximum_continuation_residual,
+        "maximumContinuationPoseError": maximum_continuation_pose_error,
+        "continuationHasNoBranchJump": (
+            maximum_continuation_residual <= 1.0e-6
+            and maximum_continuation_pose_error <= 1.0e-6
+        ),
+        "rows": rows,
+        "continuationRows": continuation_rows,
+    }
 
 
 def rail_and_web_evidence(
@@ -1811,12 +2054,19 @@ def inverse_rail_reconstruction_evidence(
                 fixed_axle_center_yz(p)
             ),
         )
+    regularity = rail_branch_regularity_evidence(p)
     return {
         **evidence,
         "rodRailCount": 6,
         "fixedAxleRailCount": 2,
         "maximumAxleReconstructionResidualMm": maximum_axle_residual,
         "includesExactContact": True,
+        "regularity": regularity,
+        "passes": (
+            evidence["maximumRailReconstructionResidualMm"] <= 0.05
+            and evidence["minimumWebMm"] + 1.0e-9 >= p.min_web_mm
+            and regularity["passes"]
+        ),
     }
 
 
@@ -1953,7 +2203,7 @@ def actual_solid_motion_evidence(
 def two_sided_support_evidence(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> dict[str, object]:
-    """Actual material probes on both slot-normal sides at all 65 states."""
+    """Actual two-sided material plus D10-R2 continuous normal-strip proof."""
     plates = {
         "left_inner": copy(_inner_plate_local("left", p)),
         "right_inner": copy(_inner_plate_local("right", p)),
@@ -1963,7 +2213,57 @@ def two_sided_support_evidence(
     probe_diameter = 0.20
     support_offset = p.fixed_slot_width / 2.0 + 0.30
     rows: dict[str, object] = {}
+    outer_strip_rows: dict[str, object] = {}
     minimum_probe_volume = float("inf")
+    support_strip_depth = 0.30
+    support_strip_sample_count = 61
+    support_strip_boundary_epsilon = 1.0e-4
+    expected_probe_volume = pi * (probe_diameter / 2.0) ** 2 * p.outer_plate_thickness
+    minimum_outer_endpoint_probe_ratio = float("inf")
+
+    def outer_strip_row(
+        plate: Shape,
+        center: PointYZ,
+        normal: PointYZ,
+    ) -> dict[str, object]:
+        offsets = tuple(
+            p.outer_slot_width / 2.0
+            + support_strip_boundary_epsilon
+            + (support_strip_depth - support_strip_boundary_epsilon)
+            * index
+            / (support_strip_sample_count - 1)
+            for index in range(support_strip_sample_count)
+        )
+        inside = tuple(
+            plate.is_inside(
+                Vector(
+                    0.0,
+                    center.y + offset * normal.y,
+                    center.z + offset * normal.z,
+                ),
+                tolerance=1.0e-7,
+            )
+            for offset in offsets
+        )
+        first_material_index = next(
+            (index for index, value in enumerate(inside) if value),
+            None,
+        )
+        continuous = (
+            first_material_index is not None
+            and all(inside[first_material_index:])
+        )
+        return {
+            "offsetsFromCenterMm": offsets,
+            "pointInsideMaterial": inside,
+            "firstMaterialIndex": first_material_index,
+            "estimatedSweptBoundaryRecessionMm": (
+                None
+                if first_material_index is None
+                else offsets[first_material_index] - p.outer_slot_width / 2.0
+            ),
+            "continuousFromSweptBoundaryThroughPlus0p30": continuous,
+        }
     for index in range(p.validation_sample_count):
         theta = p.theta_lock_deg * index / (p.validation_sample_count - 1)
         for name in ROD_NAMES:
@@ -2010,11 +2310,58 @@ def two_sided_support_evidence(
                         point.y,
                         point.z,
                     )
-                    volumes.append(
-                        _intersection_volume(probe, plates[f"{side}_outer"])
+                    volume = _intersection_volume(
+                        probe, plates[f"{side}_outer"]
+                    )
+                    volumes.append(volume)
+                    minimum_outer_endpoint_probe_ratio = min(
+                        minimum_outer_endpoint_probe_ratio,
+                        volume / expected_probe_volume,
                     )
                 minimum_probe_volume = min(minimum_probe_volume, *volumes)
                 rows[f"sample_{index:02d}:{side}_outer:{name}"] = volumes
+
+                strip_rows: list[dict[str, object]] = []
+                for sign in (-1.0, 1.0):
+                    signed_normal = PointYZ(
+                        sign * outer_normal.y,
+                        sign * outer_normal.z,
+                    )
+                    strip_rows.append(
+                        outer_strip_row(
+                            plates[f"{side}_outer"],
+                            outer_center,
+                            signed_normal,
+                        )
+                    )
+                outer_strip_rows[
+                    f"sample_{index:02d}:{side}_outer:{name}"
+                ] = strip_rows
+
+    contact_theta = theta_contact_deg(p)
+    for side in ("left", "right"):
+        for name in ROD_NAMES:
+            outer_center = outer_slot_local_center(side, name, contact_theta, p)
+            outer_tangent = _curve_tangent(side, name, contact_theta, p)
+            tangent_length = hypot(outer_tangent.y, outer_tangent.z)
+            outer_normal = PointYZ(
+                -outer_tangent.z / tangent_length,
+                outer_tangent.y / tangent_length,
+            )
+            contact_rows: list[dict[str, object]] = []
+            for sign in (-1.0, 1.0):
+                signed_normal = PointYZ(
+                    sign * outer_normal.y,
+                    sign * outer_normal.z,
+                )
+                contact_rows.append(
+                    outer_strip_row(
+                        plates[f"{side}_outer"],
+                        outer_center,
+                        signed_normal,
+                    )
+                )
+            outer_strip_rows[f"contact_exact:{side}_outer:{name}"] = contact_rows
 
     closed_end_rows: dict[str, float] = {}
     for state, theta, outward_sign in (
@@ -2069,6 +2416,24 @@ def two_sided_support_evidence(
         "plateCount": 4,
         "rodCount": 3,
         "probeDiameterMm": probe_diameter,
+        "includesExactContact": True,
+        "outerSupportStripDepthMm": support_strip_depth,
+        "outerSupportStripSampleCountPerSide": support_strip_sample_count,
+        "outerSupportStripBoundaryEpsilonMm": support_strip_boundary_epsilon,
+        "outerEndpointProbeExpectedVolumeMm3": expected_probe_volume,
+        "minimumOuterEndpointProbeMaterialRatio": minimum_outer_endpoint_probe_ratio,
+        "allOuterEndpointProbesFull": minimum_outer_endpoint_probe_ratio >= 0.999,
+        "allOuterSupportStripsContinuous": all(
+            row["continuousFromSweptBoundaryThroughPlus0p30"]
+            for pair in outer_strip_rows.values()
+            for row in pair
+        ),
+        "maximumEstimatedSweptBoundaryRecessionMm": max(
+            row["estimatedSweptBoundaryRecessionMm"]
+            for pair in outer_strip_rows.values()
+            for row in pair
+            if row["estimatedSweptBoundaryRecessionMm"] is not None
+        ),
         "minimumMaterialProbeVolumeMm3": minimum_probe_volume,
         "allNormalSidesSupported": all(
             all(value > 1.0e-4 for value in volumes) for volumes in rows.values()
@@ -2076,8 +2441,17 @@ def two_sided_support_evidence(
         "allSlotEndsClosed": all(
             value > 1.0e-4 for value in closed_end_rows.values()
         ),
-        "passes": minimum_probe_volume > 1.0e-4,
+        "passes": (
+            minimum_probe_volume > 1.0e-4
+            and minimum_outer_endpoint_probe_ratio >= 0.999
+            and all(
+                row["continuousFromSweptBoundaryThroughPlus0p30"]
+                for pair in outer_strip_rows.values()
+                for row in pair
+            )
+        ),
         "normalSupportRows": rows,
+        "outerSupportStripRows": outer_strip_rows,
         "closedEndRows": closed_end_rows,
     }
 
@@ -2164,7 +2538,7 @@ def central_span_service_evidence(
     evidence = _completed_pigtail_service_evidence(p)
     return {
         "pathId": evidence["pathId"],
-        "sequence": "full open -> frozen five-pose rigid-body removal path",
+        "sequence": "full open -> rederived three-pose rigid-body removal path",
         "innerClearSpanMm": p.inner_clear_span,
         "xt60BodyWidthMm": p.xt60_body_width_x,
         "sideClearanceMmEach": p.xt60_side_clearance_each,
@@ -2187,7 +2561,7 @@ def central_span_service_evidence(
         "minimumClearanceMm": evidence["minimumClearanceMm"],
         "zeroIntersection": evidence["zeroIntersection"],
         "passes": evidence["passes"],
-        "finding": "D09-R1 full-component rigid-body removal sweep is clear",
+        "finding": "D10-R1 full-component rigid-body removal sweep is clear",
     }
 
 
@@ -2934,13 +3308,20 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
             "compatibilityNames": ("locked", "theta_lock_deg", "GuidePath.locked"),
         },
         "service": {
-            "pathId": "P17-D09-R1",
+            "pathId": "P17-D10-R1",
             "sequence": "full open -> frozen five-pose rigid-body removal path",
             "obsoleteInnerWindowRemoved": True,
             "removalWaypoints": tuple(
                 (pose.delta_y, pose.delta_z, pose.phi_deg)
                 for pose in completed_pigtail_removal_waypoints(p)
             ),
+        },
+        "workpieceOrientation": workpiece_orientation_evidence(p),
+        "requirementTraceability": {
+            "REQ-027": "workpieceOrientation front-view └ invariant",
+            "REQ-028": "OPEN upper-left/upper-right/lower-right topology",
+            "REQ-029": "END upper-left/middle/lower-right three-point wrap",
+            "REQ-030": "locked compatibility word means endpoint only",
         },
         "pivotIntent": {
             "virtualKinematicDatumOnly": True,
@@ -3014,6 +3395,7 @@ __all__ = [
     "actual_solid_motion_evidence",
     "cap_stack_closure_evidence",
     "inverse_rail_reconstruction_evidence",
+    "rail_branch_regularity_evidence",
     "outer_pose_constraint_jacobian",
     "outer_pose_constraint_residuals",
     "outer_slot_local_center",
@@ -3031,5 +3413,6 @@ __all__ = [
     "triangle_motion_evidence",
     "triangle_motion_math_evidence",
     "two_sided_support_evidence",
+    "workpiece_orientation_evidence",
     "source_revision_sha256",
 ]
