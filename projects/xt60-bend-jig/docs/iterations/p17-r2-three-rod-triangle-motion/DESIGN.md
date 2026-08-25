@@ -258,3 +258,80 @@ Cap insertion/retention, printed straight/curved slot fit, hand torque,
 insulation marking, actual preload force, wire springback, 90-degree cooled
 angle, PETG heat/creep/wear, axle stiffness, and repeated cycling remain
 physical tests. CAD acceptance must not be reported as physical acceptance.
+
+## P17-D09-R1 amendment — executable completed-pigtail service path
+
+Status: this amendment supersedes only the OPEN triangle, common stroke,
+virtual rotation datum, plate envelope, and values derived from them above.
+The first-contact and END triangles, fixed purple axle `A`, wire geometry,
+`OD4 x 50` rods, axial stack, cap contract, three straight fixed-inner guides,
+counter-rotating outer plates, and no-new-part boundary remain unchanged.
+
+The preceding `S=4.0142135624` OPEN state is rejected. An independent
+actual-solid check confirmed that the completed XT60 body/joint/wire assembly
+cannot leave that triangle by a simple user-executable rigid-body path. The
+smallest robust rounded repair selected here is:
+
+```text
+common_stroke S_open = 12.8000000000
+r_open,u = (35.5000000000, 9.0000000000)
+r_open,b = (6.8000000000, 37.7000000000)
+r_open,d = (5.2339574413, 7.4339574413)
+```
+
+The amended OPEN triangle has center area `456.7904214346 mm^2` and side
+lengths `U-B=40.5879292401`, `B-D=30.3065310034`, and
+`D-U=30.3065310034 mm`. Contact occurs after `12.55 mm` travel; with the
+retained linear geometric law and `theta_end=24 deg`,
+`theta_contact=23.53125 deg`. The previous `32 deg` proposal remains rejected;
+service clearance does not require changing the retained `24 deg` endpoint.
+
+At normal OPEN, remove a completed pigtail as one rigid body using the
+following continuous waypoint sequence. `(deltaY,deltaZ)` translates the
+XT60-body reference center and `phi` rotates about world `X` through that body
+center. Linearly interpolate all three coordinates on each segment:
+
+| waypoint | `deltaY` | `deltaZ` | `phi` |
+|---|---:|---:|---:|
+| `P0` seated OPEN | `0` | `0` | `0 deg` |
+| `P1` tilt | `0` | `0` | `-35 deg` |
+| `P2` pull | `+8` | `0` | `-35 deg` |
+| `P3` diagonal lift | `+20` | `+20` | `-35 deg` |
+| `P4` clear | `+20` | `+45` | `-30 deg` |
+
+An independent build123d BREP probe used a `15.9 x 8.1 x 20.5` XT60 body,
+`6.0 mm` diameter joint envelope, `4.30 mm` diameter straight/quarter-circle/
+vertical wire envelope, and all three actual `OD4 x 50` OPEN rods. At 81
+samples per segment including endpoints it found zero intersections and
+minimum clearance `0.8467530154 mm`, on `P1->P2` at `u=0.975` against the
+diagonal rod. The analytic conservative-envelope probe at 1001 samples per
+segment found `0.8467517512 mm`. Both exceed the `0.75 mm` service gate. The
+implementation must reproduce this path against its final actual solids at
+at least 1001 samples per segment; interpolation, cap, plate, keeper, solder,
+and two separated wire occurrences must be included, and clearance below
+`0.75 mm` reopens this amendment rather than weakening the gate.
+
+The corrected virtual rotation datum is `C=(1.75,6.25)`. Retain
+`theta_end=24 deg` and regenerate every rod rail and both axle rails with the
+existing inverse-transform equations using the amended OPEN centers. The
+selected production envelopes supersede `70/72/75`:
+
+| Parameter | Amended target |
+|---|---:|
+| fixed inner diameter | `80.00` |
+| left outer diameter | `82.00` |
+| right force outer diameter | `85.00` |
+
+The right plate remains the larger force side. This is envelope growth only;
+do not thicken the `4.15 mm` guide slots or add bars, links, tabs, or stabilizers.
+With `1.40 mm` endpoint extension, `4.15 mm` cutter width, `2.20 mm` required
+web, and the existing axle hex envelope, the computed minimum required inner
+radius is `39.5324105686 mm`; the selected `40.00 mm` radius passes. Sampled
+outer cutter gaps are at least `6.5218264030 mm` left and `6.4182659798 mm`
+right; fixed-guide cutter gaps are at least `7.1122196269 mm`. The smallest
+normalized fixed-line/outer-rail crossing sine is `0.1020221816`
+(`condition <= 9.8018`) over both sides and all three rods. This value
+supersedes the earlier `>=0.25` crossing-sine gate; require `>=0.10` while
+retaining the full normalized Jacobian condition gate `<=1000`, exact endpoint
+checks, positive two-sided support, `minimum_web>=2.20`, and no branch jump or
+jam. Easing remains animation-time-only; geometry stays `u=theta/theta_end`.

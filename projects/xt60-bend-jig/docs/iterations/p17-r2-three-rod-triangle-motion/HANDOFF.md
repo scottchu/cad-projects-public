@@ -60,3 +60,37 @@ The immutable implementation manifest is
 `/tmp/p17-r2-three-rod-implementation-input-manifest.txt`. Its SHA-256 is
 recorded by the design receipt returned to the orchestrator. The implementer
 must verify the manifest file and every entry before editing source.
+
+## P17-D09-R1 superseding implementation handoff
+
+Do not implement the earlier `S=4.0142135624`, `C=(-1.74,13.22)`, or
+`70/72/75` envelope. They failed completed-pigtail service. Implement the
+smallest bounded repair frozen in the R1 amendment to `DESIGN.md`:
+
+1. Keep first-contact and END centers unchanged, but set common OPEN stroke to
+   `12.80 mm` and OPEN centers to upright `(35.5,9)`, bottom `(6.8,37.7)`, and
+   diagonal `(5.2339574413,7.4339574413)`.
+2. Set `C=(1.75,6.25)`, retain `theta_end=24 deg`, linear geometric travel,
+   and counter-rotation `left=-theta`, `right=+theta`. Regenerate all six rod
+   rails and both fixed-axle rails from the inverse transform; do not redraw
+   or approximate them.
+3. Set inner/left-outer/right-force-outer diameters to `80/82/85 mm`. Retain
+   slot width `4.15`, minimum web `2.20`, the larger right force side, and the
+   unchanged purple axle. Add no structural part.
+4. Prove the exact service path `P0=(0,0,0 deg)`, `P1=(0,0,-35 deg)`,
+   `P2=(8,0,-35 deg)`, `P3=(20,20,-35 deg)`,
+   `P4=(20,45,-30 deg)` by continuous linear interpolation after reverse
+   opening. Use final actual body, solder joint, two wires, rods, caps, plates,
+   axle, and keepers; require zero intersection and `>=0.75 mm` clearance at
+   at least 1001 samples per segment.
+5. Preserve the original 50 mm axial stack and six permanent stepped caps.
+   Preserve all first-contact/END preload gates and physical-unknown language.
+6. Replace the obsolete crossing-sine threshold with `>=0.10`; retain the
+   normalized full-Jacobian condition `<=1000`, positive two-sided support,
+   web, actual-solid collision, endpoint, reconstruction, and no-floating
+   regressions.
+
+This is P17 R2, not a new version. Failure of the exact R1 service path or any
+retained gate returns to design; the implementer must not invent another
+travel law, enlarge slots, move the fixed axle, add hardware, or weaken the
+clearance threshold.
