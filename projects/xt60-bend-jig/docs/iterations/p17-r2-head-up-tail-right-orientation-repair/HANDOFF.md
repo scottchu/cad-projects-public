@@ -1,7 +1,8 @@
 # P17-D10-R2 implementation handoff
 
-Status: design frozen; implementation, independent critique/validation, and
-formal review pending.
+Status: P17-I08-R2 implemented; P17-C08/P17-V08 passed and P17-R08 formally
+accepted the exact digital candidate. Physical/manufacturing validation remains
+pending.
 
 D10-R1 changes the corresponding-vertex END displacement acceptance from the
 contradictory `<=0.65761 mm` to the exact-derived safe ceiling
