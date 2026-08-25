@@ -52,6 +52,8 @@ change any locked coordinate on behalf of the user.
 - Exact immutable candidate fingerprint:
   `590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c`
   (`21/21` payload entries pre/post independent review).
+- Review-only evidence commit `8e7aba7` is pushed on
+  `origin/codex/xt60-p17-r2-locked-rod-layout`; no PR was opened or merged.
 - Implementation: 22/22 focused tests; ten STEP writes/current checks,
   validate, refs and source/export parity; four PNGs and a 72-frame moving GIF.
 - C13: faithful implementation, product BLOCK.

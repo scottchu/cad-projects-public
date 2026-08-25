@@ -147,6 +147,8 @@ It means CLAMPED/END of prescribed travel and makes no retention claim.
 
 - Accepted baseline delivery: PR <https://github.com/scottchu/design-projects/pull/9>.
 - Current blocked evidence branch: `codex/xt60-p17-r2-locked-rod-layout`.
+- Blocked evidence commit: `8e7aba7`; branch pushed to `origin` for durable
+  review, without a pull request.
 - No D13 PR was opened or merged because C13/V13/R13 formally reject it for
   product advancement.
 - Preserve the unrelated user-modified P13 `p13_print_kit.3mf` in the canonical
