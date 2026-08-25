@@ -8,8 +8,11 @@ import { CONFIG, guiDomain, legacyTarget, serviceTarget } from "./config.mjs";
 import {
   classifyState,
   encodedWorkspaceUrl,
+  evaluateViewerHealth,
+  inspectRuntimeRecord,
   inspectRuntimeCandidates,
   renderPlist,
+  requiresManagedRecovery,
   selectViewerRuntime,
 } from "./core.mjs";
 import {
@@ -109,19 +112,15 @@ function dependencyCheck({ installedState = false, payloadRoot = null } = {}) {
     errors.push(`LaunchAgent template is unavailable or invalid: ${error.message}`);
   }
   let runtimeRecord = null;
+  let runtimeRecordIssue = null;
   if (fs.existsSync(CONFIG.runtimeRecord)) {
     try {
       runtimeRecord = JSON.parse(fs.readFileSync(CONFIG.runtimeRecord, "utf8"));
-      const candidates = inspectRuntimeCandidates(CONFIG.cacheRoot).valid;
-      const match = candidates.find((item) => item.path === runtimeRecord.path && item.version === runtimeRecord.version);
-      if (!match) errors.push("runtime.json does not identify a currently valid installed Viewer runtime");
-      if (!Number.isInteger(runtimeRecord.launcherPid) || Number.isNaN(Date.parse(runtimeRecord.launchedAt))) {
-        errors.push("runtime.json is missing a valid launch time or launcher PID");
-      }
+      runtimeRecordIssue = inspectRuntimeRecord(runtimeRecord, runtime).issue;
     } catch (error) {
-      errors.push(`runtime.json is invalid: ${error.message}`);
+      runtimeRecordIssue = `runtime.json is invalid: ${error.message}`;
     }
-  }
+  } else runtimeRecordIssue = "runtime.json is missing";
   if (installedState && fs.existsSync(CONFIG.plist) && plistText !== null) {
     try {
       if (fs.readFileSync(CONFIG.plist, "utf8") !== plistText) errors.push("installed LaunchAgent plist does not match the checked-in contract");
@@ -131,7 +130,7 @@ function dependencyCheck({ installedState = false, payloadRoot = null } = {}) {
       errors.push(`installed LaunchAgent plist cannot be read: ${error.message}`);
     }
   }
-  return { errors, python, runtime, runtimeRecord, plistText };
+  return { errors, python, runtime, runtimeRecord, runtimeRecordIssue, plistText };
 }
 
 function readJob(target = serviceTarget()) {
@@ -201,6 +200,17 @@ function fetchServer(timeout = 800) {
   });
 }
 
+function fetchPage(timeout = 800) {
+  return new Promise((resolve) => {
+    const request = http.get({ host: CONFIG.host, port: CONFIG.port, path: "/", timeout }, (response) => {
+      response.resume();
+      response.on("end", () => resolve({ status: response.statusCode, error: null }));
+    });
+    request.on("timeout", () => request.destroy(new Error("timeout")));
+    request.on("error", (error) => resolve({ status: null, error: error.message }));
+  });
+}
+
 function activePayload() {
   const hash = readCurrentHash(CONFIG.currentLink);
   if (!hash) return null;
@@ -224,7 +234,6 @@ async function statusFacts(fallbackPayloadRoot = null) {
     dependencies.errors.push("managed service files or job exist without a valid active content-addressed payload");
   }
   if (active) {
-    if (!dependencies.runtimeRecord && !job.loaded) dependencies.errors.push("active installed payload has no runtime.json record");
     if (!fs.existsSync(CONFIG.plist)) dependencies.errors.push("active installed payload has no LaunchAgent plist");
     try {
       assertOwnedRegularMatches(CONFIG.commandPath, fs.readFileSync(path.join(active.root, "bin", "cad-viewer")), 0o755);
@@ -234,18 +243,20 @@ async function statusFacts(fallbackPayloadRoot = null) {
   }
   const disabled = disabledOverride();
   const owners = portOwners();
-  const server = owners.length ? await fetchServer() : { status: null, payload: null, error: null };
-  const payloadValid = server.status === 200 && server.payload?.app === "cad-viewer" && server.payload?.port === CONFIG.port && Number.isInteger(server.payload?.pid);
-  const ready = Boolean(job.loaded && job.pid && payloadValid && pidDescendsFrom(server.payload.pid, job.pid));
+  const [page, server] = owners.length
+    ? await Promise.all([fetchPage(), fetchServer()])
+    : [{ status: null, error: null }, { status: null, payload: null, error: null }];
+  const health = evaluateViewerHealth(page, server, CONFIG.port);
+  const ready = Boolean(job.loaded && job.pid && health.ready && pidDescendsFrom(server.payload.pid, job.pid));
   const managedPort = Boolean(job.pid && owners.some((owner) => pidDescendsFrom(owner.pid, job.pid)));
   const foreignPort = owners.length > 0 && !ready && !managedPort;
   const launchedAt = dependencies.runtimeRecord ? Date.parse(dependencies.runtimeRecord.launchedAt) : Number.NaN;
   const startupFresh = Number.isFinite(launchedAt) && Date.now() - launchedAt < 20000;
   const blocked = foreignPort
-    || Boolean(job.loaded && managedPort && server.status !== null && !payloadValid)
+    || Boolean(job.loaded && managedPort && (page.status !== null || server.status !== null) && !health.ready)
     || Boolean(job.loaded && !ready && !startupFresh);
   const state = classifyState({
-    misconfigured: dependencies.errors.length > 0,
+    misconfigured: dependencies.errors.length > 0 || Boolean(job.loaded && dependencies.runtimeRecordIssue),
     blocked,
     foreignPort,
     enabled: !disabled.disabled,
@@ -253,7 +264,7 @@ async function statusFacts(fallbackPayloadRoot = null) {
     ready,
     disabled: disabled.disabled,
   });
-  return { state, dependencies, job, disabled: disabled.disabled, disabledError: disabled.error, owners, server, ready, managedPort, foreignPort };
+  return { state, dependencies, job, disabled: disabled.disabled, disabledError: disabled.error, owners, page, server, health, ready, managedPort, foreignPort };
 }
 
 function statusExit(state) {
@@ -272,7 +283,14 @@ function statusObject(facts) {
     jobPid: facts.job.pid,
     ready: facts.ready,
     runtime: facts.dependencies.runtimeRecord ?? (facts.dependencies.runtime ? { path: facts.dependencies.runtime.path, version: facts.dependencies.runtime.version } : null),
+    preferredRuntime: facts.dependencies.runtime ? { path: facts.dependencies.runtime.path, version: facts.dependencies.runtime.version } : null,
+    runtimeRecord: {
+      value: facts.dependencies.runtimeRecord,
+      matchesPreferred: !facts.dependencies.runtimeRecordIssue,
+      issue: facts.dependencies.runtimeRecordIssue,
+    },
     portOwners: facts.owners,
+    page: facts.page,
     server: facts.server.payload,
     errors: [...facts.dependencies.errors, ...(facts.disabledError ? [facts.disabledError] : [])],
   };
@@ -343,13 +361,13 @@ async function waitForPortFree(milliseconds) {
   return !portOwners().length;
 }
 
-async function waitForReady(milliseconds = 15000) {
+async function waitForReady(milliseconds = 30000) {
   const deadline = Date.now() + milliseconds;
   let last = null;
   while (Date.now() < deadline) {
     last = await statusFacts();
     if (last.state === "running") return last;
-    if (last.state === "misconfigured" || last.foreignPort) return last;
+    if (last.dependencies.errors.length || last.foreignPort) return last;
     await wait(250);
   }
   return last ?? await statusFacts();
@@ -462,7 +480,7 @@ async function rollbackActivation(transaction) {
     clearCurrentLink();
     launchctlChecked(["disable", serviceTarget()], "rollback disable failed");
     if (readJob().loaded) launchctlChecked(["bootout", serviceTarget()], "rollback bootout failed");
-    if (!await waitForPortFree(10000)) throw new Error("new service was booted out but its listener did not release port 3245");
+    if (!await waitForPortFree(20000)) throw new Error("new service was booted out but its listener did not release port 3245");
     if (!disabledOverride().disabled) throw new Error("rollback did not preserve the disabled override");
     return { restored: true, state: "disabled", priorHash: null };
   }
@@ -512,16 +530,23 @@ async function startService(sourceRoot = null, forceRestart = false) {
     lock = await acquireInstallLock(CONFIG.installLock);
     const activeAfterLock = readCurrentHash(CONFIG.currentLink);
     if (!sourceRoot && activeAfterLock !== candidate.payloadHash) candidate = validatedInvocationPayload(null);
-    transaction = activatePayload(candidate, sourceRoot, activeAfterLock);
+    const existingPayloadNeedsRepair = current.dependencies.errors.length > 0;
+    if (activeAfterLock !== candidate.payloadHash || existingPayloadNeedsRepair) {
+      transaction = activatePayload(candidate, sourceRoot, activeAfterLock);
+    }
     launchctlChecked(["enable", serviceTarget()], "launchctl enable failed");
     if (before.loaded) {
-      const argumentsForKickstart = (forceRestart || activeAfterLock !== candidate.payloadHash)
+      const managedRecovery = requiresManagedRecovery({
+        ready: current.ready,
+        runtimeRecordIssue: current.dependencies.runtimeRecordIssue,
+      });
+      const argumentsForKickstart = (forceRestart || activeAfterLock !== candidate.payloadHash || managedRecovery)
         ? ["kickstart", "-k", "-p", serviceTarget()]
         : ["kickstart", "-p", serviceTarget()];
       launchctlChecked(argumentsForKickstart, "launchctl kickstart failed");
     } else launchctlChecked(["bootstrap", guiDomain(), CONFIG.plist], "launchctl bootstrap failed");
     const ready = await waitForReady();
-    if (ready.state !== "running") throw new Error(`new payload did not pass readiness within 15 seconds (state ${ready.state})`);
+    if (ready.state !== "running") throw new Error(`new payload did not pass the lifecycle readiness window (state ${ready.state})`);
     markLastKnownGood(INSTALL_PATHS, candidate.payloadHash);
     garbageCollect(INSTALL_PATHS, activeAfterLock);
     return {
@@ -554,7 +579,7 @@ async function stopService() {
     const bootout = command(LAUNCHCTL, ["bootout", serviceTarget()]);
     if (bootout.status !== 0 && readJob().loaded) throw new Error(commandError(bootout, "launchctl bootout failed"));
   }
-  await waitForPortFree(10000);
+  await waitForPortFree(20000);
   const facts = await statusFacts();
   const override = disabledOverride();
   if (!override.disabled) return { exit: 2, result: { ...statusObject(facts), command: "stop", state: "misconfigured", error: "launchctl disabled override is not present" } };
@@ -646,6 +671,7 @@ function humanPrint(result) {
     process.stdout.write(`CAD Viewer: ${result.state}\n`);
     if (result.message) process.stdout.write(`${result.message}\n`);
     if (result.runtime) process.stdout.write(`runtime: ${result.runtime.version} ${result.runtime.path}\n`);
+    if (result.runtimeRecord?.issue) process.stderr.write(`runtime record: ${result.runtimeRecord.issue}\n`);
     for (const error of result.errors ?? []) process.stderr.write(`${error}\n`);
     if (result.error) process.stderr.write(`${result.error}\n`);
     for (const owner of result.portOwners ?? []) process.stdout.write(`port owner: ${owner.pid} ${owner.command}\n`);

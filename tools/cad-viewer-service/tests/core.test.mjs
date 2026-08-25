@@ -7,9 +7,12 @@ import test from "node:test";
 import {
   classifyState,
   encodedWorkspaceUrl,
+  evaluateViewerHealth,
+  inspectRuntimeRecord,
   inspectRuntimeCandidates,
   parseSemver,
   renderPlist,
+  requiresManagedRecovery,
   selectViewerRuntime,
 } from "../payload/core.mjs";
 import { parseArguments } from "../payload/cli.mjs";
@@ -80,6 +83,31 @@ test("state classification uses contract precedence", () => {
   assert.equal(classifyState({}), "stopped");
 });
 
+test("runtime records are diagnostics and match only the current preferred runtime", () => {
+  const preferred = { path: "/cache/cad/0.4.26/viewer", version: "0.4.26" };
+  const current = { ...preferred, launchedAt: "2026-08-24T20:00:00.000Z", launcherPid: 1234 };
+  assert.deepEqual(inspectRuntimeRecord(current, preferred), { matches: true, issue: null });
+  assert.match(inspectRuntimeRecord(null, preferred).issue, /missing/);
+  assert.match(inspectRuntimeRecord({ ...current, path: "/cache/cad/0.4.25/viewer", version: "0.4.25" }, preferred).issue, /not the preferred/);
+  assert.match(inspectRuntimeRecord({ path: preferred.path, version: preferred.version }, preferred).issue, /launch time or launcher PID/);
+});
+
+test("stale or missing records force managed recovery without becoming hard dependencies", () => {
+  assert.equal(requiresManagedRecovery({ ready: true, runtimeRecordIssue: null }), false);
+  assert.equal(requiresManagedRecovery({ ready: true, runtimeRecordIssue: "runtime.json is stale" }), true);
+  assert.equal(requiresManagedRecovery({ ready: false, runtimeRecordIssue: null }), true);
+});
+
+test("Viewer health requires both the SPA page and identified server API", () => {
+  const server = { status: 200, payload: { app: "cad-viewer", port: 3245, pid: 999 }, error: null };
+  assert.equal(evaluateViewerHealth({ status: 200 }, server, 3245).ready, true);
+  const missingPage = evaluateViewerHealth({ status: 404 }, server, 3245);
+  assert.equal(missingPage.ready, false);
+  assert.equal(missingPage.pageReady, false);
+  assert.match(missingPage.errors[0], /HTTP 404/);
+  assert.equal(evaluateViewerHealth({ status: 200 }, { ...server, payload: { ...server.payload, port: 9999 } }, 3245).ready, false);
+});
+
 test("workspace and file URLs are encoded and traversal is rejected", () => {
   const parent = fs.mkdtempSync(path.join(os.tmpdir(), "cad-viewer-url-"));
   const workspace = path.join(parent, "space here");
@@ -120,6 +148,7 @@ test("checked-in plist template renders to a plutil-valid fixture", () => {
     const lint = spawnSync("/usr/bin/plutil", ["-lint", fixture], { encoding: "utf8" });
     assert.equal(lint.status, 0, lint.stderr || lint.stdout);
     assert.doesNotMatch(rendered, /cad\/\d+\.\d+\.\d+/);
+    assert.match(rendered, /<key>ExitTimeOut<\/key>\s*<integer>15<\/integer>/);
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }

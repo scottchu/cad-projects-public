@@ -5,6 +5,18 @@ This controller installs and manages one per-user macOS LaunchAgent named
 shell or ChatGPT session that started it, and remains disabled across logins
 after an explicit stop.
 
+The installed launcher re-resolves the contained Viewer plugin runtime every
+two seconds. When the plugin cache adds a preferred version, removes the
+selected version, or leaves the API alive while the Viewer page disappears,
+the launcher drains the complete npm/Node/Python tree inside its dedicated,
+owned process group before it exits nonzero and lets launchd start the same
+singleton on the current valid runtime. A persistent Node group anchor prevents
+PID/PGID reuse during TERM/KILL proof; port and process-table observations are
+quiescence checks and are never signal authority. The URL remains fixed; a
+cache turnover can cause a short interruption and an open browser may need a
+reload. No private runtime copy is retained, so at least one valid installed
+Viewer runtime must exist in the plugin cache.
+
 The frozen lifecycle and safety contract is in `DESIGN.md`. In particular, the
 service always uses the canonical repository uv environment at
 `/Users/scottchu/Projects/personal/design-projects/.venv/bin/python3`; it never
@@ -31,6 +43,12 @@ cad-viewer stop
 cad-viewer logs --lines 100
 cad-viewer url --workspace /absolute/workspace --file relative/model.step.py
 ```
+
+`start` and `restart` recover a missing, malformed, or stale `runtime.json`
+without manually renaming or deleting that record. `status` remains read-only
+and reports the record issue separately from hard dependency failures. Service
+readiness requires both the base Viewer page and the managed
+`/__cad/server` API; an API-only response is not considered healthy.
 
 Every command accepts `--json`. In JSON follow mode, `logs -f --json` buffers a
 bounded tail and emits one final object when interrupted.

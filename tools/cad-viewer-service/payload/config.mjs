@@ -28,6 +28,14 @@ export const CONFIG = Object.freeze({
   tailscaleBase: "https://mac-mini.duckbill-ionian.ts.net",
   localBase: "http://127.0.0.1:3245",
   safePath: "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin:/usr/bin:/bin:/usr/sbin:/sbin",
+  supervisorIntervalMs: 2000,
+  supervisorStartupTimeoutMs: 15000,
+  anchorHandshakeTimeoutMs: 5000,
+  groupTermTimeoutMs: 5000,
+  groupFinalTimeoutMs: 5000,
+  groupPollMs: 100,
+  blockedPortPollMs: 250,
+  refreshExitCode: 75,
 });
 
 export function serviceTarget(uid = process.getuid()) {

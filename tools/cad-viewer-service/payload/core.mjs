@@ -109,6 +109,44 @@ export function selectViewerRuntime(cacheRoot) {
   return { path: pool[0].path, version: pool[0].version, candidates: inspected.valid, rejected: inspected.rejected };
 }
 
+export function inspectRuntimeRecord(record, preferredRuntime) {
+  if (record === null || record === undefined) {
+    return { matches: false, issue: "runtime.json is missing" };
+  }
+  if (typeof record !== "object" || Array.isArray(record)) {
+    return { matches: false, issue: "runtime.json must contain a JSON object" };
+  }
+  if (typeof record.path !== "string" || typeof record.version !== "string") {
+    return { matches: false, issue: "runtime.json is missing a runtime path or version" };
+  }
+  if (!Number.isInteger(record.launcherPid) || Number.isNaN(Date.parse(record.launchedAt))) {
+    return { matches: false, issue: "runtime.json is missing a valid launch time or launcher PID" };
+  }
+  if (!preferredRuntime || record.path !== preferredRuntime.path || record.version !== preferredRuntime.version) {
+    return {
+      matches: false,
+      issue: `runtime.json selects ${record.version} ${record.path}, not the preferred ${preferredRuntime?.version ?? "unavailable"} ${preferredRuntime?.path ?? "runtime"}`,
+    };
+  }
+  return { matches: true, issue: null };
+}
+
+export function evaluateViewerHealth(page, server, expectedPort) {
+  const pageReady = page?.status === 200;
+  const serverReady = server?.status === 200
+    && server.payload?.app === "cad-viewer"
+    && server.payload?.port === expectedPort
+    && Number.isInteger(server.payload?.pid);
+  const errors = [];
+  if (!pageReady) errors.push(`Viewer page is not ready${page?.status ? ` (HTTP ${page.status})` : page?.error ? ` (${page.error})` : ""}`);
+  if (!serverReady) errors.push(`Viewer server API is not ready${server?.status ? ` (HTTP ${server.status})` : server?.error ? ` (${server.error})` : ""}`);
+  return { ready: pageReady && serverReady, pageReady, serverReady, errors };
+}
+
+export function requiresManagedRecovery({ ready, runtimeRecordIssue }) {
+  return !ready || Boolean(runtimeRecordIssue);
+}
+
 export function classifyState(facts) {
   if (facts.misconfigured) return "misconfigured";
   if (facts.blocked || facts.foreignPort) return "blocked";
