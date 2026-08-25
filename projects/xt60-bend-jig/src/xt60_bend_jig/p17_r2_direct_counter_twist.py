@@ -20,7 +20,7 @@ from functools import lru_cache
 from hashlib import sha256
 from math import atan, atan2, cos, degrees, hypot, pi, radians, sin, sqrt
 from pathlib import Path
-from typing import Literal
+from typing import Callable, Iterable, Literal, Sequence
 
 from build123d import (
     Align,
@@ -65,10 +65,10 @@ STATE_THETA: dict[StateName, float] = {
     "locked": 24.0,
 }
 P17_R2_DESIGN_CONTRACT_PATH = (
-    "docs/iterations/p17-r2-head-up-tail-right-orientation-repair/DESIGN.md"
+    "docs/iterations/p17-r2-locked-rod-layout/DESIGN.md"
 )
 P17_R2_DESIGN_CONTRACT_SHA256 = (
-    "9ea73a60a7cda2eaedd2729799140f57d4294a9fc56b0b13c6cfb5b06916da7d"
+    "0133dc4d45f38e91a20311d490b9b2fef2c8c0c6a07081c6b0c75fb19d620f95"
 )
 
 ROD_VERTEX_ROLE: dict[RodName, str] = {
@@ -88,6 +88,9 @@ class PointYZ:
 
     def distance_to(self, other: "PointYZ") -> float:
         return hypot(self.y - other.y, self.z - other.z)
+
+
+D13_COMMON_ROD_DELTA = PointYZ(16.1869657526, 10.2949747468)
 
 
 I07_ACCEPTED_END_CENTERS: dict[RodName, PointYZ] = {
@@ -179,22 +182,22 @@ class P17R2Parameters:
     outer_rotation_center_y: float = 3.00
     outer_rotation_center_z: float = 12.00
     fixed_axle_center_y: float = -29.00
-    fixed_axle_center_z: float = 17.00
+    fixed_axle_center_z: float = 12.00
     fixed_axle_guide_sample_count: int = 33
 
     # Reference-only workpiece envelopes.
     xt60_body_y: float = 8.10
     xt60_body_z: float = 20.50
-    xt60_body_center_y: float = 10.235
-    xt60_body_center_z: float = 37.435
+    xt60_body_center_y: float = -6.500
+    xt60_body_center_z: float = 22.500
     wire_envelope_diameter: float = 4.30
     wire_preload: float = 0.25
-    bend_center_y: float = 16.235
-    bend_center_z: float = 18.435
+    bend_center_y: float = -0.500
+    bend_center_z: float = 3.500
     bend_radius: float = 6.00
     service_clearance_min: float = 0.75
     slot_fit_coupon_widths: tuple[float, ...] = (4.10, 4.15, 4.20, 4.25, 4.30)
-    completed_pigtail_extract_end_y: float = 34.00
+    completed_pigtail_extract_end_y: float = 17.265
 
     # Layouts.
     exploded_spacing_x: float = 18.00
@@ -404,25 +407,43 @@ SERVICE_WAYPOINTS: tuple[ServicePose, ...] = (
     ServicePose(-4.0, 50.0, -15.0),
 )
 
-GUIDES: dict[RodName, GuidePath] = {
+I10_GUIDES: dict[RodName, GuidePath] = {
     "bottom": GuidePath(
         "bottom",
-        PointYZ(-4.2502813742, 24.435),
-        PointYZ(6.085, 24.435),
-        PointYZ(6.335, 24.435),
+        PointYZ(-20.9852813742, 9.5000000000),
+        PointYZ(-10.6500000000, 9.5000000000),
+        PointYZ(-10.4000000000, 9.5000000000),
     ),
     "diagonal": GuidePath(
         "diagonal",
-        PointYZ(22.235, 24.435),
-        PointYZ(14.9268524548, 17.1268524548),
-        PointYZ(14.7500757595, 16.9500757595),
+        PointYZ(5.5000000000, 9.5000000000),
+        PointYZ(-1.8081475452, 2.1918524548),
+        PointYZ(-1.9849242405, 2.0150757595),
     ),
     "upright": GuidePath(
         "upright",
-        PointYZ(22.235, -2.0502813742),
-        PointYZ(22.235, 8.285),
-        PointYZ(22.235, 8.535),
+        PointYZ(5.5000000000, -16.9852813742),
+        PointYZ(5.5000000000, -6.6500000000),
+        PointYZ(5.5000000000, -6.4000000000),
     ),
+}
+
+
+def _translate_guide(guide: GuidePath, delta: PointYZ) -> GuidePath:
+    def moved(point: PointYZ) -> PointYZ:
+        return PointYZ(point.y + delta.y, point.z + delta.z)
+
+    return GuidePath(
+        guide.name,
+        moved(guide.open),
+        moved(guide.contact),
+        moved(guide.locked),
+    )
+
+
+GUIDES: dict[RodName, GuidePath] = {
+    name: _translate_guide(guide, D13_COMMON_ROD_DELTA)
+    for name, guide in I10_GUIDES.items()
 }
 
 
@@ -485,6 +506,68 @@ def _world_from_pivot(local: PointYZ, p: P17R2Parameters) -> PointYZ:
     return PointYZ(local.y + pivot.y, local.z + pivot.z)
 
 
+def transform_point_between_frames(
+    point: PointYZ,
+    *,
+    source_origin: PointYZ,
+    source_angle_deg: float,
+    target_origin: PointYZ,
+    target_angle_deg: float,
+) -> PointYZ:
+    """Map one source-local YZ point into a target-local rotating frame.
+
+    This is the single deterministic authority used for the D13 mating rails:
+    ``p_target = T_target^-1 * T_source * p_source``.  It is pure math and
+    deliberately contains no BREP or cutter operations.
+    """
+    source_world_offset = _rotate_yz(point, source_angle_deg)
+    world = PointYZ(
+        source_origin.y + source_world_offset.y,
+        source_origin.z + source_world_offset.z,
+    )
+    target_world_offset = PointYZ(
+        world.y - target_origin.y,
+        world.z - target_origin.z,
+    )
+    return _rotate_yz(target_world_offset, -target_angle_deg)
+
+
+def derive_mating_rail(
+    source_path: Sequence[PointYZ] | Callable[[float], PointYZ],
+    progress_values: Iterable[float],
+    *,
+    source_origin: PointYZ,
+    source_total_rotation_deg: float,
+    target_origin: PointYZ,
+    target_total_rotation_deg: float,
+) -> tuple[PointYZ, ...]:
+    """Derive a sampled rail in another frame from one parameterized path.
+
+    ``progress_values`` are normalized ``u`` samples.  A sequence source must
+    have exactly one point per sample; a callable is evaluated at each sample.
+    CW/CCW is expressed only by the sign of each total rotation.
+    """
+    progress = tuple(float(value) for value in progress_values)
+    if any(value < 0.0 or value > 1.0 for value in progress):
+        raise ValueError("rail progress values must stay in 0..1")
+    if callable(source_path):
+        points = tuple(source_path(value) for value in progress)
+    else:
+        points = tuple(source_path)
+        if len(points) != len(progress):
+            raise ValueError("source path and progress samples must have equal length")
+    return tuple(
+        transform_point_between_frames(
+            point,
+            source_origin=source_origin,
+            source_angle_deg=source_total_rotation_deg * u,
+            target_origin=target_origin,
+            target_angle_deg=target_total_rotation_deg * u,
+        )
+        for point, u in zip(points, progress)
+    )
+
+
 def rod_center(name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
     guide = GUIDES[name]
     u = max(0.0, min(1.0, theta_deg / p.theta_lock_deg))
@@ -495,8 +578,15 @@ def rod_center(name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFA
 
 
 def outer_slot_local_center(side: SideName, name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
-    world = rod_center(name, theta_deg, p)
-    return _rotate_yz(_relative_to_pivot(world, p), -rotation_for_side(side, theta_deg))
+    u = max(0.0, min(1.0, theta_deg / p.theta_lock_deg))
+    return derive_mating_rail(
+        lambda progress: rod_center(name, p.theta_lock_deg * progress, p),
+        (u,),
+        source_origin=PointYZ(0.0, 0.0),
+        source_total_rotation_deg=0.0,
+        target_origin=outer_rotation_center_yz(p),
+        target_total_rotation_deg=rotation_for_side(side, p.theta_lock_deg),
+    )[0]
 
 
 def reconstruct_world_from_outer(side: SideName, name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
@@ -505,9 +595,14 @@ def reconstruct_world_from_outer(side: SideName, name: RodName, theta_deg: float
 
 
 def outer_slot_locus(side: SideName, name: RodName, p: P17R2Parameters = P17_R2_DEFAULTS) -> tuple[PointYZ, ...]:
-    return tuple(
-        outer_slot_local_center(side, name, p.theta_lock_deg * index / (p.slot_sample_count - 1), p)
-        for index in range(p.slot_sample_count)
+    progress = tuple(index / (p.slot_sample_count - 1) for index in range(p.slot_sample_count))
+    return derive_mating_rail(
+        lambda u: rod_center(name, p.theta_lock_deg * u, p),
+        progress,
+        source_origin=PointYZ(0.0, 0.0),
+        source_total_rotation_deg=0.0,
+        target_origin=outer_rotation_center_yz(p),
+        target_total_rotation_deg=rotation_for_side(side, p.theta_lock_deg),
     )
 
 
@@ -873,7 +968,7 @@ def build_xt60_reference(p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
 
 
 def build_workpiece_reference(theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
-    # D10 front view is a true head-up/tail-right "└": the short leg descends
+    # Frozen I10 front view is a true head-up/tail-right "└": the short leg descends
     # from the XT60 head at Y=B_y-R, turns through the lower-left quadrant,
     # and leaves horizontally toward +Y. Both conductors differ only in X.
     wires: list[Shape] = []
@@ -1618,7 +1713,7 @@ def theta_contact_deg(p: P17R2Parameters = P17_R2_DEFAULTS) -> float:
 def workpiece_orientation_evidence(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> dict[str, object]:
-    """Publish the frozen D10 front-view workpiece convention explicitly."""
+    """Publish the frozen I10 front-view workpiece convention explicitly."""
     body_bottom_z = p.xt60_body_center_z - p.xt60_body_z / 2.0
     vertical_y = p.bend_center_y - p.bend_radius
     horizontal_z = p.bend_center_z - p.bend_radius
@@ -1647,6 +1742,7 @@ def workpiece_orientation_evidence(
             "toYMm": p.bend_center_y + 12.0,
             "tailDirection": "+Y",
         },
+        "serviceExtractEndYMm": p.completed_pigtail_extract_end_y,
         "arcTangenciesYZ": {
             "vertical": (vertical_y, p.bend_center_z),
             "horizontal": (p.bend_center_y, horizontal_z),
@@ -2066,6 +2162,74 @@ def inverse_rail_reconstruction_evidence(
             evidence["maximumRailReconstructionResidualMm"] <= 0.05
             and evidence["minimumWebMm"] + 1.0e-9 >= p.min_web_mm
             and regularity["passes"]
+        ),
+    }
+
+
+@lru_cache(maxsize=None)
+def locked_layout_blocker_evidence(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> dict[str, object]:
+    """Detect, do not suppress, the frozen D13 product-interface blockers."""
+    bottom_open = GUIDES["bottom"].open
+    body_center = PointYZ(p.xt60_body_center_y, p.xt60_body_center_z)
+    center_to_body = _point_rectangle_distance_yz(
+        bottom_open,
+        body_center,
+        p.xt60_body_y / 2.0,
+        p.xt60_body_z / 2.0,
+    )
+    signed_body_clearance = center_to_body - p.rod_diameter / 2.0
+    vertical_wire_y = p.bend_center_y - p.bend_radius
+    open_wire_centerline_separation = abs(bottom_open.y - vertical_wire_y)
+    combined_wire_rod_radius = (
+        p.rod_diameter + p.wire_envelope_diameter
+    ) / 2.0
+    open_wire_radial_overlap = (
+        combined_wire_rod_radius - open_wire_centerline_separation
+    )
+    end_surface_gaps = {
+        name: _wire_feature_offset(name, GUIDES[name].locked, p)
+        - combined_wire_rod_radius
+        for name in ROD_NAMES
+    }
+    infinite_straight_end_surface_gaps = {
+        "bottom": abs(GUIDES["bottom"].locked.y - vertical_wire_y)
+        - combined_wire_rod_radius,
+        "upright": abs(
+            GUIDES["upright"].locked.z
+            - (p.bend_center_z - p.bend_radius)
+        )
+        - combined_wire_rod_radius,
+    }
+    open_rod = build_rod("bottom", 0.0, p)
+    body = build_xt60_reference(p)
+    wire = build_workpiece_reference(0.0, p)
+    return {
+        "candidate": "P17-D13 exact locked rod layout",
+        "acceptanceClaimed": False,
+        "knownInvalidProductInterface": True,
+        "bottomOpenCenterYZ": bottom_open.as_tuple(),
+        "xt60BodyCenterYZ": body_center.as_tuple(),
+        "xt60BodyRectangleYZ": (
+            p.xt60_body_center_y - p.xt60_body_y / 2.0,
+            p.xt60_body_center_y + p.xt60_body_y / 2.0,
+            p.xt60_body_center_z - p.xt60_body_z / 2.0,
+            p.xt60_body_center_z + p.xt60_body_z / 2.0,
+        ),
+        "bottomOpenSignedBodyClearanceMm": signed_body_clearance,
+        "bottomOpenBodyIntersectionMm3": _intersection_volume(open_rod, body),
+        "verticalWireCenterlineY": vertical_wire_y,
+        "bottomOpenWireCenterlineSeparationMm": open_wire_centerline_separation,
+        "bottomOpenWireRadialOverlapMm": open_wire_radial_overlap,
+        "bottomOpenWireIntersectionMm3": _intersection_volume(open_rod, wire),
+        "endWireSurfaceGapMmByRod": end_surface_gaps,
+        "endInfiniteStraightProxyGapMm": infinite_straight_end_surface_gaps,
+        "lostEndContact": all(value > 0.0 for value in end_surface_gaps.values()),
+        "physicalBoundary": (
+            "review artifact only: known OPEN body/wire collision and lost END "
+            "contact are intentionally materialized; no CAD, force, self-lock, "
+            "fit, service, manufacturing or physical acceptance is claimed"
         ),
     }
 
@@ -3208,6 +3372,8 @@ def build_full_motion_open(
 
 def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
     return {
+        "candidateStatus": "exact D13 review materialization; known invalid product interface",
+        "acceptanceClaimed": False,
         "contractPath": P17_R2_DESIGN_CONTRACT_PATH,
         "contractSha256": P17_R2_DESIGN_CONTRACT_SHA256,
         "fixedMember": "purple printed stepped center axle",
@@ -3258,6 +3424,12 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
                 "travel": GUIDES[name].travel,
             }
             for name in ROD_NAMES
+        },
+        "lockedRodLayout": {
+            "commonDeltaYZ": D13_COMMON_ROD_DELTA.as_tuple(),
+            "workpieceMoved": False,
+            "outerRailsDerivedBy": "derive_mating_rail(T_target^-1*T_source*p_source)",
+            "knownBlockers": locked_layout_blocker_evidence(p),
         },
         "centerAxle": {
             "fixedMember": "purple printed stepped axle",
@@ -3359,6 +3531,7 @@ def clear_geometry_caches() -> None:
     two_sided_support_evidence.cache_clear()
     _completed_pigtail_seated.cache_clear()
     _completed_pigtail_service_evidence.cache_clear()
+    locked_layout_blocker_evidence.cache_clear()
 
 
 __all__ = [
@@ -3366,6 +3539,7 @@ __all__ = [
     "P17_R2_DEFAULTS",
     "PHYSICAL_STAINLESS_STOCK_LENGTH_MM",
     "GUIDES",
+    "D13_COMMON_ROD_DELTA",
     "ROD_NAMES",
     "STATE_THETA",
     "alpha_left",
@@ -3384,6 +3558,7 @@ __all__ = [
     "completed_pigtail_removal_waypoints",
     "combined_contact_closure_evidence",
     "conditioning_evidence",
+    "derive_mating_rail",
     "central_span_service_evidence",
     "fixed_axle_actual_solid_evidence",
     "fixed_axle_center_yz",
@@ -3395,6 +3570,7 @@ __all__ = [
     "actual_solid_motion_evidence",
     "cap_stack_closure_evidence",
     "inverse_rail_reconstruction_evidence",
+    "locked_layout_blocker_evidence",
     "rail_branch_regularity_evidence",
     "outer_pose_constraint_jacobian",
     "outer_pose_constraint_residuals",
@@ -3412,6 +3588,7 @@ __all__ = [
     "theta_contact_deg",
     "triangle_motion_evidence",
     "triangle_motion_math_evidence",
+    "transform_point_between_frames",
     "two_sided_support_evidence",
     "workpiece_orientation_evidence",
     "source_revision_sha256",

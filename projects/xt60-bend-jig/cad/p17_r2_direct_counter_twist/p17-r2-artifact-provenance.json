@@ -1,93 +1,75 @@
 {
-  "schema": "xt60-bend-jig.p17-r2.artifact-provenance.v4",
-  "candidateId": "P17-I08-R2",
-  "implementationBaselineCommit": "5b2ee7d70b811a51eaff8bd766abc1da164d39a8",
-  "frozenDesignCommit": "5b2ee7d70b811a51eaff8bd766abc1da164d39a8",
-  "implementationInputManifestSha256": "2eb7184b774735f796169dc3efc039d68e7b60ef869fb105eba125467e1ebc2e",
+  "schema": "xt60-bend-jig.p17-r2.artifact-provenance.v5",
+  "candidateId": "P17-I13-D13-REVIEW",
+  "implementationBaselineCommit": "8adfb20f352e36cede54a3414307ced3de81c2b8",
+  "implementationInputManifestSha256": "0b96b9dd4821f4f848fee0d44eb79ce004ee35250a8d8aa802c7277463d5247c",
   "independentGateManifest": {
-    "path": "/tmp/p17-i08-independent-gate-manifest.txt",
-    "sha256": "f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5",
-    "entryCount": 30
+    "path": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-d13-independent-gate-manifest.sha256",
+    "sha256": "590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c",
+    "entryCount": 21
   },
   "source": {
     "path": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py",
-    "sha256": "6b9004c7fb7d102c320c1c4184a78bbfc717540a91e5ea4f03b5a1fe1637e49b"
+    "sha256": "cef1137d68ff5dc2ed5c0131aad11c3499d71ecbc0b4afa826f6edeb7f137475"
   },
   "tests": {
     "path": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
-    "sha256": "b713552b6b5fdefe7259d67b3dde1d464e46be85702a85f926cfd055bdb88c99",
-    "result": "19 passed"
+    "sha256": "68879bd57a03c263684576efd378ec458d853f91659d67cfb302459970b8120a",
+    "result": "22 passed"
   },
-  "digitalEvidence": {
-    "statesPerMotionGate": 65,
-    "threeMovingRodCount": 3,
-    "rodDiameterMm": 4.0,
-    "rodLengthMm": 50.0,
-    "capCount": 6,
-    "capEngagementMm": 8.7,
-    "capLengthMm": 9.05,
-    "thetaContactDeg": 23.433175199799216,
-    "thetaEndDeg": 24.0,
-    "maximumAcceptedEndDisplacementMm": 0.657823586728245,
-    "maximumRailReconstructionResidualMm": 5.687116766346677e-15,
-    "maximumFixedAxleReconstructionResidualMm": 7.105427357601002e-15,
-    "minimumCrossingSineDiagnostic": 0.0007187165119981841,
-    "minimumWebMm": 3.630989824536459,
-    "minimumFixedExtendedRodCutterGapMm": 6.103048327204938,
-    "minimumOuterRodCutterGapMm": {
-      "left": 3.630989824536459,
-      "right": 5.884373740993324
-    },
-    "maximumNormalizedConditionNumber": 12.82163283054513,
-    "minimumConditioningRank": 3,
-    "continuousOuterSupportStripDepthMm": 0.3,
-    "continuousOuterSupportStripStates": 65,
-    "continuousOuterSupportStripsPassed": true,
-    "minimumXt60ClearanceMm": 0.7500000000000036,
-    "maximumUnintendedIntersectionMm3": 0.0,
-    "servicePathId": "P17-D10-R1",
-    "serviceBrepSamplesPerSegment": 1001,
-    "serviceBrepMinimumClearanceMm": 1.2499999999999902,
-    "serviceAnalyticSamplesPerSegment": 1001,
-    "serviceAnalyticMinimumClearanceMm": 0.9338159212309596,
-    "serviceMaximumIntersectionMm3": 0.0
+  "implementedContract": {
+    "status": "exact frozen D13 candidate materialized for CAD review despite known product-interface blockers",
+    "commonRodDeltaYZMm": [16.1869657526, 10.2949747468],
+    "outerRotationCenterCYZMm": [3.0, 12.0],
+    "fixedAxleCenterAYZMm": [-29.0, 12.0],
+    "thetaLaw": "theta=24u; left=-theta; right=+theta",
+    "railAuthority": "derive_mating_rail implements T_target^-1*T_source*p_source for all six outer rod rails",
+    "workpiece": "frozen I10 finite modeled workpiece; body (-6.5,22.5), B (-0.5,3.5), vertical Y=-6.5, horizontal Z=-2.5, 12 mm finite horizontal segment, extract datum Y=17.265"
   },
-  "requirementTraceability": {
-    "REQ-027": "front-plane YZ workpiece is a true head-up, tail-right L",
-    "REQ-028": "OPEN rod mapping is exact right-vertical triangle",
-    "REQ-029": "END is the minimally corrected diagonal triangle",
-    "REQ-030": "24 degrees is end of travel, not a proven physical lock"
+  "knownBlockers": {
+    "acceptanceClaimed": false,
+    "openBottomRodBodySignedClearanceMm": -2.0,
+    "openBottomRodBodyIntersectionMm3": 199.8052927683109,
+    "openBottomRodWireCenterlineSeparationMm": 1.7016843784,
+    "openBottomRodWireRadialOverlapMm": 2.4483156216,
+    "openBottomRodWireIntersectionMm3": 53.787371493712925,
+    "endInfiniteStraightProxyGapMm": {"bottom": 8.1369657526, "upright": 2.2449747468},
+    "endFiniteModeledWireGapMm": {"bottom": 8.1369657526, "diagonal": 16.71834015015733, "upright": 7.877883157765334},
+    "lostEndContact": true,
+    "railPathBalance": "known D13 asymmetry retained; not a physical-force proof"
   },
   "stepSha256": {
-    "p17_r2_center_axle_coupon.step": "372145120bd129da326270d69c7cfb06904c8b68af65851e98c6aacc945a0d4e",
-    "p17_r2_contact.step": "37823dfcf389393218f6278e90c02da7f69ddaeeb2e9784dfc81c3208eb8b98b",
-    "p17_r2_exploded.step": "38d5e0a41c93f8b036423be585c56e07c6272f4f6cb92fa465be7bf273f6a060",
-    "p17_r2_fixed_axle_motion.step": "929d26fc6f4f55a2e052750749e1f977ab048eea8ad45f3603d2ca92d91b2df4",
-    "p17_r2_full_motion.step": "522b1a9ff51dd38de40e5866962c5907159e73e3c8cd10fa5313e6a8246eab38",
-    "p17_r2_locked.step": "bd9e866003d46dc114de481291a5e4ab3f09a4f3ec1a7e489ccc68cbfd79bc10",
-    "p17_r2_mid.step": "c49d34050498d527939082adb64547fa77952fa1e7ee1bffe51192b3523d938c",
-    "p17_r2_open.step": "550de63792439d589f46f0f71e30a216b81849df2a30aa7ea47ddd306eea6c65",
-    "p17_r2_permanent_cap_coupon.step": "3e69246a31a8ea8cd1b708f6ac94c9bf9bea0c33e4842372f2098e0e6ddc8a8c",
-    "p17_r2_print_kit.step": "d607dc8cc30341fffa8db38a3c0241bf30a2acba225502b1e05fa32ec96da410"
+    "p17_r2_open.step": "de718b52e8975a3aa0c014ecfeaa64bb624c259d152b8299ffa71bfac763826a",
+    "p17_r2_mid.step": "f90a2ca4e8f7c52b40e574c26a89e72174b32f499e3f1bfdf4fb5d00116305a5",
+    "p17_r2_contact.step": "8065fe1cbdb98fef5ab487e317fddbd8142a8f259a9ff785c2673555a06c9e80",
+    "p17_r2_locked.step": "c1ce28982e9f18502de4e1dab004cb26d0ba4702850d3a59dcfe8b54aea58aa2",
+    "p17_r2_exploded.step": "e39c5d464c3df661d433e781a702b2fb71b491cbb41826e971a8ba3c34a24a11",
+    "p17_r2_print_kit.step": "9fb7e5689af368b7bfd19b17b97d60b68fe9aacbe0e6bb17359f7d45c6a4f92e",
+    "p17_r2_permanent_cap_coupon.step": "a9058a576727059295c6246899ec79e2e2d08bd1a04130e3e2190b96f2a2979f",
+    "p17_r2_center_axle_coupon.step": "4b59a20633915a00ba3e8e93866462438b57dfbd7291e1f59ea8bc75edca17f1",
+    "p17_r2_fixed_axle_motion.step": "25d2165ec2bb2db078b0aa54f1ad0c16a3db215a2639c9cfede735bd51a9f7e6",
+    "p17_r2_full_motion.step": "568d4b4ae4c113df248371526aff5529047ac765e663b99db7cfb261bf728401"
   },
   "motionSha256": {
-    "p17_r2_fixed_axle_motion.step.py": "5df821aea698153885f7b379e79e482679b0e6fba64522f03730bc16dc453876",
-    "p17_r2_fixed_axle_motion.params.js": "d76e3cf6cd57f813f483e0394196997d99c575e2f139c192c9aa71527aba9e8e",
-    "p17_r2_full_motion.step.py": "1151a9ba1c7871a977b1ae92f6f55940b0b62ae2315d4f241b0d316f1c5ba7dc",
-    "p17_r2_full_motion.params.js": "6f991e5531fcbad89d93fe824543aa8332fb0c5d1167116f1acf122cd951cb01"
+    "p17_r2_fixed_axle_motion.params.js": "7ebfa050ca55745c4fa1f62daaad5693cebaba941823981c6be9357765c1dba9",
+    "p17_r2_full_motion.params.js": "6548498014c2cd8204c14b9f2debfee262169774376900acd29daaff934b7955"
   },
-  "snapshotSha256": {
-    "p17_r2_i08_orientation_open_front_20260825T123622Z.png": "7235f31d08cc6b27b812afcc41ecec0cf4eb3c1ee5be47d6903d8b96143c745f",
-    "p17_r2_i08_orientation_contact_front_20260825T123655Z.png": "d61811c3156b6c425d14a1e578b92aff15c9c81834e67ce8a238b88ea8a51cec",
-    "p17_r2_i08_orientation_end_front_20260825T123743Z.png": "a086c0812f648373f4ba075b8a88732fa93b299840e8ffb74221ce0a2ee948e4",
-    "p17_r2_i08_end_opposite_20260825T123108Z.png": "047ef210ffb599b443e3658ae7345e7a8f82ed3042d20f0247002ee105fe87d9",
-    "p17_r2_i08_full_motion_20260825T123129Z.gif": "461aeb86ae7aa1212e8cccee129e70f4f2fcb0f8cfd3ccf7e24a9d35bc4dd11c"
+  "reviewPacketSha256": {
+    "p17_r2_d13_open_front_20260825T212742Z.png": "d3a83b66230a44cb4189be5976a18bfd36b1261a6e06d07567dcb0c9d9e2d8d6",
+    "p17_r2_d13_contact_front_20260825T212744Z.png": "836d316aec7fb512f4fc89f6279ef3f859b50d38ca7a201432ff347c3041542a",
+    "p17_r2_d13_end_front_20260825T212746Z.png": "f5d2265b4caf784f6860efb07550d2cc7c3cbb3f1891aac3ac9c2343732ca3b0",
+    "p17_r2_d13_end_opposite_20260825T212748Z.png": "d087a8fffb23e46cfb11312ad7e7d334f11ec6cf3fb254989bb2d3a1cd739061",
+    "p17_r2_d13_open_to_end_20260825T212826Z.gif": "e941a33e6d54b8010c9ad7ae67c017e28e430b6834014eb16ac79e2c212025a2"
   },
   "validation": {
-    "stepValidate": "10 of 10 STEP files passed; zero geometry failures",
-    "sourceExportParity": "10 of 10 source/export solid counts match; maximum bounds delta 8.811e-12 mm; maximum summed-solid volume delta 1.339e-8 mm3",
-    "visualReview": "three front orientation PNGs with the two front review plates hidden, one opposite-side PNG, and one 72-frame opposed-twist GIF rendered with empty warnings and were visually inspected"
+    "focusedPytest": "22 of 22 passed",
+    "stepGeneration": "10 of 10 built with CAD 0.4.27 scripts/gen --write --force",
+    "sourceExportCurrent": "10 of 10 generator packages reported current against final source closure",
+    "stepValidate": "10 of 10 passed; failureCount=0",
+    "stepRefs": "10 of 10 passed; errors=[]",
+    "visualReview": "four transparent axis-camera PNGs inspected; exact candidate and known interface failure remain visible; CLI burned ISO labels despite explicit directions, so filenames and this provenance are the view authority",
+    "motionReview": "72 decoded RGB frames; 71 of 71 adjacent frame diffs nonempty"
   },
-  "status": "implementation candidate; independent critic, validator, formal review and physical proof pending",
-  "physicalBoundary": "No mesh, 3MF, slicer, PETG print, cap retention, force, heat, wear, vibration, wire holding, self-lock or physical acceptance is claimed."
+  "status": "review-only exact candidate; known invalid product interface; independent critique/review/validation and physical proof pending",
+  "physicalBoundary": "No CAD acceptance, service acceptance, mesh, 3MF, slicer, PETG print, cap retention, hand force, heat, wear, vibration, wire holding, self-lock or physical acceptance is claimed."
 }

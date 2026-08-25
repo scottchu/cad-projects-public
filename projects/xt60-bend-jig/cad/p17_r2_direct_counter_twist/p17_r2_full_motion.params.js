@@ -5,9 +5,9 @@
 const ORIGIN = Object.freeze([0.0, 3.0, 12.0]);
 const AXIS = Object.freeze([1.0, 0.0, 0.0]);
 const PATHS = Object.freeze({
-  upright: Object.freeze({ open: [22.235, -2.0502813742], end: [22.235, 8.535] }),
-  bottom: Object.freeze({ open: [-4.2502813742, 24.435], end: [6.335, 24.435] }),
-  diagonal: Object.freeze({ open: [22.235, 24.435], end: [14.7500757595, 16.9500757595] }),
+  upright: Object.freeze({ open: [21.6869657526, -6.6903066274], end: [21.6869657526, 3.8949747468] }),
+  bottom: Object.freeze({ open: [-4.7983156216, 19.7949747468], end: [5.7869657526, 19.7949747468] }),
+  diagonal: Object.freeze({ open: [21.6869657526, 19.7949747468], end: [14.2020415121, 12.3100505063] }),
 });
 
 const FEATURES = {

@@ -1,47 +1,49 @@
 {
-  "schema": "xt60-bend-jig.p17-r2.candidate-manifest.v4",
-  "candidateId": "P17-I08-R2",
-  "iteration": "p17-r2-head-up-tail-right-orientation-repair",
-  "candidateFingerprintSha256": "f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5",
-  "implementationInputManifestSha256": "2eb7184b774735f796169dc3efc039d68e7b60ef869fb105eba125467e1ebc2e",
+  "schema": "xt60-bend-jig.p17-r2.candidate-manifest.v5",
+  "candidateId": "P17-I13-D13-REVIEW",
+  "iteration": "p17-r2-locked-rod-layout",
+  "candidateFingerprintSha256": "590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c",
+  "implementationInputManifestSha256": "0b96b9dd4821f4f848fee0d44eb79ce004ee35250a8d8aa802c7277463d5247c",
   "designContract": {
-    "path": "projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/DESIGN.md",
-    "sha256": "9ea73a60a7cda2eaedd2729799140f57d4294a9fc56b0b13c6cfb5b06916da7d"
+    "path": "projects/xt60-bend-jig/docs/iterations/p17-r2-locked-rod-layout/DESIGN.md",
+    "sha256": "0133dc4d45f38e91a20311d490b9b2fef2c8c0c6a07081c6b0c75fb19d620f95"
   },
   "implementedContract": {
-    "workpieceOrientation": "front YZ is true L: +Z head up, +Y tail/wires right",
-    "rods": "three OD4 x 50.00 mm rods; linear u=theta/24",
-    "states": "exact D10 OPEN and contact; minimally corrected diagonal END",
-    "platesAndGuides": "80/82/85 mm plates; stationary 4.15 mm inner capsules; six inverse-transform outer rails; left -theta/right +theta about C=(3,12)",
-    "fixedMember": "purple stepped center axle at A=(-29,17)",
-    "caps": "six permanent stepped caps; 8.70 mm engagement; 9.05 mm length",
-    "servicePath": "P17-D10-R1",
-    "support": "continuous two-sided normal strips through +0.30 mm at 65 states plus exact contact"
+    "workpiece": "exact frozen I10 finite modeled workpiece and service/extract datum",
+    "rods": "exact D13 common translation applied to all I10 OPEN/contact/END states; three OD4 x 50 mm rods; six permanent caps",
+    "rails": "three direct fixed-inner tracks and six analytically derived outer rails using one reusable frame-transform function",
+    "motion": "linear theta=24u; left outer -theta; right outer +theta; inner plates and workpiece fixed",
+    "centers": "C=(3,12); A=(-29,12)",
+    "status": "materialized only for CAD review; known invalid product interface retained"
   },
+  "knownFailures": [
+    "OPEN bottom rod intersects XT60 body",
+    "OPEN bottom rod intersects finite modeled vertical wire envelope",
+    "END loses the former three-point workpiece contact/preload",
+    "D13 rail path/length balance is materially asymmetric",
+    "no acceptance, service, force, endpoint retention, self-lock or physical claim"
+  ],
   "commands": [
-    {"cmd": "uv run --project projects/xt60-bend-jig pytest -q projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py", "result": "19 passed"},
-    {"cmd": "CAD scripts/gen --write --force --json on ten explicit generators", "result": "10 built"},
-    {"cmd": "CAD scripts/inspect validate on ten STEP files", "result": "10 passed"},
-    {"cmd": "source/imported-STEP solid count, bounds and volume parity", "result": "10 passed; max bounds 8.811e-12 mm; max volume 1.339e-8 mm3"},
-    {"cmd": "CAD scripts/snapshot OPEN/contact/END/opposite and motion", "result": "4 PNG + 72-frame GIF; warnings empty; visually inspected"}
+    {"cmd": "uv run --project projects/xt60-bend-jig pytest -q projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py -x", "result": "22 passed"},
+    {"cmd": "CAD 0.4.27 scripts/gen --write --force on ten explicit generators", "result": "10 built"},
+    {"cmd": "CAD 0.4.27 scripts/gen --json on final source closure", "result": "10 current"},
+    {"cmd": "CAD 0.4.27 scripts/inspect validate --skip-self-intersection", "result": "10 passed; failureCount=0"},
+    {"cmd": "CAD 0.4.27 scripts/inspect refs --facts --positioning", "result": "10 passed; errors=[]"},
+    {"cmd": "CAD 0.4.27 scripts/snapshot static and animated review packet", "result": "4 PNG + moving 72-frame GIF; visually inspected"}
   ],
   "outputs": {
     "source": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py",
     "test": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
+    "stepCount": 10,
+    "motionSidecarCount": 2,
     "reviewPacket": [
-      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i08_orientation_open_front_20260825T123622Z.png",
-      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i08_orientation_contact_front_20260825T123655Z.png",
-      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i08_orientation_end_front_20260825T123743Z.png",
-      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i08_end_opposite_20260825T123108Z.png",
-      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i08_full_motion_20260825T123129Z.gif"
+      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_d13_open_front_20260825T212742Z.png",
+      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_d13_contact_front_20260825T212744Z.png",
+      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_d13_end_front_20260825T212746Z.png",
+      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_d13_end_opposite_20260825T212748Z.png",
+      "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_d13_open_to_end_20260825T212826Z.gif"
     ],
     "provenance": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json",
     "fingerprint": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-r2-candidate-fingerprint.json"
-  },
-  "exclusions": [
-    "no added mechanism, mesh, 3MF or slicer artifact",
-    "24 degrees is end-of-travel only; endpoint retention and self-lock are unclaimed",
-    "no physical acceptance claim",
-    "independent critic, validator and formal reviewer acceptance pending"
-  ]
+  }
 }

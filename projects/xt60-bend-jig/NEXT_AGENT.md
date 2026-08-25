@@ -6,19 +6,23 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p17-r2-head-up-tail-right-orientation-repair`.
-- Contract: `P17-D10-R2`.
-- Accepted digital candidate: `P17-I08-R2`; formal gate `P17-R08` ACCEPT.
-- Exact fingerprint:
-  `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`.
+- Active iteration: `p17-r2-locked-rod-layout`.
+- Review-only contract/candidate: `P17-D13` / `P17-I13`.
+- Exact review fingerprint:
+  `590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c`.
+- `P17-C13`, `P17-V13`, and `P17-R13`: fidelity/evidence accepted, product and
+  merge/release blocked.
+- Last accepted mainline candidate: `P17-I08-R2`, fingerprint `f5bc383f...`.
 - Source: `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
 - Tests: `tests/test_p17_r2_direct_counter_twist.py`.
 - Full motion:
   `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
 
-Distinct `P17-C08`, `P17-V08`, and `P17-R08` accepted the unchanged candidate
-for digital CAD/source, ten written STEP exports, frozen visual/motion evidence,
-and the recorded acceptance boundaries only.
+Read every file under `docs/iterations/p17-r2-locked-rod-layout/` before acting.
+The D13 source faithfully materializes the user's frozen rod delta and is
+intentionally not product-acceptable: OPEN intersects XT60 and wire, while END
+loses all three forming contacts. Do not mistake passing fidelity/export tests
+or Viewer readiness for product acceptance.
 
 ## Non-negotiable orientation/topology
 
@@ -45,18 +49,21 @@ and the recorded acceptance boundaries only.
 
 ## Immediate task
 
-Do not alter the accepted fingerprint during review. The exact persistent
-singleton Viewer page is the review surface. If the user authorizes printing,
-regenerate from source, run mesh/DfAM/slicer checks, then execute the physical
-three-rod/cap/slot experiment in `PROJECT_STATE.md` and the active `HANDOFF.md`.
+Do not merge, slice, print, or release D13. Preserve fingerprint `590e05f9...`
+while collecting the user's explicit scope decision: reopen common rod
+placement while keeping XT60/wire fixed, or supersede the workpiece/service
+interface while keeping the locked rods. A superseding design must eliminate
+OPEN body/wire collision, restore meaningful END contact, and address the
+recorded rail/path asymmetry before implementation.
 
 Use only Python 3.12 through the root uv workspace. Use the singleton Viewer
 managed by `~/.local/bin/cad-viewer`; do not start an ad-hoc competing server.
 
 ## Acceptance boundary
 
-CAD/source, ten STEP exports, frozen visuals, prescribed motion, and Viewer HTTP
-readiness are accepted for `f5bc383f...`. Interactive slider manipulation,
+D13 implementation fidelity, ten STEP review exports, static/motion packet, and
+Viewer HTTP readiness are accepted only as evidence. Product/mechanical/physical
+acceptance and PR merge are formally rejected. Interactive slider manipulation,
 mesh, DfAM, slicer, 3MF, PETG fit, cap/keeper retention, force, wobble, wire
-damage, springback, thermal behavior, endpoint retention, and self-lock are not
-accepted.
+damage, springback, thermal behavior, endpoint retention, and self-lock remain
+unaccepted.
