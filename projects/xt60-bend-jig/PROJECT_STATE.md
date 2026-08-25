@@ -1,77 +1,122 @@
 # XT60 bend jig project state
 
-Last updated: `2026-08-22`
+Last updated: `2026-08-25`
 
-## Baseline
+## Baseline and active iteration
 
 - Canonical project: `projects/xt60-bend-jig`.
-- Requested repair baseline: `b0b79253373c7cf80943e99df8ab799958c50d49`.
-- Repository workflow baselines integrated without overlap or loss:
-  `a5e21e6760d383f900ee30e4457edfb13267e09d` and
-  `1484955cc1cfa64164dbdd1ca1222be658933c8e`.
-- Supported design: P13 four-plate, three-purchased-rod equal-travel mechanism.
-- Authoritative source:
-  `src/xt60_bend_jig/p13_four_plate_three_rod.py`, SHA-256
-  `7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067`.
+- Active iteration: `p17-r2-three-rod-triangle-motion`.
+- Current design contract: `P17-D09-R1`.
+- Accepted digital candidate: `P17-I07-R1`, formally accepted by `P17-R07`.
+- Independent candidate fingerprint:
+  `5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87`.
+- Candidate manifest SHA-256:
+  `733f11d57aec71f9be8875a8d6ea3196fcc7c4076a673fc5de267c1253686c91`.
+- Artifact provenance SHA-256:
+  `19e9927cb9d17ef307e96b70eb06600ac5d691d0aa164568d7bddf46b741190c`.
+- Canonical handoff:
+  `docs/iterations/p17-r2-three-rod-triangle-motion/HANDOFF.md`.
 
-## Active iteration
+This remains P17 R2. A product version identifies an intentional product
+baseline, mechanism architecture, or external-interface change. A focused
+repair, Viewer/simulation outcome, export, snapshot, or validation rerun does
+not by itself increment P or R.
 
-- Current candidate fingerprint:
-  `9f123ad24f46d60fcb89ae305455ba1a0c3b38d4738f82766ec91d02c1350db9`.
-- Active iteration: `p13-r2-center-hole-fit-repair`; canonical handoff:
-  `docs/iterations/p13-r2-center-hole-fit-repair/HANDOFF.md`.
+## Accepted digital result
 
-## Current result
+P17-I07-R1 is the source-derived four-plate, three-rod counter-twist candidate:
 
-The user's printed "middle stick" is the separate printed shallow-D actuator
-shaft (`OD5.60 / AF5.15 mm`). The failed "center hole" is the one repeated
-printed interface formed by the matching D bores in `left_cam` and
-`right_actuator`. It is not any of the three purchased-rod lanes, fixed C
-journals, keeper, or caps.
+- exactly three moving `OD4.00 x 50.00 mm` stainless rods and six permanent
+  stepped blind caps;
+- both inner plates, both keepers, and the purple stepped axle at
+  `A=(-29.00,17.00) mm` remain world-fixed;
+- the left and right outer plates rotate independently by `-theta/+theta`
+  about `C=(1.75,6.25) mm`, with the right force side larger;
+- all fixed-inner rod guides are direct straight tracks; all six outer rod
+  rails and both axle rails are derived by inverse transform, not redrawn;
+- the numeric OPEN, first-contact, and END triangles use `S_open=12.80 mm`,
+  first contact at `23.53125 deg`, and END at `24 deg`;
+- the plate diameters are `80/82/85 mm`, moving slots are `4.15 mm`, and the
+  geometric END preload proxy is `0.25 mm` on each insulated wire;
+- the redundant green grip and obsolete inner service-window cutter are
+  removed; there is no stability bar, yoke, linkage, gear, centered
+  replacement bar, lock, or self-lock feature;
+- the five-waypoint completed-pigtail service path is explicit and was checked
+  with actual solids after reverse opening.
 
-The smallest source repair enlarged only the named shared cam-D-bore profile:
-`cam_d_bore_od 5.70 -> 5.75 mm` and
-`cam_d_bore_across_flat 5.25 -> 5.30 mm`. The shaft, three uncut
-`OD4.00 x 50.00 mm` rods, architecture, motion/service contract, other fits,
-and source-authored print orientation remain unchanged.
+The production source retains legacy internal `locked`/`theta_lock_deg` names
+only for compatibility; they mean END of prescribed travel and do not claim
+retention.
 
-## Acceptance state
+## Independent evidence
 
-- CAD/source: accepted by independent critic, validator, and formal reviewer
-  for the P13 R2 repaired-print candidate. Focused failing-before/passing-after
-  evidence is recorded; the final relevant suite is `60 passed`.
-- Written artifact/slicer: accepted for a repaired Snapmaker U1 PETG test
-  print. Actual STEP solids, motion/service states, source/export parity,
-  snapshots, exact production 3MF integrity/orientation, DfAM, and OrcaSlicer
-  2.4.2 were checked. The unchanged thin caps and keeper retain documented
-  generic DfAM/manufacturing risks.
-- Physical: failed/pending. The latest printed P13 did not assemble at this
-  interface. The repaired cams have not yet been printed, fitted, cycled, or
-  used; no physical acceptance is claimed.
+- `P17-C07`: PASS/no blocker or major finding for the exact fingerprint.
+- `P17-V07`: PASS for CAD source, ten written STEP exports, frozen visual
+  evidence, and singleton Viewer HTTP readiness.
+- `P17-R07`: ACCEPT for delivery of the unchanged candidate.
+- Focused tests: `18 passed` through the root `uv` environment.
+- All ten written STEP exports validated with zero geometry failures and
+  passed source/export topology, occurrence, bounds, and volume parity.
+- Across 65 motion states: minimum rail crossing sine `0.10202`, maximum
+  normalized constraint condition `9.64043`, rank `3`, minimum actual web
+  `2.66759 mm`, and zero unintended intersections.
+- The full service sweep evaluated `4004` actual-solid poses and retained
+  `0.84675 mm` minimum clearance with zero intersection.
+- Frozen OPEN/contact/END/opposite snapshots and the 72-frame motion GIF were
+  visually inspected. The opposite END view can visually merge two caps, but
+  source and occurrence evidence independently prove three rods and six caps.
 
-## Primary release and live review
+## Primary artifacts
 
-- Release manifest: `releases/p13-petg-test/release-manifest.json`, SHA-256
-  `406325612e34c5c6fce95d96a2fe074591fdf502f592f172c47d016df5a54356`.
-- Production 3MF: `cad/p13_four_plate_three_rod/p13_print_kit.3mf`, SHA-256
-  `588f11e47c89a64221e527085e560453d4e7e75a7b6ecc00cf448f7d22bf75a7`.
-- Primary STEP: `cad/p13_four_plate_three_rod/p13_print_kit.step`, SHA-256
-  `5237fe9bc908781ae5793c9ab004f4fc51d24720244b26846bb1dacba63256b7`.
-- Tailscale CAD Viewer:
-  <http://100.70.144.56:3245/Users/scottchu/.codex/worktrees/79caa408-e84c-4bfe-adfd-fa9ba1a1e186/design-projects/projects/xt60-bend-jig?file=cad%2Fp13_four_plate_three_rod%2Fp13_print_kit.step.py>
+- Parametric authority:
+  `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
+- Focused regression:
+  `tests/test_p17_r2_direct_counter_twist.py`.
+- Full motion:
+  `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
+- Focused motion:
+  `cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py`.
+- OPEN, contact, midpoint, END, exploded, print-kit, cap coupon, axle coupon,
+  and both motion STEP exports are under
+  `cad/p17_r2_direct_counter_twist/`.
 
-## Open risks
+## Viewer delivery
 
-- Digital allowance is `0.15 mm` diametral on both D-profile controls, but a
-  printed-to-printed fit remains sensitive to seam, elephant foot, shrinkage,
-  and orientation.
-- CAD lash and hub-wall margins pass but are small; printed play, torque
-  transfer, hub cracking, wear, and heat response remain unknown.
+- Singleton per-user service: `com.scottchu.cad-viewer` on
+  `127.0.0.1:3245`, managed by `~/.local/bin/cad-viewer`.
+- Installed self-healing payload digest:
+  `4e89ad3d2efce80b2381e439c43af0623245d1c2443fca5ea0fb24b10bb72988`.
+- CAD Python is the repository root uv interpreter; no project-local Python
+  environment is permitted.
+- The exact local and Tailscale pages, artifact endpoint, assembly descriptor,
+  singular `open_to_end` module, all ten GLBs, and all six static assets
+  returned HTTP `200`; the artifact reported `state: ready`.
+- Live browser slider manipulation was not independently exercised. Frozen
+  GIF motion and Viewer transport/readiness are accepted separately.
+
+## Acceptance boundary
+
+- CAD/source: accepted for exact fingerprint `5965f4e...`.
+- Written STEP/export: accepted for the ten provenance-recorded exports.
+- Frozen visual and Viewer transport/readiness: accepted.
+- Mesh/DfAM/slicer/3MF: not generated or accepted for P17-I07-R1.
+- Physical: not tested or accepted. PETG slot fit, permanent-cap and keeper
+  retention, hand torque, real preload/holding force, wobble, insulation
+  marking/safety, soldering heat, cooled bend angle, springback, creep, wear,
+  vibration, endpoint retention, and self-lock remain physical gates.
+
+## Repository delivery
+
+- Branch: `codex/xt60-p17-r2-direct-cad`.
+- Pull request: <https://github.com/scottchu/design-projects/pull/8>.
+- The unrelated user-modified legacy P13 `p13_print_kit.3mf` in the canonical
+  main checkout remains outside this worktree and must not be overwritten.
 
 ## Next action
 
-Reprint the two repaired cam plates, reuse the unchanged printed D shaft, and
-first verify hand insertion through both stationary bores without forcing or
-damage. If that passes, assemble in the certified service order and run the
-complete dry-motion, retention, cycling, wire, heat, removal, cooled-angle, and
-springback observation sequence before changing acceptance to physical.
+Do not change the accepted fingerprint while reviewing it. The smallest next
+experiment is a user-authorized P17-I07-R1 print package followed by the
+documented three-rod/cap/slot physical test. Record first contact, END effort,
+rod wobble, wire marks, XT60 reaction, cap/keeper retention, removal path, and
+cooled bend angle. Do not claim a physical lock: this candidate intentionally
+contains none.

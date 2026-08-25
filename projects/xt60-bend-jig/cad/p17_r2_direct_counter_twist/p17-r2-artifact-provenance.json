@@ -1,0 +1,78 @@
+{
+  "schema": "xt60-bend-jig.p17-r2.artifact-provenance.v3",
+  "candidateId": "P17-I07-R1",
+  "implementationBaselineCommit": "b09d0f31583fcae15ef71bca4c92e4ad37aa62af",
+  "frozenDesignCommit": "3585340299e7dae3227b5fc14c8759b7f8854875",
+  "implementationInputManifestSha256": "a309e0d836454ac4b9e2f48b8ab3de3cf450b41e96909e6ef96aa47dc277930a",
+  "independentGateManifest": {
+    "path": "/tmp/p17-i07-independent-gate-manifest.txt",
+    "sha256": "5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87",
+    "entryCount": 30
+  },
+  "source": {
+    "path": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py",
+    "sha256": "11b5336d7c4523c4ce685b8d784406934a08098179160b306cd595c2fcf589c2"
+  },
+  "tests": {
+    "path": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
+    "sha256": "752fb84281113a5025aefd37db17340f5d00388c43743884af2c3388a628b779",
+    "result": "18 passed"
+  },
+  "digitalEvidence": {
+    "statesPerMotionGate": 65,
+    "threeMovingRodCount": 3,
+    "rodDiameterMm": 4.0,
+    "rodLengthMm": 50.0,
+    "capCount": 6,
+    "capEngagementMm": 8.7,
+    "capLengthMm": 9.05,
+    "maximumRailReconstructionResidualMm": 7.160723346098895e-15,
+    "minimumCrossingSine": 0.1020238653409378,
+    "minimumWebMm": 2.6675894314400947,
+    "minimumFixedExtendedRodCutterGapMm": 6.103048327204936,
+    "minimumOuterRodCutterGapMm": {
+      "left": 6.522658438854226,
+      "right": 6.41897887963513
+    },
+    "maximumNormalizedConditionNumber": 9.640422856842672,
+    "minimumConditioningRank": 3,
+    "servicePathId": "P17-D09-R1",
+    "serviceBrepSamplesPerSegment": 1001,
+    "serviceBrepMinimumClearanceMm": 0.846751751172426,
+    "serviceAnalyticSamplesPerSegment": 1001,
+    "serviceAnalyticMinimumClearanceMm": 0.8467517511724272,
+    "serviceMaximumIntersectionMm3": 0.0
+  },
+  "stepSha256": {
+    "p17_r2_center_axle_coupon.step": "af5c3f056c5b7a518a79dace3c0ef8e7d8b43b218ab8f0f01585240ede80cbcd",
+    "p17_r2_contact.step": "0aec8943a3274d0411faae0edc499012b7510f610c9d47d0d129e878d1bf50fd",
+    "p17_r2_exploded.step": "9ddc3421e81a4b8b550bd1a19486e68a7ff2970b6ca34b4b4d2246df77a47bd8",
+    "p17_r2_fixed_axle_motion.step": "a3384f5bfeb42c082e740928994e2438cded348b387ec01e9d7568ba25d98e96",
+    "p17_r2_full_motion.step": "4586d0e2b2bed154d5446986cad234288c8b0f8e1ed16464fc2c979e88c2f377",
+    "p17_r2_locked.step": "a6c17b0704c9da7a5a8f51a2b38257dae73e414518930aafb8155607d3ce703b",
+    "p17_r2_mid.step": "9880c8bab859d7cbffa6eda81adf23b001c36bfcd6afeef92081b9d476e96d6a",
+    "p17_r2_open.step": "eb3b5e3dc2cb664b975306165b13d9da044fc46376c4548ed7c903a152a4fab3",
+    "p17_r2_permanent_cap_coupon.step": "ca41d87b81f9178e87dc15824213fbfc9b03e506259d6642e8b92b1deb0af399",
+    "p17_r2_print_kit.step": "f2f87fafd20a7b6e284bc74e100f7f7c2c33134d1fe2d62deeab01e395da6aef"
+  },
+  "motionSha256": {
+    "p17_r2_fixed_axle_motion.step.py": "5df821aea698153885f7b379e79e482679b0e6fba64522f03730bc16dc453876",
+    "p17_r2_fixed_axle_motion.params.js": "224cc91316d0e1ba9cb8c0e58eec1874c6f7d9aac39ad17394145fdbf8bff974",
+    "p17_r2_full_motion.step.py": "1151a9ba1c7871a977b1ae92f6f55940b0b62ae2315d4f241b0d316f1c5ba7dc",
+    "p17_r2_full_motion.params.js": "fcd64a66ab930b47a16f1d3261281c60dbb40f2c283d2dc982a33881299fe177"
+  },
+  "snapshotSha256": {
+    "p17_r2_i07r1_open_20260825T034013Z.png": "b03f5737a91655af1d4db05fde241839472fad088312153987766311e54c5faa",
+    "p17_r2_i07r1_contact_20260825T034013Z.png": "036f562de8f8debc2e985422d124e7e8d2f4845b7716ba620ded4fa86738ae45",
+    "p17_r2_i07r1_end_iso_20260825T034013Z.png": "0bb984c99d155559eec56eea10270618de99fd8dc6c2e7c9b6a54766df56a336",
+    "p17_r2_i07r1_end_opposite_20260825T034013Z.png": "05163104d7c355f1ac7bf6379031b1b1aba74f60f08afeff61b71c1001d7bab4",
+    "p17_r2_i07r1_full_motion_20260825T034023Z.gif": "7a0dada9bdcf0c800569dd4499d229051a9aeb3ff8e202be81305e15122a63fc"
+  },
+  "validation": {
+    "stepValidate": "10 of 10 STEP files passed; zero geometry failures",
+    "sourceExportParity": "10 of 10 source/export solid counts match; maximum bounds delta 6.253e-12 mm; maximum summed-solid volume delta 4.890e-9 mm3",
+    "visualReview": "four multi-state/multi-view PNGs and one 72-frame opposed-twist GIF rendered with empty warnings and were visually inspected"
+  },
+  "status": "implementation candidate; independent critic, validator, formal review and physical proof pending",
+  "physicalBoundary": "No mesh, 3MF, slicer, PETG print, cap/keeper retention, force, heat, wear, vibration, wire holding or physical acceptance is claimed."
+}

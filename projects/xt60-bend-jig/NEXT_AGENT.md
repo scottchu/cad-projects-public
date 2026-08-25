@@ -6,47 +6,53 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p13-r2-center-hole-fit-repair`.
-- Final digital candidate fingerprint:
-  `9f123ad24f46d60fcb89ae305455ba1a0c3b38d4738f82766ec91d02c1350db9`.
-- Authoritative P13 source:
-  `src/xt60_bend_jig/p13_four_plate_three_rod.py`, SHA-256
-  `7927bc9bb0d0516faa5410200fc870df408fe16b282c2a226828e712ec801067`.
-- Canonical evidence: iteration `VALIDATION.md`, `REVIEW.md`, and `HANDOFF.md`.
-- Production 3MF:
-  `cad/p13_four_plate_three_rod/p13_print_kit.3mf`, SHA-256
-  `588f11e47c89a64221e527085e560453d4e7e75a7b6ecc00cf448f7d22bf75a7`.
+- Active iteration: `p17-r2-three-rod-triangle-motion`.
+- Contract: `P17-D09-R1`.
+- Accepted digital candidate: `P17-I07-R1`; formal gate `P17-R07` ACCEPT.
+- Exact independent fingerprint:
+  `5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87`.
+- Candidate manifest SHA-256:
+  `733f11d57aec71f9be8875a8d6ea3196fcc7c4076a673fc5de267c1253686c91`.
+- Artifact provenance SHA-256:
+  `19e9927cb9d17ef307e96b70eb06600ac5d691d0aa164568d7bddf46b741190c`.
+- Source: `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
+- Tests: `tests/test_p17_r2_direct_counter_twist.py`.
+- Full motion:
+  `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
+
+Distinct `P17-C07`, `P17-V07`, and `P17-R07` passed the unchanged candidate
+for digital CAD/source, ten written STEP exports, frozen visual evidence, and
+Viewer transport/readiness only.
+
+## Accepted mechanism
+
+- Fixed: purple stepped axle at `A=(-29,17)`, both inner plates, both keepers.
+- Moving: all three `OD4 x 50 mm` stainless rods and all six permanent caps.
+- Rotating: left and right outer plates in opposite directions around
+  `C=(1.75,6.25)`, with the right outer plate larger for force input.
+- Guides: fixed-inner rod tracks are straight; side-local outer tracks and
+  axle tracks are inverse-transform-derived for their respective rotations.
+- Travel: OPEN to first contact at `23.53125 deg` to END at `24 deg`; the
+  first-contact-to-END distance is a `0.25 mm` geometric preload proxy, not
+  force proof.
+- Removed: green grip tab, obsolete service window, old endpoint lock.
+- Forbidden: stability bar, yoke, linkage, gear, extra center bar, replacement
+  lock, or any claim that END is self-locking.
 
 ## Immediate task
 
-Do not redesign or further enlarge the fit before physical evidence. Reprint
-the repaired `left_cam` and `right_actuator` plates and test them with the
-unchanged printed shallow-D shaft. Record whether the shaft passes through both
-bores by hand without forcing, binding, visible damage, or unacceptable play.
-If that focused fit passes, complete the documented P13 assembly, dry-motion,
-retention, cycling, wire, heat, removal, cooled-angle, and springback sequence.
-Append the observations to `docs/EXPERIENCE.md` and update all three acceptance
-layers. If it fails, open a new iteration and preserve this one as history.
+Preserve the exact fingerprint. If the user authorizes printing, regenerate
+the print package from source, run mesh/DfAM/slicer checks, and perform the
+physical three-rod/cap/slot experiment described in `PROJECT_STATE.md` and the
+active `HANDOFF.md`. Do not infer physical acceptance from CAD evidence.
 
-## Preserve and do not assume
+Use only Python 3.12 through the root uv workspace. Use the singleton Viewer
+managed by `~/.local/bin/cad-viewer`; do not start an ad-hoc competing server.
 
-- Preserve the four-plate/three-purchased-rod architecture, fixed 90-degree
-  outcome, three uncut `OD4 x 50 mm` rods, role-specific rod fits, service
-  order, and source-defined print orientation.
-- The repair changed only the two shared cam D-bore controls to
-  `OD5.75 / AF5.30 mm`; the shaft remains `OD5.60 / AF5.15 mm`.
-- The final relevant digital suite is `60 passed`; digital acceptance is not
-  physical proof.
-- Unchanged thin caps and keeper retain conservative generic DfAM warnings and
-  should be inspected during the repaired print.
-- Use only the root `uv` and npm workspaces. Never edit generated CAD by hand
-  or modify legacy source directories.
+## Acceptance boundary
 
-## Live CAD review
-
-The Viewer was independently confirmed over Tailscale at:
-
-<http://100.70.144.56:3245/Users/scottchu/.codex/worktrees/79caa408-e84c-4bfe-adfd-fa9ba1a1e186/design-projects/projects/xt60-bend-jig?file=cad%2Fp13_four_plate_three_rod%2Fp13_print_kit.step.py>
-
-Viewer restart and artifact-resolution commands are recorded in the active
-iteration's `VALIDATION.md` if the current process is no longer running.
+CAD/source, ten STEP exports, frozen visuals, and Viewer HTTP readiness are
+accepted for `5965f4e...`. Interactive slider manipulation, mesh, DfAM,
+slicer, 3MF, PETG fit, cap/keeper retention, force, wobble, wire damage,
+springback, thermal behavior, endpoint retention, and self-lock are not
+accepted.

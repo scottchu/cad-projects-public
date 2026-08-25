@@ -9,6 +9,14 @@ This is a multi-project repository for personal design work. Keep every design u
 - Use Python 3.12 and the root `uv` workspace.
 - Run Python tooling through `uv run` from the repository root.
 - Use `uv sync --all-packages --all-groups` to update the shared root `.venv`.
+- The root `<repo-root>/.venv` managed by `uv` is the only Python environment
+  allowed for a checkout or worktree. If a tool cannot be launched through
+  `uv run`, explicitly point it at `<repo-root>/.venv/bin/python3`; for CAD
+  Viewer, set `VIEWER_CAD_PYTHON` to that absolute interpreter path.
+- Never let repository tooling fall back to Homebrew Python, macOS system
+  Python, pyenv, or another automatically discovered interpreter. If the root
+  `.venv` is missing or incomplete, repair it with the root `uv sync` command
+  instead of creating or selecting another environment.
 - Do not create, commit, copy, or rely on a project-local `.venv` or nested `uv.lock`.
 - Keep project-specific dependencies in that project's `pyproject.toml`; keep only repository-wide tooling in the root `pyproject.toml`.
 - Use the root npm workspace for JavaScript projects and run npm commands from the repository root.

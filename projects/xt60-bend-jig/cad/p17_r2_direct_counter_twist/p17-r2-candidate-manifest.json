@@ -1,0 +1,70 @@
+{
+  "schema": "xt60-bend-jig.p17-r2.candidate-manifest.v3",
+  "candidateId": "P17-I07-R1",
+  "iteration": "p17-r2-three-rod-triangle-motion",
+  "candidateFingerprintSha256": "5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87",
+  "implementationInputManifestSha256": "a309e0d836454ac4b9e2f48b8ab3de3cf450b41e96909e6ef96aa47dc277930a",
+  "designContract": {
+    "path": "projects/xt60-bend-jig/docs/iterations/p17-r2-three-rod-triangle-motion/DESIGN.md",
+    "sha256": "2c8be254483aaee753ca6352bfaf4aec1e593944cf2d08296ec342d35e587ad3"
+  },
+  "implementedContract": {
+    "movingRods": "all three OD4 x 50.00 mm rods",
+    "motionLaw": "linear u=theta/24",
+    "outerRotation": "left -theta, right +theta about C=(1.75,6.25)",
+    "fixedMember": "purple stepped center axle at A=(-29,17)",
+    "platesMm": [80.0, 82.0, 85.0],
+    "slotWidthMm": 4.15,
+    "caps": "six permanent stepped caps, 8.70 mm engagement, 9.05 mm length",
+    "servicePath": "P17-D09-R1 five-pose rigid-body removal"
+  },
+  "commands": [
+    {
+      "cmd": "uv run --project projects/xt60-bend-jig pytest -q projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
+      "result": "18 passed"
+    },
+    {
+      "cmd": "CAD scripts/gen on ten explicit P17 R2 generators with --write --force --json",
+      "result": "10 built"
+    },
+    {
+      "cmd": "CAD scripts/inspect validate on all ten written STEP files",
+      "result": "10 passed with zero failures"
+    },
+    {
+      "cmd": "direct source versus imported written-STEP solid count, bounds and summed-volume parity",
+      "result": "10 passed; max bounds delta 6.253e-12 mm; max volume delta 4.890e-9 mm3"
+    },
+    {
+      "cmd": "CAD scripts/snapshot at open, contact, end, opposite end and animated open-to-end",
+      "result": "4 PNG and one 72-frame GIF; warnings empty; visually inspected"
+    }
+  ],
+  "outputs": {
+    "authoritativeSource": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py",
+    "focusedTest": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
+    "stepPackage": [
+      "open",
+      "mid",
+      "contact",
+      "locked",
+      "exploded",
+      "print_kit",
+      "permanent_cap_coupon",
+      "center_axle_coupon",
+      "fixed_axle_motion",
+      "full_motion"
+    ],
+    "reviewPacket": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i07r1_*",
+    "provenance": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json",
+    "fingerprint": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-r2-candidate-fingerprint.json"
+  },
+  "exclusions": [
+    "no green grip, stability bar, yoke, linkage, gear or added lock",
+    "24 degrees is end-of-travel only; endpoint retention and self-lock are unclaimed",
+    "no obsolete inner service-window cutter",
+    "no mesh, 3MF or slicer artifact",
+    "no physical acceptance claim",
+    "independent critic, validator and formal reviewer have not yet accepted this candidate"
+  ]
+}

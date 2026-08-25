@@ -1,0 +1,13 @@
+{
+  "schema": "xt60-bend-jig.p17-r2.candidate-fingerprint.v3",
+  "project": "projects/xt60-bend-jig",
+  "iteration": "p17-r2-three-rod-triangle-motion",
+  "candidateId": "P17-I07-R1",
+  "implementationBaselineCommit": "b09d0f31583fcae15ef71bca4c92e4ad37aa62af",
+  "frozenDesignCommit": "3585340299e7dae3227b5fc14c8759b7f8854875",
+  "implementationInputManifestSha256": "a309e0d836454ac4b9e2f48b8ab3de3cf450b41e96909e6ef96aa47dc277930a",
+  "candidateFingerprintSha256": "5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87",
+  "fingerprintedManifest": "/tmp/p17-i07-independent-gate-manifest.txt",
+  "entryCount": 30,
+  "claimBoundary": "implementation candidate only; independent critique, validation, review and physical testing pending"
+}
