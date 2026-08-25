@@ -6,8 +6,10 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p17-r2-locked-rod-layout`.
-- Review-only contract/candidate: `P17-D13` / `P17-I13`.
+- Active iteration: `p17-r2-balanced-rail-search`.
+- Current design result: `P17-D14` bounded infeasibility; no implementation
+  candidate.
+- Prior review-only contract/candidate: `P17-D13` / `P17-I13`.
 - Exact review fingerprint:
   `590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c`.
 - `P17-C13`, `P17-V13`, and `P17-R13`: fidelity/evidence accepted, product and
@@ -18,7 +20,8 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 - Full motion:
   `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
 
-Read every file under `docs/iterations/p17-r2-locked-rod-layout/` before acting.
+Read every file under `docs/iterations/p17-r2-balanced-rail-search/` and the
+prior `docs/iterations/p17-r2-locked-rod-layout/` before acting.
 The D13 source faithfully materializes the user's frozen rod delta and is
 intentionally not product-acceptable: OPEN intersects XT60 and wire, while END
 loses all three forming contacts. Do not mistake passing fidelity/export tests
@@ -49,12 +52,16 @@ or Viewer readiness for product acceptance.
 
 ## Immediate task
 
-Do not merge, slice, print, or release D13. Preserve fingerprint `590e05f9...`
-while collecting the user's explicit scope decision: reopen common rod
-placement while keeping XT60/wire fixed, or supersede the workpiece/service
-interface while keeping the locked rods. A superseding design must eliminate
-OPEN body/wire collision, restore meaningful END contact, and address the
-recorded rail/path asymmetry before implementation.
+Do not implement the D14 rail-only comparison `C=(4,9.55)`. P17-V14 confirmed
+that exact END contact forces `D=(0,0)`, where fixed `A=(-29,12)` leaves only
+`1.615172394712 mm` axle/hex-to-bottom-inner-slot web against the `2.20 mm`
+gate; this failure is independent of `C`.
+
+Obtain one explicit user scope decision before a new design search: allow the
+fixed axle `A` to move, change the fixed-axle/hex guide envelope, or supersede
+the exact workpiece/contact placement. Preserve XT60 orientation, rod topology
+and identities unless explicitly reopened. Do not merge, slice, print or
+release D13/D14 evidence.
 
 Use only Python 3.12 through the root uv workspace. Use the singleton Viewer
 managed by `~/.local/bin/cad-viewer`; do not start an ad-hoc competing server.

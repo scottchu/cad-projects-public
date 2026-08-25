@@ -5,8 +5,10 @@ Last updated: `2026-08-25`
 ## Baseline and active iteration
 
 - Canonical project: `projects/xt60-bend-jig`.
-- Active iteration: `p17-r2-locked-rod-layout`.
-- Current review-only design contract/candidate: `P17-D13` / `P17-I13`.
+- Active iteration: `p17-r2-balanced-rail-search`.
+- Current design result: `P17-D14` bounded infeasibility; no implementation
+  candidate exists under the frozen option-3 scope.
+- Prior review-only design contract/candidate: `P17-D13` / `P17-I13`.
 - D13 review fingerprint:
   `590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c`.
 - `P17-C13`, `P17-V13`, and `P17-R13` accept implementation fidelity but
@@ -20,11 +22,35 @@ Last updated: `2026-08-25`
 - Artifact provenance SHA-256:
   `97dccfad274fd82724f06c8e1ec15cd4ccc25659b6aa652dca7b8b9ecefb6b4b`.
 - Active handoff:
-  `docs/iterations/p17-r2-locked-rod-layout/HANDOFF.md`.
+  `docs/iterations/p17-r2-balanced-rail-search/HANDOFF.md`.
 
 This remains P17 R2. The correction changes orientation and motion details
 inside the accepted four-plate/three-rod architecture; evidence regeneration,
 Viewer readiness, and focused numeric repair do not create a new P/R version.
+
+## Current D14 option-3 design result
+
+The user authorized a deterministic joint search over outer rotation datum
+`C=(Cy,Cz)` and one common rod translation `D=(Dy,Dz)`, while keeping the I10
+workpiece/contact interface, `A=(-29,12)`, topology, identities, straight
+strokes, `24 deg` counter-twist, plates and architecture fixed.
+
+The feasible set is empty. Exact END three-point contact forces `D=(0,0)`.
+At that locus the fixed axle/hex envelope to the bottom inner straight slot
+has only `1.615172394712 mm` web, below the `2.20 mm` gate. This relation is
+independent of `C`, so expanding or refining only the rotation-center search
+cannot repair it. Independent P17-V14 reproduced the contact reduction and
+web result.
+
+A rail-only comparison near `C=(4.000,9.550)` gives worst full-path ratio
+`1.086832`, worst contact-to-END ratio `1.088179`, and minimum crossing
+diagnostic `19.448050 deg`, but is explicitly rejected because the fixed-inner
+web still fails. It must not be implemented or presented as a CAD candidate.
+
+The corrected cheap 2D evidence is
+`docs/review/p17-r2-balanced-rail-search/p17-d14-bounded-infeasibility.svg`.
+P17-V14 verified its red web geometry and all six 33-point rail polylines;
+maximum plotted point error was `6.65e-10 mm`.
 
 ## Current blocked D13 review candidate
 
@@ -151,15 +177,18 @@ It means CLAMPED/END of prescribed travel and makes no retention claim.
   review, without a pull request.
 - No D13 PR was opened or merged because C13/V13/R13 formally reject it for
   product advancement.
+- Current D14 design branch: `codex/xt60-p17-r2-balanced-rail-search`; no PR or
+  merge is eligible because D14 has no feasible implementation candidate.
 - Preserve the unrelated user-modified P13 `p13_print_kit.3mf` in the canonical
   main checkout.
 
 ## Next action
 
-Preserve D13 as review evidence and obtain one explicit scope decision before
-further source work: either keep XT60/wire fixed and reopen the common rod
-placement, or keep the locked rod placement and explicitly supersede the
-workpiece/service interface. The next candidate must restore zero OPEN body
-and wire collision, meaningful END contact, and acceptable rail/path balance,
-then repeat independent critique, validation, formal review, and merge gating.
-Do not slice or print D13.
+Preserve D13 and D14 as review/design evidence. Before further source work,
+obtain one explicit scope decision to reopen the fixed axle `A`, the fixed
+axle/hex guide envelope, or the exact workpiece/contact placement. Merely
+expanding the `C` search cannot work. Any superseding candidate must restore
+zero OPEN body/wire collision, meaningful END contact, `>=2.20 mm` web and
+acceptable rail/path balance, then repeat independent implementation,
+critique, validation, formal review, and merge gating. Do not slice or print
+D13 or the rejected D14 rail-only comparison.
