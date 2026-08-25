@@ -1,4 +1,4 @@
-# P17-D10-R1 implementation handoff
+# P17-D10-R2 implementation handoff
 
 Status: design frozen; implementation, independent critique/validation, and
 formal review pending.
@@ -11,6 +11,13 @@ rail derivative, monotonic progress, one-to-one branch continuity, exact
 reconstruction, and full-rank combined-Jacobian gates. Crossing sine remains a
 reported diagnostic. All exact rod coordinates and all actual-solid, web,
 support, collision, service, and user-visible gates remain frozen.
+
+D10-R2 changes only `C` from `(1.75,6.25)` to `(3.00,12.00)`. Regenerate all
+six rod rails and both axle rails from the unchanged inverse equations. This
+datum passed the frozen actual-solid support, web, reconstruction,
+conditioning, collision, XT60-clearance, and service gates. Do not change the
+exact rod states, `A`, workpiece, `24 deg`, plate envelopes, slot width, or
+topology.
 
 ## Implement exactly
 
@@ -25,7 +32,7 @@ support, collision, service, and user-visible gates remain frozen.
 4. Build both fixed-inner guides as direct stationary straight capsules and
    rederive all six outer rod rails plus both fixed-axle rails by the exact
    side-local inverse transforms. Do not edit rails by eye.
-5. Preserve `A=(-29,17)`, `C=(1.75,6.25)`, four plates, `80/82/85 mm`
+5. Preserve `A=(-29,17)`, use `C=(3.00,12.00)`, four plates, `80/82/85 mm`
    envelopes, three `OD4 x 50` rods, six permanent stepped caps, `4.15 mm`
    slots, the larger right force side, and the accepted axial stack.
 6. Add orientation, vertex-mapping, right-vertical OPEN leg, small END-delta,
@@ -33,9 +40,15 @@ support, collision, service, and user-visible gates remain frozen.
    actual-solid collision, and service-path regressions.
    Endpoint conditioning must use the D10-R1 regularity/monotonicity/branch/
    combined-Jacobian gates, not reinstate an individual crossing-sine cutoff.
+   Add a continuous two-sided support-strip regression from slot boundary
+   through `+0.30 mm` at all 65 states; a point probe alone is insufficient.
 7. Regenerate only explicit affected source-derived STEP states, motion
    sidecars, provenance/fingerprint, and the mandatory OPEN/contact/END plus
    opposite-side visual packet. Do not hand-edit outputs.
+8. Trace `REQ-027` through `REQ-030`: workpiece-relative +Z head/up and +Y
+   tail/right; OPEN UL-UR-LR right vertical leg without role swap/crossing;
+   CLAMPED/END UL-middle-LR three-point wire wrap; and no retention/self-lock
+   meaning. Viewer camera orientation cannot satisfy these requirements.
 
 ## Allowed implementation writes
 
@@ -66,6 +79,6 @@ through the repository root `uv` environment.
 ## Immutable input
 
 Implementation must verify
-`/tmp/p17-d10-r1-implementation-input-manifest.txt` and every listed entry before
+`/tmp/p17-d10-r2-implementation-input-manifest.txt` and every listed entry before
 editing source. Any mismatch in the frozen D10 design files or authoritative
 source/tests invalidates this handoff.

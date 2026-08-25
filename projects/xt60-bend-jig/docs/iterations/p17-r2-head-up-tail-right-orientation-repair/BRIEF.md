@@ -1,6 +1,6 @@
 # P17 R2 head-up / tail-right orientation repair brief
 
-Status: `P17-D10-R1` frozen for implementation. This is a focused orientation
+Status: `P17-D10-R2` frozen for implementation. This is a focused orientation
 repair inside P17 R2, not a P/R version increment.
 
 `P17-D10-R1` corrects two inherited acceptance contradictions without changing
@@ -10,6 +10,13 @@ Individual fixed-line/outer-rail crossing sine is retained as a diagnostic,
 not a pass threshold, because this coupled three-rod mechanism is accepted by
 regular rail loci, monotonic travel, branch continuity, and the full combined
 constraint Jacobian. No coordinate, path, part, or user-visible gate changes.
+
+`P17-D10-R2` changes only the virtual outer-rotation datum from
+`C=(1.75,6.25)` to actual-solid-verified `C=(3.00,12.00)`. The former inverse
+rails curled back inside their own `4.15 mm` swept cavities and removed one
+side of local outer-plate reaction material. The new datum restores the
+unchanged two-sided support gate while preserving every rod coordinate,
+workpiece feature, angle, plate envelope, fixed axle, and part count.
 
 ## Frozen input and defect
 
@@ -25,7 +32,8 @@ constraint Jacobian. No coordinate, path, part, or user-visible gate changes.
 
 ## User-fixed outcome
 
-- Front view is world `YZ`: `+Z` is screen up and `+Y` is screen right.
+- Workpiece-relative front view is world `YZ`: `+Z` is mating-head/up and
+  `+Y` is solder-tail/both-wires/right, independent of Viewer camera pose.
 - The completed workpiece is `└`: XT60 mating head and short vertical wire
   leg point up; the horizontal solder-tail/wire leg exits right.
 - The corrected OPEN triangle has one rod at upper-left and two rods on a
@@ -37,6 +45,22 @@ constraint Jacobian. No coordinate, path, part, or user-visible gate changes.
 - All three rods move together on direct straight fixed-inner tracks. The two
   outer plates counter-rotate and their rod rails are derived by exact inverse
   transform, never drawn by eye.
+
+## Durable orientation and topology rationale
+
+- `REQ-027`: the front frame is workpiece-relative, not camera-relative:
+  `+Z=head/up`, `+Y=tail and wires/right`.
+- `REQ-028`: OPEN is UL-UR-LR with UR/LR on the exact right vertical leg
+  because these are outward/retracted positions of the same rods on direct
+  contact-normal paths. Rod identities cannot swap or cross and fixed-inner
+  motion remains direct and stationary.
+- `REQ-029`: CLAMPED/END converges UL -> middle -> LR on the diagonal. The
+  middle rod addresses the bend arc; the two end rods address the vertical and
+  horizontal straight-leg features. Together they form three-point wire wrap
+  without using XT60 plastic as a reaction path.
+- `REQ-030`: “locked” means only colloquial CLAMPED/END, not retention or
+  self-lock. These invariants survive numeric refinements and cannot be
+  mirrored or reversed without reopening design.
 
 ## Invariants
 

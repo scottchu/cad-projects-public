@@ -1,4 +1,4 @@
-# P17-D10-R1 corrected head-up / tail-right design contract
+# P17-D10-R2 corrected head-up / tail-right design contract
 
 Status: selected numeric contract; source and artifact implementation pending.
 
@@ -19,6 +19,7 @@ quarter arc: left tangent (10.235,18.435) to bottom tangent (16.235,12.435)
 
 The XT60 mating head is on the upward leg; both solder tails leave right. The
 two wires share this `YZ` definition and remain separated only along `X`.
+This is workpiece-relative invariant `REQ-027`, not a camera/view choice.
 
 With rod radius `2.00` and wire radius `2.15`, first tangency is at offset
 `d_t=4.15`. END uses `d_e=3.90`, exactly `0.25` further geometric travel as a
@@ -59,6 +60,14 @@ regression rather than merely copy the bound. Every exact coordinate above is
 unchanged. Legacy source-role mapping is `bottom -> upper-left`, `diagonal ->
 upper-right/middle`, and `upright -> lower-right`.
 
+This mapping is functional (`REQ-028`, `REQ-029`). OPEN is the outward UL-UR-
+LR triangle with no identity swap or crossing. At CLAMPED/END, the middle rod
+acts on the bend arc while upper-left/lower-right act on the vertical and
+horizontal straight-leg features. The diagonal is a three-point wire wrap;
+XT60 plastic is not a reaction member. “Locked” remains colloquial endpoint
+wording only under `REQ-030`. Mirroring or reversing this topology requires
+design reopening even if distances could otherwise be preserved.
+
 ## Contact derivation and geometric law
 
 For each rod `i`:
@@ -82,7 +91,7 @@ straight segment from OPEN to END, extended `1.40 mm` beyond both endpoints
 along `d_i`. Both fixed inner plates use the identical world `YZ` tracks; no
 hole or rail moves with animation.
 
-Retain the accepted virtual outer-rotation datum `C=(1.75,6.25)` and fixed
+Use D10-R2 virtual outer-rotation datum `C=(3.00,12.00)` and fixed
 axle `A=(-29.00,17.00)`. For side `s`:
 
 ```text
@@ -97,6 +106,50 @@ part-local loci. Reconstruction must satisfy
 `C + R(alpha_s)*q_s,i = r_i` and `C + R(alpha_s)*q_s,A = A` within `0.05 mm`
 at exact OPEN, contact, END, and at least 65 total samples. A rail is not
 assumed circular; only the fixed-axle locus is circular by construction.
+
+## D10-R2 two-sided outer support repair
+
+At D10-R1 `C=(1.75,6.25)`, the left outer/bottom rail lost its `+normal`
+reaction side and right outer/upright lost its `-normal` side. The inverse
+locus curved back into its own radius-`2.075` swept capsule: missing material
+extended to about `3.1/3.4 mm` at left OPEN/END and `2.7/4.1 mm` at right
+OPEN/END. Fixed-inner support, contact, reconstruction, collision, service,
+plate validity, and minimum web were not the cause.
+
+A bounded primary-variable search changed only `C`:
+
+```text
+coarse domain:  C_y=-4..6, C_z=1..12, step 0.50
+refined domain: C_y= 0..5, C_z=8..14, step 0.10
+rail samples: 65 minimum; 129/257 on shortlisted clearance checks
+required: material at slot radius +0.30 on both normals,
+          rod/rod, axle/rod and plate-boundary web >=2.20,
+          valid plates, regular rails and combined rank 3
+selected: C=(3.00,12.00), 5.88430114797 from D10-R1 C
+```
+
+Fresh build123d evidence at the selected rounded datum:
+
+```text
+two-sided 0.20 OD probe at radius 2.075+0.30:
+  minimum plate intersection = 0.100530964915 mm^3 (full probe volume)
+all normal sides supported / all slot ends closed = true / true
+outer rod-cutter gap left/right = 3.63098982454 / 5.88437374099
+fixed-inner extended cutter gap = 6.10304832720
+minimum axle analytic web = 2.90632582470
+left/right axle-guide boundary web = 4.66173051860 / 6.16173051860
+rail/axle reconstruction max = 5.69e-15 / 7.11e-15
+combined Jacobian rank / max condition = 3 / 12.8216328305
+maximum unintended motion intersection = 0
+minimum XT60 clearance = 0.750000000000
+completed-pigtail service gate = pass
+```
+
+The `0.30 mm` support requirement is not weakened. Implementation must probe
+the continuous normal strip from swept-slot boundary through `+0.30 mm`, on
+both sides of every outer rail at all 65 states including exact OPEN, contact,
+and END. Any void, self-return cavity, or partial probe loss reopens design.
+No rail may be trimmed away from the inverse-transform locus.
 
 ## Preserved geometry and bounded implementation
 
@@ -167,7 +220,8 @@ endpoint checks.
 ### Actual solids and user regressions
 
 - Valid positive-volume single plate solids with minimum remaining web
-  `>=2.20 mm` and positive two-sided material beside every rod track.
+  `>=2.20 mm` and at least `0.30 mm` continuous actual two-sided material
+  beside every outer rod track; verify strip continuity, not only one point.
 - Zero unintended rod/plate, rod/axle, rod/keeper, cap/plate, cap/keeper,
   plate/plate, XT60-body, and non-contact wire intersections through at least
   65 states including exact OPEN/contact/END.
