@@ -1,12 +1,13 @@
 // Full P17 R2 assembly motion review. White rods and permanent caps translate
-// on their frozen paths while the two outer plates rotate in opposite senses.
+// on their selected straight paths while the two outer plates rotate in
+// opposite senses. Geometry travel is linear; animation time does not alter it.
 
-const ORIGIN = Object.freeze([0.0, -10.60, 17.00]);
+const ORIGIN = Object.freeze([0.0, 1.75, 6.25]);
 const AXIS = Object.freeze([1.0, 0.0, 0.0]);
 const PATHS = Object.freeze({
-  upright: Object.freeze({ open: [-12.0, 3.0], locked: [-18.0, 13.0] }),
-  bottom: Object.freeze({ open: [-5.0, -12.0], locked: [8.0, -12.0] }),
-  diagonal: Object.freeze({ open: [11.5, 9.0], locked: [3.0, 1.0] }),
+  upright: Object.freeze({ open: [35.5, 9.0], end: [22.7, 9.0] }),
+  bottom: Object.freeze({ open: [6.8, 37.7], end: [6.8, 24.9] }),
+  diagonal: Object.freeze({ open: [5.2339574413, 7.4339574413], end: [14.2849242405, 16.4849242405] }),
 });
 
 const FEATURES = {
@@ -22,11 +23,6 @@ for (const name of Object.keys(PATHS)) {
 function clamp01(value) {
   const number = Number(value);
   return Math.min(Math.max(Number.isFinite(number) ? number : 0.0, 0.0), 1.0);
-}
-
-function smoothstep01(value) {
-  const t = clamp01(value);
-  return t * t * (3.0 - 2.0 * t);
 }
 
 function pingPong(elapsedSec, durationSec = 6.0) {
@@ -64,19 +60,18 @@ const definition = {
   },
   update({ params, effects }) {
     const travel = clamp01(params.open_to_end);
-    const thetaDeg = 32.0 * travel;
+    const thetaDeg = 24.0 * travel;
     effects.transform("left_outer", {
       rotate: { axis: AXIS, origin: ORIGIN, angleDeg: -thetaDeg },
     });
     effects.transform("right_outer", {
       rotate: { axis: AXIS, origin: ORIGIN, angleDeg: thetaDeg },
     });
-    const s = smoothstep01(travel);
     for (const [name, path] of Object.entries(PATHS)) {
       const translation = [
         0.0,
-        (path.locked[0] - path.open[0]) * s,
-        (path.locked[1] - path.open[1]) * s,
+        (path.end[0] - path.open[0]) * travel,
+        (path.end[1] - path.open[1]) * travel,
       ];
       effects.transform(`${name}_rod`, { translate: translation });
       effects.transform(`left_${name}_cap`, { translate: translation });

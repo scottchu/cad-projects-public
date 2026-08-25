@@ -213,3 +213,27 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
 - Boundary: deciding whether P17 must return to uncut `50.00 mm` stainless
   rods is a separate rod/cap-stack decision. The lock-removal iteration must
   not silently change either rod length or axle length.
+
+## `2026-08-25` — P17-I07-R1 three-rod triangle motion digitally accepted
+
+- User direction resolved all three rods as one coupled system: three uncut
+  `OD4.00 x 50.00 mm` stainless rods, numeric OPEN/contact/END triangles,
+  fixed-inner straight tracks, and opposite outer-plate rotations through
+  side-local inverse-transform-derived rails.
+- The purple axle remains the fixed printed reaction member at
+  `A=(-29,17)`. The outer rotation datum moved to `C=(1.75,6.25)` to satisfy
+  the completed-pigtail service path. The right outer plate remains the larger
+  force side; the redundant green grip was removed.
+- The selected repair uses `80/82/85 mm` plate diameters, `4.15 mm` slots,
+  `24 deg` END travel, six stepped permanent caps with `8.70 mm` engagement,
+  and a `0.25 mm` geometric wire-preload proxy.
+- Actual-solid evidence over 65 motion states and a 4004-pose service sweep
+  found zero unintended intersections, minimum web `2.66759 mm`, and service
+  clearance `0.84675 mm`. Ten STEP exports passed validation and source/export
+  parity; focused tests were `18 passed`.
+- Independent P17-C07 critique and P17-V07 validation passed the same frozen
+  fingerprint; P17-R07 formally accepted digital CAD/export/frozen-visual and
+  Viewer-readiness delivery.
+- Physical fit, cap/keeper retention, hand force, wobble, wire marks, thermal
+  behavior, springback, endpoint retention, and self-lock remain untested. The
+  candidate intentionally contains no lock.

@@ -1,40 +1,52 @@
 {
-  "schema": "xt60-bend-jig.p17-r2.candidate-manifest.v2",
-  "candidateId": "P17-I06-R1",
-  "iteration": "p17-r2-lock-removal",
-  "candidateFingerprintSha256": "20fc5068814e5c3f5d9c58fdaffbb98bb5dba0eb8b4dffabc7eea59ff3e0cba1",
-  "implementationInputManifestSha256": "60873c78ff74f5bb40010826c9ba9af690ca15d650043d258b66ba8fc4702f7a",
+  "schema": "xt60-bend-jig.p17-r2.candidate-manifest.v3",
+  "candidateId": "P17-I07-R1",
+  "iteration": "p17-r2-three-rod-triangle-motion",
+  "candidateFingerprintSha256": "5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87",
+  "implementationInputManifestSha256": "a309e0d836454ac4b9e2f48b8ab3de3cf450b41e96909e6ef96aa47dc277930a",
+  "designContract": {
+    "path": "projects/xt60-bend-jig/docs/iterations/p17-r2-three-rod-triangle-motion/DESIGN.md",
+    "sha256": "2c8be254483aaee753ca6352bfaf4aec1e593944cf2d08296ec342d35e587ad3"
+  },
+  "implementedContract": {
+    "movingRods": "all three OD4 x 50.00 mm rods",
+    "motionLaw": "linear u=theta/24",
+    "outerRotation": "left -theta, right +theta about C=(1.75,6.25)",
+    "fixedMember": "purple stepped center axle at A=(-29,17)",
+    "platesMm": [80.0, 82.0, 85.0],
+    "slotWidthMm": 4.15,
+    "caps": "six permanent stepped caps, 8.70 mm engagement, 9.05 mm length",
+    "servicePath": "P17-D09-R1 five-pose rigid-body removal"
+  },
   "commands": [
     {
-      "cmd": "uv run --project projects/xt60-bend-jig pytest -q projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py -k 'contract_hash or current_lock or source_does_not or service_envelopes or fixed_identity'",
-      "result": "5 focused semantic/contract tests passed"
-    },
-    {
       "cmd": "uv run --project projects/xt60-bend-jig pytest -q projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
-      "result": "33 tests reached 100 percent with no failure"
+      "result": "18 passed"
     },
     {
-      "cmd": "SHA-256 audit of all nine retained STEP outputs against blocked candidate P17-I06 provenance",
-      "result": "9 of 9 STEP hashes unchanged; no STEP regenerated because repair changed no geometry"
+      "cmd": "CAD scripts/gen on ten explicit P17 R2 generators with --write --force --json",
+      "result": "10 built"
     },
     {
-      "cmd": "SHA-256 audit of five selected PNGs and two motion GIFs against blocked candidate P17-I06 provenance",
-      "result": "7 of 7 visual hashes unchanged; no snapshot or GIF regenerated because screenshot mapping and visible geometry are frozen"
+      "cmd": "CAD scripts/inspect validate on all ten written STEP files",
+      "result": "10 passed with zero failures"
     },
     {
-      "cmd": "SHA-256 provenance audit for authoritative source, tests, nine STEP files, two motion entry generators, two motion sidecars, five PNGs and two GIFs",
-      "result": "22 of 22 recorded hashes match current files"
+      "cmd": "direct source versus imported written-STEP solid count, bounds and summed-volume parity",
+      "result": "10 passed; max bounds delta 6.253e-12 mm; max volume delta 4.890e-9 mm3"
+    },
+    {
+      "cmd": "CAD scripts/snapshot at open, contact, end, opposite end and animated open-to-end",
+      "result": "4 PNG and one 72-frame GIF; warnings empty; visually inspected"
     }
   ],
   "outputs": {
     "authoritativeSource": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py",
-    "focusedMotionEntry": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py",
-    "focusedMotionSidecar": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.params.js",
-    "fullMotionEntry": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py",
-    "fullMotionSidecar": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_full_motion.params.js",
+    "focusedTest": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
     "stepPackage": [
       "open",
       "mid",
+      "contact",
       "locked",
       "exploded",
       "print_kit",
@@ -43,19 +55,16 @@
       "fixed_axle_motion",
       "full_motion"
     ],
-    "retiredArtifact": "lock_closeup",
-    "reviewPacket": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i06_*",
+    "reviewPacket": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/snapshots/p17_r2_i07r1_*",
     "provenance": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-r2-artifact-provenance.json",
     "fingerprint": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-r2-candidate-fingerprint.json"
   },
   "exclusions": [
-    "no replacement lock, stop, catch, bridge, bar or linkage",
-    "32 degrees is end-of-travel only; endpoint retention and self-lock are unclaimed",
-    "physical 50.00 mm stainless stock is distinct from the frozen 40.60 mm modeled rod target; stock/use remains unresolved",
-    "purple 34.90 mm axle fit, stiffness and keeper retention remain physically untested",
+    "no green grip, stability bar, yoke, linkage, gear or added lock",
+    "24 degrees is end-of-travel only; endpoint retention and self-lock are unclaimed",
+    "no obsolete inner service-window cutter",
     "no mesh, 3MF or slicer artifact",
     "no physical acceptance claim",
-    "independent critic, validator and formal reviewer have not yet acted",
-    "CAD Viewer singleton handoff belongs to the root owner"
+    "independent critic, validator and formal reviewer have not yet accepted this candidate"
   ]
 }

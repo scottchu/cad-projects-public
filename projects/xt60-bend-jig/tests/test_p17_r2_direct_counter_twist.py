@@ -2,13 +2,11 @@ from __future__ import annotations
 
 import ast
 import gc
-import json
 from hashlib import sha256
-from math import hypot
+from math import isclose, radians, sqrt
 from pathlib import Path
 
 import pytest
-from build123d import Align, Cylinder, Pos
 
 import xt60_bend_jig.p17_r2_direct_counter_twist as p17
 
@@ -26,224 +24,210 @@ def _clear_occ_memory_after_test():
 def _labels(shape):
     if not shape.children:
         return [shape.label]
-    labels = []
-    for child in shape.children:
-        labels.extend(_labels(child))
-    return labels
+    return [label for child in shape.children for label in _labels(child)]
 
 
-def _intersection_volume(first, second) -> float:
-    common = first.intersect(second)
-    if common is None:
-        return 0.0
-    if hasattr(common, "volume"):
-        return float(common.volume)
-    return sum(float(item.volume) for item in common)
+def _finite_difference_jacobian(side: str, travel: float, pose, step=1.0e-6):
+    base = p17.outer_pose_constraint_residuals(side, travel, pose)
+    columns = []
+    for column in range(3):
+        perturbed = list(pose)
+        perturbed[column] += step
+        values = p17.outer_pose_constraint_residuals(side, travel, tuple(perturbed))
+        columns.append(tuple((values[row] - base[row]) / step for row in range(4)))
+    return tuple(tuple(columns[column][row] for column in range(3)) for row in range(4))
 
 
-def _bounds_size(shape) -> tuple[float, float, float]:
-    box = shape.bounding_box()
-    return (
-        float(box.max.X - box.min.X),
-        float(box.max.Y - box.min.Y),
-        float(box.max.Z - box.min.Z),
-    )
-
-
-def _x_cylinder(diameter: float, length: float, x: float = 0.0):
-    return Pos(x, 0.0, 0.0) * Cylinder(
-        diameter / 2.0,
-        length,
-        rotation=(0.0, 90.0, 0.0),
-        align=(Align.CENTER, Align.CENTER, Align.CENTER),
-    )
-
-
-def test_contract_hash_and_core_dimensions_do_not_regress() -> None:
+def test_frozen_contract_hash_and_selected_named_parameters() -> None:
     contract = ROOT / p17.P17_R2_DESIGN_CONTRACT_PATH
     assert sha256(contract.read_bytes()).hexdigest() == p17.P17_R2_DESIGN_CONTRACT_SHA256
-
     p = p17.P17_R2_DEFAULTS
     assert p.inner_clear_span == pytest.approx(18.40)
-    assert p.inner_clear_span < 26.2
     assert p.principal_stack_width == pytest.approx(32.00)
-    assert p.rod_length_raw == pytest.approx(40.60)
-    assert p.rod_length_target == pytest.approx(40.60)
-    assert p17.PHYSICAL_STAINLESS_STOCK_LENGTH_MM == pytest.approx(50.00)
-    assert p.rod_length_target != pytest.approx(p17.PHYSICAL_STAINLESS_STOCK_LENGTH_MM)
-    assert p.center_axle_total_length == pytest.approx(34.90)
-    assert p.cap_socket_id == pytest.approx(4.04)
-    assert p.cap_socket_id >= p.rod_diameter
-    assert p.right_primary_extra_lever_radius == pytest.approx(1.50)
-    assert p.inner_plate_diameter == pytest.approx(54.00)
-    assert p.left_outer_secondary_grip_diameter == pytest.approx(60.00)
-    assert p.right_outer_primary_grip_diameter == pytest.approx(63.00)
+    assert p.rod_length_target == pytest.approx(50.00)
+    assert p.cap_rod_engagement == pytest.approx(8.70)
+    assert p.follower_head_length == pytest.approx(9.05)
+    assert p.fixed_slot_width == p.outer_slot_width == pytest.approx(4.15)
+    assert p.inner_plate_diameter == pytest.approx(80.0)
+    assert p.left_outer_secondary_grip_diameter == pytest.approx(82.0)
+    assert p.right_outer_primary_grip_diameter == pytest.approx(85.0)
+    assert p.theta_lock_deg == pytest.approx(24.0)
+    assert p17.outer_rotation_center_yz(p).as_tuple() == pytest.approx((1.75, 6.25))
+    assert p17.fixed_axle_center_yz(p).as_tuple() == pytest.approx((-29.0, 17.0))
 
 
-def test_outer_plates_counter_rotate_and_inner_plate_positions_are_fixed() -> None:
-    assert p17.alpha_left(12.5) == pytest.approx(-12.5)
-    assert p17.alpha_right(12.5) == pytest.approx(12.5)
-    assert p17.rotation_for_side("left", 20.0) + p17.rotation_for_side("right", 20.0) == pytest.approx(0.0)
-
-    p = p17.P17_R2_DEFAULTS
-    assert p.left_inner_x == pytest.approx(-10.80)
-    assert p.right_inner_x == pytest.approx(10.80)
-    assert p.left_outer_x == pytest.approx(-14.40)
-    assert p.right_outer_x == pytest.approx(14.40)
-
-
-def test_fixed_guide_loci_are_state_independent_and_outer_slots_are_part_local() -> None:
-    fixed_before = {name: p17.fixed_guide_locus(name) for name in p17.ROD_NAMES}
-    for theta in (0.0, 8.0, 16.0, 24.0, p17.P17_R2_DEFAULTS.theta_lock_deg):
-        assert {name: p17.fixed_guide_locus(name) for name in p17.ROD_NAMES} == fixed_before
+def test_all_three_exact_open_contact_end_triangles_and_linear_law() -> None:
+    evidence = p17.triangle_motion_math_evidence()
+    expected = {
+        "open": {
+            "upright": (35.5, 9.0),
+            "bottom": (6.8, 37.7),
+            "diagonal": (5.2339574413, 7.4339574413),
+            "area": 456.7904214347,
+        },
+        "contact": {
+            "upright": (22.95, 9.0),
+            "bottom": (6.8, 25.15),
+            "diagonal": (14.1081475452, 16.3081475452),
+            "area": 12.3846671451,
+        },
+        "end": {
+            "upright": (22.70, 9.0),
+            "bottom": (6.8, 24.90),
+            "diagonal": (14.2849242405, 16.4849242405),
+            "area": 7.39470457618,
+        },
+    }
+    for state, values in expected.items():
+        row = evidence["triangles"][state]
         for name in p17.ROD_NAMES:
-            left_local = p17.outer_slot_local_center("left", name, theta)
-            right_local = p17.outer_slot_local_center("right", name, theta)
-            world = p17.rod_center(name, theta)
-            assert p17.reconstruct_world_from_outer("left", name, theta).as_tuple() == pytest.approx(world.as_tuple())
-            assert p17.reconstruct_world_from_outer("right", name, theta).as_tuple() == pytest.approx(world.as_tuple())
-            if theta:
-                assert left_local.as_tuple() != pytest.approx(world.as_tuple())
-                assert right_local.as_tuple() != pytest.approx(world.as_tuple())
-
-
-def test_left_and_right_rod_end_reconstruction_has_zero_yz_skew() -> None:
-    for theta in (0.0, 4.0, 16.0, 28.0, p17.P17_R2_DEFAULTS.theta_lock_deg):
-        for name in p17.ROD_NAMES:
-            left = p17.reconstruct_world_from_outer("left", name, theta)
-            right = p17.reconstruct_world_from_outer("right", name, theta)
-            assert left.distance_to(right) <= 1.0e-9
-            assert left.as_tuple() == pytest.approx(p17.rod_center(name, theta).as_tuple(), abs=1.0e-9)
-
-
-def test_one_piece_stepped_center_axle_and_keepers_replace_yoke_bars() -> None:
-    assembly = p17.build_motion_state("locked")
-    labels = _labels(assembly)
-    assert any("stepped_center_axle_one_piece_hex_spacer_hex_keys_round_journals" in label for label in labels)
-    assert len([label for label in labels if "press_fit_outer_keeper" in label]) == 2
-    forbidden = ("yoke", "stability_bar", "tenon", "shared_D_shaft", "same_direction", "simulator", "animation", "threejs")
-    production_labels = [label for label in labels if not label.startswith("reference_")]
-    assert not [
-        label
-        for label in production_labels
-        for word in forbidden
-        if word.lower() in label.lower()
-    ]
-
-
-def test_center_axle_parameters_ground_inner_only_and_outer_journals_are_round_clearance() -> None:
-    p = p17.P17_R2_DEFAULTS
-    assert p.center_axle_central_hex_af == pytest.approx(10.00)
-    assert p.center_axle_inner_hex_af == pytest.approx(8.00)
-    assert p.inner_hex_bore_af == pytest.approx(8.15)
-    assert p.outer_journal_diameter == pytest.approx(7.60)
-    assert p.outer_bearing_bore_diameter == pytest.approx(7.90)
-    assert p.outer_bearing_bore_diameter > p.outer_journal_diameter
-    assert p.outer_journal_diameter < p.inner_hex_bore_af
-    assert p.inner_hex_bore_web >= p.min_web_mm
-    assert p.outer_bearing_wall >= p.min_web_mm
-    assert p.journal_outer_plate_overlap >= 2.40
-    assert p.keeper_axial_running_clearance == pytest.approx(0.25)
-    assert p.keeper_seat_length == pytest.approx(1.20)
-    assert p.per_side_center_axle_length == pytest.approx(8.25)
-    assert p.journal_with_keeper_seat_length == pytest.approx(5.05)
-    assert p.keeper_bore_diameter < p.outer_journal_diameter
-    assert p.keeper_outer_diameter == pytest.approx(10.00)
-    assert p.keeper_bore_diameter == pytest.approx(7.55)
-    assert p.keeper_radial_wall_min == pytest.approx(1.225)
-    assert p.keeper_radial_wall_min >= 1.20
-
-    axle = p17.build_center_axle(p)
-    left_outer = p17.build_outer_plate("left", 0.0, p)
-    right_outer = p17.build_outer_plate("right", 0.0, p)
-    assert _intersection_volume(axle, left_outer) <= 1.0e-7
-    assert _intersection_volume(axle, right_outer) <= 1.0e-7
-
-
-def test_center_axle_full_journal_spans_and_keeper_retention_are_not_floating() -> None:
-    p = p17.P17_R2_DEFAULTS
-    assert -p.center_axle_total_length / 2.0 == pytest.approx(-17.45)
-    assert p.center_axle_total_length / 2.0 == pytest.approx(17.45)
-    assert p.keeper_left_x == pytest.approx(-16.85)
-    assert p.keeper_right_x == pytest.approx(16.85)
-    assert p.left_outer_x - p.outer_plate_thickness / 2.0 == pytest.approx(-16.00)
-    assert p.right_outer_x + p.outer_plate_thickness / 2.0 == pytest.approx(16.00)
-    assert abs(p.keeper_left_x + p.outer_keeper_thickness / 2.0) - 16.0 == pytest.approx(0.25)
-    assert p.keeper_right_x - p.outer_keeper_thickness / 2.0 - 16.0 == pytest.approx(0.25)
-
-    axle = p17.build_center_axle(p)
-    for side in ("left", "right"):
-        keeper = p17.build_keeper(side, p)
-        # A permanent press-fit keeper intentionally intersects the modeled
-        # journal end seat in CAD; physical install force is a coupon gate.
-        assert _intersection_volume(axle, keeper) > 0.01
-
-    coupon_labels = _labels(p17.build_center_axle_coupon(p))
-    for bore in p.keeper_coupon_bore_diameters:
-        assert any(
-            f"coupon_keeper_OD10p00_bore_{bore:.2f}".replace(".", "p") == label
-            for label in coupon_labels
+            assert row["centersYZ"][name] == pytest.approx(values[name], abs=2.0e-10)
+        assert row["areaMm2"] == pytest.approx(values["area"], abs=1.0e-8)
+    assert evidence["thetaContactDeg"] == pytest.approx(23.53125)
+    assert evidence["thetaEndDeg"] == pytest.approx(24.0)
+    assert evidence["linearTravelLaw"] == "u=theta/theta_end"
+    assert evidence["endpointDerivativeMmPerDeg"] > 0.0
+    for name in p17.ROD_NAMES:
+        midpoint = p17.rod_center(name, 12.0)
+        guide = p17.GUIDES[name]
+        assert midpoint.as_tuple() == pytest.approx(
+            ((guide.open.y + guide.locked.y) / 2.0, (guide.open.z + guide.locked.z) / 2.0)
         )
 
 
-def test_center_axle_clears_reference_xt60_and_wire_envelopes() -> None:
+def test_contact_and_end_offsets_are_tangency_then_named_preload_proxy() -> None:
+    evidence = p17.triangle_motion_math_evidence()
+    for value in evidence["triangles"]["contact"]["wireFeatureOffsetsMm"].values():
+        assert value == pytest.approx(4.15, abs=2.0e-9)
+    for value in evidence["triangles"]["end"]["wireFeatureOffsetsMm"].values():
+        assert value == pytest.approx(3.90, abs=2.0e-9)
+    assert "physical" in evidence["physicalBoundary"]
+
+
+def test_six_inverse_outer_rails_reconstruct_and_retain_web() -> None:
+    evidence = p17.inverse_rail_reconstruction_evidence()
+    assert evidence["sampleCount"] == 65
+    assert evidence["rodRailCount"] == 6
+    assert evidence["fixedAxleRailCount"] == 2
+    assert evidence["includesExactContact"] is True
+    assert evidence["maximumRailReconstructionResidualMm"] <= 0.05
+    assert evidence["maximumAxleReconstructionResidualMm"] <= 0.05
+    assert evidence["minimumCrossingSine"] >= 0.10
+    assert evidence["minimumOuterRodCutterGapMm"]["left"] == pytest.approx(6.521826, abs=2.0e-3)
+    assert evidence["minimumOuterRodCutterGapMm"]["right"] == pytest.approx(6.418266, abs=2.0e-3)
+    assert evidence["minimumFixedExtendedRodCutterGapMm"] == pytest.approx(6.103048, abs=2.0e-3)
+    assert evidence["minimumWebMm"] >= evidence["minimumRequiredWebMm"]
+    assert all(evidence["platesAreSingleValidSolids"].values())
+
+
+def test_fixed_inner_tracks_are_direct_closed_capsules_with_endpoint_margin() -> None:
     p = p17.P17_R2_DEFAULTS
-    axle = p17.build_center_axle(p)
-    assert _intersection_volume(axle, p17.build_xt60_reference(p)) <= 1.0e-7
-    for theta in (0.0, 16.0, p.theta_lock_deg):
-        assert _intersection_volume(axle, p17.build_workpiece_reference(theta, p)) <= 1.0e-7
+    for name in p17.ROD_NAMES:
+        first, second = p17.fixed_guide_locus(name, p)
+        guide = p17.GUIDES[name]
+        assert first.distance_to(guide.open) == pytest.approx(p.slot_endpoint_margin)
+        assert second.distance_to(guide.locked) == pytest.approx(p.slot_endpoint_margin)
+    evidence = p17.two_sided_support_evidence()
+    assert evidence["sampleCount"] == 65
+    assert evidence["plateCount"] == 4
+    assert evidence["rodCount"] == 3
+    assert evidence["allNormalSidesSupported"] is True
+    assert evidence["allSlotEndsClosed"] is True
+    assert evidence["passes"] is True
 
 
-def test_six_caps_are_permanent_and_cap_coupon_contains_ladder() -> None:
+def test_public_constraint_residuals_and_jacobian_are_finite_difference_reproducible() -> None:
+    p = p17.P17_R2_DEFAULTS
+    for side, sign in (("left", -1.0), ("right", 1.0)):
+        for travel in (0.0, p17.theta_contact_deg(p) / p.theta_lock_deg, 1.0):
+            pose = (0.0, 0.0, sign * radians(p.theta_lock_deg * travel))
+            residuals = p17.outer_pose_constraint_residuals(side, travel, pose)
+            assert len(residuals) == 4
+            assert sqrt(sum(value * value for value in residuals)) <= 1.0e-6
+            published = p17.outer_pose_constraint_jacobian(side, travel, pose)
+            independently_fd = _finite_difference_jacobian(side, travel, pose)
+            for first, second in zip(published, independently_fd):
+                assert first == pytest.approx(second, abs=1.0e-8)
+
+
+def test_normalized_conditioning_has_no_rank_loss_or_endpoint_dwell() -> None:
+    evidence = p17.conditioning_evidence()
+    assert evidence["sampleCountPerSide"] == 65
+    assert evidence["includesExactContactPerSide"] is True
+    assert evidence["residualRowOrder"] == ("fixed_axle", "upright", "bottom", "diagonal")
+    assert evidence["poseCoordinateOrder"] == ("delta_y_mm", "delta_z_mm", "alpha_rad")
+    assert evidence["minimumRank"] == 3
+    assert evidence["minimumSigmaMinOverSigmaMax"] >= 1.0e-3
+    assert evidence["maximumConditionNumber"] <= 1000.0
+    assert evidence["passes"] is True
+    for row in evidence["rows"].values():
+        assert len(row["residualVectorMm"]) == 4
+        assert len(row["rawJacobian"]) == 4
+        assert len(row["rawSingularValues"]) == 3
+        assert len(row["normalizedSingularValues"]) == 3
+        assert row["rank"] == 3
+
+
+def test_actual_solids_pass_65_state_motion_collision_and_wire_allowlist() -> None:
+    evidence = p17.actual_solid_motion_evidence()
+    assert evidence["sampleCount"] == 65
+    assert evidence["includesExactContact"] is True
+    assert evidence["minimumXt60ClearanceMm"] == pytest.approx(0.75, abs=1.0e-9)
+    assert evidence["maximumUnintendedIntersectionMm3"] <= 1.0e-7
+    assert evidence["maximumPrecontactWireIntersectionMm3"] <= 1.0e-7
+    assert evidence["minimumExactContactWireClearanceMm"] <= 1.0e-6
+    assert all(value > 0.0 for value in evidence["endWireIntersectionMm3ByRod"].values())
+    assert evidence["allPlateGuidesClear"] is True
+    assert evidence["allFixedHardwareClear"] is True
+    assert evidence["passes"] is True
+
+
+def test_axial_stack_uses_50mm_rods_and_six_stepped_permanent_caps() -> None:
+    evidence = p17.cap_stack_closure_evidence()
+    assert evidence["rodLengthMm"] == pytest.approx(50.0)
+    assert evidence["principalStackWidthMm"] == pytest.approx(32.0)
+    assert evidence["derivedEngagementMmPerSide"] == pytest.approx(8.70)
+    assert evidence["capLengthMm"] >= 9.05
+    assert evidence["closedEndWallMm"] >= 0.35
+    assert evidence["proximalGuide"] == {"idMm": 4.15, "depthMm": 4.70}
+    assert evidence["distalRetention"]["idMm"] == pytest.approx(4.04)
+    assert evidence["distalRetention"]["depthMm"] == pytest.approx(4.00)
+    assert evidence["distalRetention"]["physicalCouponRequired"] is True
+    assert evidence["capCount"] == 6
+    assert evidence["maximumCapPlateOrKeeperIntersectionMm3"] <= 1.0e-7
+    assert evidence["passes"] is True
+    coupon_caps = [
+        child
+        for child in p17.build_permanent_cap_coupon().children
+        if child.label.startswith("coupon_permanent_cap_ID")
+    ]
+    assert len(coupon_caps) == 15
+    assert len({round(float(child.volume), 6) for child in coupon_caps}) == 15
+
+
+def test_wobble_budget_and_right_force_plate_are_quantified() -> None:
+    p = p17.P17_R2_DEFAULTS
+    evidence = p17.triangle_motion_math_evidence(p)
+    assert evidence["nominalDiametralGuidePlayMm"] == pytest.approx(0.15)
+    assert evidence["nominalAngularWobbleDeg"] <= 0.40
+    assert p.right_primary_extra_lever_radius == pytest.approx(1.50)
+
+
+def test_exact_production_counts_and_no_added_structure_or_green_grip() -> None:
     assembly = p17.build_motion_state("locked")
     labels = _labels(assembly)
-    cap_labels = [label for label in labels if "permanent_follower_cap" in label]
-    assert len(cap_labels) == 6
-    assert all("permanent" in label for label in cap_labels)
-    assert not any("removable" in label.lower() or "service_cap" in label.lower() for label in labels)
-
-    coupon_labels = _labels(p17.build_permanent_cap_coupon())
-    for diameter in p17.P17_R2_DEFAULTS.cap_socket_ladder_ids:
-        assert any(f"ID{diameter:.2f}".replace(".", "p") in label for label in coupon_labels)
-    for depth in p17.P17_R2_DEFAULTS.cap_socket_ladder_depths:
-        assert any(f"depth{depth:.2f}".replace(".", "p") in label for label in coupon_labels)
-
-
-def test_permanent_cap_socket_is_one_sided_blind_geometry() -> None:
-    p = p17.P17_R2_DEFAULTS
-    cap = p17._cap_local(p, socket_open_side=1)
-    open_probe = _x_cylinder(p.cap_socket_id * 0.80, 0.20, p.follower_head_length / 2.0 - 0.05)
-    closed_probe = _x_cylinder(p.cap_socket_id * 0.80, 0.20, -p.follower_head_length / 2.0 + p.cap_closed_end_wall / 2.0)
-    assert _intersection_volume(cap, open_probe) <= 1.0e-7
-    assert _intersection_volume(cap, closed_probe) > 0.1
-    assert p.cap_rod_engagement + p.cap_closed_end_wall <= p.follower_head_length
-
-
-def test_print_kit_uses_flat_local_plate_occurrences_and_includes_axle_parts() -> None:
-    kit = p17.build_print_kit()
-    labels = [child.label for child in kit.children]
-    plate_z_sizes = {
-        child.label: _bounds_size(child)[2]
-        for child in kit.children
-        if child.label.startswith("print_left_inner")
-        or child.label.startswith("print_right_inner")
-        or child.label.startswith("print_left_outer")
-        or child.label.startswith("print_right_outer")
-    }
-    assert len(plate_z_sizes) == 4
-    assert max(plate_z_sizes.values()) <= 5.01
-    assert len([label for label in labels if label.endswith("_permanent_cap")]) == 6
-    assert any("print_stepped_center_axle" in label for label in labels)
+    assert len([label for label in labels if "OD4_rod_L50.00" in label]) == 3
+    assert len([label for label in labels if "permanent_follower_cap" in label]) == 6
+    assert len([label for label in labels if "inner_fixed_guide" in label]) == 2
+    assert len([label for label in labels if "outer_" in label and "guide" in label]) == 2
     assert len([label for label in labels if "press_fit_outer_keeper" in label]) == 2
-    axle_z = [
-        _bounds_size(child)[2]
-        for child in kit.children
-        if child.label.startswith("print_stepped_center_axle")
-    ]
-    assert axle_z and max(axle_z) <= 11.0
+    production = " ".join(label.lower() for label in labels if not label.startswith("reference_"))
+    for forbidden in ("grip_block", "stability_bar", "yoke", "linkage", "gear", "lock_nose", "receiver"):
+        assert forbidden not in production
+    assert "completed_pigtail_window" not in production
 
 
-def test_current_lock_geometry_api_manifest_and_artifact_are_absent() -> None:
+def test_source_has_no_obsolete_window_grip_or_geometric_smoothstep() -> None:
     source = Path(p17.__file__).read_text()
     tree = ast.parse(source)
     function_names = {
@@ -251,422 +235,103 @@ def test_current_lock_geometry_api_manifest_and_artifact_are_absent() -> None:
         for node in tree.body
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
     }
-    forbidden_functions = {
-        "_lock_nose_local",
-        "_lock_receiver_local",
-        "_lock_receiver_components_local",
-        "build_lock_nose",
-        "build_lock_receiver",
-        "build_lock_receiver_component",
-        "build_lock_closeup",
-        "lock_contact_gap_y",
-        "lock_backdrive_evidence",
-    }
-    assert function_names.isdisjoint(forbidden_functions)
-    assert not any(field.name.startswith("lock_") for field in __import__("dataclasses").fields(p17.P17R2Parameters))
-
-    labels = _labels(p17.build_motion_state("locked"))
-    forbidden_label_tokens = (
-        "lock_nose",
-        "receiver",
-        "ground_arm",
-        "axial_bridge",
-        "hard_stop",
-        "flexure",
-        "lead_in",
-        "retaining_shoulder",
-        "thumb_release",
-    )
-    assert not [label for label in labels if any(token in label for token in forbidden_label_tokens)]
-
-    manifest = p17.p17_r2_manifest()
-    assert "lock" not in manifest
-    assert manifest["endpoint"] == {
-        "thetaDeg": 32.0,
-        "meaning": "end-of-travel only",
-        "retentionFeature": None,
-        "selfLockClaimed": False,
-        "compatibilityNames": ("locked", "theta_lock_deg", "GuidePath.locked"),
-    }
-    with pytest.raises(ValueError, match="unknown P17 R2 artifact"):
-        p17.build_artifact("lock_closeup")  # type: ignore[arg-type]
+    assert "_completed_pigtail_window_cutter_local" not in function_names
+    assert "smoothstep" not in source.lower()
+    assert "left_outer_secondary_grip_block" not in source
+    assert "Pos(0.0, -28.0, 0.0)" not in source
 
 
-def test_only_right_lock_additions_are_removed_from_plate_solids() -> None:
-    p = p17.P17_R2_DEFAULTS
-    volumes = {
-        "left_inner": float(p17.build_inner_plate("left", p).volume),
-        "right_inner": float(p17.build_inner_plate("right", p).volume),
-        "left_outer": float(p17.build_outer_plate("left", 0.0, p).volume),
-        "right_outer": float(p17.build_outer_plate("right", 0.0, p).volume),
-    }
-    baseline = {
-        "left_inner": 6401.617269691559,
-        "right_inner": 6643.953172798893,
-        "left_outer": 8306.767693237123,
-        "right_outer": 8870.838945923684,
-    }
-    assert volumes["left_inner"] == pytest.approx(baseline["left_inner"], abs=1.0e-6)
-    assert volumes["left_outer"] == pytest.approx(baseline["left_outer"], abs=1.0e-6)
-    assert baseline["right_inner"] - volumes["right_inner"] == pytest.approx(242.335903107333, abs=1.0e-6)
-    assert baseline["right_outer"] - volumes["right_outer"] == pytest.approx(17.779325567500, abs=1.0e-6)
-    assert len(p17.build_inner_plate("right", p).solids()) == 1
-    assert len(p17.build_outer_plate("right", 0.0, p).solids()) == 1
-
-
-def test_source_does_not_define_world_space_only_outer_slots_or_p17_sidecar() -> None:
-    source = Path(p17.__file__).read_text()
-    tree = ast.parse(source)
-    function_names = [
-        node.name
-        for node in tree.body
-        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
-    ]
-    assert "outer_slot_local_center" in function_names
-    assert "reconstruct_world_from_outer" in function_names
-    assert "build_simulator" not in function_names
-    assert "build_animation" not in function_names
-    assert "Three" not in source
-    assert "rejected 50" not in source.lower()
-    assert "must not inherit" not in source.lower()
-    assert "ID3.90" not in source
-
-
-def test_source_export_entrypoints_exist_for_primary_p17_r2_artifacts() -> None:
+def test_motion_sidecars_use_correct_linear_all_rod_motion_and_stationary_inner_geometry() -> None:
     cad = ROOT / "cad" / "p17_r2_direct_counter_twist"
-    for name in (
+    for stem in ("p17_r2_fixed_axle_motion", "p17_r2_full_motion"):
+        entry = cad / f"{stem}.step.py"
+        sidecar = cad / f"{stem}.params.js"
+        assert f'"params": "{stem}.params.js"' in entry.read_text()
+        js = sidecar.read_text()
+        assert "open_to_end" in js
+        assert "24.0 * travel" in js
+        assert "smoothstep" not in js.lower()
+        assert "[0.0, 1.75, 6.25]" in js
+        for name in p17.ROD_NAMES:
+            assert f"`${{name}}_rod`" in js
+            assert f"left_${{name}}_cap" in js
+            assert f"right_${{name}}_cap" in js
+        for fixed in (
+            "stepped_center_axle",
+            "left_inner_fixed_guide",
+            "right_inner_fixed_guide",
+            "left_keeper",
+            "right_keeper",
+        ):
+            assert f'effects.transform("{fixed}"' not in js
+
+
+def test_explicit_open_contact_end_and_review_artifact_entrypoints_exist() -> None:
+    cad = ROOT / "cad" / "p17_r2_direct_counter_twist"
+    expected = (
         "p17_r2_open",
         "p17_r2_mid",
+        "p17_r2_contact",
         "p17_r2_locked",
         "p17_r2_exploded",
         "p17_r2_print_kit",
         "p17_r2_permanent_cap_coupon",
         "p17_r2_center_axle_coupon",
-    ):
-        assert (cad / f"{name}.step.py").exists()
-        assert f'build_artifact("{name.removeprefix("p17_r2_")}"' in (cad / f"{name}.step.py").read_text()
-    assert not (cad / "p17_r2_lock_closeup.step.py").exists()
-    assert not (cad / "p17_r2_lock_closeup.step").exists()
-
-
-def test_d04_offset_shared_pivot_drives_axle_plates_and_complementary_slot_reconstruction() -> None:
-    p = p17.P17_R2_DEFAULTS
-    pivot = p17.pivot_yz(p)
-    assert pivot.as_tuple() == pytest.approx((-10.60, 17.00))
-    assert pivot.y < -p.xt60_body_y / 2.0
-    assert p.fixed_slot_width == pytest.approx(4.20)
-    assert p.outer_slot_width == pytest.approx(4.20)
-    assert p.slot_center_slop_nominal == pytest.approx(0.10)
-    assert p17.GUIDES["upright"].open.as_tuple() == pytest.approx((-12.0, 3.0))
-    assert p17.GUIDES["upright"].locked.as_tuple() == pytest.approx((-18.0, 13.0))
-    assert p17.GUIDES["bottom"].open.as_tuple() == pytest.approx((-5.0, -12.0))
-    assert p17.GUIDES["bottom"].locked.as_tuple() == pytest.approx((8.0, -12.0))
-    assert p17.GUIDES["diagonal"].open.as_tuple() == pytest.approx((11.5, 9.0))
-    assert p17.GUIDES["diagonal"].locked.as_tuple() == pytest.approx((3.0, 1.0))
-    for theta in (0.0, 8.0, 16.0, 24.0, p.theta_lock_deg):
-        for name in p17.ROD_NAMES:
-            reconstructed = p17.reconstruct_world_from_outer("left", name, theta, p)
-            assert reconstructed.distance_to(p17.rod_center(name, theta, p)) < 0.05
-
-
-def test_d04_actual_sweep_has_no_axle_or_keeper_contact_with_rods_or_caps() -> None:
-    p = p17.P17_R2_DEFAULTS
-    for theta in tuple(index * p.theta_lock_deg / 8.0 for index in range(9)):
-        axle = p17.build_center_axle(p)
-        for name in p17.ROD_NAMES:
-            assert _intersection_volume(axle, p17.build_rod(name, theta, p)) <= 1.0e-7
-            for side in ("left", "right"):
-                assert _intersection_volume(p17.build_keeper(side, p), p17.build_cap(side, name, theta, p)) <= 1.0e-7
-
-
-def test_d04_actual_sweep_rods_and_caps_do_not_cross_xt60_body() -> None:
-    p = p17.P17_R2_DEFAULTS
-    body = p17.build_xt60_reference(p)
-    for theta in tuple(index * p.theta_lock_deg / 8.0 for index in range(9)):
-        for name in p17.ROD_NAMES:
-            assert _intersection_volume(p17.build_rod(name, theta, p), body) <= 1.0e-7
-            for side in ("left", "right"):
-                assert _intersection_volume(p17.build_cap(side, name, theta, p), body) <= 1.0e-7
-
-
-def test_d04_actual_sweep_rods_and_caps_clear_all_nonowning_mechanism_solids() -> None:
-    p = p17.P17_R2_DEFAULTS
-    for theta in tuple(index * p.theta_lock_deg / 8.0 for index in range(9)):
-        solids = {
-            "axle": p17.build_center_axle(p),
-            "left_keeper": p17.build_keeper("left", p),
-            "right_keeper": p17.build_keeper("right", p),
-            "left_inner": p17.build_inner_plate("left", p),
-            "right_inner": p17.build_inner_plate("right", p),
-            "left_outer": p17.build_outer_plate("left", theta, p),
-            "right_outer": p17.build_outer_plate("right", theta, p),
-        }
-        for name in p17.ROD_NAMES:
-            rod = p17.build_rod(name, theta, p)
-            assert all(_intersection_volume(rod, solid) <= 1.0e-7 for solid in solids.values())
-            for side in ("left", "right"):
-                cap = p17.build_cap(side, name, theta, p)
-                assert all(_intersection_volume(cap, solid) <= 1.0e-7 for solid in solids.values())
-
-
-def test_d04_service_envelopes_have_actual_solid_clearance_above_target() -> None:
-    evidence = p17.service_clearance_evidence()
-    assert evidence["minimumRequiredMm"] == pytest.approx(0.75)
-    assert evidence["minimumActualMm"] >= evidence["minimumRequiredMm"]
-    assert evidence["passes"] is True
-    assert all(row["zeroIntersection"] is True for row in evidence["rows"].values())
-    assert evidence["removalSequence"] == "move to full open -> lift to window centerline -> +Y extraction"
-    assert "release" not in evidence["removalSequence"].lower()
-    assert evidence["removalZeroIntersection"] is True
-    assert evidence["removalMinimumActualMm"] >= evidence["minimumRequiredMm"]
-    assert evidence["removalWaypointsYZ"] == pytest.approx(
-        [(0.0, 21.0), (0.0, 22.5), (8.0, 22.5), (20.0, 22.5), (34.0, 22.5)]
+        "p17_r2_fixed_axle_motion",
+        "p17_r2_full_motion",
     )
+    for stem in expected:
+        assert (cad / f"{stem}.step.py").exists()
 
 
-def test_d05_fixed_inner_service_windows_are_real_through_cuts() -> None:
-    p = p17.P17_R2_DEFAULTS
-    assert p.completed_pigtail_window_start_y == pytest.approx(4.50)
-    assert p.completed_pigtail_window_center_z == pytest.approx(22.50)
-    assert p.completed_pigtail_window_width_z == pytest.approx(8.00)
-    for side in ("left", "right"):
-        plate = p17.build_inner_plate(side, p)
-        x = p.left_inner_x if side == "left" else p.right_inner_x
-        probe = Pos(x, 9.0, p.completed_pigtail_window_center_z) * Cylinder(
-            1.0,
-            p.inner_plate_thickness + 1.0,
-            rotation=(0.0, 90.0, 0.0),
-            align=(Align.CENTER, Align.CENTER, Align.CENTER),
-        )
-        assert _intersection_volume(plate, probe) <= 1.0e-7
-
-
-def test_d05_pivot_intent_is_yz_behind_body_not_impossible_full_axle_x_shadow() -> None:
-    p = p17.P17_R2_DEFAULTS
-    manifest = p17.p17_r2_manifest(p)
-    assert p.pivot_y < p.xt60_body_center_y - p.xt60_body_y / 2.0
-    assert abs(p.pivot_z - p.xt60_body_center_z) <= p.xt60_body_z / 2.0
-    assert manifest["pivotIntent"]["behindXt60OnMinusY"] is True
-    assert manifest["pivotIntent"]["fullAxleXShadowRequired"] is False
-
-
-def test_d04_slot_fit_coupon_contains_straight_and_curved_ladders() -> None:
-    p = p17.P17_R2_DEFAULTS
-    labels = _labels(p17.build_slot_fit_coupon(p))
-    for width in p.slot_fit_coupon_widths:
-        token = f"{width:.2f}".replace(".", "p")
-        assert any(f"slot_fit_straight_OD4_width_{token}" == label for label in labels)
-        assert any(f"slot_fit_curved_OD4_width_{token}" == label for label in labels)
-
-
-def test_d04_rejected_slot_widths_and_straight_cam_shortcut_are_absent() -> None:
-    source = Path(p17.__file__).read_text()
-    assert "fixed_slot_width: float = 4.90" not in source
-    assert "outer_slot_width: float = 7.55" not in source
-    assert p17.P17_R2_DEFAULTS.slot_sample_count >= 33
-    for side in ("left", "right"):
-        for name in p17.ROD_NAMES:
-            locus = p17.outer_slot_locus(side, name)
-            assert len(locus) == p17.P17_R2_DEFAULTS.slot_sample_count
-            chord = locus[0].distance_to(locus[-1])
-            polyline = sum(first.distance_to(second) for first, second in zip(locus, locus[1:]))
-            assert polyline > chord + 0.01
-
-
-def _d06_frozen_scope_semantics() -> dict[str, object]:
-    """The exact P17-I04 semantics D06 is forbidden to redesign."""
-    p = p17.P17_R2_DEFAULTS
-    return {
-        "guides": {
-            name: [p17.GUIDES[name].open.as_tuple(), p17.GUIDES[name].locked.as_tuple()]
-            for name in p17.ROD_NAMES
-        },
-        "white_cam_loci": {
-            f"{side}:{name}": [
-                [round(point.y, 9), round(point.z, 9)]
-                for point in p17.outer_slot_locus(side, name, p)
-            ]
-            for side in ("left", "right")
-            for name in p17.ROD_NAMES
-        },
-        "rod_cap": {
-            name: getattr(p, name)
-            for name in (
-                "rod_diameter",
-                "follower_head_diameter",
-                "follower_head_length",
-                "cap_closed_end_wall",
-                "cap_socket_id",
-                "cap_socket_ladder_ids",
-                "cap_socket_ladder_depths",
-            )
-        },
-        "axial_stack": {
-            name: getattr(p, name)
-            for name in (
-                "xt60_body_width_x",
-                "xt60_side_clearance_each",
-                "inner_plate_thickness",
-                "outer_plate_thickness",
-                "inner_outer_running_gap",
-                "cap_to_outer_running_gap",
-                "cap_rod_engagement",
-                "keeper_seat_length",
-                "outer_keeper_thickness",
-                "keeper_axial_running_clearance",
-            )
-        },
-        "plates_and_white_slots": {
-            name: getattr(p, name)
-            for name in (
-                "inner_plate_diameter",
-                "left_outer_secondary_grip_diameter",
-                "right_outer_primary_grip_diameter",
-                "fixed_slot_width",
-                "outer_slot_width",
-                "slot_endpoint_margin",
-                "slot_sample_count",
-                "theta_lock_deg",
-            )
-        },
-    }
-
-
-def test_i06_frozen_white_rod_stack_and_plate_semantics_do_not_change() -> None:
-    encoded = json.dumps(
-        _d06_frozen_scope_semantics(), sort_keys=True, separators=(",", ":")
-    ).encode()
-    assert sha256(encoded).hexdigest() == (
-        "197f1156e085356836acf514d96a21405f84f8bcec500dc9294bf3bdb6455046"
-    )
-
-
-def test_d06_fixed_identity_is_purple_axle_and_all_white_rods_remain_moving() -> None:
+def test_manifest_states_physical_boundary_and_same_version_scope() -> None:
     manifest = p17.p17_r2_manifest()
-    assert manifest["fixedMember"] == "purple printed stepped center axle"
-    assert manifest["centerAxle"]["worldInvariant"] is True
-    assert manifest["whiteRods"] == {
-        "count": 3,
-        "color": "white stainless",
-        "roles": ("upright", "bottom", "diagonal"),
-        "moving": True,
-        "fixedReactionMember": False,
-        "modeledTargetLengthMm": 40.60,
-        "physicalStockLengthMm": 50.00,
-        "stockUseDecision": "unresolved and separate from this candidate's modeled length",
-    }
+    assert manifest["contractPath"] == p17.P17_R2_DESIGN_CONTRACT_PATH
+    assert manifest["whiteRods"]["count"] == 3
+    assert manifest["whiteRods"]["modeledTargetLengthMm"] == pytest.approx(50.0)
+    assert manifest["whiteRods"]["physicalStockLengthMm"] == pytest.approx(50.0)
+    assert manifest["whiteRods"]["stockUseDecision"].endswith("used uncut")
+    assert manifest["caps"]["count"] == 6
+    assert manifest["endpoint"]["meaning"] == "end-of-travel only"
+    assert manifest["endpoint"]["selfLockClaimed"] is False
+    assert manifest["service"]["obsoleteInnerWindowRemoved"] is True
 
 
-def test_d06_split_rotation_and_fixed_axle_datums_are_exact() -> None:
-    p = p17.P17_R2_DEFAULTS
-    assert p17.outer_rotation_center_yz(p).as_tuple() == pytest.approx((-10.60, 17.00))
-    assert p17.fixed_axle_center_yz(p).as_tuple() == pytest.approx((-29.00, 17.00))
-    assert p.fixed_axle_eccentricity == pytest.approx(18.40)
-    assert p.fixed_axle_guide_slot_width == pytest.approx(7.90)
-    assert p.fixed_axle_guide_sample_count >= 33
-
-
-def test_d06_axle_guides_are_mirrored_constant_radius_and_reconstruct_fixed_world_axle() -> None:
-    p = p17.P17_R2_DEFAULTS
-    left = p17.fixed_axle_guide_locus("left", p)
-    right = p17.fixed_axle_guide_locus("right", p)
-    assert len(left) == len(right) == p.fixed_axle_guide_sample_count
-    for index, (left_point, right_point) in enumerate(zip(left, right)):
-        theta = p.theta_lock_deg * index / (len(left) - 1)
-        assert left_point.y == pytest.approx(right_point.y, abs=1.0e-9)
-        assert left_point.z == pytest.approx(-right_point.z, abs=1.0e-9)
-        assert hypot(left_point.y, left_point.z) == pytest.approx(
-            p.fixed_axle_eccentricity, abs=0.05
-        )
-        for side in ("left", "right"):
-            reconstructed = p17.reconstruct_fixed_axle_from_outer(side, theta, p)
-            assert reconstructed.as_tuple() == pytest.approx(
-                p17.fixed_axle_center_yz(p).as_tuple(), abs=0.05
-            )
-
-
-def test_d06_axle_inner_and_keeper_frames_are_world_invariant_while_outers_counter_rotate() -> None:
-    p = p17.P17_R2_DEFAULTS
-    evidence = p17.fixed_occurrence_transform_evidence(p)
-    assert evidence["fixedOccurrenceNames"] == (
-        "stepped_center_axle",
-        "left_inner_fixed_guide",
-        "right_inner_fixed_guide",
-        "left_keeper",
-        "right_keeper",
+def test_d09_r1_full_component_rigid_body_service_path_is_clear() -> None:
+    evidence = p17.central_span_service_evidence()
+    assert evidence["innerClearSpanMm"] == pytest.approx(18.40)
+    assert evidence["xt60BodyWidthMm"] == pytest.approx(15.90)
+    assert evidence["sideClearanceMmEach"] == pytest.approx(1.25)
+    assert evidence["pathId"] == "P17-D09-R1"
+    assert evidence["waypoints"] == (
+        (0.0, 0.0, 0.0),
+        (0.0, 0.0, -35.0),
+        (8.0, 0.0, -35.0),
+        (20.0, 20.0, -35.0),
+        (20.0, 45.0, -30.0),
     )
+    assert evidence["brepSamplesPerSegment"] == 1001
+    assert evidence["analyticSamplesPerSegment"] == 1001
+    assert evidence["brepSampleCount"] >= 4 * 1001
+    assert evidence["analyticSampleCount"] >= 4 * 1001
+    assert set(evidence["includedPigtailFeatures"]) == {
+        "XT60 body",
+        "two solder joints",
+        "two bent wires",
+    }
+    assert len(evidence["includedProductionSolids"]) == 16
+    assert evidence["minimumClearanceMm"] >= 0.75
+    assert evidence["zeroIntersection"] is True
+    assert evidence["passes"] is True
+
+
+def test_fixed_occurrences_remain_world_invariant_and_outers_counter_rotate() -> None:
+    evidence = p17.fixed_occurrence_transform_evidence()
     assert evidence["allFixedWorldInvariant"] is True
     for row in evidence["states"].values():
         assert row["leftOuterAngleDeg"] == pytest.approx(-row["rightOuterAngleDeg"])
 
 
-def test_d06_actual_solids_keep_axle_in_guides_with_required_web_and_keeper_capture() -> None:
-    p = p17.P17_R2_DEFAULTS
-    evidence = p17.fixed_axle_actual_solid_evidence(p)
-    assert evidence["minimumRequiredWebMm"] == pytest.approx(2.20)
-    assert evidence["minimumExactFrozenFeatureGapMm"] == pytest.approx(3.6500, abs=0.001)
-    assert evidence["minimumAnalyticWebMm"] == pytest.approx(3.849, abs=0.01)
-    assert evidence["minimumActualInnerHexWebMm"] == pytest.approx(3.8946, abs=0.001)
-    assert evidence["leftOuterBoundaryWebMm"] == pytest.approx(7.650, abs=0.001)
-    assert evidence["rightOuterBoundaryWebMm"] == pytest.approx(9.150, abs=0.001)
-    assert evidence["minimumAxleGuideRadialClearanceMm"] == pytest.approx(0.150)
-    assert evidence["minimumKeeperRadialCaptureMm"] == pytest.approx(1.050)
-    assert evidence["sampleCount"] == 33
-    assert evidence["allAxleOuterPlateIntersectionsZero"] is True
-    assert evidence["allKeeperOuterPlateIntersectionsZero"] is True
-    assert evidence["allAxleGuideProbeIntersectionsZero"] is True
-    assert evidence["allAxleWhiteRodIntersectionsZero"] is True
-    assert evidence["allKeeperCapIntersectionsZero"] is True
-    assert evidence["allXt60AndServiceIntersectionsZero"] is True
-    assert evidence["centerAtCHasNoDecorativeHole"] is True
-
-
-def test_d06_combined_existing_white_rod_contacts_and_axle_guide_close_uniquely() -> None:
-    evidence = p17.combined_contact_closure_evidence()
-    assert evidence["claimBoundary"].startswith("nominal centerline local-mobility")
-    assert evidence["passes"] is True
-    assert evidence["sampleCountPerSide"] == 33
-    for row in evidence["rows"].values():
-        assert row["contactResidualNormMm"] <= 1.0e-6
-        assert row["mobilityJacobianRank"] == 3
-        assert row["allPerturbedSolvesConvergedToPrescribedPose"] is True
-        assert row["maximumPerturbedPoseError"] <= 1.0e-6
-
-
-def test_d06_motion_entry_is_source_declared_self_contained_and_targets_only_outers() -> None:
-    cad = ROOT / "cad" / "p17_r2_direct_counter_twist"
-    entry = cad / "p17_r2_fixed_axle_motion.step.py"
-    sidecar = cad / "p17_r2_fixed_axle_motion.params.js"
-    assert entry.exists()
-    assert sidecar.exists()
-    assert '"params": "p17_r2_fixed_axle_motion.params.js"' in entry.read_text()
-    js = sidecar.read_text()
-    assert "open_to_end" in js
-    assert "open_to_lock" not in js
-    assert "import " not in js
-    assert "effects.transform(\"left_outer\"" in js
-    assert "effects.transform(\"right_outer\"" in js
-    for forbidden in (
-        "stepped_center_axle",
-        "left_inner_fixed_guide",
-        "right_inner_fixed_guide",
-        "left_keeper",
-        "right_keeper",
-        "upright_rod",
-        "bottom_rod",
-        "diagonal_rod",
-    ):
-        assert f'effects.transform("{forbidden}"' not in js
-
-
-def test_i06_full_motion_uses_same_single_end_of_travel_control() -> None:
-    cad = ROOT / "cad" / "p17_r2_direct_counter_twist"
-    entry = cad / "p17_r2_full_motion.step.py"
-    sidecar = cad / "p17_r2_full_motion.params.js"
-    assert '"params": "p17_r2_full_motion.params.js"' in entry.read_text()
-    js = sidecar.read_text()
-    assert js.count("open_to_end:") == 1
-    assert "OPEN to END OF TRAVEL" in js
-    assert "OPEN - END - OPEN" in js
-    assert "open_to_lock" not in js
-    assert "OPEN to LOCK" not in js
+def test_state_contact_value_is_derived_consistently() -> None:
+    assert p17.STATE_THETA["contact"] == pytest.approx(p17.theta_contact_deg(), abs=3.0e-11)
+    assert isclose(p17.STATE_THETA["locked"], 24.0)

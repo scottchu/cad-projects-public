@@ -6,70 +6,53 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p17-r2-lock-removal`.
-- Contract: `P17-D08`.
-- Accepted digital candidate: `P17-I06-R1`; formal gate `P17-R06` ACCEPT.
-- Exact fingerprint:
-  `20fc5068814e5c3f5d9c58fdaffbb98bb5dba0eb8b4dffabc7eea59ff3e0cba1`.
+- Active iteration: `p17-r2-three-rod-triangle-motion`.
+- Contract: `P17-D09-R1`.
+- Accepted digital candidate: `P17-I07-R1`; formal gate `P17-R07` ACCEPT.
+- Exact independent fingerprint:
+  `5965f4e88bc807a1e13ac38c7bc3b342cc285f24a9082c9975dd44000540cb87`.
 - Candidate manifest SHA-256:
-  `be993fa2a713abc86895aad95eb670eeb342237ff1e2d8e4799289cf07ef2590`.
+  `733f11d57aec71f9be8875a8d6ea3196fcc7c4076a673fc5de267c1253686c91`.
 - Artifact provenance SHA-256:
-  `d51bc72aafffead0360f3e037ac932b8d64dface19a2b00a803093ccaab4b047`.
+  `19e9927cb9d17ef307e96b70eb06600ac5d691d0aa164568d7bddf46b741190c`.
 - Source: `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
 - Tests: `tests/test_p17_r2_direct_counter_twist.py`.
-- Focused motion:
-  `cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py`.
 - Full motion:
   `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
 
-Distinct `P17-C06-R1`, `P17-V06-R1`, and `P17-R06` all pass the unchanged candidate
-for digital CAD/source, written STEP/export, and live preview delivery only.
+Distinct `P17-C07`, `P17-V07`, and `P17-R07` passed the unchanged candidate
+for digital CAD/source, ten written STEP exports, frozen visual evidence, and
+Viewer transport/readiness only.
 
-## What is fixed and what moves
+## Accepted mechanism
 
-- Fixed: purple printed stepped axle, both keepers, both inner plates.
-- Moving: all three white stainless forming rods and their caps.
-- Rotating: left and right outer plates in opposite directions around `C`,
-  constrained by mirrored guides around fixed eccentric axle `A` plus the
-  unchanged white-rod contact network.
-- Forbidden in this candidate: stability bar, yoke, boss, linkage, separate
-  pivot, frame, shared outer coupling, decorative hole at `C`, or silent
-  redesign of frozen white-rod paths/XT60 reference.
-- Removed: the right-outer orange lock nose and the complete right-inner
-  receiver; there is no replacement lock or endpoint-retention claim.
-- Preserved: the green left-outer finger/force grip circled in the user's
-  second screenshot; it is not lock geometry.
+- Fixed: purple stepped axle at `A=(-29,17)`, both inner plates, both keepers.
+- Moving: all three `OD4 x 50 mm` stainless rods and all six permanent caps.
+- Rotating: left and right outer plates in opposite directions around
+  `C=(1.75,6.25)`, with the right outer plate larger for force input.
+- Guides: fixed-inner rod tracks are straight; side-local outer tracks and
+  axle tracks are inverse-transform-derived for their respective rotations.
+- Travel: OPEN to first contact at `23.53125 deg` to END at `24 deg`; the
+  first-contact-to-END distance is a `0.25 mm` geometric preload proxy, not
+  force proof.
+- Removed: green grip tab, obsolete service window, old endpoint lock.
+- Forbidden: stability bar, yoke, linkage, gear, extra center bar, replacement
+  lock, or any claim that END is self-locking.
 
 ## Immediate task
 
-Keep the exact fingerprint unchanged and collect the user's visual review from
-the focused Viewer motion. The singleton service is already installed and is
-managed through `~/.local/bin/cad-viewer`; do not launch an ad-hoc competing
-Viewer. Exact page/artifact/descriptor/module/component readiness was accepted
-by R06 and must be reverified if the path, backend, source, or artifact changes.
+Preserve the exact fingerprint. If the user authorizes printing, regenerate
+the print package from source, run mesh/DfAM/slicer checks, and perform the
+physical three-rod/cap/slot experiment described in `PROJECT_STATE.md` and the
+active `HANDOFF.md`. Do not infer physical acceptance from CAD evidence.
 
-Do not proceed to mesh, 3MF, slicer, or a full print without explicit user
-authorization. The physical stainless stock is `50.00 mm`, while the current
-CAD rods remain `40.60 mm`; that mismatch is unresolved. The purple axle is
-`34.90 mm` and reaches `1.45 mm` beyond each outer plate, but fit, stiffness,
-and keeper retention remain physical unknowns.
-
-## Preserve
-
-- P17 R2 version identity; simulation/viewer/export status is evidence, not a
-  version trigger.
-- Four plates; inner pair fixed; outer pair independently counter-rotating.
-- Purple printed stepped axle as the fixed reaction member at
-  `A=(-29.00,17.00)`; outer rotation datum `C=(-10.60,17.00)`.
-- All three white rods remain moving on the frozen P17 paths.
-- Parametric source remains authoritative; never hand-edit STEP/mesh/3MF.
-- Legacy P13 user-modified `p13_print_kit.3mf` in canonical main remains
-  untouched.
+Use only Python 3.12 through the root uv workspace. Use the singleton Viewer
+managed by `~/.local/bin/cad-viewer`; do not start an ad-hoc competing server.
 
 ## Acceptance boundary
 
-CAD/source, nine STEP exports, and live preview are digitally accepted for
-`20fc5068...`. Physical force, friction, fit, wobble, backlash, PETG tolerance,
-keeper retention, endpoint retention, heat, wear, vibration, solder/removal
-ergonomics, the 50 mm stock decision, mesh, DfAM, slicer, and 3MF remain
-unaccepted.
+CAD/source, ten STEP exports, frozen visuals, and Viewer HTTP readiness are
+accepted for `5965f4e...`. Interactive slider manipulation, mesh, DfAM,
+slicer, 3MF, PETG fit, cap/keeper retention, force, wobble, wire damage,
+springback, thermal behavior, endpoint retention, and self-lock are not
+accepted.

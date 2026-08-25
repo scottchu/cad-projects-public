@@ -54,6 +54,16 @@ remain frozen. The green `left_outer_secondary_grip_block` circled in the
 second supplied screenshot is a finger/force tab, not lock geometry, and must
 remain unchanged in this repair.
 
+P17-D09-R1 supersedes the frozen-rod-path and provisional rod-length portions
+of D08 for the active candidate. All three stainless rods are now explicitly
+`OD4.00 x 50.00 mm`; numeric OPEN, first-contact, and END triangles are
+defined together; fixed-inner rod tracks are straight; the two outer plates
+counter-rotate through inverse-transform-derived side-local rails; and the
+right force side remains larger. The green grip and obsolete service window
+are removed. The purple axle stays fixed at `A=(-29,17)`. No stability bar,
+yoke, linkage, gear, replacement lock, or self-lock claim is authorized. This
+focused mechanism repair remains P17 R2.
+
 ## Historical P13 outcome and use sequence
 
 Historical P13 flow: load two insulated XT60 pigtail wires, close one rotary
@@ -341,6 +351,7 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
 | `REQ-009`–`REQ-021`, `CON-008`–`CON-023` | `docs/iterations/p17-r2-direct-cad-counter-twist/BRIEF.md`, `DESIGN.md`, `ADR-0003` | prior design contract; P17-I04 visually rejected |
 | `REQ-022`–`REQ-025`, `CON-024`–`CON-030` | `docs/iterations/p17-r2-fixed-reaction-rod-motion/BRIEF.md`, `DESIGN.md`, supplied Viewer screenshots, D07 BREP search evidence | active D07 focused repair contract |
 | `REQ-026`, `CHOICE-011`, `PHYS-013` | `docs/iterations/p17-r2-lock-removal/BRIEF.md`, `DESIGN.md`, two supplied annotated Viewer screenshots | P17-D08 design complete; implementation pending |
-| `REQ-009`–`REQ-025` | Future repaired P17 R2 source, tests, STEP/artifact validation, critic, and formal review | pending |
+| `TRI-REQ-01`–`TRI-REQ-10` | `docs/iterations/p17-r2-three-rod-triangle-motion/BRIEF.md`, `DESIGN.md`, P17-I07-R1 source/tests/artifacts, `REVIEW.md`, `VALIDATION.md` | P17-R07 digitally accepted |
+| `REQ-009`–`REQ-026` | P17-I07-R1 source, tests, ten STEP exports, frozen visuals, P17-C07/P17-V07/P17-R07 | accepted for digital CAD/export/Viewer readiness |
 | `REQ-013`, `REQ-014`, `PHYS-007` | Future permanent-cap coupon | pending physical |
 | `PHYS-008`–`PHYS-012` | Future PETG assembly and use tests | pending physical |
