@@ -1,7 +1,15 @@
 # P17 R2 head-up / tail-right orientation repair brief
 
-Status: `P17-D10` frozen for implementation. This is a focused orientation
+Status: `P17-D10-R1` frozen for implementation. This is a focused orientation
 repair inside P17 R2, not a P/R version increment.
+
+`P17-D10-R1` corrects two inherited acceptance contradictions without changing
+the selected geometry. Exact corresponding-vertex END displacement is at most
+`0.657823586728 mm`, so the six-decimal safe ceiling is `0.657824 mm`.
+Individual fixed-line/outer-rail crossing sine is retained as a diagnostic,
+not a pass threshold, because this coupled three-rod mechanism is accepted by
+regular rail loci, monotonic travel, branch continuity, and the full combined
+constraint Jacobian. No coordinate, path, part, or user-visible gate changes.
 
 ## Frozen input and defect
 

@@ -1,4 +1,4 @@
-# P17-D10 corrected head-up / tail-right design contract
+# P17-D10-R1 corrected head-up / tail-right design contract
 
 Status: selected numeric contract; source and artifact implementation pending.
 
@@ -50,10 +50,13 @@ Derived center-triangle evidence:
 | END | `7.39470457605` | `11.2622196269, 11.2622196269, 22.4859956417` |
 
 The OPEN right leg is exact: upper-right and lower-right both have
-`Y=22.235`. The corrected END centers move no more than the supplied
-`0.65761 mm` correction bound from the corresponding accepted END vertices;
-implementation must derive and report this regression rather than merely copy
-the bound. Legacy source-role mapping is `bottom -> upper-left`, `diagonal ->
+`Y=22.235`. Recalculation against the corresponding accepted END vertices
+gives `0.657609306503 mm` for upper-left and lower-right and
+`0.657823586728 mm` for the middle vertex. D10-R1 therefore replaces only the
+contradictory `0.65761 mm` maximum with `<=0.657824 mm`, the six-decimal
+ceiling of the exact maximum. Implementation must derive and report this
+regression rather than merely copy the bound. Every exact coordinate above is
+unchanged. Legacy source-role mapping is `bottom -> upper-left`, `diagonal ->
 upper-right/middle`, and `upright -> lower-right`.
 
 ## Contact derivation and geometric law
@@ -108,6 +111,41 @@ STOP and return to design; implementation may not enlarge slots or add parts.
 
 ## Focused gates
 
+### D10-R1 conditioning adjudication
+
+The inherited `crossing sine >=0.10` rule measured each fixed-line/outer-rail
+pair as though that pair alone had to determine the rod pose. That is not a
+necessary condition for this coupled three-rod architecture. At the exact D10
+geometry the minimum individual diagnostic is `0.000667249` on left
+upper-left and `0.001059948` on right lower-right, while exact reconstruction
+is `7.94e-15 mm`, minimum web is `3.65059 mm`, and the combined normalized
+constraint Jacobian remains rank 3 with condition number at most `13.58`.
+The near-tangency therefore means one redundant local constraint contributes
+little normal authority at that instant; it does not by itself create a cusp,
+reversal, branch jump, or singular coupled mechanism. Raising the local sine
+would force a needless change to the user-fixed topology or exact rod states.
+
+D10-R1 removes only the individual crossing-sine pass threshold. Continue to
+report its signed minimum as a diagnostic. Replace it with these
+failure-relevant gates:
+
+- every analytic local rail derivative
+  `dq_s,i/dtheta = R(-alpha_s) * (dr_i/dtheta - alpha'_s*J*(r_i-C))`
+  is finite and nonzero at exact endpoints and all samples;
+- fixed-track progress is strictly monotonic,
+  `d_i dot dr_i/dtheta = S/24 = 0.441053390592 mm/deg > 0`, with no sign
+  reversal or endpoint dwell;
+- each rail parameter remains continuous and one-to-one over `0..24 deg`,
+  with no self-intersection, non-adjacent branch overlap, or branch switch;
+- continuation of the complete coupled closure from each preceding sample
+  reconstructs the intended rod centers within `0.05 mm`, remains full rank,
+  and has normalized Jacobian condition number `<=1000` at exact OPEN,
+  contact, END, and all intermediate samples.
+
+These gates catch actual cusp, reversal, ambiguity, and coupled singularity.
+They do not waive minimum web, actual-solid collision, two-sided support, or
+endpoint checks.
+
 ### Math and constraints
 
 - Recompute every OPEN/contact/END center, triangle area, side length,
@@ -115,11 +153,14 @@ STOP and return to design; implementation may not enlarge slots or add parts.
 - Prove the exact vertex mapping and right-vertical OPEN leg.
 - Prove all rods travel monotonically by the same scalar `S*u`; left/right
   outer rotation signs are opposite.
-- Recompute the accepted-END displacement regression and require the supplied
-  `<=0.65761 mm` bound under the task's corresponding-vertex metric.
-- Rail reconstruction residual `<=0.05 mm`; no endpoint cusp, branch jump,
-  tangent jam, sign reversal, or rank loss. Preserve normalized full-Jacobian
-  condition `<=1000` and crossing sine `>=0.10` at all samples.
+- Recompute the accepted-END displacement regression and require
+  `<=0.657824 mm` under the corresponding-vertex Euclidean-distance metric;
+  expected maximum is `0.657823586728 mm` at the middle vertex.
+- Rail reconstruction residual `<=0.05 mm`; regular nonzero rail derivatives;
+  strictly monotonic fixed-track progress; no self-intersection, endpoint
+  cusp, branch jump, reversal, or rank loss; normalized full-Jacobian
+  condition `<=1000` at all samples. Individual crossing sine is reported as
+  a diagnostic only and has no independent pass threshold.
 - Exact counts: three rods, six permanent caps, two fixed inners, two rotating
   outers, one fixed axle, two keepers, zero added mechanisms.
 

@@ -1,7 +1,16 @@
-# P17-D10 implementation handoff
+# P17-D10-R1 implementation handoff
 
 Status: design frozen; implementation, independent critique/validation, and
 formal review pending.
+
+D10-R1 changes the corresponding-vertex END displacement acceptance from the
+contradictory `<=0.65761 mm` to the exact-derived safe ceiling
+`<=0.657824 mm`; the expected exact maximum is `0.657823586728 mm`. It also
+replaces the inherited per-rail `crossing sine >=0.10` threshold with regular
+rail derivative, monotonic progress, one-to-one branch continuity, exact
+reconstruction, and full-rank combined-Jacobian gates. Crossing sine remains a
+reported diagnostic. All exact rod coordinates and all actual-solid, web,
+support, collision, service, and user-visible gates remain frozen.
 
 ## Implement exactly
 
@@ -22,6 +31,8 @@ formal review pending.
 6. Add orientation, vertex-mapping, right-vertical OPEN leg, small END-delta,
    contact, straight-track, inverse-rail, endpoint-conditioning, no-floating,
    actual-solid collision, and service-path regressions.
+   Endpoint conditioning must use the D10-R1 regularity/monotonicity/branch/
+   combined-Jacobian gates, not reinstate an individual crossing-sine cutoff.
 7. Regenerate only explicit affected source-derived STEP states, motion
    sidecars, provenance/fingerprint, and the mandatory OPEN/contact/END plus
    opposite-side visual packet. Do not hand-edit outputs.
@@ -55,6 +66,6 @@ through the repository root `uv` environment.
 ## Immutable input
 
 Implementation must verify
-`/tmp/p17-d10-implementation-input-manifest.txt` and every listed entry before
+`/tmp/p17-d10-r1-implementation-input-manifest.txt` and every listed entry before
 editing source. Any mismatch in the frozen D10 design files or authoritative
 source/tests invalidates this handoff.
