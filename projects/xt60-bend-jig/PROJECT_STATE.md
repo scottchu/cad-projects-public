@@ -1,32 +1,30 @@
 # XT60 bend jig project state
 
-Last updated: `2026-08-25`
+Last updated: `2026-08-26`
 
 ## Baseline and active iteration
 
 - Canonical project: `projects/xt60-bend-jig`.
-- Active iteration: `p17-r2-balanced-rail-search`.
-- Current design result: `P17-D14` bounded infeasibility; no implementation
-  candidate exists under the frozen option-3 scope.
-- Prior review-only design contract/candidate: `P17-D13` / `P17-I13`.
-- D13 review fingerprint:
-  `590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c`.
-- `P17-C13`, `P17-V13`, and `P17-R13` accept implementation fidelity but
-  formally block product acceptance, release, printing, and merge.
-- The last accepted digital product candidate remains `P17-I08-R2`, formally
-  accepted by `P17-R08` on `main`.
-- Independent candidate fingerprint:
-  `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`.
-- Candidate manifest SHA-256:
-  `0eaa98ffdc26baea5f409867929ffb9df317030bfa902cf20cd2b770919deb25`.
-- Artifact provenance SHA-256:
-  `97dccfad274fd82724f06c8e1ec15cd4ccc25659b6aa652dca7b8b9ecefb6b4b`.
+- Active iteration: `p18-r1-compact-counter-twist`.
+- Active product baseline: **P18 R1**, explicitly opened by the user after
+  approval of the compact P17 2D gate.
+- CAD/source and six written STEP artifacts are formally accepted for exact
+  candidate-manifest SHA-256
+  `fb0755a0d448ee000dde4bd63eacca7fbaf6e55abeb16312a7f39c5ccfc5d1d5`.
+- P18 plate diameters are `52.933/53.933/54.933 mm`; outer plates twist
+  `-45/+45 deg`; fixed axle is `A=(-9.5,-9.5)` around virtual datum `C=(0,0)`.
+- Three rods remain `OD4 x 50 mm`; six caps remain permanent; inner plates and
+  axle are fixed; outer rails are inverse-transform-derived.
+- Independent validation passed `10/10` tests, 65-state BREP and full
+  two-sided support, with minimum web `2.200398673579 mm`, rank `3`, maximum
+  normalized condition `3.750295905779`, and six exact STEP parity passes.
 - Active handoff:
-  `docs/iterations/p17-r2-balanced-rail-search/HANDOFF.md`.
+  `docs/iterations/p18-r1-compact-counter-twist/HANDOFF.md`.
 
-This remains P17 R2. The correction changes orientation and motion details
-inside the accepted four-plate/three-rod architecture; evidence regeneration,
-Viewer readiness, and focused numeric repair do not create a new P/R version.
+Acceptance is digital only. Full solder-tool access, near-tangent hand force,
+friction/wedging/backlash, cap/keeper retention, axle/hex fit, PETG tolerance,
+heat, wear, mesh/3MF, slicing, printing and physical acceptance remain open.
+P17 source/artifacts remain immutable history and were not modified by P18.
 
 ## Current D14 option-3 design result
 
@@ -78,7 +76,7 @@ rejects PR merge/release. The branch must not replace accepted I08 on `main`
 without an explicit design-scope reopening and a new independently accepted
 candidate.
 
-## Accepted digital result
+## Historical P17 accepted digital result
 
 P17-I08-R2 is the source-derived four-plate, three-rod counter-twist candidate:
 
