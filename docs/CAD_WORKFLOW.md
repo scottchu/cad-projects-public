@@ -155,6 +155,10 @@ Implementation rules:
 
 - keep meaningful dimensions and choices as named parameters;
 - derive dependent geometry from those parameters rather than duplicating numbers;
+- extract repeated geometry, motion, and coordinate-frame relationships into deterministic pure-math functions with explicit parameters before building solids;
+- make all applicable parts, rails, and generators call the same invariant function rather than carrying rewritten or mirrored copies of its equations;
+- test a reusable invariant function directly for nominal and boundary inputs, deterministic output, inverse or round-trip behavior when defined, and equivalence with each production caller;
+- keep BREP construction, tessellation, and export serialization outside reusable math functions, and reserve those expensive stages for candidates that pass the cheap analytic gates;
 - use part-local coordinate frames and named mating/service datums;
 - use measured or canonical purchased-part geometry when available, otherwise document a conservative envelope;
 - edit parametric source, never generated STEP, 3MF, STL, GLB, or render output;

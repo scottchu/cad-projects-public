@@ -81,6 +81,10 @@ projects/<project-slug>/
 
 The project README must identify authoritative source, regeneration commands, expected outputs, focused tests, and what remains physically unverified.
 
+## Parametric design contract
+
+Repeated geometry and trajectory relationships have one deterministic parametric authority. Implementations extract the reusable invariant or coordinate transform into a pure-math function with explicit inputs, then make every affected part, rail, and generator delegate to it instead of duplicating equations. The function is tested independently for determinism, boundaries, production-caller equivalence, and inverse or round-trip behavior when defined. Expensive BREP construction, tessellation, and export serialization remain downstream validation stages rather than being embedded in the reusable mathematical kernel.
+
 ## Durable project memory
 
 Agent sessions are temporary execution contexts, not authoritative project records. Every project externalizes current state and cumulative learning according to `docs/PROJECT_CONTINUITY.md`.

@@ -1,0 +1,17 @@
+718e049354450d7abb179bf7be72dfdea25e6c681d6ef8690c2bd0edc00bdc3b  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+b316aecebc2aa74fe1a44252e94c1d54d6b878d86734133a821cd1215d937618  projects/xt60-bend-jig/docs/EXPERIENCE.md
+a2c94fff6617d9f9c57e81d38741ad84e513cdb2c28a8ace169c957906ef06c6  projects/xt60-bend-jig/docs/decisions/ADR-0003-p17-r2-direct-cad-counter-twist.md
+2a44ad2e6fd06af7c9cf426b91eca6643b19f24e62ab126bf81e07f81999c4ab  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/BRIEF.md
+9ea73a60a7cda2eaedd2729799140f57d4294a9fc56b0b13c6cfb5b06916da7d  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/DESIGN.md
+1e8e5f74d34eec61d995ade042e1b3a6521e3abdc13cf526b81fa7d3e6a7667f  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/HANDOFF.md
+00ecd2fe6d65aae19397497b057adbd5f37f9d300b39a6469ae97f270c530985  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/VALIDATION.md
+e75408d2618ecae0ee4b0101af7c76995c2192f5a36c8932c890d3d893a1be2b  projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py
+7fe6ba19037ea5bebfdb631585fd8ba7fecd4690556508a36e29daff0d2b691d  projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py
+aec9bd40cb69b09bcadd0d770dac346b38bba87f19d4e0c6a450b59acf5e5cb4  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-force-balance/DEFECT_INPUT.md
+b39775d006149fe2e2aaa372f6eb76a8770e4cf0f4143d90e5e17ff93fa38ff1  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-force-balance/DESIGN.md
+a062b1635cd01dbc08a76b7056fbc964161f99d8c564ea39173df329a8bc9783  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-force-balance/REVIEW.md
+e011a63a68b74a70c834a97dfc2994199fc2cf5117a98b1e63775ac0154c3a36  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-rail-length-repair/AUTHORIZATION.md
+0203e9a07d5afb284f03075ebe78b9b8c3ef47ebdde1dd8451b7820afef19d1d  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-rail-length-repair/TASK_DAG.md
+9e788fa433179b282284ad23abaa74bcc360c5a4d2dfce7c6ee03774ce1a7833  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-rail-length-repair/BRIEF.md
+29e44536277320d7754bd3f91624820db3b1d7b7ac3a3db0331f00ebf2428d40  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-rail-length-repair/DESIGN.md
+7771074e6b54aa5aa42718873a9aa17412cbdb863493300b432d346fdedb6367  projects/xt60-bend-jig/docs/iterations/p17-r2-outer-rail-length-repair/HANDOFF.md

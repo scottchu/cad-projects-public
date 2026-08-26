@@ -5,8 +5,9 @@ Last updated: `2026-08-25`
 ## Baseline and active iteration
 
 - Canonical project: `projects/xt60-bend-jig`.
-- Active iteration: `p17-r2-head-up-tail-right-orientation-repair`.
-- Current design contract: `P17-D10-R2`.
+- Active iteration: `p17-r2-outer-force-balance`.
+- Current design status: `P17-D11-R2` BLOCKED; no implementation candidate.
+- Last accepted design contract remains `P17-D10-R2`.
 - Accepted digital candidate: `P17-I08-R2`, formally accepted by `P17-R08`.
 - Independent candidate fingerprint:
   `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`.
@@ -20,6 +21,32 @@ Last updated: `2026-08-25`
 This remains P17 R2. The correction changes orientation and motion details
 inside the accepted four-plate/three-rod architecture; evidence regeneration,
 Viewer readiness, and focused numeric repair do not create a new P/R version.
+
+## Active outer-rail force defect
+
+User review found Rod 1 (`bottom`) and Rod 2 (`upright`) outer rails visibly
+and mechanically unbalanced relative to the middle (`diagonal`) rod. The
+accepted D10-R2 endpoint crossing diagnostics reproduce the concern: the two
+worst end-rod rails reach only `5.05 deg` and `4.45 deg`, corresponding to
+ideal geometric load multipliers around `11.4x` and `12.9x`; these are not
+physical hand-force measurements.
+
+P17-D11 through D11-R2 searched common-center, equal/opposite nonlinear, plate-
+envelope, and bounded monotone C1 motion-law repairs while preserving exact
+world rod states and the `4.15 mm` through-slot topology. Force-balanced
+candidates passed angle, side-ratio, path-ratio, web, collision, service, and
+conditioning gates, but every shortlisted actual solid lost the mandatory
+continuous `0.30 mm` two-sided reaction material because another portion of
+the same swept rail removed it. Endpoint material ratio was `0.0`, not a
+marginal miss. Increasing the outer diameter cannot repair this internal void.
+
+P17-C09 independently confirmed the blocker and the credibility of the support
+gate. Do not implement a D11 candidate or weaken the support rule. The smallest
+next reopening is outer-plate rail topology/section. If the existing single
+through-slot topology must remain, the next option is a small numeric rod-state/
+path change, which also changes the fixed-inner tracks and requires explicit
+scope reopening. Authoritative source, tests, STEP artifacts, and accepted
+fingerprint remain unchanged.
 
 ## Accepted digital result
 
@@ -115,9 +142,11 @@ It means CLAMPED/END of prescribed travel and makes no retention claim.
 
 ## Next action
 
-Keep the accepted fingerprint unchanged while the user reviews the persistent
-Viewer. After explicit print authorization, generate/slice only the accepted
-P17-I08-R2 print package and perform the documented three-rod/cap/slot physical
-test. Record first contact, END effort, rod wobble, wire marks, XT60 reaction,
-cap/keeper retention, removal path, cooled bend angle, and springback. Do not
-claim a physical lock: this candidate intentionally contains none.
+Keep the accepted fingerprint unchanged. Do not print or implement the rejected
+D11 force-balanced rails. Obtain one explicit design reopening: either permit
+an outer-local rail topology/section change while preserving rod states, or
+permit the smallest numeric rod-state/path adjustment while preserving the
+user-fixed OPEN/END topology. Then open a new bounded design task and rerun the
+force-angle, path-balance, web, continuous two-sided-support, collision,
+conditioning, service, STEP, and visual gates. Do not claim physical force or
+self-lock.

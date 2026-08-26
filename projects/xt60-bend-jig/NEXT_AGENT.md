@@ -6,8 +6,9 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p17-r2-head-up-tail-right-orientation-repair`.
-- Contract: `P17-D10-R2`.
+- Active iteration: `p17-r2-outer-force-balance`.
+- Current design result: `P17-D11-R2` BLOCKED; STOP implementation.
+- Last accepted contract: `P17-D10-R2`.
 - Accepted digital candidate: `P17-I08-R2`; formal gate `P17-R08` ACCEPT.
 - Exact fingerprint:
   `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`.
@@ -45,10 +46,14 @@ and the recorded acceptance boundaries only.
 
 ## Immediate task
 
-Do not alter the accepted fingerprint during review. The exact persistent
-singleton Viewer page is the review surface. If the user authorizes printing,
-regenerate from source, run mesh/DfAM/slicer checks, then execute the physical
-three-rod/cap/slot experiment in `PROJECT_STATE.md` and the active `HANDOFF.md`.
+Do not alter the accepted fingerprint or implement any D11/R1/R2 shortlist.
+Read the active D11 BRIEF, DESIGN, HANDOFF, REVIEW, and manifests. The current
+single-through-slot outer-only search is exhausted: balanced rails repeatedly
+produce an internal self-removal void with endpoint support material ratio
+`0.0`. Outer diameter growth does not help. Continue only after explicit scope
+reopening for either (a) outer-plate rail topology/section, the smallest safe
+next variable, or (b) a small numeric rod-state/path change that also rederives
+fixed-inner tracks while preserving the user-fixed OPEN/END topology.
 
 Use only Python 3.12 through the root uv workspace. Use the singleton Viewer
 managed by `~/.local/bin/cad-viewer`; do not start an ad-hoc competing server.

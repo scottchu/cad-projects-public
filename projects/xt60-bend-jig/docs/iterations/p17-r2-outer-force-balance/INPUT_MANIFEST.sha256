@@ -1,0 +1,11 @@
+718e049354450d7abb179bf7be72dfdea25e6c681d6ef8690c2bd0edc00bdc3b  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+b316aecebc2aa74fe1a44252e94c1d54d6b878d86734133a821cd1215d937618  projects/xt60-bend-jig/docs/EXPERIENCE.md
+a2c94fff6617d9f9c57e81d38741ad84e513cdb2c28a8ace169c957906ef06c6  projects/xt60-bend-jig/docs/decisions/ADR-0003-p17-r2-direct-cad-counter-twist.md
+2a44ad2e6fd06af7c9cf426b91eca6643b19f24e62ab126bf81e07f81999c4ab  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/BRIEF.md
+9ea73a60a7cda2eaedd2729799140f57d4294a9fc56b0b13c6cfb5b06916da7d  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/DESIGN.md
+1e8e5f74d34eec61d995ade042e1b3a6521e3abdc13cf526b81fa7d3e6a7667f  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/HANDOFF.md
+00ecd2fe6d65aae19397497b057adbd5f37f9d300b39a6469ae97f270c530985  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/VALIDATION.md
+6b9004c7fb7d102c320c1c4184a78bbfc717540a91e5ea4f03b5a1fe1637e49b  projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py
+b713552b6b5fdefe7259d67b3dde1d464e46be85702a85f926cfd055bdb88c99  projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py
+0122879f6a0ef5f6490731ed5ef4afd22f2ac20300c20085a6d83be7f6aa43c8  /Users/scottchu/.codex/attachments/210908bc-9de2-4c43-aedb-8a18d5f90b6a/codex-clipboard-7eb2821f-aa8a-4869-aee0-cbd022b72eac.png
+ccb2e1ec544faa4dd8c61160f3722f213a09cdee7f9d15a68ef87d5c8dce7ade  /Users/scottchu/.codex/attachments/e18aec55-2c27-4dce-b652-517697dc7c13/Screenshot 2026-08-25 at 9.57.36 AM.png

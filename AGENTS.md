@@ -51,19 +51,26 @@ Every worker return is a receipt: status; verified fingerprint; changed paths/ar
 
 - Follow `docs/CAD_WORKFLOW.md` for CAD design, testing, review, and handoff.
 - Before modeling, identify the exact current baseline by path/version and record the user's requirements, invariants, intended use sequence, and explicit non-goals. A locked baseline may change only intentionally, in a new version, with regression evidence.
+- Before material CAD work, freeze one user-confirmable intent gate covering the coordinate frame, orientation, state topology, part identities, and allowed motion. When any spatial semantic is unclear, use a cheap 2D diagram and obtain explicit confirmation; do not run 3D CAD, STEP, slicing, or printing in parallel while that gate is open.
+- For every bounded correction, record a per-object delta mask naming what may change, its allowed transform or parameter, and every invariant or forbidden change. A later user instruction that narrows scope supersedes earlier broader authorization immediately; update and refreeze the contract before continuing.
 - For substantial CAD changes, use separate agents for design, implementation, critique, review, and validation/tests. An implementation agent must not approve its own work. Keep one bounded agent per role, hand off exact immutable paths, and stop unused agents.
 - Inspect supplied references and existing physical-test observations before broad design changes. Observed failures outrank nominal CAD assumptions.
 - Treat every design as parametric: expose meaningful named parameters, derive dependent dimensions mathematically, and identify invariant, derived constraint, design choice, and physical unknown separately.
+- Before repeating geometry or trajectory logic, extract the underlying reusable invariant or coordinate transform into a deterministic pure-math function with explicit parameters. Make every affected part, rail, or generator delegate to that one function instead of rewriting equivalent equations.
+- Test each reusable parametric function independently before relying on solid or export tests. Cover nominal and boundary inputs, determinism, inverse or round-trip behavior when defined, and equivalence with every production caller. Keep BREP construction, tessellation, and file serialization outside the pure-math function; use them only after cheap analytic checks select a candidate.
+- A failing cheap analytic or intent gate stops downstream work. Do not continue into BREP construction, CAD generation, STEP/export, Viewer, slicing, or printing unless the user explicitly requests an evidence-only implementation; label that result non-candidate and exclude it from product acceptance and delivery.
 - Use a small risk-driven test plan. Every test must name a credible failure it can catch; test count is not a quality metric.
 - Every non-trivial CAD change requires the four core evidence categories: object-collision, math, constraint, and user-requirement checks. Cosmetic-only changes still require geometry validation and a snapshot, but should not invent irrelevant tests. Add motion/service-path, source/export parity, manufacturing, or defect-regression checks only when that risk exists.
 - Validate actual solids, hardware-inclusive assemblies, critical motion/service states, and written exports—not only nominal source parameters or screenshots.
 - Snapshot and visually review the primary artifact after deterministic checks. Visual approval does not replace geometric evidence.
+- Validate review media on the user's actual delivery surface before claiming it is visible, readable, or usable there. A successful local render, HTTP response, Viewer-ready state, or agent-side inspection is insufficient evidence of the user's experience.
 - State CAD validation, written STEP/mesh/slicer validation, and physical print/assembly validation separately. Never present an unprinted design as physically proven.
 - When a physical defect is reported, first add or identify a regression that represents the concrete failure, then make the smallest responsible source change and rerun only the affected focused gates before broader regression.
 
 ## Documentation and handoff
 
 - Record major decisions, assumptions, exact commands, artifact paths, test evidence, and remaining physical-validation gaps in project-local docs.
+- The active iteration must identify exactly one current contract, candidate fingerprint, and matching source-to-artifact-to-independent-review chain. Mark older or rejected revisions superseded or archived, and never mix their artifacts, receipts, or acceptance status into the active authority chain.
 - Use stable requirement and decision identifiers. Preserve superseded decisions and closed iterations as history; point to their replacements instead of rewriting history.
 - Record physical observations separately from CAD inference. An observation log is append-only except for explicit factual corrections that retain the original entry and explain the correction.
 - Every release artifact must identify its source revision or manifest, generating command, parameters when relevant, checksum, and separate CAD, artifact/slicer, and physical acceptance states.
