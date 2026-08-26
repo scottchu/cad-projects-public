@@ -4,13 +4,13 @@ Parametric PETG jig and Three.js mechanism study for holding and forming two ins
 
 ## Current baseline
 
-The digitally accepted review baseline is P17 R2: four principal plates, a
-fixed purple printed stepped axle and fixed inner pair, two independently
-counter-rotating outer plates, and three moving `OD4.00 mm` stainless
-forming rods. The accepted P17-I06-R1 correction removes the current lock nose
-and receiver completely while preserving the fixed axle, mirrored guides,
-counter-twist motion, and green left-outer force grip. The 32-degree state is
-end-of-travel only, not a lock claim.
+The digitally accepted review baseline is P19 R1: four principal plates, a
+fixed purple printed stepped axle and fixed inner pair, two counter-rotating
+outer plates, and three moving `OD4.00 x 50.00 mm` stainless forming rods.
+One shared normalized state drives the complete left/right motion through
+`-5/+5 deg`. The short-tail work area is at the `+Y`/right/front edge so the
+XT60 solder cups and solder-tool keepout remain outside the largest plate.
+There is no lock, yoke, linkage, gear, grip block, or self-lock claim.
 
 Start with [PROJECT_STATE.md](PROJECT_STATE.md),
 [NEXT_AGENT.md](NEXT_AGENT.md), and the iteration named by
@@ -19,14 +19,23 @@ candidates remain design history; they are not the current review candidate.
 
 ## Acceptance boundary
 
-- CAD/source and nine STEP exports: accepted for exact P17-I06-R1 fingerprint
-  `20fc5068814e5c3f5d9c58fdaffbb98bb5dba0eb8b4dffabc7eea59ff3e0cba1`.
-- Live Viewer motion: accepted for user visual review.
-- Mesh/DfAM/slicer/3MF and all physical claims: pending. Nominal closure and a
-  clean animation do not prove force, fit, friction, wobble, retention, or
-  endpoint retention. Physical `50.00 mm` stainless stock remains distinct
-  from the current modeled `40.60 mm` rods; the purple axle remains
-  `34.90 mm` and is not physically accepted yet.
+- CAD/source and six STEP exports: accepted for exact P19 R1 candidate
+  fingerprint
+  `e2492339de9037b6e2a84351699b693202e4585a32623305c616d97712b91677`.
+- Viewer transport/readiness: accepted for exact-artifact human review; live
+  slider interaction remains a user review action.
+- Mesh/DfAM/slicer/3MF and all physical claims: pending. The `0.75 mm`
+  completed-pigtail clearance and two `4.00 mm` rails are nominal active
+  limits, not manufacturing margin. CAD does not prove force, fit, friction,
+  wobble, retention, solder ergonomics, heat, wear, or self-lock behavior.
+
+## Authoritative P19 R1 source
+
+- `src/xt60_bend_jig/p19_r1_front_edge_short_tail.py`
+- `tests/test_p19_r1_front_edge_short_tail.py`
+- `docs/iterations/p19-r1-front-edge-short-tail/`
+- `cad/p19_r1_front_edge_short_tail/p19_r1_full_motion.step.py`
+- `cad/p19_r1_front_edge_short_tail/p19_r1_print_kit.step.py`
 
 ## Authoritative P17 R2 source
 
@@ -72,19 +81,20 @@ npm run build --workspace projects/xt60-bend-jig
 
 The Python suite includes historical prototypes and the focused P13 math, requirements, actual-solid, motion, provenance, STEP, and 3MF checks. Passing tests are CAD or artifact evidence only unless a test explicitly records a physical observation.
 
-## Generate current P17 R2 STEP review artifacts
+## Generate current P19 R1 STEP review artifacts
 
 Use the installed CAD skill runtime rather than copying its environment into the project. The current installation is shown below; update `CAD_SKILL` if the plugin version changes.
 
 ```bash
-CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.25/skills/cad
+CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.28/skills/cad
 
 uv run python "$CAD_SKILL/scripts/gen" \
-  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_open.step.py \
-  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_mid.step.py \
-  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_locked.step.py \
-  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py \
-  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py \
+  projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_open.step.py \
+  projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_contact.step.py \
+  projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_end.step.py \
+  projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_exploded.step.py \
+  projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_print_kit.step.py \
+  projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_full_motion.step.py \
   --write
 ```
 
@@ -101,7 +111,7 @@ competing ad-hoc server on port `3245`.
 cad-viewer status
 cad-viewer restart
 cad-viewer url --workspace "$PWD" \
-  --file projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17_r2_fixed_axle_motion.step.py \
+  --file projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_full_motion.step.py \
   --tailscale
 ```
 

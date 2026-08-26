@@ -1,0 +1,6 @@
+# P19-REPAIR-01 frozen input manifest
+# Baseline Git commit: bcc16305ff112ba814bdf19ad544a5819127e902
+243a874337465cbedee95481dd395227255606e3a08727ae3c756967a7438de6  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/TASK_INPUT.md
+83a56c9fa8a498f43510ba25529b9e7fe296d0469b4fe5cf4704e783ddb901da  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/IMPLEMENTATION_CANDIDATE.sha256
+7a34c6c492f6fbf666b4a11e69d5602c69bd7d6bd9ad8fe1c9eabc571c3c1801  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/IMPLEMENTATION_RECEIPT.md
+2c203aafed75a7ec84e388a6bbf92486179b90a81a855fbf9d721f3fdb1a0b75  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/VALIDATION.md

@@ -1,0 +1,9 @@
+# P19-OPT-04 frozen input manifest
+# Baseline Git commit: bcc16305ff112ba814bdf19ad544a5819127e902
+07e86ede330777bca4f1d9975604024aada7fdf7e3d7b261bc524135cfc3cc82  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+4b23ae3a0c65fb861e1215e95ba435b5747d2d3c4f085a6e07a925af37263f5c  projects/xt60-bend-jig/docs/EXPERIENCE.md
+555a449864b5498400bcccfa45e69097359cecf7f2df5472a9801fd4b55ce105  projects/xt60-bend-jig/docs/decisions/README.md
+a0414e4ca02d80e3a9cca1d6ce4b6e64aa66039414def87de9cbfbde9575bffd  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/TASK_INPUT.md
+ac9f534d2b5ae11a9ba8d7488c2262d13a5590e49a5c717d6b7ecaff72895403  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZE_4MM_INPUT.sha256
+744e30a358ece0f5012dac4521b1a268b64f2d59e4c9a8bb86d699104ccb6afc  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZED_4MM_REPAIR1.md
+7cf265465e73c876800494dbf01c235edaefc48c8af863c905804e7516b7bdaf  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZED_4MM_CRITIQUE.md
