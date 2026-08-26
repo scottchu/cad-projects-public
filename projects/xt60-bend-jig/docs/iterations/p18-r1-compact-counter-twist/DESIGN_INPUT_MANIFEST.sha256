@@ -1,0 +1,13 @@
+718e049354450d7abb179bf7be72dfdea25e6c681d6ef8690c2bd0edc00bdc3b  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+b316aecebc2aa74fe1a44252e94c1d54d6b878d86734133a821cd1215d937618  projects/xt60-bend-jig/docs/EXPERIENCE.md
+3dd175d4dcefd959b090cb37db6c20d401e40351dfbd577a3a1e91f3d6ae3a03  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/CANDIDATE_MANIFEST.sha256
+91677597afb7b15bb0f060b5b594f4fe9a7ad6e7047a74e716ddd093fa29e752  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/DESIGN.md
+17132fc7db0eb7173900ec6e7c90239eb84d4100d7156b4556be1bee6fd65f75  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/VALIDATION.md
+2791aab8e6e9c15e2f33bd9f6cf25e7c094a86df50dd6ea0d970ae2af1f42ebf  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/REVIEW.md
+cef1137d68ff5dc2ed5c0131aad11c3499d71ecbc0b4afa826f6edeb7f137475  projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py
+68879bd57a03c263684576efd378ec458d853f91659d67cfb302459970b8120a  projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py
+1d36c3809b2b0e42dfad905f5706caae15ec8c6e1110fcb5ee7b2886bc08025f  projects/xt60-bend-jig/src/xt60_bend_jig/p17_compact_plate_optimizer.py
+da9331715e5404049f0051c6d708068833f48b839f7692d3f8f5fd372a93d303  projects/xt60-bend-jig/tests/test_p17_compact_plate_optimizer.py
+85c6f9cc80f107c864a903091e878bcff8bcc8d4c7ea4a2de82c8cb1776dc32a  projects/xt60-bend-jig/docs/iterations/p18-r1-compact-counter-twist/TASK_INPUT.md
+349cfa814f0a3ceb1a7f9b1c6c3fce807158fae35d97aab7dfbce4233e978c39  projects/xt60-bend-jig/docs/iterations/p18-r1-compact-counter-twist/TASK_DAG.md
+f182980e9e3ee0dab637c854029fe9f7707f7477e5ac1a6e0de03524d62f51dc  projects/xt60-bend-jig/docs/iterations/p18-r1-compact-counter-twist/BRIEF.md

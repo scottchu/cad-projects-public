@@ -258,3 +258,24 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
 - `locked` remains compatibility wording for CLAMPED/END only. Physical cap fit,
   force, wobble, wire damage, heat, springback, endpoint retention, self-lock,
   slicer, and 3MF remain untested.
+
+## 2026-08-26 — P18 R1 compact 45-degree CAD baseline
+
+- Observation: the user approved the compact P17 2D gate and explicitly
+  requested a new P18 baseline rather than another P17 refinement.
+- Decision: P18 preserves the four-plate, three-rod, stepped-axle architecture
+  but changes the envelope, fixed-axle datum and total twist together:
+  `OD52.933/53.933/54.933`, `A=(-9.5,-9.5)`, `C=(0,0)`, `45 deg`.
+- Digital result: independent validation passed the parametric math,
+  four-contact rank/conditioning, 65-state BREP sweep, full two-sided support,
+  completed-pigtail removal, six STEP parity gates and four snapshots.
+- Important lesson: one diagonal outer rail is nearly tangent close to END.
+  Rank and support can still pass while real hand force, friction, wedging and
+  backlash remain unknown; do not convert prescribed kinematic closure into a
+  force claim.
+- Important service boundary: the pigtail removal path passes, but the full
+  assembled soldering-iron envelope was not swept against every plate, rod and
+  cap. Keep solder-tool access open until physically checked or separately
+  modeled.
+- Physical acceptance remains pending for cap/keeper retention, axle/hex fit,
+  limiting-web PETG outcome, grip usefulness, heat, wear and self-lock.

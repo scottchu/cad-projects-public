@@ -1,0 +1,7 @@
+ac5307cb8e536fafbeb34b92bd7cf6679caf6f8bea056aa55f6c22eb43487295  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/TASK_INPUT.md
+fb33596ecc4616e8fb83c88b401f7e5258d9a4cf13c22a1623870ab9047e96ad  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/BRIEF.md
+91677597afb7b15bb0f060b5b594f4fe9a7ad6e7047a74e716ddd093fa29e752  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/DESIGN.md
+1d36c3809b2b0e42dfad905f5706caae15ec8c6e1110fcb5ee7b2886bc08025f  projects/xt60-bend-jig/src/xt60_bend_jig/p17_compact_plate_optimizer.py
+da9331715e5404049f0051c6d708068833f48b839f7692d3f8f5fd372a93d303  projects/xt60-bend-jig/tests/test_p17_compact_plate_optimizer.py
+23f93ca5500d94078edafa02742dbe49cd5542fcd446359e0be63beb073b0412  projects/xt60-bend-jig/docs/review/p17-r2-compact-plate-optimizer/p17-compact-plate-open-end.svg
+4fd438bf0031128b471ebbf071bcd1a4eb4ac07d8c55e557bc0e64304d35813d  projects/xt60-bend-jig/docs/review/p17-r2-compact-plate-optimizer/p17-compact-plate-open-end.png

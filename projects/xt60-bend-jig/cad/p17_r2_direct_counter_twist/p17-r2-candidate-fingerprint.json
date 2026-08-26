@@ -1,16 +1,12 @@
 {
-  "schema": "xt60-bend-jig.p17-r2.candidate-fingerprint.v6",
+  "schema": "xt60-bend-jig.p17-r2.candidate-fingerprint.v5",
   "project": "projects/xt60-bend-jig",
-  "iteration": "p17-r2-outer-rail-length-repair",
-  "candidateId": "P17-I12-D12-R3",
-  "status": "INVALIDATED",
-  "currentSourceMatchesFingerprint": false,
-  "invalidationReason": "user rejected I12; A and full-motion STEP were restored to the I11 axle checkpoint pending D12-R4",
+  "iteration": "p17-r2-locked-rod-layout",
+  "candidateId": "P17-I13-D13-REVIEW",
   "implementationBaselineCommit": "8adfb20f352e36cede54a3414307ced3de81c2b8",
-  "frozenDesignCommit": "8adfb20f352e36cede54a3414307ced3de81c2b8",
-  "implementationInputManifestSha256": "1a57f155865a834a8c8c24b205f6f1bf52553c0a7bdc5f819697dd03f63de343",
-  "candidateFingerprintSha256": "b2069739bf7b27ccd87192834c1555dba250166d3bdba82e2ab2b3bfd1044b03",
-  "fingerprintedManifest": "/tmp/p17-i12-independent-gate-manifest.txt",
-  "entryCount": 24,
-  "claimBoundary": "historical invalidated fingerprint only; do not review or present as current"
+  "implementationInputManifestSha256": "0b96b9dd4821f4f848fee0d44eb79ce004ee35250a8d8aa802c7277463d5247c",
+  "candidateFingerprintSha256": "590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c",
+  "fingerprintedManifest": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-d13-independent-gate-manifest.sha256",
+  "entryCount": 21,
+  "claimBoundary": "exact review materialization only; known invalid product interface; no acceptance claim"
 }

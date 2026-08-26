@@ -1,152 +1,115 @@
 # XT60 bend jig project state
 
-Last updated: `2026-08-25`
+Last updated: `2026-08-26`
 
-## Baseline and active iteration
+## Current accepted digital candidate
 
-- Canonical project: `projects/xt60-bend-jig`.
-- Active iteration: `p17-r2-outer-force-balance`.
-- Current design status: `P17-D11-R2` BLOCKED; no implementation candidate.
-- Last accepted design contract remains `P17-D10-R2`.
-- Accepted digital candidate: `P17-I08-R2`, formally accepted by `P17-R08`.
-- Independent candidate fingerprint:
-  `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`.
-- Candidate manifest SHA-256:
-  `0eaa98ffdc26baea5f409867929ffb9df317030bfa902cf20cd2b770919deb25`.
-- Artifact provenance SHA-256:
-  `97dccfad274fd82724f06c8e1ec15cd4ccc25659b6aa652dca7b8b9ecefb6b4b`.
-- Canonical handoff:
-  `docs/iterations/p17-r2-head-up-tail-right-orientation-repair/HANDOFF.md`.
+- Project: `projects/xt60-bend-jig`.
+- Active iteration: `p19-r1-front-edge-short-tail`.
+- P19 R1 is formally accepted for parametric CAD, the six written STEP
+  artifacts, and exact-artifact Viewer handoff only.
+- Candidate manifest:
+  `docs/iterations/p19-r1-front-edge-short-tail/IMPLEMENTATION_CANDIDATE.sha256`.
+- Candidate-manifest SHA-256:
+  `e2492339de9037b6e2a84351699b693202e4585a32623305c616d97712b91677`.
+- The manifest verifies `20/20` exact design, source, test, generator, STEP,
+  sidecar, and snapshot files.
+- P18 R1 remains the prior accepted baseline and P17 remains immutable
+  history; neither was modified by P19.
 
-This remains P17 R2. The correction changes orientation and motion details
-inside the accepted four-plate/three-rod architecture; evidence regeneration,
-Viewer readiness, and focused numeric repair do not create a new P/R version.
+## P19 R1 mechanism
 
-## Active outer-rail force defect
-
-User review found Rod 1 (`bottom`) and Rod 2 (`upright`) outer rails visibly
-and mechanically unbalanced relative to the middle (`diagonal`) rod. The
-accepted D10-R2 endpoint crossing diagnostics reproduce the concern: the two
-worst end-rod rails reach only `5.05 deg` and `4.45 deg`, corresponding to
-ideal geometric load multipliers around `11.4x` and `12.9x`; these are not
-physical hand-force measurements.
-
-P17-D11 through D11-R2 searched common-center, equal/opposite nonlinear, plate-
-envelope, and bounded monotone C1 motion-law repairs while preserving exact
-world rod states and the `4.15 mm` through-slot topology. Force-balanced
-candidates passed angle, side-ratio, path-ratio, web, collision, service, and
-conditioning gates, but every shortlisted actual solid lost the mandatory
-continuous `0.30 mm` two-sided reaction material because another portion of
-the same swept rail removed it. Endpoint material ratio was `0.0`, not a
-marginal miss. Increasing the outer diameter cannot repair this internal void.
-
-P17-C09 independently confirmed the blocker and the credibility of the support
-gate. Do not implement a D11 candidate or weaken the support rule. The smallest
-next reopening is outer-plate rail topology/section. If the existing single
-through-slot topology must remain, the next option is a small numeric rod-state/
-path change, which also changes the fixed-inner tracks and requires explicit
-scope reopening. Authoritative source, tests, STEP artifacts, and accepted
-fingerprint remain unchanged.
-
-## Accepted digital result
-
-P17-I08-R2 is the source-derived four-plate, three-rod counter-twist candidate:
-
-- the workpiece-relative front frame is fixed: `+Z` is XT60 mating-head/up and
-  `+Y` is solder-tail/both-wires/right;
-- OPEN uses the same three rod identities at upper-left, upper-right, and
-  lower-right, with an exact upper-right/lower-right vertical leg;
-- first contact and END converge upper-left -> middle -> lower-right on the
-  accepted diagonal three-point wire wrap;
-- all three moving rods are `OD4.00 x 50.00 mm` stainless stock with six
-  permanent stepped blind caps;
-- both inner plates, both keepers, and the purple stepped axle at
-  `A=(-29.00,17.00) mm` remain world-fixed;
-- the left/right outer plates counter-rotate by `-theta/+theta` about the
-  virtual datum `C=(3.00,12.00) mm`, and the right force side is larger;
-- fixed-inner rod guides are direct stationary straight tracks; all six outer
-  rod rails and both axle rails are inverse-transform-derived;
-- END is `24 deg`; the first-contact-to-END `0.25 mm` displacement is a
-  geometric preload proxy only;
-- no stability bar, yoke, linkage, gear, grip block, lock nose, receiver, or
-  self-lock feature was added.
-
-The production source retains legacy `locked` naming only for compatibility.
-It means CLAMPED/END of prescribed travel and makes no retention claim.
+- Physical FRONT is YZ: `+Z` is XT60 mating-head/up and `+Y` is the short
+  ESC tail, solder-tool approach, right/outward direction.
+- Three purchased rods remain uncut `OD4.00 x 50.00 mm` stainless stock with
+  six permanent caps.
+- OPEN ordered rods are bottom `(5,10)`, diagonal `(20.4,10)`, and upright
+  `(20.4,-9.172814225900) mm`: an exact right angle.
+- END ordered rods are `(9.552212035894,8.022322349948)`,
+  `(15.802212035894,2.272322349948)`, and
+  `(22.052212035894,-3.477677650052) mm`: one exact equal-pitch diagonal.
+- One shared normalized state drives both sides:
+  `alpha_left=-5u`, `alpha_right=+5u`. Both inner plates and the real purple
+  stepped X-axis axle remain fixed; only the two outer plates counter-rotate.
+- Virtual outer rotation datum is `C=(0,0)`. The one-piece fixed axle remains
+  left/behind at `A=(-13,-9)` through all four plates.
+- Plate ODs are inner `54.40`, left outer `54.70`, and right force outer
+  `55.00 mm`; rod rail cutters are `OD4.15 mm`.
+- All six outer rod rails are exact inverse transforms of the same world rod
+  paths. Their center travels are left `4.000000/8.012434/7.864159 mm` and
+  right `5.944910/10.157688/4.000000 mm`; no rail was hand-extended.
+- No lock, stability bar, yoke, gear, linkage, grip block, or self-lock claim
+  was added.
 
 ## Independent evidence
 
-- `P17-C08`: PASS with no blocker or major finding.
-- `P17-V08`: PASS for CAD source, actual-solid motion/support/service gates,
-  ten written STEP exports, source/export parity, and the frozen visual packet.
-- `P17-R08`: ACCEPT for delivery of the unchanged exact fingerprint.
-- Focused tests: `19 passed` through the repository root `uv` environment.
-- Continuous two-sided rail support: `48,312` actual-solid probe points with
-  zero failures and minimum full-probe material ratio
-  `0.9999999999999983`.
-- Motion/contact: zero unintended intersection, minimum XT60 clearance
-  `0.750000 mm`, rank `3`, and maximum normalized condition `12.821633`.
-- Service path: `2002` poses, zero intersection, BREP minimum clearance
-  `1.250000 mm`, and analytic minimum `0.933816 mm`.
-- Ten of ten STEP exports passed geometry validation and source/import parity;
-  maximum bounds delta was `8.811e-12 mm`.
-- OPEN/contact/END/opposite snapshots and the 72-frame motion GIF were visually
-  inspected against `REQ-027` through `REQ-030`.
-
-## Primary artifacts
-
-- Parametric authority:
-  `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
-- Focused regression:
-  `tests/test_p17_r2_direct_counter_twist.py`.
-- Full motion:
-  `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
-- OPEN, contact, midpoint, END, exploded, print-kit, cap coupon, axle coupon,
-  and both motion STEP exports are under
-  `cad/p17_r2_direct_counter_twist/`.
+- 2D optimizer design SHA-256:
+  `36e346c45f6b241e834da8d2dcc9009823bbf85809044021b42e8a33e1f393d4`.
+- Independent analytic critique SHA-256:
+  `2ee1782bc64805522263bcb09e017ccce1e296a2ef507266ed0592be860b2248`.
+- Implementation receipt SHA-256:
+  `72bd3b928e8733af79457d92f9c4f738c0f3e62600d7e39324f0f6339371d73f`.
+- Independent validation SHA-256:
+  `304239aecb3b939a6ef1412d1b31979b4bafda2b2e997ca7e7311b36adfb88ef`.
+- Formal review SHA-256:
+  `7b5436c57070547b14241bc3de6cbc7047c07cbd1e4070b036f0d8d51040aba3`.
+- Focused source regression: `8/8` passed.
+- Shared-state reconstruction mismatch is below `8e-15 mm`; identities do
+  not swap and left/right use the same complete motion state.
+- OPEN wire surface clearances are
+  `1.376671/0.750000/5.059869 mm`; END preload proxy is `0.25 mm`.
+- Actual minimum plate web is `2.405845 mm`; contact closure retains rank `3`
+  and maximum normalized condition `13.007687 <= 15`.
+- The 65-state hardware-inclusive actual-solid sweep has zero unintended and
+  pre-contact intersection.
+- Completed-pigtail removal uses the verified rigid sequence
+  `(0,0,0) -> (-8,10,-5 deg) -> (-16,26,-10 deg) -> (-16,50,-10 deg)`.
+  Across `123` pairwise BREP and `3003` analytic states, minimum clearance is
+  `0.749999999999665 mm` and maximum intersection is zero. The former
+  `47.2594024 mm3` diagonal-rod collision is retained as a passing regression.
+- All six written STEP artifacts pass independent validate, refs, and
+  source/export diff with zero topology, geometry, bounds, size, or center
+  delta: OPEN/contact/END `22/22`, exploded `16/16`, print kit `13/13`, and
+  full motion `18/18` valid closed positive-volume occurrences.
 
 ## Viewer delivery
 
-- Persistent singleton: `com.scottchu.cad-viewer` on `127.0.0.1:3245`, managed
-  by `~/.local/bin/cad-viewer`; it survives agent/chat termination.
-- Runtime: CAD Viewer `0.4.26`, using the canonical repository root uv Python
-  `/Users/scottchu/Projects/personal/design-projects/.venv/bin/python3`.
-- Exact local and Tailscale pages returned HTTP `200`; exact artifact endpoints
-  returned HTTP `200` with `state: ready`.
-- Assembly descriptor returned HTTP `200`, schema `2`, package schema `3`, ten
-  components and eighteen occurrences; SHA-256
-  `0b391d68f28c665594a2683219186fc45dfa51dedffbf95f8036b0d643f3125f`.
-- The `open_to_end` params module and all ten GLBs returned HTTP `200` with
-  identical local/Tailscale content hashes.
-- Live browser slider manipulation was not independently exercised. Frozen GIF
-  motion and Viewer transport/readiness are accepted separately.
+- Exact P19 page:
+  `https://mac-mini.duckbill-ionian.ts.net/Users/scottchu/.codex/worktrees/a373f6e6-90f4-4c0e-857b-643add242937/design-projects?file=projects%2Fxt60-bend-jig%2Fcad%2Fp19_r1_front_edge_short_tail%2Fp19_r1_full_motion.step.py`.
+- Local and Tailscale page probes return HTTP `200`; exact artifact status is
+  `ready`; the assembly descriptor and a generated component GLB return HTTP
+  `200`.
+- The app browser-control connection was unavailable, so live slider/UI
+  manipulation was not independently exercised. Exact snapshots were
+  inspected at original resolution and Viewer transport/readiness is accepted
+  separately from human interactive review.
 
 ## Acceptance boundary
 
-- CAD/source and prescribed motion: digitally accepted for exact fingerprint
-  `f5bc383f...` only.
-- Ten written STEP exports and frozen visual/motion evidence: accepted.
-- Viewer transport/readiness: accepted; interactive human review remains open.
-- Mesh/DfAM/slicer/3MF: not generated or accepted for P17-I08-R2.
-- Physical: not tested or accepted. PETG slot fit, permanent-cap and keeper
-  retention, hand torque, holding force, wobble, insulation safety, heat,
-  cooled bend angle, springback, creep, wear, vibration, endpoint retention,
-  and self-lock remain physical gates.
+- Accepted: parametric source, deterministic motion/rail math, production CAD
+  solids, six STEP exports, frozen snapshots, and Viewer readiness for the
+  exact candidate fingerprint.
+- The `0.75 mm` removal clearance and two `4.00 mm` rail travels are active
+  nominal equalities with effectively no extra manufacturing margin.
+- Still physical only: upright tangent-state hand force, friction, wedging,
+  backlash, real solder ergonomics, PETG fit/tolerance, cap and keeper
+  retention, axle fit, wobble, heat, wear, back-drive, and self-lock behavior.
+- No mesh, 3MF, DfAM, slicing, printing, or physical acceptance was performed
+  or authorized in this implementation task.
 
-## Repository delivery
+## Authoritative paths
 
-- Branch: `codex/xt60-p17-r2-orientation-repair`.
-- Pull request: <https://github.com/scottchu/design-projects/pull/9>.
-- Preserve the unrelated user-modified P13 `p13_print_kit.3mf` in the canonical
-  main checkout.
+- Source: `src/xt60_bend_jig/p19_r1_front_edge_short_tail.py`.
+- Focused tests: `tests/test_p19_r1_front_edge_short_tail.py`.
+- CAD/STEP/sidecar: `cad/p19_r1_front_edge_short_tail/`.
+- Evidence and handoff:
+  `docs/iterations/p19-r1-front-edge-short-tail/`.
+- Review media: `docs/review/p19-r1-front-edge-short-tail/`.
 
 ## Next action
 
-Keep the accepted fingerprint unchanged. Do not print or implement the rejected
-D11 force-balanced rails. Obtain one explicit design reopening: either permit
-an outer-local rail topology/section change while preserving rod states, or
-permit the smallest numeric rod-state/path adjustment while preserving the
-user-fixed OPEN/END topology. Then open a new bounded design task and rerun the
-force-angle, path-balance, web, continuous two-sided-support, collision,
-conditioning, service, STEP, and visual gates. Do not claim physical force or
-self-lock.
+The exact accepted fingerprint is delivered in GitHub PR
+`https://github.com/scottchu/design-projects/pull/11`. After merge, the next
+product action is human Viewer review and then a separately authorized
+prototype/physical test plan. Do not silently add margin, change topology,
+produce 3MF, slice, or print.

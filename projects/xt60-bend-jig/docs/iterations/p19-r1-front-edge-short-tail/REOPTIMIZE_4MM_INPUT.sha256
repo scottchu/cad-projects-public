@@ -1,0 +1,8 @@
+07e86ede330777bca4f1d9975604024aada7fdf7e3d7b261bc524135cfc3cc82  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+3991d484cdc87b95a027b24971b9cb9ca26b8a05ed221582f4f57f0158bda7e0  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/TASK_INPUT.md
+291f155ce85f5fb5acab41ff4bc1287c05e47c6ac8edc884160497f95e1198e5  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZED_DESIGN.md
+275d92d2b33047f60bbebfb54a9090818613ce284d763d4b6f3e5d05487e789c  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZED_CRITIQUE.md
+2e46d53d672c11bf6f85240842b3f80b097f2890fe4b322e9202b49c36bac7cb  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/RAIL_LENGTH_ANALYSIS.md
+d256073709c3ce518f19a22931eb52db4a1cbbb7ecc1496e2358158a42daf508  projects/xt60-bend-jig/docs/review/p19-r1-front-edge-short-tail/reoptimized-option2-mintravel.png
+37a45b972afb534e695b6c334b72ec451f4d466aafedab12c22afd90b866440f  projects/xt60-bend-jig/src/xt60_bend_jig/p18_r1_compact_counter_twist.py
+02571ec9ed5eb2143f731b421462aecbca0dbfce4eda061f54a5f857374fe6f4  projects/xt60-bend-jig/tests/test_p18_r1_compact_counter_twist.py

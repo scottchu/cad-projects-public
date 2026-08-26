@@ -1,91 +1,75 @@
 {
-  "schema": "xt60-bend-jig.p17-r2.artifact-provenance.v6",
-  "candidateId": "P17-I12-D12-R3",
-  "invalidation": {
-    "status": "INVALIDATED",
-    "reason": "user rejected I12; source and full-motion STEP no longer match this frozen record after restoring I11 axle A=(-29,17)",
-    "currentSourceSha256": "d1e5fa6a95237e9680eee011c299dfb4bd90da487ec9599eb1e94ec6d7f1faa0",
-    "currentFullMotionStepSha256": "3e4692c47536592376cbb53a09c91708b27c7173af611dd1caafaec8d51ec526",
-    "disposition": "do not review or present as current"
-  },
+  "schema": "xt60-bend-jig.p17-r2.artifact-provenance.v5",
+  "candidateId": "P17-I13-D13-REVIEW",
   "implementationBaselineCommit": "8adfb20f352e36cede54a3414307ced3de81c2b8",
-  "frozenDesignCommit": "8adfb20f352e36cede54a3414307ced3de81c2b8",
-  "implementationInputManifestSha256": "1a57f155865a834a8c8c24b205f6f1bf52553c0a7bdc5f819697dd03f63de343",
+  "implementationInputManifestSha256": "0b96b9dd4821f4f848fee0d44eb79ce004ee35250a8d8aa802c7277463d5247c",
   "independentGateManifest": {
-    "path": "/tmp/p17-i12-independent-gate-manifest.txt",
-    "sha256": "b2069739bf7b27ccd87192834c1555dba250166d3bdba82e2ab2b3bfd1044b03",
-    "entryCount": 24
+    "path": "projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-d13-independent-gate-manifest.sha256",
+    "sha256": "590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c",
+    "entryCount": 21
   },
   "source": {
     "path": "projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py",
-    "sha256": "60818ab3759a158a6d7e480e4d47be9166e65a40c9ba21045133f14f030facd0"
+    "sha256": "cef1137d68ff5dc2ed5c0131aad11c3499d71ecbc0b4afa826f6edeb7f137475"
   },
   "tests": {
     "path": "projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py",
-    "sha256": "e39fdec7b062b84241703f1ac27469716365b8295bb391fa26d7a4df95433d70",
-    "result": "24 passed"
+    "sha256": "68879bd57a03c263684576efd378ec458d853f91659d67cfb302459970b8120a",
+    "result": "22 passed"
   },
-  "digitalEvidence": {
-    "workingSetTranslationMm": [-12.35, -10.55],
-    "physicalRotationCenterMm": [3.0, 12.0],
-    "physicalFixedAxleMm": [19.25, 11.0],
-    "fixedAxleRelativeToRotationCenterMm": [16.25, -1.0],
-    "fixedAxleGuideLengthMm": 6.819660489,
-    "fixedAxleGuidePolylineLengthMm": 6.819611800,
-    "minimumWebMm": 2.447634348,
-    "minimumFixedFeatureGapMm": 3.040481243,
-    "outerFixedGuideWebMm": {"left": 3.117105554, "right": 3.774308649},
-    "fixedGuideSupportProbeCount": 132,
-    "fixedGuideSupportRatio": 0.9999999999999987,
-    "continuousSupportStripDepthMm": 0.30,
-    "maximumUnintendedIntersectionMm3": 0.0,
-    "fixedHardwareServiceClearanceMm": 1.213238136,
-    "completedPigtailServiceClearanceMm": 0.933815921,
-    "minimumConditioningRank": 3,
-    "minimumNormalizedSingularValueRatio": 0.110413741,
-    "maximumNormalizedConditionNumber": 9.056843781,
-    "fixedOccurrenceSamples": 66,
-    "fixedOccurrenceInvariant": "fixed axle and both keepers have identical world transforms at 65 uniform states plus exact contact",
-    "frontOrientation": "XT60 head +Z/up and tail/wire outlet +Y/right",
-    "motionGif": {"frames": 72, "fps": 18, "durationSeconds": 4, "uniqueRgbFrames": 72, "adjacentRgbDifferences": "71/71"}
+  "implementedContract": {
+    "status": "exact frozen D13 candidate materialized for CAD review despite known product-interface blockers",
+    "commonRodDeltaYZMm": [16.1869657526, 10.2949747468],
+    "outerRotationCenterCYZMm": [3.0, 12.0],
+    "fixedAxleCenterAYZMm": [-29.0, 12.0],
+    "thetaLaw": "theta=24u; left=-theta; right=+theta",
+    "railAuthority": "derive_mating_rail implements T_target^-1*T_source*p_source for all six outer rod rails",
+    "workpiece": "frozen I10 finite modeled workpiece; body (-6.5,22.5), B (-0.5,3.5), vertical Y=-6.5, horizontal Z=-2.5, 12 mm finite horizontal segment, extract datum Y=17.265"
   },
-  "fixedAxleGuideEndpointsMm": {
-    "left": {"open": [16.25, -1.0], "contact": [15.307452615, 5.544762793], "end": [15.251850330, 5.695924992]},
-    "right": {"open": [16.25, -1.0], "contact": [14.512094177, -7.379811827], "end": [14.438377044, -7.523015908]}
+  "knownBlockers": {
+    "acceptanceClaimed": false,
+    "openBottomRodBodySignedClearanceMm": -2.0,
+    "openBottomRodBodyIntersectionMm3": 199.8052927683109,
+    "openBottomRodWireCenterlineSeparationMm": 1.7016843784,
+    "openBottomRodWireRadialOverlapMm": 2.4483156216,
+    "openBottomRodWireIntersectionMm3": 53.787371493712925,
+    "endInfiniteStraightProxyGapMm": {"bottom": 8.1369657526, "upright": 2.2449747468},
+    "endFiniteModeledWireGapMm": {"bottom": 8.1369657526, "diagonal": 16.71834015015733, "upright": 7.877883157765334},
+    "lostEndContact": true,
+    "railPathBalance": "known D13 asymmetry retained; not a physical-force proof"
   },
   "stepSha256": {
-    "p17_r2_center_axle_coupon.step": "acd567ae7817becd00ab61dca300c4dc1142b5c7c52f7a8fd914f3cfa5511acf",
-    "p17_r2_contact.step": "504dc532c25925c910687a8e88af040d9d21c54fd42ba155ac464ef565caff7d",
-    "p17_r2_exploded.step": "806ec52b5a0c542c4cf4bf24f622a530068135bf43e741bd6b407d3db9b93330",
-    "p17_r2_fixed_axle_motion.step": "deaff1c51655bdfafd777e7dafeaf21b8250060e6afb4ffc19799fb8f5379010",
-    "p17_r2_full_motion.step": "f5db96e180f711804016c3ed5dda78eb29d57f9f016ac59bac0286de520d451f",
-    "p17_r2_locked.step": "9e9006aca914647a76df5c9425f2e213b9cf46d4dc46826e12cff15476a8b38d",
-    "p17_r2_mid.step": "668ca5a73a7cbb882cbd0d0f684bdb81212c999fc8a9d7720759b8455fbcfec8",
-    "p17_r2_open.step": "eabc7dd43c00df450979211a716fbc333e1271b0249d544319ab445322425d45",
-    "p17_r2_permanent_cap_coupon.step": "63a4bcb80ad166005b3e0d4c7e7b3d9e72e2c0d4bfa4537183edf7a16ff9a4a1",
-    "p17_r2_print_kit.step": "080fdcd066f32c644b6e4a62278fbafd8a360f05bc56c29a845a2bd7f96b617a"
+    "p17_r2_open.step": "de718b52e8975a3aa0c014ecfeaa64bb624c259d152b8299ffa71bfac763826a",
+    "p17_r2_mid.step": "f90a2ca4e8f7c52b40e574c26a89e72174b32f499e3f1bfdf4fb5d00116305a5",
+    "p17_r2_contact.step": "8065fe1cbdb98fef5ab487e317fddbd8142a8f259a9ff785c2673555a06c9e80",
+    "p17_r2_locked.step": "c1ce28982e9f18502de4e1dab004cb26d0ba4702850d3a59dcfe8b54aea58aa2",
+    "p17_r2_exploded.step": "e39c5d464c3df661d433e781a702b2fb71b491cbb41826e971a8ba3c34a24a11",
+    "p17_r2_print_kit.step": "9fb7e5689af368b7bfd19b17b97d60b68fe9aacbe0e6bb17359f7d45c6a4f92e",
+    "p17_r2_permanent_cap_coupon.step": "a9058a576727059295c6246899ec79e2e2d08bd1a04130e3e2190b96f2a2979f",
+    "p17_r2_center_axle_coupon.step": "4b59a20633915a00ba3e8e93866462438b57dfbd7291e1f59ea8bc75edca17f1",
+    "p17_r2_fixed_axle_motion.step": "25d2165ec2bb2db078b0aa54f1ad0c16a3db215a2639c9cfede735bd51a9f7e6",
+    "p17_r2_full_motion.step": "568d4b4ae4c113df248371526aff5529047ac765e663b99db7cfb261bf728401"
   },
   "motionSha256": {
-    "p17_r2_fixed_axle_motion.params.js": "ae7c1ddcab53afcf67923ca8e9e83b4b85b999d2632cd3a0df262ff15546ab05",
-    "p17_r2_full_motion.params.js": "4ec9fa235a9ece9d7f4038f32e5ac2c883895e8cb08d3428d898591f20ae796a"
+    "p17_r2_fixed_axle_motion.params.js": "7ebfa050ca55745c4fa1f62daaad5693cebaba941823981c6be9357765c1dba9",
+    "p17_r2_full_motion.params.js": "6548498014c2cd8204c14b9f2debfee262169774376900acd29daaff934b7955"
   },
-  "snapshotSha256": {
-    "p17_r2_i12_open_front_labeled_20260825T183528Z.png": "73237c41b5829c2ccdc8951a371df86be8a35d57acd6d11ba0c2c9d16d9f1ec2",
-    "p17_r2_i12_contact_front_labeled_20260825T183528Z.png": "c0f6c56f080227ac2362afae0f3dc60e5ff3a93211afcba9c43c1a1ff20090b0",
-    "p17_r2_i12_end_front_labeled_20260825T183528Z.png": "eca7ca4c94631173af5837c48e6dd5e89210eea449e940c1ff7ad3f466c301a5",
-    "p17_r2_i12_open_opposite_labeled_20260825T183528Z.png": "4929ec54257d216b417236c135ffe934d360757c036fee17cb71846a45d53858",
-    "p17_r2_i12_contact_opposite_labeled_20260825T183528Z.png": "464df103db59a7a6975ed91f68ef7060898c6b0b0a5eb8f23f531e7c88ef0ce3",
-    "p17_r2_i12_end_opposite_labeled_20260825T183528Z.png": "90570237ea1f366ee3484c17f23ce0e0794c0b62ff0bb4529cb0b533dc6047d0",
-    "p17_r2_i12_front_fixed_axle_placement_rail_overlay_20260825T183800Z.png": "34b5bdc687dfa7332ab1df6aa9bcc5f11ce35dd4062f6c30a7f6f8a86c231400",
-    "p17_r2_i12_front_open_to_end_20260825T183703Z.gif": "d5aeff7c97b4a7dd5f62047ebe66c7bb30fbfa5eb663907724f43bbe6a8049c5"
+  "reviewPacketSha256": {
+    "p17_r2_d13_open_front_20260825T212742Z.png": "d3a83b66230a44cb4189be5976a18bfd36b1261a6e06d07567dcb0c9d9e2d8d6",
+    "p17_r2_d13_contact_front_20260825T212744Z.png": "836d316aec7fb512f4fc89f6279ef3f859b50d38ca7a201432ff347c3041542a",
+    "p17_r2_d13_end_front_20260825T212746Z.png": "f5d2265b4caf784f6860efb07550d2cc7c3cbb3f1891aac3ac9c2343732ca3b0",
+    "p17_r2_d13_end_opposite_20260825T212748Z.png": "d087a8fffb23e46cfb11312ad7e7d334f11ec6cf3fb254989bb2d3a1cd739061",
+    "p17_r2_d13_open_to_end_20260825T212826Z.gif": "e941a33e6d54b8010c9ad7ae67c017e28e430b6834014eb16ac79e2c212025a2"
   },
   "validation": {
-    "stepRefs": "10 of 10 STEP files passed; errors empty",
-    "stepValidate": "10 of 10 STEP files passed; zero geometry failures",
-    "sourceExportParity": "10 of 10 source/export solid counts match; maximum bounds delta 1.322e-12 mm; maximum summed-solid volume delta 1.246e-8 mm3",
-    "visualReview": "Labeled FRONT OPEN/contact/END proves XT60 head-up/tail-right and fixed axle center-right at one camera; separately labeled OPPOSITE packet proves expected mirroring; 72-frame front GIF visibly moves rods and outer plates while axle remains at the same world/screen position"
+    "focusedPytest": "22 of 22 passed",
+    "stepGeneration": "10 of 10 built with CAD 0.4.27 scripts/gen --write --force",
+    "sourceExportCurrent": "10 of 10 generator packages reported current against final source closure",
+    "stepValidate": "10 of 10 passed; failureCount=0",
+    "stepRefs": "10 of 10 passed; errors=[]",
+    "visualReview": "four transparent axis-camera PNGs inspected; exact candidate and known interface failure remain visible; CLI burned ISO labels despite explicit directions, so filenames and this provenance are the view authority",
+    "motionReview": "72 decoded RGB frames; 71 of 71 adjacent frame diffs nonempty"
   },
-  "renderCacheNote": "Stale imported-STEP render caches were quarantined recoverably at /tmp/p17-i12-stale-imported-step-cache.i8fUyg before final rendering; fresh imported STEP bounds place the axle at exact world A=(19.25,11).",
-  "status": "INVALIDATED; not a current implementation candidate",
-  "physicalBoundary": "No mesh, 3MF, slicer, PETG print, keeper or cap retention, force calibration, friction, heat, wear, wobble, wire holding, self-lock or physical acceptance is claimed."
+  "status": "review-only exact candidate; known invalid product interface; independent critique/review/validation and physical proof pending",
+  "physicalBoundary": "No CAD acceptance, service acceptance, mesh, 3MF, slicer, PETG print, cap retention, hand force, heat, wear, vibration, wire holding, self-lock or physical acceptance is claimed."
 }

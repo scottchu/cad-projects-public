@@ -1,0 +1,7 @@
+07e86ede330777bca4f1d9975604024aada7fdf7e3d7b261bc524135cfc3cc82  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+c070db3421a38612337821da4e013c6b636023fde01eda75c2a1c2dc971cbb33  projects/xt60-bend-jig/docs/decisions/ADR-0004-p18-r1-compact-45-counter-twist.md
+2d5409657aa0b56ec91eda32e6cd3fdb484525d6fd17fa4378c460265993d981  projects/xt60-bend-jig/docs/iterations/p18-r1-compact-counter-twist/DESIGN.md
+5f75f9ec0c2267e54ba2f0eb2630c7382a842415b59a6ec4b6a35258b775905a  projects/xt60-bend-jig/docs/iterations/p18-r1-compact-counter-twist/CRITIQUE.md
+da23d4efb0b5260bd6b30ea49b018450e0e3121b949205e13a8f365f5854b534  projects/xt60-bend-jig/docs/iterations/p18-r1-compact-counter-twist/REVIEW.md
+37a45b972afb534e695b6c334b72ec451f4d466aafedab12c22afd90b866440f  projects/xt60-bend-jig/src/xt60_bend_jig/p18_r1_compact_counter_twist.py
+02571ec9ed5eb2143f731b421462aecbca0dbfce4eda061f54a5f857374fe6f4  projects/xt60-bend-jig/tests/test_p18_r1_compact_counter_twist.py

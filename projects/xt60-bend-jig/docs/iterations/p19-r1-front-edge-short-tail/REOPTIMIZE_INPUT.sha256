@@ -1,0 +1,7 @@
+07e86ede330777bca4f1d9975604024aada7fdf7e3d7b261bc524135cfc3cc82  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+ba1d36e1a736f560727a1d18fd935d9eb905308a1862f412b3a18f70ba0a32bc  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/TASK_INPUT.md
+169583198638b23201b5c47835a66537551f87a837e78c21bb519161e3704fb7  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/DESIGN.md
+52d27a315bd3a19f5985b429b5915df370939ea2647dc2d0f822bf2521255475  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/SERVICE_CRITIQUE.md
+2e46d53d672c11bf6f85240842b3f80b097f2890fe4b322e9202b49c36bac7cb  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/RAIL_LENGTH_ANALYSIS.md
+37a45b972afb534e695b6c334b72ec451f4d466aafedab12c22afd90b866440f  projects/xt60-bend-jig/src/xt60_bend_jig/p18_r1_compact_counter_twist.py
+02571ec9ed5eb2143f731b421462aecbca0dbfce4eda061f54a5f857374fe6f4  projects/xt60-bend-jig/tests/test_p18_r1_compact_counter_twist.py

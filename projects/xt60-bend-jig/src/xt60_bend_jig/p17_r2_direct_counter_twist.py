@@ -18,9 +18,9 @@ from copy import copy
 from dataclasses import asdict, dataclass, fields, replace
 from functools import lru_cache
 from hashlib import sha256
-from math import asin, atan, atan2, cos, degrees, hypot, pi, radians, sin, sqrt
+from math import atan, atan2, cos, degrees, hypot, pi, radians, sin, sqrt
 from pathlib import Path
-from typing import Literal, Sequence
+from typing import Callable, Iterable, Literal, Sequence
 
 from build123d import (
     Align,
@@ -65,10 +65,10 @@ STATE_THETA: dict[StateName, float] = {
     "locked": 24.0,
 }
 P17_R2_DESIGN_CONTRACT_PATH = (
-    "docs/iterations/p17-r2-outer-rail-length-repair/DESIGN.md"
+    "docs/iterations/p17-r2-locked-rod-layout/DESIGN.md"
 )
 P17_R2_DESIGN_CONTRACT_SHA256 = (
-    "29e44536277320d7754bd3f91624820db3b1d7b7ac3a3db0331f00ebf2428d40"
+    "0133dc4d45f38e91a20311d490b9b2fef2c8c0c6a07081c6b0c75fb19d620f95"
 )
 
 ROD_VERTEX_ROLE: dict[RodName, str] = {
@@ -76,21 +76,6 @@ ROD_VERTEX_ROLE: dict[RodName, str] = {
     "diagonal": "upper_right_to_middle",
     "upright": "lower_right_to_lower_right",
 }
-
-D12_BASELINE_SIDE_RATIOS: dict[RodName, float] = {
-    "bottom": 2.842101,
-    "diagonal": 1.296260,
-    "upright": 4.212853,
-}
-D12_REJECTED_SIDE_RATIOS: dict[RodName, float] = {
-    "bottom": 1.516917371,
-    "diagonal": 1.379884550,
-    "upright": 2.012551004,
-}
-D12_R1_REJECTED_TRANSLATION_YZ = (-16.735, -14.935)
-D12_R3_PRIOR_FIXED_AXLE_YZ = (-29.0, 17.0)
-D12_R3_MARKED_BAND_TARGET_YZ = (17.0, 12.0)
-D12_R4B_PREVIEW_FIXED_AXLE_YZ = (30.0, 12.0)
 
 
 @dataclass(frozen=True, slots=True)
@@ -105,7 +90,10 @@ class PointYZ:
         return hypot(self.y - other.y, self.z - other.z)
 
 
-I07_ACCEPTED_END_CENTERS_PRE_D12: dict[RodName, PointYZ] = {
+D13_COMMON_ROD_DELTA = PointYZ(16.1869657526, 10.2949747468)
+
+
+I07_ACCEPTED_END_CENTERS: dict[RodName, PointYZ] = {
     "bottom": PointYZ(6.8, 24.9),
     "diagonal": PointYZ(14.2849242405, 16.4849242405),
     "upright": PointYZ(22.7, 9.0),
@@ -193,30 +181,23 @@ class P17R2Parameters:
     # stepped axle and keepers move to A.
     outer_rotation_center_y: float = 3.00
     outer_rotation_center_z: float = 12.00
-    fixed_axle_center_y: float = 30.00
+    fixed_axle_center_y: float = -29.00
     fixed_axle_center_z: float = 12.00
     fixed_axle_guide_sample_count: int = 33
 
-    # D12 applies one rigid world-YZ translation to the entire moving
-    # rod/XT60/wire/service working set. Physical C, fixed axle A, keepers and
-    # plate envelopes do not move.
-    working_set_translation_y: float = -12.350
-    working_set_translation_z: float = -10.550
-
-    # Accepted pre-D12 reference-only workpiece coordinates. Public absolute
-    # coordinates below are derived properties so T is applied exactly once.
+    # Reference-only workpiece envelopes.
     xt60_body_y: float = 8.10
     xt60_body_z: float = 20.50
-    pre_d12_xt60_body_center_y: float = 10.235
-    pre_d12_xt60_body_center_z: float = 37.435
+    xt60_body_center_y: float = -6.500
+    xt60_body_center_z: float = 22.500
     wire_envelope_diameter: float = 4.30
     wire_preload: float = 0.25
-    pre_d12_bend_center_y: float = 16.235
-    pre_d12_bend_center_z: float = 18.435
+    bend_center_y: float = -0.500
+    bend_center_z: float = 3.500
     bend_radius: float = 6.00
     service_clearance_min: float = 0.75
     slot_fit_coupon_widths: tuple[float, ...] = (4.10, 4.15, 4.20, 4.25, 4.30)
-    pre_d12_completed_pigtail_extract_end_y: float = 34.00
+    completed_pigtail_extract_end_y: float = 17.265
 
     # Layouts.
     exploded_spacing_x: float = 18.00
@@ -224,29 +205,6 @@ class P17R2Parameters:
     @property
     def inner_clear_span(self) -> float:
         return self.xt60_body_width_x + 2.0 * self.xt60_side_clearance_each
-
-    @property
-    def xt60_body_center_y(self) -> float:
-        return self.pre_d12_xt60_body_center_y + self.working_set_translation_y
-
-    @property
-    def xt60_body_center_z(self) -> float:
-        return self.pre_d12_xt60_body_center_z + self.working_set_translation_z
-
-    @property
-    def bend_center_y(self) -> float:
-        return self.pre_d12_bend_center_y + self.working_set_translation_y
-
-    @property
-    def bend_center_z(self) -> float:
-        return self.pre_d12_bend_center_z + self.working_set_translation_z
-
-    @property
-    def completed_pigtail_extract_end_y(self) -> float:
-        return (
-            self.pre_d12_completed_pigtail_extract_end_y
-            + self.working_set_translation_y
-        )
 
     @property
     def principal_stack_width(self) -> float:
@@ -439,19 +397,6 @@ class P17R2Parameters:
             raise ValueError("P17 three-rod contract requires 4.15 mm moving slots")
         if self.theta_lock_deg != 24.0:
             raise ValueError("P17 three-rod contract requires a 24 degree endpoint")
-        if self.fixed_axle_center_y != 30.0 or self.fixed_axle_center_z != 12.0:
-            raise ValueError(
-                "P17 D12-R4b quick preview requires fixed purple axle "
-                "A=(30.000,12.000)"
-            )
-        if (
-            self.working_set_translation_y != -12.350
-            or self.working_set_translation_z != -10.550
-        ):
-            raise ValueError(
-                "P17 D12-R2 requires the single rigid working-set translation "
-                "T=(-12.350,-10.550)"
-            )
 
 
 P17_R2_DEFAULTS = P17R2Parameters()
@@ -462,66 +407,44 @@ SERVICE_WAYPOINTS: tuple[ServicePose, ...] = (
     ServicePose(-4.0, 50.0, -15.0),
 )
 
-PRE_D12_GUIDES: dict[RodName, GuidePath] = {
+I10_GUIDES: dict[RodName, GuidePath] = {
     "bottom": GuidePath(
         "bottom",
-        PointYZ(-4.2502813742, 24.435),
-        PointYZ(6.085, 24.435),
-        PointYZ(6.335, 24.435),
+        PointYZ(-20.9852813742, 9.5000000000),
+        PointYZ(-10.6500000000, 9.5000000000),
+        PointYZ(-10.4000000000, 9.5000000000),
     ),
     "diagonal": GuidePath(
         "diagonal",
-        PointYZ(22.235, 24.435),
-        PointYZ(14.9268524548, 17.1268524548),
-        PointYZ(14.7500757595, 16.9500757595),
+        PointYZ(5.5000000000, 9.5000000000),
+        PointYZ(-1.8081475452, 2.1918524548),
+        PointYZ(-1.9849242405, 2.0150757595),
     ),
     "upright": GuidePath(
         "upright",
-        PointYZ(22.235, -2.0502813742),
-        PointYZ(22.235, 8.285),
-        PointYZ(22.235, 8.535),
+        PointYZ(5.5000000000, -16.9852813742),
+        PointYZ(5.5000000000, -6.6500000000),
+        PointYZ(5.5000000000, -6.4000000000),
     ),
 }
 
 
-def working_set_translation_yz(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> PointYZ:
-    """The one named D12 rigid translation applied to the working set."""
-    return PointYZ(p.working_set_translation_y, p.working_set_translation_z)
+def _translate_guide(guide: GuidePath, delta: PointYZ) -> GuidePath:
+    def moved(point: PointYZ) -> PointYZ:
+        return PointYZ(point.y + delta.y, point.z + delta.z)
 
-
-def _translate_working_point(point: PointYZ, p: P17R2Parameters) -> PointYZ:
-    translation = working_set_translation_yz(p)
-    return PointYZ(point.y + translation.y, point.z + translation.z)
-
-
-def guide_path(
-    name: RodName,
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> GuidePath:
-    """Translate an accepted D10 guide once; preserve direction and stroke."""
-    accepted = PRE_D12_GUIDES[name]
     return GuidePath(
-        name,
-        _translate_working_point(accepted.open, p),
-        _translate_working_point(accepted.contact, p),
-        _translate_working_point(accepted.locked, p),
+        guide.name,
+        moved(guide.open),
+        moved(guide.contact),
+        moved(guide.locked),
     )
 
 
-# Compatibility/default evidence mapping. Source geometry uses ``guide_path``
-# so no caller can accidentally translate a previously generated rail solid.
 GUIDES: dict[RodName, GuidePath] = {
-    name: guide_path(name) for name in ROD_NAMES
+    name: _translate_guide(guide, D13_COMMON_ROD_DELTA)
+    for name, guide in I10_GUIDES.items()
 }
-
-
-def accepted_end_center(
-    name: RodName,
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> PointYZ:
-    return _translate_working_point(I07_ACCEPTED_END_CENTERS_PRE_D12[name], p)
 
 
 def parameters_from_overrides(overrides: dict[str, object] | None = None) -> P17R2Parameters:
@@ -558,65 +481,6 @@ def _rotate_yz(point: PointYZ, angle_deg: float) -> PointYZ:
     )
 
 
-@lru_cache(maxsize=16384)
-def transform_point_between_frames_yz(
-    point_in_source: PointYZ,
-    source_origin_world: PointYZ,
-    source_angle_deg: float,
-    target_origin_world: PointYZ,
-    target_angle_deg: float,
-) -> PointYZ:
-    """Pure frame map ``p_target=T_target^-1*T_source*p_source`` in YZ.
-
-    The helper is analytic and contains no BREP work. Fixed-inner rails use the
-    world-aligned source frame; both outer rails use the same physical target
-    origin C with their side-specific counter-rotation angle.
-    """
-    source_rotated = _rotate_yz(point_in_source, source_angle_deg)
-    world = PointYZ(
-        source_origin_world.y + source_rotated.y,
-        source_origin_world.z + source_rotated.z,
-    )
-    target_relative = PointYZ(
-        world.y - target_origin_world.y,
-        world.z - target_origin_world.z,
-    )
-    return _rotate_yz(target_relative, -target_angle_deg)
-
-
-def derive_mating_rail(
-    source_path: Sequence[PointYZ],
-    progress_values: Sequence[float],
-    *,
-    source_origin: PointYZ,
-    source_total_rotation_deg: float,
-    target_origin: PointYZ,
-    target_total_rotation_deg: float,
-) -> tuple[PointYZ, ...]:
-    """Map a sampled rail between parameterized rigid frames without BREP.
-
-    Each supplied progress value ``u`` applies ``u * total_rotation`` to its
-    corresponding source and target frames. CW/CCW is represented only by the
-    sign of each total angle.
-    """
-    points = tuple(source_path)
-    progress = tuple(float(value) for value in progress_values)
-    if len(points) != len(progress):
-        raise ValueError("source_path and progress_values must have equal length")
-    if any(value < 0.0 or value > 1.0 for value in progress):
-        raise ValueError("rail progress values must remain within 0..1")
-    return tuple(
-        transform_point_between_frames_yz(
-            point,
-            source_origin,
-            value * source_total_rotation_deg,
-            target_origin,
-            value * target_total_rotation_deg,
-        )
-        for point, value in zip(points, progress)
-    )
-
-
 def outer_rotation_center_yz(p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
     """World YZ center C for both independently rotating outer plates."""
     return PointYZ(p.outer_rotation_center_y, p.outer_rotation_center_z)
@@ -642,8 +506,70 @@ def _world_from_pivot(local: PointYZ, p: P17R2Parameters) -> PointYZ:
     return PointYZ(local.y + pivot.y, local.z + pivot.z)
 
 
+def transform_point_between_frames(
+    point: PointYZ,
+    *,
+    source_origin: PointYZ,
+    source_angle_deg: float,
+    target_origin: PointYZ,
+    target_angle_deg: float,
+) -> PointYZ:
+    """Map one source-local YZ point into a target-local rotating frame.
+
+    This is the single deterministic authority used for the D13 mating rails:
+    ``p_target = T_target^-1 * T_source * p_source``.  It is pure math and
+    deliberately contains no BREP or cutter operations.
+    """
+    source_world_offset = _rotate_yz(point, source_angle_deg)
+    world = PointYZ(
+        source_origin.y + source_world_offset.y,
+        source_origin.z + source_world_offset.z,
+    )
+    target_world_offset = PointYZ(
+        world.y - target_origin.y,
+        world.z - target_origin.z,
+    )
+    return _rotate_yz(target_world_offset, -target_angle_deg)
+
+
+def derive_mating_rail(
+    source_path: Sequence[PointYZ] | Callable[[float], PointYZ],
+    progress_values: Iterable[float],
+    *,
+    source_origin: PointYZ,
+    source_total_rotation_deg: float,
+    target_origin: PointYZ,
+    target_total_rotation_deg: float,
+) -> tuple[PointYZ, ...]:
+    """Derive a sampled rail in another frame from one parameterized path.
+
+    ``progress_values`` are normalized ``u`` samples.  A sequence source must
+    have exactly one point per sample; a callable is evaluated at each sample.
+    CW/CCW is expressed only by the sign of each total rotation.
+    """
+    progress = tuple(float(value) for value in progress_values)
+    if any(value < 0.0 or value > 1.0 for value in progress):
+        raise ValueError("rail progress values must stay in 0..1")
+    if callable(source_path):
+        points = tuple(source_path(value) for value in progress)
+    else:
+        points = tuple(source_path)
+        if len(points) != len(progress):
+            raise ValueError("source path and progress samples must have equal length")
+    return tuple(
+        transform_point_between_frames(
+            point,
+            source_origin=source_origin,
+            source_angle_deg=source_total_rotation_deg * u,
+            target_origin=target_origin,
+            target_angle_deg=target_total_rotation_deg * u,
+        )
+        for point, u in zip(points, progress)
+    )
+
+
 def rod_center(name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
-    guide = guide_path(name, p)
+    guide = GUIDES[name]
     u = max(0.0, min(1.0, theta_deg / p.theta_lock_deg))
     return PointYZ(
         guide.open.y + (guide.locked.y - guide.open.y) * u,
@@ -652,63 +578,32 @@ def rod_center(name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFA
 
 
 def outer_slot_local_center(side: SideName, name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
-    world = rod_center(name, theta_deg, p)
-    return transform_point_between_frames_yz(
-        world,
-        PointYZ(0.0, 0.0),
-        0.0,
-        outer_rotation_center_yz(p),
-        rotation_for_side(side, theta_deg),
-    )
+    u = max(0.0, min(1.0, theta_deg / p.theta_lock_deg))
+    return derive_mating_rail(
+        lambda progress: rod_center(name, p.theta_lock_deg * progress, p),
+        (u,),
+        source_origin=PointYZ(0.0, 0.0),
+        source_total_rotation_deg=0.0,
+        target_origin=outer_rotation_center_yz(p),
+        target_total_rotation_deg=rotation_for_side(side, p.theta_lock_deg),
+    )[0]
 
 
 def reconstruct_world_from_outer(side: SideName, name: RodName, theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> PointYZ:
     local = outer_slot_local_center(side, name, theta_deg, p)
-    return transform_point_between_frames_yz(
-        local,
-        outer_rotation_center_yz(p),
-        rotation_for_side(side, theta_deg),
-        PointYZ(0.0, 0.0),
-        0.0,
-    )
+    return _world_from_pivot(_rotate_yz(local, rotation_for_side(side, theta_deg)), p)
 
 
 def outer_slot_locus(side: SideName, name: RodName, p: P17R2Parameters = P17_R2_DEFAULTS) -> tuple[PointYZ, ...]:
-    return tuple(
-        outer_slot_local_center(side, name, p.theta_lock_deg * index / (p.slot_sample_count - 1), p)
-        for index in range(p.slot_sample_count)
+    progress = tuple(index / (p.slot_sample_count - 1) for index in range(p.slot_sample_count))
+    return derive_mating_rail(
+        lambda u: rod_center(name, p.theta_lock_deg * u, p),
+        progress,
+        source_origin=PointYZ(0.0, 0.0),
+        source_total_rotation_deg=0.0,
+        target_origin=outer_rotation_center_yz(p),
+        target_total_rotation_deg=rotation_for_side(side, p.theta_lock_deg),
     )
-
-
-def rod_workpiece_six_rail_digest(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> str:
-    """Stable digest proving D12-R4 did not move the D12-R2 working set."""
-    payload: dict[str, object] = {
-        "rods": {},
-        "rails": {},
-        "workpiece": {
-            "B": [p.bend_center_y, p.bend_center_z],
-            "xt60": [p.xt60_body_center_y, p.xt60_body_center_z],
-            "extractY": p.completed_pigtail_extract_end_y,
-        },
-    }
-    for name in ROD_NAMES:
-        guide = guide_path(name, p)
-        payload["rods"][name] = [
-            list(guide.open.as_tuple()),
-            list(guide.contact.as_tuple()),
-            list(guide.locked.as_tuple()),
-        ]
-        payload["rails"][name] = {
-            side: [
-                list(outer_slot_local_center(side, name, theta, p).as_tuple())
-                for theta in (0.0, STATE_THETA["contact"], p.theta_lock_deg)
-            ]
-            for side in ("left", "right")
-        }
-    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
-    return sha256(encoded).hexdigest()
 
 
 def fixed_axle_guide_local_center(
@@ -717,14 +612,10 @@ def fixed_axle_guide_local_center(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> PointYZ:
     """Part-local center of fixed axle A in an outer plate at ``theta_deg``."""
+    center = outer_rotation_center_yz(p)
     axle = fixed_axle_center_yz(p)
-    return transform_point_between_frames_yz(
-        axle,
-        PointYZ(0.0, 0.0),
-        0.0,
-        outer_rotation_center_yz(p),
-        rotation_for_side(side, theta_deg),
-    )
+    offset = PointYZ(axle.y - center.y, axle.z - center.z)
+    return _rotate_yz(offset, -rotation_for_side(side, theta_deg))
 
 
 def fixed_axle_guide_locus(
@@ -741,97 +632,19 @@ def fixed_axle_guide_locus(
     )
 
 
-def d12_r4b_fixed_axle_preview_evidence(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> dict[str, object]:
-    """Exact D12-R4b quick-preview axle datum and its two derived rails."""
-    center = outer_rotation_center_yz(p)
-    axle = fixed_axle_center_yz(p)
-    relative = PointYZ(axle.y - center.y, axle.z - center.z)
-    prior = PointYZ(*D12_R3_PRIOR_FIXED_AXLE_YZ)
-    marked_target = PointYZ(*D12_R3_MARKED_BAND_TARGET_YZ)
-    state_theta = {
-        "open": 0.0,
-        "contact": theta_contact_deg(p),
-        "end": p.theta_lock_deg,
-    }
-    rail_rows: dict[str, object] = {}
-    for side in ("left", "right"):
-        locus = fixed_axle_guide_locus(side, p)
-        rail_rows[side] = {
-            "open": fixed_axle_guide_local_center(
-                side, state_theta["open"], p
-            ).as_tuple(),
-            "contact": fixed_axle_guide_local_center(
-                side, state_theta["contact"], p
-            ).as_tuple(),
-            "end": fixed_axle_guide_local_center(
-                side, state_theta["end"], p
-            ).as_tuple(),
-            "analyticArcLengthMm": p.fixed_axle_eccentricity
-            * radians(p.theta_lock_deg),
-            "sampledPolylineLengthMm": sum(
-                first.distance_to(second)
-                for first, second in zip(locus, locus[1:])
-            ),
-        }
-    return {
-        "fixedAxleCenterYZ": axle.as_tuple(),
-        "outerRotationCenterYZ": center.as_tuple(),
-        "fixedAxleRelativeToCYZ": relative.as_tuple(),
-        "priorI11FixedAxleCenterYZ": prior.as_tuple(),
-        "deltaFromI11YZ": (axle.y - prior.y, axle.z - prior.z),
-        "markedBandTargetA0YZ": marked_target.as_tuple(),
-        "distanceFromMarkedBandTargetMm": axle.distance_to(marked_target),
-        "recommendedR4bTrueCenterRightDatumYZ": D12_R4B_PREVIEW_FIXED_AXLE_YZ,
-        "isRecommendedR4bTrueCenterRightDatum": (
-            axle.as_tuple() == D12_R4B_PREVIEW_FIXED_AXLE_YZ
-        ),
-        "insideMarkedCenterRightBand": (
-            10.0 <= relative.y <= 20.0 and -5.0 <= relative.z <= 5.0
-        ),
-        "heightAboveHorizontalWireReferenceMm": (
-            axle.z - (p.bend_center_z - p.bend_radius)
-        ),
-        "fixedAxleGuideSlotWidthMm": p.fixed_axle_guide_slot_width,
-        "guideRails": rail_rows,
-        "fixedWorldFrame": True,
-        "stainlessRodRailsAndWorkingSetUnchanged": True,
-        "rodWorkpieceSixRailDigestSha256": rod_workpiece_six_rail_digest(p),
-    }
-
-
-def d12_r4_fixed_axle_preview_evidence(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> dict[str, object]:
-    """Compatibility alias superseded by D12-R4b quick-preview evidence."""
-    return d12_r4b_fixed_axle_preview_evidence(p)
-
-
-def d12_r3_fixed_axle_placement_evidence(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> dict[str, object]:
-    """Compatibility alias superseded by the D12-R4b quick-preview evidence."""
-    return d12_r4b_fixed_axle_preview_evidence(p)
-
-
 def reconstruct_fixed_axle_from_outer(
     side: SideName,
     theta_deg: float,
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> PointYZ:
     local = fixed_axle_guide_local_center(side, theta_deg, p)
-    return transform_point_between_frames_yz(
-        local,
-        outer_rotation_center_yz(p),
-        rotation_for_side(side, theta_deg),
-        PointYZ(0.0, 0.0),
-        0.0,
+    return _world_from_pivot(
+        _rotate_yz(local, rotation_for_side(side, theta_deg)), p
     )
 
 
 def fixed_guide_locus(name: RodName, p: P17R2Parameters = P17_R2_DEFAULTS) -> tuple[PointYZ, PointYZ]:
-    guide = guide_path(name, p)
+    guide = GUIDES[name]
     direction = guide.direction
     return (
         PointYZ(
@@ -1155,7 +968,7 @@ def build_xt60_reference(p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
 
 
 def build_workpiece_reference(theta_deg: float, p: P17R2Parameters = P17_R2_DEFAULTS) -> Shape:
-    # D10 front view is a true head-up/tail-right "└": the short leg descends
+    # Frozen I10 front view is a true head-up/tail-right "└": the short leg descends
     # from the XT60 head at Y=B_y-R, turns through the lower-left quadrant,
     # and leaves horizontally toward +Y. Both conductors differ only in X.
     wires: list[Shape] = []
@@ -1722,7 +1535,7 @@ def _completed_pigtail_service_evidence(
     }
     for _segment_index, _sample_index, pose in _service_pose_samples(1001):
         for name in ROD_NAMES:
-            local = _inverse_service_point(guide_path(name, p).open, pose, p)
+            local = _inverse_service_point(GUIDES[name].open, pose, p)
             feature_gaps = _pigtail_feature_clearances_to_x_member(
                 local, p.rod_diameter / 2.0, p
             )
@@ -1892,16 +1705,15 @@ def _wire_feature_offset(
 
 
 def theta_contact_deg(p: P17R2Parameters = P17_R2_DEFAULTS) -> float:
-    upright = guide_path("upright", p)
     return p.theta_lock_deg * (
-        upright.travel - p.wire_preload
-    ) / upright.travel
+        GUIDES["upright"].travel - p.wire_preload
+    ) / GUIDES["upright"].travel
 
 
 def workpiece_orientation_evidence(
     p: P17R2Parameters = P17_R2_DEFAULTS,
 ) -> dict[str, object]:
-    """Publish the frozen D10 front-view workpiece convention explicitly."""
+    """Publish the frozen I10 front-view workpiece convention explicitly."""
     body_bottom_z = p.xt60_body_center_z - p.xt60_body_z / 2.0
     vertical_y = p.bend_center_y - p.bend_radius
     horizontal_z = p.bend_center_z - p.bend_radius
@@ -1930,6 +1742,7 @@ def workpiece_orientation_evidence(
             "toYMm": p.bend_center_y + 12.0,
             "tailDirection": "+Y",
         },
+        "serviceExtractEndYMm": p.completed_pigtail_extract_end_y,
         "arcTangenciesYZ": {
             "vertical": (vertical_y, p.bend_center_z),
             "horizontal": (p.bend_center_y, horizontal_z),
@@ -1977,22 +1790,22 @@ def triangle_motion_evidence(
         "triangles": triangles,
         "thetaContactDeg": theta_contact_deg(p),
         "thetaEndDeg": p.theta_lock_deg,
-        "commonStrokeMm": guide_path("upright", p).travel,
+        "commonStrokeMm": GUIDES["upright"].travel,
         "contactOffsetMm": expected_contact,
         "endOffsetMm": expected_end,
         "linearTravelLaw": "u=theta/theta_end",
-        "endpointDerivativeMmPerDeg": guide_path("upright", p).travel / p.theta_lock_deg,
+        "endpointDerivativeMmPerDeg": GUIDES["upright"].travel / p.theta_lock_deg,
         "vertexOrder": TRIANGLE_VERTEX_ORDER,
         "rodVertexRole": ROD_VERTEX_ROLE,
         "openRightVerticalLegDeltaY": abs(
-            guide_path("diagonal", p).open.y - guide_path("upright", p).open.y
+            GUIDES["diagonal"].open.y - GUIDES["upright"].open.y
         ),
         "acceptedEndDisplacementMmByRod": {
-            name: guide_path(name, p).locked.distance_to(accepted_end_center(name, p))
+            name: GUIDES[name].locked.distance_to(I07_ACCEPTED_END_CENTERS[name])
             for name in ROD_NAMES
         },
         "maximumAcceptedEndDisplacementMm": max(
-            guide_path(name, p).locked.distance_to(accepted_end_center(name, p))
+            GUIDES[name].locked.distance_to(I07_ACCEPTED_END_CENTERS[name])
             for name in ROD_NAMES
         ),
         "rodLengthMm": p.rod_length_target,
@@ -2030,7 +1843,7 @@ def _crossing_sine(
     p: P17R2Parameters,
 ) -> float:
     fixed_tangent_local = _rotate_yz(
-        guide_path(name, p).direction,
+        GUIDES[name].direction,
         -rotation_for_side(side, theta_deg),
     )
     outer_tangent = _curve_tangent(side, name, theta_deg, p)
@@ -2055,11 +1868,10 @@ def _analytic_outer_rail_derivative(
         center.y - p.outer_rotation_center_y,
         center.z - p.outer_rotation_center_z,
     )
-    guide = guide_path(name, p)
-    travel_rate = guide.travel / p.theta_lock_deg
+    travel_rate = GUIDES[name].travel / p.theta_lock_deg
     dr = PointYZ(
-        guide.direction.y * travel_rate,
-        guide.direction.z * travel_rate,
+        GUIDES[name].direction.y * travel_rate,
+        GUIDES[name].direction.z * travel_rate,
     )
     alpha_prime = (-1.0 if side == "left" else 1.0) * pi / 180.0
     j_relative = PointYZ(-relative.z, relative.y)
@@ -2071,26 +1883,6 @@ def _analytic_outer_rail_derivative(
         pre_rotation,
         -rotation_for_side(side, theta_deg),
     )
-
-
-def _analytic_crossing_sine(
-    side: SideName,
-    name: RodName,
-    theta_deg: float,
-    p: P17R2Parameters,
-) -> float:
-    fixed_tangent_local = _rotate_yz(
-        guide_path(name, p).direction,
-        -rotation_for_side(side, theta_deg),
-    )
-    outer_tangent = _analytic_outer_rail_derivative(side, name, theta_deg, p)
-    denominator = hypot(fixed_tangent_local.y, fixed_tangent_local.z) * hypot(
-        outer_tangent.y, outer_tangent.z
-    )
-    return abs(
-        fixed_tangent_local.y * outer_tangent.z
-        - fixed_tangent_local.z * outer_tangent.y
-    ) / denominator
 
 
 def rail_branch_regularity_evidence(
@@ -2143,7 +1935,7 @@ def rail_branch_regularity_evidence(
                 "oneToOneNoSelfIntersection": branch_gap > 1.0e-8,
             }
 
-    fixed_progress = guide_path("upright", p).travel / p.theta_lock_deg
+    fixed_progress = GUIDES["upright"].travel / p.theta_lock_deg
     contact_travel = theta_contact_deg(p) / p.theta_lock_deg
     continuation_travels = tuple(
         sorted(
@@ -2211,278 +2003,6 @@ def rail_branch_regularity_evidence(
         ),
         "rows": rows,
         "continuationRows": continuation_rows,
-    }
-
-
-def _pre_d12_rod_center(
-    name: RodName,
-    theta_deg: float,
-    p: P17R2Parameters,
-) -> PointYZ:
-    """Accepted D10 rod center, retained only for D12 regression evidence."""
-    guide = PRE_D12_GUIDES[name]
-    u = max(0.0, min(1.0, theta_deg / p.theta_lock_deg))
-    return PointYZ(
-        guide.open.y + (guide.locked.y - guide.open.y) * u,
-        guide.open.z + (guide.locked.z - guide.open.z) * u,
-    )
-
-
-def _pre_d12_outer_slot_local_center(
-    side: SideName,
-    name: RodName,
-    theta_deg: float,
-    p: P17R2Parameters,
-) -> PointYZ:
-    world = _pre_d12_rod_center(name, theta_deg, p)
-    return transform_point_between_frames_yz(
-        world,
-        PointYZ(0.0, 0.0),
-        0.0,
-        outer_rotation_center_yz(p),
-        rotation_for_side(side, theta_deg),
-    )
-
-
-def _outer_rail_functional_length(
-    side: SideName,
-    name: RodName,
-    theta_start_deg: float,
-    theta_end_deg: float,
-    p: P17R2Parameters,
-    intervals: int = 4096,
-) -> float:
-    """Simpson integral of the exact inverse-transform centerline derivative."""
-    if intervals < 2 or intervals % 2:
-        raise ValueError("functional rail-length integration needs even intervals")
-    step = (theta_end_deg - theta_start_deg) / intervals
-    total = 0.0
-    for index in range(intervals + 1):
-        theta = theta_start_deg + index * step
-        derivative = _analytic_outer_rail_derivative(side, name, theta, p)
-        speed = hypot(derivative.y, derivative.z)
-        weight = 1.0 if index in (0, intervals) else (4.0 if index % 2 else 2.0)
-        total += weight * speed
-    return total * step / 3.0
-
-
-def d12_working_set_translation_evidence(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> dict[str, object]:
-    """D12 exact one-time translation and no-old-rail-reuse regression."""
-    translation = working_set_translation_yz(p)
-    rejected_i10 = PointYZ(*D12_R1_REJECTED_TRANSLATION_YZ)
-    delta_from_i10 = PointYZ(
-        translation.y - rejected_i10.y,
-        translation.z - rejected_i10.z,
-    )
-    open_local_centers = tuple(
-        outer_slot_local_center("left", name, 0.0, p) for name in ROD_NAMES
-    )
-    open_box_midpoint = PointYZ(
-        (min(point.y for point in open_local_centers) + max(point.y for point in open_local_centers)) / 2.0,
-        (min(point.z for point in open_local_centers) + max(point.z for point in open_local_centers)) / 2.0,
-    )
-    rejected_i10_open_box_midpoint = PointYZ(
-        open_box_midpoint.y - delta_from_i10.y,
-        open_box_midpoint.z - delta_from_i10.z,
-    )
-    state_theta = {
-        "open": 0.0,
-        "contact": theta_contact_deg(p),
-        "end": p.theta_lock_deg,
-    }
-    guide_rows: dict[str, object] = {}
-    maximum_relative_residual = 0.0
-    for name in ROD_NAMES:
-        before = PRE_D12_GUIDES[name]
-        after = guide_path(name, p)
-        guide_rows[name] = {
-            "preD12": {
-                "open": before.open.as_tuple(),
-                "contact": before.contact.as_tuple(),
-                "end": before.locked.as_tuple(),
-            },
-            "translated": {
-                "open": after.open.as_tuple(),
-                "contact": after.contact.as_tuple(),
-                "end": after.locked.as_tuple(),
-            },
-            "direction": after.direction.as_tuple(),
-            "functionalLengthMm": after.travel,
-        }
-        for first, second in (
-            (before.open, after.open),
-            (before.contact, after.contact),
-            (before.locked, after.locked),
-        ):
-            maximum_relative_residual = max(
-                maximum_relative_residual,
-                abs((second.y - first.y) - translation.y),
-                abs((second.z - first.z) - translation.z),
-            )
-
-    rail_rows: dict[str, object] = {}
-    minimum_old_translated_rail_residual = float("inf")
-    for side in ("left", "right"):
-        for name in ROD_NAMES:
-            state_rows: dict[str, object] = {}
-            for state, theta in state_theta.items():
-                current = outer_slot_local_center(side, name, theta, p)
-                old = _pre_d12_outer_slot_local_center(side, name, theta, p)
-                naively_translated_old = PointYZ(
-                    old.y + translation.y,
-                    old.z + translation.z,
-                )
-                residual = current.distance_to(naively_translated_old)
-                if state != "open":
-                    minimum_old_translated_rail_residual = min(
-                        minimum_old_translated_rail_residual, residual
-                    )
-                state_rows[state] = {
-                    "recomputedLocalYZ": current.as_tuple(),
-                    "preD12LocalYZ": old.as_tuple(),
-                    "naivelyTranslatedOldLocalYZ": naively_translated_old.as_tuple(),
-                    "residualFromNaivelyTranslatedOldMm": residual,
-                }
-            rail_rows[f"{side}:{name}"] = state_rows
-
-    fixed_axle_rows = {
-        side: {
-            "open": fixed_axle_guide_local_center(side, 0.0, p).as_tuple(),
-            "end": fixed_axle_guide_local_center(
-                side, p.theta_lock_deg, p
-            ).as_tuple(),
-        }
-        for side in ("left", "right")
-    }
-    return {
-        "workingSetTranslationYZ": translation.as_tuple(),
-        "rejectedI10WorkingSetTranslationYZ": rejected_i10.as_tuple(),
-        "deltaFromRejectedI10YZ": delta_from_i10.as_tuple(),
-        "openWorkingSetBoxMidpointRelativeToCYZ": open_box_midpoint.as_tuple(),
-        "rejectedI10OpenWorkingSetBoxMidpointRelativeToCYZ": (
-            rejected_i10_open_box_midpoint.as_tuple()
-        ),
-        "screenRightAndUpPlacementRegressionPasses": (
-            abs(delta_from_i10.y - 4.385) <= 1.0e-12
-            and abs(delta_from_i10.z - 4.385) <= 1.0e-12
-            and open_box_midpoint.y > rejected_i10_open_box_midpoint.y
-            and open_box_midpoint.z > rejected_i10_open_box_midpoint.z
-        ),
-        "physicalOuterRotationCenterYZ": outer_rotation_center_yz(p).as_tuple(),
-        "railShapingRelativeDatumYZ": (
-            p.outer_rotation_center_y - translation.y,
-            p.outer_rotation_center_z - translation.z,
-        ),
-        "fixedAxleCenterYZ": fixed_axle_center_yz(p).as_tuple(),
-        "translationAppliedExactlyOnce": maximum_relative_residual <= 1.0e-12,
-        "maximumRigidTranslationResidualMm": maximum_relative_residual,
-        "guides": guide_rows,
-        "workpiece": {
-            "bendCenterYZ": (p.bend_center_y, p.bend_center_z),
-            "xt60BodyCenterYZ": (p.xt60_body_center_y, p.xt60_body_center_z),
-            "verticalLegYMm": p.xt60_body_center_y,
-            "horizontalLegZMm": p.bend_center_z - p.bend_radius,
-            "completedPigtailExtractEndYMm": p.completed_pigtail_extract_end_y,
-        },
-        "outerRails": rail_rows,
-        "outerRailsRecomputedFromTranslatedRods": True,
-        "oldRailSolidsReusedOrTranslated": False,
-        "minimumContactOrEndResidualFromNaivelyTranslatedOldRailMm": (
-            minimum_old_translated_rail_residual
-        ),
-        "fixedAxleRailsUnchanged": True,
-        "fixedAxleRailEndpoints": fixed_axle_rows,
-    }
-
-
-def outer_rail_length_and_force_evidence(
-    p: P17R2Parameters = P17_R2_DEFAULTS,
-) -> dict[str, object]:
-    """Functional rail lengths and frictionless geometric force diagnostic."""
-    contact = theta_contact_deg(p)
-    dense_count = 10001
-    rows: dict[str, object] = {}
-    for name in ROD_NAMES:
-        side_rows: dict[str, object] = {}
-        full_lengths: dict[str, float] = {}
-        contact_lengths: dict[str, float] = {}
-        contact_sines: dict[str, float] = {}
-        for side in ("left", "right"):
-            full_lengths[side] = _outer_rail_functional_length(
-                side, name, 0.0, p.theta_lock_deg, p
-            )
-            contact_lengths[side] = _outer_rail_functional_length(
-                side, name, contact, p.theta_lock_deg, p
-            )
-            contact_sines[side] = min(
-                _analytic_crossing_sine(
-                    side,
-                    name,
-                    contact + (p.theta_lock_deg - contact) * index / (dense_count - 1),
-                    p,
-                )
-                for index in range(dense_count)
-            )
-            side_rows[side] = {
-                "openLocalYZ": outer_slot_local_center(side, name, 0.0, p).as_tuple(),
-                "contactLocalYZ": outer_slot_local_center(side, name, contact, p).as_tuple(),
-                "endLocalYZ": outer_slot_local_center(
-                    side, name, p.theta_lock_deg, p
-                ).as_tuple(),
-                "openToEndFunctionalLengthMm": full_lengths[side],
-                "contactToEndFunctionalLengthMm": contact_lengths[side],
-                "minimumContactToEndCrossingSine": contact_sines[side],
-                "minimumContactToEndAcuteAngleDeg": degrees(
-                    asin(contact_sines[side])
-                ),
-                "maximumFrictionlessGeometricMultiplier": 1.0 / contact_sines[side],
-            }
-        end_ratio = max(full_lengths.values()) / min(full_lengths.values())
-        contact_ratio = max(contact_lengths.values()) / min(contact_lengths.values())
-        multiplier_values = {
-            side: 1.0 / contact_sines[side] for side in ("left", "right")
-        }
-        rows[name] = {
-            "sides": side_rows,
-            "openToEndSideRatio": end_ratio,
-            "contactToEndSideRatio": contact_ratio,
-            "baselineOpenToEndSideRatio": D12_BASELINE_SIDE_RATIOS[name],
-            "openToEndRatioDeltaFromBaseline": (
-                end_ratio - D12_BASELINE_SIDE_RATIOS[name]
-            ),
-            "openToEndRatioImprovedFromBaseline": (
-                end_ratio < D12_BASELINE_SIDE_RATIOS[name]
-            ),
-            "rejectedD12OpenToEndSideRatio": D12_REJECTED_SIDE_RATIOS[name],
-            "openToEndRatioImprovedFromRejectedD12": (
-                end_ratio < D12_REJECTED_SIDE_RATIOS[name]
-            ),
-            "worstGeometricMultiplierSideRatio": (
-                max(multiplier_values.values()) / min(multiplier_values.values())
-            ),
-        }
-    return {
-        "integrationMethod": "Simpson exact-derivative centerline integral",
-        "integrationIntervals": 4096,
-        "forceDiagnosticSampleCountContactToEnd": dense_count,
-        "rows": rows,
-        "baselineWorstOpenToEndSideRatio": max(D12_BASELINE_SIDE_RATIOS.values()),
-        "d12WorstOpenToEndSideRatio": max(
-            row["openToEndSideRatio"] for row in rows.values()  # type: ignore[index]
-        ),
-        "rejectedD12WorstOpenToEndSideRatio": max(
-            D12_REJECTED_SIDE_RATIOS.values()
-        ),
-        "maximumAcceptedOpenToEndSideRatio": 1.50,
-        "physicalBoundary": (
-            "1/sin(phi) is a frictionless geometric diagnostic only; hand force, "
-            "friction, PETG wear, wire stiffness and self-lock remain unproven "
-            "physical unknowns"
-        ),
-        "forceProven": False,
-        "selfLockClaimed": False,
     }
 
 
@@ -2642,6 +2162,74 @@ def inverse_rail_reconstruction_evidence(
             evidence["maximumRailReconstructionResidualMm"] <= 0.05
             and evidence["minimumWebMm"] + 1.0e-9 >= p.min_web_mm
             and regularity["passes"]
+        ),
+    }
+
+
+@lru_cache(maxsize=None)
+def locked_layout_blocker_evidence(
+    p: P17R2Parameters = P17_R2_DEFAULTS,
+) -> dict[str, object]:
+    """Detect, do not suppress, the frozen D13 product-interface blockers."""
+    bottom_open = GUIDES["bottom"].open
+    body_center = PointYZ(p.xt60_body_center_y, p.xt60_body_center_z)
+    center_to_body = _point_rectangle_distance_yz(
+        bottom_open,
+        body_center,
+        p.xt60_body_y / 2.0,
+        p.xt60_body_z / 2.0,
+    )
+    signed_body_clearance = center_to_body - p.rod_diameter / 2.0
+    vertical_wire_y = p.bend_center_y - p.bend_radius
+    open_wire_centerline_separation = abs(bottom_open.y - vertical_wire_y)
+    combined_wire_rod_radius = (
+        p.rod_diameter + p.wire_envelope_diameter
+    ) / 2.0
+    open_wire_radial_overlap = (
+        combined_wire_rod_radius - open_wire_centerline_separation
+    )
+    end_surface_gaps = {
+        name: _wire_feature_offset(name, GUIDES[name].locked, p)
+        - combined_wire_rod_radius
+        for name in ROD_NAMES
+    }
+    infinite_straight_end_surface_gaps = {
+        "bottom": abs(GUIDES["bottom"].locked.y - vertical_wire_y)
+        - combined_wire_rod_radius,
+        "upright": abs(
+            GUIDES["upright"].locked.z
+            - (p.bend_center_z - p.bend_radius)
+        )
+        - combined_wire_rod_radius,
+    }
+    open_rod = build_rod("bottom", 0.0, p)
+    body = build_xt60_reference(p)
+    wire = build_workpiece_reference(0.0, p)
+    return {
+        "candidate": "P17-D13 exact locked rod layout",
+        "acceptanceClaimed": False,
+        "knownInvalidProductInterface": True,
+        "bottomOpenCenterYZ": bottom_open.as_tuple(),
+        "xt60BodyCenterYZ": body_center.as_tuple(),
+        "xt60BodyRectangleYZ": (
+            p.xt60_body_center_y - p.xt60_body_y / 2.0,
+            p.xt60_body_center_y + p.xt60_body_y / 2.0,
+            p.xt60_body_center_z - p.xt60_body_z / 2.0,
+            p.xt60_body_center_z + p.xt60_body_z / 2.0,
+        ),
+        "bottomOpenSignedBodyClearanceMm": signed_body_clearance,
+        "bottomOpenBodyIntersectionMm3": _intersection_volume(open_rod, body),
+        "verticalWireCenterlineY": vertical_wire_y,
+        "bottomOpenWireCenterlineSeparationMm": open_wire_centerline_separation,
+        "bottomOpenWireRadialOverlapMm": open_wire_radial_overlap,
+        "bottomOpenWireIntersectionMm3": _intersection_volume(open_rod, wire),
+        "endWireSurfaceGapMmByRod": end_surface_gaps,
+        "endInfiniteStraightProxyGapMm": infinite_straight_end_surface_gaps,
+        "lostEndContact": all(value > 0.0 for value in end_surface_gaps.values()),
+        "physicalBoundary": (
+            "review artifact only: known OPEN body/wire collision and lost END "
+            "contact are intentionally materialized; no CAD, force, self-lock, "
+            "fit, service, manufacturing or physical acceptance is claimed"
         ),
     }
 
@@ -2844,7 +2432,7 @@ def two_sided_support_evidence(
         theta = p.theta_lock_deg * index / (p.validation_sample_count - 1)
         for name in ROD_NAMES:
             fixed_center = _relative_to_pivot(rod_center(name, theta, p), p)
-            fixed_tangent = guide_path(name, p).direction
+            fixed_tangent = GUIDES[name].direction
             fixed_normal = PointYZ(-fixed_tangent.z, fixed_tangent.y)
             for side in ("left", "right"):
                 volumes: list[float] = []
@@ -2945,7 +2533,7 @@ def two_sided_support_evidence(
         ("end", p.theta_lock_deg, 1.0),
     ):
         for name in ROD_NAMES:
-            fixed_tangent = guide_path(name, p).direction
+            fixed_tangent = GUIDES[name].direction
             fixed_center = _relative_to_pivot(rod_center(name, theta, p), p)
             fixed_distance = (
                 p.slot_endpoint_margin + p.fixed_slot_width / 2.0 + 0.30
@@ -3153,24 +2741,17 @@ def fixed_occurrence_transform_evidence(
         "left_keeper": (p.keeper_left_x, axle.y, axle.z, 0.0),
         "right_keeper": (p.keeper_right_x, axle.y, axle.z, 0.0),
     }
-    samples = tuple(
-        index / (p.validation_sample_count - 1)
-        for index in range(p.validation_sample_count)
-    )
-    contact = theta_contact_deg(p) / p.theta_lock_deg
     states = {
-        ("contact_exact" if index == p.validation_sample_count else f"sample_{index:02d}"): {
+        state: {
             "fixedFramesXYZAngleDeg": fixed_frames,
-            "leftOuterAngleDeg": alpha_left(p.theta_lock_deg * travel),
-            "rightOuterAngleDeg": alpha_right(p.theta_lock_deg * travel),
+            "leftOuterAngleDeg": alpha_left(theta),
+            "rightOuterAngleDeg": alpha_right(theta),
             "outerRotationCenterYZ": center.as_tuple(),
         }
-        for index, travel in enumerate((*samples, contact))
+        for state, theta in STATE_THETA.items()
     }
     return {
         "fixedOccurrenceNames": tuple(fixed_frames),
-        "sampleCount": p.validation_sample_count,
-        "includesExactContact": True,
         "states": states,
         "allFixedWorldInvariant": all(
             row["fixedFramesXYZAngleDeg"] == fixed_frames for row in states.values()
@@ -3253,130 +2834,26 @@ def fixed_axle_actual_solid_evidence(
             _point_segment_distance_yz(offset, first, second)
             - (inner_hex_radius + p.fixed_slot_width / 2.0)
         )
-    outer_fixed_guide_webs: dict[str, float] = {}
     for side in ("left", "right"):
         axle_locus = fixed_axle_guide_locus(side, p)
-        side_webs: list[float] = []
         for name in ROD_NAMES:
-            side_webs.append(
+            analytic_webs.append(
                 _polyline_distance_yz(axle_locus, outer_slot_locus(side, name, p))
                 - (p.fixed_axle_guide_slot_width + p.outer_slot_width) / 2.0
             )
-        outer_fixed_guide_webs[side] = min(side_webs)
-        analytic_webs.extend(side_webs)
-
-    # Actual-solid reaction material on both normal sides of the fixed-axle
-    # guide.  This is deliberately separate from the three OD4 rod support
-    # gate because the purple axle journal uses the wider 7.90 mm guide.
-    support_probe_diameter = 0.20
-    support_strip_depth = 0.30
-    support_strip_samples = 61
-    support_boundary_epsilon = 1.0e-4
-    expected_support_probe_volume = (
-        pi
-        * (support_probe_diameter / 2.0) ** 2
-        * p.outer_plate_thickness
-    )
-    minimum_support_probe_ratio = float("inf")
-    support_probe_count = 0
-    support_strip_rows: dict[str, object] = {}
-    outer_local = {
-        side: copy(_outer_plate_local(side, p)) for side in ("left", "right")
-    }
-    for side in ("left", "right"):
-        plate = outer_local[side]
-        for index in range(p.fixed_axle_guide_sample_count):
-            theta = (
-                p.theta_lock_deg
-                * index
-                / (p.fixed_axle_guide_sample_count - 1)
-            )
-            step = 1.0e-4
-            first = fixed_axle_guide_local_center(
-                side, max(0.0, theta - step), p
-            )
-            second = fixed_axle_guide_local_center(
-                side, min(p.theta_lock_deg, theta + step), p
-            )
-            tangent = PointYZ(second.y - first.y, second.z - first.z)
-            tangent_length = hypot(tangent.y, tangent.z)
-            normal = PointYZ(
-                -tangent.z / tangent_length,
-                tangent.y / tangent_length,
-            )
-            center_on_rail = fixed_axle_guide_local_center(side, theta, p)
-            side_rows: list[dict[str, object]] = []
-            for sign in (-1.0, 1.0):
-                signed_normal = PointYZ(sign * normal.y, sign * normal.z)
-                probe_offset = p.fixed_axle_guide_slot_width / 2.0 + 0.30
-                probe_center = PointYZ(
-                    center_on_rail.y + probe_offset * signed_normal.y,
-                    center_on_rail.z + probe_offset * signed_normal.z,
-                )
-                probe = _x_cylinder(
-                    support_probe_diameter,
-                    p.outer_plate_thickness,
-                    0.0,
-                    probe_center.y,
-                    probe_center.z,
-                )
-                probe_ratio = (
-                    _intersection_volume(probe, plate)
-                    / expected_support_probe_volume
-                )
-                minimum_support_probe_ratio = min(
-                    minimum_support_probe_ratio, probe_ratio
-                )
-                support_probe_count += 1
-
-                offsets = tuple(
-                    p.fixed_axle_guide_slot_width / 2.0
-                    + support_boundary_epsilon
-                    + (support_strip_depth - support_boundary_epsilon)
-                    * strip_index
-                    / (support_strip_samples - 1)
-                    for strip_index in range(support_strip_samples)
-                )
-                inside = tuple(
-                    plate.is_inside(
-                        Vector(
-                            0.0,
-                            center_on_rail.y + offset * signed_normal.y,
-                            center_on_rail.z + offset * signed_normal.z,
-                        ),
-                        tolerance=1.0e-7,
-                    )
-                    for offset in offsets
-                )
-                first_material_index = next(
-                    (i for i, value in enumerate(inside) if value), None
-                )
-                side_rows.append(
-                    {
-                        "probeMaterialRatio": probe_ratio,
-                        "firstMaterialIndex": first_material_index,
-                        "continuousFromSweptBoundaryThroughPlus0p30": (
-                            first_material_index is not None
-                            and all(inside[first_material_index:])
-                        ),
-                    }
-                )
-            support_strip_rows[f"sample_{index:02d}:{side}"] = side_rows
 
     exact_gap, exact_cutters_clear = _fixed_axle_feature_gap_evidence(p)
     axle = build_center_axle(p)
     body = build_xt60_reference(p)
     samples = tuple(
-        index * p.theta_lock_deg / (p.validation_sample_count - 1)
-        for index in range(p.validation_sample_count)
+        index * p.theta_lock_deg / (p.fixed_axle_guide_sample_count - 1)
+        for index in range(p.fixed_axle_guide_sample_count)
     )
     all_axle_outer_clear = True
     all_keeper_outer_clear = True
     all_axle_rod_clear = True
     all_keeper_cap_clear = True
     all_service_clear = True
-    minimum_axle_to_rod_clearance = float("inf")
-    minimum_keeper_to_cap_clearance = float("inf")
     minimum_service_clearance = float("inf")
     center_filled = True
     for theta in samples:
@@ -3396,15 +2873,12 @@ def fixed_axle_actual_solid_evidence(
         for name in ROD_NAMES:
             rod = build_rod(name, theta, p)
             all_axle_rod_clear &= _intersection_volume(axle, rod) <= 1.0e-7
-            minimum_axle_to_rod_clearance = min(
-                minimum_axle_to_rod_clearance, float(axle.distance(rod))
-            )
             for side in ("left", "right"):
-                keeper = build_keeper(side, p)
-                cap = build_cap(side, name, theta, p)
-                all_keeper_cap_clear &= _intersection_volume(keeper, cap) <= 1.0e-7
-                minimum_keeper_to_cap_clearance = min(
-                    minimum_keeper_to_cap_clearance, float(keeper.distance(cap))
+                all_keeper_cap_clear &= (
+                    _intersection_volume(
+                        build_keeper(side, p), build_cap(side, name, theta, p)
+                    )
+                    <= 1.0e-7
                 )
         service_targets = [body, *build_service_envelopes(theta, p).children]
         for fixed in (axle, build_keeper("left", p), build_keeper("right", p)):
@@ -3419,7 +2893,6 @@ def fixed_axle_actual_solid_evidence(
         "minimumRequiredWebMm": p.min_web_mm,
         "minimumAnalyticWebMm": minimum_analytic_web,
         "minimumActualOuterGuideWebMm": min(analytic_webs[6:]),
-        "minimumActualOuterGuideWebMmBySide": outer_fixed_guide_webs,
         "minimumActualInnerHexWebMm": inner_boundary_web,
         "leftOuterBoundaryWebMm": left_boundary_web,
         "rightOuterBoundaryWebMm": right_boundary_web,
@@ -3433,18 +2906,6 @@ def fixed_axle_actual_solid_evidence(
             p.keeper_outer_diameter - p.fixed_axle_guide_slot_width
         )
         / 2.0,
-        "fixedGuideSupportProbeCount": support_probe_count,
-        "fixedGuideSupportProbeExpectedVolumeMm3": expected_support_probe_volume,
-        "minimumFixedGuideSupportMaterialRatio": minimum_support_probe_ratio,
-        "allFixedGuideSupportProbesFull": minimum_support_probe_ratio >= 0.999,
-        "fixedGuideSupportStripDepthMm": support_strip_depth,
-        "fixedGuideSupportStripSampleCountPerSide": support_strip_samples,
-        "allFixedGuideSupportStripsContinuous": all(
-            row["continuousFromSweptBoundaryThroughPlus0p30"]
-            for pair in support_strip_rows.values()
-            for row in pair
-        ),
-        "fixedGuideSupportStripRows": support_strip_rows,
         "minimumXt60AndServiceClearanceMm": minimum_service_clearance,
         "sampleCount": len(samples),
         "allAxleOuterPlateIntersectionsZero": all_axle_outer_clear,
@@ -3452,11 +2913,6 @@ def fixed_axle_actual_solid_evidence(
         "allAxleGuideProbeIntersectionsZero": all_axle_outer_clear,
         "allAxleWhiteRodIntersectionsZero": all_axle_rod_clear,
         "allKeeperCapIntersectionsZero": all_keeper_cap_clear,
-        "minimumAxleToWhiteRodClearanceMm": minimum_axle_to_rod_clearance,
-        "minimumKeeperToCapClearanceMm": minimum_keeper_to_cap_clearance,
-        "minimumFixedHardwareToRodOrCapClearanceMm": min(
-            minimum_axle_to_rod_clearance, minimum_keeper_to_cap_clearance
-        ),
         "allXt60AndServiceIntersectionsZero": all_service_clear,
         "centerAtCHasNoDecorativeHole": center_filled,
     }
@@ -3916,6 +3372,8 @@ def build_full_motion_open(
 
 def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
     return {
+        "candidateStatus": "exact D13 review materialization; known invalid product interface",
+        "acceptanceClaimed": False,
         "contractPath": P17_R2_DESIGN_CONTRACT_PATH,
         "contractSha256": P17_R2_DESIGN_CONTRACT_SHA256,
         "fixedMember": "purple printed stepped center axle",
@@ -3960,16 +3418,19 @@ def p17_r2_manifest(p: P17R2Parameters = P17_R2_DEFAULTS) -> dict[str, object]:
         },
         "guides": {
             name: {
-                "open": guide_path(name, p).open.as_tuple(),
-                "contact": guide_path(name, p).contact.as_tuple(),
-                "locked": guide_path(name, p).locked.as_tuple(),
-                "travel": guide_path(name, p).travel,
+                "open": GUIDES[name].open.as_tuple(),
+                "contact": GUIDES[name].contact.as_tuple(),
+                "locked": GUIDES[name].locked.as_tuple(),
+                "travel": GUIDES[name].travel,
             }
             for name in ROD_NAMES
         },
-        "d12WorkingSetTranslation": d12_working_set_translation_evidence(p),
-        "d12R4bFixedAxlePreview": d12_r4b_fixed_axle_preview_evidence(p),
-        "outerRailLengthAndForceDiagnostic": outer_rail_length_and_force_evidence(p),
+        "lockedRodLayout": {
+            "commonDeltaYZ": D13_COMMON_ROD_DELTA.as_tuple(),
+            "workpieceMoved": False,
+            "outerRailsDerivedBy": "derive_mating_rail(T_target^-1*T_source*p_source)",
+            "knownBlockers": locked_layout_blocker_evidence(p),
+        },
         "centerAxle": {
             "fixedMember": "purple printed stepped axle",
             "whiteRods": "all three OD4 rods remain moving forming rods",
@@ -4064,13 +3525,13 @@ def provenance_token(p: P17R2Parameters = P17_R2_DEFAULTS) -> str:
 
 
 def clear_geometry_caches() -> None:
-    transform_point_between_frames_yz.cache_clear()
     _inner_plate_local.cache_clear()
     _outer_plate_local.cache_clear()
     actual_solid_motion_evidence.cache_clear()
     two_sided_support_evidence.cache_clear()
     _completed_pigtail_seated.cache_clear()
     _completed_pigtail_service_evidence.cache_clear()
+    locked_layout_blocker_evidence.cache_clear()
 
 
 __all__ = [
@@ -4078,6 +3539,7 @@ __all__ = [
     "P17_R2_DEFAULTS",
     "PHYSICAL_STAINLESS_STOCK_LENGTH_MM",
     "GUIDES",
+    "D13_COMMON_ROD_DELTA",
     "ROD_NAMES",
     "STATE_THETA",
     "alpha_left",
@@ -4096,12 +3558,8 @@ __all__ = [
     "completed_pigtail_removal_waypoints",
     "combined_contact_closure_evidence",
     "conditioning_evidence",
-    "central_span_service_evidence",
-    "d12_r4_fixed_axle_preview_evidence",
-    "d12_r4b_fixed_axle_preview_evidence",
-    "d12_r3_fixed_axle_placement_evidence",
-    "d12_working_set_translation_evidence",
     "derive_mating_rail",
+    "central_span_service_evidence",
     "fixed_axle_actual_solid_evidence",
     "fixed_axle_center_yz",
     "fixed_axle_guide_local_center",
@@ -4112,13 +3570,12 @@ __all__ = [
     "actual_solid_motion_evidence",
     "cap_stack_closure_evidence",
     "inverse_rail_reconstruction_evidence",
+    "locked_layout_blocker_evidence",
     "rail_branch_regularity_evidence",
-    "rod_workpiece_six_rail_digest",
     "outer_pose_constraint_jacobian",
     "outer_pose_constraint_residuals",
     "outer_slot_local_center",
     "outer_slot_locus",
-    "outer_rail_length_and_force_evidence",
     "outer_rotation_center_yz",
     "parameters_from_env",
     "parameters_from_overrides",
@@ -4131,7 +3588,7 @@ __all__ = [
     "theta_contact_deg",
     "triangle_motion_evidence",
     "triangle_motion_math_evidence",
-    "transform_point_between_frames_yz",
+    "transform_point_between_frames",
     "two_sided_support_evidence",
     "workpiece_orientation_evidence",
     "source_revision_sha256",

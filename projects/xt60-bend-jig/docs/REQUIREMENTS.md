@@ -1,5 +1,91 @@
 # XT60 bend jig requirements and design contract
 
+## Active P18 R1 compact counter-twist baseline
+
+The user approved the P17 compact 2D gate and explicitly opened **P18 R1** on
+`2026-08-26`. P18 preserves the four-plate, three-rod, one-stepped-axle
+architecture and the accepted workpiece-relative topology, but changes the
+product envelope, fixed-axle datum and total twist travel together. P17 remains
+immutable history and input evidence; P18 is the active forward baseline.
+
+- `REQ-031`: FRONT is world YZ: `+Z` is XT60 mating-head/up and `+Y` is the
+  solder tail and both wires outward/right. Camera pose may not redefine it.
+- `REQ-032`: OPEN remains upper-left -> upper-right -> lower-right with the two
+  right rods on one exact vertical leg. END remains upper-left -> middle ->
+  lower-right on the accepted diagonal. Rod identities never swap, cross,
+  mirror or reverse.
+- `REQ-033`: P18 uses three uncut `OD4.00 x 50.00 mm` stainless rods, six
+  permanent caps, four plates and one one-piece stepped axle. No stability
+  bar, yoke, linkage, gear, grip block or replacement lock is authorized.
+- `REQ-034`: Both inner plates and the stepped axle are fixed. The two outer
+  plates are hand-operated and counter-rotate by equal and opposite angles;
+  the right force plate is slightly larger than the left outer plate.
+- `REQ-035`: Fixed-inner rod tracks are straight. Every outer rod rail and
+  both fixed-axle rails are deterministically inverse-transform-derived from
+  one normalized motion parameter. Plate-owned holes/rails never animate
+  independently.
+- `REQ-036`: The virtual outer rotation datum `C` is not a centered pivot bore
+  or physical member. The existing rod/slot/axle contact network supplies the
+  prescribed CAD constraint; CAD motion is not a force or self-lock proof.
+- `REQ-037`: P18 remains parametric STEP-first CAD. Source, tests, STEP,
+  sidecar and snapshots are separate from mesh/slicer and physical evidence.
+- `REQ-038`: END means prescribed clamped geometry only. It carries no
+  hard-stop, detent, retention, over-center or self-lock claim.
+- `REQ-039`: P18 must preserve loading, wire-only forming, cooling, extraction
+  direction and completed-pigtail removal without using the XT60 body as the
+  reaction load path.
+- `REQ-040`: Full-assembly soldering-iron clearance is not digitally accepted
+  in P18 R1 and remains a required service/physical gate.
+
+### P18 R1 numeric and derived constraints
+
+- `CON-031`: `theta_end=45 deg`, `alpha_left=-45u`,
+  `alpha_right=+45u`, `u in [0,1]`.
+- `CON-032`: `C=(0,0) mm`, fixed axle `A=(-9.5,-9.5) mm`, and accepted rigid
+  placement `S=(-14.6869657526,-12.2949747468) mm` in FRONT YZ.
+- `CON-033`: Plate diameters are inner `52.933 mm`, left outer `53.933 mm`
+  and right force outer `54.933 mm`; required exact material web is
+  `>=2.20 mm`.
+- `CON-034`: Common stroke is `10.5852813742 mm`, geometric preload remains
+  `0.25 mm`, `u_contact=0.976382299991634`, and
+  `theta_contact=43.9372034996235 deg`.
+- `CON-035`: Inner clear span is `18.40 mm`; principal plate stack is
+  `32.00 mm`; cap engagement is `8.70 mm` per side; rod length is exactly
+  `50.00 mm`.
+- `CON-036`: The one-piece axle retains AF10 central spacer, AF8 keys, exact
+  AF8.15 inner bores, OD7.60 journals, 7.90 mm outer running guides/bore and
+  retained OD10/bore7.55 keepers. Total axle length is `34.90 mm`.
+- `CON-037`: The AF8.15 bore is an actual regular hex; its circumradius is
+  `8.15/sqrt(3)=4.705404693895 mm`. `AF/2` is not a radial-clearance proxy.
+- `CON-038`: Dense four-contact closure must retain rank `3`, finite recorded
+  conditioning, continuous rail branches and two-sided rod support throughout
+  OPEN-to-END.
+- `CON-039`: Actual-solid unintended intersections are zero except the named
+  END wire preload allow-list; completed-pigtail removal clearance is at least
+  `0.75 mm`.
+- `CON-040`: The near-tangent diagonal rail interval remains a physical
+  hand-force/friction/wedging/backlash risk even when the digital constraint
+  and support gates pass.
+
+### P18 R1 choices, non-goals and physical unknowns
+
+- `CHOICE-012`: P18 R1 selects the accepted compact 45-degree candidate with
+  a slightly larger right force plate and no added grip feature.
+- `NON-GOAL-010`: Claiming full solder-tool access, acceptable hand torque,
+  smoothness, retention, fit, heat, wear, back-drive or self-lock from CAD.
+- `PHYS-014`: Hand force, friction, wedging, backlash and back-drive through
+  the near-tangent portion of the 45-degree travel.
+- `PHYS-015`: Full assembled soldering-iron access to both joints.
+- `PHYS-016`: Permanent cap and keeper installation/retention and axle/hex fit.
+- `PHYS-017`: Limiting-web robustness, PETG dimensional outcome, heat and wear.
+- `PHYS-018`: Whether the `0.50 mm` force-side radius advantage is useful by
+  hand without an added grip feature.
+
+P18 R1 evidence authority is
+`docs/iterations/p18-r1-compact-counter-twist/`; its formal review accepts
+the frozen CAD and six STEP artifacts only. Mesh, 3MF, slicing, printing and
+physical acceptance remain pending.
+
 ## Active P17 R2 version correction note
 
 P17 R2 is the direct-CAD revision of the P17 counter-twist design after
