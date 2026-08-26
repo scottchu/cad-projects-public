@@ -1,61 +1,39 @@
 # Next agent
 
 Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
-`docs/decisions/README.md`, and every file under the iteration named by
-`docs/iterations/CURRENT` before changing this project.
+`docs/decisions/README.md`, and every file under
+`docs/iterations/p19-r1-front-edge-short-tail/` before changing this project.
 
 ## Resume point
 
-- Active iteration: `p18-r1-compact-counter-twist`.
-- Active baseline: P18 R1 compact 45-degree counter-twist.
-- Candidate manifest SHA-256:
-  `fb0755a0d448ee000dde4bd63eacca7fbaf6e55abeb16312a7f39c5ccfc5d1d5`.
-- Source: `src/xt60_bend_jig/p18_r1_compact_counter_twist.py`.
-- Tests: `tests/test_p18_r1_compact_counter_twist.py`.
-- Full motion:
-  `cad/p18_r1_compact_counter_twist/p18_r1_full_motion.step.py`.
+- Active iteration: `p19-r1-front-edge-short-tail`.
+- P19 R1 is digitally accepted for CAD, six written STEP artifacts, and exact
+  Viewer handoff only.
+- Exact candidate-manifest SHA-256:
+  `e2492339de9037b6e2a84351699b693202e4585a32623305c616d97712b91677`.
+- Independent validation: `PASS`, report SHA-256
+  `304239aecb3b939a6ef1412d1b31979b4bafda2b2e997ca7e7311b36adfb88ef`.
+- Formal review: `ACCEPT`, report SHA-256
+  `7b5436c57070547b14241bc3de6cbc7047c07cbd1e4070b036f0d8d51040aba3`.
+- Active handoff:
+  `docs/iterations/p19-r1-front-edge-short-tail/HANDOFF.md`.
 
-## Frozen mechanism
+## Frozen current mechanism
 
-- FRONT is world YZ: `+Z` XT60 head/up; `+Y` solder tail/wires right.
-- OPEN is upper-left -> upper-right -> lower-right with an exact right vertical
-  leg. END is upper-left -> middle -> lower-right on the accepted diagonal.
-- Rod identities never swap, cross, mirror or reverse.
-- Three rods are `OD4 x 50 mm`; six caps are permanent.
-- Fixed: both inner plates, both keepers and purple stepped axle
-  `A=(-9.5,-9.5)`.
-- Rotating: left/right outer plates at `-theta/+theta` around virtual
-  `C=(0,0)`, END `45 deg`; right force outer is slightly larger.
-- Plates are `OD52.933/53.933/54.933 mm`; all outer rails and axle rails are
-  inverse-transform-derived. There is no physical centered pivot at C.
-- Forbidden: stability bar, yoke, linkage, gear, grip block, replacement lock
-  or self-lock claim.
-
-## Accepted evidence
-
-- Focused tests `10 passed`.
-- Rail reconstruction residual `3.97e-15 mm`; minimum web
-  `2.200398673579 mm`.
-- Four-contact closure rank `3`; maximum normalized condition
-  `3.750295905779`.
-- 65-state actual-BREP and full two-sided support passed with zero unintended
-  intersections.
-- Completed-pigtail service clearance `0.933815921231 mm` analytic and
-  `1.25 mm` BREP against the `0.75 mm` gate.
-- Six STEP artifacts validate and exactly match source bounds/topology/counts.
-- Four snapshots were independently reviewed.
-- Formal review accepts CAD, STEP and Viewer handoff only.
+- FRONT: `+Z` XT60 mating-head/up; `+Y` short-tail/tool right/outward.
+- Three `OD4 x 50 mm` stainless rods, six permanent caps, four plates, one
+  real fixed stepped axle at `A=(-13,-9)`; virtual rotation datum `C=(0,0)`.
+- Shared motion only: `alpha_left=-5u`, `alpha_right=+5u`.
+- Plate ODs `54.40/54.70/55.00 mm`; cutters `OD4.15 mm`.
+- OPEN exact right angle; END exact ordered diagonal; identities unchanged.
+- Six inverse-derived rail center travels are all at least `4.00 mm`.
+- Minimum actual web `2.405845 mm`; rank `3`; worst condition `13.007687`.
+- Completed-pigtail rigid removal is digitally clear by exactly the active
+  `0.75 mm` nominal threshold, with zero actual-solid intersection.
 
 ## Next smallest action
 
-Obtain user review of the persistent P18 full-motion Viewer. Do not change CAD
-from visual feedback until the exact requested change is stated. Do not slice
-or print unless explicitly requested.
-
-If the user approves the 3D geometry for a first print, keep these physical
-gates explicit: near-tangent hand force/friction/wedging/backlash, complete
-soldering-iron access, cap/keeper retention, axle/hex fit, limiting-web PETG
-outcome, right-side grip usefulness, heat and wear. END is not self-locking.
-
-Use only Python 3.12 through the repository root `uv` workspace and the
-persistent singleton Viewer managed by `~/.local/bin/cad-viewer`.
+Complete repository delivery of this exact fingerprint. After merge, request
+human Viewer review before any separately authorized mesh/3MF/slicing/printing
+or physical acceptance. Any geometry change reopens the candidate fingerprint,
+validation, and formal review.

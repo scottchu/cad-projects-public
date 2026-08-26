@@ -1,0 +1,9 @@
+# P19-IMPL-05 frozen input manifest: repaired 0.75 mm OPEN clearance candidate.
+# Prior implementation is a blocked baseline only; this manifest authorizes the smallest source-first CAD repair.
+a0414e4ca02d80e3a9cca1d6ce4b6e64aa66039414def87de9cbfbde9575bffd  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/TASK_INPUT.md
+36e346c45f6b241e834da8d2dcc9009823bbf85809044021b42e8a33e1f393d4  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZED_4MM_OPEN_UPRIGHT_DESIGN.md
+2ee1782bc64805522263bcb09e017ccce1e296a2ef507266ed0592be860b2248  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZED_4MM_OPEN_UPRIGHT_CRITIQUE.md
+2c203aafed75a7ec84e388a6bbf92486179b90a81a855fbf9d721f3fdb1a0b75  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/VALIDATION.md
+83a56c9fa8a498f43510ba25529b9e7fe296d0469b4fe5cf4704e783ddb901da  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/IMPLEMENTATION_CANDIDATE.sha256
+4e5a6d3d729ac5a951c55df387bae9eb2e09ceaaa7589f04a73b5a1151009897  projects/xt60-bend-jig/src/xt60_bend_jig/p19_r1_front_edge_short_tail.py
+024b57ed1b246f39614064c2ca920d8c21b77c86dcab59451521e17f2b992ec2  projects/xt60-bend-jig/tests/test_p19_r1_front_edge_short_tail.py
