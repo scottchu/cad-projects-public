@@ -1,0 +1,8 @@
+718e049354450d7abb179bf7be72dfdea25e6c681d6ef8690c2bd0edc00bdc3b  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+cef1137d68ff5dc2ed5c0131aad11c3499d71ecbc0b4afa826f6edeb7f137475  projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py
+68879bd57a03c263684576efd378ec458d853f91659d67cfb302459970b8120a  projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py
+590e05f90e865f499af83c59350039ce20afc9ccd33bcad1975024aa3fba4b8c  projects/xt60-bend-jig/cad/p17_r2_direct_counter_twist/p17-d13-independent-gate-manifest.sha256
+0133dc4d45f38e91a20311d490b9b2fef2c8c0c6a07081c6b0c75fb19d620f95  projects/xt60-bend-jig/docs/iterations/p17-r2-locked-rod-layout/DESIGN.md
+ac5307cb8e536fafbeb34b92bd7cf6679caf6f8bea056aa55f6c22eb43487295  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/TASK_INPUT.md
+0f7efe8539270ea973eab76e48534fecae10893a8d94f4d1caf525f656b492ae  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/TASK_DAG.md
+138ba9133df0011cf3d55386f14415ad135ebabb214d955432246bacc1602fe5  /Users/scottchu/Downloads/p17_d13_before_option3_print_kit.3mf

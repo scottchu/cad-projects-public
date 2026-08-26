@@ -1,0 +1,14 @@
+5443e39e3b82bbbc2f6e3ed8dd6c2487a69035c263d44128a47f31ddab509d93  /tmp/p17-i10-r1-independent-gate-manifest.txt
+718e049354450d7abb179bf7be72dfdea25e6c681d6ef8690c2bd0edc00bdc3b  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+b316aecebc2aa74fe1a44252e94c1d54d6b878d86734133a821cd1215d937618  projects/xt60-bend-jig/docs/EXPERIENCE.md
+a2c94fff6617d9f9c57e81d38741ad84e513cdb2c28a8ace169c957906ef06c6  projects/xt60-bend-jig/docs/decisions/ADR-0003-p17-r2-direct-cad-counter-twist.md
+2a44ad2e6fd06af7c9cf426b91eca6643b19f24e62ab126bf81e07f81999c4ab  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/BRIEF.md
+9ea73a60a7cda2eaedd2729799140f57d4294a9fc56b0b13c6cfb5b06916da7d  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/DESIGN.md
+1e8e5f74d34eec61d995ade042e1b3a6521e3abdc13cf526b81fa7d3e6a7667f  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/HANDOFF.md
+00ecd2fe6d65aae19397497b057adbd5f37f9d300b39a6469ae97f270c530985  projects/xt60-bend-jig/docs/iterations/p17-r2-head-up-tail-right-orientation-repair/VALIDATION.md
+6b9004c7fb7d102c320c1c4184a78bbfc717540a91e5ea4f03b5a1fe1637e49b  projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py
+b713552b6b5fdefe7259d67b3dde1d464e46be85702a85f926cfd055bdb88c99  projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py
+2e1b5fce92ce23b74c91700f082be2203478c68fc7b035f861bad5d8cc6ca404  projects/xt60-bend-jig/docs/iterations/p17-r2-locked-rod-layout/BRIEF.md
+0133dc4d45f38e91a20311d490b9b2fef2c8c0c6a07081c6b0c75fb19d620f95  projects/xt60-bend-jig/docs/iterations/p17-r2-locked-rod-layout/DESIGN.md
+e393ea924a142548c8a30425ce48c328531c2f66903dcd8127746aaa1a26f2b1  projects/xt60-bend-jig/docs/iterations/p17-r2-locked-rod-layout/TASK_DAG.md
+d3a91a6a99c2e14e68a81ab3bcd397b345ebef25e9424201219be6f166b27efd  projects/xt60-bend-jig/docs/iterations/p17-r2-locked-rod-layout/HANDOFF.md

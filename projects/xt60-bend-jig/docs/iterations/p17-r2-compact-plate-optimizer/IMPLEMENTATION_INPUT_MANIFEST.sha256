@@ -1,0 +1,6 @@
+ac5307cb8e536fafbeb34b92bd7cf6679caf6f8bea056aa55f6c22eb43487295  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/TASK_INPUT.md
+fb33596ecc4616e8fb83c88b401f7e5258d9a4cf13c22a1623870ab9047e96ad  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/BRIEF.md
+91677597afb7b15bb0f060b5b594f4fe9a7ad6e7047a74e716ddd093fa29e752  projects/xt60-bend-jig/docs/iterations/p17-r2-compact-plate-optimizer/DESIGN.md
+cef1137d68ff5dc2ed5c0131aad11c3499d71ecbc0b4afa826f6edeb7f137475  projects/xt60-bend-jig/src/xt60_bend_jig/p17_r2_direct_counter_twist.py
+68879bd57a03c263684576efd378ec458d853f91659d67cfb302459970b8120a  projects/xt60-bend-jig/tests/test_p17_r2_direct_counter_twist.py
+138ba9133df0011cf3d55386f14415ad135ebabb214d955432246bacc1602fe5  /Users/scottchu/Downloads/p17_d13_before_option3_print_kit.3mf

@@ -6,57 +6,56 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Resume point
 
-- Active iteration: `p17-r2-head-up-tail-right-orientation-repair`.
-- Contract: `P17-D10-R2`.
-- Accepted digital candidate: `P17-I08-R2`; formal gate `P17-R08` ACCEPT.
-- Exact fingerprint:
-  `f5bc383f6566adf0262a32630792621fd7e5436e780b1b2553b144eb49887ad5`.
-- Source: `src/xt60_bend_jig/p17_r2_direct_counter_twist.py`.
-- Tests: `tests/test_p17_r2_direct_counter_twist.py`.
+- Active iteration: `p18-r1-compact-counter-twist`.
+- Active baseline: P18 R1 compact 45-degree counter-twist.
+- Candidate manifest SHA-256:
+  `fb0755a0d448ee000dde4bd63eacca7fbaf6e55abeb16312a7f39c5ccfc5d1d5`.
+- Source: `src/xt60_bend_jig/p18_r1_compact_counter_twist.py`.
+- Tests: `tests/test_p18_r1_compact_counter_twist.py`.
 - Full motion:
-  `cad/p17_r2_direct_counter_twist/p17_r2_full_motion.step.py`.
+  `cad/p18_r1_compact_counter_twist/p18_r1_full_motion.step.py`.
 
-Distinct `P17-C08`, `P17-V08`, and `P17-R08` accepted the unchanged candidate
-for digital CAD/source, ten written STEP exports, frozen visual/motion evidence,
-and the recorded acceptance boundaries only.
+## Frozen mechanism
 
-## Non-negotiable orientation/topology
+- FRONT is world YZ: `+Z` XT60 head/up; `+Y` solder tail/wires right.
+- OPEN is upper-left -> upper-right -> lower-right with an exact right vertical
+  leg. END is upper-left -> middle -> lower-right on the accepted diagonal.
+- Rod identities never swap, cross, mirror or reverse.
+- Three rods are `OD4 x 50 mm`; six caps are permanent.
+- Fixed: both inner plates, both keepers and purple stepped axle
+  `A=(-9.5,-9.5)`.
+- Rotating: left/right outer plates at `-theta/+theta` around virtual
+  `C=(0,0)`, END `45 deg`; right force outer is slightly larger.
+- Plates are `OD52.933/53.933/54.933 mm`; all outer rails and axle rails are
+  inverse-transform-derived. There is no physical centered pivot at C.
+- Forbidden: stability bar, yoke, linkage, gear, grip block, replacement lock
+  or self-lock claim.
 
-- Front frame is workpiece-relative: `+Z` is XT60 head/up; `+Y` is tail/wires
-  outward-right. Viewer camera pose cannot redefine it.
-- OPEN is upper-left -> upper-right -> lower-right with the two right rods on
-  one exact vertical leg.
-- CLAMPED/END is upper-left -> middle -> lower-right on the accepted diagonal.
-- Preserve the identity of all three rods across motion; no crossing or role
-  swap. Mirroring/reversing requires an explicit design reopen.
+## Accepted evidence
 
-## Accepted mechanism
+- Focused tests `10 passed`.
+- Rail reconstruction residual `3.97e-15 mm`; minimum web
+  `2.200398673579 mm`.
+- Four-contact closure rank `3`; maximum normalized condition
+  `3.750295905779`.
+- 65-state actual-BREP and full two-sided support passed with zero unintended
+  intersections.
+- Completed-pigtail service clearance `0.933815921231 mm` analytic and
+  `1.25 mm` BREP against the `0.75 mm` gate.
+- Six STEP artifacts validate and exactly match source bounds/topology/counts.
+- Four snapshots were independently reviewed.
+- Formal review accepts CAD, STEP and Viewer handoff only.
 
-- Fixed: purple stepped axle at `A=(-29,17)`, both inner plates, both keepers.
-- Moving: all three `OD4 x 50 mm` stainless rods and all six permanent caps.
-- Rotating: outer plates counter-rotate by `-theta/+theta` around
-  `C=(3,12)`, with the right outer plate larger for force input.
-- Guides: fixed-inner rod tracks are straight; side-local outer rod/axle rails
-  are inverse-transform-derived.
-- Travel: OPEN to first contact at `23.4331751998 deg` to END at `24 deg`;
-  `0.25 mm` additional displacement is a geometry proxy, not force proof.
-- Forbidden: stability bar, yoke, linkage, gear, grip block, replacement lock,
-  or any claim that END is self-locking.
+## Next smallest action
 
-## Immediate task
+Obtain user review of the persistent P18 full-motion Viewer. Do not change CAD
+from visual feedback until the exact requested change is stated. Do not slice
+or print unless explicitly requested.
 
-Do not alter the accepted fingerprint during review. The exact persistent
-singleton Viewer page is the review surface. If the user authorizes printing,
-regenerate from source, run mesh/DfAM/slicer checks, then execute the physical
-three-rod/cap/slot experiment in `PROJECT_STATE.md` and the active `HANDOFF.md`.
+If the user approves the 3D geometry for a first print, keep these physical
+gates explicit: near-tangent hand force/friction/wedging/backlash, complete
+soldering-iron access, cap/keeper retention, axle/hex fit, limiting-web PETG
+outcome, right-side grip usefulness, heat and wear. END is not self-locking.
 
-Use only Python 3.12 through the root uv workspace. Use the singleton Viewer
-managed by `~/.local/bin/cad-viewer`; do not start an ad-hoc competing server.
-
-## Acceptance boundary
-
-CAD/source, ten STEP exports, frozen visuals, prescribed motion, and Viewer HTTP
-readiness are accepted for `f5bc383f...`. Interactive slider manipulation,
-mesh, DfAM, slicer, 3MF, PETG fit, cap/keeper retention, force, wobble, wire
-damage, springback, thermal behavior, endpoint retention, and self-lock are not
-accepted.
+Use only Python 3.12 through the repository root `uv` workspace and the
+persistent singleton Viewer managed by `~/.local/bin/cad-viewer`.
