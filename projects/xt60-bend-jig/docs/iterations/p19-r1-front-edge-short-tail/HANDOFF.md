@@ -61,6 +61,7 @@ or physical acceptance is included.
 
 ## Resume action
 
-Preserve the exact candidate fingerprint through GitHub delivery. Any source,
-parameter, STEP, sidecar, or review-artifact change reopens validation and
-formal review. Do not produce print artifacts without separate authorization.
+Merge the exact candidate fingerprint through GitHub PR
+`https://github.com/scottchu/design-projects/pull/11`. Any source, parameter,
+STEP, sidecar, or review-artifact change reopens validation and formal review.
+Do not produce print artifacts without separate authorization.

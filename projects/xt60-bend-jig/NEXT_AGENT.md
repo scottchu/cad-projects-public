@@ -33,7 +33,7 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Next smallest action
 
-Complete repository delivery of this exact fingerprint. After merge, request
-human Viewer review before any separately authorized mesh/3MF/slicing/printing
-or physical acceptance. Any geometry change reopens the candidate fingerprint,
-validation, and formal review.
+Merge GitHub PR `https://github.com/scottchu/design-projects/pull/11`, then
+request human Viewer review before any separately authorized
+mesh/3MF/slicing/printing or physical acceptance. Any geometry change reopens
+the candidate fingerprint, validation, and formal review.

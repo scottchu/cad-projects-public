@@ -108,7 +108,8 @@ Last updated: `2026-08-26`
 
 ## Next action
 
-Deliver the exact accepted fingerprint through the active non-main branch and
-pull request. After merge, the next product action is human Viewer review and
-then a separately authorized prototype/physical test plan. Do not silently
-add margin, change topology, produce 3MF, slice, or print.
+The exact accepted fingerprint is delivered in GitHub PR
+`https://github.com/scottchu/design-projects/pull/11`. After merge, the next
+product action is human Viewer review and then a separately authorized
+prototype/physical test plan. Do not silently add margin, change topology,
+produce 3MF, slice, or print.
