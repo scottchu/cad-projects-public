@@ -2,10 +2,30 @@
 
 Last updated: `2026-08-26`
 
+## Active forward design gate
+
+- Active iteration: `p20-r1-fixed-rod-reset`.
+- The user rejected P19 as the forward product direction because the outer
+  rod rails overlap too much with the fixed-inner rails and the fixed-rod
+  arrangement lacks effective rotation.
+- P20 R1 starts from the exact merged P19 fingerprint, removes all six outer
+  rod rails, moves the fixed stepped axle farther lower-left, changes the two
+  outer plates to `-45/+45 deg`, and rederives their two fixed-axle guides.
+- The numeric FRONT-YZ design gate and an independent critique are complete.
+  Centered-equivalent `-45/+45 deg` motion about witness datum
+  `A=(-15,-11)` passes analytically, but the frozen topology is blocked at
+  OPEN: three retained rods intersect both solid outer plates after all six
+  outer rod apertures are removed.
+- No P20 source, tests, CAD, STEP, Viewer, fabrication, or physical candidate
+  exists. Implementation is blocked pending an explicit user topology choice.
+- P19 remains the prior accepted digital evidence baseline and is superseded
+  only for forward design; its history and acceptance record are not erased.
+- Authority: `docs/iterations/p20-r1-fixed-rod-reset/`.
+
 ## Current accepted digital candidate
 
 - Project: `projects/xt60-bend-jig`.
-- Active iteration: `p19-r1-front-edge-short-tail`.
+- Prior accepted iteration: `p19-r1-front-edge-short-tail`.
 - P19 R1 is formally accepted for parametric CAD, the six written STEP
   artifacts, and exact-artifact Viewer handoff only.
 - Candidate manifest:
@@ -108,8 +128,8 @@ Last updated: `2026-08-26`
 
 ## Next action
 
-The exact accepted fingerprint is delivered in GitHub PR
-`https://github.com/scottchu/design-projects/pull/11`. After merge, the next
-product action is human Viewer review and then a separately authorized
-prototype/physical test plan. Do not silently add margin, change topology,
-produce 3MF, slice, or print.
+Do not start P20 implementation. Ask the user to choose between closing the
+strict no-outer-aperture topology as infeasible or reopening the contract to
+allow a non-guiding clearance aperture/window for each retained rod. Do not
+start CAD, STEP, 3MF, slicing, printing, or further optimization before that
+choice is explicit.

@@ -1,10 +1,25 @@
 # Next agent
 
 Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
-`docs/decisions/README.md`, and every file under
-`docs/iterations/p19-r1-front-edge-short-tail/` before changing this project.
+`docs/decisions/README.md`, the frozen P20 contract under
+`docs/iterations/p20-r1-fixed-rod-reset/`, and the declared P19 baseline paths
+in its `DESIGN_INPUT_MANIFEST.sha256` before changing this project.
 
 ## Resume point
+
+- Active forward iteration: `p20-r1-fixed-rod-reset`.
+- P20-DESIGN-01 and independent P20-CRITIC-01 are complete. Both confirm that
+  the centered-equivalent motion math passes but the frozen topology is
+  infeasible at OPEN. Implementation is blocked on a new explicit user
+  topology choice.
+- Contract-opening HEAD:
+  `e0474bd6f3475cc26c71a9e84148f78b606a1db4`.
+- Product input baseline: merged P19 R1
+  `b69b6ad12af611644987f026eef4940db9c7bb34`.
+- P19 is retained as prior accepted digital evidence but superseded for
+  forward product design by the user's rail-overlap/rotation failure report.
+
+## Prior P19 fingerprint
 
 - Active iteration: `p19-r1-front-edge-short-tail`.
 - P19 R1 is digitally accepted for CAD, six written STEP artifacts, and exact
@@ -33,7 +48,7 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Next smallest action
 
-Merge GitHub PR `https://github.com/scottchu/design-projects/pull/11`, then
-request human Viewer review before any separately authorized
-mesh/3MF/slicing/printing or physical acceptance. Any geometry change reopens
-the candidate fingerprint, validation, and formal review.
+Present the existing 2D gate and ask the user whether to keep the strict
+no-outer-aperture rule and close P20 as infeasible, or explicitly authorize a
+new contract with non-guiding clearance apertures/windows for the retained
+rods. Do not edit source or run BREP/STEP work until the user chooses.
