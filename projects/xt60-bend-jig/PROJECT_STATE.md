@@ -11,16 +11,41 @@ Last updated: `2026-08-26`
 - P20 R1 starts from the exact merged P19 fingerprint, removes all six outer
   rod rails, moves the fixed stepped axle farther lower-left, changes the two
   outer plates to `-45/+45 deg`, and rederives their two fixed-axle guides.
-- The numeric FRONT-YZ design gate and an independent critique are complete.
-  Centered-equivalent `-45/+45 deg` motion about witness datum
-  `A=(-15,-11)` passes analytically, but the frozen topology is blocked at
-  OPEN: three retained rods intersect both solid outer plates after all six
-  outer rod apertures are removed.
-- No P20 source, tests, CAD, STEP, Viewer, fabrication, or physical candidate
-  exists. Implementation is blocked pending an explicit user topology choice.
+- The numeric FRONT-YZ design gate and independent critique remain immutable
+  blocked product-candidate evidence. They prove centered-equivalent
+  `-45/+45 deg` motion about `A=(-15,-11)` and six unavoidable rod/solid-
+  outer-plate collisions when all outer apertures are absent.
+- The user has now authorized that exact collision state as a deliberate
+  sequential **evidence-only scaffold**. No clearance holes are allowed now;
+  the three outer rails may be added back only one at a time in future,
+  separately authorized iterations.
+- The exact sequential scaffold is implemented and formally accepted for
+  **scaffold conformance only**. It remains explicitly non-candidate and
+  cannot be called a complete movable assembly, manufacturable part, or
+  physically accepted mechanism.
 - P19 remains the prior accepted digital evidence baseline and is superseded
   only for forward design; its history and acceptance record are not erased.
 - Authority: `docs/iterations/p20-r1-fixed-rod-reset/`.
+
+## P20 scaffold conformance evidence
+
+- Frozen candidate manifest SHA-256:
+  `59ad1459f3abcdbb3a8771f3fa10ad461471594d47dbb723781ea3597f9395c9`,
+  verified `20/20`.
+- Fixed axle datum `A=(-15,-11)`; outer travel is `-45/+45 deg`, exactly
+  `90 deg` relative, with one centered constant axle journal per outer plate.
+- Outer rod rails and substitute rod apertures are exactly zero. All six
+  expected OPEN rod/solid-outer-plate collisions remain present and total
+  `241.2743157956962 mm3`; the unexpected collision map is empty.
+- Focused P20 tests pass `8/8`; combined P19+P20 regression passes `16/16`.
+  Four written STEP artifacts validate and match their generators.
+- Independent critic recheck SHA-256:
+  `6531dea20ed5d4d744259f5c6a4c8896d2c0ec929ff47395a5757f0282d10819`.
+- Independent validator recheck SHA-256:
+  `73312ac348745ce6a1a513283e752094bc826f1effcda028961f43d3b23a10b0`.
+- Formal scaffold review SHA-256:
+  `3f57e45432591b13ed7fcc71011185534c18107f099ac251b93c5dc6ee131130`;
+  verdict `ACCEPT` for scaffold conformance only.
 
 ## Current accepted digital candidate
 
@@ -128,8 +153,7 @@ Last updated: `2026-08-26`
 
 ## Next action
 
-Do not start P20 implementation. Ask the user to choose between closing the
-strict no-outer-aperture topology as infeasible or reopening the contract to
-allow a non-guiding clearance aperture/window for each retained rod. Do not
-start CAD, STEP, 3MF, slicing, printing, or further optimization before that
-choice is explicit.
+**STOP.** Do not add a rail, choose a rail order, add clearance geometry,
+optimize, slice, print, or promote the scaffold to product acceptance. Any
+future step requires separate user authorization and a new one-factor-at-a-
+time contract for exactly one named outer rail.

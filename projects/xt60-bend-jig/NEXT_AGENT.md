@@ -8,12 +8,15 @@ in its `DESIGN_INPUT_MANIFEST.sha256` before changing this project.
 ## Resume point
 
 - Active forward iteration: `p20-r1-fixed-rod-reset`.
-- P20-DESIGN-01 and independent P20-CRITIC-01 are complete. Both confirm that
-  the centered-equivalent motion math passes but the frozen topology is
-  infeasible at OPEN. Implementation is blocked on a new explicit user
-  topology choice.
+- P20-DESIGN-01 and independent P20-CRITIC-01 remain immutable blocked
+  product-gate evidence. The user has since authorized the same no-aperture,
+  six-collision state as a deliberate evidence-only sequential scaffold.
+- P20 scaffold implementation, focused repair, independent critic recheck,
+  independent validator recheck, and formal scaffold review are complete.
+  The exact scaffold fingerprint is `59ad1459...95c9`, verified `20/20`, and
+  is accepted for scaffold conformance only.
 - Contract-opening HEAD:
-  `e0474bd6f3475cc26c71a9e84148f78b606a1db4`.
+  `5e58e37ad22ed9d2121417c245410c3dbda45a7b`.
 - Product input baseline: merged P19 R1
   `b69b6ad12af611644987f026eef4940db9c7bb34`.
 - P19 is retained as prior accepted digital evidence but superseded for
@@ -48,7 +51,7 @@ in its `DESIGN_INPUT_MANIFEST.sha256` before changing this project.
 
 ## Next smallest action
 
-Present the existing 2D gate and ask the user whether to keep the strict
-no-outer-aperture rule and close P20 as infeasible, or explicitly authorize a
-new contract with non-guiding clearance apertures/windows for the retained
-rods. Do not edit source or run BREP/STEP work until the user chooses.
+Remain stopped. Do not choose or add an outer rail without a new explicit user
+instruction. A future authorized iteration may add exactly one named outer
+rail, must validate it against its corresponding inner path and every already-
+present neighboring outer rail, and must roll back only that rail if it fails.

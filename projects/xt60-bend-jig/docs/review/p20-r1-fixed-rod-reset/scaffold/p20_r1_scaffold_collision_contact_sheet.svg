@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="3000" viewBox="0 0 3000 3000">
+  <rect width="3000" height="3000" fill="#eef2f7"/>
+  <rect x="0" y="0" width="3000" height="230" fill="#9d1824"/>
+  <text x="1500" y="148" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="72" font-weight="700" fill="#ffffff">
+    NON-CANDIDATE SCAFFOLD — EXPECTED ROD/OUTER COLLISIONS
+  </text>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#16202a">
+    <text x="750" y="330" text-anchor="middle">OPEN · u=0.0</text>
+    <text x="2250" y="330" text-anchor="middle">MID · u=0.5</text>
+    <text x="1500" y="1630" text-anchor="middle">END · u=1.0</text>
+  </g>
+
+  <image x="50" y="355" width="1400" height="933"
+         preserveAspectRatio="xMidYMid meet"
+         href="p20_r1_scaffold_open_transparent_yz_20260826T234638Z.png"/>
+  <image x="1550" y="355" width="1400" height="933"
+         preserveAspectRatio="xMidYMid meet"
+         href="p20_r1_scaffold_mid_transparent_yz_20260826T234640Z.png"/>
+  <image x="800" y="1655" width="1400" height="933"
+         preserveAspectRatio="xMidYMid meet"
+         href="p20_r1_scaffold_end_transparent_yz_20260826T234642Z.png"/>
+
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#9d1824">
+    <text x="1500" y="2680" font-size="52" font-weight="700">
+      SOLID OUTER PLATES ARE DISPLAYED TRANSPARENT
+    </text>
+    <text x="1500" y="2750" font-size="42" font-weight="600">
+      Dark rods pass through solid plate volume — the circles are not holes.
+    </text>
+  </g>
+
+  <rect x="0" y="2830" width="3000" height="170" fill="#16202a"/>
+  <text x="1500" y="2935" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="52" font-weight="700" fill="#ffffff">
+    STATIC COLLISION EVIDENCE ONLY · THIS IS NOT VALID MOTION
+  </text>
+</svg>
