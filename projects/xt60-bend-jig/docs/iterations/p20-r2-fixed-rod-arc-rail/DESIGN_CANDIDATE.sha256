@@ -1,0 +1,5 @@
+# P20 R2 user-approved corrected-sign analytic candidate
+# Physical LEFT +45 deg, physical RIGHT -45 deg, both about C=(0,0).
+5cf5952c30fde99c1d7afe4998a4a912e069c13b84f4251d0b282c9c885ae486  projects/xt60-bend-jig/docs/iterations/p20-r2-fixed-rod-arc-rail/DESIGN_INPUT_MANIFEST.sha256
+4a6cca218f630f10e83070535c5d355e56086e8dd41105ea16da31f37cdcf823  projects/xt60-bend-jig/docs/iterations/p20-r2-fixed-rod-arc-rail/DESIGN.md
+e2d05a852889bef2e9c97a2e18878b475aef39b690fa884d6db6a1054d1da8d7  projects/xt60-bend-jig/docs/review/p20-r2-fixed-rod-arc-rail/p20_r2_corrected_twist_center_gate.png

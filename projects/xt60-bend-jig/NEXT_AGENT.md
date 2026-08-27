@@ -1,13 +1,47 @@
 # Next agent
 
 Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
-`docs/decisions/README.md`, the frozen P20 contract under
-`docs/iterations/p20-r1-fixed-rod-reset/`, and the declared P19 baseline paths
-in its `DESIGN_INPUT_MANIFEST.sha256` before changing this project.
+`docs/decisions/README.md`, the corrected P20 R2 contract under
+`docs/iterations/p20-r2-fixed-rod-arc-rail/`, and every path declared by its
+`DESIGN_INPUT_MANIFEST.sha256` before changing this project.
 
 ## Resume point
 
-- Active forward iteration: `p20-r1-fixed-rod-reset`.
+- Active forward iteration: `p20-r2-fixed-rod-arc-rail`.
+- The user approved the complete P19-based P20 R2 assembly's fixed purple rod
+  and both curved fixed-rod rails. Freeze source SHA-256
+  `1b004ac07fbd3f8ff2f776b3219c5b98e50825b123e1ec3410683d61134baa73`,
+  focused STEP SHA-256
+  `07c398b9b01233150dc4ca0805e2a7e2980f60fff302e1442654e0c3fb3f8f2c`,
+  and full assembly STEP SHA-256
+  `715851b434ab2e17a7f6c29be0b21924fb99ed6e28c20be8b276399a5d1d6bca`.
+- Never touch `C=(0,0)`, world-fixed `A=(-15,-11)`, physical left/right
+  `+45/-45 deg`, `qL(1)=(-18.384776310850235,+2.828427124746188)`,
+  `qR(1)=(-2.828427124746192,-18.384776310850235)`, either `7.90 mm`
+  curved rail, or the zero white-rod outer-rail count in the next task.
+- The inherited P19 END-derived diagonal wire is **USER-REJECTED**. Correct
+  only the wire to the established exact vertical leg + tangent R6 quarter arc
+  + exact horizontal leg, with regressions against `REQ-002` and `REQ-017`.
+- This escaped because P19 `build_workpiece_reference()` and its tests encoded
+  the same contradictory diagonal assumption.
+- Contract-opening clean HEAD: `a48c5697f9126dbb6934d764e48f2a01f6a01475`.
+- Product baseline: exact P19 R1 `b69b6ad12af611644987f026eef4940db9c7bb34`.
+- P20 R1 was rejected by the user because its round fixed-axle journal omitted
+  the requested curved rotation rail and changed the effective outer rotation
+  center from `C` to `A`. Preserve all P20 R1 files as rejected history.
+- Corrected P20 R2 keeps `C=(0,0)`, fixed world axle candidate
+  `A=(-15,-11)`, fixed inner plates, and physical left/right `+45/-45 deg`. Each outer
+  plate needs a true curved inverse-frame fixed-axle rail.
+- All white-rod outer rails and substitute apertures remain absent; all inner
+  rails remain. Six white-rod/outer-solid collisions are deliberate,
+  non-product evidence and must remain explicit.
+- Future white-rod outer rails are one-at-a-time work because each interacts
+  with its corresponding inner rail and neighboring outer rails.
+- Next task is only `P20R2-DESIGN-01` and its phone-readable 2D intent gate.
+
+## Rejected P20 R1 record
+
+- Prior iteration: `p20-r1-fixed-rod-reset`.
 - P20-DESIGN-01 and independent P20-CRITIC-01 remain immutable blocked
   product-gate evidence. The user has since authorized the same no-aperture,
   six-collision state as a deliberate evidence-only sequential scaffold.
@@ -51,7 +85,7 @@ in its `DESIGN_INPUT_MANIFEST.sha256` before changing this project.
 
 ## Next smallest action
 
-Remain stopped. Do not choose or add an outer rail without a new explicit user
-instruction. A future authorized iteration may add exactly one named outer
-rail, must validate it against its corresponding inner path and every already-
-present neighboring outer rail, and must roll back only that rail if it fails.
+Open only the wire correction and refactor the inherited diagonal reference to
+the exact 90-degree vertical + R6 quarter arc + horizontal topology. Add a
+requirement-level regression. Treat any requested fixed-rod/rail/source hash
+change as a hard stop. Do not choose or add a white-rod outer rail.

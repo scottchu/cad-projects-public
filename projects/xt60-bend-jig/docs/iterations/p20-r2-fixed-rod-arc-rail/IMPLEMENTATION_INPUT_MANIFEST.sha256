@@ -1,0 +1,14 @@
+# P20 R2 corrected-sign implementation input manifest
+# Supersedes aggregate acec208df5f1de3abcc9b245c51c6161f099363517f92616852c146677fcfb26.
+# User-approved gate SHA-256: e2d05a852889bef2e9c97a2e18878b475aef39b690fa884d6db6a1054d1da8d7
+# Product baseline: b69b6ad12af611644987f026eef4940db9c7bb34
+a0296c5c4a37d7b162117ea3666b70ca8f38c82e13bed33e38828849ad994c80  AGENTS.md
+83bfe40e67ab1f0a90239a77106b491df193b0a7cdf14f782a06ed5bcced6be3  docs/CAD_WORKFLOW.md
+c53fd209fcb0b9f3a7c01a178936d01b4733428e5af851b20f98dc599530e755  projects/xt60-bend-jig/docs/iterations/p20-r2-fixed-rod-arc-rail/TASK_INPUT.md
+9bd84fa181b53761d66b524adbeab06410959b34212464354677e302c24531ee  projects/xt60-bend-jig/docs/iterations/p20-r2-fixed-rod-arc-rail/BRIEF.md
+5cf5952c30fde99c1d7afe4998a4a912e069c13b84f4251d0b282c9c885ae486  projects/xt60-bend-jig/docs/iterations/p20-r2-fixed-rod-arc-rail/DESIGN_INPUT_MANIFEST.sha256
+d51af4dcd0d8aeecb4915b7a3d7253a8d7fde26982ae3dacdb969638733ae8d2  projects/xt60-bend-jig/docs/iterations/p20-r2-fixed-rod-arc-rail/DESIGN_CANDIDATE.sha256
+4a6cca218f630f10e83070535c5d355e56086e8dd41105ea16da31f37cdcf823  projects/xt60-bend-jig/docs/iterations/p20-r2-fixed-rod-arc-rail/DESIGN.md
+e2d05a852889bef2e9c97a2e18878b475aef39b690fa884d6db6a1054d1da8d7  projects/xt60-bend-jig/docs/review/p20-r2-fixed-rod-arc-rail/p20_r2_corrected_twist_center_gate.png
+41c06b8536fbf4e1bb2e9979d74de299232379b4b0ebf87ee81e93c63f581017  git:b69b6ad12af611644987f026eef4940db9c7bb34:projects/xt60-bend-jig/src/xt60_bend_jig/p19_r1_front_edge_short_tail.py
+c9733d7a870eb7ca84fb7b1cb4ad6ac86271e513d0eebed3bf0ff3a0118f1ffc  git:b69b6ad12af611644987f026eef4940db9c7bb34:projects/xt60-bend-jig/tests/test_p19_r1_front_edge_short_tail.py

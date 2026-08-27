@@ -4,7 +4,39 @@ Last updated: `2026-08-26`
 
 ## Active forward design gate
 
-- Active iteration: `p20-r1-fixed-rod-reset`.
+- Active iteration: `p20-r2-fixed-rod-arc-rail`.
+- The user has approved the complete P19-based P20 R2 assembly's fixed purple
+  rod and both curved fixed-rod rails. Their exact source/STEP fingerprints,
+  `C=(0,0)`, `A=(-15,-11)`, physical left/right `+45/-45 deg`, local rail
+  endpoints, `7.90 mm` cutters, and zero white-rod outer rails are frozen and
+  may not change in the next task.
+- Acceptance is split: fixed-rod/rail/complete-assembly presence is
+  **USER-APPROVED**, while the inherited P19 END-derived diagonal wire is
+  **USER-REJECTED**. The next bounded task corrects only the wire to an exact
+  vertical leg + tangent R6 quarter arc + exact horizontal leg.
+- The diagonal escaped because P19 `build_workpiece_reference()` and its tests
+  encoded the same contradictory diagonal assumption instead of testing core
+  `REQ-002`/`REQ-017` 90-degree topology.
+- The user rejected the P20 R1 scaffold because it replaced the required
+  curved fixed-rod rotation rails with round journals and effectively rotated
+  the outer plates about the fixed axle. P20 R1 remains immutable rejected
+  history; its source, artifacts, and scaffold-conformance evidence are not
+  rewritten.
+- P20 R2 restarts from exact P19 product baseline `b69b6ad...`, preserves P19
+  outer virtual center `C=(0,0)`, keeps the axle/inner plates world-fixed,
+  moves the axle to candidate `A=(-15,-11)`, and derives one true curved
+  inverse-frame fixed-axle rail in each outer plate through physical
+  left/right `+45/-45 deg`.
+- All six white-rod outer rails remain absent and all six inner-plate rail cuts
+  remain. The six resulting white-rod/solid-outer-plate collisions are a known,
+  visible non-product boundary, not a reason to add substitute holes.
+- Future white-rod outer rails will be added one at a time in separate
+  contracts because each couples to its inner path and neighboring outer rails.
+- Authority: `docs/iterations/p20-r2-fixed-rod-arc-rail/`.
+
+## Rejected P20 R1 history
+
+- Prior iteration: `p20-r1-fixed-rod-reset`.
 - The user rejected P19 as the forward product direction because the outer
   rod rails overlap too much with the fixed-inner rails and the fixed-rod
   arrangement lacks effective rotation.
@@ -153,7 +185,11 @@ Last updated: `2026-08-26`
 
 ## Next action
 
-**STOP.** Do not add a rail, choose a rail order, add clearance geometry,
-optimize, slice, print, or promote the scaffold to product acceptance. Any
-future step requires separate user authorization and a new one-factor-at-a-
-time contract for exactly one named outer rail.
+Open a wire-only correction from P20 R2 source SHA-256
+`1b004ac07fbd3f8ff2f776b3219c5b98e50825b123e1ec3410683d61134baa73`
+and complete-assembly STEP SHA-256
+`715851b434ab2e17a7f6c29be0b21924fb99ed6e28c20be8b276399a5d1d6bca`.
+Replace only the diagonal wire reference with the exact vertical + R6 quarter
+arc + horizontal topology and add requirement-level regression. Never alter
+the fixed purple rod, either curved rail, their paths/cutters, `C`, `A`, motion
+signs, or zero white-rod outer-rail count.
