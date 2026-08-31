@@ -11,8 +11,9 @@ PRINT-PR-IMPL complete; owner /root/printing_docs. Baseline is clean main
 Source worktree is read-only; only the allowlisted documentation additions are
 ported. The XT60 profile binds main P19, not unmerged forward designs.
 
-Next: root commits, pushes and opens the standalone PR, then verifies its remote
-head and URL. Merge is not authorized. Earlier checkpoints below are historical.
+Delivery: [PR #12](https://github.com/scottchu/design-projects/pull/12) is open
+against `main`, not merged. Next: user reviews the standalone PR. Earlier
+checkpoints below are historical; no further implementation or print is authorized.
 
 ## Implementation receipt
 
@@ -74,3 +75,16 @@ formal review begins only after their write leases are released.
 The original checkout remains preserved. Runtime-generated egg-info is excluded.
 Open process selections and physical concerns remain pending in each profile;
 future manufacturing work must follow the existing project gates.
+
+## PR delivery receipt
+
+Root committed the reviewed candidate as
+`c8ae3e12ca4ee2e4061132424a30af440544411a` and pushed
+`codex/project-printing-profiles`. `gh pr create --base main --head
+codex/project-printing-profiles` created PR #12; `gh pr view 12` verified OPEN,
+non-draft, base `main`, the exact branch and matching remote head. The PR has
+only the 23 allowlisted paths and discloses the inherited test failure.
+
+This delivery-receipt update changes only this mutable handoff; the frozen
+29-row candidate and all independent receipts remain unchanged. No merge was
+performed. The original workspace and untracked runtime cache remain intact.
