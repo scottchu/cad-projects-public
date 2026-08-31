@@ -45,3 +45,12 @@ The initial critic required a focused repair; the original `f9651e45…` candida
 - Preservation: the locked STEP remains `dea274f64bdc841e77d75fda9d4e0638a9627a599d13295cb78b0ec1bd6997a7`; both Trash trees remain intact; `kage/restart-20260822` is restored and retained at `96b055d4b8d0b87f3e6132fa3d90b23b3be4ed84`; the old repository still has only its `main` worktree registered.
 - Acceptance boundary: direct preview readiness only. Restart CAD/source, slicer/fabrication, physical print/assembly, and unperformed visual observation remain unaccepted.
 - Root delivery: accepted candidate committed as `e7dbb5f9ec3c84e5ca457062be19c2f89307faa1` on `codex/simplify-cad-preview` and delivered through pull request [#6](https://github.com/scottchu/design-projects/pull/6). Retain the branch and Trash recovery state; `KAGE-EXP-001` remains the sole next design action.
+
+## Later printing-profile pointer — 2026-08-31
+
+See [PRINTING_PROFILE.md](../../../PRINTING_PROFILE.md) and the separate
+[repository-policy handoff](../../../../../docs/iterations/2026-08-31-printing-profiles/HANDOFF.md).
+New 806-row docs-only integrity snapshot:
+`a49cdaf17eed504e7aba262d844499efba6da3ed6874fbfafa76ea43d9f7306f`.
+The historical verdict above does not accept this snapshot. CAD/source/reference,
+frozen BRIEF/DESIGN, CURRENT and print acceptance are unchanged.

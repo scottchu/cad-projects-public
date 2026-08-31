@@ -37,3 +37,10 @@ Merge GitHub PR `https://github.com/scottchu/design-projects/pull/11`, then
 request human Viewer review before any separately authorized
 mesh/3MF/slicing/printing or physical acceptance. Any geometry change reopens
 the candidate fingerprint, validation, and formal review.
+
+## Printing-profile addendum — 2026-08-31
+
+Read [PRINTING_PROFILE.md](PRINTING_PROFILE.md) before future authorized print
+preparation; P19 process selection and manufacturing/physical gates remain open.
+See the [repository-policy handoff](../../docs/iterations/2026-08-31-printing-profiles/HANDOFF.md) for independent status.
+No CURRENT, frozen contract/fingerprint or design acceptance changes follow.

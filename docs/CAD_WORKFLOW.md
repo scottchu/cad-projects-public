@@ -76,6 +76,11 @@ Classify each statement:
 
 Give hard requirements stable IDs such as `REQ-01`. Each ID must map to automated evidence, a manual visual check, or an explicitly pending physical gate.
 
+For printed parts, consult [FDM design rules](FDM_DESIGN_RULES.md) and the
+project's `PRINTING_PROFILE.md` while forming this contract. Record load-relative
+print orientation, nozzle/material choices and unresolved concerns there; workshop
+inventory alone is neither a project selection nor process validation.
+
 ## Phase 2: choose the smallest useful test plan
 
 Start with the four core categories below. Use one or a few high-value checks in each category rather than generating many near-duplicates.
@@ -204,6 +209,11 @@ Use for print-ready claims:
 - the actual printer, nozzle, material, and slicer profile when available.
 
 Do not use a slicer workaround to hide a source-geometry defect.
+
+Bind the exact source/artifact and resolved slicer settings, including part/plate
+overrides, to a versioned run in `PRINTING_PROFILE.md`. Preserve prior run evidence
+when settings change. Profile completion does not waive design blockers or replace
+separate CAD, written artifact/slicer and physical acceptance.
 
 ### Visual review
 

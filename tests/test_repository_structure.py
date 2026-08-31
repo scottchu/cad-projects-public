@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTINUITY_FILES = (
     "PROJECT_STATE.md",
     "NEXT_AGENT.md",
+    "PRINTING_PROFILE.md",
     "docs/REQUIREMENTS.md",
     "docs/EXPERIENCE.md",
     "docs/decisions/README.md",
@@ -63,6 +64,7 @@ def test_required_repository_docs_exist() -> None:
         "docs/PROJECT_CONTINUITY.md",
         "docs/CAD_WORKFLOW.md",
         "docs/WORKSHOP.md",
+        "docs/FDM_DESIGN_RULES.md",
     )
 
     assert all((ROOT / path).is_file() for path in required)
@@ -271,3 +273,26 @@ def test_workspace_members_externalize_project_continuity() -> None:
         state = (project / "PROJECT_STATE.md").read_text()
         for heading in ("## Baseline", "## Active iteration", "## Acceptance state", "## Next action"):
             assert heading in state
+
+
+def test_printing_profiles_and_template_have_settings_and_evidence_sections() -> None:
+    """Catch missing profiles or an empty settings-only file that loses run evidence."""
+    profiles = [ROOT / "docs/templates/project-continuity/PRINTING_PROFILE.md"]
+    profiles.extend(
+        project / "PRINTING_PROFILE.md"
+        for project in (ROOT / "projects").iterdir()
+        if project.is_dir()
+    )
+    for profile in profiles:
+        assert profile.is_file(), profile
+        text = profile.read_text()
+        for heading in (
+            "## Profile",
+            "## Intended settings",
+            "## Part orientation and fits",
+            "## Verified slice and print runs",
+            "## Concerns",
+        ):
+            assert heading in text, (profile, heading)
+            section = text.split(heading, 1)[1].split("\n## ", 1)[0].strip()
+            assert section, (profile, heading)

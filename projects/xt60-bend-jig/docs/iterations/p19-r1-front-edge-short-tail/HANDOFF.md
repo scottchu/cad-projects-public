@@ -65,3 +65,11 @@ Merge the exact candidate fingerprint through GitHub PR
 `https://github.com/scottchu/design-projects/pull/11`. Any source, parameter,
 STEP, sidecar, or review-artifact change reopens validation and formal review.
 Do not produce print artifacts without separate authorization.
+
+## Later printing-profile pointer — 2026-08-31
+
+See [PRINTING_PROFILE.md](../../../PRINTING_PROFILE.md) and the separate
+[repository-policy handoff](../../../../../docs/iterations/2026-08-31-printing-profiles/HANDOFF.md).
+Only documentation/profile concerns were added. The P19 frozen candidate,
+source/tests/artifacts and CAD/STEP verdict remain unchanged; no printing or
+physical acceptance is granted.

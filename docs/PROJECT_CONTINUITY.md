@@ -22,6 +22,7 @@ Every directory under `projects/` must contain:
 - `README.md`: stable purpose, authoritative source, setup, generation, and test commands;
 - `PROJECT_STATE.md`: concise current-state index with baseline, active iteration, acceptance states, open risks, and next action;
 - `NEXT_AGENT.md`: short restart route pointing to canonical records and exact paths or revisions;
+- `PRINTING_PROFILE.md`: editable printer/nozzle/material settings, per-part print orientation, traceable slice/print runs and a growing concern log; use explicit pending values or justified N/A, following [FDM design rules](FDM_DESIGN_RULES.md);
 - `docs/REQUIREMENTS.md`: stable requirement IDs, invariants, derived constraints, design choices, non-goals, and physical unknowns;
 - `docs/EXPERIENCE.md`: append-only measured observations, physical failures, print or assembly lessons, and their design implications;
 - `docs/decisions/README.md`: decision index linking stable ADR files and marking current or superseded decisions;
