@@ -113,3 +113,11 @@ The exact accepted fingerprint is delivered in GitHub PR
 product action is human Viewer review and then a separately authorized
 prototype/physical test plan. Do not silently add margin, change topology,
 produce 3MF, slice, or print.
+
+## Printing-profile addendum — 2026-08-31
+
+[PRINTING_PROFILE.md](PRINTING_PROFILE.md) holds editable P19 process fields and
+manufacturing concerns. Historical coupon evidence is not P19 print authority.
+See the [repository-policy handoff](../../docs/iterations/2026-08-31-printing-profiles/HANDOFF.md) for independent status.
+P19 CURRENT, frozen contract/fingerprint and CAD/STEP/physical acceptance remain
+unchanged; this is not a new product baseline or permission to print.

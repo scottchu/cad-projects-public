@@ -72,6 +72,7 @@ A project may adapt its internal structure to the work, but should expose these 
 ```text
 projects/<project-slug>/
 ├── README.md
+├── PRINTING_PROFILE.md
 ├── pyproject.toml
 ├── package.json (when JavaScript is used)
 ├── docs/
@@ -80,6 +81,12 @@ projects/<project-slug>/
 ```
 
 The project README must identify authoritative source, regeneration commands, expected outputs, focused tests, and what remains physically unverified.
+
+Every project owns an editable `PRINTING_PROFILE.md`, including justified N/A
+when it has no printed parts. Shared [FDM design rules](FDM_DESIGN_RULES.md)
+guide design; project profiles bind intended printer/nozzle/material settings,
+part orientations, concerns and exact run evidence. Workshop availability is not
+a selected or validated profile. This document is not an executable slicer preset.
 
 ## Durable project memory
 

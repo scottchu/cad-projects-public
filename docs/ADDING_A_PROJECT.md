@@ -24,6 +24,12 @@ Keep the project `package.json` when JavaScript is used, but remove any project-
 
 Create the continuity structure from `docs/templates/project-continuity/`. Preserve legacy handoff files under project-local `docs/legacy/`, then normalize their current facts into `PROJECT_STATE.md`, `NEXT_AGENT.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`, the decision index, and the migration iteration. Do not leave a legacy summary as the only source of current truth.
 
+Copy the [printing-profile template](templates/project-continuity/PRINTING_PROFILE.md)
+to the project root as `PRINTING_PROFILE.md`. Record printer, nozzle, materials,
+per-part orientation, process settings and concerns with their evidence; leave
+unknowns pending and explain N/A if printing does not apply. Keep intended settings
+separate from verified slice/print records. Follow [FDM design rules](FDM_DESIGN_RULES.md).
+
 ## 3. Register dependencies
 
 From the repository root:
