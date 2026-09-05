@@ -42,3 +42,12 @@ After formal review passes, commit and push this branch, open a PR to main and
 apply the reviewed GitHub About description from DESIGN. Do not merge as part
 of this delivery. Resume from this handoff and REVIEW for the final disposition;
 project-specific future work follows each project's unchanged CURRENT pointer.
+
+## Delivery completed — 2026-09-05
+
+Formal review passed. Documentation commit `86ce830` is pushed on
+`codex/refresh-project-documentation`; [PR #14](https://github.com/scottchu/design-projects/pull/14)
+is open against main. The reviewed GitHub About description was applied and
+read back successfully. This delivery-record addendum changes no candidate
+input. Next action: review and merge PR #14; main has not been changed by this
+task. Project design and release acceptance remain unchanged.
