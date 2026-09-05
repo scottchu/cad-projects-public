@@ -1,4 +1,4 @@
-# Next agent — open and merge the reviewed pre-merge candidate
+# Next agent — validate the merged design with the user and a print
 
 Use `docs/iterations/2026-09-04-openscad-visual-fidelity-recovery` as the single
 current iteration. Preserve the authoritative OpenSCAD source
@@ -15,13 +15,16 @@ workflow, and excludes only the redundant R7 body/cap/closed STEP views from
 Git. The files remain local and reproducible. Git must retain R7
 `print_layout.step` plus all four `container_generator_v1` STEP releases.
 
-The frozen candidate `ede603baef8ac0302a3ad044f4c32a8495b565dfd74e21293bcb660a1653761b`
-passed independent formal review `1655b984a5cd71c8aaee7f55c46efa958bb0e1b8c2d38865e9585d0cc07c1d73`
-with review evidence `1c690a08e6a0441766ed0bc79f3f671b0d1750943b8f16fd08a44034b57d126d`.
+The merged candidate `ac45ff09118ee46883d852eccc594ac221e569f0b780dcc6591986909e404be8`
+passed independent formal review `ecdb122bbcbed1bdf8dee2ea9053ea9681473e6eca6dddf7568db073b362a69c`
+with review evidence `333280b91159058d18af3d82bcccf3449a63dbe4544e1b7b60f0f8d99811c23f`.
 Documentation critique `7ab756208e210aa75c32972bb21534f7b80a6723cc2438c48cf02fc23752a626`
 and validation `53913a5f040f7f9535456abfff1a72558b8594acedbd256b5c3e3791cc5cca8d`
 also PASS. The 55 + 2 test classification and current artifact/runtime checks are
-final for this candidate; create the PR and merge through the normal path.
+final. PR #16 is merged at `8faeddaa0ea4a4de8c1c6d97199a68d7b4efe7d4`
+(source commit `5829211964ebecbff8fb505941475648436b1f9c`), with final formal
+receipt `ecdb122bbcbed1bdf8dee2ea9053ea9681473e6eca6dddf7568db073b362a69c` and
+evidence `333280b91159058d18af3d82bcccf3449a63dbe4544e1b7b60f0f8d99811c23f`.
 
 Cleanup recovery is
 `/Users/scottchu/.Trash/laifen-wave-case-premerge-cleanup-2026-09-05.46d83abc57`
@@ -35,4 +38,6 @@ The 27-root quarantine remains recoverable at
 `/Users/scottchu/.Trash/laifen-wave-case-premerge-cleanup-2026-09-05.46d83abc57`
 (617 files/symlinks, 210 directories, 1,303,210,296 bytes). Do not claim a
 fresh clone, Safari, Diamond, new CAD, CAD regeneration, slicing or physical
-acceptance. Do not publish, upload, slice or print.
+acceptance. The next work is user-device review, then separate print/slicer,
+fit, thread wear/strength, drainage-flow and physical acceptance checks. Do not
+upload or start a printer job without a new explicit authorization.

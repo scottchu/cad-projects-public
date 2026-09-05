@@ -49,10 +49,10 @@ LC-VAL-02 `VALIDATION.md`
 and LC-CRIT-01 `CRITIQUE.md`
 `9363b472e33e8308c01a78d508476340f768fdc643d54197d6db0724eac79caf`.
 LC-VAL-02 passed 57 focused tests. LC-CRIT-01's findings are resolved by
-LC-IMP-02 and the independent final review. The frozen pre-merge candidate is
-`ede603baef8ac0302a3ad044f4c32a8495b565dfd74e21293bcb660a1653761b`.
-Formal review is PASS (`1655b984a5cd71c8aaee7f55c46efa958bb0e1b8c2d38865e9585d0cc07c1d73`)
-with review evidence `1c690a08e6a0441766ed0bc79f3f671b0d1750943b8f16fd08a44034b57d126d`.
+LC-IMP-02 and the independent final review. The frozen pre-merge candidate was
+`ac45ff09118ee46883d852eccc594ac221e569f0b780dcc6591986909e404be8` (1,012 entries).
+Formal review is PASS (`ecdb122bbcbed1bdf8dee2ea9053ea9681473e6eca6dddf7568db073b362a69c`)
+with review evidence `333280b91159058d18af3d82bcccf3449a63dbe4544e1b7b60f0f8d99811c23f`.
 Documentation recovery also passed critique `7ab756208e210aa75c32972bb21534f7b80a6723cc2438c48cf02fc23752a626`
 and validation `53913a5f040f7f9535456abfff1a72558b8594acedbd256b5c3e3791cc5cca8d`.
 The README classification is 55 fresh-clone-relevant selections plus 2 local-fixture-only checks.
@@ -69,7 +69,11 @@ local/ignored and reproducible. The live 8448 index is HTTP 200 with SHA-256
 `53210be5e3b21a509c449261c69a271619f6ce0475a32a6eff90af70098b30bb`; the
 OpenSCAD source remains `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`.
 The focused evidence is 55 + 2 tests; no fresh clone, Safari, Diamond, CAD
-regeneration, slicing or physical acceptance is claimed. PR creation and merge are next.
+regeneration, slicing or physical acceptance is claimed. PR #16 was merged on
+2026-09-05T16:18:45Z at `8faeddaa0ea4a4de8c1c6d97199a68d7b4efe7d4`, from source
+commit `5829211964ebecbff8fb505941475648436b1f9c`. Final formal receipt is
+`ecdb122bbcbed1bdf8dee2ea9053ea9681473e6eca6dddf7568db073b362a69c` with
+evidence `333280b91159058d18af3d82bcccf3449a63dbe4544e1b7b60f0f8d99811c23f`.
 
 ## Open acceptance gaps
 
