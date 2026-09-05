@@ -40,14 +40,18 @@ Preserve the OpenSCAD WASM approach. Treat the screenshot's plain cylinder and r
 ## Pre-merge cleanup repair status — 2026-09-05
 
 Final pre-merge review status: PASS. Candidate
-`ede603baef8ac0302a3ad044f4c32a8495b565dfd74e21293bcb660a1653761b` was formally
-accepted with review `1655b984a5cd71c8aaee7f55c46efa958bb0e1b8c2d38865e9585d0cc07c1d73`
-and evidence `1c690a08e6a0441766ed0bc79f3f671b0d1750943b8f16fd08a44034b57d126d`.
+`ac45ff09118ee46883d852eccc594ac221e569f0b780dcc6591986909e404be8` was formally
+accepted with review `ecdb122bbcbed1bdf8dee2ea9053ea9681473e6eca6dddf7568db073b362a69c`
+and evidence `333280b91159058d18af3d82bcccf3449a63dbe4544e1b7b60f0f8d99811c23f`.
 Documentation critique/validation also passed:
 `7ab756208e210aa75c32972bb21534f7b80a6723cc2438c48cf02fc23752a626` /
 `53913a5f040f7f9535456abfff1a72558b8594acedbd256b5c3e3791cc5cca8d`.
-PR creation and merge are the next action. Remaining user-device, CAD, slicing
-and physical gates remain open.
+PR #16 is merged at `8faeddaa0ea4a4de8c1c6d97199a68d7b4efe7d4` on
+2026-09-05T16:18:45Z; source commit is
+`5829211964ebecbff8fb505941475648436b1f9c`. Final formal receipt is
+`ecdb122bbcbed1bdf8dee2ea9053ea9681473e6eca6dddf7568db073b362a69c` with
+evidence `333280b91159058d18af3d82bcccf3449a63dbe4544e1b7b60f0f8d99811c23f`.
+Remaining user-device, CAD, slicing and physical gates remain open.
 
 LC-IMP-02 repaired LC-CRIT-01 C1-C3 without changing source, CAD, tests,
 runtime, Trash or services. Both current pointers now select this iteration.
@@ -69,8 +73,9 @@ LC-VAL-02 `b3acb4889c877fe18526ee80d5ecfecbafd460b7bf87111fe5eade748d77817c`
 with 57 focused tests; LC-CRIT-01
 `9363b472e33e8308c01a78d508476340f768fdc643d54197d6db0724eac79caf`.
 The critique HOLD is resolved. Final candidate
-`ede603baef8ac0302a3ad044f4c32a8495b565dfd74e21293bcb660a1653761b` passed formal
-review `1655b984a5cd71c8aaee7f55c46efa958bb0e1b8c2d38865e9585d0cc07c1d73` with
-evidence `1c690a08e6a0441766ed0bc79f3f671b0d1750943b8f16fd08a44034b57d126d`.
-Documentation critique/validation also passed. PR creation and merge are next.
+`ac45ff09118ee46883d852eccc594ac221e569f0b780dcc6591986909e404be8` passed formal
+review `ecdb122bbcbed1bdf8dee2ea9053ea9681473e6eca6dddf7568db073b362a69c` with
+evidence `333280b91159058d18af3d82bcccf3449a63dbe4544e1b7b60f0f8d99811c23f`.
+PR #16 is merged; documentation critique/validation also passed. User-device,
+CAD, slicing and physical validation are the remaining work.
 Safari, Diamond, CAD reconstruction, slicer and physical gaps remain open.
