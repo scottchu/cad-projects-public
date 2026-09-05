@@ -1,0 +1,3 @@
+import {deepFreeze} from "../core/utils.mjs";
+const entry=(id,label,mainBuilder)=>({id,label,disclosure:"Visual end silhouette; no fabrication claim.",defaults:{size:0},fields:["ends.bottom.profile","ends.bottom.size","ends.top.profile","ends.top.size"],derive:(state,end)=>({profile:state.ends[end].profile,size:state.ends[end].size}),validate:()=>[],visual:{mainBuilder,comparisonBuilder:`${mainBuilder}Comparison`,detailBuilder:`${mainBuilder}Detail`,annotationBuilder:"endDimension"}});
+export const END_REGISTRY=deepFreeze({flat:entry("flat","Flat","flatEnd"),chamfer:entry("chamfer","Chamfer","chamferEnd"),rounded_fillet:entry("rounded_fillet","Rounded fillet","filletEnd"),dome:entry("dome","Dome","domeEnd")});

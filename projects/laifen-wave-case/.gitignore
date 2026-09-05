@@ -1,0 +1,24 @@
+# Runtime and generated caches
+/node_modules/
+/scratch/
+**/__pycache__/
+**/__cadgen__/
+*.py[cod]
+/preview/openscad-wasm-simulator/vendor/
+/preview/openscad-wasm-simulator/dist/
+/cad/p1_r3_generator/generated/
+
+# Historical local STEP fixtures retained outside Git.
+# Current R7 print layout and container_generator_v1 STEP releases stay trackable.
+/cad/p1_r2_coupons/*.step
+/cad/p1_r3_generator/*.step
+/cad/p1_r4_uniform_skin/*.step
+/cad/p1_r5_39mm_case/*.step
+/cad/p1_r6_full_case/*.step
+
+# P1 R7 Git release keeps only the authoritative two-part print layout.
+# These three redundant views remain available locally and are reproducible
+# from the tracked R7 source; ignoring them does not delete the local files.
+/cad/p1_r7_end_chamfer/body.step
+/cad/p1_r7_end_chamfer/cap_c25.step
+/cad/p1_r7_end_chamfer/closed_c25.step

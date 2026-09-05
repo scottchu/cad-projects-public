@@ -1,0 +1,9 @@
+{
+  "edge_count": 12,
+  "endpoint_vertex_max": 4.381744947079222e-05,
+  "lifted_endpoint_max": 4.38221703060061e-05,
+  "trimmed_curve_z_lower_bound": 0.0,
+  "native_vertex_tolerance_max": 0.00013442580515245624,
+  "source_probe_exit": "metadata assertion failed; measured criteria evaluated separately",
+  "disposition": "C20 measured mouth endpoint and plane/range criteria pass; STEP and other cases pending"
+}

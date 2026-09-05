@@ -1,0 +1,8 @@
+# OSW-19 frozen input manifest: path-and-content SHA-256, relative to repository root
+16e2906186858596107527b091f555645e34ae5edf28b51beaa80e91e265d42d  projects/laifen-wave-case/preview/openscad-wasm-simulator/src/main.mjs
+fabd153527ec6c1aa0d5be9008679c7e2147d4559049149d8084b60795ec3845  projects/laifen-wave-case/preview/openscad-wasm-simulator/workers/openscad.worker.js
+6d4a6b007f96b00752efd33cf1cf9e4eff5daaf82f011edd0655ea68c20e09b8  projects/laifen-wave-case/preview/openscad-wasm-simulator/dependency-lock.json
+ce4040064a4684eccd17abe42306aae39dfb1f74cca0d0917933715a0af2ceca  projects/laifen-wave-case/tests/test_openscad_wasm_simulator.py
+1c45c57973d9c2704daf70329c19110856d38f5ee793988995e3d2d062d4c537  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-repeat-call-recovery/FORMAL_REVIEW.md
+33c09c80f62a293ba5fffcd83b282b15c61c8d778b2b5b1b14bbb27c07ba72c7  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-repeat-call-recovery/VALIDATION.md
+b96ce967af0b01d14bea4676d543fe5a51a528c1c8cc02559407108092a99685  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-repeat-call-recovery/IMPLEMENTATION.md

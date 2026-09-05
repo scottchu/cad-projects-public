@@ -1,0 +1,8 @@
+0367b4aff210f4638e5f6f0c599ad3e640738de7d09325b551a80344d01aee19  projects/laifen-wave-case/docs/REQUIREMENTS.md
+7f5aa5a7adf854a6d23ba3c931e4ed4b4b8530dd48cfd12f32928b1cef743c89  projects/laifen-wave-case/openscad/laifen_case_customizer_v1.scad
+774fd5c8e5be700a887bd7005f1212717bd4c4e86d8857f72c70bb2b31df0210  projects/laifen-wave-case/openscad/customizer_contract.py
+a552de195421168fdc5b1270560e05a3e0b57bf93650f68d23ef5d25dac0c083  projects/laifen-wave-case/tests/test_openscad_customizer.py
+4b56a8d0560b72c77e532ffc92a88ab38fcc7ffe95f129babda8299742e39ddd  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/BRIEF.md
+3106fd682866bb62047ba5cd5ebd9d375ecba7049833d9442ec77c5c1889a31e  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/DESIGN.md
+c7f7fcb3976e196bf5cd06759d411508e89467a04e0c074a31f70fb945d95353  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/IMPLEMENTATION.md
+ad8bd6c2304404a86786534a82b22dbb597dccbde6f2e4f3fa650f1ef5bdeebc  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/CRITIQUE.md

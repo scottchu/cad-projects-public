@@ -1,0 +1,35 @@
+{
+  "validator": "/root/render_controls_validate_b",
+  "date": "2026-09-04",
+  "openscad": "/Volumes/OpenSCAD/OpenSCAD-2021.01.app/Contents/MacOS/OpenSCAD",
+  "openscad_version": "2021.01",
+  "input_manifest_sha256": "fe5b5ba5c69a19c67eff3e25e0884dbf187e2a65eaeb6dd9a6d03a6f4c89a5dd",
+  "verdict": "BLOCK",
+  "default_smooth_seconds": {
+    "body": 7.75,
+    "cap": 4.30,
+    "assembled": 18.36,
+    "print_layout": 16.19,
+    "intersection": 18.47
+  },
+  "changed_short_wide_smooth_seconds": {
+    "body": 3.38,
+    "cap": 7.42,
+    "assembled": 15.77,
+    "print_layout": 14.06
+  },
+  "default_diamond_seconds": {
+    "body": 429.09,
+    "cap": 228.73,
+    "assembled_before_termination": 253.90,
+    "print_layout": null
+  },
+  "blockers": [
+    "default smooth body is non-watertight and splits into 25 connected components",
+    "default smooth assembled output is non-watertight and splits into 27 connected components",
+    "default diamond body exceeded the five-minute compile ceiling and is also non-watertight with 25 components",
+    "diamond assembled was terminated and diamond print_layout was not started; release STL set is incomplete"
+  ],
+  "release_stls_written": false,
+  "physical_acceptance": "not tested"
+}

@@ -1,0 +1,31 @@
+{
+  "diagnosticOutputs": [
+    {
+      "bytes": 4295,
+      "path": "projects/laifen-wave-case/scratch/download-design-compare/mesh-evidence.json",
+      "sha256": "e830d728c7f86ca2e9cfa70f125c4f57af9d9366df64fb63418d72352d374212"
+    },
+    {
+      "bytes": 1020549,
+      "path": "projects/laifen-wave-case/scratch/download-design-compare/original-mesh-comparison.png",
+      "sha256": "d2740724b6ef856a5a329647617ff8a313c236e3fc2d1df9a54232488f0a3ffc"
+    },
+    {
+      "bytes": 28520,
+      "path": "projects/laifen-wave-case/scratch/download-diagnosis/triangle-evidence.json",
+      "sha256": "fb98790554ebed29839cb599e996bfbbfe7d84986d473c4c01e78b5074edbae5"
+    },
+    {
+      "bytes": 152581,
+      "path": "projects/laifen-wave-case/scratch/download-diagnosis/conditional-section.png",
+      "sha256": "c5a61be4df4465a0d337f51d9b29851b19d77f2251e3d0c0a2690295fc91317e"
+    }
+  ],
+  "externalInput": {
+    "bytes": 2745475,
+    "existsNow": true,
+    "path": "/Users/scottchu/Downloads/Laifen+Wave+case.3mf",
+    "sha256": "25e041b622ce184f9290858d52c76855097186483c856c5dbe677ea3f4030f10"
+  },
+  "policy": "Keep these outputs in quarantine indefinitely; the input is outside the repository and may disappear."
+}

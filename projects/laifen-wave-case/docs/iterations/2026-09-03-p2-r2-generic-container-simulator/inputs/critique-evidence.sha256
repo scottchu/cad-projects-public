@@ -1,0 +1,23 @@
+# CRIT-GCS-01 frozen evidence; implementation candidate remains read-only
+4acefaf383cd7b0e0425f5da23e5ca19612920ede43df469db3f1ac16cbf228d  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/implementation-candidate.sha256
+293ec8cbed158f786183f7723fa88083d03013cf4dd3e8a52f9bdfe7d4c72a5f  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/BRIEF.md
+8c7f88499a79115ef48d34f43e7a4fda468722e2926c0bc98ce4d3aae7bb18f3  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/DESIGN.md
+aaed275f96a84cffe69cca1131ba87cfce4ca21b1e8e7856747e6434e4c0694b  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/IMPLEMENTATION.md
+912218aadad88a29c00bfbb70bf976b30946689ead539d808daee9956c779267  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/index.html
+658a2ff7576514df37e8e07815f925f40f209a2653dcb095650ca2ed855a3863  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/app.js
+6f51d9d10c671fb25e195eb00ca4a6da79320866d370e09bd90c87af73525d4d  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/math.js
+6a145f7fd24c7079bc0e30191af383afa84fe9c63d7e210e79f50539edc3aef4  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/style.css
+bc1d383db3847e154a4c12c6e94cefa4366d84f431939ef70ab976079a8ccb36  projects/laifen-wave-case/tests/test_generic_container_simulator.mjs
+580e36e77edee15d890273a82d2058338c215e272ddb68d8c6b4900bbf56714e  projects/laifen-wave-case/scratch/generic-container-critique/capture.py
+d1c5c585b9bbd2198eedf04bb05ef74e82994d259f70f0ac03d5a3fc2fe2bf5b  projects/laifen-wave-case/scratch/generic-container-critique/capture.txt
+f70dd9f8369cf58359686dc85b3768f1ea202d71b309ff49592a6ac2fc656963  projects/laifen-wave-case/scratch/generic-container-critique/01-desktop-generic.png
+93b71ce4876f6e33bdb8b42d789816d7415f8ed7b4b5cafbbf1c92d3fbc46be3  projects/laifen-wave-case/scratch/generic-container-critique/02-desktop-laifen.png
+7f41bffa16a458edc9f3574399bc3946f32ed53bc368c6ff4ad30b0dbfc46090  projects/laifen-wave-case/scratch/generic-container-critique/03-desktop-wide-short.png
+773f68f34bf3f84bfac4dc65243d76877c25b4fa688b1c9a5708bb8754054410  projects/laifen-wave-case/scratch/generic-container-critique/04-desktop-wide-short-3turn.png
+c42e8d250b56af3eafe023e5347327cae57303cc6816439396a988dcbcbde40e  projects/laifen-wave-case/scratch/generic-container-critique/05-desktop-exploded.png
+24efde32701ec8920ff51bd515da19dff4dec5e619be53e9f85d4cce2fe8c519  projects/laifen-wave-case/scratch/generic-container-critique/06-desktop-percent-boundary.png
+725a5dcf30fba13d23723674d52a15b70434bf892e7cadcb0c81a574840d05a7  projects/laifen-wave-case/scratch/generic-container-critique/07-desktop-magnifier.png
+4c8aeba6dc5f2c1d102f3d92250c955cc1ddd23192526a3c3e5b9a3d8034bcbd  projects/laifen-wave-case/scratch/generic-container-critique/08-desktop-infeasible.png
+7c5e6239a2742ff33d53c518b00d3b83452fc844f0fedaf639493eefc64a7f85  projects/laifen-wave-case/scratch/generic-container-critique/09-desktop-helix.png
+132882a73fd60882e1b60c888b1162148c39be99676cfd8d34b190d184027014  projects/laifen-wave-case/scratch/generic-container-critique/10-desktop-wave.png
+03375064896f3dee5ab39215aa815da8ddb4b7139de8904518f49d87bd8744ae  projects/laifen-wave-case/scratch/generic-container-critique/11-mobile-wide-short.png

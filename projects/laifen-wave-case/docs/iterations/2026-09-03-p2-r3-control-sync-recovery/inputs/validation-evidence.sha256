@@ -1,0 +1,14 @@
+21348385700605eab0ed0a659190de744f433d2c9295fa507a4bbfe52d758c6e  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/VALIDATION.md
+eda373fdb5aaad247e2126dd9fc19a97d55571ef3204d6bc9e928623e9ee1cb3  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/validation-inputs.sha256
+4a35df62b7f413c8feb3f73d73ebd41168583c2a804b3344881597a89d93c9a8  projects/laifen-wave-case/scratch/generic-container-sync-validation/candidate-check.txt
+3e5f6140dac39dd6901962da5744dc3f41f553e3f1a2d4e44495c80ffb19112a  projects/laifen-wave-case/scratch/generic-container-sync-validation/evidence.json
+7ea3e3880d27db7d7cd9ea06e34cd7c48ac9dce88589375516d5cd7baec58a1a  projects/laifen-wave-case/scratch/generic-container-sync-validation/implementation-evidence-check.txt
+a0f12841e37087d59add34a93450e6bea6fd4ce19af0294c86d3e9ec7fd25fc2  projects/laifen-wave-case/scratch/generic-container-sync-validation/input-check.txt
+d77d92943691b24e2ba45b469775ab5f0bd055aeff2d9ce6aadd957e2907a56b  projects/laifen-wave-case/scratch/generic-container-sync-validation/laifen_wave_reference.png
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  projects/laifen-wave-case/scratch/generic-container-sync-validation/node.stderr.txt
+b184555fac7890e987cab4bb39d9a63d4749a9900bcc333a0fb7d263aeeeed70  projects/laifen-wave-case/scratch/generic-container-sync-validation/node.stdout.txt
+ba7f494026dcfdb5ccf26921fb284330429d38c1319838cf1f2f44423eae5f7c  projects/laifen-wave-case/scratch/generic-container-sync-validation/parity-check.txt
+e345c34c6d98f3f40087ed8209faa0e87b8c088e27d64dd802a2940c12131e38  projects/laifen-wave-case/scratch/generic-container-sync-validation/percent-max-arrowup.png
+8e71dc76e9059f2e2f28ce93df5bfe573e3ea1eba76aa19f6c05c9a0d195c17c  projects/laifen-wave-case/scratch/generic-container-sync-validation/percent-max.png
+b158992028dd1e4680a77e1a959039dfe2ba4d162c8a2cbc6751a8618a34d822  projects/laifen-wave-case/scratch/generic-container-sync-validation/validate.py
+c0b43cdd9d9192de4d3fcc08f5f8461c631e501e9099cd93478593d7a98d5663  projects/laifen-wave-case/scratch/generic-container-sync-validation/wide_short_makeup_jar.png

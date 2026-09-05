@@ -1,0 +1,8 @@
+d8d7e2a25f806cfcc47390ba5652bf66e3e87ee0df46033de17ccb8936346105  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/parameter-coverage.mjs
+67f8167071d35046e64b762cd5e9a5d1b6efd45ae39463ce48291be420bd4862  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/derive.mjs
+321347c8ed6451e3306613661c4fe3b93345ab91b18b7611ae62840972e6aa25  projects/laifen-wave-case/tests/test_p2_r10_schema_coverage.mjs
+6a7cb438a941dd9f6a1f010b4d3aac7cb6a20ccbaf755799229ff7a471f6d9e4  projects/laifen-wave-case/tests/test_p2_r10_geometry.mjs
+eb74b1f9903c32c9682d1fc9a756e8fc39a4bf35fdc9b561c145dd6a9b35eb27  projects/laifen-wave-case/tests/test_p2_r10_descriptor_sensitivity.mjs
+377fb8536ffb4d9f6e65327fe6f6bd875de873171142eecf2f6002a753877f44  projects/laifen-wave-case/scratch/r11-phase-b-audit/audit.json
+7d2bfe375d5c269e943ec426eb5d65b25676baf8858c48a41e1bbc1fe41f5ba3  projects/laifen-wave-case/scratch/r11-phase-b-audit/SUMMARY.md
+87d375a425df4b0a837e3e556516da745d58a5d138b06e6d577e525b376c5ec6  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r12-phase-b-complete-recovery/inputs/USER_INTAKE.md

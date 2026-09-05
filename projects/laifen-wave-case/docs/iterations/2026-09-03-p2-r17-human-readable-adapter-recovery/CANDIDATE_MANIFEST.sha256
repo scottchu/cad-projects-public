@@ -1,0 +1,11 @@
+7d2340c4a392c743df8e066b04fc55fcf3610ba8c24f2f438f02f51bb1cb9f59  projects/laifen-wave-case/preview/p2-r17-human-readable-adapter-recovery/app.mjs
+9c50354375e100776882d31e9b416f0b48ce1f3eed4cc94e102ec2bc4357035b  projects/laifen-wave-case/preview/p2-r17-human-readable-adapter-recovery/index.html
+fcd657805b140ce308a1b545a77c71da10e869a3b28bc8f270de1139e5a433da  projects/laifen-wave-case/preview/p2-r17-human-readable-adapter-recovery/style.css
+181a9f1df4c06c3be4fcccd3bc0ab3166d857a82eeca8249def8af433a0fc215  projects/laifen-wave-case/preview/p2-r17-human-readable-adapter-recovery/target-map.mjs
+50f337123b09a95d16361630df54b5e40b41a3d2dcf70c5486db3295c5e904fa  projects/laifen-wave-case/preview/p2-r17-human-readable-adapter-recovery/render/renderer.mjs
+734ff0b4ec9b0afb2fbbaf304e16f39bb7bc3dc498ab3c130465d06b78cdc9cd  projects/laifen-wave-case/tests/test_p2_r17_target_contract.mjs
+02c842861ed6fc10d43dd79c6e7dc5f3b32999bf74dbf8ad42453cd5f8a39046  projects/laifen-wave-case/tests/test_p2_r17_render_observability.mjs
+a468087fe3677fd7e9a3cac251ebc27157f794369b995b8e2fe371a6e3a641b2  projects/laifen-wave-case/tests/test_p2_r17_visual_families.mjs
+e16fb85f157ed5b93b457a4a5b8d6697f834a212f05b5be85f67f43105f8d735  projects/laifen-wave-case/tests/test_p2_r17_ui_contract.mjs
+5ed4ed0838e576c557f9eadcef92ede5f1c1d19beaf1757d6bf5d254f3fce211  projects/laifen-wave-case/tests/test_p2_r17_browser.py
+5d475c5760a6be640c3f06b19236da34fd80108d64195a1820f434cf63a24c50  projects/laifen-wave-case/scratch/r17-independent-audit/audit.mjs

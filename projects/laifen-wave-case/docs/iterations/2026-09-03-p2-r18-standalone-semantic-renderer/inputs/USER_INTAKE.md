@@ -1,0 +1,9 @@
+# P2 R18 user intake
+
+Create a new R18 conceptual preview recovery from the exact rejected R17 candidate. R17 candidate fingerprint `5fe1228ca56d11f6e0d6d30c2c7e832118dcb3b67293cd79fbc475dc2da9a9c6` passed its prescribed 84/84 semantic audit and six browser contexts, but independent validation and critique both failed it.
+
+R18 must use a standalone renderer with no import from the R16 or R17 renderers. It must restore a complete 84-row path/source/class map; scan the transitive renderer dependency closure for banned generic or hash-derived witnesses; provide ten explicit surface-pattern builders with no `pattern.length`, shared `raw.reduce`, or fallback family builder; and make the dimension-only geometry for `surface.flute.waveWavelength` and `surface.spiral.pitch` respond to their official pairs.
+
+OpenSCAD font remains truthful metadata only and must sit outside label geometry. Label teaching must use separate mini-panels for mode, font plus weight, orientation, target, axial position, and patch. Attachment teaching must use separate mini-panels for mode, half, angle, and size. Blunt and recessed diamonds must have a strong opposite depth reading without captions.
+
+Preserve R17's 84/84 exact-one ownership, zero inactive leaks, six browser contexts, polygon and family passes, nonzero target boxes, tiering, invalid clearing, disclosure, and no-overflow behavior. Add a caption-hidden screenshot clarity gate. Work only in the new R18 preview, tests, scratch, and iteration records. R17 and earlier previews/tests/evidence, the frozen core, live routes, CAD, OpenSCAD, STEP/export, slicer, printer, physical records, and continuity files are read-only. Allow one initial attempt and at most two grouped repair cycles. Do not serve or change a live route until independent validation, independent critique, and formal review all pass one frozen R18 candidate.

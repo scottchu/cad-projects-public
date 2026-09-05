@@ -1,0 +1,30 @@
+{
+  "validator": "/root/render_controls_validate_b",
+  "date": "2026-09-04",
+  "engine": "/Volumes/OpenSCAD/OpenSCAD-2021.01.app/Contents/MacOS/OpenSCAD",
+  "engine_version": "2021.01",
+  "recovery_manifest_sha256": "22e3b909bf3a3fbac3d1f85bdd2056ea95c3a3c584d9904a9c9a1bf2b0f9aa3b",
+  "source_sha256": "b5db326716df1f5cbff7135440cacac3cf0e61a67d9b0229a6e99261fa859f0e",
+  "test_sha256": "4e1eea50a2e1fa71b1f420abf2693f2eb96c4ce51d9f4467a39086681dbb5f4e",
+  "implementation_receipt_sha256": "1bee085787d7cca85ac898873a34a94675a289bb2109ce1d0b43b0230df35709",
+  "smooth_status": "PASS",
+  "default_smooth_seconds": {
+    "body": 7.52,
+    "cap": 4.03,
+    "assembled": 15.64,
+    "print_layout": 14.77
+  },
+  "changed_short_wide_smooth_seconds": {
+    "body": 3.24,
+    "cap": 7.24,
+    "assembled": 14.84,
+    "print_layout": 13.12
+  },
+  "diamond_status": "PERFORMANCE_BLOCK",
+  "diamond_benchmark": {
+    "body": {"status": "timeout", "elapsed_seconds": 60.0621, "output_written": false},
+    "cap": {"status": "timeout", "elapsed_seconds": 60.0338, "output_written": false}
+  },
+  "release_stls_written": false,
+  "physical_acceptance": "not tested"
+}

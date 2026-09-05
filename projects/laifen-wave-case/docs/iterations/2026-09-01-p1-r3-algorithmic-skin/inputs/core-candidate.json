@@ -1,0 +1,16 @@
+{
+  "task": "IMP-GEN-01a",
+  "owner": "/root/generator_core",
+  "status": "implemented_core_pending_independent_gates",
+  "contract_fingerprint": "e63eecf9e47d97d37787e58f92e5b3f394e18abf33a33e2d10f126286501c027",
+  "candidate_fingerprint": "44a343bfb2fe89692b887d990a166d0229015a39491ad2e6210591730d43eca2",
+  "candidate_entries": 75,
+  "evidence": {
+    "projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/IMPLEMENTATION_CORE.md": "15515a772693ab2e61d4b8b2d5f4cccf27030b9f1cdc3e49d08adcc49510af34",
+    "projects/laifen-wave-case/scratch/generator-core/default.json": "a4c7577e498e06fcacb5d8403c4b781af680b2d587543da387898796ee5eefd1",
+    "projects/laifen-wave-case/scratch/generator-core/longer.json": "26e199b96d433fe8ecf3bc0f94a752f00bef554e7894e9346efb38afddeba233",
+    "projects/laifen-wave-case/scratch/generator-core/pitch24.json": "b29b7581c072a3faec1123abdab4e80d1c320a58b4975956d474d0adf6178e04",
+    "projects/laifen-wave-case/scratch/generator-core/pytest.txt": "4d2df7a96ce4a667da3ccf295f2d16c728a65ed0e861a3baa919f7bb469b02b5",
+    "projects/laifen-wave-case/scratch/generator-core/smaller.json": "175c26cb4aaecfe74d90a779d903f9298882aea5dc4e9050e19af09913613445"
+  }
+}

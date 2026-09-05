@@ -1,0 +1,16 @@
+# P2 R1 immutable input manifest (path-and-content SHA-256)
+# Baseline HEAD: d0aab1ff21a0cd2e5790c9800fcec7cfec2bfc3c
+# Reviewed R7 candidate: 8d3941772cca549846937dcad6ce4a05e06f5bba104c261668a0cf747c62b6a1
+# The manifest intentionally excludes mutable status/index/evidence records.
+d901d6e1443eac31f169f427471ec10a376f977882f49b7de2c7524ed541da95  projects/laifen-wave-case/PRINTING_PROFILE.md
+ab6587cc7ed7c143e25e281bca140bddc73d1f37ae4ebf38d82e688f510ce73d  projects/laifen-wave-case/cad/p1_r7_end_chamfer/README.md
+c227f85d5de9b28fc5e47794eeeee0741aa1e652bfd800f41020fac2d0dc69e6  projects/laifen-wave-case/cad/p1_r7_end_chamfer/params.py
+d1e192271e65589f39744369b28c5bdbec7b336dd5a383e2059b87bafcf65820  projects/laifen-wave-case/docs/EXPERIENCE.md
+0367b4aff210f4638e5f6f0c599ad3e640738de7d09325b551a80344d01aee19  projects/laifen-wave-case/docs/REQUIREMENTS.md
+de4a28251d182038a987c85d543e3c69e5015a60c4c738128bf5e7e7176f2de7  projects/laifen-wave-case/docs/iterations/2026-09-03-p1-r7-end-chamfer/BRIEF.md
+327852bb47620b54cd67ee80f06414573bc3cca5e117353da028705a81c296db  projects/laifen-wave-case/docs/iterations/2026-09-03-p1-r7-end-chamfer/DESIGN.md
+119a13f24f7678c131b3692209efae4b781b8b0522c5aa7c958dddcab6e0c692  projects/laifen-wave-case/docs/iterations/2026-09-03-p1-r7-end-chamfer/HANDOFF.md
+fa6e5ee097f0a9a2e58d63d3ae41f0cf43511292e26193af504054cf79b43b33  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/BRIEF.md
+e598d24deb04f317ae2feca4e577e57a96de8d654f3b352c59e0302d0b26420b  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/DESIGN.md
+512c41f0038a148325b7c6cb51bf17baa01b639eac1adf34e7c9b1e696337de8  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/inputs/USER_INTAKE.md
+9ea90325ac4f67267043874af4e1371fa8f05d69c0e604697d713289703e32cc  projects/laifen-wave-case/preview/measurement-gate.html

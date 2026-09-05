@@ -1,0 +1,1 @@
+8f3a859f5cf183d2abb489ac9d1112d8b50bbeb4965707088ac4e9ee9430da72  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r1-measurement-gate/inputs/contract.sha256

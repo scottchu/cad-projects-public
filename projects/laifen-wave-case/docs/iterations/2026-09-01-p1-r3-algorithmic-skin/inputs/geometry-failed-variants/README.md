@@ -1,0 +1,1 @@
+surface-repair.py is an exact byte copy of the failed live candidate. surface-initial-reconstructed.py restores the initial build_patch function from the issued source edit while retaining its unchanged preceding helpers; the initial on-disk file was not separately hashed before repair. No attempt to sew or validate the initial variant is claimed.

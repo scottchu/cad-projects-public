@@ -1,0 +1,16 @@
+# P2 R2 immutable input manifest (path-and-content SHA-256)
+# Baseline HEAD: d0aab1ff21a0cd2e5790c9800fcec7cfec2bfc3c
+# Reviewed R7 candidate: 8d3941772cca549846937dcad6ce4a05e06f5bba104c261668a0cf747c62b6a1
+# P2 R1 is superseded evidence and is retained as an immutable declared input.
+# Mutable status, indexes, worker evidence and receipts are intentionally excluded.
+d901d6e1443eac31f169f427471ec10a376f977882f49b7de2c7524ed541da95  projects/laifen-wave-case/PRINTING_PROFILE.md
+ab6587cc7ed7c143e25e281bca140bddc73d1f37ae4ebf38d82e688f510ce73d  projects/laifen-wave-case/cad/p1_r7_end_chamfer/README.md
+c227f85d5de9b28fc5e47794eeeee0741aa1e652bfd800f41020fac2d0dc69e6  projects/laifen-wave-case/cad/p1_r7_end_chamfer/params.py
+0367b4aff210f4638e5f6f0c599ad3e640738de7d09325b551a80344d01aee19  projects/laifen-wave-case/docs/REQUIREMENTS.md
+fa6e5ee097f0a9a2e58d63d3ae41f0cf43511292e26193af504054cf79b43b33  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/BRIEF.md
+e598d24deb04f317ae2feca4e577e57a96de8d654f3b352c59e0302d0b26420b  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/DESIGN.md
+512c41f0038a148325b7c6cb51bf17baa01b639eac1adf34e7c9b1e696337de8  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/inputs/USER_INTAKE.md
+b060787132e71d20b995624e7deced8403d3c76c61507f2287170f28d0dc29b6  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/inputs/current-baseline.sha256
+293ec8cbed158f786183f7723fa88083d03013cf4dd3e8a52f9bdfe7d4c72a5f  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/BRIEF.md
+8c7f88499a79115ef48d34f43e7a4fda468722e2926c0bc98ce4d3aae7bb18f3  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/DESIGN.md
+86f123a9e0ff5a45c5f1a1e212c3776a1f9e500182666f50a9cc5daae7ee2220  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/USER_INTAKE.md

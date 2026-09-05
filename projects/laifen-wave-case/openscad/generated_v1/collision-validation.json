@@ -1,0 +1,12 @@
+{
+  "method": "OpenSCAD CGAL intersection of source body_shell() with cap_shell() translated to cap_close_z, surface_style=smooth",
+  "output_scope": "temporary STL only",
+  "elapsed_seconds": 18.47,
+  "bounds": [[-19.5, -19.5, 135.0], [19.5, 19.5, 142.5]],
+  "watertight": false,
+  "is_volume": false,
+  "component_count": 336,
+  "volume_mm3": 0.0004190611857496131,
+  "face_count": 1252,
+  "interpretation": "No meaningful bulk overlap above 0.001 mm3 was measured; the result is non-manifold numerical/coincident contact and cannot establish clean thread clearance while the source body itself is non-manifold."
+}

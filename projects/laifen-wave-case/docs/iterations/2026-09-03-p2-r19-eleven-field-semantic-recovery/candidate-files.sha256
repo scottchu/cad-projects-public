@@ -1,0 +1,10 @@
+ea40d060959f7db29488b9369d1b45526c322d79404e9d8937d2bb016f5ae60f  projects/laifen-wave-case/preview/p2-r19-eleven-field-semantic-recovery/app.mjs
+8ecac7650d1a263de509f6f14ffcba45082e198fed4ff811ddf3369cd36ffcfd  projects/laifen-wave-case/preview/p2-r19-eleven-field-semantic-recovery/index.html
+0e334c5b88d7042f610a6ba65c6823a27dc093c4e5b3fa6d170c3faa2e1bca6b  projects/laifen-wave-case/preview/p2-r19-eleven-field-semantic-recovery/render/renderer.mjs
+de6b1ae79948fb35c355cf5d9b395ba347a0b4858e722232fc6b15be8038d9e7  projects/laifen-wave-case/preview/p2-r19-eleven-field-semantic-recovery/style.css
+8c9591af969fb4166aa1cb715a7bb3d0268994f5b3b34b7cc680d0799c17d9c5  projects/laifen-wave-case/preview/p2-r19-eleven-field-semantic-recovery/target-map.mjs
+c5bca14c99b827a7d21eddbb5fa1e161dd720d888a18a6ff6d2c345104ede3e6  projects/laifen-wave-case/tests/test_p2_r19_browser.py
+4cf756babdfe9b870724bb623fc5965f45dbc38a49fbfde10086a5c2f32a45ea  projects/laifen-wave-case/tests/test_p2_r19_render_observability.mjs
+6d154f1094e414d2b3b0c893e83e1ce250dd0e807b01694592b7d67512deb5f8  projects/laifen-wave-case/tests/test_p2_r19_target_contract.mjs
+07f2d568dc80ded8df2a2d1ab202635fd1453814c073eb5f81463b12c005558f  projects/laifen-wave-case/tests/test_p2_r19_ui_contract.mjs
+d49d66bc818d50e7d84cc75df53ecbecd9b003aeb4939aa367b0dea4291129f1  projects/laifen-wave-case/tests/test_p2_r19_visual_families.mjs

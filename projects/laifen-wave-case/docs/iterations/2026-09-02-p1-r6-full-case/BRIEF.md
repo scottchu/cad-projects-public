@@ -1,0 +1,19 @@
+# P1 R6: direct full Laifen case
+
+## Frozen brief contract
+
+DES-R6-01 design owner `/root/case39_design`; input baseline114 manifest SHA256 `0acfcfa2a954b011a6762e9ec0783064ee217fea4d20b2c0cc9cf1ad4826fab7`. Its path/content list includes frozen R5 implementation111, earlier requirements/contracts and the new user intake/photo. All114 entries verified before design. R5 short implementation is a source baseline, not independently accepted CAD; preserve it unchanged in `cad/p1_r5_39mm_case/`.
+
+The user explicitly requests no short version and direct full case. This supersedes short-test-first and the pre-full-CAD measurement/contact gate for this provisional full CAD delivery. Generate our original two-part case in new `cad/p1_r6_full_case/`, OD39, bores30/31, usable closed cavity213 based on editable approximate deviceL208 plus accepted5 allowance. Keep R5 B thread, original N33/pitch4.8/shared-phase diamonds, textured0.30radial/0.50axial end bevels, floors3 and seven diameter3 floor holes per end. Exact split and budgets are frozen in DESIGN.md. Do not require another short print or another user approval before producing these files.
+
+Use sequence: unscrew, insert installed-head device, close to external shoulder without using device as stop, carry, open and remove. Source-defined device envelope and section show nominal placement and clearances. Actual L/D/head-cover configuration, physical thread fit/strength/wobble and literal noncontact with both internal ends remain unresolved evidence; they do not block explicitly authorized provisional CAD. A centered drawing is not retention. No unsolicited device support or retention is introduced.
+
+New supplied photo inspected: patterned male-thread tube with visible interior; this is physical-reference evidence with unconfirmed identity/dimensions. Geometry comes only from our parametric source. No downloaded mesh, global scaling, short substitution, fabrication mesh, slicing, upload or printer start. Intended process remains U1/PLA/0.4 nozzle/0.2 layers, each part opening upward; actual process unresolved.
+
+Deliverables: original full source, named datums/joints, four STEP targets body/cap_c25/closed_c25/print_layout, exact two case parts in each assembly, source-defined nonfabrication device envelope and section capability, focused evidence and mandatory STEP snapshots. CAD/source, written STEP, slicer and physical outcomes reported separately.
+
+## Mutable execution DAG
+
+Root owns scheduling and continuity; this section may be updated without changing frozen brief copy. DES-R6-01 is bounded to BRIEF/DESIGN/NUMERIC_NOTES and design manifests; no CAD/tests/global records/services/Git/printer/children. Strong/high design role, qualitative5min/6k budget, initial plus at most2 focused repairs; all inputs checked at entry/exit. Root assigns a distinct full implementation owner, then separate critic and validator on its frozen candidate, then distinct formal reviewer as join. Root must record exact owner identities, task manifests, exclusive writes, ceilings and receipts before scheduling. One source writer, at most3 active workers. Full physical uncertainty cannot be silently promoted to acceptance; failure of an actual geometric gate still requires correction. Manifest changes invalidate only declared dependent gates. No obsolete short agents should continue independent acceptance work.
+
+Scheduling update: root verified frozen116 f72529fe2f5333e80859496453f720635590b11c46a55ec2bb2bc0c942f079b4. IMP-R6-01 /root/case39_impl Sol/high active, exclusive newsource/tests/artifacts and implementationreceipt,20min/18k initial+2repairs/3mincheckpoint. VAL-R6-01 /root/case39_validate Sol/high prepares only from frozen design in disjoint fullcase-validation namespace,3min/4k; candidate gate pending. Critic /root/case39_critique and formalreviewer are not scheduled until dependencies freeze.

@@ -1,0 +1,71 @@
+..FFF
+=================================== FAILURES ===================================
+__________________________ test_actual_phase_sections __________________________
+
+parts = {'M': <build123d.topology.three_d.Solid object at 0x11e576ab0>, '0.2': <build123d.topology.three_d.Solid object at 0x1...ild123d.topology.three_d.Solid object at 0x11e5c33b0>, '0.3': <build123d.topology.three_d.Solid object at 0x11e5a8f80>}
+
+    def test_actual_phase_sections(parts):
+        """Catch sweep-frame distortion and min/max envelope implementation errors."""
+        errors=[]
+        zs=(.001,.5,1,1.15,1.5,1.85,2,2.15,2.5,2.85,3,4.15,6.5,7.85,8,8.15,8.5,8.85,8.999)
+        for theta in (0,math.pi/2,math.pi,3*math.pi/2):
+            for z in zs:
+                actual=radial_surface(parts["M"],theta,z)
+                errors.append(abs(actual-c.male_radius(theta,z)))
+                for gap in c.CLEARANCES:
+                    actual=radial_surface(parts[str(gap)],theta,z,True)
+                    errors.append(abs(actual-c.female_radius(theta,z,gap)))
+>       assert max(errors) <= c.PROFILE_TOLERANCE, max(errors)
+E       AssertionError: 0.5999938964843743
+E       assert 0.5999938964843743 <= 0.01
+E        +  where 0.5999938964843743 = max([1.8310546874289457e-05, 6.1035156235789145e-06, 6.103515627131628e-06, 1.831054687784217e-05, 1.8310546874289457e-05, 6.1035156235789145e-06, ...])
+E        +  and   0.01 = c.PROFILE_TOLERANCE
+
+projects/laifen-wave-case/tests/test_coupons.py:104: AssertionError
+____________________________ test_actual_grip_cells ____________________________
+
+    def test_actual_grip_cells():
+        """Catch curved/undersized tips, detached corners or incomplete rows."""
+        cells=c.grip_cells()
+        assert len(cells)==62
+        for cell in cells:
+            assert cell.is_valid and len(cell.solids())==1
+            assert cell.bounding_box().min.Z >= 14.4-1e-7
+            assert cell.bounding_box().max.Z <= 20.0+1e-7
+            for vertex in cell.vertices():
+                assert math.hypot(vertex.X,vertex.Y) <= 18.5+1e-7
+        canonical=c.grip_cell()
+        assert len(canonical.faces())==6
+        for face in canonical.faces():
+>           assert str(face.geom_type).endswith("PLANE")
+E           AssertionError: assert False
+E            +  where False = <built-in method endswith of str object at 0x11f50edf0>('PLANE')
+E            +    where <built-in method endswith of str object at 0x11f50edf0> = 'GeomType.BSPLINE'.endswith
+E            +      where 'GeomType.BSPLINE' = str(<GeomType.BSPLINE>)
+E            +        where <GeomType.BSPLINE> = <build123d.topology.two_d.Face object at 0x11f7afaa0>.geom_type
+
+projects/laifen-wave-case/tests/test_coupons.py:121: AssertionError
+___________________ test_actual_screw_path_and_positive_stop ___________________
+
+parts = {'M': <build123d.topology.three_d.Solid object at 0x11e576ab0>, '0.2': <build123d.topology.three_d.Solid object at 0x1...ild123d.topology.three_d.Solid object at 0x11e5c33b0>, '0.3': <build123d.topology.three_d.Solid object at 0x11e5a8f80>}
+
+    def test_actual_screw_path_and_positive_stop(parts):
+        """Catch interference during entry/removal and failure of external stop."""
+        male=parts["M"]
+        results=[]
+        for gap in c.CLEARANCES:
+            cap=parts[str(gap)]
+            for beta in (0,15,45,90,180,360,720,1080,1440,1620):
+                dz=c.PITCH*beta/360
+                moved=cap.moved(Location((0,0,dz),(0,0,beta)))
+                volume=volume_of(male.intersect(moved))
+                results.append((gap,beta,dz,volume))
+>               assert volume <= 1e-6,(gap,beta,volume)
+E               AssertionError: (0.2, 1080, 11.073392795474945)
+E               assert 11.073392795474945 <= 1e-06
+
+projects/laifen-wave-case/tests/test_coupons.py:135: AssertionError
+=========================== short test summary info ============================
+FAILED projects/laifen-wave-case/tests/test_coupons.py::test_actual_phase_sections
+FAILED projects/laifen-wave-case/tests/test_coupons.py::test_actual_grip_cells
+FAILED projects/laifen-wave-case/tests/test_coupons.py::test_actual_screw_path_and_positive_stop

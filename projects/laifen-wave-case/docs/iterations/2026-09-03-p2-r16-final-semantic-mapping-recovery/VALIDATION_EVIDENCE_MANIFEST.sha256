@@ -1,0 +1,15 @@
+14b625606e1abd2a705d1874b557d9a9ba9ad6cc368d306de5d42417c8362a5e  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r16-final-semantic-mapping-recovery/CANDIDATE_MANIFEST.sha256
+e90328d9318420814168c21cc209c6094ed5e3c6e04c5bd1920575cbc64f7184  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r16-final-semantic-mapping-recovery/IMPLEMENTATION_EVIDENCE_MANIFEST.sha256
+8604d5a9fb6275a949f385153fcf4f8c3c54551d87058b68b607ebac33766dfc  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r16-final-semantic-mapping-recovery/inputs/frozen-inputs.sha256
+c2c4adc1d967f5509eda2cd2c36700e0bf2ef948701bc920d4e4ba5c9a7975b3  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r16-final-semantic-mapping-recovery/VALIDATION.md
+8990e71b326f6d98108836121e474c94fecda01e0892ac68e6743b2f9b413402  projects/laifen-wave-case/scratch/r16-validation/independent-audit.mjs
+10c13977401afd626b562e094a0c8e2c7afeb1bb4de6c2c3f6f5f1a2c1f25773  projects/laifen-wave-case/scratch/r16-validation/independent-audit.json
+48a0d3f5bf3604a7385bd4892e53a88b8a612f684be7abe601595a444f41e0a1  projects/laifen-wave-case/scratch/r16-validation/independent-browser.py
+465b6b69af28fb582e44fd9a4de77426ed48b5c3a446ec714cb7f2af1509afe0  projects/laifen-wave-case/scratch/r16-validation/independent-browser.json
+9eda1341fb8367bcd4be0592f7b901c605d79d2234e563da2d2ed3c602f15f8e  projects/laifen-wave-case/scratch/r16-validation/target-contract.log
+741453dbe55c87846bde3943f85afe3ff996b79f628669f140f5e2d80809f61a  projects/laifen-wave-case/scratch/r16-validation/render-observability.log
+0946835aeb65db6e3adcbf7ec8a6dcef61f1397d5f5fac5c4a8df61878733dab  projects/laifen-wave-case/scratch/r16-validation/visual-families.log
+6f035214015e165e5b6d829143ebac7886bcb8d62524113c77d2dbf3fdc17f68  projects/laifen-wave-case/scratch/r16-validation/ui-contract.log
+173d5e0a2a1efd0d74a4a0a49e9023b6676beb0a1c18767ddfaf17cd4e06aec5  projects/laifen-wave-case/scratch/r16-validation/browser-official.log
+5431b190494d26b73ba789f4b5688bf756a770b64cf1511c56ad80093c1ab35b  projects/laifen-wave-case/scratch/r16-validation/audit-size.log
+41993fd0f32cfb46366da357a80bb0718a046bc8b3f5db7db003e5786e270b2f  projects/laifen-wave-case/scratch/r16-validation/mirror/projects/laifen-wave-case/scratch/r16-exhaustive-audit/audit.json

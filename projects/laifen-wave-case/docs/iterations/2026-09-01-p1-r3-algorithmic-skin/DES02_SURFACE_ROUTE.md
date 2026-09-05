@@ -1,0 +1,62 @@
+# DES-SKIN-02: bounded rational-patch surface route
+
+Design owner `/root/skin_design`, 2026-09-01. Verified all75 entries of core candidate `inputs/core-candidate.sha256`, fingerprint `44a343bfb2fe89692b887d990a166d0229015a39491ad2e6210591730d43eca2`, before this refinement. Read frozen DESIGN, IMPLEMENTATION_CORE and core `skin.py`; prior repository/CAD workflow applies. Scope: this route and `inputs/surface-route-*` only. No prior contract, source, test, artifact, environment or printer changes.
+
+## Decision and preserved contract
+
+Build trimmed **rational Bezier surface patches**, with one face for each existing developed plateau/flank region after common angular and fade cuts. Do not build a million triangular faces or fuse independent cells. The exact frozen `skin.radius` remains the comparison authority. The approximation below preserves its diamond tiling, integer31 closure, 24mm bands, cosine fades within a proved error, h0.45, blunt plateau width>=1, and smooth functional zones. Default diamond geometry is authorized for digital iteration; physical grip acceptance remains pending.
+
+Angular mapping uses exact rational circle arcs, eliminating the circle mismatch that would arise from polynomial sin/cos. Cosine fade uses a bounded endpoint-Hermite polynomial. On each patch the result is an exact rational polynomial surface, so no unconstrained point-cloud fitting is needed. The core's Cartesian triangle estimate remains valid for its original route but is not a lower bound on this representation.
+
+## Exact angular construction and bounded parameter warp
+
+Use K=m*N sectors, initially m=1 and N31. Each sector spans angular width Delta=2*pi/K, half-width a=Delta/2. Center angle theta_c. The unit circle is a quadratic rational Bezier with endpoint poles `(cos(theta_c-a),sin(theta_c-a))`, `(cos(theta_c+a),sin(theta_c+a))`; middle pole `(cos(theta_c)/cos(a),sin(theta_c)/cos(a))`; weights `(1,cos(a),1)`. All weights are positive. C(t), 0<=t<=1, lies EXACTLY on the unit circle, including sector joins and the revolution seam.
+
+Use proxy lattice coordinate `u=k/m+t/m`, with global theta phase absorbed into sector origins `theta0+k*Delta`. Actual angle of C(t) is phi(t); proxy angle is theta0+(k+t)*Delta. This controlled parameter warp changes only where a feature falls within a sector, not radius, phase closure, repeat count or circumferential topology. Geometry remains compared to the original field at its ACTUAL angle.
+
+For one sector, `phi'(t)=2*sin(a)/W(t)` with `W(t)=1-2*(1-cos(a))*t*(1-t)`. Hence
+
+`delta_theta <= 0.5*max(Delta-2*sin(a), 4*tan(a/2)-Delta)`.
+
+The factor0.5 follows from equal exact endpoint angles and integration from the nearer endpoint. Global diamond F is Lipschitz in u with constant1/(0.5-plateau_a), including its creases. Therefore the radial contribution is at most `h*N/(2*pi*(0.5-plateau_a))*delta_theta`. This proof remains valid near a crease; the geometric crease locations themselves must remain exact in proxy(u,v), not smoothed by fitting.
+
+Default K31 gives delta_theta approximately0.0001734rad and an angular radial error approximately0.001203mm. If a supported parameter case exceeds the radial error allocation0.0025mm, increment integer m and recompute. Reject/stop if patch ceilings below are exceeded; never coarsen while hiding the change.
+
+## Cosine fade approximation with exact end joins
+
+In either fade use normalized distance q in[0,1], measured from the band edge inward. Exact envelope is e(q)=(1-cos(pi*q))/2. Replace its representation by degree7 Bernstein polynomial E7 with controls:
+
+`[0, 0, pi^2/84, pi^2/28, 1-pi^2/28, 1-pi^2/84, 1, 1]`.
+
+These controls are monotone in[0,1], so 0<=E7<=1, no height overshoot. The polynomial matches e and its first three derivatives at both endpoints. In particular radius reaches exactly R with zero slope at the outer band edge, and exactly the full field with zero envelope slope at the core/fade join. No tolerance gap is introduced at those boundaries.
+
+Hermite remainder: `|E7-e| <= pi^8/(2*8!*256)=0.00045963013741971313`. The radial contribution at h0.45 is0.0002068335618388709mm. Bernstein derivative control bounds give `|E7'| <= 7-pi^2/2 =2.0651977994553214`; this is deliberately conservative. Actual radial-z slope is bounded by `h*(1/(pz*(0.5-plateau_a))+(7-pi^2/2)/fade_length)=0.7576382548774474`, below1. Exact circle mapping preserves the radial graph, so the true downward normal ratio remains no greater than this radial-z slope. Require actual normals as an independent geometry check.
+
+Combined radial deviation bound is the SUM of angular-field and fade contributions, approximately0.001410mm at defaults, below0.005 as well as the frozen0.01 limit. Require total analytic bound<=0.004 for the route, reserving0.001 for CAD edge/surface construction and measured numerical error; final measured deviation still<=0.01. Surface radius is exactly R+h*E7*F, so R<=radius<=R+h without chord erosion of the wall.
+
+Within the full-amplitude core, circumferential metric relative to the developed contract has lower ratio sin(a)/a, approximately0.998289. Plateau minimum width therefore remains at least the original1.023138mm times that ratio, approximately1.02139mm. Verify actual smallest plateau width>=1; neither the radial-error tolerance nor a bbox-only plateau check can waive that requirement. Fade shoulders do not replace the full-amplitude tactile plateau requirement.
+
+## Patch construction, edges and solid topology
+
+1. Start with `facet_polygons` (plateau plus four flanks); each region has constant or affine F(u,v). Clip these polygons to band bounds, core/fade boundaries and angular sectors u=k/m. Preserve all valley, plateau and flank-ridge boundaries. Use the SAME canonical coordinate/edge keys for adjacent regions; no independent rounding or tolerance merging of different lattice features.
+2. On each sector use t=m*u-k and z=Z0+pz*v. Define rational patch `S(t,z)=((R+h*E7(z)*F(t,z))*C_x(t), (R+h*E7(z)*F(t,z))*C_y(t), z)`. E=1 in the core. On an axis-aligned parameter bounding rectangle this has maximum rational tensor degree(3,8); core degree(3,1). Max control net is4x9=36 poles. Construct numerator and denominator polynomials algebraically, convert power/Bernstein basis and degree-elevate denominator consistently; positive weights follow from the positive circle denominator. Do not interpolate a sample cloud and assume it met the bound.
+3. Trim the underlying rectangular patch to its clipped UV polygon. Each straight UV segment maps to a rational polynomial 3D edge, obtained by substituting its affine UV line in the surface polynomial; preserve an exact p-curve on EACH adjacent surface. Make each canonical shared 3D edge once and reuse its TopoDS_Edge with opposite orientation in the neighboring wire. If a kernel API needs separate coedges/p-curves, retain identical edge geometry and both surface p-curves; set SameParameter only after checking, not as a repair flag. A whole skin uses sewing once, not thousands of Boolean unions.
+4. Canonical seam vertices/edges at u=0/N are shared moduloN, with circumference endpoint coordinates taken from the same cached circle endpoint. Plane z and logical vertex identities must agree exactly before OCC sewing. Face normals point radially outward; evaluate a point off each crease and require dot(normal, radial)>0. Adjacent wires traverse common edges in opposite directions. Require every closed-shell edge exactly twice, no free/non-manifold edges, positive volume and valid BREP/BOP.
+5. At band ends E7=0, so all edges lie EXACTLY on a radiusR circle. Build the neighboring smooth exterior cylinder strips using the SAME rational circle map and shared edge, with r constant; linear-radius smooth tapers/collars can use the same exact ruled rational representation. This preserves exact cylinder/cone geometry without relying on an approximate circle coinciding with an analytic one. Existing planar end/shoulder faces can use the canonical circular boundary wires. Their dimensions and functional smoothness do not change. If joining an analytic cylinder instead, explicitly construct/verify its matching p-curve and shared edge; do not sew a positional gap closed by relaxing tolerances.
+6. Sew the outer skin plus smooth outer regions and end faces into one closed outer blank. Cut the unchanged bore/floor/thread cavity or union the unchanged male neck using the existing limited body-level Boolean operations. No cell-by-cell additive unions. Preserve minimum walls, floor, shoulder and thread field. The implementation owner resolves exact OCC API details during the bounded patch task; this design does not assert an API probe or generated solid has already succeeded.
+
+## Cost and staged done gates
+
+The deterministic polygon-count probe, with default phase/bands and K31, gives **2139 body patches** (1550 core+589 fade) and **2077 cap patches** (1643 core+434 fade), before the small smooth closure surfaces. Polygon area totals155.0000000000005 in each developed domain versus155 expected. This is about two thousand surface faces per band, not a million facets. The different counts are expected from the different axial phase at each band boundary.
+
+First patch gate: only two neighboring angular sectors across theta=0/2pi, one full cell interval and an adjacent cosine fade/smooth-cylinder join. Include a plateau, both diagonal flank families, a valley and a shared seam. Build as a closed representative annular-sector coupon with temporary radial/axial closing faces; keep it under100 faces and60seconds wall time. Verify shared edges, zero free edges, outward normals/positive volume, actual surface deviation at interior/creases/fade ends/seam, and exact smooth boundary radius. Independent checks compare actual points at actual theta/z, never proxy theta against itself. If it cannot pass after one focused repair, stop and report failing API/topology/error evidence.
+
+After that gate, one default cap outer blank is permitted: <=2500 faces excluding thread cavity, <=180seconds for construction/sewing and <=180seconds for body-level Boolean/export. Body limit likewise2500 exterior faces at defaults. Poll/checkpoint between phases rather than one uninterruptible all-parts build. If actual cost exceeds either cap, report measured stage and face count; do not begin the remaining caps/body or massively increase tolerance. Extra length/changed parameters must derive and report patch counts first; nondefault digital builds cap at6000 exterior faces per part until a new cost review.
+
+Focused geometry evidence: final radial error<=0.01 and route proof<=0.004; raised-only radius/minwall; plateau>=1; exactN periodic closure; full24mm coverage and2mm external smooth exclusions; finite outward normals/actual overhang<=45; actual band-end circle joins; one connected solid; written STEP consistency, snapshots and the existing threaded assembly path. Rendering/triangle tessellation can use separate display tolerances without changing authoritative rational BREP. Optional smooth_crosswave uses a different polynomial degree/error proof and is outside this first diamond construction gate; reject its STEP request clearly until separately implemented.
+
+## Explicit remaining issues and receipt
+
+High: practical OCC trimming/sewing/runtime is unproven until the bounded patch. Medium: plateau width and face normals need actual-surface checks despite the stronger analytic bounds. Physical grip, prints and fits remain pending. The separate CVAL-03 thread-mouth boundary finding is preserved and **deferred**: this surface route does not authorize changing the thread Boolean clipping construction. Root must bind its completed evidence and a focused prescription separately before that source change; no R2 file may be mutated.
+
+Command run: `uv run python projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/inputs/surface-route-probe.py`. It counts exact clipped polygons and calculates the proof bounds, without generating CAD. Inputs and receipt fingerprint are `inputs/surface-route-contract.sha256` and `inputs/surface-route-contract.fingerprint.txt`. Owner changed only this route plus surface-route files. Next: root verifies freeze and assigns Phase B patch/blank implementation under these ceilings; independent validation/review follows a frozen generated candidate. No self-approval or new CAD/snapshot claim.

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laifen Wave case — split placement gate</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<main>
+  <header><p class="eyebrow">P2 R1 · visual intent gate</p><h1>Two-piece mid-split case</h1><p>Change the seam or pattern, then judge: <strong>Does this show the intended two-piece mid split and desired thread location?</strong></p></header>
+  <section class="layout">
+    <form id="controls" aria-label="Simulator controls">
+      <h2>Placement</h2>
+      <label for="split-mm">Distance from closed top <output id="split-mm-value">84 mm</output></label><input id="split-mm" aria-label="Split distance from closed top slider" type="range" min="50" max="169" step="1" value="84"><label for="split-mm-number">Exact split distance from closed top (mm)</label><input id="split-mm-number" type="number" min="50" max="169" step="0.1" value="84" inputmode="decimal">
+      <label for="split-percent">Distance from closed top (%) <output id="split-percent-value"></output></label><input id="split-percent" aria-label="Split distance from closed top percentage slider" type="range" min="22.83" max="77.17" step="any" value="38.356"><label for="split-percent-number">Exact split distance from closed top (%)</label><input id="split-percent-number" type="number" min="22.83" max="77.17" step="0.01" value="38.356" inputmode="decimal">
+      <label>Device length reference <input id="device-length" type="number" min="1" step="1" value="208" inputmode="decimal"><small>Changing this reference preserves the canonical split in mm and derives a new percentage for closed outer length H.</small></label>
+      <label>Surface pattern <select id="pattern"><option value="blunt-diamond">Blunt diamond</option><option value="smooth">Smooth</option><option value="shallow-helix">Shallow helix</option><option value="wave-flutes">Wave / flutes</option></select></label>
+      <label>Display <select id="display"><option value="assembled">Assembled</option><option value="exploded">Exploded view</option></select></label>
+      <p class="hint">Orbit: drag to rotate · wheel/pinch to zoom. Exploded spacing is display-only.</p>
+      <div id="status" role="alert" aria-live="polite"></div>
+    </form>
+    <section class="viewer-panel" aria-label="Interactive three dimensional case view"><div id="viewer"><div id="load-error" hidden role="alert"></div></div><p class="legend"><span class="swatch upper"></span>Upper piece <span class="swatch lower"></span>Lower piece <span class="swatch seam"></span>Seam <span class="swatch thread"></span>Full interval <span class="swatch effective"></span>Effective interval</p><section class="detail" aria-labelledby="detail-title"><h2 id="detail-title">Surface detail</h2><canvas id="detail-canvas" width="288" height="90" role="img"></canvas><p id="detail-text" aria-live="polite"></p></section></section>
+    <aside aria-label="Axial accounting readouts"><h2>Assembled global Z</h2><p id="visual-summary" class="sr-only" aria-live="polite"></p><dl id="readouts"></dl><p class="caution">Visual axial-accounting model only. It is not CAD, printable geometry, a thread-fit proof, wall-thickness proof, or device-retention proof.</p></aside>
+  </section>
+  <footer><span>Global z=0: lower closed outer end</span><span>Global z=H: upper closed outer end (top reference)</span></footer>
+</main><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script><script type="module" src="app.js"></script>
+</body></html>

@@ -1,0 +1,70 @@
+# VFR-04R bounded topology and accuracy repair
+
+Status: **reopened design complete; implementation and G2/G3 pending**. Owner: `/root/openscad_vfr04_designer`, design only. This document is the sole changed path.
+
+Verified design-input manifest `inputs/VFR04R_DESIGN_INPUTS.sha256`: SHA-256 `943890c48aec9f6d092079207a20ff2fb7e5ca2d99ae771cc2ad14ea021f194e`, all 12 entries OK. Repair baseline SCAD: `45dee1b69f0b054d0dad5d5b3ad08fcfcb057ff2ac038351d10df5d49ab22774`. Failure authority: `scratch/vfr04-implementation/G2_G3.md`, including its final-cycle appendix; that appendix supersedes its earlier grid/winding checkpoint as the current failure. The failed short-band STL is `bd5defc4b0431df156c4c9b153893a7d2d389e0c963597ee40a9299d3f10daae`.
+
+The prior repair ceiling is consumed. This newly frozen task permits **one implementation attempt plus one focused repair**, not a continuation of unlimited VFR-04 attempts. User-approved B, field mathematics, parameters, tolerances, budgets, protected geometry and browser-disabled status remain unchanged.
+
+## Failure and selected correction
+
+The final recorded band has positive volume and the correct plateau/valley field vertices, but six zero-area faces and three multiply-used edges create four face-connected components and fail watertightness. Its sampled radial error is 0.0258799516 mm against the unchanged <=0.025 mm gate. Current source clips polygons with inclusive epsilon comparisons, preserves duplicate endpoint emissions, maps all coincident XYZ keys together, and then fans from the first polygon vertex. That combination permits collapsed fan triangles at the wrap and at clipping vertices.
+
+Keep the exact `(s,t)` plateau/four-ramp construction. Correct only polygon cleanup, periodic ownership/indexing, triangulation of clipped polygons, and one angular bisection of each ramp. Do not return to a uniform grid, raise `$fn`, refine all cells repeatedly, reduce depth, widen plateaus, alter phase, or relax the error threshold.
+
+## Exact topology algorithm
+
+Apply these steps in order to the existing developed-space patches; retain their current orientation and corrected outward winding.
+
+1. **Normalize clipping endpoints.** Before each half-plane classification, snap a coordinate within `1e-10` in `(u,v)` to that exact clipping limit. Classify the snapped value, rather than accepting an outside strip by `limit +/- epsilon`. Calculate an intersection only for a crossing edge; snap interpolation parameters near 0 or 1 to their endpoint. A parallel noncrossing edge never creates an artificial intersection.
+2. **Clean each cyclic polygon after every clip.** Remove consecutive coincident vertices, then remove a trailing vertex equal to the first; repeat the trailing check until distinct. Use the same developed-coordinate equivalence tolerance throughout. Keep ordered collinear vertices when they are shared edge subdivisions: deleting them from only one neighboring face would create a T-junction. Reject polygons with fewer than three distinct vertices or zero developed area. A repeated nonconsecutive vertex in a positive-area polygon is an error to report, not a face to discard silently.
+3. **Use half-open angular ownership without opening the mesh.** Clip geometric support to the closed strip `[0,N]` so both boundaries retain their vertices. Retain only positive-area patches with interior centroid `0 <= u < N`; exclude cells whose intersection has zero angular width. Do not modulo polygon coordinates before clipping and do not create separate vertical seam faces. The half-open rule owns area once; it does **not** delete either neighboring side face needed at the cylindrical seam.
+4. **Canonicalize periodic vertex identity.** At indexing time only, map a snapped boundary `u=N` to canonical `u=0`, keeping v. Form vertex identity from canonical developed coordinates with the declared `1e-10` equivalence, rather than discovering the wrap through rounded XYZ. Equal canonical keys must use one shared index and one evaluation of `diamond_point_uv`. Evaluate the canonical angular representative consistently, preserving the existing shared field, phase and point quantization. Record the maximum key-merge distance; reject any merge outside the declared equivalence. All interior and axial-boundary vertices use the same registry. A duplicate seam index must never occur twice in one face.
+5. **Triangulate without dropping edge subdivisions.** A clipped convex polygon with a collinear boundary vertex can produce a degenerate triangle in the current vertex-zero fan. Use an interior developed-space center (arithmetic mean of distinct cyclic vertices is inside this convex positive-area polygon), evaluate its true field radius, and fan `[center, vertex[k], vertex[k+1]]` with the existing winding. One center belongs to that polygon only. This preserves every shared perimeter edge, adds no Boolean solid and introduces no field-breakline crossing. Do not delete zero-area exported triangles as a repair: every emitted triangle must already have three distinct indices and nonzero geometric area.
+6. **Close axial ends from the cleaned boundary.** Obtain top/bottom perimeter segments from the cleaned, subdivided side polygons, after canonical indexing. Zero-length segments are errors/excluded zero-support boundaries; each actual perimeter segment is emitted once. A repeated segment caused by two area-owning patches is an ownership error. Keep the existing center fans and winding, using the exact side-boundary indices. Keep segments crossing the angular wrap; no angular seam fan is added.
+
+Before Manifold, require every indexed edge to have exactly two incident triangles with opposite directed use. Require no repeated index in a triangle, no zero-area triangle, and exactly one connected surface. Do not equate “zero boundary edges” with manifoldness: the recorded failure has zero boundary edges but maximum edge use10. These cheap structural checks must pass before exporting G2.
+
+## One targeted ramp split and its accuracy bound
+
+Bisect **each original ramp once**, before domain clipping, with the constant-u line halfway between that ramp's original minimum and maximum u. Each ramp has original angular width0.5 in u, so its two children have width<=0.25. Compute the line from original patch coordinates, not from the clipped polygon; adjacent copies must choose the identical cut. Keep the original plateau as one polygon. Preserve the existing pure field as the evaluator at all new vertices and centers.
+
+At default `a=0.18`, the four midpoint cuts are at cell-center u plus/minus0.25. The neighboring ramps sharing the affected outer-to-inner edge have the same cut, and the cuts do not enter the plateau. For another allowed a where a split intersects a plateau edge, insert that exact intersection into the plateau's ordered boundary and its adjacent ramp boundary before triangulation. This is shared-edge conformity, not another plateau subdivision or changed plateau shape. Retain a single plateau center fan. General rule: every split point lying on an original shared edge must be present in every face incident to that edge, including axial end fans after clipping.
+
+Do not assert that a cylindrical chord bound alone proves field accuracy: differing endpoint radii shift the physical `atan2` angle relative to the linear developed angle. The following conservative bound includes that shift and applies to each triangle wholly within one original rational-field facet.
+
+For triangle vertices, use unwrapped angles in radians. Let `delta=max(theta_i)-min(theta_i)`, `Rmin=min(r_i)`, `Rmax=max(r_i)`, and `Dr=Rmax-Rmin`. Let the global angular Lipschitz constant be `L=diamond_depth*N/(2*PI*(0.5-a))` in mm/radian. For `0<=delta<PI/2` and `Rmin>0`, bound radial comparison error by:
+
+```text
+E_chord = Rmax * (1 - cos(delta/2))
+E_angle = atan((Dr*delta/4 + Rmax*delta^3/6) / (Rmin*cos(delta)))
+E_bound = E_chord + L*E_angle + 0.000002 mm
+require E_bound <= 0.025 mm
+```
+
+Angles in this derivation are radians; SCAD trigonometric functions take degrees, so the implementation must convert explicitly and test that conversion. `atan` must likewise be converted back to radians before multiplication by L. The2e-6 mm term budgets existing coordinate quantization and canonical equivalence; it does not raise the acceptance threshold.
+
+Reason: the field radius is affine over each original plateau/ramp, so barycentric interpolation at the developed angle equals the interpolated radius. A positive combination of radial vectors within an angular span delta loses at most `E_chord`. Radius/angle covariance bounds the circular-mean shift by the `Dr*delta/4` term; the sine Taylor remainder is bounded by `Rmax*delta^3/6`, with positive real part at least `Rmin*cos(delta)`. Global field Lipschitz continuity bounds the remaining error even if the physical angle moves just across a facet breakline. The same bound holds for all triangle interiors, not only sampled vertices.
+
+For the default N33/radii19.05..19.5/a0.18, bisected ramp delta is at most `2*PI*0.25/33`, about0.04760 radians. Substituting the conservative full-depth Dr0.45 gives a bound below0.008 mm. Plateau angular width is at most0.36 u, with Dr0, and its corresponding bound is below0.012 mm. These analytic estimates leave margin under0.025 without another global refinement. Calculate and record the actual maximum triangle bound; independent sampled radial error remains a required gate and must also remain<=0.025.
+
+If the bound fails for the unchanged default band or a required G3 triangle, stop and diagnose. This task does not authorize recursive subdivision. For a nondefault parameter combination, report it as unvalidated/blocked rather than silently changing parameters or extending supported browser behavior.
+
+## Allowed delta and invariants
+
+The later implementation owner may change only the existing SCAD facet clipping/cleanup, periodic key/index construction, ramp subdivision, local face triangulation and boundary-edge assembly needed for the algorithm above. A conservative triangle estimator may be corrected to cover the new finite subdivision; the250000-per-component cap cannot increase. Preserve all named field helpers, valley-derived N,0.18 default, pitches/depth/phase, seam Z mapping, domain endpoints, smooth/depth-zero paths, shoulder condition, body/cap blank envelopes, bores, threads, drains, floors, chamfers, split equations and output transforms byte-for-byte outside that bounded source region unless root refreezes a necessary exception.
+
+This design role changes no source, tests, browser, oracle, artifacts or hosting. Root must give the implementation/validation roles exclusive write scopes for their source and evidence separately; this design grants no browser enablement. Do not change mesh tolerances to make a failed edge or radial test disappear. Preserve the failed baseline STL and receipts as evidence; use a new VFR04R scratch namespace for regenerated witnesses.
+
+## G2/G3 continuation and retry rules
+
+1. Freeze this document with the verified inputs. Implement the single combined topology/ramp correction. Rerun the existing G1 prescribed command and confirm the protected-region diff; field intent and existing G1 values must stay unchanged.
+2. Check cleaned/indexed topology and the analytic maximum error bound before launching real geometry. Then regenerate the **same** G2 witness: height7.13, global start131.93/end139.06, same pinned WASM Manifold harness, same nominal parameters. Retain the30-second wall ceiling. Require one watertight, winding-consistent component, positive volume, each edge use2, no degenerate faces, and radial max<=0.025 using the independent field at triangle-interior `(atan2,z)` points. Reuse seed404 and at least the same three samples per side triangle; report count, max, p99, mean and the worst triangle's coordinates/facet provenance. Add deterministic edge-midpoint/centroid checks at the angular wrap and new ramp split. The old STL cannot serve as a passing witness.
+3. If G2 passes all conditions, proceed to default G3 **body first, then cap**, retaining60 seconds per part and250000 exterior triangles per component. Keep all original G3 topology, exterior radial/chamfer, protected internal geometry, wall and seam checks. Check generated part surfaces after Boolean operations, not only the pre-Boolean blank. Failure of body stops cap; failure of either part stops downstream work. This task does not authorize G4/G5, assembled/print-layout generation, UI enablement or delivery.
+4. One failed attempt may receive one focused source repair only if its diagnosed cause is within the algorithm/delta above. A timeout consumes that attempt. Rerun the failed gate and all dependent affected gates on the new fingerprint. An out-of-scope cause, changed field/geometry requirement, or second failure stops the reopened workstream and returns exact evidence to root. Do not treat the new document as another renewable retry budget.
+
+The implementation receipt must contain input/design/source hashes, exact commands, changed paths, structural counts, analytic error bound, actual STL hashes/metrics, timings, the worst-error witness and passed/pending gate names. Independent validation and formal acceptance remain separate owners; implementation success cannot approve itself. Physical and slicer acceptance remain pending.
+
+## Design verification receipt
+
+Ran `shasum -a 256 .../inputs/VFR04R_DESIGN_INPUTS.sha256` and `shasum -a 256 -c .../inputs/VFR04R_DESIGN_INPUTS.sha256` from the project root: expected fingerprint, all12 entries OK. Read the exact manifest-listed SCAD, G1 and `scratch/vfr04-implementation/G2_G3.md`, including final repair evidence and the implementation task. An initial read attempted an iteration-local `G2_G3.md`; that nonexistent path was corrected to the exact scratch path named in the manifest. No tests, mesh generation or browser runs were performed by this design owner.

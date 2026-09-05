@@ -1,0 +1,12 @@
+cc4c378fe3b398ead900b1bf39a94bf8b1e94f21599c4219bb3f55b6af1fdf61  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/current-baseline.sha256
+15c7c0503e87ec0f0b1a828fb62d471baaefc9a6caecf629d14d4504d0d19224  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/implementation-recovery-candidate.sha256
+d4cdd20ddf527d8f1733724b7f67d897defbdd740831a1705cce953e3bf17e35  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/implementation-protected-parity.sha256
+2bf0cdbe596e12f0a5378f0bc43c3d920f385f104b990964235ec6f115d87a96  projects/laifen-wave-case/scratch/generic-container-sync-recovery/browser-repro.json
+3ff8c55cc69f76c2a447b443d187c4eef7f357c9de9c7789d6251c33c0d472b3  projects/laifen-wave-case/scratch/generic-container-sync-recovery/browser-repro.stdout.txt
+d4eb64949625cc385eccd43f0f3f3d18ffc521eab94c6b197fcb13428f45bc79  projects/laifen-wave-case/scratch/generic-container-sync-recovery/browser_repro.py
+c0b43cdd9d9192de4d3fcc08f5f8461c631e501e9099cd93478593d7a98d5663  projects/laifen-wave-case/scratch/generic-container-sync-recovery/jar-camera-sanity.png
+d77d92943691b24e2ba45b469775ab5f0bd055aeff2d9ce6aadd957e2907a56b  projects/laifen-wave-case/scratch/generic-container-sync-recovery/laifen-camera-sanity.png
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  projects/laifen-wave-case/scratch/generic-container-sync-recovery/node-test.exit
+b184555fac7890e987cab4bb39d9a63d4749a9900bcc333a0fb7d263aeeeed70  projects/laifen-wave-case/scratch/generic-container-sync-recovery/node-test.stdout.txt
+ddb9704dd25bed01654eef5483588fb10e0a49e8f149ed5c84b3b59e6ebb8ec5  projects/laifen-wave-case/scratch/generic-container-sync-recovery/percent-max-arrowup-full.png
+20f70f92ea34b499c556e7f2e02031745dd4e89e72d1909c68116b1c9434d3c5  projects/laifen-wave-case/scratch/generic-container-sync-recovery/percent-max-full.png

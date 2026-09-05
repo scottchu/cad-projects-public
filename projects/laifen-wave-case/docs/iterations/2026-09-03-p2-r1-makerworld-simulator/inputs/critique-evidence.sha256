@@ -1,0 +1,20 @@
+# CRIT-MW-01 frozen review evidence, candidate remains read-only
+26e5717885bfd4dcc6a473f455a405767011cca3f94a4ec1cd47ee5fda4fcb6d  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/inputs/implementation-candidate.sha256
+fa6e5ee097f0a9a2e58d63d3ae41f0cf43511292e26193af504054cf79b43b33  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/BRIEF.md
+e598d24deb04f317ae2feca4e577e57a96de8d654f3b352c59e0302d0b26420b  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/DESIGN.md
+bdf6f5b77450e07ac83ac84ec141db6ca70a9160314e21b45b88c732c56c408e  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/IMPLEMENTATION.md
+aeaaf2d11e143fde7e505a2710840195e3b9650cdb8078de0055b42a398fd489  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/index.html
+aa730e5b4141abf5c6b98ca2650a1a1cab5064ae1af0050a6ab53b1b28598882  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/app.js
+4ed0713f3a514504eb4936ac479c11beac947e5dec312ce022f833690d4da454  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/math.mjs
+67f8f9b279d0f2d74c49729ea169d731b506c4f97c88281f6f3390a2672ee1b5  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/style.css
+9bee88a226137294331a9a4948ba980aad2cb21c80bf0e979476a6b3f92b897d  projects/laifen-wave-case/tests/test_makerworld_simulator.mjs
+2082674ea58c745917693e0573771392cf921a017cea0bae7f8e2243a381d0ee  projects/laifen-wave-case/scratch/makerworld-simulator-critique/capture.py
+3e32f913bd09fdecb06d2f6dccb8559efa9a7894764b8529d9589738738496e6  projects/laifen-wave-case/scratch/makerworld-simulator-critique/capture.txt
+8798ba5072caffdfb14735054a6fe0d51fe8e70d412cb287d9725f8bd6d64570  projects/laifen-wave-case/scratch/makerworld-simulator-critique/01-desktop-default.png
+978b8899ee5f15d2e12027a7d2e5d48b2a74453844c730fd84e2d79a8ebb650b  projects/laifen-wave-case/scratch/makerworld-simulator-critique/02-desktop-s50.png
+f4fa38c1339459580f10c8a4b25c971901842434462d37b3ae881b0f25379342  projects/laifen-wave-case/scratch/makerworld-simulator-critique/03-desktop-s169.png
+256b67331f255ac6116d32c379e76c58aceccf77b4ac4adeec351b81df8c7be7  projects/laifen-wave-case/scratch/makerworld-simulator-critique/05-desktop-wave.png
+2109cee0d9ecf0286f117f185a7eb9f53ff7a87bc3b70f5d1b7e2e4cdc3f0c01  projects/laifen-wave-case/scratch/makerworld-simulator-critique/06-desktop-exploded.png
+0b06405a0a5377a94add52eecaa9ec191fa1b8b168bdaa5e6c9cc6b926bb639c  projects/laifen-wave-case/scratch/makerworld-simulator-critique/07-desktop-device250-percentmax.png
+e65579a09f4a6876c4a61731f519788aca9c7f80bf972e904628fb423885396f  projects/laifen-wave-case/scratch/makerworld-simulator-critique/08-mobile-default.png
+33f3cc676508c08d075f92b201e2e923d02e5480822f69dc71ca16a990483c42  projects/laifen-wave-case/scratch/makerworld-simulator-critique/09-mobile-percent50.png

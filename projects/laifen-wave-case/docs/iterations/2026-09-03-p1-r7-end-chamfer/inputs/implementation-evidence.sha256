@@ -1,0 +1,17 @@
+b5c3b78cd23d24632ba0ddbed2fbf4164ffdcf39b0c3a645aa828ff15ab61d3a  projects/laifen-wave-case/docs/iterations/2026-09-03-p1-r7-end-chamfer/IMPLEMENTATION.md
+12d2d99e6dbd90c5009ccf6ee358e1a765839613bc11f731404438673fdd4a47  projects/laifen-wave-case/scratch/end-chamfer-impl/math.log
+c850a1b38ee4ca0a0c1be0d4c26b9dc680dc63b9ba892d6a64eda9555ee16cd0  projects/laifen-wave-case/scratch/end-chamfer-impl/sensitivity.log
+ec3f8545d100aedb6fbbd401e51a0dc9d65edcbe963eef98bf671b99147cd7af  projects/laifen-wave-case/scratch/end-chamfer-impl/body-parity.log
+927387233ac6b8febf37e7d1bc0f884dfb15ac57672ee36d8e9d04e791288297  projects/laifen-wave-case/scratch/end-chamfer-impl/generation.log
+0f1b1d7cbded0e12592a741307864b71162a6fb81f799690beaa028d74fd717d  projects/laifen-wave-case/scratch/end-chamfer-impl/localize_parity.py
+dce794bde5054e976d99757d5c075f58fad4234b26b7141fb80e21622de54a7b  projects/laifen-wave-case/scratch/end-chamfer-impl/localized-parity.json
+392d42f59053894afbc9963f7cd45426ee740ce90033e161e6f86100e0d888d0  projects/laifen-wave-case/scratch/end-chamfer-impl/native_end_trial.py
+30466560003bd565efb5c81de5bf781f575e8c8cec8a0f4b47baa535731c59f0  projects/laifen-wave-case/scratch/end-chamfer-impl/native-end-trial.json
+9a2c1f29800ed9163d41f0b8226b47c463caacbeb1791dd1633583808d201efd  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/regression.log
+35eb384db7fdb9ea5e812cbd5a7ee45d623e4c8b84bc9961246484f91fd073d4  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/generation.log
+f2f311c22b5e2895948d922220928e9b553bd61ceb7b2ac82c3068348c187346  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/parity.py
+4a3e73fa444ce140caba27a5482c270849ad4f147f2153ddfebe6a9046da0497  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/body-parity.json
+744b5c5de23a85ff72fbd4a47363fd25828ab478c5be37639d9ad243a01e67c7  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/cap-parity.json
+223a67fa96d7363f50c6795b8d63f5717068061a514b227047e456dd15329361  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/candidate.json
+1273bad26a162c0b05ce7ee3bc2928b894848e9588bd736424080ad5ce9de2f9  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/preservation.json
+cb4961e8877b35f0b3ac9e8c13e7aa99cea8933f020fa913af3dc49ede4221fc  projects/laifen-wave-case/scratch/end-chamfer-impl/repair1/freeze.py

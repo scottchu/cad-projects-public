@@ -1,0 +1,15 @@
+{
+  "task": "IMP-GEN-02 default delivery",
+  "status": "default_candidate_pending_independent_review",
+  "candidate_entries": 53,
+  "candidate_fingerprint": "4e1ea38ac083f2f9b708770165bb2281748f129826f1f50bd1782139484a9ffd",
+  "parameter_fingerprint": "50f1e34681419a81f91b4587b8f1e11a97569b3e99cc530891dfcee32b302677",
+  "source_stage": "final source has rejection-only empty-void guard; generated default STEP source hashes retained in generation manifest",
+  "pending": [
+    "continuous mouth source/STEP boundary correspondence",
+    "independent full CAD/artifact review",
+    "nondefault pitch BREP diagnosis",
+    "slicer",
+    "physical"
+  ]
+}
