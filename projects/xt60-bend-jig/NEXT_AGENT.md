@@ -33,10 +33,11 @@ Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 
 ## Next smallest action
 
-Merge GitHub PR `https://github.com/scottchu/design-projects/pull/11`, then
-request human Viewer review before any separately authorized
-mesh/3MF/slicing/printing or physical acceptance. Any geometry change reopens
-the candidate fingerprint, validation, and formal review.
+GitHub [PR #11](https://github.com/scottchu/design-projects/pull/11) is merged.
+Request human Viewer review of the exact P19 full-motion artifact before any
+separately authorized mesh/3MF/slicing/printing or physical acceptance. Any
+geometry change reopens the candidate fingerprint, validation, and formal
+review.
 
 ## Printing-profile addendum — 2026-08-31
 
@@ -44,3 +45,10 @@ Read [PRINTING_PROFILE.md](PRINTING_PROFILE.md) before future authorized print
 preparation; P19 process selection and manufacturing/physical gates remain open.
 See the [repository-policy handoff](../../docs/iterations/2026-08-31-printing-profiles/HANDOFF.md) for independent status.
 No CURRENT, frozen contract/fingerprint or design acceptance changes follow.
+
+## Documentation-refresh addendum — 2026-09-05
+
+The project README now foregrounds the focused P19 regression and uses the
+installed CAD and CAD Viewer workflows without a stale plugin-cache pin or old
+service command. Resume from the same accepted candidate and human review action;
+no source, artifact, or acceptance boundary changed.

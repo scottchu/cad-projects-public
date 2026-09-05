@@ -73,3 +73,10 @@ See [PRINTING_PROFILE.md](../../../PRINTING_PROFILE.md) and the separate
 Only documentation/profile concerns were added. The P19 frozen candidate,
 source/tests/artifacts and CAD/STEP verdict remain unchanged; no printing or
 physical acceptance is granted.
+
+## Later documentation-refresh addendum — 2026-09-05
+
+PR #11 is now merged. Current-facing documentation foregrounds the focused P19
+test and the installed CAD/CAD Viewer workflows, while preserving the exact P19
+candidate and all digital-versus-physical acceptance boundaries. No source,
+test, STEP, sidecar, review artifact, candidate hash, or CURRENT pointer changed.

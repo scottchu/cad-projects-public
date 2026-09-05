@@ -1,8 +1,8 @@
 # XT60 bend jig project state
 
-Last updated: `2026-08-26`
+Last updated: `2026-09-05`
 
-## Current accepted digital candidate
+## Baseline
 
 - Project: `projects/xt60-bend-jig`.
 - Active iteration: `p19-r1-front-edge-short-tail`.
@@ -16,6 +16,13 @@ Last updated: `2026-08-26`
   sidecar, and snapshot files.
 - P18 R1 remains the prior accepted baseline and P17 remains immutable
   history; neither was modified by P19.
+
+## Active iteration
+
+- Iteration: `docs/iterations/p19-r1-front-edge-short-tail/`.
+- Status: complete; P19 R1 was delivered through merged GitHub PR #11.
+- Current handoff:
+  `docs/iterations/p19-r1-front-edge-short-tail/HANDOFF.md`.
 
 ## P19 R1 mechanism
 
@@ -74,17 +81,20 @@ Last updated: `2026-08-26`
 
 ## Viewer delivery
 
-- Exact P19 page:
+- Historical exact P19 page used for the accepted delivery evidence:
   `https://mac-mini.duckbill-ionian.ts.net/Users/scottchu/.codex/worktrees/a373f6e6-90f4-4c0e-857b-643add242937/design-projects?file=projects%2Fxt60-bend-jig%2Fcad%2Fp19_r1_front_edge_short_tail%2Fp19_r1_full_motion.step.py`.
 - Local and Tailscale page probes return HTTP `200`; exact artifact status is
   `ready`; the assembly descriptor and a generated component GLB return HTTP
   `200`.
+- Do not reuse that worktree URL as a current endpoint. Start the installed
+  `cad-viewer` workflow with the current absolute repository workspace and the
+  exact P19 generator path when a new human review is requested.
 - The app browser-control connection was unavailable, so live slider/UI
   manipulation was not independently exercised. Exact snapshots were
   inspected at original resolution and Viewer transport/readiness is accepted
   separately from human interactive review.
 
-## Acceptance boundary
+## Acceptance state
 
 - Accepted: parametric source, deterministic motion/rail math, production CAD
   solids, six STEP exports, frozen snapshots, and Viewer readiness for the
@@ -108,11 +118,11 @@ Last updated: `2026-08-26`
 
 ## Next action
 
-The exact accepted fingerprint is delivered in GitHub PR
-`https://github.com/scottchu/design-projects/pull/11`. After merge, the next
-product action is human Viewer review and then a separately authorized
-prototype/physical test plan. Do not silently add margin, change topology,
-produce 3MF, slice, or print.
+The exact accepted fingerprint was delivered through merged GitHub
+[PR #11](https://github.com/scottchu/design-projects/pull/11). The next product
+action is human Viewer review and then a separately authorized prototype and
+physical test plan. Do not silently add margin, change topology, produce 3MF,
+slice, or print.
 
 ## Printing-profile addendum — 2026-08-31
 
@@ -121,3 +131,10 @@ manufacturing concerns. Historical coupon evidence is not P19 print authority.
 See the [repository-policy handoff](../../docs/iterations/2026-08-31-printing-profiles/HANDOFF.md) for independent status.
 P19 CURRENT, frozen contract/fingerprint and CAD/STEP/physical acceptance remain
 unchanged; this is not a new product baseline or permission to print.
+
+## Documentation-refresh addendum — 2026-09-05
+
+Current-facing README, state headings, Viewer instructions, and PR status were
+aligned with the accepted P19 R1 records and merged PR #11. This
+documentation-only refresh changes no source, test, STEP, review artifact,
+candidate fingerprint, active iteration, or acceptance verdict.

@@ -1,6 +1,32 @@
 # Design Projects
 
-Private monorepo for personal parametric design, simulation, CAD, fabrication, and physical-validation projects.
+## Projects
+
+- **[Example sticker pack](projects/example-sticker-pack/README.md)** — versioned
+  LINE and WhatsApp artwork for the user-supplied 示例人物 / Example character. V1 is
+  an accepted local private-trial release; the current V2 anatomy-repair
+  baseline is formally accepted and available as a private GitHub prerelease.
+  Actual LINE/WhatsApp import, rendering, service acceptance, and privacy remain
+  unverified. See [state](projects/example-sticker-pack/PROJECT_STATE.md) and
+  [next action](projects/example-sticker-pack/NEXT_AGENT.md).
+- **[XT60 bend jig](projects/xt60-bend-jig/README.md)** — a parametric PETG jig
+  and mechanism study for forming two XT60 pigtail wires through a fixed
+  90-degree bend. P19 R1 is accepted for parametric CAD, six written STEP
+  artifacts, and exact-artifact Viewer handoff; mesh, slicing, printing, and
+  physical behavior remain unverified. See
+  [state](projects/xt60-bend-jig/PROJECT_STATE.md) and
+  [next action](projects/xt60-bend-jig/NEXT_AGENT.md).
+- **[Kage](projects/kage/README.md)** — a roughly 300 mm kinetic shadow-clock
+  concept with a clean-restart authority and frozen historical references. No
+  restart mechanism or physical design is accepted yet; the next design action
+  is the minimal `KAGE-EXP-001` seam coupon. See
+  [state](projects/kage/PROJECT_STATE.md) and
+  [next action](projects/kage/NEXT_AGENT.md).
+
+## Repository
+
+Private monorepo for personal parametric design, digital artwork, simulation,
+CAD, fabrication, and physical-validation projects.
 
 The repository is intentionally a container for multiple independent projects. Each project keeps its own source, dependency declarations, tests, generated-artifact rules, and handoff notes. Python projects share one root `uv` workspace, `.venv`, and `uv.lock`; JavaScript projects share one root npm workspace, install, and `package-lock.json`.
 
@@ -33,16 +59,10 @@ design-projects/
             └── iterations/
 ```
 
-The first planned migrations are:
-
-- `japandi-shadow-clock-simulator`
-- `xt60-bend-jig`
-
-They will be transferred one at a time. This initialization does not copy or modify either existing project.
-
 ## One-time setup
 
-Install `uv` and Node.js/npm, clone the repository, then run from the repository root:
+Install Python 3.12, `uv`, Node.js 22 or newer with npm, and Bun, clone the
+repository, then run from the repository root:
 
 ```bash
 uv sync --all-packages --all-groups

@@ -73,20 +73,35 @@ This project owns its dependency declarations in `pyproject.toml` and `package.j
 
 ## Tests
 
+Run the focused current-baseline regression first:
+
 ```bash
-uv run --project projects/xt60-bend-jig pytest projects/xt60-bend-jig/tests
+uv run --project projects/xt60-bend-jig pytest -q \
+  projects/xt60-bend-jig/tests/test_p19_r1_front_edge_short_tail.py
 npm run test --workspace projects/xt60-bend-jig
 npm run build --workspace projects/xt60-bend-jig
 ```
 
-The Python suite includes historical prototypes and the focused P13 math, requirements, actual-solid, motion, provenance, STEP, and 3MF checks. Passing tests are CAD or artifact evidence only unless a test explicitly records a physical observation.
+The focused P19 test covers the accepted motion, constraints, actual solids,
+service path, and source/export contract. Use the broader Python suite when
+investigating historical prototypes:
+
+```bash
+uv run --project projects/xt60-bend-jig pytest projects/xt60-bend-jig/tests
+```
+
+Passing tests are CAD or artifact evidence only unless a test explicitly records
+a physical observation.
 
 ## Generate current P19 R1 STEP review artifacts
 
-Use the installed CAD skill runtime rather than copying its environment into the project. The current installation is shown below; update `CAD_SKILL` if the plugin version changes.
+Use the installed `cad` skill as the runtime authority. Read its current
+`SKILL.md`, set `CAD_SKILL` to that installed skill directory for the session,
+and run its generator through the repository `uv` environment. Do not commit or
+document a versioned plugin-cache path as project authority.
 
 ```bash
-CAD_SKILL=/Users/scottchu/.codex/plugins/cache/text-to-cad/cad/0.4.28/skills/cad
+CAD_SKILL="<absolute path to the currently installed cad skill>"
 
 uv run python "$CAD_SKILL/scripts/gen" \
   projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_open.step.py \
@@ -102,21 +117,28 @@ Regeneration must be followed by focused tests, STEP inspection,
 source/export parity, snapshot/motion review, and a new provenance fingerprint.
 Do not infer mesh, slicer, 3MF, or physical acceptance from STEP generation.
 
-## Singleton CAD Viewer
+## CAD Viewer
 
-The per-user Viewer is managed by `~/.local/bin/cad-viewer`; do not start a
-competing ad-hoc server on port `3245`.
+Use the installed `cad-viewer` workflow directly with the repository root as
+the absolute workspace and this relative file:
 
 ```bash
-cad-viewer status
-cad-viewer restart
-cad-viewer url --workspace "$PWD" \
-  --file projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_full_motion.step.py \
-  --tailscale
+uv sync --all-packages --all-groups
+export VIEWER_CAD_PYTHON="$PWD/.venv/bin/python3"
 ```
 
-The service always uses the canonical repository uv interpreter at
-`/Users/scottchu/Projects/personal/design-projects/.venv/bin/python3`.
+Run those commands from the repository root. The Viewer must use that exact root
+`uv` interpreter; if it is missing or incomplete, repair it with the `uv sync`
+command above rather than selecting another Python environment.
+
+```text
+projects/xt60-bend-jig/cad/p19_r1_front_edge_short_tail/p19_r1_full_motion.step.py
+```
+
+Before reporting the preview ready, require the exact review page to return HTTP
+`200` and the exact artifact endpoint to return HTTP `200` with JSON
+`state == "ready"`. Inspect the loaded artifact before making a visual claim.
+Viewer readiness remains separate from CAD, mesh/slicer, and physical acceptance.
 
 ## Three.js simulator
 
