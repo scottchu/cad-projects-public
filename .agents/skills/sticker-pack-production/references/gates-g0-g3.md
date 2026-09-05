@@ -1,0 +1,91 @@
+# G0-G3 gate procedure
+
+Use one immutable candidate fingerprint at a time. A later correction reopens
+the earliest gate it affects and creates a new candidate; it does not erase the
+older evidence.
+
+## G0: source authority
+
+Record before generation:
+
+- byte-preserved originals with role, dimensions, and SHA-256;
+- canonical names, pack count, stable slot order, and platform partition;
+- whether each input is a finished asset, scene cell, identity anchor, or
+  correction example;
+- explicit authority order including `user_correction`, `source`, `identity`,
+  and `text`;
+- external actions that are outside the current authorization.
+
+Stop if a source is missing, mutable, ambiguously assigned, or its hash changes.
+
+## G1: per-slot design contract
+
+Create one ordered row per sticker. Freeze its source, observable action, prop
+and contact, body/camera/crop, expression, visible limb counts, named
+occlusions, forbidden ambiguous forms, effects and completeness, exact text or
+`null`, production method, allowed delta, invariants, risks, and master
+filename.
+
+Run `contract` before showing the source-to-plan sheet. Duplicate semantic
+signatures are advisory. Do not rewrite a source-faithful scene merely to make
+the pack more varied. Ask the user to approve whether the rows describe the
+intended stickers, including similarities the user wants preserved.
+
+## G2: risk-representative pilot
+
+Select the smallest set that covers every planned production method and these
+risks when present:
+
+- identity close-up and characteristic style;
+- full-body topology with visible hands and feet;
+- prone or intentionally occluded anatomy;
+- large prop with explicit hand/body ownership;
+- edge-dense effects, hands, feet, prop, and white border;
+- densest exact copy as a separate deterministic typography pilot.
+
+Run `candidate` before visual review. Review each hash-bound candidate beside
+its exact source at native size and at 512, 370, and 190 pixels on white and
+dark backgrounds. The user owns identity, intent, and overall feel. A distinct
+critic owns anatomy, crop, border, prop/effect completeness, and consistency.
+
+Approval applies only to the methods represented. Changing a method returns
+that method to G2.
+
+## G3: bounded production waves
+
+Treat the approved pilot as the first wave. Then allow at most eight unreviewed
+slots before closing another review. Preserve passed candidate hashes.
+
+For every wave:
+
+1. Generate or edit against the exact slot contract.
+2. Run `candidate` to an absent evidence directory with one stable implementer
+   identity; preserve that identity in the candidate provenance.
+3. Resolve all machine failures before human review.
+4. Have a reviewer distinct from the art implementer inspect every slot and
+   complete the generated CSV.
+5. Run `review-lint` to an absent directory with the same implementer identity.
+6. Advance only when machine status is `PASS`, human status is `PASS`, and all
+   required user design approvals for represented methods are bound to the
+   candidate hashes.
+
+Two shared failures stop the wave and reopen the common contract. A slot-level
+failure may retry only that slot within its attempt ceiling. Never promote from
+a contact-sheet impression, partial row set, or machine status alone.
+
+If any CSV reviewer identity equals the bound implementer identity,
+`review-lint` must remain `PENDING` with exit code `5`; assign a genuinely
+distinct reviewer rather than renaming the same reviewer.
+
+## Required evidence through G3
+
+- canonical contract output and source hashes;
+- candidate `audit.json`, summaries, checksums, and warning triage;
+- per-slot source/candidate comparison;
+- per-slot multi-size light and dark evidence;
+- one selectable manifest item per slot; supplemental contact sheet;
+- completed hash-bound review CSV and `review-lint` result;
+- exact user approval statement for G1/G2 when required.
+
+The audit tool proves deterministic image facts and review-record completeness.
+It does not prove that the reviewer made a correct visual judgment.
