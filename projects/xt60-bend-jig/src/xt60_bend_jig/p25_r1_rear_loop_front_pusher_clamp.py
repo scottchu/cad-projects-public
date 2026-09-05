@@ -163,13 +163,43 @@ def latch_exit_direction(params: P25R1Parameters = P25_R1_DEFAULTS) -> PointYZ:
 
     The fixed receiver appears to move opposite the bar's angular motion.
     For hinge-to-latch vector ``(dy, dz)``, that unit tangent is
-    ``(dz, -dy) / length``.  The quick-hook mouth follows this direction so
-    the rigid receiver can leave immediately instead of crossing the hook.
+    ``(dz, -dy) / length``.  The quick-hook mouth follows this direction only
+    after the receiver tongue has been deliberately deflected for release.
     """
     frame = clamp_frame(params)
     dy, dz = frame.latch.y - frame.hinge.y, frame.latch.z - frame.hinge.z
     length = hypot(dy, dz)
     return PointYZ(dz / length, -dy / length)
+
+
+def latch_release_offset_direction(params: P25R1Parameters = P25_R1_DEFAULTS) -> PointYZ:
+    """Unit receiver-deflection direction, perpendicular to latch exit.
+
+    The positive rod-row tangent moves the receiver away from the retained
+    side of the hook mouth.  This is a kinematic deformation envelope, not a
+    claim about required force, spring-back, fatigue life, or print material.
+    """
+    frame = clamp_frame(params)
+    return frame.tangent
+
+
+def latch_receiver_center(
+    release_travel: float = 0.0,
+    params: P25R1Parameters = P25_R1_DEFAULTS,
+) -> PointYZ:
+    """Receiver centre for neutral or actuated flexible-tongue envelope."""
+    if not 0.0 <= release_travel <= params.latch_release_travel:
+        raise ValueError("release_travel must stay within the modeled latch travel")
+    frame = clamp_frame(params)
+    return _add(
+        frame.latch,
+        _scale(latch_release_offset_direction(params), release_travel),
+    )
+
+
+def latch_engagement_depth_mm(params: P25R1Parameters = P25_R1_DEFAULTS) -> float:
+    """Positive barrier depth along the receiver's neutral exit path."""
+    return params.latch_hook_engagement
 
 
 def state_angle(state: State, params: P25R1Parameters = P25_R1_DEFAULTS) -> float:
@@ -223,7 +253,13 @@ def _tangent_support(center: PointYZ, tx: float, x: float, params: P25R1Paramete
     return Pos(x, center.y, center.z - params.rod_od / 2.0 - radial_gap / 2.0) * Box(tx, 1.20, radial_gap, align=(Align.CENTER, Align.CENTER, Align.CENTER))
 
 
-def build_rear_yoke(side: Side, params: P25R1Parameters = P25_R1_DEFAULTS, p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS) -> Shape:
+def build_rear_yoke(
+    side: Side,
+    params: P25R1Parameters = P25_R1_DEFAULTS,
+    p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS,
+    *,
+    latch_release_travel: float = 0.0,
+) -> Shape:
     frame, layout = clamp_frame(params), axial_layout(side, params, p20_params)
     tx, x = params.yoke_layer_thickness, layout.yoke_center_x
     collars = []
@@ -244,17 +280,26 @@ def build_rear_yoke(side: Side, params: P25R1Parameters = P25_R1_DEFAULTS, p20_p
     hinge_arm = _bar(rb, hinge_route, params.yoke_min_wall, tx, x) + _bar(
         hinge_route, frame.hinge, params.yoke_min_wall, tx, x
     )
-    latch_lug = _x_cylinder(params.hinge_lug_od, tx, x, frame.latch)
+    receiver_center = latch_receiver_center(latch_release_travel, params)
+    latch_lug = _x_cylinder(params.hinge_lug_od, tx, x, receiver_center)
+    # One printable cantilever tongue is part of the neutral rear-yoke solid.
+    # The non-zero-travel version is an explicitly named deformation envelope.
     latch_route = PointYZ(frame.latch.y, rg.z)
-    latch_arm = _bar(rg, latch_route, params.yoke_min_wall, tx, x) + _bar(
-        latch_route, frame.latch, params.yoke_min_wall, tx, x
-    )
+    latch_root_arm = _bar(rg, latch_route, params.yoke_min_wall, tx, x)
+    latch_tongue = _bar(latch_route, receiver_center, params.hinge_pin_diameter, tx, x)
+    release_tab_end = _add(receiver_center, PointYZ(0.0, params.release_tab_length))
+    release_tab = _bar(receiver_center, release_tab_end, params.front_bar_min_wall, tx, x)
     sign = _side_sign(side)
     receiver_x = sign * (layout.inboard_abs_x + params.module_axial_thickness / 2.0)
-    receiver = _x_cylinder(params.latch_receiver_od, params.module_axial_thickness, receiver_x, frame.latch)
-    yoke = collars[0] + collars[1] + bridge + legs + hinge_arm + hinge_lug + latch_arm + latch_lug + receiver
+    receiver = _x_cylinder(params.latch_receiver_od, params.module_axial_thickness, receiver_x, receiver_center)
+    yoke = collars[0] + collars[1] + bridge + legs + hinge_arm + hinge_lug + latch_root_arm + latch_tongue + latch_lug + release_tab + receiver
     yoke = yoke - hinge_hole
-    return _color(yoke, f"rear_yoke_{side}_BLUE_GREEN_open_saddles_D4p35", "#5B6572")
+    latch_pose = (
+        "FLEX_RECEIVER_NEUTRAL"
+        if latch_release_travel == 0.0
+        else f"FLEX_RECEIVER_DEFLECTED_ENVELOPE_{latch_release_travel:.2f}mm"
+    )
+    return _color(yoke, f"rear_yoke_{side}_BLUE_GREEN_{latch_pose}", "#5B6572")
 
 
 def _locked_front_bar(side: Side, params: P25R1Parameters, p20_params: p20.P20R4Parameters) -> Shape:
@@ -265,20 +310,40 @@ def _locked_front_bar(side: Side, params: P25R1Parameters, p20_params: p20.P20R4
     hinge_hole = _x_cylinder(params.hinge_hole_diameter, tx + 0.4, x, frame.hinge)
     hook = _x_cylinder(params.latch_hook_outer_diameter, tx, x, frame.latch)
     hook_hole = _x_cylinder(params.latch_receiver_od + 2.0 * params.latch_clearance, tx + 0.4, x, frame.latch)
+    exit_direction = latch_exit_direction(params)
+    release_direction = latch_release_offset_direction(params)
+    mouth_half_width = params.latch_receiver_od / 2.0 + params.latch_clearance
+    mouth_center = _add(frame.latch, _scale(release_direction, params.latch_release_travel / 2.0))
+    slot_start = _add(mouth_center, _scale(exit_direction, -mouth_half_width))
     slot_end = _add(
-        frame.latch,
-        _scale(latch_exit_direction(params), params.latch_hook_outer_diameter),
+        mouth_center,
+        _scale(exit_direction, params.latch_hook_outer_diameter),
     )
-    hook_slot = _bar(frame.latch, slot_end, params.latch_receiver_od + 2.0 * params.latch_clearance, tx + 0.4, x)
+    hook_slot = _bar(
+        slot_start,
+        slot_end,
+        2.0 * mouth_half_width + params.latch_release_travel,
+        tx + 0.4,
+        x,
+    )
+    # The tooth closes only the retained side of the enlarged release mouth.
+    # Its depth is the specified 1.20 mm engagement.  The round receiver and
+    # round hook edge provide the first-CAD lead-in into this retained pocket.
+    tooth_depth = latch_engagement_depth_mm(params)
+    tooth_center = _add(
+        frame.latch,
+        _scale(exit_direction, params.latch_receiver_od / 2.0 + params.latch_clearance + tooth_depth / 2.0),
+    )
+    tooth_inner = _add(tooth_center, _scale(release_direction, -tooth_depth / 2.0))
+    tooth_outer = _add(tooth_center, _scale(release_direction, -(mouth_half_width + params.latch_clearance)))
+    retention_tooth = _bar(tooth_inner, tooth_outer, tooth_depth, tx, x)
     orange_top = frame.orange.z + params.rod_od / 2.0 + params.orange_pad_offset
     bar_axis_z = frame.orange.z + params.front_bar_vertical_offset
     bar_low = bar_axis_z - abs(frame.tangent.y) * params.front_bar_min_wall / 2.0
     pad_h = bar_low - orange_top + 0.05
     pad = Pos(x, frame.orange.y, (orange_top + bar_low + 0.05) / 2.0) * Box(tx, params.orange_pad_diameter, pad_h, align=(Align.CENTER, Align.CENTER, Align.CENTER))
-    release_tab_end = _add(frame.latch, PointYZ(0.0, params.release_tab_length))
-    tab = _bar(frame.latch, release_tab_end, params.front_bar_min_wall, tx, x)
-    result = bar + hinge + hook + pad + tab
-    result = result - [hinge_hole, hook_hole, hook_slot]
+    result = bar + hinge + hook + pad
+    result = (result - [hinge_hole, hook_hole, hook_slot]) + retention_tooth
     return _color(result, f"front_pusher_bar_{side}_ORANGE_only_quick_hook", "#E9A72C")
 
 
@@ -303,7 +368,8 @@ def build_opening_spring_envelope(side: Side, params: P25R1Parameters = P25_R1_D
 
 
 def module_parts(side: Side, state: State, params: P25R1Parameters = P25_R1_DEFAULTS, p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS) -> tuple[Shape, Shape, Shape, Shape]:
-    return (build_rear_yoke(side, params, p20_params), build_front_pusher_bar(side, state, params, p20_params), build_hinge_pin_envelope(side, params, p20_params), build_opening_spring_envelope(side, params, p20_params))
+    release_travel = params.latch_release_travel if state == "RELEASED_CLEAR" else 0.0
+    return (build_rear_yoke(side, params, p20_params, latch_release_travel=release_travel), build_front_pusher_bar(side, state, params, p20_params), build_hinge_pin_envelope(side, params, p20_params), build_opening_spring_envelope(side, params, p20_params))
 
 
 def build_module(side: Side, state: State, params: P25R1Parameters = P25_R1_DEFAULTS, p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS) -> Compound:
@@ -357,7 +423,8 @@ def p25_pairwise_intersections(state: State, params: P25R1Parameters = P25_R1_DE
 
 
 def rod_contact_table(side: Side, state: State, params: P25R1Parameters = P25_R1_DEFAULTS, p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS) -> dict[str, dict[str, float]]:
-    yoke = build_rear_yoke(side, params, p20_params)
+    release_travel = params.latch_release_travel if state == "RELEASED_CLEAR" else 0.0
+    yoke = build_rear_yoke(side, params, p20_params, latch_release_travel=release_travel)
     bar = build_front_pusher_bar(side, state, params, p20_params)
     rods = {role: p20.build_rod(name, 1.0, p20_params) for role, name in ROLE_TO_P20_NAME.items()}
     return {
@@ -380,12 +447,12 @@ def sweep_clearances(side: Side, params: P25R1Parameters = P25_R1_DEFAULTS, p20_
     return result
 
 
-def latch_sweep_clearances(
+def neutral_retention_sweep(
     side: Side,
     params: P25R1Parameters = P25_R1_DEFAULTS,
     p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS,
 ) -> dict[float, dict[str, float]]:
-    """Actual-solid hook/receiver release evidence, dense near 0 degrees."""
+    """Neutral actual-solid sweep: positive opening meets the barrier."""
     frame = clamp_frame(params)
     yoke = build_rear_yoke(side, params, p20_params)
     locked_bar = _locked_front_bar(side, params, p20_params)
@@ -399,6 +466,39 @@ def latch_sweep_clearances(
     return result
 
 
+def actuated_release_sweep(
+    side: Side,
+    params: P25R1Parameters = P25_R1_DEFAULTS,
+    p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS,
+) -> dict[float, dict[str, float]]:
+    """Actual-solid sweep after the receiver tongue is deflected 1.50 mm."""
+    frame = clamp_frame(params)
+    yoke = build_rear_yoke(
+        side,
+        params,
+        p20_params,
+        latch_release_travel=params.latch_release_travel,
+    )
+    locked_bar = _locked_front_bar(side, params, p20_params)
+    result: dict[float, dict[str, float]] = {}
+    for angle in (0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 10.0, 30.0, 60.0):
+        bar = _rotate_shape(locked_bar, frame.hinge, angle)
+        result[angle] = {
+            "distanceMm": float(bar.distance(yoke)),
+            "intersectionMm3": p20.p19._intersection_volume(bar, yoke),
+        }
+    return result
+
+
+def latch_sweep_clearances(
+    side: Side,
+    params: P25R1Parameters = P25_R1_DEFAULTS,
+    p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS,
+) -> dict[float, dict[str, float]]:
+    """Compatibility alias for the actuated release path."""
+    return actuated_release_sweep(side, params, p20_params)
+
+
 def latch_release_gap(params: P25R1Parameters = P25_R1_DEFAULTS) -> float:
     frame = clamp_frame(params)
     released = _rotate_point(frame.latch, frame.hinge, params.released_open_angle)
@@ -410,4 +510,4 @@ def inherited_baseline_collision_mm3(p20_params: p20.P20R4Parameters = p20.P20_R
     return p20.p19._intersection_volume(p20.build_rod("bottom", 0.0, p20_params), p20.build_xt60_reference(p20_params))
 
 
-__all__ = ["AxialLayout", "ClampFrameYZ", "P25R1Parameters", "P25_R1_DEFAULTS", "ROLE_TO_P20_NAME", "ROLES", "SIDES", "STATES", "axial_layout", "build_exploded", "build_front_pusher_bar", "build_hinge_pin_envelope", "build_module", "build_opening_spring_envelope", "build_preview", "build_rear_yoke", "clamp_frame", "clamp_state_rod_center", "inherited_baseline_collision_mm3", "inherited_rod_center", "iter_leaf_shapes", "latch_exit_direction", "latch_release_gap", "latch_sweep_clearances", "module_parts", "occurrence_census", "p25_pairwise_intersections", "rod_contact_table", "state_angle", "sweep_clearances"]
+__all__ = ["AxialLayout", "ClampFrameYZ", "P25R1Parameters", "P25_R1_DEFAULTS", "ROLE_TO_P20_NAME", "ROLES", "SIDES", "STATES", "actuated_release_sweep", "axial_layout", "build_exploded", "build_front_pusher_bar", "build_hinge_pin_envelope", "build_module", "build_opening_spring_envelope", "build_preview", "build_rear_yoke", "clamp_frame", "clamp_state_rod_center", "inherited_baseline_collision_mm3", "inherited_rod_center", "iter_leaf_shapes", "latch_engagement_depth_mm", "latch_exit_direction", "latch_receiver_center", "latch_release_gap", "latch_release_offset_direction", "latch_sweep_clearances", "module_parts", "neutral_retention_sweep", "occurrence_census", "p25_pairwise_intersections", "rod_contact_table", "state_angle", "sweep_clearances"]

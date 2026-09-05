@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 from itertools import combinations
+from math import hypot
 from pathlib import Path
 
 import pytest
@@ -134,17 +135,56 @@ def test_open_states_and_60_degree_sweep_clear_orange_without_gravity() -> None:
     assert p25.latch_release_gap() >= 0.60
 
 
-def test_latch_receiver_clears_immediately_through_dense_early_release_sweep() -> None:
+def test_latch_release_offset_is_unit_perpendicular_and_exactly_1p50_mm() -> None:
+    p = p25.P25_R1_DEFAULTS
+    exit_direction = p25.latch_exit_direction(p)
+    release_direction = p25.latch_release_offset_direction(p)
+    assert hypot(exit_direction.y, exit_direction.z) == pytest.approx(1.0, abs=1.0e-12)
+    assert hypot(release_direction.y, release_direction.z) == pytest.approx(1.0, abs=1.0e-12)
+    assert exit_direction.y * release_direction.y + exit_direction.z * release_direction.z == pytest.approx(
+        0.0,
+        abs=1.0e-12,
+    )
+    neutral = p25.latch_receiver_center(0.0, p)
+    released = p25.latch_receiver_center(p.latch_release_travel, p)
+    assert hypot(released.y - neutral.y, released.z - neutral.z) == pytest.approx(1.50, abs=1.0e-12)
+    assert p25.latch_receiver_center(p.latch_release_travel, p) == released
+
+
+def test_neutral_latch_has_positive_engagement_and_blocks_1_to_5_degrees() -> None:
+    required_angles = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 10.0, 30.0, 60.0}
+    assert p25.latch_engagement_depth_mm() >= 1.20
+    for side in p25.SIDES:
+        sweep = p25.neutral_retention_sweep(side)
+        assert set(sweep) == required_angles
+        # Locked geometry has clearance around the receiver and no overlap.
+        assert sweep[0.0]["intersectionMm3"] <= 1.0e-7
+        # Without tab travel, positive opening meets the deliberate barrier.
+        for angle in (1.0, 2.0, 3.0, 4.0, 5.0):
+            assert sweep[angle]["distanceMm"] <= 1.0e-7, (side, angle)
+            assert sweep[angle]["intersectionMm3"] > 1.0e-6, (side, angle)
+
+
+def test_actuated_release_sweep_clears_only_after_1p50_mm_tab_travel() -> None:
     required_angles = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 10.0, 30.0, 60.0}
     for side in p25.SIDES:
-        sweep = p25.latch_sweep_clearances(side)
+        sweep = p25.actuated_release_sweep(side)
         assert set(sweep) == required_angles
-        # Exactly 0 degrees retains the intended hook engagement geometry.
         assert sweep[0.0]["intersectionMm3"] <= 1.0e-7
-        # Once opening begins, rigid hook and receiver must never interpenetrate.
         for angle in sorted(required_angles - {0.0}):
             assert sweep[angle]["intersectionMm3"] <= 1.0e-7, (side, angle)
-        assert sweep[5.0]["distanceMm"] > 0.0
+        assert sweep[5.0]["distanceMm"] >= 0.10
+
+
+def test_released_static_state_is_actuated_receiver_then_60_degree_rotation() -> None:
+    p = p25.P25_R1_DEFAULTS
+    for side in p25.SIDES:
+        preclamp_yoke, *_ = p25.module_parts(side, "PRECLAMP_END")
+        released_yoke, released_bar, *_ = p25.module_parts(side, "RELEASED_CLEAR")
+        assert "FLEX_RECEIVER_NEUTRAL" in preclamp_yoke.label
+        assert "FLEX_RECEIVER_DEFLECTED_ENVELOPE_1.50mm" in released_yoke.label
+        assert "RELEASED_CLEAR" in released_bar.label
+        assert p25.state_angle("RELEASED_CLEAR", p) == pytest.approx(60.0)
 
 
 def test_spring_envelope_is_isolated_and_remains_an_unverified_envelope() -> None:
