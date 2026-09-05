@@ -7,6 +7,7 @@ members = [
     "design-projects",
     "kage",
     "xt60-bend-jig",
+    "example-sticker-pack",
 ]
 
 [[package]]
@@ -942,3 +943,8 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest", specifier = ">=9.1.1" }]
+
+[[package]]
+name = "example-sticker-pack"
+version = "0.1.0"
+source = { virtual = "projects/example-sticker-pack" }
