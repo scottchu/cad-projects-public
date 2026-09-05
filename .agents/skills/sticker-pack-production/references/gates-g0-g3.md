@@ -89,3 +89,17 @@ distinct reviewer rather than renaming the same reviewer.
 
 The audit tool proves deterministic image facts and review-record completeness.
 It does not prove that the reviewer made a correct visual judgment.
+
+## Evidence reuse and interrupted runs
+
+- `review-lint` checks consistency of the reviewed candidate recorded beside
+  the CSV. It does not inspect a current masters directory or prove the visual
+  judgment correct. Before promoting or calling the latest masters accepted,
+  compare every current master path and SHA-256 to the corresponding candidate
+  `audit.json` row. Any mismatch requires a fresh candidate audit and review;
+  retain the earlier PASS as historical evidence.
+- If a run is interrupted, preserve its output and owned `.*.audit-tmp` residue
+  for diagnosis. Retry once at a new explicit absent output target. Do not
+  broadly delete temp paths, silently reuse the blocked target, or loop retries.
+  Cleanup needs verified ownership and a separately authorized, recoverable
+  action.

@@ -83,6 +83,12 @@ empty review sheet. Do not translate that into success or failure. Inspect
 header-only [template](templates/review-disposition.csv) is a field reference,
 not a substitute for the hash-bound generated sheet.
 
+Treat a `review-lint` PASS as structural completeness for the recorded
+historical review, not proof that its judgment is correct or that it covers a
+mutable current masters tree. Before calling the latest masters accepted,
+compare every current master path and SHA-256 with its audit row. See the
+evidence-reuse and interruption rules in the gate procedure.
+
 ## Art production
 
 For new bitmap art or a coherent figure edit, use the available
@@ -95,6 +101,12 @@ Choose pilot slots by risk and production-method coverage, not by slot order.
 After G2, generate no more than eight unreviewed slots at a time, with at most
 four native-image workers and two total native attempts per slot. Preserve
 passing hashes and retry only failed slots.
+
+When unchanged source already has the required intent approval, use two planned
+user checkpoints as a practical target: the scene/pilot checkpoint and the full
+composed-pack checkpoint, with exceptions for real design choices. This does not
+waive G1 or G2 approval, and systematic machine and human QA stays with the
+production team.
 
 If two or more slots share a failure, stop the wave and reopen the common
 identity/style/prompt/method contract. Do not spend isolated retries or widen
