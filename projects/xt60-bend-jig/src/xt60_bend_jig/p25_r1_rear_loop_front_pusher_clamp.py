@@ -158,6 +158,20 @@ def clamp_frame(params: P25R1Parameters = P25_R1_DEFAULTS) -> ClampFrameYZ:
     return ClampFrameYZ(blue, orange, green, tangent, hinge, latch)
 
 
+def latch_exit_direction(params: P25R1Parameters = P25_R1_DEFAULTS) -> PointYZ:
+    """Receiver motion in the bar frame at the start of positive-X opening.
+
+    The fixed receiver appears to move opposite the bar's angular motion.
+    For hinge-to-latch vector ``(dy, dz)``, that unit tangent is
+    ``(dz, -dy) / length``.  The quick-hook mouth follows this direction so
+    the rigid receiver can leave immediately instead of crossing the hook.
+    """
+    frame = clamp_frame(params)
+    dy, dz = frame.latch.y - frame.hinge.y, frame.latch.z - frame.hinge.z
+    length = hypot(dy, dz)
+    return PointYZ(dz / length, -dy / length)
+
+
 def state_angle(state: State, params: P25R1Parameters = P25_R1_DEFAULTS) -> float:
     if state == "LATCHED_END":
         return 0.0
@@ -251,7 +265,10 @@ def _locked_front_bar(side: Side, params: P25R1Parameters, p20_params: p20.P20R4
     hinge_hole = _x_cylinder(params.hinge_hole_diameter, tx + 0.4, x, frame.hinge)
     hook = _x_cylinder(params.latch_hook_outer_diameter, tx, x, frame.latch)
     hook_hole = _x_cylinder(params.latch_receiver_od + 2.0 * params.latch_clearance, tx + 0.4, x, frame.latch)
-    slot_end = _add(frame.latch, _scale(frame.tangent, params.latch_hook_outer_diameter))
+    slot_end = _add(
+        frame.latch,
+        _scale(latch_exit_direction(params), params.latch_hook_outer_diameter),
+    )
     hook_slot = _bar(frame.latch, slot_end, params.latch_receiver_od + 2.0 * params.latch_clearance, tx + 0.4, x)
     orange_top = frame.orange.z + params.rod_od / 2.0 + params.orange_pad_offset
     bar_axis_z = frame.orange.z + params.front_bar_vertical_offset
@@ -363,6 +380,25 @@ def sweep_clearances(side: Side, params: P25R1Parameters = P25_R1_DEFAULTS, p20_
     return result
 
 
+def latch_sweep_clearances(
+    side: Side,
+    params: P25R1Parameters = P25_R1_DEFAULTS,
+    p20_params: p20.P20R4Parameters = p20.P20_R4_DEFAULTS,
+) -> dict[float, dict[str, float]]:
+    """Actual-solid hook/receiver release evidence, dense near 0 degrees."""
+    frame = clamp_frame(params)
+    yoke = build_rear_yoke(side, params, p20_params)
+    locked_bar = _locked_front_bar(side, params, p20_params)
+    result: dict[float, dict[str, float]] = {}
+    for angle in (0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 10.0, 30.0, 60.0):
+        bar = _rotate_shape(locked_bar, frame.hinge, angle)
+        result[angle] = {
+            "distanceMm": float(bar.distance(yoke)),
+            "intersectionMm3": p20.p19._intersection_volume(bar, yoke),
+        }
+    return result
+
+
 def latch_release_gap(params: P25R1Parameters = P25_R1_DEFAULTS) -> float:
     frame = clamp_frame(params)
     released = _rotate_point(frame.latch, frame.hinge, params.released_open_angle)
@@ -374,4 +410,4 @@ def inherited_baseline_collision_mm3(p20_params: p20.P20R4Parameters = p20.P20_R
     return p20.p19._intersection_volume(p20.build_rod("bottom", 0.0, p20_params), p20.build_xt60_reference(p20_params))
 
 
-__all__ = ["AxialLayout", "ClampFrameYZ", "P25R1Parameters", "P25_R1_DEFAULTS", "ROLE_TO_P20_NAME", "ROLES", "SIDES", "STATES", "axial_layout", "build_exploded", "build_front_pusher_bar", "build_hinge_pin_envelope", "build_module", "build_opening_spring_envelope", "build_preview", "build_rear_yoke", "clamp_frame", "clamp_state_rod_center", "inherited_baseline_collision_mm3", "inherited_rod_center", "iter_leaf_shapes", "latch_release_gap", "module_parts", "occurrence_census", "p25_pairwise_intersections", "rod_contact_table", "state_angle", "sweep_clearances"]
+__all__ = ["AxialLayout", "ClampFrameYZ", "P25R1Parameters", "P25_R1_DEFAULTS", "ROLE_TO_P20_NAME", "ROLES", "SIDES", "STATES", "axial_layout", "build_exploded", "build_front_pusher_bar", "build_hinge_pin_envelope", "build_module", "build_opening_spring_envelope", "build_preview", "build_rear_yoke", "clamp_frame", "clamp_state_rod_center", "inherited_baseline_collision_mm3", "inherited_rod_center", "iter_leaf_shapes", "latch_exit_direction", "latch_release_gap", "latch_sweep_clearances", "module_parts", "occurrence_census", "p25_pairwise_intersections", "rod_contact_table", "state_angle", "sweep_clearances"]

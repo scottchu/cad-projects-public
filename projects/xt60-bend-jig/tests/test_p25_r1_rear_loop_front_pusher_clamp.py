@@ -134,6 +134,19 @@ def test_open_states_and_60_degree_sweep_clear_orange_without_gravity() -> None:
     assert p25.latch_release_gap() >= 0.60
 
 
+def test_latch_receiver_clears_immediately_through_dense_early_release_sweep() -> None:
+    required_angles = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 10.0, 30.0, 60.0}
+    for side in p25.SIDES:
+        sweep = p25.latch_sweep_clearances(side)
+        assert set(sweep) == required_angles
+        # Exactly 0 degrees retains the intended hook engagement geometry.
+        assert sweep[0.0]["intersectionMm3"] <= 1.0e-7
+        # Once opening begins, rigid hook and receiver must never interpenetrate.
+        for angle in sorted(required_angles - {0.0}):
+            assert sweep[angle]["intersectionMm3"] <= 1.0e-7, (side, angle)
+        assert sweep[5.0]["distanceMm"] > 0.0
+
+
 def test_spring_envelope_is_isolated_and_remains_an_unverified_envelope() -> None:
     for side in p25.SIDES:
         spring = p25.build_opening_spring_envelope(side)
