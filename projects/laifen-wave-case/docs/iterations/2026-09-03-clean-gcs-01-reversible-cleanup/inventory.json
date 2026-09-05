@@ -1,0 +1,1475 @@
+{
+  "countDefinitions": {
+    "directories": "root directories plus descendant directories; symlink directories are symlinks and are not followed",
+    "fileBytes": "sum of regular-file lstat sizes; excludes directory metadata and symlink target strings",
+    "files": "regular files only"
+  },
+  "project": "projects/laifen-wave-case",
+  "proposedMoveScope": {
+    "directories": 2382,
+    "fileBytes": 469135548,
+    "files": 6073,
+    "previewRoots": 10,
+    "roots": 142,
+    "scratchChildren": 82,
+    "special": 0,
+    "symlinkTargetBytes": 174,
+    "symlinks": 2,
+    "testFiles": 50
+  },
+  "protectedCadScratchHold": {
+    "directories": 65,
+    "fileBytes": 583385718,
+    "files": 388,
+    "roots": 16,
+    "special": 0,
+    "symlinkTargetBytes": 0,
+    "symlinks": 0
+  },
+  "repo": "/Users/scottchu/.codex/worktrees/4f8c/design-projects",
+  "requestedScope": {
+    "directories": 2447,
+    "fileBytes": 1052521266,
+    "files": 6461,
+    "previewRoots": 10,
+    "roots": 158,
+    "scratchChildren": 98,
+    "special": 0,
+    "symlinkTargetBytes": 174,
+    "symlinks": 2,
+    "testFiles": 50
+  },
+  "roots": {
+    "preview": [
+      {
+        "directories": 2,
+        "fileBytes": 18820,
+        "files": 4,
+        "path": "projects/laifen-wave-case/preview/p2-r13-renderer-fidelity-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 15760,
+        "files": 5,
+        "path": "projects/laifen-wave-case/preview/p2-r14-semantic-render-adapter-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 11915,
+        "files": 5,
+        "path": "projects/laifen-wave-case/preview/p2-r15-complete-semantic-mapping-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 18506,
+        "files": 5,
+        "path": "projects/laifen-wave-case/preview/p2-r16-final-semantic-mapping-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 9060,
+        "files": 5,
+        "path": "projects/laifen-wave-case/preview/p2-r17-human-readable-adapter-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 13991,
+        "files": 5,
+        "path": "projects/laifen-wave-case/preview/p2-r18-standalone-semantic-renderer",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 16244,
+        "files": 5,
+        "path": "projects/laifen-wave-case/preview/p2-r19-eleven-field-semantic-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 26787,
+        "files": 6,
+        "path": "projects/laifen-wave-case/preview/p2-r20-real-threejs-generator",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 28642,
+        "files": 8,
+        "path": "projects/laifen-wave-case/preview/p2-r21-threejs-interaction-fidelity-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 22288,
+        "files": 6,
+        "path": "projects/laifen-wave-case/preview/p2-r22-semantic-geometry-completion",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      }
+    ],
+    "scratchProposed": [
+      {
+        "directories": 1,
+        "fileBytes": 6869,
+        "files": 5,
+        "path": "projects/laifen-wave-case/scratch/case39-impl",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 10675,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/case39-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 13295,
+        "files": 11,
+        "path": "projects/laifen-wave-case/scratch/coupon-impl",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 1028963,
+        "files": 3,
+        "path": "projects/laifen-wave-case/scratch/download-design-compare",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 186391,
+        "files": 3,
+        "path": "projects/laifen-wave-case/scratch/download-diagnosis",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 2459736,
+        "files": 5,
+        "path": "projects/laifen-wave-case/scratch/end-chamfer-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 8688,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/failed-repair2",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 1142,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/fullcase-docs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 10425,
+        "files": 6,
+        "path": "projects/laifen-wave-case/scratch/fullcase-impl",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 5059998,
+        "files": 10,
+        "path": "projects/laifen-wave-case/scratch/generator-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 9043284,
+        "files": 42,
+        "path": "projects/laifen-wave-case/scratch/generic-container-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 362494,
+        "files": 11,
+        "path": "projects/laifen-wave-case/scratch/generic-container-formal-review",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 1175666,
+        "files": 32,
+        "path": "projects/laifen-wave-case/scratch/generic-container-impl",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 658170,
+        "files": 4,
+        "path": "projects/laifen-wave-case/scratch/generic-container-sync-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 862322,
+        "files": 9,
+        "path": "projects/laifen-wave-case/scratch/generic-container-sync-recovery",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 854584,
+        "files": 12,
+        "path": "projects/laifen-wave-case/scratch/generic-container-sync-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 144397665,
+        "files": 263,
+        "path": "projects/laifen-wave-case/scratch/generic-container-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 4807705,
+        "files": 24,
+        "path": "projects/laifen-wave-case/scratch/makerworld-simulator-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 245035,
+        "files": 5,
+        "path": "projects/laifen-wave-case/scratch/makerworld-simulator-impl",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 7308516,
+        "files": 115,
+        "path": "projects/laifen-wave-case/scratch/makerworld-simulator-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 371012,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/pattern-study",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 3284,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/pitch-diagnosis",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 0,
+        "files": 0,
+        "path": "projects/laifen-wave-case/scratch/r10-implementation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 46886,
+        "files": 5,
+        "path": "projects/laifen-wave-case/scratch/r11-phase-b-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 3499253,
+        "files": 44,
+        "path": "projects/laifen-wave-case/scratch/r12-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 34389,
+        "files": 3,
+        "path": "projects/laifen-wave-case/scratch/r12-phase-b-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 6615092,
+        "files": 85,
+        "path": "projects/laifen-wave-case/scratch/r13-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 6,
+        "fileBytes": 86721,
+        "files": 15,
+        "path": "projects/laifen-wave-case/scratch/r13-validation",
+        "special": 0,
+        "symlinkTargetBytes": 87,
+        "symlinks": 1
+      },
+      {
+        "directories": 1,
+        "fileBytes": 201501,
+        "files": 3,
+        "path": "projects/laifen-wave-case/scratch/r14-exhaustive-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 0,
+        "files": 0,
+        "path": "projects/laifen-wave-case/scratch/r14-implementation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 968,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r15-exhaustive-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 5405512,
+        "files": 99,
+        "path": "projects/laifen-wave-case/scratch/r16-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 1406,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/r16-exhaustive-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 6,
+        "fileBytes": 76675,
+        "files": 13,
+        "path": "projects/laifen-wave-case/scratch/r16-validation",
+        "special": 0,
+        "symlinkTargetBytes": 87,
+        "symlinks": 1
+      },
+      {
+        "directories": 3,
+        "fileBytes": 3379588,
+        "files": 55,
+        "path": "projects/laifen-wave-case/scratch/r17-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 363,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r17-independent-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 78672,
+        "files": 4,
+        "path": "projects/laifen-wave-case/scratch/r17-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 793,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r18-collecting-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 0,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r19-browser-run.log",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 28488,
+        "files": 14,
+        "path": "projects/laifen-wave-case/scratch/r19-category-sheets",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 953,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/r19-collecting-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 2193306,
+        "files": 63,
+        "path": "projects/laifen-wave-case/scratch/r19-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 224014,
+        "files": 18,
+        "path": "projects/laifen-wave-case/scratch/r19-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 14385124,
+        "files": 59,
+        "path": "projects/laifen-wave-case/scratch/r20-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 1467,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/r20-independent-style-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 368382,
+        "files": 5,
+        "path": "projects/laifen-wave-case/scratch/r20-scene-sheets",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 323666,
+        "files": 6,
+        "path": "projects/laifen-wave-case/scratch/r20-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 10522170,
+        "files": 66,
+        "path": "projects/laifen-wave-case/scratch/r21-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 1798522,
+        "files": 24,
+        "path": "projects/laifen-wave-case/scratch/r21-scene-sheets",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 3826,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r21-style-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 3218959,
+        "files": 54,
+        "path": "projects/laifen-wave-case/scratch/r21-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 437,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r22-audit",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 2300466,
+        "files": 39,
+        "path": "projects/laifen-wave-case/scratch/r22-scene-sheets",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 76184,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/r22-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 561,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r4-presentation-receipt.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 339,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r4-print-layout-readiness.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 2827,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r4-serve-after.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 2712,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r4-serve-before.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 337,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r4-viewer-readiness.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1110,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-fixed-presentation-receipt.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 325,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-fixed-runtime-pending.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 968,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-fixed-viewer-readiness.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 660,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-presentation-receipt.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 648,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-section-presentation-receipt.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 3143,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-section-serve-after.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 3032,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-section-serve-before.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 3032,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-serve-after.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 2933,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-serve-before.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 997,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-viewer-preparation.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 942,
+        "files": 1,
+        "path": "projects/laifen-wave-case/scratch/r6-viewer-readiness.json",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 17959,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/r8",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 5912562,
+        "files": 50,
+        "path": "projects/laifen-wave-case/scratch/r8-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 2190435,
+        "files": 23,
+        "path": "projects/laifen-wave-case/scratch/r8-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 6654224,
+        "files": 21,
+        "path": "projects/laifen-wave-case/scratch/r9-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 2810275,
+        "files": 8,
+        "path": "projects/laifen-wave-case/scratch/r9-implementation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 7735025,
+        "files": 42,
+        "path": "projects/laifen-wave-case/scratch/r9-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 3426,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/slice-inventory",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1482,
+        "fileBytes": 47242066,
+        "files": 2841,
+        "path": "projects/laifen-wave-case/scratch/validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 6797,
+        "files": 2,
+        "path": "projects/laifen-wave-case/scratch/width-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 202,
+        "fileBytes": 19243224,
+        "files": 475,
+        "path": "projects/laifen-wave-case/scratch/width-des05",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 211,
+        "fileBytes": 128756607,
+        "files": 425,
+        "path": "projects/laifen-wave-case/scratch/width-recovery-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 371,
+        "fileBytes": 14536535,
+        "files": 807,
+        "path": "projects/laifen-wave-case/scratch/width-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      }
+    ],
+    "scratchProtectedCad": [
+      {
+        "directories": 1,
+        "fileBytes": 23749,
+        "files": 14,
+        "path": "projects/laifen-wave-case/scratch/coupon-fix",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 9068,
+        "files": 4,
+        "path": "projects/laifen-wave-case/scratch/coupon-recovery-design",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 9,
+        "fileBytes": 249695606,
+        "files": 48,
+        "path": "projects/laifen-wave-case/scratch/end-chamfer-impl",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 3,
+        "fileBytes": 1530735,
+        "files": 37,
+        "path": "projects/laifen-wave-case/scratch/end-chamfer-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 44462,
+        "files": 5,
+        "path": "projects/laifen-wave-case/scratch/export-evidence-design",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 17,
+        "fileBytes": 42143425,
+        "files": 56,
+        "path": "projects/laifen-wave-case/scratch/fullcase-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 10,
+        "fileBytes": 266476549,
+        "files": 48,
+        "path": "projects/laifen-wave-case/scratch/fullcase-export-repair",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 4,
+        "fileBytes": 1630833,
+        "files": 45,
+        "path": "projects/laifen-wave-case/scratch/fullcase-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 2,
+        "fileBytes": 2444520,
+        "files": 57,
+        "path": "projects/laifen-wave-case/scratch/generator-core",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 6,
+        "fileBytes": 5489900,
+        "files": 13,
+        "path": "projects/laifen-wave-case/scratch/generator-presentation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 44902,
+        "files": 7,
+        "path": "projects/laifen-wave-case/scratch/generator-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 29854,
+        "files": 7,
+        "path": "projects/laifen-wave-case/scratch/generator-validation-des06",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 1246451,
+        "files": 13,
+        "path": "projects/laifen-wave-case/scratch/thread-export-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 6,
+        "fileBytes": 11116302,
+        "files": 12,
+        "path": "projects/laifen-wave-case/scratch/uniform-skin-critique",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 29917,
+        "files": 10,
+        "path": "projects/laifen-wave-case/scratch/uniform-skin-impl",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 1,
+        "fileBytes": 1429445,
+        "files": 12,
+        "path": "projects/laifen-wave-case/scratch/uniform-skin-validation",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      }
+    ],
+    "tests": [
+      {
+        "directories": 0,
+        "fileBytes": 1934,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r13_browser.py",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1290,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r13_render_observability.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1405,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r13_target_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 841,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r13_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 2455,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r13_visual_families.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1419,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r14_render_observability.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1514,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r14_target_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 998,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r14_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1948,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r14_visual_families.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 942,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r15_render_observability.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1129,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r15_target_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 455,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r15_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 684,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r15_visual_families.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1977,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r16_browser.py",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1076,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r16_render_observability.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1182,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r16_target_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 497,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r16_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 773,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r16_visual_families.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1509,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r17_browser.py",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 864,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r17_render_observability.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1109,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r17_target_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 440,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r17_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1026,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r17_visual_families.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 824,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r18_render_observability.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1008,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r18_target_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 277,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r18_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 816,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r18_visual_families.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 3406,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r19_browser.py",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 949,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r19_render_observability.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1014,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r19_target_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 279,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r19_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 818,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r19_visual_families.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 4771,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r20_browser.py",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 2075,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r20_family_geometry.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 2112,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r20_scene_invariants.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 2016,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r20_source_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 812,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r20_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 4965,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r21_browser.py",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 972,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r21_descriptor_boundary.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1257,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r21_family_geometry.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1129,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r21_scene_invariants.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1261,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r21_source_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 826,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r21_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 5359,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r22_browser.py",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1506,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r22_family_geometry.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 722,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r22_mesh_invariants.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1254,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r22_parameter_sensitivity.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 1179,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r22_registry_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 599,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r22_source_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      },
+      {
+        "directories": 0,
+        "fileBytes": 459,
+        "files": 1,
+        "path": "projects/laifen-wave-case/tests/test_p2_r22_ui_contract.mjs",
+        "special": 0,
+        "symlinkTargetBytes": 0,
+        "symlinks": 0
+      }
+    ]
+  },
+  "schema": "clean-gcs-01-inventory-v1"
+}

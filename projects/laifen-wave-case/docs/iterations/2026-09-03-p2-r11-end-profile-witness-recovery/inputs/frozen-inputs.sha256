@@ -1,0 +1,9 @@
+e5d216c2d7c918e10db552e2f09f7f6751c005a00904eb858b5b3c8e8c6018e3  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/parameter-coverage.mjs
+321347c8ed6451e3306613661c4fe3b93345ab91b18b7611ae62840972e6aa25  projects/laifen-wave-case/tests/test_p2_r10_schema_coverage.mjs
+6a7cb438a941dd9f6a1f010b4d3aac7cb6a20ccbaf755799229ff7a471f6d9e4  projects/laifen-wave-case/tests/test_p2_r10_geometry.mjs
+eb74b1f9903c32c9682d1fc9a756e8fc39a4bf35fdc9b561c145dd6a9b35eb27  projects/laifen-wave-case/tests/test_p2_r10_descriptor_sensitivity.mjs
+56b9ec10a5cf1f5629aec8ee7449b2583f0fbcf52235c02ef0beb85aa5587e33  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r10-parameter-sensitivity-recovery/BRIEF.md
+31d5efc5c79c52497270fe84a33ff055aef2a6aae246a602cf86a5bde7443563  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r10-parameter-sensitivity-recovery/DESIGN.md
+143c45c4edeeb5d79906e522a94f6839ed9f8c70b08d1dec8b8c5b3cd4edbc2d  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r10-parameter-sensitivity-recovery/IMPLEMENTATION.md
+61dbae295a8a7c060755d59825f970858a4ed5e374fe0ec9fb888d746fcb4208  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r10-parameter-sensitivity-recovery/inputs/frozen-inputs.sha256
+eafd665fd33eb1621800efe3652445b6bb9f93a619ee1c46125d2785d07d6f7a  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r11-end-profile-witness-recovery/inputs/USER_INTAKE.md

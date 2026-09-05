@@ -1,0 +1,4 @@
+562b06bb92c671ba53027d01526a7fb0f32c20fe5b6bf2aa25eef1a15ce6252a  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-runtime-init-recovery/VALIDATION.md
+b6e9d9d845d301ec21f528509fcd9cd650a53b5fe7bd162950cc4bc699588397  projects/laifen-wave-case/preview/openscad-wasm-simulator/workers/openscad.worker.js
+6d4a6b007f96b00752efd33cf1cf9e4eff5daaf82f011edd0655ea68c20e09b8  projects/laifen-wave-case/preview/openscad-wasm-simulator/dependency-lock.json
+cc3276cca8c2ea0b27134fc570b9c8efb4a790468425ebb79d229c5542e1fca6  projects/laifen-wave-case/tests/test_openscad_wasm_simulator.py

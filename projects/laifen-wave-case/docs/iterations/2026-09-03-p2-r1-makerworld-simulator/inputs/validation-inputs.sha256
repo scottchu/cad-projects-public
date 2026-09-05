@@ -1,0 +1,17 @@
+fa6e5ee097f0a9a2e58d63d3ae41f0cf43511292e26193af504054cf79b43b33  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/BRIEF.md
+e598d24deb04f317ae2feca4e577e57a96de8d654f3b352c59e0302d0b26420b  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/DESIGN.md
+bdf6f5b77450e07ac83ac84ec141db6ca70a9160314e21b45b88c732c56c408e  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/IMPLEMENTATION.md
+b060787132e71d20b995624e7deced8403d3c76c61507f2287170f28d0dc29b6  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/inputs/current-baseline.sha256
+26e5717885bfd4dcc6a473f455a405767011cca3f94a4ec1cd47ee5fda4fcb6d  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r1-makerworld-simulator/inputs/implementation-candidate.sha256
+aa730e5b4141abf5c6b98ca2650a1a1cab5064ae1af0050a6ab53b1b28598882  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/app.js
+aeaaf2d11e143fde7e505a2710840195e3b9650cdb8078de0055b42a398fd489  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/index.html
+4ed0713f3a514504eb4936ac479c11beac947e5dec312ce022f833690d4da454  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/math.mjs
+67f8f9b279d0f2d74c49729ea169d731b506c4f97c88281f6f3390a2672ee1b5  projects/laifen-wave-case/preview/p2-r1-makerworld-simulator/style.css
+7726c1e7c46958051ab8c52a3bd52f83e661356de6d64bd06b34fadb1a76d678  projects/laifen-wave-case/pyproject.toml
+4de382c3086b2d8f162bfbf52f3f69331ca44fb4e6a945340007d4befbb3d36a  projects/laifen-wave-case/scratch/makerworld-simulator-validation/analyze_images.py
+2e4a716cf72a42b93460a1595877dd98bf30988fc863a1c4eb7ca6728cb059e4  projects/laifen-wave-case/scratch/makerworld-simulator-validation/capture_aria.py
+990ff1070cd6f963147c5f215a2f2f4a6a3b0fbc2298194a89c85164cc2d5701  projects/laifen-wave-case/scratch/makerworld-simulator-validation/validate_math.mjs
+45564f55ba3b67f22b5d53feea6aef4125bb6f4751e49f9f365da0a7f7828f7c  projects/laifen-wave-case/scratch/makerworld-simulator-validation/validate_ui.py
+9bee88a226137294331a9a4948ba980aad2cb21c80bf0e979476a6b3f92b897d  projects/laifen-wave-case/tests/test_makerworld_simulator.mjs
+4885d18b40910a2c6069fffda004a1d596dcd97cc9342db73fc6d07c3504f79a  pyproject.toml
+e515a571df8be2adaf74a4601171cc5b175f73721dbcf13b95de76afe9badd80  uv.lock

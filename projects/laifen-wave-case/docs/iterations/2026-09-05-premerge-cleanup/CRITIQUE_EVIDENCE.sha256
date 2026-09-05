@@ -1,0 +1,31 @@
+# LC-CRIT-01 historical observations captured on 2026-09-05. Relative paths
+# were repaired later; snapshot digests in this first section are not current claims.
+3f4b616639ddc3038ef1baf9a67aafb9939fabdcad23a5f0fde66177680b6752  STAGED_FILES.sha256
+0b50af5a71b6444e0d9cd9bad58deda90488905cdb48104b2a581ac810f17d68  MOVE_MANIFEST.tsv
+261b58e42931999958f5df7e2b4ed5fcb322b7231bb44e4ba97afb007ab35808  QUARANTINE_MANIFEST.txt
+b3acb4889c877fe18526ee80d5ecfecbafd460b7bf87111fe5eade748d77817c  VALIDATION.md
+4bde715eaf96979d89301a72b0478ad98938bfe84edf23c05f204f34b282df86  ../../../PROJECT_STATE.md
+a3bde86348434e32b813c22873efd9b116c227b71c46a01b7349192a02b262f4  ../../../NEXT_AGENT.md
+8a779424b920d676bcbb899eab3cc0f79571b1e7a11c11f102c0b2d84e5e9cae  ../../../README.md
+8dfc80ef7e8fcdb0dd2ae0c4a6b4cef612d5883bfc904626b59c6ade2f8adcde  ../../../docs/WORKFLOW_DEMO.md
+ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841  ../../../openscad/laifen_case_customizer_v1.scad
+80fd95845b51da5266883614f9bf8eff60793a24d5c39b7321c9c6cb16d477a4  ../../../cad/p1_r7_end_chamfer/print_layout.step
+
+# Observed facts: manifest 1,009 paths and matching index names; 27 exact roots,
+# 1,303,210,296 quarantine bytes; staged index 504,567,319 bytes (481.193 MiB);
+# all listed worktree hashes passed; ignored staged paths 0; authority hashes passed;
+# OpenSCAD route HTTP 200; documented 8449 and loopback 3249 CAD Viewer URLs HTTP 404.
+
+# LC-CRIT-02 superseding recheck, candidate afef13c16ea4c868a4f89432baa0b5361d1825374a9894beffc2061d778db052:
+afff2d90fe2c07f4681bab520ef4c91cbdb23fe90b44befe55bb36466eaed67f  CRITIQUE.md
+afef13c16ea4c868a4f89432baa0b5361d1825374a9894beffc2061d778db052  STAGED_FILES.sha256
+be2f8d753822feaf85a0ef45f0fad2784e0d444b23422ae115b15311a6250eab  ../../../PROJECT_STATE.md
+c02bf90157520d81b3112a0528b9dfd37a1a9f778a0850ef8f7b6d810d9f4e7d  ../../../NEXT_AGENT.md
+f50de96ea93c5a07b466ed47c8475ad46ef5cf6ba867377b7936f21972b854c0  HANDOFF.md
+8f7c7b1ad3db46e6c4e35100b9f152636fe0d1d84dea37981163d3eb7f197d3d  ../2026-09-04-openscad-visual-fidelity-recovery/HANDOFF.md
+
+# Recheck observations: 1,009 manifest paths equal staged names excluding the
+# manifest; all listed hashes pass; no staged path is ignored; staged index is
+# 355,988,317 bytes (339.497 MiB), largest blob 74,416,394 bytes; both CURRENT
+# pointers name 2026-09-04-openscad-visual-fidelity-recovery; current OpenSCAD
+# simulator returns HTTP 200 and authority hashes remain unchanged.

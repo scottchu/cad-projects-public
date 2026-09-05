@@ -1,0 +1,15 @@
+22a4b39ab1439018f2570d0d90326f700f07647ae399a34655a8a5be347382c5  AGENTS.md
+07b345a1a8e98969655433a06cc36741cf53df60a672c2cf36c0f28605d7f96a  docs/CAD_WORKFLOW.md
+0367b4aff210f4638e5f6f0c599ad3e640738de7d09325b551a80344d01aee19  projects/laifen-wave-case/docs/REQUIREMENTS.md
+4b56a8d0560b72c77e532ffc92a88ab38fcc7ffe95f129babda8299742e39ddd  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/BRIEF.md
+3106fd682866bb62047ba5cd5ebd9d375ecba7049833d9442ec77c5c1889a31e  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/DESIGN.md
+c7f7fcb3976e196bf5cd06759d411508e89467a04e0c074a31f70fb945d95353  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/IMPLEMENTATION.md
+8e628543308cded4fa10ded2bfa3fdbe0a4dc22b0866ba72dc59dbc3883e4955  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1/inputs/USER_INTAKE.md
+b5db326716df1f5cbff7135440cacac3cf0e61a67d9b0229a6e99261fa859f0e  projects/laifen-wave-case/openscad/laifen_case_customizer_v1.scad
+774fd5c8e5be700a887bd7005f1212717bd4c4e86d8857f72c70bb2b31df0210  projects/laifen-wave-case/openscad/customizer_contract.py
+4e1eea50a2e1fa71b1f420abf2693f2eb96c4ce51d9f4467a39086681dbb5f4e  projects/laifen-wave-case/tests/test_openscad_customizer.py
+d4323bae7effad0a5f9436fbce78ef933129ddaddfe06a622d73fea23cd12e21  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-customizer-v1-recovery/VALIDATION.md
+6e6d01b20f2b29fba73ca4097322f0e880e3c6d970325eb0e528d11a209737f3  projects/laifen-wave-case/openscad/generated_v1_recovery/VALIDATION_ARTIFACTS.sha256
+20df6dd709bc2bf022394e7d26e3fa6c07e541d703f2862c02576d8ad33eb6f9  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/inputs/USER_INTAKE.md
+fd0beb5bc913cf8e37fb02c26718aa994ae42232d551c742879bf8d7b16db5ec  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/BRIEF.md
+7454d59d4779fad3e22cbdec1c73f712b45926f3296e3f596b892270400cadf0  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/DESIGN.md

@@ -1,0 +1,6 @@
+0e78e1980c5a0261389345fa055581193e8d2a174780d9d7ab5ff4271a9ef37a  projects/laifen-wave-case/cad/p1_r3_generator/params.py
+64c80b951e4f9315fbd535754e643cde362accae60f19d2cbfe42bc99c8b27a7  projects/laifen-wave-case/cad/p1_r3_generator/__init__.py
+b97099b8aca7745c7c8aefbd0869fc183ba3da20927ccf777d65eca69a8c6ae9  projects/laifen-wave-case/cad/p1_r3_generator/generator.py
+44b2e668d68e8d1d728ffdd28682f317b48c3070fd45c6ec7c830f8316a8d958  projects/laifen-wave-case/cad/p1_r3_generator/thread_profile.py
+939ddadc2c77fc8479d79e1721e4790472a9468c19767028b51fe23a1c7decf6  projects/laifen-wave-case/cad/p1_r3_generator/skin.py
+27f532d39aa44ef8ddc7c4c997d4c883738c9694f5d88383d7f3958004924b83  projects/laifen-wave-case/tests/test_generator.py

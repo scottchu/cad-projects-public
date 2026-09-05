@@ -1,0 +1,60 @@
+# DES-R6-01 full numeric contract
+
+## Parameters and exact full split
+
+All dimensions mm; assembled shoulder plane z0, common +Z axis toward cap. New namespace `cad/p1_r6_full_case/`; derive geometry from our frozen R5 source, never extend meshes or scale existing objects. Selected default inputs: `device_length=208`, `device_diameter=29`, `axial_allowance=5`, `cap_cavity_length=81`, `body_bore=30`, `cap_bore=31`, `floor=3`, `outer_diameter=39`. L208 and D29 are approximate editable inputs, not measured acceptance. Keep bores fixed when D changes: lower/upper nominal radial readouts `(30−D)/2`, `(31−D)/2`, initially0.5/1.0. A larger D may expose an envelope collision and negative readout; it must not silently enlarge bores.
+
+Derive `cavity_length=L+allowance=213`, `cap_height=cap_cavity_length+floor=84`, `body_depth=cavity_length−cap_cavity_length=132`. Do not maintain independently editable copies of these dependent lengths; compatibility properties can expose the derived values to existing geometry helpers. Derived shell walls replace the old inert nominal `wall=2.4` design input: body/cap straight valley walls4.05/3.55, female texture valley wall>=1.85. A legacy compatibility field may remain internal only if explicitly identified as noncontrolling; never promise an editable wall parameter that does not change geometry.
+
+| Datum / quantity | Value and meaning |
+|---|---|
+| Body outer floor / inner floor | z−135 / z−132 |
+| External positive stop / cap mouth | z0 |
+| Male tip / full thread start/end | z9 / z2..8 |
+| Female collar end / straight-bore start | z10.2 / z12.4 |
+| Cap inner floor / outer floor | z81 / z84 |
+| Body cavity measured inner floor to male tip | 141 =132+9 |
+| Cap cavity measured mouth to inner floor | 81 |
+| Physical neck overlap | 9 |
+| Usable closed floor-to-floor cavity | 141+81−9 =213 |
+| Effective full-form thread engagement | 6, distinct from9 overlap |
+| Standalone body height / cap height | 144 /84 |
+| Closed outside length | 135+84 =219 = C+2*floor |
+
+This retains the old approximate cap cavity81 while adapting the old approximate137+81−5 split to the actual nine-mm original neck architecture. No hidden increase in thread overlap is called engagement. Keep body and cap sidewall domains[-135,0] and[0,84]. Positivity/finite guards: L,D>0, allowance>=3, cap cavity greater than functional taper end, body depth>floor; default release only, parameter edits recompute all dependent values. One scalar L+4.8 check is required, not a broad nondefault full-CAD certification.
+
+## Preserved R5 radial joint and end/drain contract
+
+Keep bores30/31, male root16.4/crest16.9 (height0.5), root wall1.4, right-hand pitch2, full engagement6, c25 radial clearance0.25 with0.30 envelope budget. Female maximum radius17.15 atc25/17.20 atc30. OD39 gives crest19.5/valley19.05 and worst female wall1.85. Radial interlock0.25 nominal/0.20 atc30. Root1.4 is our design assumption and an untested strength risk. R3 hand fit does not validate this thread; R5 short source was not independently accepted. R6 requires its own solid/thread/motion gates, without first forcing a short print.
+
+Preserve exact R5 thread flank/lead/runout family, redundant sweep overbuild and axial datums9/10.2/12.4. Keep independently named taper length2.2, never recalculate it from outside radius. Guaranteed circular shoulder radius19.05; actual common patterned z0 boundary19.05..19.5 and guaranteed annulus width>=1.85. Shoulder must supply positive stop; no seam bevel, smooth bulged collar, axial seam gap or toothbrush stop. Flank slope0.714286, lead0.5, taper<=0.772727; nominal axial flank freedom0.35 per flank is physical-fit context, not approval.
+
+Keep original field with N=round(2*pi*19.05/3.63)=33, actual arc3.627111518, axial pitch4.8, height0.45 and blunt half-fraction0.18; identical theta/z phases0 on both halves. Named `skin_axial_pitch` and `thread_clearance` remain meaningful inputs subject to existing geometry bounds; no unrelated scalar may remain advertised as editable while ignored. Length changes add rows, never stretch them. No new motif or downloaded geometry.
+
+End radius `r=19.05+0.45*F(theta,z)−0.30*max(0,1−t/0.50)` where t is distance from closed end in the part's print direction. Both closed ends retain this textured bevel; full-amplitude texture remains. Composed slope0.89296875<1, warped plateau lower bound1.040204>1.0. Floor3 unchanged except holes. Each end has seven vertical diameter3 through-holes: center plus six at radius9, angles k*pi/3. Nearest ligament6; bore-edge margin4.5/5.0. Retain R5 floor-local cutters with0.01 overbuild, straight hole walls and no hole-edge chamfers; no central C25 engraving that intersects the center hole. Labels remain in source/artifact identity. Drains never cut cylindrical sidewalls, threads or stop. Loaded or flat-table occlusion is not proven away; full CAD includes holes without promising automatic upright drying.
+
+## Device envelope, closed section and print transforms
+
+Add source helper for a nominal coaxial cylinder of diameterD and lengthL, clearly labelled `REFERENCE ONLY: approximate installed device envelope; not a print object`. Center between the inner floors: lower end z=−body_depth+allowance/2=−129.5, upper end z78.5. Nominal end gaps2.5/2.5. Expose end datums and scalar readouts; bottom-resting comparison has0/5 gaps at z−132..76. No centering restraint exists, so device can move within5 slack; literal neither-end-contact remains unresolved. The cylinder is a coarse maximum-diameter reference, not detailed purchased geometry or a claim that the head cover was measured.
+
+Provide source-defined section/review helper or diagnostic wrapper for actual case solids plus envelope and nominal dimension annotations (C213, outside219, overlap9, engagement6, gaps2.5/2.5). Diagnostic envelope/section must stay out of the four fabrication-oriented STEP targets and their part counts. Critic may render the exact written closed artifact cutaway and overlay the source-defined reference; separate transient diagnostic output is allowed as review evidence, never a third plate object. Drawings must label nominal placement, not retention. No standalone 2D user approval gate is added before full CAD.
+
+Exactly four primary STEP targets: `body.step`, `cap_c25.step`, `closed_c25.step`, `print_layout.step`, matching `.step.py` wrappers. Closed contains exactly one body and cap. Print pose: body translation(+23,0,135); cap Rx180 then translation(−23,0,84). Both openings up; centers46 apart produce7mm crest-envelope gap. Nominal layout envelope85x39x144, bodyZ0..144/capZ0..84. Closed envelope39x39x219, using radial crest evidence where axis-aligned sampling undershoots nominal diameter. Preserve native shoulder/tip/full_thread_start/end/inner_floor/skin_phase/bed/screw_axis datums and screw law gap=p*angle/360. Source/device envelope is not scaled to force fit. Actual U1 profile/bed/brim fit remains a slicer gate;144mm tall geometry is the explicit layout target.
+
+## Full-specific geometry budget
+
+Cheap exact patch enumeration using frozen R5 `skin_patches(Params(cavity_length=213,cap_height=84))`, without creating any BREP faces or solids, yields body10562/cap6569 exterior faces including two planar ends, total17131. Enumeration took1.1255s. Baseline short measured body2873/cap3665, outer stages~6.3/9.3s and Boolean stages~3.4/10.5s; full body grows3.68x/cap1.79x in face count. Runtime need not scale linearly.
+
+Intentionally replace short6000-face/180s limits with full-specific exterior budgets16000 per part AND26000 total. These are roughly1.5x headroom over this selected full candidate, not an unbounded parameter promise. Count both bodies before expensive allocation. Retain canonical shared edges, rational sector multiplier initially1, radial route error<=0.004, actual radial difference<=0.01, no coarsened creases or relaxed sewing tolerance. No per-diamond Boolean. Use600s ceilings per outer construction/sewing stage, per final Boolean stage and per written STEP target; global four-target generation ceiling1800s. Emit checkpoint/stage timing after polygon counts, each outer blank, each final solid and each export. Use a process-level timeout where needed because a post-operation elapsed assertion cannot interrupt a stuck kernel. Only one writer generates geometry; stop obsolete builds. Existing caching may reuse exact shapes across wrappers.
+
+These finite limits allow substantial nonlinear growth over observed short timing while preventing a runaway full build. If exceeded, report precise failing stage/count and route a focused repair or explicit budget revision; do not revert to short, scale pattern, silently loosen accuracy or remove bounds. Initial attempt plus at most2 focused repairs per task; repeated failure returns the smallest actual geometry risk to design. No optional generic all-surface certifier is requested.
+
+## Focused independent acceptance gates
+
+1. Math/user requirements: derive141+81−9=213,219 outside,144/84 part heights; L+4.8 changes only body depth/length and row domain, D changes only envelope/readouts; preserve bores/OD/skin/phase/thread/end/drain equations. Confirm no device object in four primary targets and no short substitution. Requirements01/03/05/06/07/08/09/11/12 covered for selected full CAD; current user override permits provisional inputs and supersedes REQ14 pre-full gate.
+2. Actual solids/constraints: one valid connected positive solid per case part; full-length cavity bore sections and inner-floor datums; real root/tooth/female valleys/stop/taper/ligaments. Compare new R6 vs frozen R5 thread tools and seam-local masks (unchanged R5 joint) and directly verify R5 selected section equations because R5 lacked independent acceptance. Extended floors/domains intentionally differ. Measure actual holes at BOTH written floor positions, wall thickness, noncircular planar ends and new end-phase intersections. Full height changes closed-end phase, so do not inherit short first-layer/relief acceptance.
+3. Collision/motion/device envelope: new full body/cap at0,90,180,360,720degrees with matching pitch travel, open beyond9; gap−0.1 activates positive external stop. Closed nominal reference cylinder must not intersect case solids for provisionalD29/L208 centered position. This establishes only reference-envelope collision freedom, not hardware measurement or anti-contact retention. Include axial insertion/removal reference path and clearance at narrow neck; an axial cylinder within30 bore is the applicable monotonic envelope, with actual solid checks at critical neck transition.
+4. Export/manufacture: four actual STEP files, assembly counts2, single placements, source/export adaptive-volume parity<=0.001mm3 using existing stable method; written dimensions/holes/phase/end floors. Inspect actual worst thread/taper/texture/bevel normals, source print orientations, connected first-layer footprint and early layers for new floor phases; exact slicer/process is pending. Do not conflate `.refs ok` with shape validation or nominal slope with a full kernel certification.
+5. Visual/formal join: required actual STEP closed long profile with seam, cutaway with nominal device/end gaps/length/overlap, close-up thread section, both drain ends, and openings-up two-part layout. Independent critic and validator share frozen candidate; distinct formal reviewer checks their provenance and scope. Release may be accepted for selected CAD/source and STEP with explicit physical/end-contact/measurement/slicer gaps. It cannot claim the original literal both-end noncontact or physical fit requirement is satisfied.
+
+Physical follow-up remains full-case observation after any separately authorized fabrication: empty closure/five cycles, root/wobble, loaded full engagement, measured end clearance and unobstructed water passage. User declined another short version; none is mandatory in this route. No printing action is included in R6 design or full CAD delivery.

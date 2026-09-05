@@ -1,0 +1,258 @@
+{
+  "meshes": {
+    "changed-smooth-assembled.stl": {
+      "bytes": 1559578,
+      "watertight": true,
+      "is_volume": true,
+      "component_count": 3,
+      "bounds": [
+        [
+          -25.0,
+          -25.0,
+          0.0
+        ],
+        [
+          25.0,
+          25.0,
+          71.0
+        ]
+      ],
+      "extents": [
+        50.0,
+        50.0,
+        71.0
+      ],
+      "volume": 55849.833322081155,
+      "faces": 8656
+    },
+    "changed-smooth-body.stl": {
+      "bytes": 487864,
+      "watertight": true,
+      "is_volume": true,
+      "component_count": 1,
+      "bounds": [
+        [
+          -25.0,
+          -25.0,
+          0.0
+        ],
+        [
+          25.0,
+          25.0,
+          47.75
+        ]
+      ],
+      "extents": [
+        50.0,
+        50.0,
+        47.75
+      ],
+      "volume": 33845.67890838463,
+      "faces": 2714
+    },
+    "changed-smooth-cap.stl": {
+      "bytes": 988394,
+      "watertight": true,
+      "is_volume": true,
+      "component_count": 1,
+      "bounds": [
+        [
+          -25.0,
+          -25.0,
+          0.0
+        ],
+        [
+          25.0,
+          25.0,
+          30.0
+        ]
+      ],
+      "extents": [
+        50.0,
+        50.0,
+        30.0
+      ],
+      "volume": 22004.15504506539,
+      "faces": 5594
+    },
+    "changed-smooth-print_layout.stl": {
+      "bytes": 1479740,
+      "watertight": true,
+      "is_volume": true,
+      "component_count": 2,
+      "bounds": [
+        [
+          -53.5,
+          -25.0,
+          0.0
+        ],
+        [
+          53.5,
+          25.0,
+          47.75
+        ]
+      ],
+      "extents": [
+        107.0,
+        50.0,
+        47.75
+      ],
+      "volume": 55849.859074381064,
+      "faces": 8308
+    },
+    "default-diamond-body.stl": {
+      "bytes": 67508570,
+      "watertight": false,
+      "is_volume": false,
+      "component_count": 25,
+      "bounds": [
+        [
+          -19.5,
+          -19.5,
+          0.0
+        ],
+        [
+          19.5,
+          19.5,
+          144.0
+        ]
+      ],
+      "extents": [
+        39.0,
+        39.0,
+        144.0
+      ],
+      "volume": 66608.56309752922,
+      "faces": 347770
+    },
+    "default-diamond-cap.stl": {
+      "bytes": 36574056,
+      "watertight": true,
+      "is_volume": true,
+      "component_count": 1,
+      "bounds": [
+        [
+          -19.5,
+          -19.5,
+          0.0
+        ],
+        [
+          19.5,
+          19.5,
+          84.0
+        ]
+      ],
+      "extents": [
+        39.0,
+        39.0,
+        84.0
+      ],
+      "volume": 36747.74336592826,
+      "faces": 188462
+    },
+    "default-smooth-assembled.stl": {
+      "bytes": 2211506,
+      "watertight": false,
+      "is_volume": false,
+      "component_count": 27,
+      "bounds": [
+        [
+          -19.5,
+          -19.5,
+          0.0
+        ],
+        [
+          19.5,
+          19.5,
+          219.0
+        ]
+      ],
+      "extents": [
+        39.0,
+        39.0,
+        219.0
+      ],
+      "volume": 107031.87622240216,
+      "faces": 12160
+    },
+    "default-smooth-body.stl": {
+      "bytes": 1199823,
+      "watertight": false,
+      "is_volume": false,
+      "component_count": 25,
+      "bounds": [
+        [
+          -19.5,
+          -19.5,
+          0.0
+        ],
+        [
+          19.5,
+          19.5,
+          144.0
+        ]
+      ],
+      "extents": [
+        39.0,
+        39.0,
+        144.0
+      ],
+      "volume": 68998.82981288672,
+      "faces": 6818
+    },
+    "default-smooth-cap.stl": {
+      "bytes": 783203,
+      "watertight": true,
+      "is_volume": true,
+      "component_count": 1,
+      "bounds": [
+        [
+          -19.5,
+          -19.5,
+          0.0
+        ],
+        [
+          19.5,
+          19.5,
+          84.0
+        ]
+      ],
+      "extents": [
+        39.0,
+        39.0,
+        84.0
+      ],
+      "volume": 38033.056659328366,
+      "faces": 4274
+    },
+    "default-smooth-print_layout.stl": {
+      "bytes": 1977743,
+      "watertight": false,
+      "is_volume": false,
+      "component_count": 26,
+      "bounds": [
+        [
+          -42.5,
+          -19.5,
+          0.0
+        ],
+        [
+          42.5,
+          19.5,
+          144.0
+        ]
+      ],
+      "extents": [
+        85.0,
+        39.0,
+        144.0
+      ],
+      "volume": 107031.87680378358,
+      "faces": 11092
+    }
+  },
+  "smooth_closed_intersection": {
+    "available": false,
+    "error": "ImportError: No boolean backend: `pip install manifold3d` or install `blender`"
+  }
+}

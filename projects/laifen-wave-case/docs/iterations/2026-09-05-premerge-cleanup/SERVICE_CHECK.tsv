@@ -1,0 +1,3 @@
+phase	http	response_sha256	pid	served_directory
+before	HTTP/2 200	53210be5e3b21a509c449261c69a271619f6ce0475a32a6eff90af70098b30bb	2629	/Users/scottchu/.codex/worktrees/4f8c/design-projects/projects/laifen-wave-case/scratch/presentation
+after	HTTP/2 200	53210be5e3b21a509c449261c69a271619f6ce0475a32a6eff90af70098b30bb	2629	/Users/scottchu/.codex/worktrees/4f8c/design-projects/projects/laifen-wave-case/scratch/presentation

@@ -1,0 +1,7 @@
+# P2 R19 user intake
+
+Create a narrow R19 conceptual-preview recovery from the stopped R18 standalone renderer. R18 verified frozen input fingerprint `04f507e67834f8c9e77eafcb9477e189cfda6b167a9914746e41c440c73ce273`, stayed within scope, implemented a standalone renderer, full 84-row map, transitive bans, and ten explicit pattern builders, but exhausted its two repair cycles at 73/84 before sheets or browser work.
+
+Repair exactly these 11 residual mappings: `closure.matchPatternClosed`, `closure.screw.leadRunoutTurns`, `closure.screw.radialClearance`, `surface.reliefMode`, `surface.envelope`, `surface.coverage`, `surface.flute.duty`, `surface.spiral.softness`, `label.openScadFontFamily`, `label.weight`, and `label.angleDeg`. Each must use a local descriptor-specific geometry, dimension, or metadata oracle. OpenSCAD font remains truthful metadata only.
+
+Preserve the other 73 field passes, the standalone renderer, complete 84-row map, ten pattern builders, transitive source bans, exact-one ownership, zero inactive leaks, family/polygon/UI behavior, caption-hidden clarity requirements, and six browser contexts. The complete collecting audit must reach 84/84 before any caption-hidden sheet or browser work. Work only in the new R19 namespace; prior iterations, core, live routes, CAD, OpenSCAD, STEP/export, slicer, printer, physical, and continuity records are read-only. Allow one initial attempt plus at most two grouped repairs. No live route or delivery before independent validation, critique, and formal review pass one frozen candidate.

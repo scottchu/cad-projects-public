@@ -1,0 +1,5 @@
+56c2be702a080aeba0b9c7a7a0a12b8be75a15d076c278bd0baf893b47ed1cd9  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/VALIDATION.md
+6938e8d9f1fdfdeff6606084c621db890263644d9b42ff6a649b8bfdac3070d4  projects/laifen-wave-case/preview/openscad-wasm-simulator/workers/openscad.worker.js
+6d4a6b007f96b00752efd33cf1cf9e4eff5daaf82f011edd0655ea68c20e09b8  projects/laifen-wave-case/preview/openscad-wasm-simulator/dependency-lock.json
+40780e6ac959b91a0fa79639680d4c510703a8efe092907e9f6de931321a5f09  projects/laifen-wave-case/tests/test_openscad_wasm_simulator.py
+b5db326716df1f5cbff7135440cacac3cf0e61a67d9b0229a6e99261fa859f0e  projects/laifen-wave-case/openscad/laifen_case_customizer_v1.scad

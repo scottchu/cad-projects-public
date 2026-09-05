@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Laifen Wave — pattern relationship gate</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <p class="eyebrow">Temporary pattern comparison</p>
+        <h1>Which middle seam looks right?</h1>
+        <p class="lede">Choose the case shape that matches what we want to make.</p>
+      </header>
+
+      <section class="controls" aria-label="Relationship controls">
+        <fieldset>
+          <legend>Choose one</legend>
+          <div class="toggle" role="group" aria-label="Pattern relationship">
+            <button type="button" class="choice" data-choice="A" aria-pressed="true">A · 現在</button>
+            <button type="button" class="choice" data-choice="B" aria-pressed="false">B · 要做</button>
+          </div>
+        </fieldset>
+        <label class="highlight"><input id="seam-highlight" type="checkbox" checked> Show seam line <span>(display aid)</span></label>
+      </section>
+
+      <section class="comparison" aria-labelledby="comparison-heading">
+        <h2 id="comparison-heading">What changes at the middle?</h2>
+        <div class="case-grid">
+          <article class="case-choice a">
+            <div class="case-silhouette gap" aria-hidden="true"><span></span><i></i><b></b></div>
+            <h3>A · 現在：中間空一圈</h3>
+            <p>smooth gap at seam</p>
+          </article>
+          <article class="case-choice b">
+            <div class="case-silhouette continuous" aria-hidden="true"><span></span><i></i><b></b></div>
+            <h3>B · 要做：紋路接到接縫</h3>
+            <p>continuous pattern</p>
+          </article>
+        </div>
+        <p id="plain-state" class="plain-state"><span class="state-a">A is selected: a smooth blank ring in the middle.</span><span class="state-b">B is selected: the pattern reaches the seam.</span></p>
+      </section>
+
+      <details class="engineering-details">
+        <summary>Engineering view and exact inspection question</summary>
+      <section class="diagram-card" aria-labelledby="diagram-heading">
+        <div class="diagram-heading">
+          <div>
+            <p class="eyebrow" id="state-kicker">A · current OpenSCAD relationship</p>
+            <h2 id="diagram-heading">Unwrapped seam strip</h2>
+          </div>
+          <p id="state-summary" class="state-summary"></p>
+        </div>
+        <svg id="pattern-strip" viewBox="0 0 720 500" role="img" aria-labelledby="diagram-title diagram-description">
+          <title id="diagram-title">Unwrapped body and cap pattern relationship</title>
+          <desc id="diagram-description">A deterministic seam-centered pattern diagram with separate body and cap regions.</desc>
+        </svg>
+        <p class="legend"><span class="swatch body"></span>body below the seam <span class="swatch cap"></span>cap above the seam <span class="line-swatch"></span>shared seam datum</p>
+      </section>
+
+      <section class="facts" aria-label="Inspection facts">
+        <article>
+          <h2>Fixed facts</h2>
+          <ul>
+            <li>Two separate pieces: body below, cap above.</li>
+            <li>Seam datum, OD 39 mm, skin depth 0.45 mm, axial pitch 4.8 mm.</li>
+            <li>One shared global phase is shown; the seam highlight does not change geometry.</li>
+          </ul>
+        </article>
+        <article>
+          <h2>Inspect</h2>
+          <p>Toggle A/B. Compare repeat density, diamond crest shape, two-piece identity, and the pattern immediately above and below the seam against the printed/reference case.</p>
+        </article>
+      </section>
+
+      <section class="decision" aria-labelledby="decision-heading">
+        <p class="eyebrow">Pass / fail question</p>
+        <h2 id="decision-heading">Should the OpenSCAD recovery use relationship B: two visibly separate pieces, N33 derived at the valley radius, the R7 0.18 crest plateau, and shared-phase diamonds continuing to both sides of the seam without the current 2 mm/11 mm smooth collar?</h2>
+        <p>Leave this gate open until the user explicitly passes or corrects that relationship.</p>
+      </section>
+      </details>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

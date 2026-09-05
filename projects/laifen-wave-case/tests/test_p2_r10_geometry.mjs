@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import {DEFAULT_STATE} from "../preview/p2-r10-parameter-sensitivity-recovery/core/schema.mjs";
+import {derive,endPath,rawPattern,sectionSupport} from "../preview/p2-r10-parameter-sensitivity-recovery/core/derive.mjs";
+import {deepMerge} from "../preview/p2-r10-parameter-sensitivity-recovery/core/utils.mjs";
+const d=derive(DEFAULT_STATE);assert.ok(d.valid);const s=DEFAULT_STATE;assert.equal(sectionSupport(0,s),30);const poly=deepMerge(s,{container:{crossSection:"regular_polygon",sideCount:6,cornerRoundness:0,rotationDeg:0}});assert.ok(sectionSupport(0,poly)<30&&sectionSupport(Math.PI/6,poly)===30,"OD is across polygon corners");
+for(const p of ["flat","chamfer","rounded_fillet","dome"]){const path=endPath(p,p==="flat"?0:3,30);assert.ok(path.length>=2);assert.ok(path.every(x=>Number.isFinite(x.r)&&Number.isFinite(x.z)));}assert.notDeepEqual(endPath("chamfer",3,30),endPath("rounded_fillet",3,30));
+const signatures=new Set;for(const id of ["smooth","blunt_diamond","recessed_diamond","knit_stitch","straight_micro_flutes","flowing_flutes","rugged_hex","shallow_helix","wave_flutes","quilted_diamond"]){const z=derive(deepMerge(s,{surface:{pattern:id}}));assert.ok(z.valid,id);signatures.add(JSON.stringify(z.descriptor.surface.signature));}assert.equal(signatures.size,10,"every pattern has a distinct finite sample signature");
+const bayonet=derive(deepMerge(s,{closure:{mode:"bayonet",bayonet:{lockAngleDeg:73,lugCount:4,capture:2,rampRise:1,radialClearance:.3}}}));assert.ok(bayonet.valid&&bayonet.descriptor.closure.assembled.coaxial!==false);assert.equal(bayonet.descriptor.closure.assembled.upper.rotation,0);
+const drains=derive(deepMerge(s,{ventDrain:{mode:"both",linked:false,bottom:{count:1,diameter:2,ringRadius:0},top:{count:3,diameter:2,ringRadius:8}}}));assert.ok(drains.valid);assert.equal(drains.descriptor.drains.bottom[0].ringRadius,0);assert.equal(new Set(drains.descriptor.drains.masks.map(x=>x.id)).size,4);
+assert.equal(derive(deepMerge(s,{label:{mode:"outset",text:"<svg>"}})).valid,false,"safe text boundary");console.log("R10 geometry gates passed");

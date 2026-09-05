@@ -1,0 +1,12 @@
+740ba3b8d7bd448143802245b5dccb8acc422f1b6e01cd9dd565058a9663c0cf  projects/laifen-wave-case/preview/p2-r16-final-semantic-mapping-recovery/app.mjs
+494f151128eea2b4c73202086d72e5936318c668a0e98a2adf7100ec1ffa0581  projects/laifen-wave-case/preview/p2-r16-final-semantic-mapping-recovery/index.html
+e3457d63400b393f3047b3436955d8b0b475f74b344f2425ec940ff03277366b  projects/laifen-wave-case/preview/p2-r16-final-semantic-mapping-recovery/style.css
+fb7e8b662a614dde8cdb4f0f51f3ff97eaf16b87fc26a7cae8f0608b706881c3  projects/laifen-wave-case/preview/p2-r16-final-semantic-mapping-recovery/target-map.mjs
+146238d056efe3b9b9f7c21d537b171e4cb6f3a443139c5c86fd1b91ec80ba38  projects/laifen-wave-case/preview/p2-r16-final-semantic-mapping-recovery/render/renderer.mjs
+8d99bea3653417be60c7f38bc0dd7727bb5de7c0263d318abf04110bbb78c550  projects/laifen-wave-case/tests/test_p2_r16_target_contract.mjs
+e3ce4913b0227c5200be3c4104f7870f8d7c814934310a2c913a145ab1fdea10  projects/laifen-wave-case/tests/test_p2_r16_render_observability.mjs
+a8df36dde3aace6d1071b42cfea5366f1d4e88020473633959ced9a1bc237db2  projects/laifen-wave-case/tests/test_p2_r16_visual_families.mjs
+96cf6b83d41d835b7e9d3d2d1078808ea4dbbd361653b1e92d64321f8d761eda  projects/laifen-wave-case/tests/test_p2_r16_ui_contract.mjs
+d4b076690a392f9a8f41d553310a01d1900829cb816f3d1b8888fff0e9ba47ce  projects/laifen-wave-case/tests/test_p2_r16_browser.py
+a11d702c64349711016d4e1af11ae99e5c29432a17acc686c9884747bc48cc57  projects/laifen-wave-case/scratch/r16-exhaustive-audit/audit.mjs
+41993fd0f32cfb46366da357a80bb0718a046bc8b3f5db7db003e5786e270b2f  projects/laifen-wave-case/scratch/r16-exhaustive-audit/audit.json

@@ -1,0 +1,11 @@
+{
+  "method": "OpenSCAD CGAL intersection of body_shell() and cap_shell() translated to cap_close_z",
+  "surface_style": "smooth",
+  "elapsed_seconds": 15.42,
+  "bounds": [[-19.5, -19.5, 135.0], [19.5, 19.5, 135.0]],
+  "volume_mm3": 0.0,
+  "watertight": false,
+  "is_volume": false,
+  "component_count_after_trimesh_processing": 190,
+  "interpretation": "The exact intersection collapses to the z=135 shoulder-stop plane. It has zero volume and is intended coincident shoulder contact, not volumetric body/cap collision."
+}

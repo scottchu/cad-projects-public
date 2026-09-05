@@ -1,0 +1,11 @@
+22a4b39ab1439018f2570d0d90326f700f07647ae399a34655a8a5be347382c5  AGENTS.md
+07b345a1a8e98969655433a06cc36741cf53df60a672c2cf36c0f28605d7f96a  docs/CAD_WORKFLOW.md
+0e78e1980c5a0261389345fa055581193e8d2a174780d9d7ab5ff4271a9ef37a  projects/laifen-wave-case/cad/p1_r3_generator/params.py
+25391b9237e75afd07e14e865881b8bbe77ad23522728e6245950bf8a7198404  projects/laifen-wave-case/cad/p1_r3_generator/thread_profile.py
+7ad64326d30ca0314dc5118191f16b6e4d878ad591d4e477be4b1614bd30195a  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r2-fit-feedback/THREAD_EXPORT_BOUNDARY.md
+1e624dd659676bcfa88d9150a0f51c157d426a1fd44a0fb79c7782a1c62bf8bf  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/DES03_MOUTH_TRIM.md
+4d4c60ae8ba538212790d80e039cb558d75b1f6477bd68028bf2b8d62173a561  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/DES05_MOUTH_EVIDENCE.md
+37b608966fe17520257c87f252530715742f9d450978c68a853b739c23db3846  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/inputs/mouth-evidence-inputs.sha256
+782319625e58719a634ce9fcd67c65ae79d198fb62eaeabd7d11f5ff057f9412  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/inputs/mouth-evidence-summary.json
+f170564ea9d5e8e068780eab6db42c17ec309e9fd2a09954c312dd7455ab93a5  projects/laifen-wave-case/scratch/generator-core/mouth-probe-copied-curves.py
+4ddad976e7679c26ed036335e0b9415f324e7a402e810fdbfcc7cffde80329bc  projects/laifen-wave-case/scratch/generator-core/mouth-probe-copied-curves.txt

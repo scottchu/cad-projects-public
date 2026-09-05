@@ -1,0 +1,12 @@
+22a4b39ab1439018f2570d0d90326f700f07647ae399a34655a8a5be347382c5  AGENTS.md
+07b345a1a8e98969655433a06cc36741cf53df60a672c2cf36c0f28605d7f96a  docs/CAD_WORKFLOW.md
+0e78e1980c5a0261389345fa055581193e8d2a174780d9d7ab5ff4271a9ef37a  projects/laifen-wave-case/cad/p1_r3_generator/params.py
+939ddadc2c77fc8479d79e1721e4790472a9468c19767028b51fe23a1c7decf6  projects/laifen-wave-case/cad/p1_r3_generator/skin.py
+61fbde67ef750dc2913226128528e9f585ed04adfa5647d570592f332e3437b9  projects/laifen-wave-case/cad/p1_r3_generator/surface.py
+0d5bfd867b0b39e4a0ae16d97606ca9e8da2d4c9980555c5d31c6b3e72ef5aff  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/DES02_SURFACE_ROUTE.md
+3f8c5176c02a7358fb73468fd112bb32e57bbf8368304819c4f8abe7e398e373  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/DES04_PATCH_RECOVERY.md
+851e2784b44ef9d3d423dc6d1f8c6b666c14f68ad21ecf583df9a27d8bbfae41  projects/laifen-wave-case/docs/iterations/2026-09-01-p1-r3-algorithmic-skin/inputs/patch-recovery-inputs.sha256
+482cd6350f7974bab6679b1a0c8e35f0af5ffe0377d0f50bdf7d212f6750f56b  projects/laifen-wave-case/scratch/generator-core/patch-failure-diagnostic.py
+4f48caf965470b05a5e2635b19b9cb4890f1aac278157a1bd1b90184372d6b41  projects/laifen-wave-case/scratch/generator-core/patch-failure-diagnostic.txt
+8d396c6c65c44e0f1f9a77fde0d731e4bfc6035523d7c260ec97cb146c285702  projects/laifen-wave-case/scratch/generator-core/patch-probe.txt
+b55593abc7a6646444003c8f82f6867f99bf90ec19bc587aee93083ca89deea3  projects/laifen-wave-case/scratch/generator-core/patch-repair.txt

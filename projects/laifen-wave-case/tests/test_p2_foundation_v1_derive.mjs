@@ -1,0 +1,13 @@
+import assert from "node:assert/strict";
+import {DEFAULT_INPUTS, deriveV1} from "../preview/p2-foundation-v1/core/derive.mjs";
+const ok = patch => {const result=deriveV1({...DEFAULT_INPUTS,...patch});assert.equal(result.valid,true,JSON.stringify(result.errors));return result.descriptor;};
+const d=ok({});assert.equal(d.ID,55.2);assert.equal(d.usableHeight,114);assert.equal(d.screw.engagement,4);assert.equal(d.screw.diametralClearance,.5);assert.equal(d.splitZ,60);
+const byDistance=ok({splitMode:"distance",splitValue:60});assert.equal(byDistance.splitPercent,50);assert.equal(byDistance.U,d.U);
+const polygon=ok({section:"polygon",N:6});assert.ok(Math.abs(polygon.AF-60*Math.cos(Math.PI/6))<1e-10);assert.ok(polygon.ID<d.ID);
+assert.equal(deriveV1({...DEFAULT_INPUTS,H:NaN}).descriptor,null);assert.equal(deriveV1({...DEFAULT_INPUTS,W:.8}).valid,false,"small ID is rejected");assert.equal(deriveV1({...DEFAULT_INPUTS,D:1.7}).valid,false,"residual thread wall is rejected");
+assert.equal(JSON.stringify(deriveV1(DEFAULT_INPUTS)),JSON.stringify(deriveV1(DEFAULT_INPUTS)),"derivation serializes deterministically");
+assert.equal(JSON.stringify(ok({section:"round",N:3})),JSON.stringify(ok({section:"round",N:32})),"round mode ignores polygon sides");
+assert.equal(JSON.stringify(ok({bottomStyle:"flat",bottomSize:.2})),JSON.stringify(ok({bottomStyle:"flat",bottomSize:9})),"flat end ignores size");
+assert.equal(JSON.stringify(ok({drainLocation:"none",Q:1,d:9,BCD:0})),JSON.stringify(ok({drainLocation:"none",Q:16,d:.8,BCD:80})),"none ignores all drain controls");
+assert.equal(JSON.stringify(ok({Q:1,BCD:0})),JSON.stringify(ok({Q:1,BCD:27})),"one drain ignores bolt circle");
+console.log("Foundation V1 derivation gates passed");

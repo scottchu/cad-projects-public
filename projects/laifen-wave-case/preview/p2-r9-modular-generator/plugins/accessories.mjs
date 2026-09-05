@@ -1,0 +1,5 @@
+import {deepFreeze} from "../core/utils.mjs";
+const item=(id,label,mainBuilder,roles)=>({id,label,disclosure:"Optional visual accessory body; excluded from core-piece count.",defaults:{},fields:["attachment.mountAngleDeg","attachment.presentation","attachment.attachHalf","attachment.common.openingWidth","attachment.common.openingHeight","attachment.common.memberThickness"],derive:()=>({}),validate:()=>[],roles,visual:{mainBuilder,comparisonBuilder:`${mainBuilder}Comparison`,detailBuilder:`${mainBuilder}Detail`,annotationBuilder:"assemblyDatum"}});
+export const ACCESSORY_REGISTRY=deepFreeze({
+ integrated_lanyard_eyelet:item("integrated_lanyard_eyelet","Integrated lanyard eyelet","teardropEyelet",["attach pad","oval opening"]),captured_loop:item("captured_loop","Captured loop","capturedLoop",["two ears","separate oval loop"]),separate_clip_link:item("separate_clip_link","Separate clip link","openClipLink",["open C link","receiving eye"]),keyring_tab:item("keyring_tab","Keyring tab","keyringTab",["radial tab","through-hole"]),bridge_handle:item("bridge_handle","Bridge handle","bridgeHandle",["two standoffs","spanning arch"])
+});

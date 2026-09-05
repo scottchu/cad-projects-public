@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import {derive} from "../preview/p2-r10-parameter-sensitivity-recovery/core/derive.mjs";
+import {DEFAULT_STATE} from "../preview/p2-r10-parameter-sensitivity-recovery/core/schema.mjs";
+import {renderComparison,renderDetail,renderMainSvg} from "../preview/p2-r10-parameter-sensitivity-recovery/render/svg.mjs";
+const source=fs.readFileSync(new URL("../preview/p2-r10-parameter-sensitivity-recovery/render/svg.mjs",import.meta.url),"utf8");
+assert.equal(/from\s+["'][^"']*core\//.test(source),false,"renderer imports descriptor only");
+const result=derive(DEFAULT_STATE);assert.equal(result.valid,true);const d=result.descriptor,svg=renderMainSvg(d);
+assert.match(svg,/data-core-piece="upper-piece"/);assert.match(svg,/data-core-piece="lower-piece"/);assert.match(svg,/dimensionally proportional visual/);assert.doesNotMatch(svg,/true scale/i);
+for(const target of Object.keys(d.targets))assert.match(svg,new RegExp(`data-target="${target}"`),target);
+assert.match(renderDetail(d),/relief inset/);assert.match(renderComparison(d),/comparison-grid/);
+console.log("R10 renderer passed: descriptor-only named-target serialization");

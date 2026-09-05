@@ -1,0 +1,15 @@
+22a4b39ab1439018f2570d0d90326f700f07647ae399a34655a8a5be347382c5  AGENTS.md
+07b345a1a8e98969655433a06cc36741cf53df60a672c2cf36c0f28605d7f96a  docs/CAD_WORKFLOW.md
+f5c8fa2378074f8f976587f36f6cd404672f227a725e2e0038e5ab0a6b35f046  docs/PROJECT_CONTINUITY.md
+535ec0f9eb5bce77c409c12576ab4b9bdf2b66b930a6a477d22276f46d659dfa  projects/laifen-wave-case/docs/iterations/2026-09-04-p2-foundation-v1/inputs/frozen-inputs.sha256
+0e1d4932768000172986905d0a4f1736841ec1988d5a741f63a5e33169c61f10  projects/laifen-wave-case/docs/iterations/2026-09-04-p2-foundation-v1/BRIEF.md
+4e075897415fd49b2ba5f1a5949ae16cc5940e646f873cad4c580a219f02150a  projects/laifen-wave-case/docs/iterations/2026-09-04-p2-foundation-v1/DESIGN.md
+94c483baa6f1a42484c8c33ed19c454b9315ea97707a0ba825e9f61bf96a4bc4  projects/laifen-wave-case/docs/iterations/2026-09-04-p2-foundation-v1/HANDOFF.md
+a3503bc7fbb02a931de0ad1def18526db5ffb63683bef2a0a5d04fd83ac975e0  projects/laifen-wave-case/docs/iterations/2026-09-04-p2-foundation-v1/USER_GATE.md
+dd1d92e1e42d57ac87c9c61d2a80c5d8bf0d2b477510f72fe17b29a35fab06fd  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/derive.mjs
+762d64eaa4de3bc9f74204f46462afd3c0eaa1fbe93edc067572c6141b6e2b10  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/parameter-coverage.mjs
+5e106c182d1ae2bd2d0024e682eac17dd95ccbfbf0b79266eb242e324610bf59  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/presets.mjs
+b2bd4e57fac2e9c5166c0927ebc6d3cc718921f8c91dc3d09e464252b652eef1  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/schema.mjs
+d1d0c78118cac59a5ccb43be9d96f517b6c44ba2813ffcaa1d2ad0bd29915d0e  projects/laifen-wave-case/preview/p2-r10-parameter-sensitivity-recovery/core/utils.mjs
+b5f797390bd4a057428dbc84260f625d50dc41d2b2a720e84dd8157edf2f8324  projects/laifen-wave-case/docs/iterations/2026-09-04-p2-foundation-v1-implementation/BRIEF.md
+e564d686279c19db323082d8ea3be9d170a976d189d67032a94f0ead8c0d88ae  projects/laifen-wave-case/docs/iterations/2026-09-04-p2-foundation-v1-implementation/DESIGN.md

@@ -1,0 +1,11 @@
+# R6 direct full case — user steering
+
+The user explicitly says “不要短的。直接來” (no short version; directly the full case), with a new photo of a printed male-threaded patterned tube. This intentionally supersedes R5 short-experiment-first delivery and any requirement to physically test a new short pair before making full CAD. Generate the complete two-piece39mm case now; do not impose another short print or ask the answered width/material questions. No printer upload/start is authorized.
+
+Carry forward body bore30/cap main bore31, maximum crestOD39, OUR original mathematical diamond motif and proportions, fixed axial pitch4.8/shared phase; small chamfer both closed ends and water holes. Total axial allowance5mm accepted. Use editable provisional L208/D29 and full usable cavity C=L+5=213 for this CAD. Ruler photos support approximate208 but are not a precise length measurement; do not claim physical clearance proven. Root told user these dimensions while accepting direct-full scope.
+
+Use existing original R5 selected B thread (root16.4/crest16.9/h0.5/p2/E6/c25), radii and stop/axial datums as baseline. New thread strength/wobble remain untested. Preserve R4 and frozen R5 short implementation111; do not mutate or deliver short as current. Physical acceptance and actual slicer/process remain separate.
+
+Original approximate split137+81-overlap5 is a target rather than fixed interface. Design owner may derive a nearby split retaining cap cavity81 and current nine-mm male neck, totalC213, floor3; state exact depths/overlap instead of mislabelling effective thread engagement. Original literal noncontact at BOTH ends is still unresolved: user has not answered the prior async bottom-resting question. That open full-case requirement must be documented, not used to refuse the now-explicit full CAD; do not add unsolicited retention or claim centered envelope is retained. Section may show the centered nominal envelope and total slack, labelled positional reference only.
+
+New photo is reference/physical observation only, not a mesh or geometric source. Reuse OUR R5 parametric source only; no download copy or scale. Full-length topology/runtime limits intentionally need reopening; set a bounded full-specific budget, do not silently use short6000-face cap or stop the task just because the full body has more repeats.

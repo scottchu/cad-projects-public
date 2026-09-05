@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Generic container simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <p>VISUAL INTENT GATE · P2 R2</p>
+    <h1>Generic two-piece threaded container</h1>
+    <strong>Does this show the intended two-piece container, thread location, and chosen number of turns for the selected use?</strong>
+  </header>
+  <section class="grid">
+    <form id="controls" aria-label="Container parameters">
+      <h2>Parameters</h2>
+      <div class="primary-controls">
+        <label>Preset<select id="preset"><option value="generic">Generic container</option><option value="laifen_wave_reference">Laifen reference</option><option value="wide_short_makeup_jar">Wide short makeup jar</option></select></label>
+        <label>View<select id="exploded"><option value="false">Assembled</option><option value="true">Exploded</option></select></label>
+      </div>
+      <details open>
+        <summary>Size &amp; split</summary>
+        <div class="twos">
+          <label>Height H (mm)<input id="H" type="number"></label>
+          <label>Outer diameter (mm)<input id="OD" type="number"></label>
+          <label>Wall (mm)<input id="wall" type="number"></label>
+          <label>Floor (mm)<input id="F" type="number"></label>
+          <label>Lower bore override (mm)<input id="lowerBore" type="number" placeholder="auto"></label>
+          <label>Upper bore override (mm)<input id="upperBore" type="number" placeholder="auto"></label>
+          <label>Split from top S (mm)<input id="S" type="number"></label>
+          <label>Split from top (%)<input id="percent" type="number"></label>
+        </div>
+      </details>
+      <details open>
+        <summary>Thread</summary>
+        <div class="twos">
+          <label>Thread pitch (mm)<input id="p" type="number"></label>
+          <label>Thread turns<select id="N"><option>1</option><option>2</option><option>3</option></select></label>
+          <label>Lead/runout (turns)<input id="Lr" type="number"></label>
+          <label>Thread form height (mm)<input id="formHeight" type="number"></label>
+          <label>Clearance/side (mm)<input id="clearance" type="number"></label>
+          <label>Smooth keepout (mm)<input id="keepout" type="number"></label>
+        </div>
+      </details>
+      <details open>
+        <summary>Surface &amp; ends</summary>
+        <div class="twos">
+          <label>Pattern<select id="pattern"><option value="smooth">Smooth</option><option value="blunt_diamond">Blunt diamond</option><option value="shallow_helix">Shallow helix</option><option value="wave_flutes">Wave/flutes</option></select></label>
+          <label>Axial pitch (mm)<input id="axial" type="number"></label>
+          <label>Arc pitch (mm)<input id="arc" type="number"></label>
+          <label>Depth (mm)<input id="depth" type="number"></label>
+          <label>Chamfer (mm)<input id="chamfer" type="number"></label>
+          <label>Drains enabled<select id="drains"><option value="true">Yes</option><option value="false">No</option></select></label>
+          <label>Drain count<input id="drainCount" type="number"></label>
+        </div>
+      </details>
+      <p id="status"></p>
+      <p id="warnings"></p>
+    </form>
+    <section class="panel">
+      <div id="viewerFrame">
+        <div id="viewer"></div>
+        <div id="axialScale" aria-label="Global Z visual thread band scale">
+          <span class="axis-label">global Z</span>
+          <span id="scaleTop" class="axis-end"></span>
+          <span id="scaleBottom" class="axis-end"></span>
+          <span id="fullBand" class="scale-band full"><b>visual thread band</b></span>
+          <span id="effectiveBand" class="scale-band effective"><b>effective</b></span>
+        </div>
+      </div>
+      <p class="legend">Teal: lower piece · orange: upper piece · yellow: seam · purple/white brackets: visual axial thread band and effective engagement</p>
+      <h2>Surface detail</h2>
+      <div id="detailFrame">
+        <canvas id="detail" width="360" height="90" role="img"></canvas>
+        <p id="detailUnavailable" hidden>Unavailable until parameters are valid</p>
+      </div>
+      <p id="detailText"></p>
+    </section>
+    <aside>
+      <h2>Derived state</h2>
+      <dl id="readout"></dl>
+      <p>Visual model only: no CAD solid, thread profile, clearance, wall, printability, fit, drainage, or strength proof.</p>
+    </aside>
+  </section>
+  <footer>global z=0 lower closed outer end · global z=H upper closed outer end</footer>
+</main>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

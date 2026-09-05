@@ -1,0 +1,130 @@
+<div id="laifen-measurement-gate">
+  <style>
+    #laifen-measurement-gate { color:var(--foreground); }
+    #laifen-measurement-gate .section-drawing { display:block; width:100%; }
+    #laifen-measurement-gate .section-drawing text { fill:var(--foreground); font-size:12px; font-weight:400; }
+    #laifen-measurement-gate .section-drawing .outline { fill:none; stroke:var(--foreground); stroke-width:1; }
+    #laifen-measurement-gate .section-drawing .material { fill:var(--muted); stroke:var(--foreground); stroke-width:1; }
+    #laifen-measurement-gate .section-drawing .device { fill:var(--viz-series-1); fill-opacity:.22; stroke:var(--viz-series-1); stroke-width:1; }
+    #laifen-measurement-gate .section-drawing .guide { fill:none; stroke:var(--foreground); stroke-width:1; }
+    #laifen-measurement-gate .readout { display:flex; flex-wrap:wrap; gap:.4rem 1.2rem; margin-block:.6rem; }
+  </style>
+  <p>尺寸待實測；此圖不代表已驗證配合</p>
+  <div class="viz-controls">
+    <label class="form-label">裝刷頭總長 L（mm）<input class="form-control" data-key="L" type="number" min="0" step="0.1" value="208"></label>
+    <label class="form-label">最大直徑 D（mm）<input class="form-control" data-key="D" type="number" min="0" step="0.1" value="29"></label>
+    <label class="form-label">總軸向餘量（mm）<input class="form-control" data-key="slack" type="number" min="0" step="0.1" value="5"></label>
+    <label class="form-label">每側徑向間隙（mm）<input class="form-control" data-key="radial" type="number" min="0" step="0.1" value="1.5"></label>
+  </div>
+  <div class="viz-controls">
+    <label class="form-label">位置 q：<span data-role="q-value" class="tabular-nums">0.5</span><input class="form-range" data-key="q" aria-label="牙刷軸向位置 q" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+    <button class="btn" type="button" data-preset="0.5">置中</button>
+    <button class="btn" type="button" data-preset="0">靠底</button>
+  </div>
+  <p data-role="error" role="alert" class="text-destructive"></p>
+  <div aria-live="polite">
+    <p data-role="state"></p>
+    <div data-role="gaps" class="readout tabular-nums"></div>
+    <p data-role="targets" class="text-destructive"></p>
+    <div data-role="dimensions" class="readout tabular-nums"></div>
+  </div>
+  <svg class="section-drawing" data-role="section" role="img" aria-label="同一比例的牙刷暫定包絡與外殼軸向剖面"></svg>
+  <div class="readout tabular-nums"><span>固定壁厚 2.4 mm</span><span>兩端底厚各 3 mm</span><span>下段內深 137 mm</span><span>軸向重疊 5 mm</span></div>
+  <p>有效咬合5–6目標；尚未定案</p>
+  <p class="text-small">螺紋接合外徑、根部壁厚及紋理對位待定</p>
+</div>
+<script>
+(() => {
+  'use strict';
+  const root = document.getElementById('laifen-measurement-gate');
+  const ui = Object.fromEntries(['section','error','state','gaps','targets','dimensions','q-value'].map(key => [key, root.querySelector(`[data-role="${key}"]`)]));
+  const inputs = [...root.querySelectorAll('input[data-key]')];
+  const field = Object.fromEntries(inputs.map(input => [input.dataset.key, input]));
+  const fixed = Object.freeze({wall:2.4, floor:3, lower:137, overlap:5, upperMouth:132});
+  const fmt = value => Number(value.toFixed(3)).toString();
+  function compute(p) {
+    if (!Object.values(p).every(Number.isFinite) || p.L <= 0 || p.D <= 0 || p.slack < 0 || p.radial < 0 || p.q < 0 || p.q > 1) return null;
+    const C = p.L + p.slack;
+    const ID = p.D + 2 * p.radial;
+    const cap = C - fixed.upperMouth;
+    const bodyOD = ID + 2 * fixed.wall;
+    const bottom = p.q * p.slack;
+    const top = (1 - p.q) * p.slack;
+    const deviceTop = bottom + p.L;
+    const closedLength = C + 2 * fixed.floor;
+    if (![C, ID, cap, bodyOD, bottom, top, deviceTop, closedLength].every(Number.isFinite) || cap <= 0) return null;
+    // Reject arithmetic that cannot retain the declared floors, wall or envelope.
+    if (!(closedLength > C && bodyOD > ID && deviceTop > bottom)) return null;
+    return {...p, C, ID, cap, bodyOD, bottom, top, deviceTop, closedLength};
+  }
+  function render(d) {
+    const width = ui.section.getBoundingClientRect().width;
+    if (!Number.isFinite(width) || width <= 0) return;
+    const height = 470;
+    const scale = Math.min(360 / d.closedLength, width * .32 / d.bodyOD);
+    const centerX = width * .36;
+    const topEdge = 55;
+    const z = mm => topEdge + (d.C + fixed.floor - mm) * scale;
+    const x = mm => centerX + mm * scale;
+    const outerLeft = x(-d.bodyOD / 2), outerRight = x(d.bodyOD / 2);
+    const innerLeft = x(-d.ID / 2), innerRight = x(d.ID / 2);
+    const deviceLeft = x(-d.D / 2);
+    const labelX = outerRight + 18;
+    const stopY = z(fixed.upperMouth);
+    const gapX = outerRight + 8;
+    const attributes = {scale, centerX, outerLeft, outerRight, innerLeft, innerRight};
+    ui.section.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    ui.section.setAttribute('height', String(height));
+    ui.section.innerHTML = `
+      <title>牙刷包絡及閉合內腔，單位 mm</title>
+      <desc>牙刷 L ${fmt(d.L)}、D ${fmt(d.D)}；上隙 ${fmt(d.top)}，下隙 ${fmt(d.bottom)}；兩端底厚在可用內腔之外。外止擋只是外側示意基準。</desc>
+      <g data-scale="${scale}">
+        <rect class="material" data-geometry="left-wall" x="${outerLeft}" y="${z(d.C)}" width="${fixed.wall * scale}" height="${d.C * scale}"/>
+        <rect class="material" data-geometry="right-wall" x="${innerRight}" y="${z(d.C)}" width="${fixed.wall * scale}" height="${d.C * scale}"/>
+        <rect class="material" data-geometry="upper-floor" x="${outerLeft}" y="${z(d.C + fixed.floor)}" width="${d.bodyOD * scale}" height="${fixed.floor * scale}"/>
+        <rect class="material" data-geometry="lower-floor" x="${outerLeft}" y="${z(0)}" width="${d.bodyOD * scale}" height="${fixed.floor * scale}"/>
+        <rect class="device" data-geometry="device" x="${deviceLeft}" y="${z(d.deviceTop)}" width="${d.D * scale}" height="${d.L * scale}"/>
+        <path class="guide" data-geometry="cavity-dimension" d="M ${outerLeft - 14} ${z(d.C)} V ${z(0)} M ${outerLeft - 18} ${z(d.C)} h 8 M ${outerLeft - 18} ${z(0)} h 8"/>
+        <text x="${outerLeft - 24}" y="${z(d.C / 2)}" text-anchor="middle" transform="rotate(-90 ${outerLeft - 24} ${z(d.C / 2)})">內腔 C ${fmt(d.C)}</text>
+        <text x="${centerX}" y="${z(d.bottom + d.L / 2)}" text-anchor="middle" transform="rotate(-90 ${centerX} ${z(d.bottom + d.L / 2)})">暫定包絡 L ${fmt(d.L)} / D ${fmt(d.D)}</text>
+        <path class="guide" data-geometry="diameter-dimension" d="M ${innerLeft} 36 H ${innerRight} M ${innerLeft} 32 V 40 M ${innerRight} 32 V 40"/>
+        <text x="${centerX}" y="23" text-anchor="middle">內徑 ID ${fmt(d.ID)}</text>
+        <path class="guide" data-geometry="top-gap" d="M ${gapX} ${z(d.C)} H ${outerRight + 13} M ${gapX} ${z(d.C)} V ${z(d.deviceTop)} H ${outerRight + 13}"/>
+        <text data-gap="top" x="${labelX}" y="${z(d.C) + 18}">上隙 ${fmt(d.top)}</text>
+        <path class="guide" data-geometry="bottom-gap" d="M ${gapX} ${z(0)} H ${outerRight + 13} M ${gapX} ${z(0)} V ${z(d.bottom)} H ${outerRight + 13}"/>
+        <text data-gap="bottom" x="${labelX}" y="${z(0) - 15}">下隙 ${fmt(d.bottom)}</text>
+        <g data-geometry="external-stop">
+          <path class="guide" d="M ${outerRight + 4} ${stopY - 4} V ${stopY + 4} M ${outerRight + 4} ${stopY} H ${outerRight + 14}"/>
+          <text x="${labelX}" y="${stopY - 4}">外止擋基準</text>
+          <text x="${labelX}" y="${stopY + 13}">z = 132（示意）</text>
+        </g>
+        <path class="guide" data-geometry="overlap" d="M ${outerLeft - 7} ${z(fixed.lower)} H ${outerLeft - 3} M ${outerLeft - 7} ${z(fixed.lower)} V ${stopY} H ${outerLeft - 3}"/>
+        <path class="guide" data-geometry="gravity" d="M ${labelX + 12} ${z(0) - 90} v 36 l -4 -6 m 4 6 l 4 -6"/>
+        <text x="${labelX + 24}" y="${z(0) - 65}">重力</text>
+        <text x="${centerX}" y="445" text-anchor="middle">平直本體 OD ${fmt(d.bodyOD)}</text>
+      </g>`;
+    return attributes;
+  }
+  function update() {
+    const p = Object.fromEntries(inputs.map(input => [input.dataset.key, input.value.trim() === '' ? NaN : Number(input.value)]));
+    const d = compute(p);
+    ui['q-value'].textContent = Number.isFinite(p.q) ? fmt(p.q) : '—';
+    ui.error.textContent = '';
+    if (!d) {
+      ui.error.textContent = '請輸入有限數值：L、D 須大於 0，間隙不可為負，上蓋內深須大於 0；數值須能保留壁厚與底厚。';
+      for (const key of ['section','state','gaps','targets','dimensions']) ui[key].innerHTML = '';
+      return;
+    }
+    ui.state.textContent = d.slack === 0 ? '兩端接觸；不代表固定' : d.q === 0 ? '由底面承托：底端接觸' : d.q === 1 ? '頂端接觸；不代表固定' : '未固定：僅示意位置';
+    ui.gaps.innerHTML = `<span>上隙 ${fmt(d.top)} mm</span><span>下隙 ${fmt(d.bottom)} mm</span><span>總餘量 ${fmt(d.slack)} mm</span>`;
+    ui.targets.textContent = [d.slack < 3 ? '軸向餘量未達 3 mm 目標' : '', d.radial < 1 ? '每側徑向間隙未達 1 mm 目標' : ''].filter(Boolean).join('；');
+    ui.dimensions.innerHTML = `<span>內腔 C ${fmt(d.C)} mm</span><span>內徑 ID ${fmt(d.ID)} mm</span><span>上蓋內深 ${fmt(d.cap)} mm</span><span>本體 OD ${fmt(d.bodyOD)} mm</span>`;
+    render(d);
+  }
+  inputs.forEach(input => input.addEventListener('input', update));
+  root.querySelectorAll('[data-preset]').forEach(button => button.addEventListener('click', () => { field.q.value = button.dataset.preset; update(); }));
+  new ResizeObserver(update).observe(ui.section);
+  window.__laifenMeasurementGate = Object.freeze({compute, fixed});
+  update();
+})();
+</script>

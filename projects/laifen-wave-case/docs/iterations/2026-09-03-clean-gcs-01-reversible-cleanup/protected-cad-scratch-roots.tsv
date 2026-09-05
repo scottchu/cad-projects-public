@@ -1,0 +1,17 @@
+path	files	directories	symlinks	file_bytes	reason
+projects/laifen-wave-case/scratch/coupon-fix	14	1	0	23749	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/coupon-recovery-design	4	1	0	9068	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/end-chamfer-impl	48	9	0	249695606	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/end-chamfer-validation	37	3	0	1530735	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/export-evidence-design	5	1	0	44462	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/fullcase-critique	56	17	0	42143425	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/fullcase-export-repair	48	10	0	266476549	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/fullcase-validation	45	4	0	1630833	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/generator-core	57	2	0	2444520	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/generator-presentation	13	6	0	5489900	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/generator-validation	7	1	0	44902	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/generator-validation-des06	7	1	0	29854	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/thread-export-validation	13	1	0	1246451	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/uniform-skin-critique	12	6	0	11116302	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/uniform-skin-impl	10	1	0	29917	contains CAD source or STEP/BREP/GLB artifact
+projects/laifen-wave-case/scratch/uniform-skin-validation	12	1	0	1429445	contains CAD source or STEP/BREP/GLB artifact

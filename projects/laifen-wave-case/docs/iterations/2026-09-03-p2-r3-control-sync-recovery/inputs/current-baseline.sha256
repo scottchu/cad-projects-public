@@ -1,0 +1,23 @@
+# P2 R3 immutable recovery baseline (path-and-content SHA-256)
+# Baseline HEAD: d0aab1ff21a0cd2e5790c9800fcec7cfec2bfc3c
+# Exact incoming repair-2 candidate manifest SHA-256: 32429b0817e918343959be9cfe783a8ae76a2d00e0a35b9903b77c71ef6f34b6
+# Excludes mutable status/indexes and evidence scratch; it retains repair-2 receipts as decision-bearing inputs.
+293ec8cbed158f786183f7723fa88083d03013cf4dd3e8a52f9bdfe7d4c72a5f  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/BRIEF.md
+e162f3857c03c89b9dde31d167a839c862bc2ca9891934a6ed7429da281ab6bd  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/CRITIQUE_REPAIR2.md
+8c7f88499a79115ef48d34f43e7a4fda468722e2926c0bc98ce4d3aae7bb18f3  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/DESIGN.md
+ca88a63da6f9c6f5b74aaaefa7fbcb1ad5784d3ca12a229f66015fd89ebf5d0a  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/IMPLEMENTATION_REPAIR2.md
+d5ee387592db47c5232bc139249e8a2c3d317089a58a0c0498b0bafc57122f13  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/VALIDATION_REPAIR2.md
+2d55eed990b96c0216e889cfc55d4a03a3db41f570acd4b5528a88f52e809f00  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/critique-repair2-evidence.sha256
+32429b0817e918343959be9cfe783a8ae76a2d00e0a35b9903b77c71ef6f34b6  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/implementation-candidate.sha256
+ca38256e85859139902f0aeecdbfc6b6b5ee871e3e063a38c443797ab36bd9a2  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/implementation-repair2-evidence.sha256
+11d7018aa92266f5698b87415d5173a17089d17b7d10d046b5bbe4d3ba2adaec  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/validation-repair2-evidence.sha256
+05a21353cd7be5dd072754b51d9a0fc3e474710ab4d0277c665c1e86084695e1  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/validation-repair2-inputs.sha256
+120f17eff6b652c2d916ae4d88adf008ac6f88e870f7d2520fafad647f63e7a6  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/BRIEF.md
+f7914d1e623b2916ac1feaa4509089cca6da55ac232a337652b2b543ef8350a0  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/DESIGN.md
+a8d4d36bf89cad4c4189502ff347bc8841d9ac7480fd6083e277d3751f20a1b8  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/RECEIPT_POINTER.md
+6ccfa48c7fdb10ff24ebfbb70cf34eeae82cd3a94a02d27d6fb4deafc448a1bc  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/USER_INTAKE.md
+c396b18bae19c44c80582637168fa40f83d1e94225af4d9bb8924fdf42ba6588  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/app.js
+ace28e8dd08de7f9ca9bf916887911e0d118c6dd4b0d2e6594f2a88950b878a5  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/index.html
+b3e4c734b166349251c9b7683aa23d428cb4d2f8f167ff29349def7dc024337b  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/math.mjs
+a19c755ca5c27dbe602283ba2652c5b2ff005c2a59266b078c5930b58ff6ccf3  projects/laifen-wave-case/preview/p2-r2-generic-container-simulator/style.css
+237c1ef273dc1b42b349ea7a52f622f7f8e75811157d94d7b8fc10ba0cb2ef69  projects/laifen-wave-case/tests/test_generic_container_simulator.mjs

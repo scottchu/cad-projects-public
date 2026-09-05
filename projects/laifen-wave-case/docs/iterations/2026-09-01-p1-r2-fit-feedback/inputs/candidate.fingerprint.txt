@@ -1,0 +1,2 @@
+Candidate manifest: candidate.sha256
+Candidate SHA-256: 57a181b7bd0f7a94727d5fc547619dc9b6debdaed170cdcf1292c018c2b4fefb

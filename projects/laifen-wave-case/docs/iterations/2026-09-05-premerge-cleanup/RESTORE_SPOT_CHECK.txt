@@ -1,0 +1,6 @@
+path	projects/laifen-wave-case/openscad/__pycache__
+status	PASS
+pre_tree_sha256	61303169cd453a6e1b74737847aed5d5811ea94e387ed5bcf8ee488147228933
+restored_tree_sha256	61303169cd453a6e1b74737847aed5d5811ea94e387ed5bcf8ee488147228933
+final_tree_sha256	61303169cd453a6e1b74737847aed5d5811ea94e387ed5bcf8ee488147228933
+final_location	/Users/scottchu/.Trash/laifen-wave-case-premerge-cleanup-2026-09-05.46d83abc57/projects/laifen-wave-case/openscad/__pycache__

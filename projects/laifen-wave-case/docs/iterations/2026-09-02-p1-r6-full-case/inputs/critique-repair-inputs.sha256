@@ -1,0 +1,12 @@
+a3873490fc7d7742698d9d73aceb6a8a29131fd8b846c76973d7133afb438bdc  projects/laifen-wave-case/docs/iterations/2026-09-02-p1-r6-full-case/inputs/implementation-repaired.sha256
+cb8af4d69dd1a64a311eb9eeedd2a1806c57fb347c365c6a91946abcc4e292ed  projects/laifen-wave-case/docs/iterations/2026-09-02-p1-r6-full-case/EXPORT_REPAIR_TRIAL.md
+7e25b909cdb30e1cf3888818d6b1b45eceaa36f7f4980ccea6fe4ff184c0a3ba  projects/laifen-wave-case/docs/iterations/2026-09-02-p1-r6-full-case/REVIEW_PREPARATION.md
+174260bfbd7e78a4e41254693b1bf9ea93962e829bf1604b586ae0c239f35cad  projects/laifen-wave-case/scratch/fullcase-export-repair/production/before-map.json
+6edb3f83d976f449f4ccc21571ef96ce2356fbd5bef505d4359966c8296c7115  projects/laifen-wave-case/cad/p1_r6_full_case/README.md
+e42ed2a6b541b86d0a87e22b6d0e2013f5050bc8450f07035858b0b8dbd08ef7  projects/laifen-wave-case/cad/p1_r6_full_case/parts.py
+241624a2e1c3c33f7e7f89fe55b9372fb051e1efa4c427edc5cc21e4b252c0a9  projects/laifen-wave-case/cad/p1_r6_full_case/runout.py
+b7dcdb05eba4b62391a120398b28fa58e969c6b070d4e58cfd642cf9259536da  projects/laifen-wave-case/cad/p1_r6_full_case/review.py
+b5d425acecb35a57264e4267b7958608af289d2975c53c6d94c059083226fbdd  projects/laifen-wave-case/cad/p1_r6_full_case/body.step
+5b47075e5ee27dc57b8089c7955856e15119b8a7692569c2f0f532d4a21f4afe  projects/laifen-wave-case/cad/p1_r6_full_case/cap_c25.step
+31e4125fcfc6d6c543312491298d8a508f0d2db9a5da247b6a933b6fa7d3efa6  projects/laifen-wave-case/cad/p1_r6_full_case/closed_c25.step
+be27b1c7962bcc241babea257aa85b11bc1675b83072f475bf684e865d166410  projects/laifen-wave-case/cad/p1_r6_full_case/print_layout.step

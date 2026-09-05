@@ -1,0 +1,5 @@
+0367b4aff210f4638e5f6f0c599ad3e640738de7d09325b551a80344d01aee19  projects/laifen-wave-case/docs/REQUIREMENTS.md
+267740ce06d4da988c08f3621126517327e19bf252155915d6de1ec0bd06157b  projects/laifen-wave-case/cad/container_generator_v1/parameters.py
+338314acc114beb030c268ee2ac6a170bbae87a4273e25f44d78e34ad659ca06  projects/laifen-wave-case/cad/container_generator_v1/derive.py
+d5648b3c8464b2f8445749c2eb48f570a269b50581ee52ed7558349528b92487  projects/laifen-wave-case/cad/container_generator_v1/thread.py
+1218dfdc6e07efc61e9807c5ec252b4c933c0f475466e2630fa72a30ad912cf0  projects/laifen-wave-case/cad/container_generator_v1/parts.py

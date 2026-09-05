@@ -1,0 +1,14 @@
+120f17eff6b652c2d916ae4d88adf008ac6f88e870f7d2520fafad647f63e7a6  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/BRIEF.md
+f7914d1e623b2916ac1feaa4509089cca6da55ac232a337652b2b543ef8350a0  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/DESIGN.md
+8a13b3e6f9724e6b8def5595b7180a5a3e336911115f6aabfc41a5596bd6e659  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/IMPLEMENTATION_RECOVERY.md
+a8d4d36bf89cad4c4189502ff347bc8841d9ac7480fd6083e277d3751f20a1b8  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/RECEIPT_POINTER.md
+cc4c378fe3b398ead900b1bf39a94bf8b1e94f21599c4219bb3f55b6af1fdf61  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/current-baseline.sha256
+15c7c0503e87ec0f0b1a828fb62d471baaefc9a6caecf629d14d4504d0d19224  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/implementation-recovery-candidate.sha256
+d4cdd20ddf527d8f1733724b7f67d897defbdd740831a1705cce953e3bf17e35  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/implementation-protected-parity.sha256
+7e7bff59da4ef96ce4a4f8f421516e5309baebd2bf17fdcbb5676136e8056c2f  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r3-control-sync-recovery/inputs/implementation-recovery-evidence.sha256
+d5ee387592db47c5232bc139249e8a2c3d317089a58a0c0498b0bafc57122f13  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/VALIDATION_REPAIR2.md
+11d7018aa92266f5698b87415d5173a17089d17b7d10d046b5bbe4d3ba2adaec  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r2-generic-container-simulator/inputs/validation-repair2-evidence.sha256
+b158992028dd1e4680a77e1a959039dfe2ba4d162c8a2cbc6751a8618a34d822  projects/laifen-wave-case/scratch/generic-container-sync-validation/validate.py
+7726c1e7c46958051ab8c52a3bd52f83e661356de6d64bd06b34fadb1a76d678  projects/laifen-wave-case/pyproject.toml
+4885d18b40910a2c6069fffda004a1d596dcd97cc9342db73fc6d07c3504f79a  pyproject.toml
+e515a571df8be2adaf74a4601171cc5b175f73721dbcf13b95de76afe9badd80  uv.lock

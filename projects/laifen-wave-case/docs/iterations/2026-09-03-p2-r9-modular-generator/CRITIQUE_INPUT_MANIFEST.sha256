@@ -1,0 +1,7 @@
+f1f27e9b5c4cb96bcdaaf4a0823c49e3ffe8a1af2aea692caa5c3bce1ebf3b91  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r9-modular-generator/BRIEF.md
+2839bad9b60c2e5d68a315163c98b938353ebf9be9b11b5cc8b619628db16ff0  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r9-modular-generator/DESIGN.md
+85ebd36c458b7c14da7cb78a15d28238ce97cb62316a5197f5cbf146ee83fc49  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r9-modular-generator/inputs/frozen-inputs.sha256
+22d9bf20a54743eced9752bd1bfaee5f12f999b8bb0cbc95d4dac0125154dffa  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r9-modular-generator/CANDIDATE_MANIFEST.sha256
+0aaf54d6b064cf6b83c8e9ce186b5e5756f640ecb3e2f285e4351d9fcf9c389b  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r8-end-inset-parse-recovery/CRITIQUE.md
+b77b75450e33d38270a32e56b66eb0b9b87206d08dbc29c60fe666c2617403e4  projects/laifen-wave-case/docs/iterations/2026-09-03-p2-r8-end-inset-parse-recovery/VALIDATION.md
+60cf1c3c501492810cd06e65c3ae3686e4a04defd85f08919798f38f4d775758  projects/laifen-wave-case/tests/test_modular_generator.mjs

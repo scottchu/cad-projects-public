@@ -1,0 +1,6 @@
+fd0beb5bc913cf8e37fb02c26718aa994ae42232d551c742879bf8d7b16db5ec  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/BRIEF.md
+7454d59d4779fad3e22cbdec1c73f712b45926f3296e3f596b892270400cadf0  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/DESIGN.md
+0f645e36fdc383af7b585501411091ab6602965658c367a2dec8e7ca8cd17256  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/IMPLEMENTATION.md
+56c2be702a080aeba0b9c7a7a0a12b8be75a15d076c278bd0baf893b47ed1cd9  projects/laifen-wave-case/docs/iterations/2026-09-04-openscad-wasm-simulator/VALIDATION.md
+b5db326716df1f5cbff7135440cacac3cf0e61a67d9b0229a6e99261fa859f0e  projects/laifen-wave-case/openscad/laifen_case_customizer_v1.scad
+fd444d299420d6599040198fe507a76bcc062aadc80913c59912838a2a7d03b1  projects/laifen-wave-case/tests/test_openscad_wasm_simulator.py
