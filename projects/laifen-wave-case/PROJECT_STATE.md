@@ -1,6 +1,6 @@
 # Project state
 
-Pattern-family checkpoint: R2 is delivered on private 8453. Five choices and contextual remembered sliders passed 56 Node, 13 Python, 21 compile, independent mesh/feature/parity, Chromium desktop/mobile and formal review gates. Six served files and a fresh live STL download match the reviewed build. Source manifest 6701e4c3; SCAD3b96cc2d. Next: user reviews the added patterns; no further feature, native Safari/iPhone or physical acceptance is implied. See active HANDOFF/DELIVERY.
+Pattern-family checkpoint: R2 is delivered on private 8453. Five choices and contextual remembered sliders passed 56 Node, 13 Python, 21 compile, independent mesh/feature/parity, Chromium desktop/mobile and formal review gates. Six served files and a fresh live STL download match the reviewed build. Source manifest 6701e4c3; SCAD3b96cc2d. Next: user reviews the added patterns; no further feature, native Safari/iPhone or physical acceptance is implied. See active HANDOFF/DELIVERY. Source delivery commit `ac244f8bae6c8faa6bfc5f35e6ac86a27f6e1124` is pushed to draft PR19.
 
 ## Pattern families and contextual controls — in progress
 
