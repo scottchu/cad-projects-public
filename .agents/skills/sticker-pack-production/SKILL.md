@@ -16,14 +16,17 @@ and visual defects.
   path and SHA-256. A later user correction for a named slot outranks its older
   source; otherwise do not reinterpret the source to improve novelty.
 - Treat exact text as data. Record the exact Unicode string or `null`; do not
-  ask image generation to render final text.
+  ask image generation to render final text. Bind any approved typography
+  authority by actual font, renderer/method, treatment, and reference paths and
+  SHA-256 values; do not silently substitute a generic approximation.
 - Keep these outcomes separate: machine audit, independent human review, and
   user design approval. None implies either of the others.
 - Never auto-approve identity, style, source semantics, prop ownership,
   anatomy, occlusion, or text meaning from pixel heuristics.
 - Do not edit art, change an approved hash, upload, publish, alter privacy, or
   create a platform release unless the user explicitly puts that action in
-  scope. This skill ends at accepted art masters, before composition/export.
+  scope. This skill may validate a bounded deterministic-text pilot or preview;
+  it does not authorize full composition, export, or release.
 
 ## Route by current gate
 
@@ -102,6 +105,58 @@ After G2, generate no more than eight unreviewed slots at a time, with at most
 four native-image workers and two total native attempts per slot. Preserve
 passing hashes and retry only failed slots.
 
+### Design-preview fast lane
+
+For one to three new stickers, or a small targeted edit, use
+`DESIGN-PREVIEW` before full-pack production. Reuse already-frozen references,
+freeze the exact scene or edit contract, and keep one concise batch receipt.
+For feedback, record one sentence of intent and classify it as `expression`,
+`identity`, `action`, or `technical`; then freeze the bounded delta and its
+invariants. Ask a follow-up only when that sentence leaves a material choice
+unresolved—do not impose a questionnaire.
+
+Treat this intent clarification and the user's design choice as planning, not
+execution rework. Once the contract is clear and frozen, separately record
+implementation reruns and defects that escaped an earlier gate.
+
+Each native-art asset gets one initial native call; a deterministic text-only
+pilot uses zero native image calls. Show the small set after narrow machine
+checks and review by someone distinct from the implementer. Review the requested
+delta plus credible regressions such as complete anatomy, exact text
+absence/presence, framing, border, and alpha; a full-pack audit is not required
+for every preview tweak. Do not auto-loop after a failure.
+
+Record user approval immediately against the exact current path and SHA-256 in
+one current-authority index. Replace its current pointer when authority changes
+instead of accumulating contradictory status headers; keep superseded detail
+as history. A later user aesthetic choice governs the new bounded candidate and
+is not vetoed by an older reference complaint outside the newly frozen scope.
+
+`DESIGN-PREVIEW` never bypasses production gates. A machine failure remains a
+clearly labeled non-production preview. Before scaling beyond the small preview,
+one representative candidate must prove genuine alpha and pass review at the
+intended platform sizes; failure stops full-pack generation and export.
+
+### Deterministic-text pilot
+
+For a text-only pilot, freeze the exact base-art path/hash, Unicode, font-file
+path/hash, renderer or composition-method path/hash, style values, placement,
+and approved visual examples. Reuse those authorities directly; a same-category
+font or a configuration that merely names the style is not equivalent.
+
+Render text as a separate overlay. Bind its actual nonzero-alpha bounds and
+prove that decoded base pixels outside that overlay are unchanged. The reviewer
+must inspect the actual rendered glyphs, exact case/punctuation,
+contract-required outline or halo (white only when specified), placement, and
+overlap at native and relevant small sizes on the intended surfaces.
+Configuration inspection alone cannot pass typography.
+
+One production owner may reuse the frozen context for the bounded composition;
+a distinct reviewer reuses the same context for focused text and preservation
+checks. Do not repeat a full-pack audit when only the overlay changed. Keep alpha
+and platform-size production gates intact: baked checkerboard pixels remain a
+failure even when the text pilot itself looks correct.
+
 When unchanged source already has the required intent approval, use two planned
 user checkpoints as a practical target: the scene/pilot checkpoint and the full
 composed-pack checkpoint, with exceptions for real design choices. This does not
@@ -112,6 +167,11 @@ If two or more slots share a failure, stop the wave and reopen the common
 identity/style/prompt/method contract. Do not spend isolated retries or widen
 local masks to hide a shared defect. Anatomy, pose, scene, or global identity
 repairs require a coherent whole-figure edit or regeneration.
+
+Measure, without promising, generation time versus raw total elapsed time,
+attempts, adopted candidates, user interventions, post-contract execution
+rework, and defects found after the gate that should have caught them. Keep
+clarification/design-decision time separate from rework.
 
 ## Stop conditions
 
