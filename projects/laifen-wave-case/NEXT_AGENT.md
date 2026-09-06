@@ -1,4 +1,10 @@
-# Next agent — pattern performance
+# Next agent — pattern backlog
+
+Active iteration: `docs/iterations/2026-09-06-pattern-backlog`. User authorized continuing the full roadmap one item at a time. Read `docs/FEATURE_BACKLOG.md` and the active BRIEF/DESIGN/HANDOFF. First new gate: compare current blunt Diamond against a Recessed diamond appearance study. No photo needed for the documented first proposal; user appearance acceptance precedes new CAD.
+
+Accepted app/source baseline is commit `191cb37119f9a4e4d23112ecd5bc0d18f0daec86`, SCAD SHA `497098afa555092a0ed85a3a7213cd270852aa76f9001e1478c209cd8469bc42`; private8453 main customizer remains unchanged and compilation stays in the browser. The analytic study is reviewed and delivered at `https://mac-mini.duckbill-ionian.ts.net:8453/pattern-study/`; Node7/7, actual desktop/mobile/state evidence, independent critique and formal review passed. Main-app six-file parity is unchanged. Read active HANDOFF and DELIVERY. Next: user appearance decision on the recessed diamond before a new source/CAD gate.
+
+## Preserved performance checkpoint
 
 Active iteration: `docs/iterations/2026-09-06-pattern-performance`. All five paths were audited; shared Ribs/Rings/Spiral edge and face shortcuts preserve exact output. Candidate SCAD SHA `497098afa555092a0ed85a3a7213cd270852aa76f9001e1478c209cd8469bc42`; source43 manifest `3888018275bfcd05ab1d66a27d5b29a01eaf7268382075f4e2bd2047cc638c4c`.
 

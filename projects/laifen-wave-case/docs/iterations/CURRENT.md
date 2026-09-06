@@ -1,3 +1,3 @@
 # Current iteration
 
-[Pattern performance](2026-09-06-pattern-performance/HANDOFF.md)
+[Pattern backlog continuation](2026-09-06-pattern-backlog/HANDOFF.md)
