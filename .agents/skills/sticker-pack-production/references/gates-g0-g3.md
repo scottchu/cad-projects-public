@@ -4,6 +4,47 @@ Use one immutable candidate fingerprint at a time. A later correction reopens
 the earliest gate it affects and creates a new candidate; it does not erase the
 older evidence.
 
+## DESIGN-PREVIEW: small-set intent gate
+
+For one to three new assets or a narrow edit, freeze reused reference hashes and
+one sentence of user intent classified as expression, identity, action, or
+technical. Record the allowed delta, invariants, exact text or `null`, output
+paths, and stop condition. One concise receipt may cover the batch.
+
+Record clarification and the user's selection as contract formation. Begin
+execution-rework counting only after that contract is unambiguous and frozen;
+also record any defect that leaks past the gate expected to catch it.
+
+Use one initial native call per native-art asset; a deterministic text-only
+pilot uses zero native image calls. Apply narrow deterministic checks and a
+distinct reviewer for the requested change and plausible regressions. Do not
+require the complete G2/G3 pack evidence set or start an automatic retry loop.
+If alpha or another machine fact fails, label the result non-production; do not
+export it or scale generation. Before leaving the small preview, run one
+representative real-alpha pilot at intended platform sizes through the normal
+machine and independent-review gates.
+
+Keep one current-authority index. On user approval, immediately bind the exact
+approved path and SHA-256 there. When feedback changes authority, update that
+pointer and retain older evidence as superseded history rather than stacking
+competing current-status summaries.
+
+### Text-only delta
+
+Freeze the base image, exact Unicode, actual approved font file, renderer or
+composition method, treatment map, and visual examples by path and SHA-256.
+Freeze placement, case, punctuation, fill/stroke/halo, and overlay bounds. A
+generic replacement font or copied configuration without rendered evidence
+reopens this gate.
+
+The production owner renders one overlay from those inputs. Machine evidence
+compares decoded base/output pixels and requires zero changes outside the
+overlay's actual nonzero-alpha mask. A distinct reviewer checks the rendered
+text and contract-required outline or halo (white only when specified) at native
+and relevant small sizes, plus focused overlap, crop, and readability
+regressions. Reuse the frozen context and do not repeat a full-pack audit unless
+the delta or a shared failure expands scope.
+
 ## G0: source authority
 
 Record before generation:
