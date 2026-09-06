@@ -1,7 +1,22 @@
-# Next agent — validate the merged design with the user and a print
+# Next agent — desktop customizer implementation and review
 
-Use `docs/iterations/2026-09-04-openscad-visual-fidelity-recovery` as the single
-current iteration. Preserve the authoritative OpenSCAD source
+Resume `docs/iterations/2026-09-05-desktop-customizer` on
+`codex/container-desktop-customizer`. Read its BRIEF and DESIGN first; the
+user selected visual option 2 with the existing generation/reset workflow.
+The reviewed visual target is `inputs/selected-desktop.png`. Implementation,
+independent UI/runtime validation, visual critique and formal review pass for
+C2. See `inputs/candidate-02.sha256`, VALIDATION, REVIEW and `design-qa.md`.
+The local development server is `http://127.0.0.1:5178/`; recheck it before
+claiming readiness. Do not replace the live 8448 route as part of local review.
+Keep existing geometry, source/schema/worker provenance and the historical
+acceptance gaps below. HANDOFF records the frozen candidate and exact evidence.
+Keep the 4 mm body-wall limit and edited assembled STL seam defects explicit;
+do not promote UI acceptance to a new print-ready or physically proven release.
+
+## Preserved predecessor delivery
+
+The predecessor iteration is `docs/iterations/2026-09-04-openscad-visual-fidelity-recovery`.
+Preserve the authoritative OpenSCAD source
 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`,
 the R7 print-layout STEP
 `80fd95845b51da5266883614f9bf8eff60793a24d5c39b7321c9c6cb16d477a4`,

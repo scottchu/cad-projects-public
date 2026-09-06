@@ -1,17 +1,39 @@
 # Project state
 
-## Current authority and review surface
+## Active desktop customizer work — 2026-09-05
+
+The active iteration is `docs/iterations/2026-09-05-desktop-customizer`.
+The user selected visual option 2 and requires the existing Generate, Cancel,
+Reset and Download workflow. Work is isolated on
+`codex/container-desktop-customizer`. Candidate C2 (`inputs/candidate-02.sha256`,
+SHA-256 `b57642a532d834fddeb56c938496af44a03d3635e4a748ad46ada0cf86df609c`)
+passes independent UI/runtime validation, visual critique and formal review
+(`REVIEW.md`, SHA-256 `6ca1fc54bfdeeb1b4a49ade6dd0a1c3c946a297e7fdf297350ee7693e8c88bf4`).
+The local preview is `http://127.0.0.1:5178/`, verified in the in-app
+browser with actual STL generation. Four plain dimensions, visible drains,
+optional lid/output choices, real STL cutaway and separate Generate, Cancel,
+Reset dimensions, Reset view and current-byte Download are implemented.
+Existing OpenSCAD source/schema/worker and live services remain unchanged.
+See iteration VALIDATION and project `design-qa.md` for evidence.
+
+Artifact acceptance is partial: the edited D39/H60/W4/T4 closed assembly has
+four degenerate seam faces; its body, lid and print-layout exports passed the
+measured mesh checks. This is a development customizer, not a new print-ready
+CAD release. Advertised minimum body wall is 4 mm with current screw geometry;
+the requested 3 mm example remains unsupported. Physical acceptance is open.
+
+## Preserved deployed baseline and CAD authority
 
 The authoritative editable source is `openscad/laifen_case_customizer_v1.scad`,
 SHA-256 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`.
 It implements relationship B, the VFR-08 drain and print-layout repairs, and the
-39 mm crest OD with 30/31 mm body/cap bores. The only current live review
+39 mm crest OD with 30/31 mm body/cap bores. The preserved deployed review
 surface is the VFR-12 C3 OpenSCAD WASM simulator:
 <https://mac-mini.duckbill-ionian.ts.net:8448/openscad-simulator/>.
 
-The reviewed UI candidate is
+The deployed predecessor UI candidate is
 `2a58f483d2ba653c7e3c7de747bec8466837dd7f46ee4cd493ef9e8b61199433`.
-Current runtime source hashes are schema
+Deployed predecessor runtime source hashes are schema
 `894062333ba7370c4b17efc93b788623eb9db86d0117ffc45275886d0f754ae0`,
 main `98af41e1377afb873208977eedc679ea9e887b04b96253bc2025b3896fbeb353`,
 worker `fabd153527ec6c1aa0d5be9008679c7e2147d4559049149d8084b60795ec3845`,

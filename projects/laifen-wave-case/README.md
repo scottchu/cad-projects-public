@@ -61,3 +61,34 @@ install. This is source, browser and written geometry evidence. Actual Safari us
 reconstruction, slicing, thread fit, drainage flow, strength and physical
 acceptance remain open. P1 R7 and the earlier P2 R3 simulator records remain
 historical evidence under [`docs/iterations/`](docs/iterations/).
+
+
+### Desktop customizer candidate (2026-09-05)
+
+The desktop iteration replaces the raw CAD form with inside diameter, inside
+height, body-wall thickness, and top/bottom thickness. Drain placement remains
+visible; proportional lid height and export shape are under Container options.
+The compiled STL is shown in 3D or a display-only Cutaway. Generate is explicit
+after edits; Cancel, Reset dimensions, Reset view, and Download STL are distinct.
+The first visit generates the unchanged smooth preset once. The existing screw
+geometry needs a minimum advertised body wall of 4 mm; thinner everyday walls
+require a separate mechanics change. This UI candidate is not a new physically
+validated CAD release and does not change the deployed service.
+
+From the repository root:
+
+```sh
+node --test projects/laifen-wave-case/tests/node/desktop-customizer.test.mjs
+uv run pytest projects/laifen-wave-case/tests/test_openscad_wasm_simulator.py -q
+npm run build:openscad-simulator --workspace laifen-wave-case
+```
+
+See `docs/iterations/2026-09-05-desktop-customizer/` for the design contract,
+implementation receipt and independent acceptance status.
+
+Artifact limitation: independent browser checks of the D39/H60/W4/T4 example
+found four degenerate seam faces in its closed-container STL. Its separately
+generated body, lid and print-layout samples were watertight. Source remains
+unchanged; this does not establish printability or physical acceptance. The
+minimum advertised wall is 4 mm; 3 mm walls are unsupported. See the iteration's
+[validation record](docs/iterations/2026-09-05-desktop-customizer/VALIDATION.md).
