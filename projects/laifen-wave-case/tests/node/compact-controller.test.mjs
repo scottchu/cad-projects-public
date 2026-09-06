@@ -1,3 +1,4 @@
+import {PATTERNS,TEXTURED,patternMemories} from '../../preview/openscad-wasm-simulator/src/patterns.mjs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createCustomizerController} from '../../preview/openscad-wasm-simulator/src/controller.mjs';
@@ -14,6 +15,7 @@ class FakeElement {
 }
 function fakeDocument(){
   const ids=['diameter','height','wall','ends','lid','drains','drains-top','drains-bottom','drain-count','drain-count-range','drain-count-rule','drain-count-error','surface-pattern','surface-smooth','surface-diamond','surface-pattern-rule','surface-pattern-error','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
+  for(const pattern of TEXTURED){ids.push(`surface-${pattern}`,`pattern-${pattern}-group`);for(const key of ['size','depth'])for(const suffix of ['', '-range','-rule','-help','-error'])ids.push(`${pattern}-${key}${suffix}`);}
   for(const key of ['diameter','height','wall','ends','lid'])ids.push(`${key}-range`,`${key}-rule`);
   for(const key of ['diameter','height','wall','ends','lid','drains','output'])ids.push(`${key}-error`);
   const elements=Object.fromEntries(ids.map(id=>[id,new FakeElement()]));
@@ -73,7 +75,7 @@ test('Auto/manual transition and reset restore complete defaults without generat
   const {document,controller,calls}=setup(),e=document.elements;
   assert.equal(e.lid.value,'84');e['auto-lid'].checked=false;e['auto-lid'].onchange();assert.equal(controller.getState().raw.lid,'84');assert.equal(e.lid.readOnly,false);
   edit(document,'lid','90');setDrains(document,{top:false,bottom:false});edit(document,'output','cap');e.reset.click();
-  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',drainCount:'7',pattern:'smooth',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e['drains-top'].checked,false);assert.equal(e['drains-bottom'].checked,true);assert.equal(e['surface-smooth'].checked,true);assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',drainCount:'7',pattern:'smooth',output:'assembled',patterns:patternMemories()});assert.equal(e['auto-lid'].checked,true);assert.equal(e['drains-top'].checked,false);assert.equal(e['drains-bottom'].checked,true);assert.equal(e['surface-smooth'].checked,true);assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
 });
 test('surface pattern preserves its raw choice, maps the fixed tuple, and offers a wall repair without pausing it',()=>{
   const {document,controller,calls}=setup(),e=document.elements;
@@ -113,4 +115,25 @@ test('independent drain checkboxes map all four modes, preserve invalid drafts, 
   }
   edit(document,'diameter','');setDrains(document,{top:true,bottom:true});assert.equal(controller.getState().raw.drains,'both');assert.equal(e['diameter-error'].textContent,'Enter a number in millimetres.');assert.equal(e.generate.disabled,true);
   edit(document,'diameter','30');e.generate.click();assert.equal(calls.generate.length,1);setDrains(document,{top:false,bottom:false});assert.equal(calls.invalidate.at(-1),'Dimensions changed. Generate to update.');assert.equal(controller.getState().busy,false);assert.equal(controller.getState().raw.drains,'none');
+});
+
+
+test('each family owns remembered exact text and only its group; inactive invalid state is excluded',()=>{
+ const {document,controller,calls}=setup(),e=document.elements;
+ const select=pattern=>{e[`surface-${pattern}`].checked=true;e[`surface-${pattern}`].dispatch('change');};
+ select('diamond');edit(document,'diamond-size','4.83');edit(document,'diamond-depth','0.43');
+ assert.equal(e['diamond-size-range'].step,'any');assert.equal(e['diamond-size-range'].value,'4.83');
+ assert.equal(e['pattern-diamond-group'].hidden,false);assert.equal(e['pattern-ribs-group'].hidden,true);
+ select('ribs');edit(document,'ribs-size','bad');assert.equal(e.generate.disabled,true);assert.equal(e['ribs-size-range'].dataset.hideThumb,'true');assert.equal(e['ribs-size-range'].getAttribute('aria-valuetext'),'Enter a number');assert.equal(e['ribs-depth-range'].disabled,true);
+ select('diamond');assert.equal(e['diamond-size'].value,'4.83');assert.equal(e.generate.disabled,false);assert.equal(calls.generate.length,0);
+ e.generate.click();const job=calls.generate.at(-1);assert.equal(job.diamond_axial_pitch,4.83);assert.equal(job.diamond_depth,.43);assert.equal(job.wave_spacing,6);
+ select('ribs');assert.equal(e['ribs-size'].value,'bad');select('smooth');assert.equal(e.generate.disabled,false);
+ for(const pattern of TEXTURED)assert.equal(e[`pattern-${pattern}-group`].hidden,true);
+ e.reset.click();assert.deepEqual(controller.getState().raw.patterns,patternMemories());
+});
+test('numeric invalid pattern value is repairable without making a blank slider origin',()=>{
+ const {document,controller}=setup(),e=document.elements;e['surface-spiral'].checked=true;e['surface-spiral'].dispatch('change');
+ edit(document,'spiral-size','');assert.equal(e['spiral-size-range'].getAttribute('aria-valuetext'),'Enter a number');assert.equal(e['spiral-size-range'].getAttribute('aria-hidden'),'true');assert.equal(e['spiral-depth-range'].getAttribute('aria-hidden'),undefined);assert.equal(e['spiral-size'].getAttribute('aria-hidden'),undefined);edit(document,'spiral-size','3');assert.equal(e['spiral-size-range'].getAttribute('aria-hidden'),undefined);assert.equal(e['spiral-size-range'].getAttribute('aria-valuetext'),undefined);assert.equal(e['spiral-size-range'].disabled,false);assert.equal(e['spiral-depth-range'].disabled,true);
+ e['spiral-size-range'].value='4.06';e['spiral-size-range'].dispatch('input');assert.equal(controller.getState().raw.patterns.spiral.size,'4.1');
+ edit(document,'spiral-depth','');assert.equal(e['spiral-depth-range'].disabled,true);assert.equal(e['wall-range'].disabled,true);assert.equal(e['spiral-depth'].disabled,false);
 });

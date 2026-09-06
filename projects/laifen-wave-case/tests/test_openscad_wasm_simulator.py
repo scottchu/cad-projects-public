@@ -56,5 +56,7 @@ def test_complete_job_identity_and_preflight_guards_are_source_level_contracts()
     assert 'filter(k=>!k.startsWith("diamond_"))' not in schema
     assert "diamond_axial_pitch" in schema and "diamond_arc_pitch" in schema
     assert "diamond_depth" in schema and "diamond_phase_deg" in schema
-    assert "thread wall constraint failed" in schema and "drains reach sidewall" in schema
+    assert "wave_spacing" in schema and "wave_depth" in schema
+    assert "assertPatternPreflight" in schema
+    assert "thread wall constraint failed" in schema and "drain spacing constraint failed" in schema
     assert "canonical(v)" in schema and "lockFingerprint" in schema

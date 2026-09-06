@@ -1,5 +1,18 @@
 # Project state
 
+Pattern-family checkpoint: R2 is delivered on private 8453. Five choices and contextual remembered sliders passed 56 Node, 13 Python, 21 compile, independent mesh/feature/parity, Chromium desktop/mobile and formal review gates. Six served files and a fresh live STL download match the reviewed build. Source manifest 6701e4c3; SCAD3b96cc2d. Next: user reviews the added patterns; no further feature, native Safari/iPhone or physical acceptance is implied. See active HANDOFF/DELIVERY.
+
+## Pattern families and contextual controls — in progress
+
+Current iteration: `docs/iterations/2026-09-06-pattern-families`, baseline
+`c181dda780a3b9c407ebe3419702419254266792`. The user accepted the existing
+surface selector and requested a few more simple mathematical patterns, each
+with its own parameter group directly below the selector. Design is in progress
+for Ribs, Rings and Spiral plus editable Diamond size/depth. This authorizes a
+scoped exterior/source extension; preserve internals and existing default
+geometry. Private 8453 remains on the accepted Smooth/Diamond build while the
+new candidate is prepared and independently checked. See active HANDOFF.
+
 ## Surface pattern ready for user review — 2026-09-06
 
 Current iteration: `docs/iterations/2026-09-06-surface-pattern`, baseline

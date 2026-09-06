@@ -1,4 +1,16 @@
-# Next agent — surface pattern
+# Next agent — pattern families and contextual controls
+
+Pattern-family checkpoint: R2 is delivered on private 8453. Five choices and contextual remembered sliders passed 56 Node, 13 Python, 21 compile, independent mesh/feature/parity, Chromium desktop/mobile and formal review gates. Six served files and a fresh live STL download match the reviewed build. Source manifest 6701e4c3; SCAD3b96cc2d. Next: user reviews the added patterns; no further feature, native Safari/iPhone or physical acceptance is implied. See active HANDOFF/DELIVERY.
+
+Active iteration: `docs/iterations/2026-09-06-pattern-families`, baseline
+`c181dda780a3b9c407ebe3419702419254266792`. User requests more simple
+mathematical patterns and a separate parameter group for the selected pattern,
+shown directly below the selector. Follow the active HANDOFF and frozen design;
+Ribs/Rings/Spiral are the proposed additions, with simple remembered settings.
+Do not carry the previous fixed-pattern-only restriction into this new request.
+Live 8453 now serves reviewed R2; preserve it during any later iteration.
+
+## Accepted surface selector
 
 Current iteration: `docs/iterations/2026-09-06-surface-pattern`, baseline
 `cf4adb08314989f9d52a7afbd2f868756226d799`. User says next after drain count.

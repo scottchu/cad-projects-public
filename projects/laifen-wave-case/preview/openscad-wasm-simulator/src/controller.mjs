@@ -1,3 +1,4 @@
+import {PATTERNS,TEXTURED,PATTERN_FIELDS,patternMemories,rawPattern} from './patterns.mjs';
 import {DEFAULTS} from './adapter.mjs';
 import {DIMENSIONS,deriveDraftState,dimensionSnapshot} from './bounds.mjs';
 import {bindRange} from './controls.mjs';
@@ -8,7 +9,7 @@ const rounded=value=>Number(value.toFixed(3));
 
 export function createCustomizerController({document,createGeneration,viewer=null,defaults=DEFAULTS,autoGenerate=true,createObjectURL=blob=>URL.createObjectURL(blob),revokeObjectURL=url=>URL.revokeObjectURL(url)}) {
   const $=id=>document.getElementById(id);
-  let raw={...defaults,drainCount:defaults.drainCount??'7'},lastValidDimensions=dimensionSnapshot(defaults),draft=deriveDraftState(raw,lastValidDimensions);
+  let raw={...defaults,patterns:patternMemories(),drainCount:defaults.drainCount??'7'},lastValidDimensions=dimensionSnapshot(defaults),draft=deriveDraftState(raw,lastValidDimensions);
   let generated=null,downloadURL=null,busy=false,draftDirty=false;
 
   function invalidateDownload(){if(downloadURL)revokeObjectURL(downloadURL);downloadURL=null;$('download').removeAttribute('href');$('download').setAttribute('aria-disabled','true');$('download').tabIndex=-1;}
@@ -33,7 +34,25 @@ export function createCustomizerController({document,createGeneration,viewer=nul
     $('surface-pattern').setAttribute('aria-invalid',String(Boolean(patternError)||coupledFields.has('pattern')));
     $('surface-pattern-error').hidden=!patternError;$('surface-pattern-error').textContent=patternError;
     $('surface-pattern').setAttribute('aria-describedby',`surface-pattern-rule ${patternError?'surface-pattern-error':coupledFields.has('pattern')?'dimension-form-error':'surface-pattern-error'}`);
-    for(const pattern of ['smooth','diamond'])$('surface-'+pattern).checked=raw.pattern===pattern;
+    for(const pattern of PATTERNS)$('surface-'+pattern).checked=raw.pattern===pattern;
+    for(const pattern of TEXTURED){
+      $(`pattern-${pattern}-group`).hidden=raw.pattern!==pattern;
+      for(const key of PATTERN_FIELDS){
+        const id=`${pattern}-${key}`,input=$(id),range=$(`${id}-range`),active=raw.pattern===pattern;
+        input.value=raw.patterns[pattern][key];
+        if(!active)continue;
+        const slider=draft.patternSliders[key],error=draft.fieldErrors[`pattern-${key}`]||'',coupled=coupledFields.has(`pattern-${key}`);
+        input.setAttribute('aria-invalid',String(Boolean(error)||coupled));
+        input.setAttribute('aria-describedby',`${id}-help ${id}-rule ${id}-error${coupled?' dimension-form-error':''}`);
+        $(`${id}-error`).hidden=!error;$(`${id}-error`).textContent=error;$(`${id}-rule`).textContent=slider.rule;
+        range.disabled=slider.disabled;range.dataset.hideThumb=String(slider.hideThumb);
+        if(slider.disabled&&slider.hideThumb){range.setAttribute('aria-hidden','true');range.setAttribute('aria-valuetext','Enter a number');}else{range.removeAttribute('aria-hidden');range.removeAttribute('aria-valuetext');}
+        range.min=String(Math.min(slider.min,Number(input.value)||slider.min));range.max=String(Math.max(slider.max,Number(input.value)||slider.max));range.step='any';
+        if(!slider.hideThumb)range.value=input.value;
+        range.setAttribute('aria-describedby',`${id}-rule ${id}-error${coupled?' dimension-form-error':''}`);
+        range.setAttribute('aria-invalid',String(Boolean(error)||coupled));
+      }
+    }
     const count=draft.drainCount,countError=draft.fieldErrors.drainCount||'';
     $('drain-count').value=raw.drainCount;$('drain-count').disabled=!count.active;$('drain-count').setAttribute('aria-invalid',String(Boolean(countError)||coupledFields.has('drainCount')));
     $('drain-count-error').hidden=!countError;$('drain-count-error').textContent=countError;$('drain-count-rule').textContent=count.rule;
@@ -77,15 +96,23 @@ export function createCustomizerController({document,createGeneration,viewer=nul
   };
   $('drains-top').addEventListener('change',updateDrains);
   $('drains-bottom').addEventListener('change',updateDrains);
-  for(const pattern of ['smooth','diamond'])$('surface-'+pattern).addEventListener('change',()=>{if($('surface-'+pattern).checked){raw={...raw,pattern};edit();}});
-  $('drain-count').addEventListener('input',()=>{raw={...raw,drainCount:$('drain-count').value};edit();});
+  for(const pattern of PATTERNS)$('surface-'+pattern).addEventListener('change',()=>{if($('surface-'+pattern).checked){raw={...raw,pattern};edit();}});
+  for(const pattern of TEXTURED)for(const key of PATTERN_FIELDS){
+    const id=`${pattern}-${key}`;
+    $(id).addEventListener('input',()=>{raw={...raw,patterns:{...raw.patterns,[pattern]:{...raw.patterns[pattern],[key]:$(id).value}}};edit();});
+    bindRange({input:$(id),range:$(`${id}-range`),getSlider:()=>draft.patternSliders[key],onChange:value=>{
+      const slider=draft.patternSliders[key];if(raw.pattern!==pattern||slider.disabled||!slider.values.includes(Number(value))){refreshFields();return false;}
+      raw={...raw,patterns:{...raw.patterns,[pattern]:{...raw.patterns[pattern],[key]:value}}};edit();return true;
+    }});
+  }
+  $('drain-count').addEventListener('input' ,()=>{raw={...raw,drainCount:$('drain-count').value};edit();});
   bindRange({input:$('drain-count'),range:$('drain-count-range'),onChange:value=>{const count=draft.drainCount,n=Number(value);if(count.disabled||!Number.isInteger(n)||n<1||n>count.max){refreshFields();return false;}raw={...raw,drainCount:value};edit();return true;}});
   $('auto-lid').onchange=()=>{const auto=$('auto-lid').checked;raw={...raw,auto,...(!auto&&raw.auto?{lid:$('lid').value}:{})};edit();};
   for(const key of DIMENSIONS)bindRange({input:$(key),range:$(`${key}-range`),onChange:value=>{const slider=draft.sliders[key],number=Number(value);if(slider.disabled||!Number.isFinite(number)||number<slider.min||number>slider.max){refreshFields();return false;}raw={...raw,[key]:value};viewer?.setDimension(key);edit();return true;},onFocus:()=>viewer?.setDimension(key)});
   $('controls').onsubmit=event=>{event.preventDefault();if(!busy&&draft.canGenerate)$('generate').click();};
   $('generate').onclick=()=>{refreshFields();if(!draft.generationValues)return;draftDirty=false;$('diagnostics').textContent='';generation.generate(draft.generationValues);};
   $('cancel').onclick=()=>generation.invalidate('Cancelled. Generate when you are ready.');
-  $('reset').onclick=()=>{raw={...defaults,drainCount:defaults.drainCount??'7'};lastValidDimensions=dimensionSnapshot(defaults);draftDirty=false;generated=null;viewer?.clear();generation.invalidate('Dimensions reset. Generate to create the container.');refreshFields();};
+  $('reset').onclick=()=>{raw={...defaults,patterns:patternMemories(),drainCount:defaults.drainCount??'7'};lastValidDimensions=dimensionSnapshot(defaults);draftDirty=false;generated=null;viewer?.clear();generation.invalidate('Dimensions reset. Generate to create the container.');refreshFields();};
   $('camera').onclick=()=>viewer?.reset();
   for(const mode of ['3d','cutaway'])$(`view-${mode}`).onclick=()=>{viewer?.setMode(mode);$('view-3d').setAttribute('aria-pressed',String(mode==='3d'));$('view-cutaway').setAttribute('aria-pressed',String(mode==='cutaway'));};
   $('download').onclick=event=>{if(!downloadURL)event.preventDefault();};

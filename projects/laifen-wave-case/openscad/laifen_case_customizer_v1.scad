@@ -30,12 +30,14 @@ thread_depth = 0.5;           // [0.25:0.05:1]
 thread_root_wall = 1.4;       // [1.0:0.1:3]
 
 /* [Surface] */
-surface_style = "diamond";    // [smooth:Smooth,diamond:Diamond]
-diamond_axial_pitch = 4.8;    // [3:0.1:8]
+surface_style = "diamond";    // [smooth:Smooth,diamond:Diamond,ribs:Ribs,rings:Rings,spiral:Spiral]
+diamond_axial_pitch = 4.8;    // [4.8:0.1:8]
 diamond_arc_pitch = 3.63;     // [2:0.01:8]
-diamond_depth = 0.45;         // [0:0.05:0.6]
+diamond_depth = 0.45;         // [0.1:0.05:0.6]
 diamond_phase_deg = 0;        // [0:1:360]
 diamond_plateau_half_fraction = 0.18; // [0.10:0.01:0.30] Dimensionless half-fraction.
+wave_spacing = 6.0;            // [4:0.1:16]
+wave_depth = 0.45;             // [0.1:0.05:0.6]
 
 /* [Drainage] */
 drainage_mode = "bottom";    // [none:No drains,top:Cap closed-end drains,bottom:Body closed-end drains,both:Both closed-end drains]
@@ -143,6 +145,26 @@ assert(surface_style != "diamond" || diamond_depth == 0 ||
        (diamond_triangle_estimate(body_thread_z, diamond_lattice_count, diamond_axial_pitch) <= DIAMOND_MAX_EXTERIOR_TRIANGLES &&
         diamond_triangle_estimate(cap_height, diamond_lattice_count, diamond_axial_pitch) <= DIAMOND_MAX_EXTERIOR_TRIANGLES),
        "diamond exterior triangle estimate exceeds cap");
+assert(!wave_active() ||
+       (diamond_finite(wave_spacing) && diamond_finite(wave_depth) && wave_spacing >= 4 && wave_spacing <= 16 && wave_depth >= .1 && wave_depth <= .6),
+       "wave values invalid");
+assert(!wave_active() ||
+       len([for(x=[outer_radius,body_inner_radius,cap_inner_radius,body_thread_z,cap_height,end_chamfer,minimum_wall,thread_crest_radius,thread_clearance])if(!diamond_finite(x))1])==0,
+       "wave dimensions must be finite");
+// PF-R1: additive OD requirements retain exact boundary equality without an epsilon.
+assert(!wave_active() ||
+       (outer_diameter >= body_bore+2*(minimum_wall+wave_depth+.01) &&
+        outer_diameter >= cap_bore+2*(minimum_wall+wave_depth+.01) &&
+        outer_diameter >= body_bore+2*((thread_root_wall+thread_depth+thread_clearance+1.8)+wave_depth+.01) &&
+        outer_diameter >= body_bore+2*((thread_root_wall+thread_clearance+.4+1.8)+wave_depth+.01)),
+       "wave valley ligament below minimum including chord reserve");
+assert(!wave_active() ||
+       (wave_triangle_estimate(body_thread_z)<=250000 && wave_triangle_estimate(cap_height)<=250000),
+       "wave exterior triangle estimate exceeds cap");
+
+assert(surface_style!="ribs" || wave_rib_count>=3,"ribs require at least three ridges");
+assert(surface_style!="diamond" || (diamond_axial_pitch>=4.8 && diamond_axial_pitch<=8 && diamond_depth>=.1 && diamond_depth<=.6),"diamond control range invalid");
+assert(surface_style!="diamond" || (diamond_arc_pitch==(diamond_axial_pitch==4.8?3.63:diamond_axial_pitch*(3.63/4.8)) && diamond_phase_deg==0 && diamond_plateau_half_fraction==.18),"diamond derived values changed");
 
 module drain_pattern(h) {
   // VFR-08: callers provide the complete bounded axial interval.
@@ -271,6 +293,89 @@ module diamond_exterior(z1,global_offset) {
   mesh=v06_closed_band(data); polyhedron(points=mesh[0],faces=mesh[1],convexity=10);
 }
 
+// PF-DIRECT: sector-specific sampled field with shared chamfer edge ownership.
+// Every horizontal, vertical and diagonal grid edge owns at most one trim
+// intersection. Both sides of the cusp use that same index. All faces use the
+// existing v06 inward SCAD winding; the inner profile/zipper are unchanged.
+function wave_active()=surface_style=="ribs"||surface_style=="rings"||surface_style=="spiral";
+wave_rib_count=floor(2*PI*(outer_radius-wave_depth)/wave_spacing+.5);
+WAVE_ANGULAR_SAMPLES=surface_style=="ribs"?max(192,32*wave_rib_count):192;
+function wave_segments(h)=surface_style=="ribs"?1:ceil(h/(wave_spacing/16));
+function wave_triangle_estimate(h)=let(n=WAVE_ANGULAR_SAMPLES,m=wave_segments(h))
+  2*n*(m+2)+4*n*min(m+1,ceil(end_chamfer*m/h)+2)+2*n;
+function wave_radius(theta,z_global)=outer_radius-wave_depth*(1-cos(surface_style=="ribs"?wave_rib_count*theta:surface_style=="rings"?360*(z_global-body_thread_z)/wave_spacing:6*theta-360*(z_global-body_thread_z)/wave_spacing))/2;
+function wave_cone(z,h,role)=outer_radius-max(0,end_chamfer-(role=="body"?z:h-z));
+function wave_rows(h,role)=let(m=wave_segments(h),br=role=="body"?end_chamfer:h-end_chamfer,
+  sorted=v06_sort(concat([for(j=[0:m])[h*j/m]],[ [br] ])))
+  [for(j=[0:len(sorted)-1])if(j==0||abs(sorted[j][0]-sorted[j-1][0])>DIAMOND_UV_EPS)sorted[j][0]];
+// UV point data: angle, local Z, affine sampled radius, field-minus-cone.
+function wave_point(col,row,zs,h,role)=let(theta=360*col/WAVE_ANGULAR_SAMPLES,z=zs[row],
+  r=wave_radius(theta,(role=="body"?0:body_thread_z)+z))
+  [theta,z,r,r-wave_cone(z,h,role)];
+function wave_base_id(row,col)=row*WAVE_ANGULAR_SAMPLES+v06_mod(col,WAVE_ANGULAR_SAMPLES);
+function wave_edge_id(kind,row,col,rows)=kind==0?wave_base_id(row,col):
+  WAVE_ANGULAR_SAMPLES*rows+(kind-1)*WAVE_ANGULAR_SAMPLES*(rows-1)+wave_base_id(row,col);
+function wave_edge_ends(e,zs,h,role)=let(n=WAVE_ANGULAR_SAMPLES,rows=len(zs),
+  kind=e<n*rows?0:e<n*(2*rows-1)?1:2,
+  t=e-(kind==0?0:n*rows+(kind-1)*n*(rows-1)),row=floor(t/n),col=t%n)
+  [wave_point(col,row,zs,h,role),wave_point(col+(kind==1?0:1),row+(kind==0?0:1),zs,h,role)];
+function wave_edge_cut(e,zs,h,role)=let(ab=wave_edge_ends(e,zs,h,role),a=ab[0],b=ab[1])
+  v06_sgn(a[3])*v06_sgn(b[3])!=-1?undef:
+  let(t=-a[3]/(b[3]-a[3]))[for(k=[0:3])k==3?0:a[k]+t*(b[k]-a[k])];
+function wave_xyz(p,h,role)=let(r=min(p[2],wave_cone(p[1],h,role)))
+  [diamond_quantize(r*cos(p[0])),diamond_quantize(r*sin(p[0])),diamond_quantize(p[1])];
+// Vertex records hold their primitive slot and sign; intersection slots follow
+// the grid slots. The owner lookup avoids recomputing a cut from reversed edges.
+function wave_clip(ids,edges,slots,positive)=v06_clean_wave([for(i=[0:2])
+  let(a=ids[i],b=ids[(i+1)%3],sa=v06_sgn(slots[a][3]),sb=v06_sgn(slots[b][3]),
+    ain=positive?sa>=0:sa<=0,bin=positive?sb>=0:sb<=0,
+    cut=sa==0?a:sb==0?b:edges[i])
+  each ain&&bin?[b]:ain&&!bin?[cut]:!ain&&bin?[cut,b]:[]]);
+function v06_clean_wave(ids)=len(ids)==0?[]:[for(i=[0:len(ids)-1])if(ids[i]!=ids[(i+len(ids)-1)%len(ids)])ids[i]];
+function wave_face_polys(row,col,zs,slots)=let(rows=len(zs),base=rows*WAVE_ANGULAR_SAMPLES,
+  a=wave_base_id(row,col),b=wave_base_id(row,col+1),c=wave_base_id(row+1,col+1),d=wave_base_id(row+1,col),
+  ab=base+wave_edge_id(0,row,col,rows),bc=base+wave_edge_id(1,row,col+1,rows),
+  cd=base+wave_edge_id(0,row+1,col,rows),da=base+wave_edge_id(1,row,col,rows),
+  ac=base+wave_edge_id(2,row,col,rows))
+  [for(tri=[[[a,c,b],[ac,bc,ab]],[[a,d,c],[da,cd,ac]]])
+    let(signs=[for(id=tri[0])v06_sgn(slots[id][3])],
+      cross=min(signs)<0&&max(signs)>0)
+    each cross?[wave_clip(tri[0],tri[1],slots,false),wave_clip(tri[0],tri[1],slots,true)]:[tri[0]]];
+function wave_ring(row,zs,slots,rank)=let(base=len(zs)*WAVE_ANGULAR_SAMPLES)
+  [for(col=[0:WAVE_ANGULAR_SAMPLES-1])let(id=wave_base_id(row,col),
+    cut=base+wave_edge_id(0,row,col,len(zs)))each
+    concat([[slots[id][0],rank[id]]],is_undef(slots[cut])?[]:[[slots[cut][0],rank[cut]]])];
+function wave_data(h,role)=let(zs=wave_rows(h,role),rows=len(zs),n=WAVE_ANGULAR_SAMPLES,
+  slots=concat([for(row=[0:rows-1])for(col=[0:n-1])wave_point(col,row,zs,h,role)],
+    [for(e=[0:n*(3*rows-2)-1])wave_edge_cut(e,zs,h,role)]),
+  rank=v06_prefix([for(p=slots)is_undef(p)?0:1])[0],
+  points=[for(p=slots)if(!is_undef(p))wave_xyz(p,h,role)],
+  faces=[for(row=[0:rows-2])for(col=[0:n-1])for(poly=wave_face_polys(row,col,zs,slots))
+    if(len(poly)>=3)for(k=[1:len(poly)-2])[rank[poly[0]],rank[poly[k]],rank[poly[k+1]]]],
+  rings=[wave_ring(0,zs,slots,rank),wave_ring(rows-1,zs,slots,rank)])
+  assert(len(faces)+len(rings[0])+len(rings[1])<=250000,"actual wave exterior allocation exceeds cap")
+  [points,faces,rings];
+function wave_direct(role)=let(body=role=="body",h=body?body_thread_z:cap_height,data=wave_data(h,role),
+  profile=v06_profile(role),n=len(data[0]),center=n+96*len(profile),
+  points=concat(data[0],v06_internal_points(profile),[[0,0,body?0:cap_height],[0,0,profile[len(profile)-1][1]]]),
+  outerDisk=v06_disk([for(x=data[2][body?0:1])x[1]],center,!body),
+  join=v06_zip(data[2][body?1:0],n,body),floorRing=[for(j=[0:95])n+96*(len(profile)-1)+j],
+  faces=concat(data[1],outerDisk,join,v06_internal_faces(profile,n,!body),v06_disk(floorRing,center+1,body)))
+  [points,faces];
+module wave_direct_shell(role) { mesh=wave_direct(role); polyhedron(points=mesh[0],faces=mesh[1],convexity=10); }
+module wave_body_shell() {
+  difference() {
+    union() { wave_direct_shell("body"); translate([0,0,body_thread_z+thread_transition]) body_thread(); }
+    if (drainage_mode=="bottom"||drainage_mode=="both") translate([0,0,-.1]) drain_pattern(floor_thickness+.2);
+  }
+}
+module wave_cap_shell() {
+  difference() {
+    wave_direct_shell("cap"); translate([0,0,thread_transition]) female_thread_groove();
+    if (drainage_mode=="top"||drainage_mode=="both") translate([0,0,cap_height-floor_thickness-.1]) drain_pattern(floor_thickness+.2);
+  }
+}
+
 module body_thread() {
   // right-hand active helix, centered in the 9 mm closure overlap.
   linear_extrude(height=engagement, twist=360*engagement/thread_pitch, slices=max(24,ceil(engagement/thread_pitch*24)))
@@ -363,6 +468,7 @@ module v06_cap_shell() {
 
 module body_shell() {
   if (surface_style == "diamond" && diamond_depth > 0) v06_body_shell();
+  else if (wave_active()) wave_body_shell();
   else difference() {
     union() {
       body_outer_blank();
@@ -379,6 +485,7 @@ module body_shell() {
 
 module cap_shell() {
   if (surface_style == "diamond" && diamond_depth > 0) v06_cap_shell();
+  else if (wave_active()) wave_cap_shell();
   else difference() {
     union() {
       cap_outer_blank();

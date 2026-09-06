@@ -1,3 +1,4 @@
+import {patternTriangleFields,patternTriangleMessage,PATTERNS,TEXTURED,PATTERN_FIELDS,patternFields,patternRawErrors,rawPattern,patternRange,patternLabel} from './patterns.mjs';
 import {assertDiamondPreflight,BROWSER_PRESET,DIAMOND,snapshot} from './schema.mjs';
 import {DRAIN_DEFAULT_COUNT,feasibility,legalCount,whole} from './drain-layout.mjs';
 
@@ -45,13 +46,17 @@ function dimensionResult(raw) {
 }
 
 function patternIssues(raw,summary) {
-  if(!['smooth','diamond'].includes(raw.pattern)) return [issue('pattern-choice','direct','Choose a surface pattern.',['pattern'])];
-  if(raw.pattern==='smooth') return [];
+  const errors=patternRawErrors(raw);
+  if(errors.length)return errors.map(e=>issue(e.key==='pattern'?'pattern-choice':`pattern-${e.key}-direct`,'direct',e.message,[e.key==='pattern'?'pattern':`pattern-${e.key}`]));
+  if(raw.pattern==='smooth')return [];
   const W=Number(raw.wall),H=Number(raw.height),T=Number(raw.ends),lid=summary.lid;
-  if(![W,H,T,lid].every(Number.isFinite)) return [];
-  if(W<DIAMOND.minimumWall) return [issue('diamond-wall','coupled','Diamond needs wall thickness of at least 4.4 mm. Increase wall thickness or choose Smooth.',['pattern','wall'])];
-  try {assertDiamondPreflight({...BROWSER_PRESET,surface_style:'diamond',body_bore:Number(raw.diameter),cap_bore:Number(raw.diameter)+1,device_length:H-5,outer_diameter:summary.outsideDiameter,floor_thickness:T,split_distance_from_top:lid});}
-  catch(error){if(error.message==='diamond exterior triangle estimate exceeds cap')return [issue('diamond-triangles','coupled','Diamond is too detailed at this size. Reduce outside diameter or patterned-part height, or choose Smooth.',['pattern','diameter','height','wall','ends',...(!raw.auto?['lid']:[])])];return [issue('diamond-source','coupled','Diamond needs wall thickness of at least 4.4 mm. Increase wall thickness or choose Smooth.',['pattern','wall'])];}
+  if(![W,H,T,lid].every(Number.isFinite))return [];
+  const depth=Number(rawPattern(raw).depth),minimum=Number((3.95+depth+(raw.pattern==='diamond'?0:.01)).toFixed(6));
+  const label=raw.pattern[0].toUpperCase()+raw.pattern.slice(1);
+  const fields=['pattern','pattern-size','pattern-depth','diameter','height','wall','ends',...(!raw.auto?['lid']:[])];
+  if(W<minimum)return [issue('pattern-wall','coupled',`${label} needs wall thickness of at least ${minimum} mm. Increase wall thickness or reduce depth.`,['pattern','wall','pattern-depth'])];
+  try {assertDiamondPreflight({...BROWSER_PRESET,...patternFields(raw),surface_style:raw.pattern,body_bore:Number(raw.diameter),cap_bore:Number(raw.diameter)+1,device_length:H-5,outer_diameter:summary.outsideDiameter,floor_thickness:T,split_distance_from_top:lid});}
+  catch(error){return [issue('pattern-source','coupled',error.message.includes('triangle estimate')?patternTriangleMessage(raw.pattern):error.message.includes('wall')?`${label} needs wall thickness of at least ${minimum} mm. Increase wall thickness or reduce depth.`:error.message,error.message.includes('triangle estimate')?patternTriangleFields(raw.pattern,raw.auto):fields)];}
   return [];
 }
 const feasible=(raw,key,value)=>{const result=dimensionResult({...raw,[key]:String(value)});return result.issues.length===0&&patternIssues({...raw,[key]:String(value)},result.summary).length===0;};
@@ -67,7 +72,7 @@ function interval(raw,key,drainCount=null) {
 }
 function sourceCount(raw) {return legalCount(raw.drainCount??String(DRAIN_DEFAULT_COUNT))?Number(raw.drainCount??DRAIN_DEFAULT_COUNT):DRAIN_DEFAULT_COUNT;}
 function generationValues(raw,n,summary) {
-  return snapshot({...BROWSER_PRESET,surface_style:raw.pattern,body_bore:n.diameter,cap_bore:n.diameter+1,device_length:n.height-5,outer_diameter:summary.outsideDiameter,floor_thickness:n.ends,split_distance_from_top:summary.lid,drain_ring_radius:Math.min(9,n.diameter/2-2),drainage_mode:raw.drains,drain_count:sourceCount(raw),output_mode:raw.output});
+  return snapshot({...BROWSER_PRESET,...patternFields(raw),surface_style:raw.pattern,body_bore:n.diameter,cap_bore:n.diameter+1,device_length:n.height-5,outer_diameter:summary.outsideDiameter,floor_thickness:n.ends,split_distance_from_top:summary.lid,drain_ring_radius:Math.min(9,n.diameter/2-2),drainage_mode:raw.drains,drain_count:sourceCount(raw),output_mode:raw.output});
 }
 export function dimensionSnapshot(raw) {return Object.freeze({diameter:raw.diameter,height:raw.height,wall:raw.wall,ends:raw.ends,lid:raw.lid,auto:Boolean(raw.auto)});}
 
@@ -88,13 +93,15 @@ export function deriveDraftState(raw,lastValidDimensions) {
   // An invalid selector has no pattern predicate. Project its repair controls through
   // Smooth so an enum typo cannot freeze otherwise coherent dimension editing.
   const sourceRaw=dimensionsValid?raw:{...raw,...last};
-  const rangeSource=['smooth','diamond'].includes(sourceRaw.pattern)?sourceRaw:{...sourceRaw,pattern:'smooth'};
+  const rangeSource=PATTERNS.includes(sourceRaw.pattern)?sourceRaw:{...sourceRaw,pattern:'smooth'};
   for(const key of DIMENSIONS) {
     const bounds=interval(rangeSource,key,key==='diameter'&&dimensionsValid&&activeDrains?countNumber:null),auto=key==='lid'&&source.auto;
     let rule;
     if(!dimensionsValid) rule=auto?`Last valid Auto lid height: ${clean(bounds.min)} mm · correct the highlighted dimensions to use sliders`:bounds.min===null?'Last valid range has no 0.1 mm setting · correct the highlighted dimensions to use sliders':`Last valid range: ${bounds.min}–${bounds.max} mm · correct the highlighted dimensions to use sliders · ${PURPOSE[key]}`;
     else rule=auto?`Auto lid height: ${clean(bounds.min)} mm · turn off Auto to adjust`:bounds.min===null?`No allowed 0.1 mm value with the current dimensions · ${PURPOSE[key]}`:`Allowed now: ${bounds.min}–${bounds.max} mm · ${PURPOSE[key]}`;
-    sliders[key]=Object.freeze({...bounds,disabled:!dimensionsValid||bounds.disabled,source:sourceName,rule});
+    const invalidPattern=patternRawErrors(raw).some(e=>e.key!=='pattern');
+    if(invalidPattern)rule=`Design range: ${STATIC[key][0]}–${STATIC[key][1]} mm · Enter valid pattern values to calculate allowed values.`;
+    sliders[key]=Object.freeze({...bounds,disabled:!dimensionsValid||bounds.disabled||invalidPattern,source:sourceName,rule});
   }
   const issues=[...current.issues,...(dimensionsValid?patternIssues(raw,current.summary):[])];
   if(!['none','top','bottom','both'].includes(raw.drains)) issues.push(issue('drains-choice','direct','Choose drain holes.',['drains']));
@@ -104,6 +111,7 @@ export function deriveDraftState(raw,lastValidDimensions) {
     else if(drainGeometry&&(!drainGeometry.center||countNumber>=2&&(!drainGeometry.ring||countNumber>drainGeometry.max))) issues.push(issue('drain-count-spacing','coupled',`At ${current.n.diameter} mm inside diameter, use at most ${countMax} holes to keep 0.4 mm between openings.`,['diameter','drainCount']));
   }
   if(!['assembled','body','cap','print_layout'].includes(raw.output)) issues.push(issue('output-choice','direct','Choose an export shape.',['output']));
+  const patternSliders=derivePatternSliders(raw,current);
   const values=issues.length?null:generationValues(raw,current.n,current.summary);
   const fieldErrors={};for(const item of issues)if(item.type==='direct'&&!fieldErrors[item.fields[0]])fieldErrors[item.fields[0]]=item.message;
   const formError=issues.filter(item=>item.type==='coupled').map(item=>item.message).join(' ');
@@ -111,5 +119,24 @@ export function deriveDraftState(raw,lastValidDimensions) {
   const countInvalid=activeDrains&&!legalCount(rawDrainCount);
   const countDisabled=!activeDrains||!dimensionsValid||countMax===null||countInvalid;
   const countRule=!activeDrains?'Drain holes are off; this value is remembered.':countInvalid?'Correct the hole count to use its slider.':countDisabled?'Correct the inside diameter to set hole count.':countNumber>countMax?`Draft ${countNumber} is too high; choose 1–${countMax} holes at ${current.n.diameter} mm inside diameter.`:`Allowed now: 1–${countMax} holes at ${current.n.diameter} mm inside diameter`;
-  return Object.freeze({issues:Object.freeze(issues),fieldErrors:Object.freeze(fieldErrors),formError,sliders:Object.freeze(sliders),summary,generationValues:values,canGenerate:Boolean(values)&&issues.length===0,nextLastValidDimensions:dimensionsValid?dimensionSnapshot(raw):last,drainCount:Object.freeze({active:activeDrains,min:1,max:countMax,step:1,disabled:countDisabled,rule:countRule})});
+  return Object.freeze({issues:Object.freeze(issues),fieldErrors:Object.freeze(fieldErrors),formError,patternSliders,sliders:Object.freeze(sliders),summary,generationValues:values,canGenerate:Boolean(values)&&issues.length===0,nextLastValidDimensions:dimensionsValid?dimensionSnapshot(raw):last,drainCount:Object.freeze({active:activeDrains,min:1,max:countMax,step:1,disabled:countDisabled,rule:countRule})});
+}
+
+function derivePatternSliders(raw,current) {
+ if(!TEXTURED.includes(raw.pattern))return Object.freeze({});
+ const group=rawPattern(raw),out={};
+ for(const key of PATTERN_FIELDS){
+  const [lo,hi,step]=patternRange(raw.pattern,key),other=key==='size'?'depth':'size',otherBounds=patternRange(raw.pattern,other);
+  const ownNumeric=decimal(group[key]),otherValid=decimal(group[other])&&Number(group[other])>=otherBounds[0]&&Number(group[other])<=otherBounds[1];
+  const ready=ownNumeric&&otherValid&&!current.issues.length;
+  const values=[];
+  if(ready)for(let i=0;i<=Math.round((hi-lo)/step);i++){
+   const value=Number((lo+i*step).toFixed(8)),candidate={...raw,patterns:{...raw.patterns,[raw.pattern]:{...group,[key]:String(value)}}};
+   if(!patternIssues(candidate,current.summary).length)values.push(value);
+  }
+  const disabled=!ready||!values.length;
+  const rule=!ownNumeric?`Design range: ${lo}–${hi} mm · Enter a number to use the slider.`:!otherValid?`Design range: ${lo}–${hi} mm · Enter a valid ${patternLabel(raw.pattern,other).toLowerCase()} to calculate allowed values.`:current.issues.length?`Design range: ${lo}–${hi} mm · Enter valid container dimensions to calculate allowed values.`:!values.length?`No slider steps available; adjust ${patternLabel(raw.pattern,other).toLowerCase()} or container dimensions.`:`Allowed slider values: ${values[0]}–${values.at(-1)} mm · step ${step} mm${values.some((v,i)=>i>0&&v-values[i-1]>step+1e-8)?" · Slider skips unavailable values":""}`;
+  out[key]=Object.freeze({min:values[0]??lo,max:values.at(-1)??hi,step,nominalMin:lo,nominalMax:hi,values,disabled,hideThumb:!ownNumeric,rule});
+ }
+ return Object.freeze(out);
 }
