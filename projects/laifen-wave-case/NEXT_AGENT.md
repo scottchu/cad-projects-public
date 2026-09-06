@@ -3,14 +3,19 @@
 Current iteration: `docs/iterations/2026-09-06-surface-pattern`, baseline
 `cf4adb08314989f9d52a7afbd2f868756226d799`. User says next after drain count.
 Candidate C3 implements existing Smooth/Diamond selection with shared guards.
-Source critique passes; browser control disconnected before full C3 validation.
-Resume the held-real-worker and all-output visual/browser gates after connection
-restoration. Do not rebuild the live 8453 dist yet: it intentionally serves the
-accepted count build. Active HANDOFF gives isolated endpoints and frozen hashes.
-Also close the whole-solid intersection and geometric T-junction gaps in
-VALIDATION.md; the bounded scan ended without a verdict. The replay harness is
-durable under `tests/browser/surface-pattern-harness/`, with generation and
-server commands in its README. No browser pass is claimed for that harness.
+Source critique passes. The resumed connection reset restored Chrome and
+current C3 desktop/mobile controls, four outputs and download parity were
+observed. GLOBAL_VALIDATION.md closes the two global mesh gaps for five exact
+STLs. The narrowly repaired genuine-result replay and final review now pass.
+Live 8453 serves the reviewed pattern build, verified by six-file HTTPS parity
+and a fresh Diamond render/download check. Active HANDOFF gives frozen hashes.
+The replay harness is durable under
+`tests/browser/surface-pattern-harness/`; use its newest manifest and README.
+The original supersession test compared status too early; its failed receipt
+is preserved and superseded by the corrected focused replay. Temporary test
+servers are stopped. Next action is the user's Surface pattern review; do not
+infer another feature or physical acceptance. Native Safari/iPhone remain
+unverified. The untouched older 8448 endpoint returned 502 before this delivery.
 No new motifs or extra math parameters in this gate.
 
 ## Delivered drain count

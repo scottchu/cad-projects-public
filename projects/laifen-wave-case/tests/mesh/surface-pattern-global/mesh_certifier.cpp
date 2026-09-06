@@ -1,0 +1,50 @@
+#include <algorithm>
+#include <array>
+#include <chrono>
+#include <cmath>
+#include <cstdint>
+#include <cstring>
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <limits>
+#include <numeric>
+#include <sstream>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+using namespace std;
+struct V{double x,y,z;};
+V operator+(V a,V b){return {a.x+b.x,a.y+b.y,a.z+b.z};} V operator-(V a,V b){return {a.x-b.x,a.y-b.y,a.z-b.z};} V operator*(V a,double s){return {a.x*s,a.y*s,a.z*s};}
+double dot(V a,V b){return a.x*b.x+a.y*b.y+a.z*b.z;} V cross(V a,V b){return {a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x};} double norm(V a){return sqrt(dot(a,a));}
+struct Box{V lo{INFINITY,INFINITY,INFINITY},hi{-INFINITY,-INFINITY,-INFINITY};};
+void grow(Box&b,V p){b.lo.x=min(b.lo.x,p.x);b.lo.y=min(b.lo.y,p.y);b.lo.z=min(b.lo.z,p.z);b.hi.x=max(b.hi.x,p.x);b.hi.y=max(b.hi.y,p.y);b.hi.z=max(b.hi.z,p.z);} void grow(Box&a,const Box&b){grow(a,b.lo);grow(a,b.hi);}
+bool overlap(const Box&a,const Box&b,double e){return a.lo.x<=b.hi.x+e&&b.lo.x<=a.hi.x+e&&a.lo.y<=b.hi.y+e&&b.lo.y<=a.hi.y+e&&a.lo.z<=b.hi.z+e&&b.lo.z<=a.hi.z+e;}
+bool contains(const Box&a,V p,double e){return p.x>=a.lo.x-e&&p.x<=a.hi.x+e&&p.y>=a.lo.y-e&&p.y<=a.hi.y+e&&p.z>=a.lo.z-e&&p.z<=a.hi.z+e;}
+struct Face{array<V,3> p;array<int,3> v;Box box;int component;}; struct Edge{int a,b;V p,q;Box box;int component;};
+struct Key{long long a,b,c;bool operator==(const Key&o)const{return a==o.a&&b==o.b&&c==o.c;}}; struct KH{size_t operator()(const Key&k)const{return hash<long long>{}(k.a)^(hash<long long>{}(k.b)<<1)^(hash<long long>{}(k.c)<<2);}};
+struct DSU{vector<int>p;int add(){int n=p.size();p.push_back(n);return n;}int find(int x){return p[x]==x?x:p[x]=find(p[x]);}void join(int a,int b){a=find(a);b=find(b);if(a!=b)p[b]=a;}};
+struct Mesh{vector<V>verts;vector<Face>faces;vector<Edge>edges;int components;};
+template<class T> T readLE(const char*p){T v;memcpy(&v,p,sizeof(T));return v;}
+Mesh loadSTL(const string&path,double merge){ifstream f(path,ios::binary);if(!f)throw runtime_error("open failed");string data((istreambuf_iterator<char>(f)),{});vector<array<V,3>> raw;
+ if(data.size()>=84){uint32_t n=readLE<uint32_t>(data.data()+80);if(84ull+50ull*n==data.size()){raw.reserve(n);for(uint32_t i=0;i<n;i++){array<V,3>t;size_t o=84+50ull*i+12;for(int j=0;j<3;j++){t[j]={readLE<float>(data.data()+o+12*j),readLE<float>(data.data()+o+12*j+4),readLE<float>(data.data()+o+12*j+8)};}raw.push_back(t);}}}
+ if(raw.empty()){istringstream s(data);string w;vector<V>v;while(s>>w)if(w=="vertex"){V p;s>>p.x>>p.y>>p.z;v.push_back(p);}if(v.size()%3)throw runtime_error("bad ASCII STL");raw.reserve(v.size()/3);for(size_t i=0;i<v.size();i+=3)raw.push_back({v[i],v[i+1],v[i+2]});}
+ Mesh m;DSU d;unordered_map<Key,int,KH> ids;auto id=[&](V p){Key k{llround(p.x/merge),llround(p.y/merge),llround(p.z/merge)};auto it=ids.find(k);if(it!=ids.end())return it->second;int n=d.add();ids[k]=n;m.verts.push_back(p);return n;};
+ for(auto&t:raw){Face q;q.p=t;for(int j=0;j<3;j++){q.v[j]=id(t[j]);grow(q.box,t[j]);}d.join(q.v[0],q.v[1]);d.join(q.v[1],q.v[2]);m.faces.push_back(q);}unordered_map<int,int> ren;for(auto&q:m.faces){int r=d.find(q.v[0]);if(!ren.count(r))ren[r]=ren.size();q.component=ren[r];}m.components=ren.size();
+ unordered_set<uint64_t> seen;for(auto&q:m.faces)for(int j=0;j<3;j++){int a=q.v[j],b=q.v[(j+1)%3];if(a>b)swap(a,b);uint64_t k=(uint64_t(uint32_t(a))<<32)|uint32_t(b);if(seen.insert(k).second){Edge e{a,b,m.verts[a],m.verts[b],{},q.component};grow(e.box,e.p);grow(e.box,e.q);m.edges.push_back(e);}}
+ return m;}
+struct Node{Box box;int l=-1,r=-1,begin=0,end=0;};
+template<class Item> struct BVH{const vector<Item>&a;vector<int>order;vector<Node>nodes;BVH(const vector<Item>&x):a(x){order.resize(a.size());iota(order.begin(),order.end(),0);build(0,order.size());}int build(int b,int e){Node n;n.begin=b;n.end=e;for(int i=b;i<e;i++)grow(n.box,a[order[i]].box);int me=nodes.size();nodes.push_back(n);if(e-b>8){V span=n.box.hi-n.box.lo;int ax=span.y>span.x?1:0;if((ax?span.y:span.x)<span.z)ax=2;int mid=(b+e)/2;auto c=[&](int i){auto&x=a[i].box;return ax==0?(x.lo.x+x.hi.x):ax==1?(x.lo.y+x.hi.y):(x.lo.z+x.hi.z);};nth_element(order.begin()+b,order.begin()+mid,order.begin()+e,[&](int i,int j){return c(i)<c(j);});nodes[me].l=build(b,mid);nodes[me].r=build(mid,e);}return me;}bool leaf(int n)const{return nodes[n].l<0;}};
+struct P2{double x,y;};double orient(P2 a,P2 b,P2 c){return (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);}double otol(P2 a,P2 b,double e){return e*hypot(b.x-a.x,b.y-a.y);}bool on(P2 a,P2 b,P2 p,double e){return p.x>=min(a.x,b.x)-e&&p.x<=max(a.x,b.x)+e&&p.y>=min(a.y,b.y)-e&&p.y<=max(a.y,b.y)+e&&abs(orient(a,b,p))<=otol(a,b,e);}bool seg2(P2 a,P2 b,P2 c,P2 d,double e){double x=orient(a,b,c),y=orient(a,b,d),u=orient(c,d,a),v=orient(c,d,b),ab=otol(a,b,e),cd=otol(c,d,e);if(((x>ab&&y<-ab)||(x<-ab&&y>ab))&&((u>cd&&v<-cd)||(u<-cd&&v>cd)))return true;return(abs(x)<=ab&&on(a,b,c,e))||(abs(y)<=ab&&on(a,b,d,e))||(abs(u)<=cd&&on(c,d,a,e))||(abs(v)<=cd&&on(c,d,b,e));}
+bool point2(P2 p,array<P2,3>t,double e){double a=orient(t[0],t[1],p),b=orient(t[1],t[2],p),c=orient(t[2],t[0],p),ea=otol(t[0],t[1],e),eb=otol(t[1],t[2],e),ec=otol(t[2],t[0],e);return !((a>ea||b>eb||c>ec)&&(a<-ea||b<-eb||c<-ec));}
+bool coplanar(const Face&a,const Face&b,V n,double e){int drop=abs(n.x)>abs(n.y)?(abs(n.x)>abs(n.z)?0:2):(abs(n.y)>abs(n.z)?1:2);auto p=[&](V v){return drop==0?P2{v.y,v.z}:drop==1?P2{v.x,v.z}:P2{v.x,v.y};};array<P2,3>A{p(a.p[0]),p(a.p[1]),p(a.p[2])},B{p(b.p[0]),p(b.p[1]),p(b.p[2])};for(int i=0;i<3;i++)for(int j=0;j<3;j++)if(seg2(A[i],A[(i+1)%3],B[j],B[(j+1)%3],e))return true;return point2(A[0],B,e)||point2(B[0],A,e);}
+bool segtri(V p,V q,const Face&t,double e){V d=q-p,a=t.p[1]-t.p[0],b=t.p[2]-t.p[0],h=cross(d,b);double ld=norm(d),le=max({norm(a),norm(b),norm(t.p[2]-t.p[1])}),det=dot(a,h),scale=max(1e-30,norm(a)*norm(b)*ld);if(abs(det)<=1e-12*scale)return false;double be=e/max(le,1e-30),te=e/max(ld,1e-30),inv=1/det;V s=p-t.p[0];double u=inv*dot(s,h);if(u<-be||u>1+be)return false;V z=cross(s,a);double v=inv*dot(d,z);if(v<-be||u+v>1+be)return false;double x=inv*dot(b,z);return x>=-te&&x<=1+te;}
+bool tritri(const Face&a,const Face&b,double e){V na=cross(a.p[1]-a.p[0],a.p[2]-a.p[0]),nb=cross(b.p[1]-b.p[0],b.p[2]-b.p[0]);double la=norm(na),lb=norm(nb);if(norm(cross(na,nb))<=1e-12*la*lb){double d=0;for(auto p:b.p)d=max(d,abs(dot(p-a.p[0],na))/la);if(d<=e)return coplanar(a,b,na,e);}for(int i=0;i<3;i++)if(segtri(a.p[i],a.p[(i+1)%3],b,e)||segtri(b.p[i],b.p[(i+1)%3],a,e))return true;return false;}
+bool shared(const Face&a,const Face&b){for(int x:a.v)for(int y:b.v)if(x==y)return true;return false;}bool planar(const Face&a,double z,double e){for(auto p:a.p)if(abs(p.z-z)>e)return false;return true;}
+struct Counts{uint64_t candidates=0,tested=0,unexpected=0,allowed=0,tjunction=0,tallowed=0;vector<pair<int,int>> examples;};
+void scanPairs(const Mesh&m,const BVH<Face>&b,int x,int y,double e,double seam,Counts&c){auto&A=b.nodes[x],&B=b.nodes[y];if(!overlap(A.box,B.box,e))return;if(x==y&&!b.leaf(x)){scanPairs(m,b,A.l,A.l,e,seam,c);scanPairs(m,b,A.l,A.r,e,seam,c);scanPairs(m,b,A.r,A.r,e,seam,c);return;}if(b.leaf(x)&&b.leaf(y)){for(int ii=A.begin;ii<A.end;ii++)for(int jj=B.begin;jj<B.end;jj++){int i=b.order[ii],j=b.order[jj];if(x==y&&i>=j)continue;c.candidates++;auto&a=m.faces[i];auto&d=m.faces[j];if(!overlap(a.box,d.box,e)||shared(a,d))continue;c.tested++;if(tritri(a,d,e)){bool ok=isfinite(seam)&&a.component!=d.component&&planar(a,seam,e)&&planar(d,seam,e);if(ok)c.allowed++;else{c.unexpected++;if(c.examples.size()<10)c.examples.push_back({i,j});}}}return;}if(b.leaf(y)||(!b.leaf(x)&&(A.end-A.begin)>=(B.end-B.begin))){scanPairs(m,b,A.l,y,e,seam,c);scanPairs(m,b,A.r,y,e,seam,c);}else{scanPairs(m,b,x,B.l,e,seam,c);scanPairs(m,b,x,B.r,e,seam,c);}}
+void queryEdges(const Mesh&m,const BVH<Edge>&b,int n,int vi,V p,double e,double seam,Counts&c){auto&N=b.nodes[n];if(!contains(N.box,p,e))return;if(!b.leaf(n)){queryEdges(m,b,N.l,vi,p,e,seam,c);queryEdges(m,b,N.r,vi,p,e,seam,c);return;}for(int k=N.begin;k<N.end;k++){auto&x=m.edges[b.order[k]];if(x.a==vi||x.b==vi)continue;V d=x.q-x.p;double l2=dot(d,d),t=dot(p-x.p,d)/l2,te=e/sqrt(l2);if(t<=te||t>=1-te)continue;V q=x.p+d*t;if(norm(p-q)<=e){bool ok=false;
+ int vc=-1;for(auto&f:m.faces)for(int id:f.v)if(id==vi){vc=f.component;goto found;}found: ok=isfinite(seam)&&vc!=x.component&&abs(p.z-seam)<=e&&abs(x.p.z-seam)<=e&&abs(x.q.z-seam)<=e;if(ok)c.tallowed++;else{c.tjunction++;if(c.examples.size()<10)c.examples.push_back({vi,b.order[k]});}}}}
+Counts certify(const Mesh&m,double e,double seam){Counts c;BVH<Face>t(m.faces);scanPairs(m,t,0,0,e,seam,c);BVH<Edge>g(m.edges);for(int i=0;i<(int)m.verts.size();i++)queryEdges(m,g,0,i,m.verts[i],e,seam,c);return c;}
+int main(int argc,char**argv){if(argc<3){cerr<<"usage: mesh_certifier STL TOL [ALLOW_SEAM_Z]\n";return 2;}string path=argv[1];double e=stod(argv[2]),seam=argc>3?stod(argv[3]):numeric_limits<double>::quiet_NaN();auto start=chrono::steady_clock::now();try{Mesh m=loadSTL(path,min(1e-9,e/1000));auto c=certify(m,e,seam);double sec=chrono::duration<double>(chrono::steady_clock::now()-start).count();cout<<fixed<<setprecision(9)<<"{\"path\":\""<<path<<"\",\"toleranceMm\":"<<e<<",\"incidenceMergeMm\":"<<min(1e-9,e/1000)<<",\"faces\":"<<m.faces.size()<<",\"vertices\":"<<m.verts.size()<<",\"edges\":"<<m.edges.size()<<",\"components\":"<<m.components<<",\"triangleCandidates\":"<<c.candidates<<",\"trianglePairsTested\":"<<c.tested<<",\"unexpectedNonadjacentIntersections\":"<<c.unexpected<<",\"allowedSeamContacts\":"<<c.allowed<<",\"geometricTJunctions\":"<<c.tjunction<<",\"allowedSeamTJunctions\":"<<c.tallowed<<",\"examples\":[";for(size_t i=0;i<c.examples.size();i++){if(i)cout<<",";cout<<"["<<c.examples[i].first<<","<<c.examples[i].second<<"]";}cout<<"],\"seconds\":"<<sec<<",\"status\":\""<<(c.unexpected||c.tjunction?"fail":"pass")<<"\"}"<<endl;return c.unexpected||c.tjunction?1:0;}catch(exception&x){cerr<<x.what()<<endl;return 2;}}

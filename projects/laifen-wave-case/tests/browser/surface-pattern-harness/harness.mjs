@@ -26,7 +26,7 @@ const sourceHash=await sha256(sourceBytes);
 check('Frozen source and lock','pass',`SCAD ${sourceHash.slice(0,16)}…; lock ${lockFingerprint.slice(0,16)}…`);
 
 const workers=[];
-let cancelledWorker=null,raceWorker=null,latestWorker=null,cancelSnapshot=null,raceSnapshot=null;
+let cancelledWorker=null,raceWorker=null,latestWorker=null,cancelSnapshot=null;
 class HoldingWorker {
   constructor(){
     this.number=workers.length+1; this.request=null; this.held=null; this.heldHash=null; this.onmessage=null; this.onerror=null; this.terminated=false;
@@ -77,8 +77,8 @@ for(const id of ['h-start-cancel','h-cancel','h-deliver-cancelled','h-start-race
   if(id==='h-cancel'){requireHeld(cancelledWorker,'job 1');$('cancel').click();cancelSnapshot=snapshot();check('Cancel state','pass',JSON.stringify(cancelSnapshot));}
   if(id==='h-deliver-cancelled'){if(!cancelSnapshot)throw Error('Cancel job 1 first');await unchangedAfter(cancelledWorker,cancelSnapshot,'Cancel late-result gate');}
   if(id==='h-start-race'){prepareBody('7');const previous=workers.length;$('generate').click();raceWorker=await waitForNewWorker(previous);check('Superseded result gate','pending','wait for worker 2 result, then start newer job');}
-  if(id==='h-start-newer'){requireHeld(raceWorker,'job 2');setValue('drain-count','6');const previous=workers.length;$('generate').click();latestWorker=await waitForNewWorker(previous);raceSnapshot=snapshot();check('Superseded result gate','pending','wait for worker 3 result, then deliver job 2 late');}
-  if(id==='h-deliver-superseded'){requireHeld(latestWorker,'job 3');await unchangedAfter(raceWorker,raceSnapshot,'Superseded result gate');}
+  if(id==='h-start-newer'){requireHeld(raceWorker,'job 2');setValue('drain-count','6');const previous=workers.length;$('generate').click();latestWorker=await waitForNewWorker(previous);check('Superseded result gate','pending','wait for worker 3 result, then deliver job 2 late');}
+  if(id==='h-deliver-superseded'){requireHeld(latestWorker,'job 3');const before=snapshot();await unchangedAfter(raceWorker,before,'Superseded result gate');}
   if(id==='h-deliver-latest'){requireHeld(latestWorker,'job 3');const priorInstalls=viewerState.installCount,priorBlobs=blobs.length;latestWorker.deliver();await sleep(500);const now=snapshot(),same=latestWorker.heldHash&&viewerState.lastHash===latestWorker.heldHash&&blobs.at(-1)?.hash===latestWorker.heldHash;const ok=now.status==='Preview up to date'&&now.current==='true'&&now.ariaDisabled==='false'&&Boolean(now.href)&&viewerState.installCount===priorInstalls+1&&blobs.length===priorBlobs+1&&same;check('Latest result accepted',''+(ok?'pass':'fail'),`${JSON.stringify(now)}; held/view/Blob SHA ${latestWorker.heldHash}/${viewerState.lastHash}/${blobs.at(-1)?.hash}`);}
 }catch(error){check(`Action ${id}`,'fail',error.message);log(error.stack||error);}};
 log('Harness ready. It will not compile until a visible Start button is clicked.');

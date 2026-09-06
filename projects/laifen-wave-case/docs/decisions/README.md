@@ -4,7 +4,9 @@
 
 [Surface pattern iteration](../iterations/2026-09-06-surface-pattern/) follows
 the delivered drain count at `cf4adb0`. Existing Smooth/Diamond selection is
-under review; Diamond must pass the new combined gates before enablement.
+available for user review on private 8453 after the combined Chromium,
+written-mesh and genuine-result lifecycle gates passed. See REVIEW_RESUMED.md
+and DELIVERY.md; Safari/iPhone and physical acceptance remain separate.
 The accepted count source SHA is
 `517f8546612ffecbc50a732362c9e3a326db03fa2c94e94a68daad472a0b42e2`.
 

@@ -12,7 +12,7 @@ From the repository root, verify the durable harness inputs and generate an
 isolated Candidate 03 copy:
 
 ```sh
-shasum -a 256 -c projects/laifen-wave-case/tests/browser/surface-pattern-harness/HARNESS_INPUTS.sha256
+shasum -a 256 -c projects/laifen-wave-case/tests/browser/surface-pattern-harness/HARNESS_INPUTS-02.sha256
 repo_root="$PWD"
 node projects/laifen-wave-case/tests/browser/surface-pattern-harness/generate.mjs \
   "$repo_root" \
@@ -27,7 +27,11 @@ Open
 `http://127.0.0.1:8461/projects/laifen-wave-case/preview/openscad-wasm-simulator/index.html`.
 Confirm the page names manifest `412b5e38...`, then follow its numbered buttons.
 Wait for each genuine-result PASS before clicking the next button. This manual
-browser sequence is required; syntax or unit tests do not establish it.
+browser sequence is required; syntax or unit tests do not establish it. In the
+supersession sequence, wait for Worker 3 genuine result PASS before clicking
+**Deliver job 2 late**. The harness then snapshots the quiescent newest-job
+state immediately before delivering the held older result and compares it with
+the state immediately afterward.
 
 The generated directory is disposable and must stay outside the repository.
 Do not copy the vendor, meshes, logs, generated page, or screenshots back into

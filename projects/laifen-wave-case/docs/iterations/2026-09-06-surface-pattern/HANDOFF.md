@@ -1,8 +1,31 @@
 # Surface pattern handoff
 
-C3 awaiting final browser gates from `cf4adb08314989f9d52a7afbd2f868756226d799`, existing branch
+C3 live for user review; original baseline `cf4adb08314989f9d52a7afbd2f868756226d799`, existing branch
 `codex/container-desktop-customizer`, draft PR19. User requested pattern next
 after the delivered count control; work remains one item at a time.
+
+Current outcome: private <https://mac-mini.duckbill-ionian.ts.net:8453/>
+serves Smooth/Diamond C3. The resumed global mesh and Chromium browser gates
+passed; the status-baseline test-harness repair passed a focused genuine-result
+replay. Six live HTTPS files match the reviewed isolated build, and a fresh
+live Diamond assembled render/download matches SHA `5cfe2f06339bcc3df70dbc7072448789e5078aee9998a6599016298a148260fe`.
+Resumed review SHA `6483322b210ebe7a49c02c117c04c82e89089f0ca1ab176a4231b91c14e49d19`;
+join `inputs/review-resumed-join.sha256` SHA
+`c58a4ea425b26c1318df25ad8908c64a6b1df4d87bc882142d512426eec63086`.
+Independent live delivery receipt SHA
+`167c091599041458f38ef2e60ce833a8ab9727caa170236bd6f9f026f54567e0`.
+Use `HARNESS_INPUTS-02.sha256` for future replay; original manifests/receipts
+remain historical. Product C3 stayed unchanged throughout resumed validation.
+
+Temporary test servers 5181/8461 and current test tabs were closed, viewport
+overrides reset, and live tab 1204106720 retained. The old unattached tab
+1204106708 could not be closed through the provider; native Chrome remained
+unavailable. No unrelated process was killed. The pre-existing 8448 endpoint
+returned 502 before the live build; its configuration is untouched. Await the
+user's next Surface pattern review; native Safari/iPhone, broader accessibility,
+slicing and physical acceptance remain open. PR19 stays draft and unmerged.
+
+The sections below preserve the earlier task history and recovery evidence.
 
 Baseline manifest `inputs/baseline.sha256` SHA
 `93cfe95cbc96faf81af3f799a37ac504d71019457152ec502bf82cf468798203` (21 paths).
@@ -92,3 +115,26 @@ snapshot: 6/6 byte-identical. Pattern enablement, merge and acceptance remain
 blocked on the two evidence categories above. Delivery uses a source/docs/test
 commit on `codex/container-desktop-customizer`; resolve its SHA from git rather
 than embedding a self-referential commit hash here.
+
+## Resumed connection cleanup and acceptance checks
+
+User authorized cleanup and continuation after WIP commit
+`8068fbd19b4fd526d6120e7dfd714e9aca217a9b`. Resetting the CUA session restored
+Chrome control; no application/service process was killed. Old task servers
+5181/8461 had already exited. Root restarted their prescribed loopback commands,
+using the durable harness generator at `/tmp/laifen-surface-pattern-harness`.
+All 23 C3 manifest paths still pass; the isolated build was regenerated only in
+`/tmp/surface-pattern-validation/early-build-backup`.
+
+Resumed DAG: `(SP-VAL-GLOBAL || SP-BROWSER) -> SP-CRIT-RESUME -> SP-REV-RESUME
+-> SP-DEL`. SP-VAL-GLOBAL retains `/root/drain_count_validation`, reads immutable
+C3 and original compiled meshes, exclusively writes `/tmp/surface-pattern-global`
+and `GLOBAL_VALIDATION.md`; 15 minute ceiling, five minute checkpoint, at most
+two focused certifier repairs, no source/dependency mutation. SP-BROWSER root
+executes the already-prescribed C3 controls/output/harness sequence using Chrome
+task tabs 1204106711 and 1204106714. `/root/compact_critic` independently inspects
+captured evidence and exclusively writes `BROWSER_REVIEW.md`; five active minutes
+after evidence arrives, no simultaneous browser actions. Formal reviewer joins
+new receipts without rewriting the historical WIP review. All tasks use the
+unchanged C3 manifest and forbidden scope above; no preview enablement before
+the joined gaps are resolved. Existing joined receipts remain immutable.
