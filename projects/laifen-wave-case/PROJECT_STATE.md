@@ -1,5 +1,17 @@
 # Project state
 
+Active iteration: `docs/iterations/2026-09-06-pattern-performance`. All five paths were audited; shared Ribs/Rings/Spiral edge and face shortcuts preserve exact output. Candidate SCAD SHA `497098afa555092a0ed85a3a7213cd270852aa76f9001e1478c209cd8469bc42`; source43 manifest `3888018275bfcd05ab1d66a27d5b29a01eaf7268382075f4e2bd2047cc638c4c`.
+
+Independent paired Node medians: Rings26.631→19.317s, Spiral body26.769→19.335s, Spiral assembled46.639→33.499s (27–28% faster). Smooth/Diamond remain within timing noise; Ribs1.065→1.000s in one audit pair. All38 fresh compile receipts preserve exact STL bytes; Node59/Python13, scratch browser Rings Blob/download, distinct critique and formal review passed. No browser/phone speedup or physical acceptance claim.
+
+Private preview `https://mac-mini.duckbill-ionian.ts.net:8453/` has the approved build; six HTTPS files match frozen/local bytes and a fresh live Ribs Body generated the expected STL. See HANDOFF, VALIDATION, REVIEW and DELIVERY for exact evidence and the corrected early-build incident. Draft PR19 remains the delivery route; no main merge.
+
+Next action: user reviews the faster patterns. Preserve this exact-output baseline and per-pattern controls. Future performance work should measure browser completion separately and retain explicit source/runtime hash joins; the phase-independent JS sampler is not a coordinate oracle. Native Safari/iPhone timing, slicer and physical acceptance remain open.
+
+## Preserved earlier session records
+
+The following records describe their dated iterations; the active performance handoff above controls new work.
+
 Pattern-family checkpoint: R2 is delivered on private 8453. Five choices and contextual remembered sliders passed 56 Node, 13 Python, 21 compile, independent mesh/feature/parity, Chromium desktop/mobile and formal review gates. Six served files and a fresh live STL download match the reviewed build. Source manifest 6701e4c3; SCAD3b96cc2d. Next: user reviews the added patterns; no further feature, native Safari/iPhone or physical acceptance is implied. See active HANDOFF/DELIVERY. Source delivery commit `ac244f8bae6c8faa6bfc5f35e6ac86a27f6e1124` is pushed to draft PR19.
 
 ## Pattern families and contextual controls — in progress

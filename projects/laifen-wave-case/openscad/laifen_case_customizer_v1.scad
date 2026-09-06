@@ -319,7 +319,9 @@ function wave_edge_ends(e,zs,h,role)=let(n=WAVE_ANGULAR_SAMPLES,rows=len(zs),
   kind=e<n*rows?0:e<n*(2*rows-1)?1:2,
   t=e-(kind==0?0:n*rows+(kind-1)*n*(rows-1)),row=floor(t/n),col=t%n)
   [wave_point(col,row,zs,h,role),wave_point(col+(kind==1?0:1),row+(kind==0?0:1),zs,h,role)];
-function wave_edge_cut(e,zs,h,role)=let(ab=wave_edge_ends(e,zs,h,role),a=ab[0],b=ab[1])
+function wave_edge_cut(e,zs,h,role)=let(n=WAVE_ANGULAR_SAMPLES,rows=len(zs),kind=e<n*rows?0:e<n*(2*rows-1)?1:2,t=e-(kind==0?0:n*rows+(kind-1)*n*(rows-1)),row=floor(t/n))
+  wave_cone(zs[row],h,role)==outer_radius && wave_cone(zs[row+(kind==0?0:1)],h,role)==outer_radius ? undef :
+  let(ab=wave_edge_ends(e,zs,h,role),a=ab[0],b=ab[1])
   v06_sgn(a[3])*v06_sgn(b[3])!=-1?undef:
   let(t=-a[3]/(b[3]-a[3]))[for(k=[0:3])k==3?0:a[k]+t*(b[k]-a[k])];
 function wave_xyz(p,h,role)=let(r=min(p[2],wave_cone(p[1],h,role)))
@@ -332,12 +334,13 @@ function wave_clip(ids,edges,slots,positive)=v06_clean_wave([for(i=[0:2])
     cut=sa==0?a:sb==0?b:edges[i])
   each ain&&bin?[b]:ain&&!bin?[cut]:!ain&&bin?[cut,b]:[]]);
 function v06_clean_wave(ids)=len(ids)==0?[]:[for(i=[0:len(ids)-1])if(ids[i]!=ids[(i+len(ids)-1)%len(ids)])ids[i]];
-function wave_face_polys(row,col,zs,slots)=let(rows=len(zs),base=rows*WAVE_ANGULAR_SAMPLES,
+function wave_face_polys(row,col,zs,slots,h,role)=let(rows=len(zs),base=rows*WAVE_ANGULAR_SAMPLES,
   a=wave_base_id(row,col),b=wave_base_id(row,col+1),c=wave_base_id(row+1,col+1),d=wave_base_id(row+1,col),
   ab=base+wave_edge_id(0,row,col,rows),bc=base+wave_edge_id(1,row,col+1,rows),
   cd=base+wave_edge_id(0,row+1,col,rows),da=base+wave_edge_id(1,row,col,rows),
-  ac=base+wave_edge_id(2,row,col,rows))
-  [for(tri=[[[a,c,b],[ac,bc,ab]],[[a,d,c],[da,cd,ac]]])
+  ac=base+wave_edge_id(2,row,col,rows),
+  uncut=wave_cone(zs[row],h,role)==outer_radius && wave_cone(zs[row+1],h,role)==outer_radius)
+  uncut?[[a,c,b],[a,d,c]]:[for(tri=[[[a,c,b],[ac,bc,ab]],[[a,d,c],[da,cd,ac]]])
     let(signs=[for(id=tri[0])v06_sgn(slots[id][3])],
       cross=min(signs)<0&&max(signs)>0)
     each cross?[wave_clip(tri[0],tri[1],slots,false),wave_clip(tri[0],tri[1],slots,true)]:[tri[0]]];
@@ -350,7 +353,7 @@ function wave_data(h,role)=let(zs=wave_rows(h,role),rows=len(zs),n=WAVE_ANGULAR_
     [for(e=[0:n*(3*rows-2)-1])wave_edge_cut(e,zs,h,role)]),
   rank=v06_prefix([for(p=slots)is_undef(p)?0:1])[0],
   points=[for(p=slots)if(!is_undef(p))wave_xyz(p,h,role)],
-  faces=[for(row=[0:rows-2])for(col=[0:n-1])for(poly=wave_face_polys(row,col,zs,slots))
+  faces=[for(row=[0:rows-2])for(col=[0:n-1])for(poly=wave_face_polys(row,col,zs,slots,h,role))
     if(len(poly)>=3)for(k=[1:len(poly)-2])[rank[poly[0]],rank[poly[k]],rank[poly[k+1]]]],
   rings=[wave_ring(0,zs,slots,rank),wave_ring(rows-1,zs,slots,rank)])
   assert(len(faces)+len(rings[0])+len(rings[1])<=250000,"actual wave exterior allocation exceeds cap")
