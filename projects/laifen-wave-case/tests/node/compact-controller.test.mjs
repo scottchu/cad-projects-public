@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {createCustomizerController} from '../../preview/openscad-wasm-simulator/src/controller.mjs';
+import {adapt,DEFAULTS} from '../../preview/openscad-wasm-simulator/src/adapter.mjs';
 
 class FakeElement {
   constructor(value=''){this.value=value;this.textContent='';this.hidden=false;this.disabled=false;this.checked=false;this.readOnly=false;this.dataset={};this.attributes={};this.listeners={};this.tabIndex=0;}
@@ -12,7 +13,7 @@ class FakeElement {
   click(){if(!this.disabled&&!this.hidden)this.onclick?.({preventDefault(){}});}
 }
 function fakeDocument(){
-  const ids=['diameter','height','wall','ends','lid','drains','drains-top','drains-bottom','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
+  const ids=['diameter','height','wall','ends','lid','drains','drains-top','drains-bottom','drain-count','drain-count-range','drain-count-rule','drain-count-error','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
   for(const key of ['diameter','height','wall','ends','lid'])ids.push(`${key}-range`,`${key}-rule`);
   for(const key of ['diameter','height','wall','ends','lid','drains','output'])ids.push(`${key}-error`);
   const elements=Object.fromEntries(ids.map(id=>[id,new FakeElement()]));
@@ -72,7 +73,26 @@ test('Auto/manual transition and reset restore complete defaults without generat
   const {document,controller,calls}=setup(),e=document.elements;
   assert.equal(e.lid.value,'84');e['auto-lid'].checked=false;e['auto-lid'].onchange();assert.equal(controller.getState().raw.lid,'84');assert.equal(e.lid.readOnly,false);
   edit(document,'lid','90');setDrains(document,{top:false,bottom:false});edit(document,'output','cap');e.reset.click();
-  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e['drains-top'].checked,false);assert.equal(e['drains-bottom'].checked,true);assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',drainCount:'7',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e['drains-top'].checked,false);assert.equal(e['drains-bottom'].checked,true);assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+});
+
+test('drain count preserves raw invalid text while off and enforces dynamic active limits',()=>{
+  const {document,controller}=setup(),e=document.elements;
+  assert.equal(e['drain-count-range'].max,'17');
+  edit(document,'drain-count','18');assert.match(e['dimension-form-error'].textContent,/at most 17/);assert.equal(e.generate.disabled,true);assert.equal(e['drain-count-range'].value,'17');assert.equal(controller.getState().raw.drainCount,'18');
+  setDrains(document,{top:false,bottom:false});assert.equal(e['drain-count'].disabled,true);assert.equal(e.generate.disabled,false);assert.equal(controller.getState().raw.drainCount,'18');
+  setDrains(document,{top:false,bottom:true});assert.equal(e['drain-count'].disabled,false);assert.match(e['dimension-form-error'].textContent,/at most 17/);
+  edit(document,'diameter','11');edit(document,'drain-count','7');assert.equal(e['drain-count-range'].max,'7');assert.equal(e.generate.disabled,false);
+  edit(document,'diameter','10');assert.match(e['dimension-form-error'].textContent,/at most 1/);
+});
+
+test('malformed count disables its paired range and adapter never substitutes an active raw count',()=>{
+  const {document}=setup(),e=document.elements;
+  edit(document,'drain-count','x');assert.equal(e['drain-count-range'].disabled,true);assert.equal(e['drain-count'].disabled,false);assert.equal(e['drain-count'].value,'x');assert.equal(e['drain-count-error'].textContent,'Enter a whole number.');
+  edit(document,'drain-count','');assert.equal(e['drain-count'].disabled,false);edit(document,'diameter','');assert.equal(e['drain-count'].disabled,false);
+  const invalid=adapt({...DEFAULTS,drainCount:'8',diameter:'11'});assert.match(invalid.errors.drainCount,/at most 7/);assert.match(invalid.errors.diameter,/at most 7/);
+  const valid=adapt({...DEFAULTS,drainCount:'17'});assert.equal(valid.values.drain_count,17);
+  const off=adapt({...DEFAULTS,drains:'none',drainCount:'x'});assert.equal(off.values.drain_count,7);
 });
 
 test('independent drain checkboxes map all four modes, preserve invalid drafts, and cancel active work',()=>{

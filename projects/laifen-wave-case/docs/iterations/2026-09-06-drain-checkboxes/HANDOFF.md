@@ -24,4 +24,7 @@ SHA `e56f4a377bbe7dc74c7b1ad9b1c77e386daa751293bdee667ad6be7722656058`.
 Temporary evidence `/tmp/container-drain-validation` and `/tmp/drain-val-01`.
 Browser errors/keyboard behavior beyond this checkbox item are not fully
 revalidated. No new CAD print-ready, slicing or physical acceptance. User wants
-one item at a time; next action is their feedback/next item, not broader UI changes.
+one item at a time. After delivery of `2819a8e`, the user marked this drain
+checkbox item passed and authorized continuing. The next item is drain-hole
+count, followed by pattern; see `../2026-09-06-drain-count/`. This is scoped UX acceptance;
+the artifact and physical acceptance limits above remain.

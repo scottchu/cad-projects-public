@@ -1,4 +1,5 @@
 import {BROWSER_PRESET, snapshot} from './schema.mjs';
+import {DRAIN_DEFAULT_COUNT,feasibility,legalCount,whole} from './drain-layout.mjs';
 export const DEFAULTS = Object.freeze({diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',output:'assembled'});
 // 3.95 may fail the unchanged schema's floating-point residual test. Advertise 4.
 export const WALL_MIN = 4;
@@ -18,9 +19,21 @@ export function adapt(raw) {
   if (!errors.height && !errors.ends && (!Number.isFinite(lid) || lid<20 || lid>250 || lid<=T+11 || lid>=H+T-2)) errors[raw.auto?'height':'lid']='The lid needs more room. Increase the inside height or adjust the lid height.';
   if (!['none','top','bottom','both'].includes(raw.drains)) errors.drains='Choose drain holes.';
   if (!['assembled','body','cap','print_layout'].includes(raw.output)) errors.output='Choose an export shape.';
+  const hasRawCount=Object.hasOwn(raw,'drainCount'),rawCount=raw.drainCount??String(DRAIN_DEFAULT_COUNT),activeDrains=raw.drains!=='none';
+  if(activeDrains&&hasRawCount&&!whole(rawCount)) errors.drainCount='Enter a whole number.';
+  else if(activeDrains&&hasRawCount&&!legalCount(rawCount)) errors.drainCount='Use a whole number from 1 to 24.';
+  const radius=Math.min(9,D/2-2),safeCount=feasibility({count:1,diameter:3,radius,innerRadius:D/2}).max;
+  const drainCount=hasRawCount&&legalCount(rawCount)?Number(rawCount):Math.min(DRAIN_DEFAULT_COUNT,safeCount);
+  if(!errors.diameter&&!errors.drainCount&&activeDrains){
+    const f=feasibility({count:drainCount,diameter:3,radius,innerRadius:D/2});
+    if(!f.center||drainCount>=2&&(!f.ring||drainCount>f.max)) {
+      const message=`At ${D} mm inside diameter, use at most ${f.max} holes to keep 0.4 mm between openings.`;
+      errors.diameter=message;errors.drainCount=message;
+    }
+  }
   if (Object.keys(errors).length) return {errors,summary:{outsideDiameter,outsideHeight,lid}};
   try {
-    const values=snapshot({...BROWSER_PRESET,body_bore:D,cap_bore:D+1,device_length:H-5,outer_diameter:outsideDiameter,floor_thickness:T,split_distance_from_top:lid,drain_ring_radius:Math.min(9,D/2-2),drainage_mode:raw.drains,output_mode:raw.output});
+    const values=snapshot({...BROWSER_PRESET,body_bore:D,cap_bore:D+1,device_length:H-5,outer_diameter:outsideDiameter,floor_thickness:T,split_distance_from_top:lid,drain_ring_radius:radius,drain_count:drainCount,drainage_mode:raw.drains,output_mode:raw.output});
     return {errors,values,summary:{outsideDiameter,outsideHeight,lid}};
   } catch(error) {
     errors.wall=error.message==='thread wall constraint failed' ? `This screw lid needs walls of at least ${WALL_MIN} mm.` : 'These dimensions leave too little room for the screw closure. Increase the wall thickness or inside height.';

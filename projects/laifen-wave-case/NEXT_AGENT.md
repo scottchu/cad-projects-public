@@ -1,4 +1,14 @@
-# Next agent — drain checkboxes
+# Next agent — drain count
+
+Current work: `docs/iterations/2026-09-06-drain-count`, baseline `2819a8e`.
+User accepted the checkboxes and requested drain-hole count, then pattern.
+Count candidate C3 is implemented and passes focused deterministic, compiled
+mesh and desktop/mobile browser checks. Formal review passes for draft PR
+delivery; obtain the incremental user review before implementing pattern.
+Read the active iteration HANDOFF and final receipts. Candidate manifest SHA:
+`6fa4bb84a83bc859b95b0568d43e34227a5bc2be7f82fe8fb6a2f11796953f57`.
+
+## Accepted drain checkbox baseline
 
 Active iteration: `docs/iterations/2026-09-06-drain-checkboxes` on
 `codex/container-desktop-customizer`, draft PR19. Read BRIEF, IMPLEMENTATION,
@@ -9,9 +19,10 @@ Current preview <https://mac-mini.duckbill-ionian.ts.net:8453/> was checked in
 Safari on desktop/mobile; both-end generation/download passed. Baseline Bottom
 STL is byte-identical. CUA access recovered for these scoped checks, but prior
 compact-controls full QA gaps were not all retested. Do not claim full UI or
-print acceptance or merge automatically. Wait for the user's next item.
+print acceptance or merge automatically. The user marked the drain checkbox
+item passed after `2819a8e` and authorized drain-hole count next, then pattern.
 
-The new editable SCAD SHA is
+The accepted checkbox baseline SCAD SHA was
 `cf0983e84e738be87e31462c903afcf02646915cc1e4a9e8641b8edce05b5393`;
 only existing drain predicates/enum comment changed. Preserve all other geometry,
 engine/worker lock, existing8448 route, and historical STEP releases.

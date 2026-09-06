@@ -1,8 +1,30 @@
 # Project state
 
-## Active drain checkbox follow-up — 2026-09-06
+## Drain count — 2026-09-06
+
+Current iteration: `docs/iterations/2026-09-06-drain-count`, baseline
+`2819a8e5d2dd9c4c4f0b53958c4cce6c6ceec36f`. User passed the drain checkboxes
+and specified the next order: drain-hole count, then pattern. Implement and
+review count first; pattern is queued for the following user gate.
+Candidate C3 manifest `inputs/candidate-03.sha256` SHA
+`6fa4bb84a83bc859b95b0568d43e34227a5bc2be7f82fe8fb6a2f11796953f57`
+adds a shared integer count per selected end, default 7, with size-dependent
+limits (D10:1, D11:7, D30:17). The 0.4 mm ligament is a design assumption.
+29 Node and 12 Python checks, build, independent actual-opening/mesh/boundary
+checks and exact default STL parity pass. Root Safari desktop/mobile count,
+invalid-entry recovery, checkbox memory, slider and Reset checks pass. Current
+SCAD SHA `517f8546612ffecbc50a732362c9e3a326db03fa2c94e94a68daad472a0b42e2`.
+Private 8453 serves C3 with six-file served-byte parity. Formal review passes
+for this scoped item and draft PR delivery; REVIEW.md SHA
+`c863bc1334595a6bcad5a543b52bd67397dc5992792082f00d07313d609ccad7`.
+User count review is next, then pattern. Keep PR19 draft.
+
+## Accepted drain checkbox baseline — 2026-09-06
 
 Current iteration: `docs/iterations/2026-09-06-drain-checkboxes`.
+User acceptance: the user marked the drain checkbox item passed after delivery
+of `2819a8e`, then authorized continuing one item at a time. The next item is
+drain-hole count, followed by pattern.
 The user requests one item at a time; this iteration only replaces the drain
 selector with independent Top and Bottom checkboxes, including both/neither.
 Bottom-only is the preserved default and Reset state. Candidate manifest

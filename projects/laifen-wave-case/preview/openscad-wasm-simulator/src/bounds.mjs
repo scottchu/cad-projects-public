@@ -1,4 +1,5 @@
 import {BROWSER_PRESET,snapshot} from './schema.mjs';
+import {DRAIN_DEFAULT_COUNT,feasibility,legalCount,whole} from './drain-layout.mjs';
 
 const k=84/219, tick=.1;
 const STATIC=Object.freeze({diameter:[10,69],height:[6,305],wall:[4,35],ends:[2,8],lid:[20,250]});
@@ -44,27 +45,36 @@ function dimensionResult(raw) {
 }
 
 const feasible=(raw,key,value)=>dimensionResult({...raw,[key]:String(value)}).issues.length===0;
-function interval(raw,key) {
+function interval(raw,key,drainCount=null) {
   if(key==='lid'&&raw.auto) {const value=dimensionResult(raw).summary.lid;return {min:value,max:value,step:tick,disabled:true};}
   const [lo,hi]=STATIC[key];let min=null,max=null;
-  for(let value=up(lo);value<=down(hi)+1e-8;value=clean(value+tick)) if(feasible(raw,key,value)) {if(min===null)min=value;max=value;}
+  for(let value=up(lo);value<=down(hi)+1e-8;value=clean(value+tick)) {
+    const diameter=key==='diameter'?value:Number(raw.diameter),radius=Math.min(9,diameter/2-2);
+    const countFits=drainCount===null||feasibility({count:drainCount,diameter:3,radius,innerRadius:diameter/2}).max>=drainCount;
+    if(feasible(raw,key,value)&&countFits) {if(min===null)min=value;max=value;}
+  }
   return min===null?{min:null,max:null,step:tick,disabled:true}:{min,max,step:tick,disabled:false};
 }
+function sourceCount(raw) {return legalCount(raw.drainCount??String(DRAIN_DEFAULT_COUNT))?Number(raw.drainCount??DRAIN_DEFAULT_COUNT):DRAIN_DEFAULT_COUNT;}
 function generationValues(raw,n,summary) {
-  return snapshot({...BROWSER_PRESET,body_bore:n.diameter,cap_bore:n.diameter+1,device_length:n.height-5,outer_diameter:summary.outsideDiameter,floor_thickness:n.ends,split_distance_from_top:summary.lid,drain_ring_radius:Math.min(9,n.diameter/2-2),drainage_mode:raw.drains,output_mode:raw.output});
+  return snapshot({...BROWSER_PRESET,body_bore:n.diameter,cap_bore:n.diameter+1,device_length:n.height-5,outer_diameter:summary.outsideDiameter,floor_thickness:n.ends,split_distance_from_top:summary.lid,drain_ring_radius:Math.min(9,n.diameter/2-2),drainage_mode:raw.drains,drain_count:sourceCount(raw),output_mode:raw.output});
 }
 export function dimensionSnapshot(raw) {return Object.freeze({diameter:raw.diameter,height:raw.height,wall:raw.wall,ends:raw.ends,lid:raw.lid,auto:Boolean(raw.auto)});}
 
 /** The single pure owner of draft validity and every UI projection derived from it. */
 export function deriveDraftState(raw,lastValidDimensions) {
   const current=dimensionResult(raw);
-  if(!current.issues.length)try{generationValues({...raw,drains:'bottom',output:'assembled'},current.n,current.summary);}catch{current.issues.push(issue('snapshot-constraint','coupled','These dimensions leave too little room for the screw closure.',['diameter','height','wall','ends',...(!raw.auto?['lid']:[])]));}
+  if(!current.issues.length)try{generationValues({...raw,drains:'bottom',drainCount:'1',output:'assembled'},current.n,current.summary);}catch{current.issues.push(issue('snapshot-constraint','coupled','These dimensions leave too little room for the screw closure.',['diameter','height','wall','ends',...(!raw.auto?['lid']:[])]));}
   const dimensionsValid=current.issues.length===0;
   const last=dimensionsValid?dimensionSnapshot(raw):dimensionSnapshot(lastValidDimensions);
   if(dimensionResult(last).issues.length) throw new TypeError('lastValidDimensions must be one complete valid dimension snapshot');
+  const activeDrains=raw.drains!=='none',rawDrainCount=raw.drainCount??String(DRAIN_DEFAULT_COUNT);
+  const countNumber=legalCount(rawDrainCount)?Number(rawDrainCount):null;
   const source=dimensionsValid?dimensionSnapshot(raw):last,sourceName=dimensionsValid?'current':'last-valid',sliders={};
+  const drainGeometry=Number.isFinite(current.n.diameter)?feasibility({count:countNumber??1,diameter:3,radius:Math.min(9,current.n.diameter/2-2),innerRadius:current.n.diameter/2}):null;
+  const countMax=drainGeometry?.max??null;
   for(const key of DIMENSIONS) {
-    const bounds=interval(source,key),auto=key==='lid'&&source.auto;
+    const bounds=interval(source,key,key==='diameter'&&dimensionsValid&&activeDrains?countNumber:null),auto=key==='lid'&&source.auto;
     let rule;
     if(!dimensionsValid) rule=auto?`Last valid Auto lid height: ${clean(bounds.min)} mm · correct the highlighted dimensions to use sliders`:bounds.min===null?'Last valid range has no 0.1 mm setting · correct the highlighted dimensions to use sliders':`Last valid range: ${bounds.min}–${bounds.max} mm · correct the highlighted dimensions to use sliders · ${PURPOSE[key]}`;
     else rule=auto?`Auto lid height: ${clean(bounds.min)} mm · turn off Auto to adjust`:bounds.min===null?`No allowed 0.1 mm value with the current dimensions · ${PURPOSE[key]}`:`Allowed now: ${bounds.min}–${bounds.max} mm · ${PURPOSE[key]}`;
@@ -72,10 +82,18 @@ export function deriveDraftState(raw,lastValidDimensions) {
   }
   const issues=[...current.issues];
   if(!['none','top','bottom','both'].includes(raw.drains)) issues.push(issue('drains-choice','direct','Choose drain holes.',['drains']));
+  if(activeDrains) {
+    if(!whole(rawDrainCount)) issues.push(issue('drain-count-whole','direct','Enter a whole number.',['drainCount']));
+    else if(!legalCount(rawDrainCount)) issues.push(issue('drain-count-range','direct','Use a whole number from 1 to 24.',['drainCount']));
+    else if(drainGeometry&&(!drainGeometry.center||countNumber>=2&&(!drainGeometry.ring||countNumber>drainGeometry.max))) issues.push(issue('drain-count-spacing','coupled',`At ${current.n.diameter} mm inside diameter, use at most ${countMax} holes to keep 0.4 mm between openings.`,['diameter','drainCount']));
+  }
   if(!['assembled','body','cap','print_layout'].includes(raw.output)) issues.push(issue('output-choice','direct','Choose an export shape.',['output']));
   const values=issues.length?null:generationValues(raw,current.n,current.summary);
   const fieldErrors={};for(const item of issues)if(item.type==='direct'&&!fieldErrors[item.fields[0]])fieldErrors[item.fields[0]]=item.message;
   const formError=issues.filter(item=>item.type==='coupled').map(item=>item.message).join(' ');
   const summary=Object.freeze(Object.fromEntries(Object.entries(current.summary).map(([key,value])=>[key,Number.isFinite(value)?value:null])));
-  return Object.freeze({issues:Object.freeze(issues),fieldErrors:Object.freeze(fieldErrors),formError,sliders:Object.freeze(sliders),summary,generationValues:values,canGenerate:Boolean(values)&&issues.length===0,nextLastValidDimensions:dimensionsValid?dimensionSnapshot(raw):last});
+  const countInvalid=activeDrains&&!legalCount(rawDrainCount);
+  const countDisabled=!activeDrains||!dimensionsValid||countMax===null||countInvalid;
+  const countRule=!activeDrains?'Drain holes are off; this value is remembered.':countInvalid?'Correct the hole count to use its slider.':countDisabled?'Correct the inside diameter to set hole count.':countNumber>countMax?`Draft ${countNumber} is too high; choose 1–${countMax} holes at ${current.n.diameter} mm inside diameter.`:`Allowed now: 1–${countMax} holes at ${current.n.diameter} mm inside diameter`;
+  return Object.freeze({issues:Object.freeze(issues),fieldErrors:Object.freeze(fieldErrors),formError,sliders:Object.freeze(sliders),summary,generationValues:values,canGenerate:Boolean(values)&&issues.length===0,nextLastValidDimensions:dimensionsValid?dimensionSnapshot(raw):last,drainCount:Object.freeze({active:activeDrains,min:1,max:countMax,step:1,disabled:countDisabled,rule:countRule})});
 }

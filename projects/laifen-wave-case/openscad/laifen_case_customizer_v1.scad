@@ -41,6 +41,7 @@ diamond_plateau_half_fraction = 0.18; // [0.10:0.01:0.30] Dimensionless half-fra
 drainage_mode = "bottom";    // [none:No drains,top:Cap closed-end drains,bottom:Body closed-end drains,both:Both closed-end drains]
 drain_diameter = 3;           // [1:0.1:5]
 drain_ring_radius = 9;        // [2:0.1:14]
+drain_count = 7;              // [1:1:24] Center plus equally spaced ring holes.
 
 /* [Output] */
 output_mode = "assembled";   // [assembled:Closed assembly,body:Body only,cap:Cap only,print_layout:Print layout]
@@ -67,6 +68,7 @@ thread_crest_radius = thread_root_radius + thread_depth;
 // Internal Boolean overlap, deliberately smaller than print clearance.  It
 // joins each helical root to its cylinder without moving either crest.
 THREAD_EMBED_EPS = .05;
+DRAIN_LIGAMENT = .4;
 thread_transition = (closure_overlap-engagement)/2;
 
 // VFR-04 pure field contract.  Both component callers use global Z relative
@@ -108,7 +110,11 @@ assert(end_chamfer > 0 && end_chamfer < floor_thickness, "chamfer must remain in
 assert(thread_pitch > 0 && thread_turns > 0 && thread_depth > 0, "thread values invalid");
 assert(thread_clearance >= .20 && thread_clearance <= .30, "thread clearance must be 0.20–0.30 mm/side");
 assert(cap_height > floor_thickness + closure_overlap + 2 && body_height > floor_thickness + closure_overlap + 2, "split leaves no floor/closure transition");
-assert(drain_ring_radius + drain_diameter/2 < min(body_inner_radius, cap_inner_radius), "drains reach sidewall");
+assert(drain_count == floor(drain_count) && drain_count >= 1 && drain_count <= 24, "drain count must be an integer in [1,24]");
+assert(drain_diameter >= 1 && drain_diameter <= 5 && drain_ring_radius >= 2 && drain_ring_radius <= 14, "drain dimensions outside customizer range");
+assert(drainage_mode == "none" || min(body_inner_radius,cap_inner_radius)-drain_diameter/2 >= DRAIN_LIGAMENT, "drain center ligament below 0.4mm");
+assert(drainage_mode == "none" || drain_count < 2 || (min(body_inner_radius,cap_inner_radius)-(drain_ring_radius+drain_diameter/2) >= DRAIN_LIGAMENT && drain_ring_radius-drain_diameter >= DRAIN_LIGAMENT), "drain ring ligament below 0.4mm");
+assert(drainage_mode == "none" || drain_count < 3 || 2*drain_ring_radius*sin(180/(drain_count-1))-drain_diameter >= DRAIN_LIGAMENT, "adjacent drain ligament below 0.4mm");
 assert(closure_overlap > 0 && body_height > closure_overlap + floor_thickness, "body/thread interval invalid");
 assert(outer_radius - (thread_crest_radius + thread_clearance) >= 1.8, "threaded cap wall below 1.8mm");
 assert(thread_root_wall >= 1.2, "male root wall below 1.2mm");
@@ -141,7 +147,7 @@ assert(surface_style != "diamond" || diamond_depth == 0 ||
 module drain_pattern(h) {
   // VFR-08: callers provide the complete bounded axial interval.
   cylinder(d=drain_diameter, h=h, center=false);
-  for (a=[0:60:300]) translate([drain_ring_radius*cos(a), drain_ring_radius*sin(a), 0]) cylinder(d=drain_diameter, h=h, center=false);
+  if (drain_count >= 2) for (i=[0:drain_count-2]) let(a=360*i/(drain_count-1)) translate([drain_ring_radius*cos(a), drain_ring_radius*sin(a), 0]) cylinder(d=drain_diameter, h=h, center=false);
 }
 
 // VFR-06: periodic knot lattice; all cuts owned by primitive numeric slots.
