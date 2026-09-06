@@ -15,6 +15,8 @@ optional lid/output choices, real STL cutaway and separate Generate, Cancel,
 Reset dimensions, Reset view and current-byte Download are implemented.
 Existing OpenSCAD source/schema/worker and live services remain unchanged.
 See iteration VALIDATION and project `design-qa.md` for evidence.
+Draft delivery: <https://github.com/scottchu/design-projects/pull/19>, source
+commit `7576ddb3f03fc56234ad68e82515d41ea8a427ab`; not merged or deployed.
 
 Artifact acceptance is partial: the edited D39/H60/W4/T4 closed assembly has
 four degenerate seam faces; its body, lid and print-layout exports passed the

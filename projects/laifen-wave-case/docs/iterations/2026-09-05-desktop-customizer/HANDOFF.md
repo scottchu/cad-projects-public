@@ -52,8 +52,11 @@ It started successfully. Startup alone is not browser acceptance.
 
 Formal review passed (`REVIEW.md` SHA-256
 `6ca1fc54bfdeeb1b4a49ade6dd0a1c3c946a297e7fdf297350ee7693e8c88bf4`).
-Deliver intentional changes through a draft PR, then obtain user review of the
-local customizer before any separate live-route deployment.
+Delivered through draft PR <https://github.com/scottchu/design-projects/pull/19>,
+source commit `7576ddb3f03fc56234ad68e82515d41ea8a427ab`. Obtain user review of
+the local customizer before any separate live-route deployment. The browser
+default generation was ready at final handoff; recheck the local server when
+resuming. The working tree was clean after the source commit.
 C2 manifest `inputs/candidate-02.sha256` has SHA-256
 `b57642a532d834fddeb56c938496af44a03d3635e4a748ad46ada0cf86df609c`.
 13 Node tests, 4 Python tests, production build and real browser checks passed.

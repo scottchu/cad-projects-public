@@ -6,6 +6,8 @@ user selected visual option 2 with the existing generation/reset workflow.
 The reviewed visual target is `inputs/selected-desktop.png`. Implementation,
 independent UI/runtime validation, visual critique and formal review pass for
 C2. See `inputs/candidate-02.sha256`, VALIDATION, REVIEW and `design-qa.md`.
+Draft PR: <https://github.com/scottchu/design-projects/pull/19>; next action is
+user review of the local UI, not a printer job or automatic live deployment.
 The local development server is `http://127.0.0.1:5178/`; recheck it before
 claiming readiness. Do not replace the live 8448 route as part of local review.
 Keep existing geometry, source/schema/worker provenance and the historical
