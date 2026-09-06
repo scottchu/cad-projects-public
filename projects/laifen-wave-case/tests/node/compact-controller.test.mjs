@@ -13,16 +13,16 @@ class FakeElement {
   click(){if(!this.disabled&&!this.hidden)this.onclick?.({preventDefault(){}});}
 }
 function fakeDocument(){
-  const ids=['diameter','height','wall','ends','lid','drains','drains-top','drains-bottom','drain-count','drain-count-range','drain-count-rule','drain-count-error','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
+  const ids=['diameter','height','wall','ends','lid','drains','drains-top','drains-bottom','drain-count','drain-count-range','drain-count-rule','drain-count-error','surface-pattern','surface-smooth','surface-diamond','surface-pattern-rule','surface-pattern-error','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
   for(const key of ['diameter','height','wall','ends','lid'])ids.push(`${key}-range`,`${key}-rule`);
   for(const key of ['diameter','height','wall','ends','lid','drains','output'])ids.push(`${key}-error`);
   const elements=Object.fromEntries(ids.map(id=>[id,new FakeElement()]));
-  Object.assign(elements.diameter,{value:'30'});Object.assign(elements.height,{value:'213'});Object.assign(elements.wall,{value:'4.5'});Object.assign(elements.ends,{value:'3'});Object.assign(elements.lid,{value:'84'});Object.assign(elements.output,{value:'assembled'});elements['drains-bottom'].checked=true;elements['auto-lid'].checked=true;elements.cancel.hidden=true;
+  Object.assign(elements.diameter,{value:'30'});Object.assign(elements.height,{value:'213'});Object.assign(elements.wall,{value:'4.5'});Object.assign(elements.ends,{value:'3'});Object.assign(elements.lid,{value:'84'});Object.assign(elements.output,{value:'assembled'});elements['drains-bottom'].checked=true;elements['surface-smooth'].checked=true;elements['auto-lid'].checked=true;elements.cancel.hidden=true;
   const actions=new FakeElement();return {elements,actions,getElementById:id=>elements[id],querySelector:selector=>selector==='.actions'?actions:null};
 }
-function setup(){
+function setup(defaults=DEFAULTS){
   const document=fakeDocument(),calls={generate:[],invalidate:[]};let callbacks;
-  const controller=createCustomizerController({document,autoGenerate:false,createGeneration:value=>{callbacks=value;return {generate(values){calls.generate.push(values);callbacks.onState({busy:true,current:false,message:'Loading compiler…'});},invalidate(message){calls.invalidate.push(message);callbacks.onState({busy:false,current:false,message});}};}});
+  const controller=createCustomizerController({document,defaults,autoGenerate:false,createGeneration:value=>{callbacks=value;return {generate(values){calls.generate.push(values);callbacks.onState({busy:true,current:false,message:'Loading compiler…'});},invalidate(message){calls.invalidate.push(message);callbacks.onState({busy:false,current:false,message});}};}});
   return {document,controller,calls,callbacks};
 }
 const edit=(document,key,value)=>{document.elements[key].value=value;document.elements[key].dispatch('input');};
@@ -73,7 +73,18 @@ test('Auto/manual transition and reset restore complete defaults without generat
   const {document,controller,calls}=setup(),e=document.elements;
   assert.equal(e.lid.value,'84');e['auto-lid'].checked=false;e['auto-lid'].onchange();assert.equal(controller.getState().raw.lid,'84');assert.equal(e.lid.readOnly,false);
   edit(document,'lid','90');setDrains(document,{top:false,bottom:false});edit(document,'output','cap');e.reset.click();
-  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',drainCount:'7',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e['drains-top'].checked,false);assert.equal(e['drains-bottom'].checked,true);assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',drainCount:'7',pattern:'smooth',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e['drains-top'].checked,false);assert.equal(e['drains-bottom'].checked,true);assert.equal(e['surface-smooth'].checked,true);assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+});
+test('surface pattern preserves its raw choice, maps the fixed tuple, and offers a wall repair without pausing it',()=>{
+  const {document,controller,calls}=setup(),e=document.elements;
+  e['surface-diamond'].checked=true;e['surface-diamond'].dispatch('change');
+  assert.equal(controller.getState().raw.pattern,'diamond');assert.equal(e.generate.disabled,false);e.generate.click();assert.equal(calls.generate.at(-1).surface_style,'diamond');assert.equal(calls.generate.at(-1).diamond_axial_pitch,4.8);
+  edit(document,'wall','4.3');assert.equal(controller.getState().raw.wall,'4.3');assert.equal(e.generate.disabled,true);assert.equal(e['surface-pattern-error'].hidden,true);assert.equal(e['surface-pattern-error'].textContent,'');assert.match(e['dimension-form-error'].textContent,/at least 4.4/);assert.equal((e['dimension-form-error'].textContent.match(/at least 4\.4/g)||[]).length,1);assert.equal(e['surface-pattern'].getAttribute('aria-describedby'),'surface-pattern-rule dimension-form-error');assert.equal(e['wall-range'].disabled,false);assert.equal(e['wall-range'].min,'4.4');
+  e['surface-smooth'].checked=true;e['surface-smooth'].dispatch('change');assert.equal(controller.getState().raw.pattern,'smooth');assert.equal(e.generate.disabled,false);assert.equal(e['wall-range'].min,'4');
+});
+test('surface-pattern local error is reserved for a direct invalid selection',()=>{
+  const {document}=setup({...DEFAULTS,pattern:'unknown'}),e=document.elements;
+  assert.equal(e['surface-pattern-error'].hidden,false);assert.equal(e['surface-pattern-error'].textContent,'Choose a surface pattern.');assert.equal(e['surface-pattern'].getAttribute('aria-describedby'),'surface-pattern-rule surface-pattern-error');assert.equal(e['dimension-form-error'].hidden,true);
 });
 
 test('drain count preserves raw invalid text while off and enforces dynamic active limits',()=>{

@@ -1,10 +1,25 @@
-# Next agent — drain count
+# Next agent — surface pattern
+
+Current iteration: `docs/iterations/2026-09-06-surface-pattern`, baseline
+`cf4adb08314989f9d52a7afbd2f868756226d799`. User says next after drain count.
+Candidate C3 implements existing Smooth/Diamond selection with shared guards.
+Source critique passes; browser control disconnected before full C3 validation.
+Resume the held-real-worker and all-output visual/browser gates after connection
+restoration. Do not rebuild the live 8453 dist yet: it intentionally serves the
+accepted count build. Active HANDOFF gives isolated endpoints and frozen hashes.
+Also close the whole-solid intersection and geometric T-junction gaps in
+VALIDATION.md; the bounded scan ended without a verdict. The replay harness is
+durable under `tests/browser/surface-pattern-harness/`, with generation and
+server commands in its README. No browser pass is claimed for that harness.
+No new motifs or extra math parameters in this gate.
+
+## Delivered drain count
 
 Current work: `docs/iterations/2026-09-06-drain-count`, baseline `2819a8e`.
 User accepted the checkboxes and requested drain-hole count, then pattern.
 Count candidate C3 is implemented and passes focused deterministic, compiled
 mesh and desktop/mobile browser checks. Formal review passes for draft PR
-delivery; obtain the incremental user review before implementing pattern.
+delivery; the user has now authorized advancing to pattern.
 Read the active iteration HANDOFF and final receipts. Candidate manifest SHA:
 `6fa4bb84a83bc859b95b0568d43e34227a5bc2be7f82fe8fb6a2f11796953f57`.
 

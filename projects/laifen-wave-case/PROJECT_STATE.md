@@ -1,5 +1,27 @@
 # Project state
 
+## Surface pattern in progress — 2026-09-06
+
+Current iteration: `docs/iterations/2026-09-06-surface-pattern`, baseline
+`cf4adb08314989f9d52a7afbd2f868756226d799`. The user requested the next item
+after delivery of the count control. Implement the next surface-pattern gate
+using the existing Smooth/Diamond source, with no extra CAD parameters.
+Candidate C3 is implemented: native Smooth/Diamond swatches, immutable existing
+Diamond geometry, shared schema/adapter/UI guards, and exact compiler-compatible
+size limits. Candidate manifest SHA
+`412b5e389a85dbaa7ad730870f496639d8dcd2e2129de733b4da1ba1e031fc63`.
+32 Node and 12 Python checks, source critique and scoped mesh checks pass.
+Whole-solid nonadjacent intersections and geometric T-junction checks remain
+open; closed topology alone does not satisfy them. Full browser acceptance is pending:
+Safari returned `cgWindowNotFound`, then the Chrome connection dropped with
+`Transport closed` after partial C2 checks. Root requested restoration from the
+user. Private 8453 continues to serve the accepted count build; do not enable
+Diamond there before the combined C3 gates pass. Isolated candidate is on local
+5181 and the held-real-worker harness on local 8461; see active HANDOFF.
+Formal review approves a WIP commit to draft PR19 only; UI/mesh acceptance and
+live enablement remain pending. The final review and replay inputs are retained
+in the active iteration and project browser tests.
+
 ## Drain count — 2026-09-06
 
 Current iteration: `docs/iterations/2026-09-06-drain-count`, baseline
@@ -17,7 +39,7 @@ SCAD SHA `517f8546612ffecbc50a732362c9e3a326db03fa2c94e94a68daad472a0b42e2`.
 Private 8453 serves C3 with six-file served-byte parity. Formal review passes
 for this scoped item and draft PR delivery; REVIEW.md SHA
 `c863bc1334595a6bcad5a543b52bd67397dc5992792082f00d07313d609ccad7`.
-User count review is next, then pattern. Keep PR19 draft.
+The user authorized advancing to pattern after count delivery. Keep PR19 draft.
 
 ## Accepted drain checkbox baseline — 2026-09-06
 

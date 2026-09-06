@@ -1,4 +1,4 @@
-import {BROWSER_PRESET,snapshot} from './schema.mjs';
+import {assertDiamondPreflight,BROWSER_PRESET,DIAMOND,snapshot} from './schema.mjs';
 import {DRAIN_DEFAULT_COUNT,feasibility,legalCount,whole} from './drain-layout.mjs';
 
 const k=84/219, tick=.1;
@@ -44,7 +44,17 @@ function dimensionResult(raw) {
   return {issues,n,summary:{outsideDiameter:D+2*W,outsideHeight:H+2*T,lid}};
 }
 
-const feasible=(raw,key,value)=>dimensionResult({...raw,[key]:String(value)}).issues.length===0;
+function patternIssues(raw,summary) {
+  if(!['smooth','diamond'].includes(raw.pattern)) return [issue('pattern-choice','direct','Choose a surface pattern.',['pattern'])];
+  if(raw.pattern==='smooth') return [];
+  const W=Number(raw.wall),H=Number(raw.height),T=Number(raw.ends),lid=summary.lid;
+  if(![W,H,T,lid].every(Number.isFinite)) return [];
+  if(W<DIAMOND.minimumWall) return [issue('diamond-wall','coupled','Diamond needs wall thickness of at least 4.4 mm. Increase wall thickness or choose Smooth.',['pattern','wall'])];
+  try {assertDiamondPreflight({...BROWSER_PRESET,surface_style:'diamond',body_bore:Number(raw.diameter),cap_bore:Number(raw.diameter)+1,device_length:H-5,outer_diameter:summary.outsideDiameter,floor_thickness:T,split_distance_from_top:lid});}
+  catch(error){if(error.message==='diamond exterior triangle estimate exceeds cap')return [issue('diamond-triangles','coupled','Diamond is too detailed at this size. Reduce outside diameter or patterned-part height, or choose Smooth.',['pattern','diameter','height','wall','ends',...(!raw.auto?['lid']:[])])];return [issue('diamond-source','coupled','Diamond needs wall thickness of at least 4.4 mm. Increase wall thickness or choose Smooth.',['pattern','wall'])];}
+  return [];
+}
+const feasible=(raw,key,value)=>{const result=dimensionResult({...raw,[key]:String(value)});return result.issues.length===0&&patternIssues({...raw,[key]:String(value)},result.summary).length===0;};
 function interval(raw,key,drainCount=null) {
   if(key==='lid'&&raw.auto) {const value=dimensionResult(raw).summary.lid;return {min:value,max:value,step:tick,disabled:true};}
   const [lo,hi]=STATIC[key];let min=null,max=null;
@@ -57,14 +67,16 @@ function interval(raw,key,drainCount=null) {
 }
 function sourceCount(raw) {return legalCount(raw.drainCount??String(DRAIN_DEFAULT_COUNT))?Number(raw.drainCount??DRAIN_DEFAULT_COUNT):DRAIN_DEFAULT_COUNT;}
 function generationValues(raw,n,summary) {
-  return snapshot({...BROWSER_PRESET,body_bore:n.diameter,cap_bore:n.diameter+1,device_length:n.height-5,outer_diameter:summary.outsideDiameter,floor_thickness:n.ends,split_distance_from_top:summary.lid,drain_ring_radius:Math.min(9,n.diameter/2-2),drainage_mode:raw.drains,drain_count:sourceCount(raw),output_mode:raw.output});
+  return snapshot({...BROWSER_PRESET,surface_style:raw.pattern,body_bore:n.diameter,cap_bore:n.diameter+1,device_length:n.height-5,outer_diameter:summary.outsideDiameter,floor_thickness:n.ends,split_distance_from_top:summary.lid,drain_ring_radius:Math.min(9,n.diameter/2-2),drainage_mode:raw.drains,drain_count:sourceCount(raw),output_mode:raw.output});
 }
 export function dimensionSnapshot(raw) {return Object.freeze({diameter:raw.diameter,height:raw.height,wall:raw.wall,ends:raw.ends,lid:raw.lid,auto:Boolean(raw.auto)});}
 
 /** The single pure owner of draft validity and every UI projection derived from it. */
 export function deriveDraftState(raw,lastValidDimensions) {
   const current=dimensionResult(raw);
-  if(!current.issues.length)try{generationValues({...raw,drains:'bottom',drainCount:'1',output:'assembled'},current.n,current.summary);}catch{current.issues.push(issue('snapshot-constraint','coupled','These dimensions leave too little room for the screw closure.',['diameter','height','wall','ends',...(!raw.auto?['lid']:[])]));}
+  // Base-dimension validity is intentionally independent of the selected pattern.
+  // A selector typo or a Diamond-only limit must preserve its repair controls.
+  if(!current.issues.length)try{generationValues({...raw,pattern:'smooth',drains:'bottom',drainCount:'1',output:'assembled'},current.n,current.summary);}catch{current.issues.push(issue('snapshot-constraint','coupled','These dimensions leave too little room for the screw closure.',['diameter','height','wall','ends',...(!raw.auto?['lid']:[])]));}
   const dimensionsValid=current.issues.length===0;
   const last=dimensionsValid?dimensionSnapshot(raw):dimensionSnapshot(lastValidDimensions);
   if(dimensionResult(last).issues.length) throw new TypeError('lastValidDimensions must be one complete valid dimension snapshot');
@@ -73,14 +85,18 @@ export function deriveDraftState(raw,lastValidDimensions) {
   const source=dimensionsValid?dimensionSnapshot(raw):last,sourceName=dimensionsValid?'current':'last-valid',sliders={};
   const drainGeometry=Number.isFinite(current.n.diameter)?feasibility({count:countNumber??1,diameter:3,radius:Math.min(9,current.n.diameter/2-2),innerRadius:current.n.diameter/2}):null;
   const countMax=drainGeometry?.max??null;
+  // An invalid selector has no pattern predicate. Project its repair controls through
+  // Smooth so an enum typo cannot freeze otherwise coherent dimension editing.
+  const sourceRaw=dimensionsValid?raw:{...raw,...last};
+  const rangeSource=['smooth','diamond'].includes(sourceRaw.pattern)?sourceRaw:{...sourceRaw,pattern:'smooth'};
   for(const key of DIMENSIONS) {
-    const bounds=interval(source,key,key==='diameter'&&dimensionsValid&&activeDrains?countNumber:null),auto=key==='lid'&&source.auto;
+    const bounds=interval(rangeSource,key,key==='diameter'&&dimensionsValid&&activeDrains?countNumber:null),auto=key==='lid'&&source.auto;
     let rule;
     if(!dimensionsValid) rule=auto?`Last valid Auto lid height: ${clean(bounds.min)} mm · correct the highlighted dimensions to use sliders`:bounds.min===null?'Last valid range has no 0.1 mm setting · correct the highlighted dimensions to use sliders':`Last valid range: ${bounds.min}–${bounds.max} mm · correct the highlighted dimensions to use sliders · ${PURPOSE[key]}`;
     else rule=auto?`Auto lid height: ${clean(bounds.min)} mm · turn off Auto to adjust`:bounds.min===null?`No allowed 0.1 mm value with the current dimensions · ${PURPOSE[key]}`:`Allowed now: ${bounds.min}–${bounds.max} mm · ${PURPOSE[key]}`;
     sliders[key]=Object.freeze({...bounds,disabled:!dimensionsValid||bounds.disabled,source:sourceName,rule});
   }
-  const issues=[...current.issues];
+  const issues=[...current.issues,...(dimensionsValid?patternIssues(raw,current.summary):[])];
   if(!['none','top','bottom','both'].includes(raw.drains)) issues.push(issue('drains-choice','direct','Choose drain holes.',['drains']));
   if(activeDrains) {
     if(!whole(rawDrainCount)) issues.push(issue('drain-count-whole','direct','Enter a whole number.',['drainCount']));

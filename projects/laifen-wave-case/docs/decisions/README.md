@@ -1,6 +1,14 @@
 # Decision index
 
-## Current drain checkbox follow-up
+## Current surface pattern gate
+
+[Surface pattern iteration](../iterations/2026-09-06-surface-pattern/) follows
+the delivered drain count at `cf4adb0`. Existing Smooth/Diamond selection is
+under review; Diamond must pass the new combined gates before enablement.
+The accepted count source SHA is
+`517f8546612ffecbc50a732362c9e3a326db03fa2c94e94a68daad472a0b42e2`.
+
+## Preserved drain checkbox follow-up
 
 [Drain checkbox iteration](../iterations/2026-09-06-drain-checkboxes/) extends
 the editable SCAD drain mode to both ends and exposes independent Top/Bottom

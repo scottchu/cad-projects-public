@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {adapt,DEFAULTS} from '../../preview/openscad-wasm-simulator/src/adapter.mjs';
-import {BROWSER_PRESET,ENUMS,snapshot} from '../../preview/openscad-wasm-simulator/src/schema.mjs';
+import {BROWSER_PRESET,DIAMOND,ENUMS,snapshot} from '../../preview/openscad-wasm-simulator/src/schema.mjs';
 import {Generation,exactSTLBlob} from '../../preview/openscad-wasm-simulator/src/lifecycle.mjs';
 import {deriveDraftState,dimensionSnapshot,DIMENSIONS} from '../../preview/openscad-wasm-simulator/src/bounds.mjs';
 import {bindRange} from '../../preview/openscad-wasm-simulator/src/controls.mjs';
@@ -15,6 +15,22 @@ test('drain contract accepts the four checkbox modes and rejects unknown values'
  assert.deepEqual(ENUMS.drainage_mode,['none','top','bottom','both']);
  for(const drains of ENUMS.drainage_mode)assert.equal(adapt({...DEFAULTS,drains}).values.drainage_mode,drains);
  assert.equal(adapt({...DEFAULTS,drains:'side'}).errors.drains,'Choose drain holes.');
+});
+test('schema, adapter, and draft state share exact Diamond wall and triangle preflight',()=>{
+ const diamond={...DEFAULTS,pattern:'diamond'};
+ assert.equal(adapt(diamond).values.surface_style,'diamond');assert.equal(adapt(diamond).values.diamond_arc_pitch,DIAMOND.arcPitch);
+ const wallFail=deriveDraftState({...diamond,wall:'4.3'},initialDimensions),wallPass=deriveDraftState({...diamond,wall:'4.4'},initialDimensions);
+ assert.match(wallFail.formError,/at least 4.4/);assert.equal(wallFail.sliders.wall.min,4.4);assert.equal(wallPass.canGenerate,true);assert.match(adapt({...diamond,wall:'4.3'}).errors.wall,/at least 4.4/);
+ const thin=adapt({...DEFAULTS,pattern:'smooth',wall:'4.3'}).values;assert.throws(()=>snapshot({...thin,surface_style:'diamond'}),/wall below/);
+ const base=adapt({...DEFAULTS,pattern:'smooth',diameter:'69',wall:'5.5',height:'150.7',auto:false,lid:'20'}).values;
+ assert.doesNotThrow(()=>snapshot({...base,surface_style:'diamond'}));
+ for(const height of ['150.8','150.8000000001']){
+  const values=adapt({...DEFAULTS,pattern:'smooth',diameter:'69',wall:'5.5',height,auto:false,lid:'20'}).values;
+  assert.throws(()=>snapshot({...values,surface_style:'diamond'}),/triangle estimate/);assert.match(adapt({...DEFAULTS,pattern:'diamond',diameter:'69',wall:'5.5',height,auto:false,lid:'20'}).errors.height,/too detailed/);
+ }
+ const large=deriveDraftState({...diamond,diameter:'69',wall:'5.5',height:'150.9',auto:false,lid:'20'},initialDimensions);
+ assert.match(large.formError,/too detailed/);
+ const missing=deriveDraftState({...diamond,pattern:'unknown'},initialDimensions);assert.equal(missing.fieldErrors.pattern,'Choose a surface pattern.');assert.equal(missing.sliders.wall.disabled,false);assert.equal(missing.sliders.wall.min,4);
 });
 test('blank and out-of-range exact diameter preserve one whole last-valid range source',()=>{
  for(const value of ['', '70']){

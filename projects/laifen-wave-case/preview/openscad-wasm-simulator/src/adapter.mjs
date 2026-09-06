@@ -1,6 +1,6 @@
 import {BROWSER_PRESET, snapshot} from './schema.mjs';
 import {DRAIN_DEFAULT_COUNT,feasibility,legalCount,whole} from './drain-layout.mjs';
-export const DEFAULTS = Object.freeze({diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',output:'assembled'});
+export const DEFAULTS = Object.freeze({diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',pattern:'smooth',output:'assembled'});
 // 3.95 may fail the unchanged schema's floating-point residual test. Advertise 4.
 export const WALL_MIN = 4;
 export function adapt(raw) {
@@ -18,6 +18,7 @@ export function adapt(raw) {
   if (!errors.height && !errors.ends && H<2*T+9) errors.height='Increase the inside height to leave room for the screw lid.';
   if (!errors.height && !errors.ends && (!Number.isFinite(lid) || lid<20 || lid>250 || lid<=T+11 || lid>=H+T-2)) errors[raw.auto?'height':'lid']='The lid needs more room. Increase the inside height or adjust the lid height.';
   if (!['none','top','bottom','both'].includes(raw.drains)) errors.drains='Choose drain holes.';
+  if (!['smooth','diamond'].includes(raw.pattern)) errors.pattern='Choose a surface pattern.';
   if (!['assembled','body','cap','print_layout'].includes(raw.output)) errors.output='Choose an export shape.';
   const hasRawCount=Object.hasOwn(raw,'drainCount'),rawCount=raw.drainCount??String(DRAIN_DEFAULT_COUNT),activeDrains=raw.drains!=='none';
   if(activeDrains&&hasRawCount&&!whole(rawCount)) errors.drainCount='Enter a whole number.';
@@ -33,10 +34,12 @@ export function adapt(raw) {
   }
   if (Object.keys(errors).length) return {errors,summary:{outsideDiameter,outsideHeight,lid}};
   try {
-    const values=snapshot({...BROWSER_PRESET,body_bore:D,cap_bore:D+1,device_length:H-5,outer_diameter:outsideDiameter,floor_thickness:T,split_distance_from_top:lid,drain_ring_radius:radius,drain_count:drainCount,drainage_mode:raw.drains,output_mode:raw.output});
+    const values=snapshot({...BROWSER_PRESET,surface_style:raw.pattern,body_bore:D,cap_bore:D+1,device_length:H-5,outer_diameter:outsideDiameter,floor_thickness:T,split_distance_from_top:lid,drain_ring_radius:radius,drain_count:drainCount,drainage_mode:raw.drains,output_mode:raw.output});
     return {errors,values,summary:{outsideDiameter,outsideHeight,lid}};
   } catch(error) {
-    errors.wall=error.message==='thread wall constraint failed' ? `This screw lid needs walls of at least ${WALL_MIN} mm.` : 'These dimensions leave too little room for the screw closure. Increase the wall thickness or inside height.';
+    if(error.message==='diamond wall below 4.4mm') errors.wall='Diamond needs wall thickness of at least 4.4 mm. Increase wall thickness or choose Smooth.';
+    else if(error.message==='diamond exterior triangle estimate exceeds cap') errors.height='Diamond is too detailed at this size. Reduce outside diameter or patterned-part height, or choose Smooth.';
+    else errors.wall=error.message==='thread wall constraint failed' ? `This screw lid needs walls of at least ${WALL_MIN} mm.` : 'These dimensions leave too little room for the screw closure. Increase the wall thickness or inside height.';
     return {errors,summary:{outsideDiameter,outsideHeight,lid}};
   }
 }

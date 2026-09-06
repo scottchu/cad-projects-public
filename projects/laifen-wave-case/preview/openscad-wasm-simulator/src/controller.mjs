@@ -29,6 +29,11 @@ export function createCustomizerController({document,createGeneration,viewer=nul
     const drainError=draft.fieldErrors.drains||'';
     $('drains').setAttribute('aria-invalid',String(Boolean(drainError)));
     $('drains-error').hidden=!drainError;$('drains-error').textContent=drainError;
+    const patternError=draft.fieldErrors.pattern||'';
+    $('surface-pattern').setAttribute('aria-invalid',String(Boolean(patternError)||coupledFields.has('pattern')));
+    $('surface-pattern-error').hidden=!patternError;$('surface-pattern-error').textContent=patternError;
+    $('surface-pattern').setAttribute('aria-describedby',`surface-pattern-rule ${patternError?'surface-pattern-error':coupledFields.has('pattern')?'dimension-form-error':'surface-pattern-error'}`);
+    for(const pattern of ['smooth','diamond'])$('surface-'+pattern).checked=raw.pattern===pattern;
     const count=draft.drainCount,countError=draft.fieldErrors.drainCount||'';
     $('drain-count').value=raw.drainCount;$('drain-count').disabled=!count.active;$('drain-count').setAttribute('aria-invalid',String(Boolean(countError)||coupledFields.has('drainCount')));
     $('drain-count-error').hidden=!countError;$('drain-count-error').textContent=countError;$('drain-count-rule').textContent=count.rule;
@@ -72,6 +77,7 @@ export function createCustomizerController({document,createGeneration,viewer=nul
   };
   $('drains-top').addEventListener('change',updateDrains);
   $('drains-bottom').addEventListener('change',updateDrains);
+  for(const pattern of ['smooth','diamond'])$('surface-'+pattern).addEventListener('change',()=>{if($('surface-'+pattern).checked){raw={...raw,pattern};edit();}});
   $('drain-count').addEventListener('input',()=>{raw={...raw,drainCount:$('drain-count').value};edit();});
   bindRange({input:$('drain-count'),range:$('drain-count-range'),onChange:value=>{const count=draft.drainCount,n=Number(value);if(count.disabled||!Number.isInteger(n)||n<1||n>count.max){refreshFields();return false;}raw={...raw,drainCount:value};edit();return true;}});
   $('auto-lid').onchange=()=>{const auto=$('auto-lid').checked;raw={...raw,auto,...(!auto&&raw.auto?{lid:$('lid').value}:{})};edit();};
