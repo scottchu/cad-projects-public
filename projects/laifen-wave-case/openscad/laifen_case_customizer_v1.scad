@@ -38,7 +38,7 @@ diamond_phase_deg = 0;        // [0:1:360]
 diamond_plateau_half_fraction = 0.18; // [0.10:0.01:0.30] Dimensionless half-fraction.
 
 /* [Drainage] */
-drainage_mode = "bottom";    // [none:No drains,top:Cap closed-end drains,bottom:Body closed-end drains]
+drainage_mode = "bottom";    // [none:No drains,top:Cap closed-end drains,bottom:Body closed-end drains,both:Both closed-end drains]
 drain_diameter = 3;           // [1:0.1:5]
 drain_ring_radius = 9;        // [2:0.1:14]
 
@@ -344,14 +344,14 @@ module v06_body_shell() {
       v06_direct_shell("body");
       translate([0,0,body_thread_z+thread_transition]) body_thread();
     }
-    if (drainage_mode == "bottom") translate([0,0,-.1]) drain_pattern(floor_thickness+.2);
+    if (drainage_mode == "bottom" || drainage_mode == "both") translate([0,0,-.1]) drain_pattern(floor_thickness+.2);
   }
 }
 module v06_cap_shell() {
   difference() {
     v06_direct_shell("cap");
     translate([0,0,thread_transition]) female_thread_groove();
-    if (drainage_mode == "top") translate([0,0,cap_height-floor_thickness-.1]) drain_pattern(floor_thickness+.2);
+    if (drainage_mode == "top" || drainage_mode == "both") translate([0,0,cap_height-floor_thickness-.1]) drain_pattern(floor_thickness+.2);
   }
 }
 
@@ -367,7 +367,7 @@ module body_shell() {
       translate([0,0,body_thread_z+thread_transition]) body_thread();
     }
     translate([0,0,floor_thickness]) cylinder(r=body_inner_radius, h=body_height-floor_thickness+.1);
-    if (drainage_mode == "bottom") translate([0,0,-.1]) drain_pattern(floor_thickness+.2);
+    if (drainage_mode == "bottom" || drainage_mode == "both") translate([0,0,-.1]) drain_pattern(floor_thickness+.2);
   }
 }
 
@@ -381,7 +381,7 @@ module cap_shell() {
     cylinder(r=cap_inner_radius, h=cap_height-floor_thickness+.01);
     female_thread_void();
     translate([0,0,thread_transition]) female_thread_groove();
-    if (drainage_mode == "top") translate([0,0,cap_height-floor_thickness-.1]) drain_pattern(floor_thickness+.2);
+    if (drainage_mode == "top" || drainage_mode == "both") translate([0,0,cap_height-floor_thickness-.1]) drain_pattern(floor_thickness+.2);
   }
 }
 

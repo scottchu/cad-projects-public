@@ -1,28 +1,25 @@
-# Next agent — compact controls
+# Next agent — drain checkboxes
 
-Resume `docs/iterations/2026-09-06-compact-controls` on
-`codex/container-desktop-customizer`. Read BRIEF/DESIGN, then
-`RULES-REVISION.md`, IMPLEMENTATION-REVISION, VALIDATION, CRITIQUE and HANDOFF.
-C5 source and deterministic gates pass; full browser QA is blocked by native
-Computer Use `-10005 cgWindowNotFound`, despite fresh app/session retries.
-The user has been asked whether the desktop is locked; do not assume an answer.
+Active iteration: `docs/iterations/2026-09-06-drain-checkboxes` on
+`codex/container-desktop-customizer`, draft PR19. Read BRIEF, IMPLEMENTATION,
+VALIDATION, CRITIQUE, REVIEW and HANDOFF. The user wants additions one at a time;
+only Top/Bottom drain checkboxes and actual both-end support were added here.
 
-Recheck <https://mac-mini.duckbill-ionian.ts.net:8453/>. Final built assets were
-verified byte-for-byte through this private route. Once desktop access returns,
-obtain fresh C5 mobile invalid-input/correction and desktop/default captures,
-then verify current generation/download, focus/tooltips and Cancel. Have the
-independent validator/critic update their blocked receipts and join formal
-review; avoid rerunning unrelated CAD tests or changing source to bypass QA.
-The previous C4 layout evidence uses identical CSS but does not prove C5's new
-error presentation. Keep draft PR19 unmerged pending final browser acceptance.
+Current preview <https://mac-mini.duckbill-ionian.ts.net:8453/> was checked in
+Safari on desktop/mobile; both-end generation/download passed. Baseline Bottom
+STL is byte-identical. CUA access recovered for these scoped checks, but prior
+compact-controls full QA gaps were not all retested. Do not claim full UI or
+print acceptance or merge automatically. Wait for the user's next item.
 
-No schema, SCAD, worker, engine lock, existing8448 route, printer, or public
-hosting changes belong to this follow-up. Keep4mm wall and seam limits explicit.
+The new editable SCAD SHA is
+`cf0983e84e738be87e31462c903afcf02646915cc1e4a9e8641b8edce05b5393`;
+only existing drain predicates/enum comment changed. Preserve all other geometry,
+engine/worker lock, existing8448 route, and historical STEP releases.
 
 ## Preserved predecessor delivery
 
 The predecessor iteration is `docs/iterations/2026-09-04-openscad-visual-fidelity-recovery`.
-Preserve the authoritative OpenSCAD source
+Preserve the historical predecessor OpenSCAD revision
 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`,
 the R7 print-layout STEP
 `80fd95845b51da5266883614f9bf8eff60793a24d5c39b7321c9c6cb16d477a4`,

@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {adapt,DEFAULTS} from '../../preview/openscad-wasm-simulator/src/adapter.mjs';
-import {BROWSER_PRESET,snapshot} from '../../preview/openscad-wasm-simulator/src/schema.mjs';
+import {BROWSER_PRESET,ENUMS,snapshot} from '../../preview/openscad-wasm-simulator/src/schema.mjs';
 import {Generation,exactSTLBlob} from '../../preview/openscad-wasm-simulator/src/lifecycle.mjs';
 import {deriveDraftState,dimensionSnapshot,DIMENSIONS} from '../../preview/openscad-wasm-simulator/src/bounds.mjs';
 import {bindRange} from '../../preview/openscad-wasm-simulator/src/controls.mjs';
@@ -10,6 +10,11 @@ test('one draft derivation owns default slider rules and generation values',()=>
  const state=deriveDraftState(DEFAULTS,initialDimensions);
  assert.deepEqual(Object.fromEntries(['diameter','wall','height','ends'].map(key=>[key,[state.sliders[key].min,state.sliders[key].max]])),{diameter:[11,69],wall:[4,25],height:[46.2,305],ends:[2,8]});
  assert.equal(state.canGenerate,true);assert.deepEqual(state.generationValues,BROWSER_PRESET);
+});
+test('drain contract accepts the four checkbox modes and rejects unknown values',()=>{
+ assert.deepEqual(ENUMS.drainage_mode,['none','top','bottom','both']);
+ for(const drains of ENUMS.drainage_mode)assert.equal(adapt({...DEFAULTS,drains}).values.drainage_mode,drains);
+ assert.equal(adapt({...DEFAULTS,drains:'side'}).errors.drains,'Choose drain holes.');
 });
 test('blank and out-of-range exact diameter preserve one whole last-valid range source',()=>{
  for(const value of ['', '70']){
@@ -111,7 +116,7 @@ test('default timers preserve browser global receiver branding',async()=>{
 import {dimensionAnchor} from '../../preview/openscad-wasm-simulator/src/dimensions.mjs';
 test('section anchors remain in plain body walls and solid ends across valid dimensions/drains',()=>{
  for(const dimensions of [DEFAULTS,{...DEFAULTS,height:'60',ends:'4',auto:false,lid:'60'},{...DEFAULTS,diameter:'10',wall:'5'},{...DEFAULTS,diameter:'69',wall:'4'}]) {
-  for(const drains of ['none','top','bottom']) {
+  for(const drains of ENUMS.drainage_mode) {
    const {values}=adapt({...dimensions,drains});assert.ok(values);
    const T=values.floor_thickness,seam=values.device_length+values.axial_allowance+2*T-values.split_distance_from_top;
    for(const key of ['diameter','wall']) {

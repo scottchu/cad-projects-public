@@ -1,40 +1,35 @@
 # Project state
 
-## Active compact controls follow-up — 2026-09-06
+## Active drain checkbox follow-up — 2026-09-06
 
-Active iteration: `docs/iterations/2026-09-06-compact-controls`.
-Branch `codex/container-desktop-customizer`, draft PR
-<https://github.com/scottchu/design-projects/pull/19>.
-Candidate C5 (`inputs/candidate-05.sha256`, SHA-256
-`f51607ab4e80b2d2b6fa753d90f55f1cb64504c42c3b5919e6175d27e100e714`)
-implements pinned mobile canvas, independently scrolling parameters, compact
-44px icon controls, slider/exact-value pairs and embedded allowed rules.
-`RULES-REVISION.md` supersedes the initial partial-invalid bookkeeping with
-one complete validated dimension snapshot and one pure UI state derivation.
-Invalid exact values remain visible, all sliders pause with explicitly labeled
-last-valid ranges, and Generate stays blocked until correction.
+Current iteration: `docs/iterations/2026-09-06-drain-checkboxes`.
+The user requests one item at a time; this iteration only replaces the drain
+selector with independent Top and Bottom checkboxes, including both/neither.
+Bottom-only is the preserved default and Reset state. Candidate manifest
+`inputs/candidate-01.sha256` SHA
+`4a716d71c154bcba1264d556946613ec615c50217bba6331e36da8e9f1c67389`.
 
-Independent deterministic validation passes:25 Node tests,4 Python tests,
-26 independent intervals and22,458 slider values. Source critique passes.
-C4 Safari screenshots passed390x700/844,760/761x800,1280x800,1440x900;
-C5 CSS is unchanged. Fresh C5 browser acceptance is BLOCKED by Computer Use
-`-10005 cgWindowNotFound` across Safari/Chrome/reinitialization. The new error
-presentation and C5 generation/download still require fresh browser review.
-See VALIDATION, CRITIQUE and project `design-qa.md`; do not claim full UI QA.
-Formal review approves source delivery to draft PR19 with the browser gap
-disclosed; it does not approve merge or full UI acceptance. REVIEW.md SHA-256
-`073d663da5f23e81c990270e9d8fe86e177268e03e25ab393a9479de67556a43`.
+Editable SCAD source `openscad/laifen_case_customizer_v1.scad` is now SHA
+`cf0983e84e738be87e31462c903afcf02646915cc1e4a9e8641b8edce05b5393`.
+This intentionally extends only the existing drain selection predicates to
+both; cutter shape, hole locations, dimensions and threads remain unchanged.
+The prior immutable-source UI boundary is superseded only for this user request.
+27 Node and16 Python tests, pinned WASM end-opening checks across all4 modes,
+exact Bottom-only smooth-default STL parity, and build pass. Root Safari
+verified desktop/mobile checkbox states, manual generation, Reset and a both-end
+STL download. See VALIDATION and CRITIQUE; formal review passes for this scoped item and draft PR delivery. REVIEW.md SHA
+`19ef28f4d3032b1d1a56dbb790e7885725433e33575240f4afea1aee58ef0646`.
 
-Private development review: <https://mac-mini.duckbill-ionian.ts.net:8453/>.
-The final six built files match local dist byte-for-byte over HTTPS. Port8453
-proxies loopback5178; no public Funnel was enabled for it and8448 is preserved.
-CAD source/schema/worker/engine lock remain unchanged. The existing4mm wall
-floor and edited closed-assembly seam defect remain unresolved CAD/artifact
-limits. No new print-ready or physical acceptance is claimed.
+Private preview: <https://mac-mini.duckbill-ionian.ts.net:8453/>; all6 built
+files match the served bytes. Keep existing draft PR19 unmerged. Earlier compact
+controls evidence lives in `2026-09-06-compact-controls`; current drain checks
+do not retroactively close every broader UI acceptance gap. Existing4mm wall
+floor and edited closed-assembly seam issue remain; no print-ready or physical
+acceptance claim. No change to8448 or printer/public hosting.
 
 ## Preserved deployed baseline and CAD authority
 
-The authoritative editable source is `openscad/laifen_case_customizer_v1.scad`,
+The preserved predecessor source revision of `openscad/laifen_case_customizer_v1.scad` is
 SHA-256 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`.
 It implements relationship B, the VFR-08 drain and print-layout repairs, and the
 39 mm crest OD with 30/31 mm body/cap bores. The preserved deployed review

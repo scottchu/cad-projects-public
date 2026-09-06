@@ -3,7 +3,7 @@ import {DIMENSIONS,deriveDraftState,dimensionSnapshot} from './bounds.mjs';
 import {bindRange} from './controls.mjs';
 import {exactSTLBlob} from './lifecycle.mjs';
 
-const FIELDS=['diameter','height','wall','ends','lid','drains','output'];
+const FIELDS=['diameter','height','wall','ends','lid','output'];
 const rounded=value=>Number(value.toFixed(3));
 
 export function createCustomizerController({document,createGeneration,viewer=null,defaults=DEFAULTS,autoGenerate=true,createObjectURL=blob=>URL.createObjectURL(blob),revokeObjectURL=url=>URL.revokeObjectURL(url)}) {
@@ -24,7 +24,12 @@ export function createCustomizerController({document,createGeneration,viewer=nul
     }
     $('dimension-form-error').hidden=!draft.formError;$('dimension-form-error').textContent=draft.formError;
     $('auto-lid').checked=raw.auto;$('lid').readOnly=raw.auto;
-    $('drains').value=raw.drains;$('output').value=raw.output;
+    $('drains-top').checked=raw.drains==='top'||raw.drains==='both';
+    $('drains-bottom').checked=raw.drains==='bottom'||raw.drains==='both';
+    const drainError=draft.fieldErrors.drains||'';
+    $('drains').setAttribute('aria-invalid',String(Boolean(drainError)));
+    $('drains-error').hidden=!drainError;$('drains-error').textContent=drainError;
+    $('output').value=raw.output;
     for(const key of DIMENSIONS){
       const input=$(key),range=$(`${key}-range`),slider=draft.sliders[key];
       const autoLid=Number.isFinite(draft.summary.lid)?draft.summary.lid:slider.min;
@@ -55,6 +60,12 @@ export function createCustomizerController({document,createGeneration,viewer=nul
     $(key).addEventListener('input',()=>{raw={...raw,[key]:$(key).value,...(key==='lid'?{auto:false}:{})};edit();});
     $(key).addEventListener('focus',()=>viewer?.setDimension(key));
   }
+  const updateDrains=()=>{
+    const top=$('drains-top').checked,bottom=$('drains-bottom').checked;
+    raw={...raw,drains:top?(bottom?'both':'top'):(bottom?'bottom':'none')};edit();
+  };
+  $('drains-top').addEventListener('change',updateDrains);
+  $('drains-bottom').addEventListener('change',updateDrains);
   $('auto-lid').onchange=()=>{const auto=$('auto-lid').checked;raw={...raw,auto,...(!auto&&raw.auto?{lid:$('lid').value}:{})};edit();};
   for(const key of DIMENSIONS)bindRange({input:$(key),range:$(`${key}-range`),onChange:value=>{const slider=draft.sliders[key],number=Number(value);if(slider.disabled||!Number.isFinite(number)||number<slider.min||number>slider.max){refreshFields();return false;}raw={...raw,[key]:value};viewer?.setDimension(key);edit();return true;},onFocus:()=>viewer?.setDimension(key)});
   $('controls').onsubmit=event=>{event.preventDefault();if(!busy&&draft.canGenerate)$('generate').click();};

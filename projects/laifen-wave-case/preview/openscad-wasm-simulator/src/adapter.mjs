@@ -16,7 +16,7 @@ export function adapt(raw) {
   if (!errors.diameter && !errors.wall && (outsideDiameter<20 || outsideDiameter>80)) errors.wall='Choose a wall thickness that keeps the outside diameter between 20 and 80 mm.';
   if (!errors.height && !errors.ends && H<2*T+9) errors.height='Increase the inside height to leave room for the screw lid.';
   if (!errors.height && !errors.ends && (!Number.isFinite(lid) || lid<20 || lid>250 || lid<=T+11 || lid>=H+T-2)) errors[raw.auto?'height':'lid']='The lid needs more room. Increase the inside height or adjust the lid height.';
-  if (!['none','top','bottom'].includes(raw.drains)) errors.drains='Choose a drain location.';
+  if (!['none','top','bottom','both'].includes(raw.drains)) errors.drains='Choose drain holes.';
   if (!['assembled','body','cap','print_layout'].includes(raw.output)) errors.output='Choose an export shape.';
   if (Object.keys(errors).length) return {errors,summary:{outsideDiameter,outsideHeight,lid}};
   try {

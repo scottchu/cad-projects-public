@@ -71,7 +71,7 @@ export function deriveDraftState(raw,lastValidDimensions) {
     sliders[key]=Object.freeze({...bounds,disabled:!dimensionsValid||bounds.disabled,source:sourceName,rule});
   }
   const issues=[...current.issues];
-  if(!['none','top','bottom'].includes(raw.drains)) issues.push(issue('drains-choice','direct','Choose a drain location.',['drains']));
+  if(!['none','top','bottom','both'].includes(raw.drains)) issues.push(issue('drains-choice','direct','Choose drain holes.',['drains']));
   if(!['assembled','body','cap','print_layout'].includes(raw.output)) issues.push(issue('output-choice','direct','Choose an export shape.',['output']));
   const values=issues.length?null:generationValues(raw,current.n,current.summary);
   const fieldErrors={};for(const item of issues)if(item.type==='direct'&&!fieldErrors[item.fields[0]])fieldErrors[item.fields[0]]=item.message;

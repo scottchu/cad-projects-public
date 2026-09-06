@@ -12,11 +12,11 @@ class FakeElement {
   click(){if(!this.disabled&&!this.hidden)this.onclick?.({preventDefault(){}});}
 }
 function fakeDocument(){
-  const ids=['diameter','height','wall','ends','lid','drains','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
+  const ids=['diameter','height','wall','ends','lid','drains','drains-top','drains-bottom','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
   for(const key of ['diameter','height','wall','ends','lid'])ids.push(`${key}-range`,`${key}-rule`);
   for(const key of ['diameter','height','wall','ends','lid','drains','output'])ids.push(`${key}-error`);
   const elements=Object.fromEntries(ids.map(id=>[id,new FakeElement()]));
-  Object.assign(elements.diameter,{value:'30'});Object.assign(elements.height,{value:'213'});Object.assign(elements.wall,{value:'4.5'});Object.assign(elements.ends,{value:'3'});Object.assign(elements.lid,{value:'84'});Object.assign(elements.drains,{value:'bottom'});Object.assign(elements.output,{value:'assembled'});elements['auto-lid'].checked=true;elements.cancel.hidden=true;
+  Object.assign(elements.diameter,{value:'30'});Object.assign(elements.height,{value:'213'});Object.assign(elements.wall,{value:'4.5'});Object.assign(elements.ends,{value:'3'});Object.assign(elements.lid,{value:'84'});Object.assign(elements.output,{value:'assembled'});elements['drains-bottom'].checked=true;elements['auto-lid'].checked=true;elements.cancel.hidden=true;
   const actions=new FakeElement();return {elements,actions,getElementById:id=>elements[id],querySelector:selector=>selector==='.actions'?actions:null};
 }
 function setup(){
@@ -25,6 +25,7 @@ function setup(){
   return {document,controller,calls,callbacks};
 }
 const edit=(document,key,value)=>{document.elements[key].value=value;document.elements[key].dispatch('input');};
+const setDrains=(document,{top,bottom})=>{document.elements['drains-top'].checked=top;document.elements['drains-bottom'].checked=bottom;document.elements['drains-top'].dispatch('change');};
 
 test('full controller renders coherent rules, errors, Generate state, and generation values',()=>{
   const {document,controller,calls}=setup(),e=document.elements;
@@ -33,7 +34,7 @@ test('full controller renders coherent rules, errors, Generate state, and genera
   assert.equal(e.diameter.value,'');assert.equal(e.diameter.getAttribute('aria-invalid'),'true');assert.equal(e.generate.disabled,true);
   for(const key of ['diameter','height','wall','ends','lid']){assert.equal(e[`${key}-range`].disabled,true);assert.match(e[`${key}-rule`].textContent,/Last valid/);}
   e['diameter-range'].value='11';e['diameter-range'].dispatch('input');assert.equal(controller.getState().raw.diameter,'');assert.equal(e.diameter.value,'');
-  const frozen=controller.getState().lastValidDimensions,rules=Object.fromEntries(['diameter','height','wall','ends','lid'].map(key=>[key,e[`${key}-rule`].textContent]));edit(document,'drains','top');edit(document,'output','body');
+  const frozen=controller.getState().lastValidDimensions,rules=Object.fromEntries(['diameter','height','wall','ends','lid'].map(key=>[key,e[`${key}-rule`].textContent]));setDrains(document,{top:true,bottom:false});edit(document,'output','body');
   assert.deepEqual(controller.getState().lastValidDimensions,frozen);assert.deepEqual(Object.fromEntries(['diameter','height','wall','ends','lid'].map(key=>[key,e[`${key}-rule`].textContent])),rules);assert.equal(e['diameter-error'].textContent,'Enter a number in millimetres.');
   edit(document,'diameter','70');assert.equal(e.diameter.value,'70');assert.equal(e['diameter-error'].textContent,'Use a value from 10 to 69 mm.');
   e.generate.click();assert.equal(calls.generate.length,0);
@@ -70,6 +71,15 @@ test('enabled slider updates exact draft without generation and an edit cancels 
 test('Auto/manual transition and reset restore complete defaults without generation',()=>{
   const {document,controller,calls}=setup(),e=document.elements;
   assert.equal(e.lid.value,'84');e['auto-lid'].checked=false;e['auto-lid'].onchange();assert.equal(controller.getState().raw.lid,'84');assert.equal(e.lid.readOnly,false);
-  edit(document,'lid','90');edit(document,'drains','none');edit(document,'output','cap');e.reset.click();
-  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e.drains.value,'bottom');assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+  edit(document,'lid','90');setDrains(document,{top:false,bottom:false});edit(document,'output','cap');e.reset.click();
+  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e['drains-top'].checked,false);assert.equal(e['drains-bottom'].checked,true);assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+});
+
+test('independent drain checkboxes map all four modes, preserve invalid drafts, and cancel active work',()=>{
+  const {document,controller,calls}=setup(),e=document.elements;
+  for(const [top,bottom,mode] of [[false,false,'none'],[true,false,'top'],[false,true,'bottom'],[true,true,'both']]){
+    setDrains(document,{top,bottom});assert.equal(controller.getState().raw.drains,mode);assert.equal(e['drains-top'].checked,top);assert.equal(e['drains-bottom'].checked,bottom);assert.equal(calls.generate.length,0);
+  }
+  edit(document,'diameter','');setDrains(document,{top:true,bottom:true});assert.equal(controller.getState().raw.drains,'both');assert.equal(e['diameter-error'].textContent,'Enter a number in millimetres.');assert.equal(e.generate.disabled,true);
+  edit(document,'diameter','30');e.generate.click();assert.equal(calls.generate.length,1);setDrains(document,{top:false,bottom:false});assert.equal(calls.invalidate.at(-1),'Dimensions changed. Generate to update.');assert.equal(controller.getState().busy,false);assert.equal(controller.getState().raw.drains,'none');
 });

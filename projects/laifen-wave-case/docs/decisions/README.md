@@ -1,8 +1,18 @@
 # Decision index
 
-## Current pointer: VFR-12 OpenSCAD customizer
+## Current drain checkbox follow-up
 
-The selected current contract is the [OpenSCAD visual-fidelity recovery](../iterations/2026-09-04-openscad-visual-fidelity-recovery/). Its authoritative source is `openscad/laifen_case_customizer_v1.scad`, SHA-256 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`, and its only current live review surface is <https://mac-mini.duckbill-ionian.ts.net:8448/openscad-simulator/>. VFR-12 C3 is the delivered smooth mobile UI; Diamond controls remain disabled pending browser recovery.
+[Drain checkbox iteration](../iterations/2026-09-06-drain-checkboxes/) extends
+the editable SCAD drain mode to both ends and exposes independent Top/Bottom
+checkboxes. Current development source SHA `cf0983e84e738be87e31462c903afcf02646915cc1e4a9e8641b8edce05b5393`;
+private preview <https://mac-mini.duckbill-ionian.ts.net:8453/>. Bottom-only
+default geometry is preserved byte-for-byte. Prior VFR-12/8448 and R7 STEP
+records below remain preserved releases, not the current editable source hash.
+
+
+## Preserved deployed pointer: VFR-12 OpenSCAD customizer
+
+The selected current contract is the [OpenSCAD visual-fidelity recovery](../iterations/2026-09-04-openscad-visual-fidelity-recovery/). Its authoritative source is `openscad/laifen_case_customizer_v1.scad`, SHA-256 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`, and its preserved live review surface is <https://mac-mini.duckbill-ionian.ts.net:8448/openscad-simulator/>. VFR-12 C3 is the delivered smooth mobile UI; Diamond controls remain disabled pending browser recovery.
 
 P2 R3 is preserved historical user-validation evidence. Its generic two-piece, mid-split control model and receipts remain under [P2 R3](../iterations/2026-09-03-p2-r3-control-sync-recovery/), but it is no longer the current pointer or a claimed live delivery surface.
 
