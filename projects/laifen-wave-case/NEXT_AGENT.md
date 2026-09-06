@@ -4,7 +4,7 @@ Active iteration: `docs/iterations/2026-09-06-pattern-performance`. All five pat
 
 Independent paired Node medians: Rings26.631→19.317s, Spiral body26.769→19.335s, Spiral assembled46.639→33.499s (27–28% faster). Smooth/Diamond remain within timing noise; Ribs1.065→1.000s in one audit pair. All38 fresh compile receipts preserve exact STL bytes; Node59/Python13, scratch browser Rings Blob/download, distinct critique and formal review passed. No browser/phone speedup or physical acceptance claim.
 
-Private preview `https://mac-mini.duckbill-ionian.ts.net:8453/` has the approved build; six HTTPS files match frozen/local bytes and a fresh live Ribs Body generated the expected STL. See HANDOFF, VALIDATION, REVIEW and DELIVERY for exact evidence and the corrected early-build incident. Draft PR19 remains the delivery route; no main merge.
+Private preview `https://mac-mini.duckbill-ionian.ts.net:8453/` has the approved build; six HTTPS files match frozen/local bytes and a fresh live Ribs Body generated the expected STL. See HANDOFF, VALIDATION, REVIEW and DELIVERY for exact evidence and the corrected early-build incident. Source delivery commit `4773ac343b6cd2b1c9e632012e163a9658a9be36` is pushed to draft PR19; no main merge.
 
 Next action: user reviews the faster patterns. Preserve this exact-output baseline and per-pattern controls. Future performance work should measure browser completion separately and retain explicit source/runtime hash joins; the phase-independent JS sampler is not a coordinate oracle. Native Safari/iPhone timing, slicer and physical acceptance remain open.
 
