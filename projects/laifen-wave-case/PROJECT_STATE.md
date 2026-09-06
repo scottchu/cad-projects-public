@@ -1,28 +1,36 @@
 # Project state
 
-## Active desktop customizer work — 2026-09-05
+## Active compact controls follow-up — 2026-09-06
 
-The active iteration is `docs/iterations/2026-09-05-desktop-customizer`.
-The user selected visual option 2 and requires the existing Generate, Cancel,
-Reset and Download workflow. Work is isolated on
-`codex/container-desktop-customizer`. Candidate C2 (`inputs/candidate-02.sha256`,
-SHA-256 `b57642a532d834fddeb56c938496af44a03d3635e4a748ad46ada0cf86df609c`)
-passes independent UI/runtime validation, visual critique and formal review
-(`REVIEW.md`, SHA-256 `6ca1fc54bfdeeb1b4a49ade6dd0a1c3c946a297e7fdf297350ee7693e8c88bf4`).
-The local preview is `http://127.0.0.1:5178/`, verified in the in-app
-browser with actual STL generation. Four plain dimensions, visible drains,
-optional lid/output choices, real STL cutaway and separate Generate, Cancel,
-Reset dimensions, Reset view and current-byte Download are implemented.
-Existing OpenSCAD source/schema/worker and live services remain unchanged.
-See iteration VALIDATION and project `design-qa.md` for evidence.
-Draft delivery: <https://github.com/scottchu/design-projects/pull/19>, source
-commit `7576ddb3f03fc56234ad68e82515d41ea8a427ab`; not merged or deployed.
+Active iteration: `docs/iterations/2026-09-06-compact-controls`.
+Branch `codex/container-desktop-customizer`, draft PR
+<https://github.com/scottchu/design-projects/pull/19>.
+Candidate C5 (`inputs/candidate-05.sha256`, SHA-256
+`f51607ab4e80b2d2b6fa753d90f55f1cb64504c42c3b5919e6175d27e100e714`)
+implements pinned mobile canvas, independently scrolling parameters, compact
+44px icon controls, slider/exact-value pairs and embedded allowed rules.
+`RULES-REVISION.md` supersedes the initial partial-invalid bookkeeping with
+one complete validated dimension snapshot and one pure UI state derivation.
+Invalid exact values remain visible, all sliders pause with explicitly labeled
+last-valid ranges, and Generate stays blocked until correction.
 
-Artifact acceptance is partial: the edited D39/H60/W4/T4 closed assembly has
-four degenerate seam faces; its body, lid and print-layout exports passed the
-measured mesh checks. This is a development customizer, not a new print-ready
-CAD release. Advertised minimum body wall is 4 mm with current screw geometry;
-the requested 3 mm example remains unsupported. Physical acceptance is open.
+Independent deterministic validation passes:25 Node tests,4 Python tests,
+26 independent intervals and22,458 slider values. Source critique passes.
+C4 Safari screenshots passed390x700/844,760/761x800,1280x800,1440x900;
+C5 CSS is unchanged. Fresh C5 browser acceptance is BLOCKED by Computer Use
+`-10005 cgWindowNotFound` across Safari/Chrome/reinitialization. The new error
+presentation and C5 generation/download still require fresh browser review.
+See VALIDATION, CRITIQUE and project `design-qa.md`; do not claim full UI QA.
+Formal review approves source delivery to draft PR19 with the browser gap
+disclosed; it does not approve merge or full UI acceptance. REVIEW.md SHA-256
+`073d663da5f23e81c990270e9d8fe86e177268e03e25ab393a9479de67556a43`.
+
+Private development review: <https://mac-mini.duckbill-ionian.ts.net:8453/>.
+The final six built files match local dist byte-for-byte over HTTPS. Port8453
+proxies loopback5178; no public Funnel was enabled for it and8448 is preserved.
+CAD source/schema/worker/engine lock remain unchanged. The existing4mm wall
+floor and edited closed-assembly seam defect remain unresolved CAD/artifact
+limits. No new print-ready or physical acceptance is claimed.
 
 ## Preserved deployed baseline and CAD authority
 

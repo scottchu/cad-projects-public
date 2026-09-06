@@ -1,0 +1,75 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {createCustomizerController} from '../../preview/openscad-wasm-simulator/src/controller.mjs';
+
+class FakeElement {
+  constructor(value=''){this.value=value;this.textContent='';this.hidden=false;this.disabled=false;this.checked=false;this.readOnly=false;this.dataset={};this.attributes={};this.listeners={};this.tabIndex=0;}
+  setAttribute(name,value){this.attributes[name]=String(value);}
+  getAttribute(name){return this.attributes[name];}
+  removeAttribute(name){delete this.attributes[name];delete this[name];}
+  addEventListener(name,listener){(this.listeners[name]??=[]).push(listener);}
+  dispatch(name){for(const listener of this.listeners[name]??[])listener({preventDefault(){}});}
+  click(){if(!this.disabled&&!this.hidden)this.onclick?.({preventDefault(){}});}
+}
+function fakeDocument(){
+  const ids=['diameter','height','wall','ends','lid','drains','output','auto-lid','dimension-form-error','outside-diameter','outside-height','generate','cancel','status','download','diagnostics','stale','viewer-note','reset','camera','view-3d','view-cutaway','controls'];
+  for(const key of ['diameter','height','wall','ends','lid'])ids.push(`${key}-range`,`${key}-rule`);
+  for(const key of ['diameter','height','wall','ends','lid','drains','output'])ids.push(`${key}-error`);
+  const elements=Object.fromEntries(ids.map(id=>[id,new FakeElement()]));
+  Object.assign(elements.diameter,{value:'30'});Object.assign(elements.height,{value:'213'});Object.assign(elements.wall,{value:'4.5'});Object.assign(elements.ends,{value:'3'});Object.assign(elements.lid,{value:'84'});Object.assign(elements.drains,{value:'bottom'});Object.assign(elements.output,{value:'assembled'});elements['auto-lid'].checked=true;elements.cancel.hidden=true;
+  const actions=new FakeElement();return {elements,actions,getElementById:id=>elements[id],querySelector:selector=>selector==='.actions'?actions:null};
+}
+function setup(){
+  const document=fakeDocument(),calls={generate:[],invalidate:[]};let callbacks;
+  const controller=createCustomizerController({document,autoGenerate:false,createGeneration:value=>{callbacks=value;return {generate(values){calls.generate.push(values);callbacks.onState({busy:true,current:false,message:'Loading compiler…'});},invalidate(message){calls.invalidate.push(message);callbacks.onState({busy:false,current:false,message});}};}});
+  return {document,controller,calls,callbacks};
+}
+const edit=(document,key,value)=>{document.elements[key].value=value;document.elements[key].dispatch('input');};
+
+test('full controller renders coherent rules, errors, Generate state, and generation values',()=>{
+  const {document,controller,calls}=setup(),e=document.elements;
+  assert.equal(e['diameter-rule'].textContent,'Allowed now: 11–69 mm · lid is 1 mm wider');assert.equal(e.generate.disabled,false);
+  edit(document,'diameter','');
+  assert.equal(e.diameter.value,'');assert.equal(e.diameter.getAttribute('aria-invalid'),'true');assert.equal(e.generate.disabled,true);
+  for(const key of ['diameter','height','wall','ends','lid']){assert.equal(e[`${key}-range`].disabled,true);assert.match(e[`${key}-rule`].textContent,/Last valid/);}
+  e['diameter-range'].value='11';e['diameter-range'].dispatch('input');assert.equal(controller.getState().raw.diameter,'');assert.equal(e.diameter.value,'');
+  const frozen=controller.getState().lastValidDimensions,rules=Object.fromEntries(['diameter','height','wall','ends','lid'].map(key=>[key,e[`${key}-rule`].textContent]));edit(document,'drains','top');edit(document,'output','body');
+  assert.deepEqual(controller.getState().lastValidDimensions,frozen);assert.deepEqual(Object.fromEntries(['diameter','height','wall','ends','lid'].map(key=>[key,e[`${key}-rule`].textContent])),rules);assert.equal(e['diameter-error'].textContent,'Enter a number in millimetres.');
+  edit(document,'diameter','70');assert.equal(e.diameter.value,'70');assert.equal(e['diameter-error'].textContent,'Use a value from 10 to 69 mm.');
+  e.generate.click();assert.equal(calls.generate.length,0);
+  edit(document,'diameter','30');assert.equal(e.generate.disabled,false);e.generate.click();assert.equal(calls.generate.length,1);assert.equal(calls.generate[0].body_bore,30);assert.equal(calls.generate[0].drainage_mode,'top');assert.equal(calls.generate[0].output_mode,'body');
+});
+
+test('full controller associates one coupled error with all participants and is order independent',()=>{
+  const first=setup(),second=setup();
+  for(const {document} of [first,second]){document.elements['auto-lid'].checked=false;document.elements['auto-lid'].onchange();}
+  for(const [key,value] of [['height','30'],['ends','7'],['lid','35']])edit(first.document,key,value);
+  for(const [key,value] of [['lid','35'],['ends','7'],['height','30']])edit(second.document,key,value);
+  for(const run of [first,second]){
+    const e=run.document.elements,state=run.controller.getState();assert.equal(e['dimension-form-error'].hidden,false);assert.match(e['dimension-form-error'].textContent,/less than inside height/);
+    for(const key of ['height','ends','lid']){assert.equal(e[key].getAttribute('aria-invalid'),'true');assert.match(e[key].getAttribute('aria-describedby'),/dimension-form-error/);}
+    assert.equal(e.generate.disabled,true);assert.equal(state.draft.sliders.diameter.source,'last-valid');
+  }
+  assert.deepEqual(first.controller.getState().draft.issues,second.controller.getState().draft.issues);
+  edit(first.document,'ends','7.1');assert.equal(first.document.elements['dimension-form-error'].hidden,true);assert.equal(first.document.elements.generate.disabled,false);
+});
+
+test('Auto coupled error omits manual lid and keeps the current derived readout',()=>{
+  const {document}=setup(),e=document.elements;edit(document,'height','36');edit(document,'ends','7.5');
+  assert.match(e['dimension-form-error'].textContent,/Auto lid height/);assert.equal(e.height.getAttribute('aria-invalid'),'true');assert.equal(e.ends.getAttribute('aria-invalid'),'true');assert.equal(e.lid.getAttribute('aria-invalid'),'false');assert.equal(e.lid.readOnly,true);assert.equal(e.lid.value,'19.562');
+  edit(document,'height','36.2');edit(document,'ends','8');assert.equal(e['dimension-form-error'].hidden,true);assert.equal(e.generate.disabled,false);
+});
+
+test('enabled slider updates exact draft without generation and an edit cancels active generation',()=>{
+  const {document,controller,calls}=setup(),e=document.elements,range=e['diameter-range'];
+  range.value='11';range.dispatch('input');assert.equal(e.diameter.value,'11');assert.equal(controller.getState().raw.diameter,'11');assert.equal(e['outside-diameter'].textContent,'20 mm');assert.equal(calls.generate.length,0);
+  e.generate.click();assert.equal(calls.generate.length,1);assert.equal(e.cancel.hidden,false);
+  edit(document,'wall','5');assert.equal(calls.invalidate.at(-1),'Dimensions changed. Generate to update.');assert.equal(e.cancel.hidden,true);assert.equal(controller.getState().busy,false);assert.equal(calls.generate.length,1);
+});
+
+test('Auto/manual transition and reset restore complete defaults without generation',()=>{
+  const {document,controller,calls}=setup(),e=document.elements;
+  assert.equal(e.lid.value,'84');e['auto-lid'].checked=false;e['auto-lid'].onchange();assert.equal(controller.getState().raw.lid,'84');assert.equal(e.lid.readOnly,false);
+  edit(document,'lid','90');edit(document,'drains','none');edit(document,'output','cap');e.reset.click();
+  assert.deepEqual(controller.getState().raw,{diameter:'30',height:'213',wall:'4.5',ends:'3',lid:'84',auto:true,drains:'bottom',output:'assembled'});assert.equal(e['auto-lid'].checked,true);assert.equal(e.drains.value,'bottom');assert.equal(e.output.value,'assembled');assert.equal(calls.generate.length,0);
+});

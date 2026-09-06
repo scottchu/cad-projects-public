@@ -51,3 +51,68 @@ No implementation correction remains from this visual review. Final C2 source ma
 ## Follow-up polish
 
 P3: move the nominal inside-height line off the central drain axis to a solid floor location if it improves teaching clarity. P3: subtle lighting/angle improvement could make the real seam more legible without fabricating section caps or altering geometry. Neither warrants a new feature or blocks the current core desktop composition.
+
+# Compact controls design QA — MC-CRIT-01 C4
+
+final result: rejected; responsive composition passed, truthful invalid-rule
+behavior failed
+
+Frozen C4 candidate manifest
+`docs/iterations/2026-09-06-compact-controls/inputs/candidate-04.sha256`,
+SHA-256 `dd9dfcbe25d7946207d009ddb8e2ee1a499442b6d712202bed31f7fe192d0d1d`,
+passed all 20 declared path checks. The independent critic reviewed source,
+the user's supplied phone image, and eight actual Safari responsive captures.
+
+The visual matrix passes. At 390x700 and 390x844 the canvas remains pinned at
+238 px and 280 px while the parameter rail scrolls from top to bottom; the
+single compact icon dock remains visible. Width 760 stays stacked, and widths
+761, 1280 and 1440 preserve the desktop canvas-left/control-right layout.
+There is no visible overlap, horizontal overflow or hidden dock. The icon
+toolbar, sliders, exact entries and embedded rule lines use substantially less
+space than the reported baseline.
+
+C4 is rejected because its range oracle enforces all constraint groups for
+every field. An invalid manual or Auto axial field can disable the unrelated
+diameter and wall sliders with `No allowed value`, contrary to the field-wise
+allowed-range table and the requirement to disable only the affected slider.
+Changing Drain holes or Export shape can also replace the remembered edited
+dimension and re-enable a still-invalid coupled slider. Exact reproduction and
+full provenance are in the active iteration `CRITIQUE.md`.
+
+This is a digital UI finding. It does not change or assess CAD geometry,
+generated mesh, slicer readiness, printability or physical acceptance. The
+design contract has been reopened; later acceptance requires a newly frozen
+candidate and renewed source/visual evidence.
+
+# Compact controls design QA — MC-CRIT-01 C5
+
+final result: source passed; final visual acceptance blocked pending browser
+
+C5 manifest
+`docs/iterations/2026-09-06-compact-controls/inputs/candidate-05.sha256`,
+SHA-256 `f51607ab4e80b2d2b6fa753d90f55f1cb64504c42c3b5919e6175d27e100e714`,
+passed all 23 declared path checks. The revised draft-state contract is
+`RULES-REVISION.md` SHA-256
+`53f9dd990507ec640f615cac30dbc466e1ecff325494886af2535c96e586a6ca`.
+
+Independent source review passes. One pure derivation now owns direct and
+coupled errors, all-slider pause, whole-snapshot last-valid rules, summaries,
+generation values and Generate state. The critic independently reproduced the
+default bounds, blank/out-of-range retention, manual and Auto coupled states,
+T7.1 recovery, and selector-only invalid state. The previously blocking mixed
+fallback and unrelated-range behavior is gone. No actionable P0/P1/P2 source
+UX finding remains against the revised contract.
+
+The responsive layout has strong but historical visual evidence: C4 and C5
+share byte-identical CSS, and eight C4 Safari captures passed pinned 390x700
+and 390x844 canvas scrolling, the 760/761 breakpoint, desktop two panes, compact
+icon dock, and visible overflow/overlap inspection. C5 adds a coupled form-error
+element that those captures do not show.
+
+Fresh C5 visual acceptance is blocked because Safari automation returned
+`CUA-10005 cgWindowNotFound` and exposed no controllable provider after fresh
+window/session attempts. Do not claim the new invalid-state layout, tooltip,
+focus, ARIA presentation or busy Cancel state visually accepted. Close this
+gate with a fresh C5 mobile invalid-state screenshot/accessibility state and a
+current desktop/default capture. This UI review carries no CAD, mesh, slicer,
+printability or physical acceptance claim.

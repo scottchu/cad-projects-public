@@ -3,6 +3,49 @@ import assert from 'node:assert/strict';
 import {adapt,DEFAULTS} from '../../preview/openscad-wasm-simulator/src/adapter.mjs';
 import {BROWSER_PRESET,snapshot} from '../../preview/openscad-wasm-simulator/src/schema.mjs';
 import {Generation,exactSTLBlob} from '../../preview/openscad-wasm-simulator/src/lifecycle.mjs';
+import {deriveDraftState,dimensionSnapshot,DIMENSIONS} from '../../preview/openscad-wasm-simulator/src/bounds.mjs';
+import {bindRange} from '../../preview/openscad-wasm-simulator/src/controls.mjs';
+const initialDimensions=dimensionSnapshot(DEFAULTS);
+test('one draft derivation owns default slider rules and generation values',()=>{
+ const state=deriveDraftState(DEFAULTS,initialDimensions);
+ assert.deepEqual(Object.fromEntries(['diameter','wall','height','ends'].map(key=>[key,[state.sliders[key].min,state.sliders[key].max]])),{diameter:[11,69],wall:[4,25],height:[46.2,305],ends:[2,8]});
+ assert.equal(state.canGenerate,true);assert.deepEqual(state.generationValues,BROWSER_PRESET);
+});
+test('blank and out-of-range exact diameter preserve one whole last-valid range source',()=>{
+ for(const value of ['', '70']){
+  const raw={...DEFAULTS,diameter:value},state=deriveDraftState(raw,initialDimensions);
+  assert.equal(raw.diameter,value);assert.equal(state.fieldErrors.diameter,value===''?'Enter a number in millimetres.':'Use a value from 10 to 69 mm.');
+  for(const key of DIMENSIONS){assert.equal(state.sliders[key].disabled,true);assert.equal(state.sliders[key].source,'last-valid');assert.match(state.sliders[key].rule,/Last valid/);}
+  assert.equal(state.canGenerate,false);assert.deepEqual(state.nextLastValidDimensions,initialDimensions);assert.equal(raw.wall,DEFAULTS.wall);
+ }
+});
+test('coupled errors deterministically name every participant and clear only on a coherent draft',()=>{
+ const manual=deriveDraftState({...DEFAULTS,auto:false,height:'30',ends:'7',lid:'35'},initialDimensions);
+ assert.deepEqual(manual.issues.filter(item=>item.type==='coupled').map(item=>item.fields),[['height','ends','lid']]);assert.match(manual.formError,/less than inside height/);
+ const repaired=deriveDraftState({...DEFAULTS,auto:false,height:'30',ends:'7.1',lid:'35'},initialDimensions);assert.equal(repaired.formError,'');assert.equal(repaired.canGenerate,true);
+ const auto=deriveDraftState({...DEFAULTS,height:'36',ends:'7.5'},initialDimensions);assert.deepEqual(auto.issues.filter(item=>item.type==='coupled').map(item=>item.fields),[['height','ends']]);assert.match(auto.formError,/Auto lid height/);
+ const autoRepaired=deriveDraftState({...DEFAULTS,height:'36.2',ends:'8'},initialDimensions);assert.equal(autoRepaired.formError,'');assert.equal(autoRepaired.canGenerate,true);
+});
+test('same final raw and whole last-valid snapshot derive identical state regardless of object insertion order',()=>{
+ const a={...DEFAULTS,auto:false,height:'30',ends:'7',lid:'35'};
+ const b={lid:'35',ends:'7',height:'30',auto:false,output:'assembled',drains:'bottom',wall:'4.5',diameter:'30'};
+ assert.deepEqual(deriveDraftState(a,initialDimensions),deriveDraftState(b,initialDimensions));
+});
+test('selector errors block generation without pausing coherent dimension sliders',()=>{
+ const state=deriveDraftState({...DEFAULTS,output:'unknown'},initialDimensions);assert.equal(state.canGenerate,false);assert.equal(state.fieldErrors.output,'Choose an export shape.');
+ for(const key of ['diameter','height','wall','ends'])assert.equal(state.sliders[key].disabled,false);
+});
+test('range wiring synchronizes the paired exact input and selects its dimension',()=>{
+ const listeners={},input={value:'30'},range={value:'11',addEventListener:(name,fn)=>listeners[name]=fn};let changed='',focused=0;
+ bindRange({input,range,onChange:value=>changed=value,onFocus:()=>focused++});listeners.input();listeners.focus();
+ assert.equal(input.value,'11');assert.equal(changed,'11');assert.equal(focused,1);
+});
+test('every sampled compact slider value remains acceptable to the unchanged snapshot adapter',()=>{
+ for(const raw of [DEFAULTS,{...DEFAULTS,diameter:'10',wall:'5'},{...DEFAULTS,auto:false,lid:'84'}]) for(const key of ['diameter','height','wall','ends',...(raw.auto?[]:['lid'])]) {
+  const bounds=deriveDraftState(raw,dimensionSnapshot(raw)).sliders[key];assert.equal(bounds.disabled,false,`${key} has a usable interval`);
+  for(const value of [bounds.min,(bounds.min+bounds.max)/2,bounds.max]) assert.ok(adapt({...raw,[key]:String(value)}).values,`${key}=${value}`);
+ }
+});
 test('adapter preserves every baseline parameter and scales lid without changing the target height',()=>{
  assert.deepEqual(adapt(DEFAULTS).values,BROWSER_PRESET);
  const short=adapt({...DEFAULTS,height:'60'});assert.equal(short.values.device_length,55);assert.equal(short.values.split_distance_from_top,66*(84/219));

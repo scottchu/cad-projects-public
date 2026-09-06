@@ -1,19 +1,23 @@
-# Next agent — desktop customizer implementation and review
+# Next agent — compact controls
 
-Resume `docs/iterations/2026-09-05-desktop-customizer` on
-`codex/container-desktop-customizer`. Read its BRIEF and DESIGN first; the
-user selected visual option 2 with the existing generation/reset workflow.
-The reviewed visual target is `inputs/selected-desktop.png`. Implementation,
-independent UI/runtime validation, visual critique and formal review pass for
-C2. See `inputs/candidate-02.sha256`, VALIDATION, REVIEW and `design-qa.md`.
-Draft PR: <https://github.com/scottchu/design-projects/pull/19>; next action is
-user review of the local UI, not a printer job or automatic live deployment.
-The local development server is `http://127.0.0.1:5178/`; recheck it before
-claiming readiness. Do not replace the live 8448 route as part of local review.
-Keep existing geometry, source/schema/worker provenance and the historical
-acceptance gaps below. HANDOFF records the frozen candidate and exact evidence.
-Keep the 4 mm body-wall limit and edited assembled STL seam defects explicit;
-do not promote UI acceptance to a new print-ready or physically proven release.
+Resume `docs/iterations/2026-09-06-compact-controls` on
+`codex/container-desktop-customizer`. Read BRIEF/DESIGN, then
+`RULES-REVISION.md`, IMPLEMENTATION-REVISION, VALIDATION, CRITIQUE and HANDOFF.
+C5 source and deterministic gates pass; full browser QA is blocked by native
+Computer Use `-10005 cgWindowNotFound`, despite fresh app/session retries.
+The user has been asked whether the desktop is locked; do not assume an answer.
+
+Recheck <https://mac-mini.duckbill-ionian.ts.net:8453/>. Final built assets were
+verified byte-for-byte through this private route. Once desktop access returns,
+obtain fresh C5 mobile invalid-input/correction and desktop/default captures,
+then verify current generation/download, focus/tooltips and Cancel. Have the
+independent validator/critic update their blocked receipts and join formal
+review; avoid rerunning unrelated CAD tests or changing source to bypass QA.
+The previous C4 layout evidence uses identical CSS but does not prove C5's new
+error presentation. Keep draft PR19 unmerged pending final browser acceptance.
+
+No schema, SCAD, worker, engine lock, existing8448 route, printer, or public
+hosting changes belong to this follow-up. Keep4mm wall and seam limits explicit.
 
 ## Preserved predecessor delivery
 
