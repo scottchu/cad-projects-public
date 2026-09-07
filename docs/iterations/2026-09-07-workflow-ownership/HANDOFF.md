@@ -1,6 +1,6 @@
 # Workflow ownership separation handoff
 
-Status: source separation implemented; joined independent acceptance/review and PR delivery pending. No commit, push, service operation or printer action performed by I3.
+Status: independent V1/V2/R1 acceptance complete for source implementation `b8b0f5d9e38a2b2d1f1f6b07b9ec6f9f283c8565`. Coordinator pushed the review branch and opened [PR 23](https://github.com/scottchu/design-projects/pull/23). No merge or printer/service operation. Original worker checkpoints below retain their historical scope.
 
 ## Baseline and authority
 
@@ -55,3 +55,7 @@ git diff --check
 Results: affected checks **2 passed, 9 deselected**; whole root file **10 passed, 1 pre-existing Laifen continuity failure**; whitespace PASS. No project source or other binding values changed. Refreshed `CANDIDATE.sha256` covers the repaired binding and tests.
 
 Coordinator additionally authorized root `.gitignore` exclusion `*.egg-info/` for editable-install metadata created by the root uv setup. The generated Kage directory remains in place and is ignored; no project source was deleted. `.gitignore` is included in the refreshed candidate.
+
+## Coordinator delivery
+
+Migration validation and review are recorded in [Workbench PR 1](https://github.com/scottchu/CAD-workbench/pull/1), under docs/iterations/2026-09-07-workflow-ownership/{PRESERVATION_VALIDATION,VALIDATION,REVIEW}.md. [Sticker PR 1](https://github.com/scottchu/sticker-projects/pull/1) preserves accepted history and recovery refs. Root checks finished at 10 pass and 1 confirmed preexisting Laifen missing-VALIDATION failure. The provider binding and fourteen-file CANDIDATE manifest remain unchanged after acceptance. This follow-up changes delivery records only.
