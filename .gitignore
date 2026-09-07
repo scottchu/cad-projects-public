@@ -32,3 +32,6 @@ snapshots/
 
 # Project-local logs
 *.log
+
+# Python editable-install metadata
+*.egg-info/

@@ -1,80 +1,21 @@
 # Repository instructions
 
-## Scope
+This repository owns personal design projects under `projects/<project-slug>/`: authoritative source, project-specific generation logic, dependencies, tests, decisions, assets and evidence. Preserve unrelated projects, historical records and user changes.
 
-This is a multi-project repository for personal design work. Keep every design under `projects/<project-slug>/`; do not mix one project's source, tests, exports, or decisions into another project.
+## Bound reusable workflows
 
-## Environment
+Read `docs/workflows-binding.json` and resolve its pinned CAD Workbench revision and policy manifest before material workflow work. Workbench owns the reusable CAD workflow, continuity policy, templates, skills and viewer-service source. Follow the bound CAD workflow's delegation and independent acceptance rules; use project-local records to select the exact baseline and current iteration. Root compatibility documents are navigation pointers, not policy copies. Missing external workflow material is a concrete dependency to report, not permission to invent another implementation.
 
-- Use Python 3.12 and the root `uv` workspace.
-- Run Python tooling through `uv run` from the repository root.
-- Use `uv sync --all-packages --all-groups` to update the shared root `.venv`.
-- The root `<repo-root>/.venv` managed by `uv` is the only Python environment
-  allowed for a checkout or worktree. If a tool cannot be launched through
-  `uv run`, explicitly point it at `<repo-root>/.venv/bin/python3`; for CAD
-  Viewer, set `VIEWER_CAD_PYTHON` to that absolute interpreter path.
-- Never let repository tooling fall back to Homebrew Python, macOS system
-  Python, pyenv, or another automatically discovered interpreter. If the root
-  `.venv` is missing or incomplete, repair it with the root `uv sync` command
-  instead of creating or selecting another environment.
-- Do not create, commit, copy, or rely on a project-local `.venv` or nested `uv.lock`.
-- Keep project-specific dependencies in that project's `pyproject.toml`; keep only repository-wide tooling in the root `pyproject.toml`.
-- Use the root npm workspace for JavaScript projects and run npm commands from the repository root.
-- Keep project-specific JavaScript dependencies and scripts in that project's `package.json`; keep the root `package.json` limited to workspace configuration and repository-wide tooling.
-- Use the root `package-lock.json` and root npm install. Do not create, commit, copy, or rely on a project-local `package-lock.json` or independently managed project-local `node_modules`.
-- Let npm resolve unavoidable version conflicts inside the workspace rather than splitting projects into separate installs.
+Before changing a project, read its README, PROJECT_STATE.md, NEXT_AGENT.md, requirements, experience, decisions and current iteration. Update its durable records when its state changes. Keep project-local geometry and generation logic with that project. Workshop availability is recorded in `docs/WORKSHOP.md`.
 
-## Project boundaries
+## Local environment and checks
 
-- Every project must have its own `README.md`, `pyproject.toml`, tests, and documented generation commands.
-- Every project must satisfy `docs/PROJECT_CONTINUITY.md`. Agent sessions are disposable; repository files are the durable source of project state, rationale, evidence, experience, and handoff instructions.
-- Before changing a project, read its `PROJECT_STATE.md`, `NEXT_AGENT.md`, requirements, experience log, decision index, and active iteration record. Do not rely on prior chat context as authority.
-- Open or identify an iteration before material work. Record the exact baseline, intent, alternatives, decisions, validation, findings, unresolved risks, and next action while work is happening, not only at the end.
-- Before stopping or handing work to another agent, update `PROJECT_STATE.md`, the active iteration `HANDOFF.md`, and `NEXT_AGENT.md`. A new agent must be able to resume from repository files alone.
-- Keep durable reasoning and observed experience, but do not copy raw chat transcripts into the repository. Summarize decisions, rejected approaches, measurements, failures, and lessons that can affect later work.
-- Preserve unrelated projects and user changes.
-- Transfer existing projects one at a time and verify each migration before starting the next.
-- Treat parametric source as authoritative. Regenerate derived STEP, 3MF, STL, GLB, DXF, renders, manifests, and checksums from source; never hand-edit generated CAD artifacts.
-- Commit only intentional source, documentation, tests, and release/review artifacts. Exclude environments, caches, logs, screenshots, slicer scratch data, and other reproducible temporary files.
+Use Python 3.12 and the root uv workspace. Run Python through `uv run` from the repository root; repair the sole root `.venv` with `uv sync --all-packages --all-groups`. A subprocess needing an interpreter must use the absolute root `.venv/bin/python`; do not select system or another checkout's Python. No project-local environments or locks.
 
-## Orchestration and delegation
+Use the root npm workspace, root install and `package-lock.json`. Dependencies belong in their project manifests. Run npm commands from the root. Keep caches and diagnostic scratch ignored. For shell search use `/opt/homebrew/bin/rg`; report unavailability before choosing an alternative.
 
-For material repository work, the root agent is the architect, delegator, scheduler, and synthesizer. It may directly schedule the DAG, collect provenance and receipts, and maintain concise continuity indexes, but must not silently create substantive design, implementation, critique, review, or validation deliverables. A material worker step creates a distinct deliverable, makes a decision, resolves a risk or independence gate, or mutates authoritative source, tests, records, or artifacts. Coordination, reading, status collection, and a focused rerun of an already-prescribed command are trivial steps; every material step has one bounded, standalone role owner.
+Run the relevant project checks and root repository checks documented in README. Repository-hosted CI workflows are not used; their absence does not waive testing.
 
-Plan material work as a task DAG. Each task has a stable ID and owner identity; role; objective and done gate; dependencies; exact project, iteration, baseline, and task-specific immutable input manifest/candidate fingerprint; allowed reads, exclusive writes, and forbidden scope; deliverables and evidence; model class and reasoning effort; time, token, output, retry, and concurrency ceilings; and stop or escalation conditions. A task's manifest uses a declared SHA-256 path-and-content list of relevant frozen requirements, brief/design contracts, and authoritative source/tests/artifacts; it excludes only mutable orchestration/status and evidence records, and invalidates only gates whose declared input manifest changed.
+## Delivery
 
-Keep at most three worker agents active by default so the root retains coordination capacity. Run only dependency-ready tasks with frozen inputs and disjoint writes (or read-only scopes), and allow one writer per project/source/artifact namespace. Do not duplicate role/revision work except for explicit independent arbitration or comparison. The same runtime agent may continue focused follow-ups within its bounded role/workstream, but the implementer, critic, validator, and formal reviewer must have distinct identities for the same candidate. Select the least expensive adequate model: fast/low for deterministic inventory or format checks, balanced/medium for prescribed implementation or simple parts, strong/high for mechanisms, fit, critique, review, and acceptance checks, and frontier/max only for unresolved architecture, repeated material failure, or physical-defect diagnosis. Max does not repair an unclear brief. Timebox/checkpoint work; when exact controls are unavailable, state qualitative ceilings. Allow an initial attempt plus at most two focused repair cycles within the retry ceiling, then reopen design, reduce scope, or ask the user. Stop stale, duplicate, or superseded agents.
-
-Every worker return is a receipt: status; verified fingerprint; changed paths/artifacts; exact commands and results; relevant hashes/manifests; findings with severity; requirement coverage; unresolved risks; and next action. The root verifies provenance, synthesizes conflicts rather than concatenating reports, routes the smallest correction, and records durable evidence rather than raw transcripts or per-agent diaries. Detailed delegated execution rules are in `docs/CAD_WORKFLOW.md`.
-
-## CAD workflow
-
-- Follow `docs/CAD_WORKFLOW.md` for CAD design, testing, review, and handoff.
-- Before modeling, identify the exact current baseline by path/version and record the user's requirements, invariants, intended use sequence, and explicit non-goals. A locked baseline may change only intentionally, in a new version, with regression evidence.
-- Treat the user as an active validator of design intent and relationships. Before an integrated full simulation, prefer progressive minimal interactive simulations or diagrams that isolate one or two relationships at a time—such as identity, datum/frame, constrained versus moving parts, cause and effect, or contact sequence—and expose only controls relevant to that gate. Use an integrated/full simulation only after those gates pass, to check integration, composition, interactions, and omissions; it must never be the sole user-validation surface.
-- Each user-validation gate must explain in plain language what relationship is shown, what is fixed or adjustable, what action or observation the user should make, and the explicit pass/fail question; record exactly what the user confirms or rejects. This evidence validates intent and relationship understanding only and does not replace deterministic math, actual-solid CAD, export/slicer, or physical validation.
-- For substantial CAD changes, use separate agents for design, implementation, critique, review, and validation/tests. An implementation agent must not approve its own work. Keep one bounded agent per role, hand off exact immutable paths, and stop unused agents.
-- Inspect supplied references and existing physical-test observations before broad design changes. Observed failures outrank nominal CAD assumptions.
-- Treat every design as parametric: expose meaningful named parameters, derive dependent dimensions mathematically, and identify invariant, derived constraint, design choice, and physical unknown separately.
-- Use a small risk-driven test plan. Every test must name a credible failure it can catch; test count is not a quality metric.
-- Every non-trivial CAD change requires the four core evidence categories: object-collision, math, constraint, and user-requirement checks. Cosmetic-only changes still require geometry validation and a snapshot, but should not invent irrelevant tests. Add motion/service-path, source/export parity, manufacturing, or defect-regression checks only when that risk exists.
-- Validate actual solids, hardware-inclusive assemblies, critical motion/service states, and written exports—not only nominal source parameters or screenshots.
-- Snapshot and visually review the primary artifact after deterministic checks. Visual approval does not replace geometric evidence.
-- State CAD validation, written STEP/mesh/slicer validation, and physical print/assembly validation separately. Never present an unprinted design as physically proven.
-- When a physical defect is reported, first add or identify a regression that represents the concrete failure, then make the smallest responsible source change and rerun only the affected focused gates before broader regression.
-
-## Documentation and handoff
-
-- Record major decisions, assumptions, exact commands, artifact paths, test evidence, and remaining physical-validation gaps in project-local docs.
-- Use stable requirement and decision identifiers. Preserve superseded decisions and closed iterations as history; point to their replacements instead of rewriting history.
-- Record physical observations separately from CAD inference. An observation log is append-only except for explicit factual corrections that retain the original entry and explain the correction.
-- Every release artifact must identify its source revision or manifest, generating command, parameters when relevant, checksum, and separate CAD, artifact/slicer, and physical acceptance states.
-- Keep root documentation about repository-wide policy only; project design decisions belong inside the relevant project.
-- Update `docs/ARCHITECTURE.md` only when the repository contract changes.
-
-## GitHub delivery
-
-- Every change intended for trunk `main` must be developed on a non-`main` branch and delivered through a GitHub pull request unless the user explicitly overrides that route for that specific change.
-- Keep the pull request concise: record only the critical delivery summary, validation and independent-review provenance, acceptance gaps, unresolved risks, next action, and what happened. Repository continuity files remain the authority; do not duplicate raw reports in the pull request.
-- Repository-hosted CI workflows are not used. Run required validation locally or through the delegated validation workflow; the absence of hosted CI does not waive testing.
-- Do not claim repository-host enforcement from this documentation; `.github/repository-policy.toml` records the intended delivery contract.
+Develop trunk-bound changes on a non-main branch and deliver through a GitHub pull request unless the user explicitly overrides that route for the specific change. Preserve concise review and validation provenance in project records. The local delivery declaration is `.github/repository-policy.toml`; it does not claim server enforcement. Do not operate services or printers as incidental setup.

@@ -33,12 +33,7 @@ design-projects/
             └── iterations/
 ```
 
-The first planned migrations are:
-
-- `japandi-shadow-clock-simulator`
-- `xt60-bend-jig`
-
-They will be transferred one at a time. This initialization does not copy or modify either existing project.
+Reusable workflow source, policies, templates and skills belong to [CAD Workbench](https://github.com/scottchu/CAD-workbench). This repository selects them through [the versioned binding](docs/workflows-binding.json). Actual design source and evidence stay project-owned. The sticker project now lives in [sticker-projects](https://github.com/scottchu/sticker-projects) at the preserved `projects/example-sticker-pack` path; its historical V2 release remains in this repository's GitHub releases.
 
 ## One-time setup
 
@@ -95,33 +90,11 @@ These are the required local or delegated validation gates: repository structure
 
 Project-specific commands belong in that project's README.
 
-## CAD preview
+## Workflows and project records
 
-Use the installed `cad-viewer` workflow directly with the explicit file to review. The
-workflow starts one Viewer and constructs a link from an absolute workspace path plus
-the artifact path relative to that workspace. Do not add a repository launcher or pin
-an installed plugin-cache version here; the installed workflow is the runtime authority.
+Resolve [the external workflow binding](docs/workflows-binding.json) before selecting a workflow or skill. The compatibility pointers for [CAD](docs/CAD_WORKFLOW.md), [continuity](docs/PROJECT_CONTINUITY.md), [FDM rules](docs/FDM_DESIGN_RULES.md) and [adding projects](docs/ADDING_A_PROJECT.md) preserve existing links. Workbench provides shared guidance; project records retain current source, requirements, commands, artifacts and acceptance evidence.
 
-A started server or printed URL is not proof that a preview works. Before reporting a
-preview as ready, require both the exact review page to return HTTP `200` and the exact
-artifact endpoint to return HTTP `200` with JSON `state == "ready"`. After inspecting
-the loaded page or snapshot, the general visual claim is limited to “the requested
-artifact rendered with no visible error state.” Any feature-specific visual claim must
-name the inspected features and views. Keep preview readiness separate from CAD,
-slicer, and physical acceptance.
-
-## Project standards
-
-- Parametric source is authoritative; STEP, 3MF, STL, GLB, renders, and previews must be regenerated from source.
-- CAD acceptance, slicer acceptance, and physical print/assembly acceptance are separate states.
-- Each project documents inputs, purchased-part assumptions, tolerances, export commands, tests, and open physical-validation work.
-- Each project owns its Python and JavaScript dependency declarations, while the repository owns the shared environments, resolved lockfiles, and installs.
-- Project state, design reasoning, observed experience, validation, and next-agent instructions must live in the repository. Agent sessions are not project memory.
-- Every active project points to one current iteration whose brief, design record, validation, review, and handoff are sufficient for a fresh agent to continue.
-- Generated files are committed only when they are intentional release or review artifacts.
-- Migrations preserve history and working artifacts without importing local environments, caches, or disposable output.
-
-See [Architecture](docs/ARCHITECTURE.md), [Project continuity](docs/PROJECT_CONTINUITY.md), [CAD workflow](docs/CAD_WORKFLOW.md), [Workshop inventory](docs/WORKSHOP.md), and [Adding a project](docs/ADDING_A_PROJECT.md) for the repository contract and fabrication context.
+[Workshop inventory](docs/WORKSHOP.md) is local availability context. [Architecture](docs/ARCHITECTURE.md) explains repository ownership and [the separation handoff](docs/iterations/2026-09-07-workflow-ownership/HANDOFF.md) records migration and recovery.
 
 ## Contributing changes
 

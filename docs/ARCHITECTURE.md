@@ -1,125 +1,13 @@
 # Repository architecture
 
-## Goals
+This repository contains independent projects under `projects/<project-slug>/`. Each owns its source, generation logic, dependencies, tests, requirements, decisions, assets, releases and physical observations. Historical project records remain at their established paths.
 
-This repository provides one stable home for multiple independent design projects while avoiding repeated Python-environment setup.
+CAD Workbench owns reusable capabilities, workflow policy, recipes, templates, skills and viewer-service source. [workflows-binding.json](workflows-binding.json) identifies its exact revision and policy-manifest hash. The four legacy policy filenames here are compatibility pointers. Skills are external source packages requiring explicit discovery; no skill, plugin or service is installed by this binding.
 
-The central rule is:
+The root uv workspace uses Python 3.12, one `.venv` and one `uv.lock`. The root npm workspace uses one install and `package-lock.json`. Project manifests own dependencies; root manifests provide workspace configuration and repository-check tools. Run tooling from the root and never use another checkout's environment as a fallback. See README for setup and validation commands.
 
-> Shared environments, installs, and lockfiles; project-owned dependency declarations, source, tests, artifacts, and decisions.
+Current project entrypoints include README.md, PROJECT_STATE.md, NEXT_AGENT.md, PRINTING_PROFILE.md and project-local requirements, experience, decisions and active iteration records. Printing profiles retain intended settings and verified-run evidence. [WORKSHOP.md](WORKSHOP.md) retains local equipment facts. Existing historical paths can mention superseded tools; consult the current binding when executing work.
 
-## uv workspace model
+The Example sticker project moved to the private sticker-projects repository, retaining `projects/example-sticker-pack` paths and history. The source recovery branch `recovery/workflow-ownership-71d661c` retains the pre-separation tree. Distinct V3 WIP is preserved in the destination recovery archive and original worktree; it is not overlaid onto accepted releases. See [separation records](iterations/2026-09-07-workflow-ownership/HANDOFF.md).
 
-The root `pyproject.toml` declares `projects/*` as workspace members. A project becomes a member when `projects/<slug>/pyproject.toml` exists.
-
-The workspace owns:
-
-- `.python-version`
-- `.venv/`
-- `uv.lock`
-- repository-wide development tools
-
-Each project owns:
-
-- its package metadata and runtime dependencies
-- source and generators
-- tests and test configuration
-- export and validation commands
-- design notes and physical-validation status
-
-The root project is non-package tooling only (`tool.uv.package = false`). It should not become a shared application module or a dumping ground for project runtime dependencies.
-
-## Dependency workflow
-
-After adding or changing a member project:
-
-```bash
-uv lock
-uv sync --all-packages --all-groups
-```
-
-To run one project without changing directories:
-
-```bash
-uv run --project projects/<project-slug> <command>
-```
-
-All workspace members resolve into one `uv.lock` and use the root `.venv`. Conflicting requirements must be resolved explicitly; do not work around them with nested environments.
-
-## npm workspace model
-
-The root `package.json` declares `projects/*` as npm workspace members. A JavaScript project keeps its dependencies and scripts in `projects/<slug>/package.json`, while the repository owns the root `package-lock.json` and npm install.
-
-The repository owns:
-
-- the root npm workspace configuration;
-- `package-lock.json`;
-- the root `node_modules` install;
-- repository-wide JavaScript tooling, when needed.
-
-Each JavaScript project owns:
-
-- its runtime and development dependency declarations;
-- its build, test, and development scripts;
-- its simulator or application source.
-
-Run npm commands from the repository root. Do not maintain a project-local lockfile or independent project-local install. npm may place a conflicting package version in a nested location as part of normal workspace resolution; that is still one root-managed install and is not a separate project environment.
-
-## Project layout
-
-A project may adapt its internal structure to the work, but should expose these stable entry points:
-
-```text
-projects/<project-slug>/
-├── README.md
-├── PRINTING_PROFILE.md
-├── pyproject.toml
-├── package.json (when JavaScript is used)
-├── docs/
-├── tests/
-└── source and generated-release directories
-```
-
-The project README must identify authoritative source, regeneration commands, expected outputs, focused tests, and what remains physically unverified.
-
-Every project owns an editable `PRINTING_PROFILE.md`, including justified N/A
-when it has no printed parts. Shared [FDM design rules](FDM_DESIGN_RULES.md)
-guide design; project profiles bind intended printer/nozzle/material settings,
-part orientations, concerns and exact run evidence. Workshop availability is not
-a selected or validated profile. This document is not an executable slicer preset.
-
-## Durable project memory
-
-Agent sessions are temporary execution contexts, not authoritative project records. Every project externalizes current state and cumulative learning according to `docs/PROJECT_CONTINUITY.md`.
-
-Each project has one project-owned canonical ordered backlog and reuses its established path. `PROJECT_STATE.md` is a concise current-state index that links that backlog and exposes the latest baseline, one active gate, proven evidence, next action, and any truly blocking user decision; a very small backlog may remain inline while concise. `NEXT_AGENT.md` is a restart route, not a duplicate specification. Stable requirements, experience, and architectural decisions live in project-local documents. Each active iteration has a frozen brief plus design, validation, review, and handoff records. Generated releases carry manifests that link artifacts to source and evidence.
-
-Closed iterations and superseded decisions remain readable history. Current documents point to replacements rather than silently rewriting past reasoning.
-
-## Agent orchestration contract
-
-Material repository work is run as a bounded task DAG: the root agent may schedule, collect provenance/receipts, and maintain concise continuity indexes, while distinct role owners create substantive design, implementation, critique, formal review, or validation deliverables. Tasks record owner identity and task-specific SHA-256 immutable input manifests for declared frozen requirements and brief/design contracts plus applicable authoritative source/test/artifact paths; only mutable orchestration/status and evidence records are excluded. Only gates whose declared inputs changed are invalidated. Only frozen, dependency-ready tasks with disjoint writes (or read-only scopes) may run in parallel; one writer owns a project/source/artifact namespace. Implementation cannot self-approve, formal review joins independent critic and validation results, and those acceptance identities are distinct for one candidate. Continuity records retain concise receipts and durable evidence, never raw transcripts or per-agent diaries.
-
-## Repository-local skills
-
-Project-owned Codex skills live under `.agents/skills/<skill-name>/`. The `design-reflection` skill provides read-only, evidence-grounded daily or on-demand reflection for CAD/3D-print projects and reads repository-wide equipment availability from `docs/WORKSHOP.md`. Skills may route work, but workshop inventory and skills do not supersede project evidence, `AGENTS.md`, project continuity, mutation authority, or acceptance gates.
-
-## Trunk delivery
-
-`main` is the trunk branch. Changes intended for trunk are made on a non-`main` branch and enter through a GitHub pull request. Only an explicit user override for the specific change may bypass that route. Pull requests capture a concise critical delivery summary, provenance, acceptance gaps, unresolved risks, next action, and what happened; repository continuity files remain authoritative. Repository-hosted CI workflows are not used: required validation is run locally or through delegated validation, and the absence of hosted CI does not waive testing. `.github/repository-policy.toml` is the machine-readable statement of this repository contract; it does not claim that GitHub branch protection or another server-side rule currently enforces it.
-
-## Artifact policy
-
-Generated CAD and fabrication files are allowed when they are useful handoff or release artifacts. They must remain traceable to authoritative source and preferably carry manifest or checksum evidence.
-
-Temporary renders, slicer workspaces, caches, and bulk diagnostics are not release artifacts and should remain untracked.
-
-## Validation states
-
-Use distinct language for:
-
-1. source and CAD geometry validated;
-2. written STEP/mesh and slicer behavior validated;
-3. physical print, fit, motion, heat, strength, or durability validated.
-
-Passing an earlier state does not imply a later one.
+Trunk-bound changes use a non-main branch and GitHub pull request unless explicitly overridden by the user for that change. The repository-local declaration is `.github/repository-policy.toml`. Repository-hosted CI workflows are not used; their absence does not waive testing. Project source/CAD, written artifact/slicer and physical acceptance remain separate evidence states under the bound workflow.

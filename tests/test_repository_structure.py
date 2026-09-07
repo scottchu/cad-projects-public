@@ -1,9 +1,11 @@
+import hashlib
 import json
+import os
+import subprocess
 from pathlib import Path
 import re
 import tomllib
 
-import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,18 +27,6 @@ ITERATION_FILES = (
     "REVIEW.md",
     "HANDOFF.md",
 )
-
-
-SKILL_FRONTMATTER_KEYS = {"name", "description", "license", "allowed-tools", "metadata"}
-
-
-def _skill_document(path: Path) -> tuple[dict[str, object], str]:
-    text = path.read_text()
-    match = re.match(r"^---\n(.*?)\n---(?:\n|$)(.*)$", text, re.DOTALL)
-    assert match is not None
-    frontmatter = yaml.safe_load(match.group(1))
-    assert isinstance(frontmatter, dict)
-    return frontmatter, match.group(2).strip()
 
 
 def test_root_workspace_contract() -> None:
@@ -69,40 +59,6 @@ def test_required_repository_docs_exist() -> None:
 
     assert all((ROOT / path).is_file() for path in required)
 
-
-def test_repository_local_skills_have_valid_entrypoints() -> None:
-    skills_root = ROOT / ".agents/skills"
-    if not skills_root.exists():
-        return
-
-    for skill in (path for path in skills_root.iterdir() if path.is_dir()):
-        entrypoint = skill / "SKILL.md"
-        assert entrypoint.is_file()
-        fields, body = _skill_document(entrypoint)
-        assert {"name", "description"} <= set(fields)
-        assert set(fields) <= SKILL_FRONTMATTER_KEYS
-        assert isinstance(fields["name"], str) and fields["name"]
-        assert isinstance(fields["description"], str) and fields["description"]
-        assert fields["name"] == skill.name
-        assert re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", fields["name"])
-        assert len(fields["name"]) <= 64
-        assert len(fields["description"]) <= 1024
-        assert body
-        assert "TODO" not in entrypoint.read_text()
-
-        interface = skill / "agents/openai.yaml"
-        if interface.exists():
-            assert interface.is_file()
-            config = yaml.safe_load(interface.read_text())
-            assert isinstance(config, dict)
-            assert set(config) <= {"interface", "dependencies", "policy"}
-            ui = config["interface"]
-            assert isinstance(ui, dict)
-            assert isinstance(ui.get("display_name"), str) and ui["display_name"]
-            assert isinstance(ui.get("short_description"), str)
-            assert 25 <= len(ui["short_description"]) <= 64
-            assert isinstance(ui.get("default_prompt"), str)
-            assert ui["default_prompt"].startswith(f"${skill.name}")
 
 
 def test_repository_delivery_policy_is_parseable() -> None:
@@ -163,90 +119,7 @@ def test_local_validation_command_contract() -> None:
     assert "projects/*/tests" not in readme
 
 
-def test_cad_policy_contains_core_evidence_categories() -> None:
-    policy = (ROOT / "docs/CAD_WORKFLOW.md").read_text().lower()
 
-    required_categories = (
-        "object-collision tests",
-        "math tests",
-        "constraint tests",
-        "user-requirement tests",
-        "source-to-artifact parity",
-        "physical coupon or observation gate",
-    )
-
-    assert all(category in policy for category in required_categories)
-
-
-def test_orchestration_policy_has_bounded_delegation_contract() -> None:
-    agents = (ROOT / "AGENTS.md").read_text().lower()
-    cad = (ROOT / "docs/CAD_WORKFLOW.md").read_text().lower()
-
-    for phrase in (
-        "orchestration and delegation",
-        "task dag",
-        "one writer per project/source/artifact namespace",
-        "at most three worker agents",
-        "implementation agent must not approve its own work",
-        "at most two focused repair cycles",
-        "raw transcripts",
-        "only gates whose declared input manifest changed",
-        "distinct identities",
-    ):
-        assert phrase in agents or phrase in cad
-
-    for phrase in (
-        "critic and independent validation roles may run in parallel",
-        "review is their join gate",
-        "candidate change invalidates only downstream",
-        "least expensive adequate model",
-        "verified fingerprint",
-        "formal independent review is their join gate",
-        "sha-256 over a sorted list",
-        "visual inspection",
-        "runtime agent may be reused",
-        "relevant frozen requirements",
-        "brief.md` frozen design contract section",
-    ):
-        assert phrase in cad
-
-
-def test_continuity_templates_capture_delegated_receipts() -> None:
-    template_root = ROOT / "docs/templates/project-continuity"
-    brief = (template_root / "ITERATION_BRIEF.md").read_text()
-    design = (template_root / "ITERATION_DESIGN.md").read_text()
-    review = (template_root / "ITERATION_REVIEW.md").read_text()
-    validation = (template_root / "ITERATION_VALIDATION.md").read_text()
-    handoff = (template_root / "ITERATION_HANDOFF.md").read_text()
-    next_agent = (template_root / "NEXT_AGENT.md").read_text().lower()
-
-    for heading in (
-        "Frozen design contract",
-        "Mutable delegated execution plan and status (when delegated)",
-        "ID | Role | Deps | Immutable inputs | Exclusive write scope | Done condition",
-        "Model / effort / time / token ceiling",
-        "Task detail: `TASK-001`",
-        "Owner identity and role:",
-        "Allowed reads:",
-        "Forbidden scope:",
-        "Time / token / output / retry / concurrency ceilings:",
-        "Include it in every dependent task's manifest.",
-    ):
-        assert heading in brief
-    assert "Critic provenance:" in review
-    assert "Independent reviewer provenance:" in review
-    assert "Candidate fingerprint:" in review
-    assert "Read-only status:" in review
-    assert "Validator provenance:" in validation
-    assert "Candidate fingerprint:" in validation
-    assert "Read-only status:" in validation
-    assert "Agent receipt / ledger" in handoff
-    assert "Owner identity / role" in handoff
-    assert "Canonical commands/results, hashes, findings/severity, requirement coverage" in handoff
-    assert "Next collect/refine action" in handoff
-    assert "do not duplicate" in next_agent
-    assert "Frozen selected design contract" in design
-    assert "Include the applicable content in every dependent task's manifest." in design
 
 
 def test_workspace_members_do_not_own_environments_or_locks() -> None:
@@ -275,9 +148,9 @@ def test_workspace_members_externalize_project_continuity() -> None:
             assert heading in state
 
 
-def test_printing_profiles_and_template_have_settings_and_evidence_sections() -> None:
+def test_printing_profiles_have_settings_and_evidence_sections() -> None:
     """Catch missing profiles or an empty settings-only file that loses run evidence."""
-    profiles = [ROOT / "docs/templates/project-continuity/PRINTING_PROFILE.md"]
+    profiles = []
     profiles.extend(
         project / "PRINTING_PROFILE.md"
         for project in (ROOT / "projects").iterdir()
@@ -296,3 +169,53 @@ def test_printing_profiles_and_template_have_settings_and_evidence_sections() ->
             assert heading in text, (profile, heading)
             section = text.split(heading, 1)[1].split("\n## ", 1)[0].strip()
             assert section, (profile, heading)
+
+
+def test_external_workflow_binding_is_pinned_and_scoped() -> None:
+    """Catch unresolved provider identities and broken policy navigation."""
+    binding = json.loads((ROOT / "docs/workflows-binding.json").read_text())
+    provider = binding["provider"]
+    assert provider["repository"] == "https://github.com/scottchu/CAD-workbench"
+    assert re.fullmatch(r"[0-9a-f]{40}", provider["revision"])
+    assert re.fullmatch(r"[0-9a-f]{64}", provider["policy_manifest_sha256"])
+    assert provider["policy_manifest"] == "catalog/POLICY.sha256"
+    assert binding["project_repository"]["workshop"] == "docs/WORKSHOP.md"
+    for name, target in binding["policies"].items():
+        assert target.startswith("workflows/policies/")
+        assert ".." not in Path(target).parts
+        pointer = (ROOT / "docs" / f"{name}.md").read_text()
+        assert target in pointer
+        assert "workflows-binding.json" in pointer
+    assert not (ROOT / ".agents/skills").exists()
+    assert not (ROOT / "docs/templates").exists()
+    assert not (ROOT / "tools/cad-viewer-service").exists()
+
+
+def test_bound_workflows_match_pinned_provider_catalog() -> None:
+    """Read external authority to catch IDs/recipes that merely look plausible.
+
+    Set CAD_WORKBENCH_CHECKOUT when Workbench is not a sibling checkout.
+    Only Git object reads occur; no provider runtime or network is started.
+    """
+    binding = json.loads((ROOT / "docs/workflows-binding.json").read_text())
+    provider = binding["provider"]
+    checkout = Path(os.environ.get("CAD_WORKBENCH_CHECKOUT", ROOT.parent / "CAD-workbench"))
+    assert checkout.is_dir(), "Resolve pinned Workbench checkout via CAD_WORKBENCH_CHECKOUT"
+
+    def pinned_bytes(path: str) -> bytes:
+        assert not Path(path).is_absolute() and ".." not in Path(path).parts
+        return subprocess.check_output(
+            ["git", "-C", str(checkout), "show", f"{provider['revision']}:{path}"],
+            timeout=15,
+        )
+
+    manifest = pinned_bytes(provider["policy_manifest"])
+    assert hashlib.sha256(manifest).hexdigest() == provider["policy_manifest_sha256"]
+    hashes = {path: digest for digest, path in (line.split("  ", 1) for line in manifest.decode().splitlines())}
+    catalog_bytes = pinned_bytes(binding["catalog"])
+    assert hashlib.sha256(catalog_bytes).hexdigest() == hashes[binding["catalog"]]
+    catalog = json.loads(catalog_bytes)
+    workflows = {workflow["id"]: workflow for workflow in catalog["workflows"]}
+    for selected in binding["workflows"]:
+        assert selected["id"] in workflows, selected["id"]
+        assert selected["path"] == workflows[selected["id"]]["recipe"]
