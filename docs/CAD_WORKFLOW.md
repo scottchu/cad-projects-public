@@ -23,19 +23,19 @@ The most useful historical checks caught concrete defects: wrong gear interfaces
 ## Workflow overview
 
 ```text
-intent and exact baseline
+user intent, references, and exact baseline
         ↓
-requirements + invariants + risks
+small teachable visual gate, when intent is ambiguous or materially new
         ↓
-small test plan and numeric design contract
+frozen requirements + parameters + risks
         ↓
-design → implementation → (critic || independent validation) → formal independent-review join
-        ↑                         findings          │
-        └──── smallest-source repair and rerun ────┘
+design → implementation → applicable actual-geometry and written-output validation
+        ↑                                      ↓
+        └──── smallest-source repair ← (critic || validator) → formal-review join
         ↓
-STEP/export + snapshot + fabrication handoff
+authorized pull-request delivery
         ↓
-physical observation, kept separate from CAD acceptance
+release slicing, fabrication, and physical acceptance when required
 ```
 
 Scale the depth to the risk. A simple static part needs a short contract and a few checks. A mechanism, repeated assembly, fit-critical interface, or print release needs the full loop.
@@ -50,6 +50,24 @@ Before design work:
 4. Confirm what may change and what must remain unchanged.
 
 “Locked” does not mean the design can never evolve. It means every change is intentional, versioned, scoped, and regression-tested. Never silently modify the baseline or send an agent an ambiguous “latest” file.
+
+### Gate uncertain intent before expensive CAD
+
+When a relationship is ambiguous or materially new, make the smallest useful
+interactive view or diagram before freezing the contract. Isolate one or two
+relationships, explain what is fixed and adjustable, tell the user what to change or
+observe, and ask one explicit pass/fail question. Record the exact result. Once that
+relationship is accepted and the relevant inputs have not changed, do not ask for it
+again.
+
+This gate validates design intent and relationship understanding. An early appearance
+pass is not proof of dimensions, actual-solid geometry, exports, slicer behavior, or
+physical performance. Reference photos and families of examples remain reference
+evidence unless the contract explicitly promotes a feature into scope.
+
+Skip this gate when intent is already explicit and unchanged, including routine,
+reversible, or documentation-only corrections. It does not create a universal
+permission check.
 
 ## Phase 1: turn intent into a contract
 
@@ -151,7 +169,7 @@ Test both required presence and important absence. Part counts alone are not eno
 
 Before implementation begins:
 
-1. Resolve architecture questions with a short design comparison, simulator, ADR, or review view when the user cannot judge the mechanism from prose alone.
+1. Resolve architecture questions with the smallest applicable intent gate when the user cannot judge the mechanism from prose alone.
 2. Freeze the selected baseline, numeric parameters, datums, part roles, motion states, and test targets.
 3. Write failing focused checks first for risky invariants when practical. Do not require test-first work for purely cosmetic edits.
 4. Confirm that the implementation agent has the exact source and version, not an ambiguous “latest” directory.
@@ -178,6 +196,13 @@ Run gates in this order so cheap failures stop expensive work:
 7. freeze the generated candidate, then hand it to the independent critic and validation roles; formal independent review joins their results.
 
 Do not regenerate an entire project when only one explicit target changed.
+
+After risk-appropriate actual-geometry and output validation, distinct critique, and
+formal review, deliver trunk-bound work through the authorized pull-request route.
+Slicing, fabrication, and physical acceptance remain separate evidence layers. They
+may block a fabrication release, but are not prerequisites for every source or
+documentation merge. A risk-driven coupon or physical observation may run earlier
+when it is the smallest way to resolve a design unknown.
 
 ## Additional evidence, used only when relevant
 
@@ -288,7 +313,7 @@ The orchestrator must:
 - prevent agents from reviewing a stale or wrong branch;
 - avoid parallel implementation against a moving contract;
 - stop or reuse idle roles instead of accumulating agents;
-- report findings and progress in terms of unresolved risks, not agent count or test count.
+- report the current gate, proven evidence, unresolved risks, and next action; do not use agent count or passing-test count as progress.
 
 Each role returns a concise receipt: stable owner identity and role; status; verified fingerprint; changed paths/artifacts; canonical links to exact commands/results, hashes/manifests, findings/severity, and requirement coverage; unresolved risks; and next action. Record distinct critic, validator, and formal reviewer provenance without copying raw reports. The orchestrator verifies provenance, synthesizes conflicts instead of concatenating reports, routes the smallest correction, and records durable evidence. Raw transcripts and per-agent diaries are prohibited.
 

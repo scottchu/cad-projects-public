@@ -92,7 +92,7 @@ a selected or validated profile. This document is not an executable slicer prese
 
 Agent sessions are temporary execution contexts, not authoritative project records. Every project externalizes current state and cumulative learning according to `docs/PROJECT_CONTINUITY.md`.
 
-`PROJECT_STATE.md` is the current-state index. `NEXT_AGENT.md` is a concise restart route, not a duplicate specification. Stable requirements, experience, and architectural decisions live in project-local documents. Each active iteration has a frozen brief plus design, validation, review, and handoff records. Generated releases carry manifests that link artifacts to source and evidence.
+Each project has one project-owned canonical ordered backlog and reuses its established path. `PROJECT_STATE.md` is a concise current-state index that links that backlog and exposes the latest baseline, one active gate, proven evidence, next action, and any truly blocking user decision; a very small backlog may remain inline while concise. `NEXT_AGENT.md` is a restart route, not a duplicate specification. Stable requirements, experience, and architectural decisions live in project-local documents. Each active iteration has a frozen brief plus design, validation, review, and handoff records. Generated releases carry manifests that link artifacts to source and evidence.
 
 Closed iterations and superseded decisions remain readable history. Current documents point to replacements rather than silently rewriting past reasoning.
 

@@ -20,7 +20,7 @@ A fresh agent with access only to the repository must be able to determine:
 Every directory under `projects/` must contain:
 
 - `README.md`: stable purpose, authoritative source, setup, generation, and test commands;
-- `PROJECT_STATE.md`: concise current-state index with baseline, active iteration, acceptance states, open risks, and next action;
+- `PROJECT_STATE.md`: concise current-state index linking the one authoritative ordered project backlog, with baseline, active gate, evidence links, acceptance states, open risks, and next action;
 - `NEXT_AGENT.md`: short restart route pointing to canonical records and exact paths or revisions;
 - `PRINTING_PROFILE.md`: editable printer/nozzle/material settings, per-part print orientation, traceable slice/print runs and a growing concern log; use explicit pending values or justified N/A, following [FDM design rules](FDM_DESIGN_RULES.md);
 - `docs/REQUIREMENTS.md`: stable requirement IDs, invariants, derived constraints, design choices, non-goals, and physical unknowns;
@@ -79,6 +79,9 @@ While work is in progress:
 4. record failed approaches that could otherwise be repeated;
 5. keep exact validation commands and outcomes in `VALIDATION.md`;
 6. keep independent findings and their disposition in `REVIEW.md`.
+7. update the project-owned canonical ordered backlog and its pointer in
+   `PROJECT_STATE.md`; use stable item IDs and one of `delivered`, `proposed`,
+   `partial`, `queued`, or `deferred` for every item.
 
 Before stopping, switching agents, or closing the iteration:
 
@@ -100,7 +103,28 @@ Each active iteration contains:
 
 For delegated work, `BRIEF.md` additionally contains a stable frozen design contract section and a separate mutable execution-plan/status area. The execution-plan summary table records task ID, role, dependencies, immutable inputs, exclusive write scope, done condition, parallel group, model/effort/time/token ceiling, and status. Its task detail blocks record owner identity, allowed reads, forbidden scope, deliverables/evidence, output/retry/concurrency ceilings, and stop/escalation conditions. An immutable input manifest is a declared SHA-256 list of decision-bearing paths and content hashes: relevant frozen requirements, the frozen brief/design contracts, and applicable authoritative source/test/artifact paths. It excludes only mutable orchestration/status and evidence records. `REVIEW.md` records distinct critic and independent formal-reviewer provenance, candidate fingerprint, and read-only status. `VALIDATION.md` records validator provenance and candidate fingerprint. `HANDOFF.md` carries a concise agent receipt/ledger with canonical evidence links and the next collect/refine action. `NEXT_AGENT.md` links to these canonical records rather than copying their contents.
 
+Maintain one project-owned canonical ordered backlog, reusing its established path.
+`PROJECT_STATE.md` links it rather than copying it; a very small project may keep a
+short backlog inline when that remains concise. Include completed and future work so
+the roadmap is visible without reconstructing history. Each item states its stable ID,
+status, intended outcome, evidence layer, and canonical evidence or planning link. A
+reference image, proposed feature family, agent activity, or passing test count does
+not make an item `partial` or `delivered`; use evidence of the stated outcome.
+
+Keep one current-gate summary in `PROJECT_STATE.md`: latest baseline, exactly one
+active gate, proven evidence, next action, and a user decision only when progress truly
+depends on one. Use `none` when existing authorization or confirmed intent suffices.
+
+For each candidate, record what changed, why, validation performed, remaining unknowns,
+and the next action in the active iteration records. User-facing progress updates
+surface the same concise current gate and roadmap state without reproducing task DAGs
+or agent diaries.
+
 These documents evolve during an active iteration. Once the iteration closes, correct factual errors with an explicit correction note; do not rewrite the historical reasoning to look cleaner than it was.
+
+Preserve closed iterations and superseded decisions as history, and point clearly to
+their replacements. Update the existing current sections instead of appending a second,
+contradictory current-state block.
 
 ## What to preserve
 

@@ -1,6 +1,10 @@
 # Next agent
 
-Start with `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`, `docs/decisions/README.md`, and the iteration named by `docs/iterations/CURRENT`. Link to the iteration brief, validation, review, and handoff records; do not duplicate their receipts or task DAG here.
+Start with `PROJECT_STATE.md`, including its current gate and authoritative backlog
+link, then read `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
+`docs/decisions/README.md`, and the iteration named by
+`docs/iterations/CURRENT`. Link to the iteration brief, validation, review, and
+handoff records; do not duplicate their history, receipts, backlog, or task DAG here.
 
 ## Exact baseline
 
@@ -10,7 +14,9 @@ Start with `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`, `do
 
 ## Immediate task
 
--
+- Backlog item:
+- Current gate:
+- Next action:
 
 ## Preserve
 
