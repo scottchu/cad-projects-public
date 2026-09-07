@@ -1,5 +1,9 @@
 # Project state
 
+Active iteration: `docs/iterations/2026-09-06-pattern-reference-intake`. User supplied33 reference images and requested preservation, regrouping, parameter lists and container feasibility. All33 byte-original images, numbered gallery/provenance, and a10-family parameter catalog with per-image practicality notes are complete under `docs/references/2026-09-06-container-patterns/`; read README, PATTERN_PARAMETERS and the active HANDOFF/REVIEW. This intake does not select the earlier recessed-diamond proposal or implement new geometry. Baseline commit `2989aa412911df1fd947df81d056ea3ebfe7c66d`; source and live customizer stay at their reviewed baseline.
+
+## Preserved pattern-study checkpoint
+
 Active iteration: `docs/iterations/2026-09-06-pattern-backlog`. User authorized continuing the full roadmap one item at a time. Read `docs/FEATURE_BACKLOG.md` and the active BRIEF/DESIGN/HANDOFF. First new gate: compare current blunt Diamond against a Recessed diamond appearance study. No photo needed for the documented first proposal; user appearance acceptance precedes new CAD.
 
 Accepted app/source baseline is commit `191cb37119f9a4e4d23112ecd5bc0d18f0daec86`, SCAD SHA `497098afa555092a0ed85a3a7213cd270852aa76f9001e1478c209cd8469bc42`; private8453 main customizer remains unchanged and compilation stays in the browser. The analytic study is reviewed and delivered at `https://mac-mini.duckbill-ionian.ts.net:8453/pattern-study/`; Node7/7, actual desktop/mobile/state evidence, independent critique and formal review passed. Main-app six-file parity is unchanged. Read active HANDOFF and DELIVERY. Next: user appearance decision on the recessed diamond before a new source/CAD gate.
