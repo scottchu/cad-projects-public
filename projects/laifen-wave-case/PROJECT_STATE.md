@@ -1,5 +1,9 @@
 # Project state
 
+## Main integration checkpoint — 2026-09-06
+
+The user explicitly approved merging the current work before continuing. PR [19](https://github.com/scottchu/design-projects/pull/19) is the delivery record; its GitHub merge state and merge commit are authoritative for completed integration. Reviewed source head is `90d73c13355385cc51bc2a17c2b3b2ac0d21cbe1` against main `6e00ba898d6435614782de2764c6aae0ff131de5`; only merge review and continuity records are added afterward. Final checks passed: 66 Node tests, 13 Python checks and an isolated production build. Read active `MERGE_REVIEW.md` and `HANDOFF.md` for provenance. The next action is to complete and verify this PR merge, then stop before new feature work. Historical draft/no-merge statements below describe earlier authorization. Proposed patterns and physical acceptance remain open.
+
 Active iteration: `docs/iterations/2026-09-06-pattern-reference-intake`. User supplied33 reference images and requested preservation, regrouping, parameter lists and container feasibility. All33 byte-original images, numbered gallery/provenance, and a10-family parameter catalog with per-image practicality notes are complete under `docs/references/2026-09-06-container-patterns/`; read README, PATTERN_PARAMETERS and the active HANDOFF/REVIEW. This intake does not select the earlier recessed-diamond proposal or implement new geometry. Baseline commit `2989aa412911df1fd947df81d056ea3ebfe7c66d`; source and live customizer stay at their reviewed baseline.
 
 ## Preserved pattern-study checkpoint

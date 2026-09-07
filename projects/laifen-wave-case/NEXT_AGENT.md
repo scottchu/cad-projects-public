@@ -1,5 +1,9 @@
 # Next agent — pattern references
 
+## Main integration checkpoint — 2026-09-06
+
+User authorized merging all current work through [PR 19](https://github.com/scottchu/design-projects/pull/19) before continuing. Source head `90d73c13355385cc51bc2a17c2b3b2ac0d21cbe1` has independent merge review and final passing Node 66/66, Python 13/13 and isolated build checks. Only review/status records follow that head. First inspect PR 19's state and merge commit: finish delivery if still open; if merged, use that integration as the next baseline. Stop before new pattern implementation; integration does not select the recessed-diamond proposal or prove physical acceptance. Read active `MERGE_REVIEW.md` and `HANDOFF.md`. Earlier draft/no-main-merge statements are historical.
+
 Active iteration: `docs/iterations/2026-09-06-pattern-reference-intake`. User supplied33 reference images and requested preservation, regrouping, parameter lists and container feasibility. All33 byte-original images, numbered gallery/provenance, and a10-family parameter catalog with per-image practicality notes are complete under `docs/references/2026-09-06-container-patterns/`; read README, PATTERN_PARAMETERS and the active HANDOFF/REVIEW. This intake does not select the earlier recessed-diamond proposal or implement new geometry. Baseline commit `2989aa412911df1fd947df81d056ea3ebfe7c66d`; source and live customizer stay at their reviewed baseline.
 
 ## Preserved pattern-study checkpoint

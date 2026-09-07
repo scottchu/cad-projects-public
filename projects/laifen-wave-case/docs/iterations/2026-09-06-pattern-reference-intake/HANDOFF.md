@@ -1,5 +1,17 @@
 # Reference intake handoff
 
+## Authorized main delivery checkpoint — 2026-09-06
+
+The user requested merging current work before continuing. Source head `90d73c13355385cc51bc2a17c2b3b2ac0d21cbe1` and fetched main `6e00ba898d6435614782de2764c6aae0ff131de5` were cleanly mergeable in PR 19. Independent `/root/merge_readiness` verified performance 43/43, study 38/38, reference join 6/6 and archive 36/36 current hashes; all 228 changed paths belong to this project. See MERGE_REVIEW.md. Only that receipt and root-owned continuity follow the reviewed head.
+
+Final prescribed commands from repository root all passed:
+
+- `node --test projects/laifen-wave-case/tests/node/*.test.mjs`: 66/66 tests, zero failures.
+- `PYTHONDONTWRITEBYTECODE=1 uv run pytest projects/laifen-wave-case/tests/test_openscad_customizer.py projects/laifen-wave-case/tests/test_openscad_wasm_simulator.py -p no:cacheprovider`: 13 passed.
+- `npm run build:openscad-simulator --workspace laifen-wave-case -- --outDir /tmp/container-pr19-merge-check/dist --emptyOutDir`: successful isolated build, 20 modules; existing large-chunk advisory only. Live dist was not rebuilt.
+
+Delivery procedure: commit and push only review/status changes, refresh the PR description, mark ready, merge with exact-head matching, fetch main and verify the PR merge commit and source-head ancestry. [PR 19](https://github.com/scottchu/design-projects/pull/19) is the durable actual merge outcome; this checkpoint is written before executing it. Keep the feature branch for recovery. Stop after merge; no new pattern selection, CAD generation, live service or printer action is included. Physical and native-phone acceptance remain open.
+
 Baseline commit: `2989aa412911df1fd947df81d056ea3ebfe7c66d`.
 The user supplied 30 images, requested regrouping and parameter lists, then added three more and asked which are unrealistic for containers. This task preserves and describes references; it does not implement photographed objects or accept the previous recessed-diamond proposal.
 
