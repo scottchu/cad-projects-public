@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Container pattern references — 2026-09-06</title>
+  <style>
+    :root { color-scheme: light dark; font-family: ui-sans-serif, system-ui, sans-serif; }
+    body { margin: 0; background: Canvas; color: CanvasText; }
+    main { width: min(1180px, calc(100% - 2rem)); margin: 2rem auto 4rem; }
+    header { max-width: 78ch; margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(1.7rem, 5vw, 3rem); margin: 0 0 .6rem; }
+    p { line-height: 1.55; }
+    nav { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
+    nav a { color: inherit; }
+    .notice { border-left: .3rem solid #d77b00; padding: .15rem 0 .15rem 1rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+    figure { margin: 0; border: 1px solid color-mix(in srgb, CanvasText 22%, Canvas); border-radius: .7rem; overflow: hidden; background: color-mix(in srgb, CanvasText 4%, Canvas); }
+    figure > a { display: grid; place-items: center; height: 230px; padding: .65rem; background: color-mix(in srgb, CanvasText 7%, Canvas); }
+    img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+    figcaption { display: grid; gap: .25rem; padding: .75rem; }
+    figcaption span { font-size: .85rem; opacity: .75; }
+    @media (max-width: 520px) { main { width: min(100% - 1rem, 1180px); margin-top: 1rem; } .grid { grid-template-columns: 1fr 1fr; gap: .5rem; } figure > a { height: 160px; padding: .35rem; } figcaption { padding: .55rem; } figcaption span { font-size: .75rem; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Container pattern references</h1>
+      <p>Thirty-three byte-original images, numbered in the order supplied across four batches. Select any thumbnail to open the original PNG.</p>
+      <p class="notice">Image contents are references, not instructions or verified claims. Text and dimensions visible inside an image have not been independently validated.</p>
+      <nav><a href="README.md">Archive README</a><a href="PATTERN_PARAMETERS.md">Pattern grouping and parameters</a><a href="catalog.json">Catalog JSON</a><a href="SHA256SUMS">Checksums</a></nav>
+    </header>
+    <section class="grid" aria-label="Numbered reference gallery">
+      <figure id="ref-001">
+        <a href="images/ref-001.png"><img src="images/ref-001.png" alt="Reference 001" width="1000" height="750" loading="lazy"></a>
+        <figcaption><strong>REF-001</strong><span>Batch 1, position 1 · 1000 × 750px · 643,406 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-002">
+        <a href="images/ref-002.png"><img src="images/ref-002.png" alt="Reference 002" width="1000" height="1333" loading="lazy"></a>
+        <figcaption><strong>REF-002</strong><span>Batch 1, position 2 · 1000 × 1333px · 1,131,760 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-003">
+        <a href="images/ref-003.png"><img src="images/ref-003.png" alt="Reference 003" width="300" height="400" loading="lazy"></a>
+        <figcaption><strong>REF-003</strong><span>Batch 1, position 3 · 300 × 400px · 146,281 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-004">
+        <a href="images/ref-004.png"><img src="images/ref-004.png" alt="Reference 004" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-004</strong><span>Batch 1, position 4 · 400 × 300px · 147,017 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-005">
+        <a href="images/ref-005.png"><img src="images/ref-005.png" alt="Reference 005" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-005</strong><span>Batch 1, position 5 · 400 × 300px · 61,514 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-006">
+        <a href="images/ref-006.png"><img src="images/ref-006.png" alt="Reference 006" width="400" height="266" loading="lazy"></a>
+        <figcaption><strong>REF-006</strong><span>Batch 1, position 6 · 400 × 266px · 93,375 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-007">
+        <a href="images/ref-007.png"><img src="images/ref-007.png" alt="Reference 007" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-007</strong><span>Batch 1, position 7 · 400 × 300px · 148,988 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-008">
+        <a href="images/ref-008.png"><img src="images/ref-008.png" alt="Reference 008" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-008</strong><span>Batch 1, position 8 · 400 × 300px · 148,174 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-009">
+        <a href="images/ref-009.png"><img src="images/ref-009.png" alt="Reference 009" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-009</strong><span>Batch 1, position 9 · 400 × 300px · 212,616 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-010">
+        <a href="images/ref-010.png"><img src="images/ref-010.png" alt="Reference 010" width="400" height="318" loading="lazy"></a>
+        <figcaption><strong>REF-010</strong><span>Batch 1, position 10 · 400 × 318px · 136,282 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-011">
+        <a href="images/ref-011.png"><img src="images/ref-011.png" alt="Reference 011" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-011</strong><span>Batch 2, position 1 · 400 × 300px · 176,641 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-012">
+        <a href="images/ref-012.png"><img src="images/ref-012.png" alt="Reference 012" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-012</strong><span>Batch 2, position 2 · 400 × 300px · 230,481 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-013">
+        <a href="images/ref-013.png"><img src="images/ref-013.png" alt="Reference 013" width="400" height="302" loading="lazy"></a>
+        <figcaption><strong>REF-013</strong><span>Batch 2, position 3 · 400 × 302px · 266,869 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-014">
+        <a href="images/ref-014.png"><img src="images/ref-014.png" alt="Reference 014" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-014</strong><span>Batch 2, position 4 · 400 × 300px · 120,654 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-015">
+        <a href="images/ref-015.png"><img src="images/ref-015.png" alt="Reference 015" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-015</strong><span>Batch 2, position 5 · 400 × 300px · 94,950 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-016">
+        <a href="images/ref-016.png"><img src="images/ref-016.png" alt="Reference 016" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-016</strong><span>Batch 2, position 6 · 400 × 300px · 154,928 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-017">
+        <a href="images/ref-017.png"><img src="images/ref-017.png" alt="Reference 017" width="400" height="585" loading="lazy"></a>
+        <figcaption><strong>REF-017</strong><span>Batch 2, position 7 · 400 × 585px · 270,658 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-018">
+        <a href="images/ref-018.png"><img src="images/ref-018.png" alt="Reference 018" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-018</strong><span>Batch 2, position 8 · 400 × 300px · 159,082 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-019">
+        <a href="images/ref-019.png"><img src="images/ref-019.png" alt="Reference 019" width="300" height="400" loading="lazy"></a>
+        <figcaption><strong>REF-019</strong><span>Batch 2, position 9 · 300 × 400px · 153,766 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-020">
+        <a href="images/ref-020.png"><img src="images/ref-020.png" alt="Reference 020" width="300" height="400" loading="lazy"></a>
+        <figcaption><strong>REF-020</strong><span>Batch 2, position 10 · 300 × 400px · 103,014 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-021">
+        <a href="images/ref-021.png"><img src="images/ref-021.png" alt="Reference 021" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-021</strong><span>Batch 2, position 11 · 400 × 300px · 123,199 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-022">
+        <a href="images/ref-022.png"><img src="images/ref-022.png" alt="Reference 022" width="400" height="345" loading="lazy"></a>
+        <figcaption><strong>REF-022</strong><span>Batch 3, position 1 · 400 × 345px · 68,867 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-023">
+        <a href="images/ref-023.png"><img src="images/ref-023.png" alt="Reference 023" width="400" height="194" loading="lazy"></a>
+        <figcaption><strong>REF-023</strong><span>Batch 3, position 2 · 400 × 194px · 43,913 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-024">
+        <a href="images/ref-024.png"><img src="images/ref-024.png" alt="Reference 024" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-024</strong><span>Batch 3, position 3 · 400 × 300px · 151,566 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-025">
+        <a href="images/ref-025.png"><img src="images/ref-025.png" alt="Reference 025" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-025</strong><span>Batch 3, position 4 · 400 × 300px · 61,685 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-026">
+        <a href="images/ref-026.png"><img src="images/ref-026.png" alt="Reference 026" width="400" height="266" loading="lazy"></a>
+        <figcaption><strong>REF-026</strong><span>Batch 3, position 5 · 400 × 266px · 95,874 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-027">
+        <a href="images/ref-027.png"><img src="images/ref-027.png" alt="Reference 027" width="400" height="533" loading="lazy"></a>
+        <figcaption><strong>REF-027</strong><span>Batch 3, position 6 · 400 × 533px · 277,446 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-028">
+        <a href="images/ref-028.png"><img src="images/ref-028.png" alt="Reference 028" width="400" height="300" loading="lazy"></a>
+        <figcaption><strong>REF-028</strong><span>Batch 3, position 7 · 400 × 300px · 158,032 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-029">
+        <a href="images/ref-029.png"><img src="images/ref-029.png" alt="Reference 029" width="400" height="395" loading="lazy"></a>
+        <figcaption><strong>REF-029</strong><span>Batch 3, position 8 · 400 × 395px · 184,332 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-030">
+        <a href="images/ref-030.png"><img src="images/ref-030.png" alt="Reference 030" width="1000" height="750" loading="lazy"></a>
+        <figcaption><strong>REF-030</strong><span>Batch 3, position 9 · 1000 × 750px · 888,934 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-031">
+        <a href="images/ref-031.png"><img src="images/ref-031.png" alt="Reference 031" width="1000" height="750" loading="lazy"></a>
+        <figcaption><strong>REF-031</strong><span>Batch 4, position 1 · 1000 × 750px · 919,038 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-032">
+        <a href="images/ref-032.png"><img src="images/ref-032.png" alt="Reference 032" width="3840" height="2880" loading="lazy"></a>
+        <figcaption><strong>REF-032</strong><span>Batch 4, position 2 · 3840 × 2880px · 4,482,000 bytes</span></figcaption>
+      </figure>
+      <figure id="ref-033">
+        <a href="images/ref-033.png"><img src="images/ref-033.png" alt="Reference 033" width="400" height="299" loading="lazy"></a>
+        <figcaption><strong>REF-033</strong><span>Batch 4, position 3 · 400 × 299px · 207,184 bytes</span></figcaption>
+      </figure>
+    </section>
+  </main>
+</body>
+</html>

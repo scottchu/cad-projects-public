@@ -1,8 +1,46 @@
 # Decision index
 
-## Current pointer: VFR-12 OpenSCAD customizer
+## Current delivered pattern families
 
-The selected current contract is the [OpenSCAD visual-fidelity recovery](../iterations/2026-09-04-openscad-visual-fidelity-recovery/). Its authoritative source is `openscad/laifen_case_customizer_v1.scad`, SHA-256 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`, and its only current live review surface is <https://mac-mini.duckbill-ionian.ts.net:8448/openscad-simulator/>. VFR-12 C3 is the delivered smooth mobile UI; Diamond controls remain disabled pending browser recovery.
+The user accepted Smooth/Diamond on private 8453 and requested more simple
+mathematical patterns with each selected pattern's controls immediately below
+the selector. The [brief](../iterations/2026-09-06-pattern-families/BRIEF.md)
+records PF-01..09; the [design](../iterations/2026-09-06-pattern-families/DESIGN.md)
+fixes Ribs/Rings/Spiral fields, Diamond controls, remembered raw state, exact-entry
+and slider behavior, protected geometry and evidence gates. These identifiers
+extend this UI/source gate without rewriting the historical requirements.
+
+R2 passed the direct Spiral pilot, bounded full source/state/written-STL
+validation, Chromium browser critique and formal review, and is delivered on
+private 8453 with verified served-file and live-download parity. The rejected CSG pilot is retained
+as failure evidence. See [HANDOFF](../iterations/2026-09-06-pattern-families/HANDOFF.md),
+[FULL_IMPLEMENTATION](../iterations/2026-09-06-pattern-families/FULL_IMPLEMENTATION.md)
+and [FULL_VALIDATION](../iterations/2026-09-06-pattern-families/FULL_VALIDATION.md).
+No new STEP, slicer or physical acceptance follows from this delivery.
+
+## Accepted surface pattern gate
+
+[Surface pattern iteration](../iterations/2026-09-06-surface-pattern/) follows
+the delivered drain count at `cf4adb0`. Existing Smooth/Diamond selection is
+accepted by the user on private 8453 after the combined Chromium,
+written-mesh and genuine-result lifecycle gates passed. See REVIEW_RESUMED.md
+and DELIVERY.md; Safari/iPhone and physical acceptance remain separate.
+The accepted count source SHA is
+`517f8546612ffecbc50a732362c9e3a326db03fa2c94e94a68daad472a0b42e2`.
+
+## Preserved drain checkbox follow-up
+
+[Drain checkbox iteration](../iterations/2026-09-06-drain-checkboxes/) extends
+the editable SCAD drain mode to both ends and exposes independent Top/Bottom
+checkboxes. The source at that historical gate was SHA `cf0983e84e738be87e31462c903afcf02646915cc1e4a9e8641b8edce05b5393`;
+its delivery used private 8453. Bottom-only
+default geometry is preserved byte-for-byte. Prior VFR-12/8448 and R7 STEP
+records below remain preserved releases, not the current editable source hash.
+
+
+## Historical VFR-12 OpenSCAD customizer
+
+The [OpenSCAD visual-fidelity recovery](../iterations/2026-09-04-openscad-visual-fidelity-recovery/) records historical source `openscad/laifen_case_customizer_v1.scad`, SHA-256 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`, and the former review address <https://mac-mini.duckbill-ionian.ts.net:8448/openscad-simulator/>. VFR-12 C3 delivered the smooth mobile UI with Diamond disabled at that time. The accepted 8453 surface-pattern gate supersedes that status; this paragraph does not claim the historical address is currently available.
 
 P2 R3 is preserved historical user-validation evidence. Its generic two-piece, mid-split control model and receipts remain under [P2 R3](../iterations/2026-09-03-p2-r3-control-sync-recovery/), but it is no longer the current pointer or a claimed live delivery surface.
 

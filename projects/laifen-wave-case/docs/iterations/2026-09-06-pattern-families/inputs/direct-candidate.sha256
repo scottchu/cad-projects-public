@@ -1,0 +1,8 @@
+d7acb997f128538a58f9905fe5537972202f49be2b0a490f080d95068701631d  projects/laifen-wave-case/openscad/laifen_case_customizer_v1.scad
+f23606eee72e928c96c7cbc45d76bbd1cbb2ca8e90207e97e99d6cdd21951d8e  projects/laifen-wave-case/tests/mesh/pattern-families/compile_pilot.mjs
+bd5aca2071ffc27633aeb83e7ad8fa37b7a75a720fbdba26cf799b22dbb5ce51  /tmp/pattern-families-direct-r1/compile_spiral.mjs
+1689355bf915535456af607ef57f372ac231bcce34e8c87715bc270d0d8ae840  /tmp/pattern-families-direct-r1/spiral-body.stl
+317f1f85c1901f2ef287c4ed8440077045ba55da4aaa73e8da581586a3d433e5  /tmp/pattern-families-direct-r1/spiral-cap.stl
+632cc81cdfd7a4416775fad29442f7b6473f0e0b1e4097c86c04bfe728466c36  /tmp/pattern-families-direct-r1/spiral-assembled.stl
+904a47f29e63afb597bedef747da3b457d8ea17cc793c462c6c8b444e918a62e  /tmp/pattern-families-direct-r1/openscad.js
+f72ce246c02c0e501990837102be383326b153fd761774ebfacce5c80c5ecf26  /tmp/pattern-families-direct-r1/openscad.wasm

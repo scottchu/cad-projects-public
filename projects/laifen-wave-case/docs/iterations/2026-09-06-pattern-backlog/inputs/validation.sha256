@@ -1,0 +1,10 @@
+442c718589ef6a9a2e17037e941e030cad6a3498f33621505aa4a974835e464e  projects/laifen-wave-case/docs/iterations/2026-09-06-pattern-backlog/BRIEF.md
+c81ac2f3b20d8b7a8024b33671c03a6768e77c97ca53646441b86e9032ceb8b8  projects/laifen-wave-case/docs/iterations/2026-09-06-pattern-backlog/DESIGN.md
+0017189e52389ea7c678922cb1c9c7f67d23a7a4eba1c951369b5386f3cd87bb  projects/laifen-wave-case/docs/iterations/2026-09-06-pattern-backlog/IMPLEMENTATION.md
+8d71809de30441b9f0c0c62fb5191524f06f125c0d010ff71b33d0b6f9ff5779  projects/laifen-wave-case/docs/iterations/2026-09-06-pattern-backlog/inputs/candidate.sha256
+497098afa555092a0ed85a3a7213cd270852aa76f9001e1478c209cd8469bc42  projects/laifen-wave-case/openscad/laifen_case_customizer_v1.scad
+5edb9e9a561007c8d74b6df4cef77cea8b1c60b50e152fe7fc0452811f4ac8b2  projects/laifen-wave-case/preview/recessed-diamond-study/index.html
+85148315035fc1b62bab27516d696c4036894b0b06b6896ab378f7a227de9d1a  projects/laifen-wave-case/preview/recessed-diamond-study/math.mjs
+f480e5fdf5e94fd4c3c5c07b682e327d8535cc074c0e0f8715f0781de4fee32e  projects/laifen-wave-case/preview/recessed-diamond-study/study.mjs
+f6118a474cb454e468135ecaf98658c121160adafd6b285975ff20d26d3507bd  projects/laifen-wave-case/preview/recessed-diamond-study/style.css
+6938eb8d1f0327fdcca342c0024a654885a93a7c106584798802181a624449ab  projects/laifen-wave-case/tests/node/recessed-diamond-study-independent.test.mjs

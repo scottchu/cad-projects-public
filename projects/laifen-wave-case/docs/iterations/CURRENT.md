@@ -1,1 +1,3 @@
-2026-09-04-openscad-visual-fidelity-recovery
+# Current iteration
+
+[Pattern reference intake](2026-09-06-pattern-reference-intake/HANDOFF.md)

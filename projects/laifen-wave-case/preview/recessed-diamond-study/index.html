@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond surface study</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="study-shell" id="study">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">Surface comparison</p>
+        <h1>Diamond surface study</h1>
+        <p class="truth-label">Appearance study, not a compiled container.</p>
+      </div>
+      <a class="back-link" href="https://mac-mini.duckbill-ionian.ts.net:8453/">Back to accepted customizer</a>
+    </header>
+
+    <form class="controls" id="controls" novalidate>
+      <div class="control-field">
+        <div class="control-heading">
+          <label for="size">Size</label>
+          <div class="number-unit"><input id="size" name="size" type="text" inputmode="decimal" value="4.8" aria-describedby="size-limit size-error"><span>mm</span></div>
+        </div>
+        <input class="range" id="size-range" type="range" min="4.8" max="8" step="0.1" value="4.8" aria-label="Diamond size" aria-describedby="size-limit size-error">
+        <small id="size-limit">4.8–8.0 mm</small>
+        <p class="field-error" id="size-error" hidden></p>
+      </div>
+      <div class="control-field">
+        <div class="control-heading">
+          <label for="depth">Depth</label>
+          <div class="number-unit"><input id="depth" name="depth" type="text" inputmode="decimal" value="0.45" aria-describedby="depth-limit depth-error"><span>mm</span></div>
+        </div>
+        <input class="range" id="depth-range" type="range" min="0.1" max="0.6" step="0.05" value="0.45" aria-label="Diamond depth" aria-describedby="depth-limit depth-error">
+        <small id="depth-limit">0.10–0.60 mm</small>
+        <p class="field-error" id="depth-error" hidden></p>
+      </div>
+      <div class="control-actions">
+        <p id="status" aria-live="polite">Study ready</p>
+        <div class="buttons">
+          <button class="icon-button primary" id="render" type="submit" aria-label="Render study">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><title>Render study</title><path d="m9 5 10 7-10 7V5Zm-4 2v2m0 6v2m-2-5h2m10-8 1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z"/></svg>
+            <span class="sr-only">Render</span>
+          </button>
+          <button class="icon-button" id="reset" type="button" aria-label="Reset size and depth">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><title>Reset size and depth</title><path d="M4 9V4h5M4 4l4 4a7 7 0 1 1-1.4 7.8"/></svg>
+            <span class="sr-only">Reset</span>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <section class="comparison" aria-label="Diamond surface comparison">
+      <article class="surface-card" data-kind="current">
+        <header><p>Existing surface</p><h2>Current Diamond</h2></header>
+        <canvas class="patch" id="current-patch" width="480" height="480" aria-label="Shaded top view of Current Diamond"></canvas>
+        <p class="witness" id="current-witness"></p>
+        <figure><canvas class="section" id="current-true" width="720" height="180" aria-label="True-proportion section of Current Diamond"></canvas><figcaption>True proportions; screen size depends on zoom</figcaption></figure>
+        <figure><canvas class="section" id="current-six" width="720" height="180" aria-label="Depth enlarged six times section of Current Diamond"></canvas><figcaption>Depth enlarged ×6</figcaption></figure>
+      </article>
+
+      <article class="surface-card" data-kind="recessed">
+        <header><p>Proposed surface</p><h2>Recessed diamond proposal</h2></header>
+        <canvas class="patch" id="recessed-patch" width="480" height="480" aria-label="Shaded top view of Recessed diamond proposal"></canvas>
+        <p class="witness" id="recessed-witness"></p>
+        <figure><canvas class="section" id="recessed-true" width="720" height="180" aria-label="True-proportion section of Recessed diamond proposal"></canvas><figcaption>True proportions; screen size depends on zoom</figcaption></figure>
+        <figure><canvas class="section" id="recessed-six" width="720" height="180" aria-label="Depth enlarged six times section of Recessed diamond proposal"></canvas><figcaption>Depth enlarged ×6</figcaption></figure>
+      </article>
+    </section>
+  </main>
+  <script type="module" src="./study.mjs"></script>
+</body>
+</html>

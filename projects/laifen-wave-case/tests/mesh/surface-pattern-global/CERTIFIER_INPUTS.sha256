@@ -1,0 +1,5 @@
+412b5e389a85dbaa7ad730870f496639d8dcd2e2129de733b4da1ba1e031fc63  projects/laifen-wave-case/docs/iterations/2026-09-06-surface-pattern/inputs/candidate-03.sha256
+fa83b7932a58d4c53c99bd74e3eead901eadabf7c07bd1d41d554de7431c9977  projects/laifen-wave-case/tests/mesh/surface-pattern-global/README.md
+e8b032376cfd246ea30b8c5c8be39417cffdabb1834771f0ae3683ed9cca7d2d  projects/laifen-wave-case/tests/mesh/surface-pattern-global/mesh_certifier.cpp
+5c56fbbdffbfe35c503a74efd3d7475d26a3aa1e17fd6a0482b0b327b10bcd7c  projects/laifen-wave-case/tests/mesh/surface-pattern-global/run_certification.py
+a0c02ef566193ab9dcc2678d7109abbed63a40f2188f6f23725fd7353abce28c  projects/laifen-wave-case/tests/mesh/surface-pattern-global/selftest.py

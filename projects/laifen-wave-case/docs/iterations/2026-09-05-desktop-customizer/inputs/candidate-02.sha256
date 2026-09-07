@@ -1,0 +1,16 @@
+f621ab21455ac5f7b3beede761b1666b784984b8c6db7f16f679d0b7982f8d3d  projects/laifen-wave-case/docs/iterations/2026-09-05-desktop-customizer/BRIEF.md
+b483baf312658d382549c3bdf8dbabd1d5d08a8c80a80c70a73d3fdc10a32dc2  projects/laifen-wave-case/docs/iterations/2026-09-05-desktop-customizer/DESIGN.md
+f4a915c98ad96009436e170d7b65521d32c4735f8887f51d11c1b36172092267  projects/laifen-wave-case/docs/iterations/2026-09-05-desktop-customizer/inputs/selected-desktop.png
+67e6bb6da2a57f2953fe84e93afa848b912e8105ebac796f52ad49bad858b5b6  projects/laifen-wave-case/preview/openscad-wasm-simulator/index.html
+724595e26f94c1ad24e96c9814f442ad7cdc18cdc073ef9096527d25989dea0a  projects/laifen-wave-case/preview/openscad-wasm-simulator/style.css
+6660e7b7c133113cf448d672cf7acf455cf0042e22a072c24c5200dfcee0cbd8  projects/laifen-wave-case/preview/openscad-wasm-simulator/src/adapter.mjs
+b19403cf4ae364cb3422937ff2a0761513380a724d7e9dbaaa80ec4932afa479  projects/laifen-wave-case/preview/openscad-wasm-simulator/src/dimensions.mjs
+62f6d413af9347e36e1992cde3c189140821e86b83f862a2877fdb34cbd5e60b  projects/laifen-wave-case/preview/openscad-wasm-simulator/src/lifecycle.mjs
+8e069d5a15938c3300d663584387d4af0f723f85df674dfb31f29a9911dd27ec  projects/laifen-wave-case/preview/openscad-wasm-simulator/src/main.mjs
+894062333ba7370c4b17efc93b788623eb9db86d0117ffc45275886d0f754ae0  projects/laifen-wave-case/preview/openscad-wasm-simulator/src/schema.mjs
+7f73511fec8aa507e86c3614698e3e52e9d89f6c18d86ae60eaa541605fc61bd  projects/laifen-wave-case/preview/openscad-wasm-simulator/src/viewer.mjs
+fabd153527ec6c1aa0d5be9008679c7e2147d4559049149d8084b60795ec3845  projects/laifen-wave-case/preview/openscad-wasm-simulator/workers/openscad.worker.js
+6d4a6b007f96b00752efd33cf1cf9e4eff5daaf82f011edd0655ea68c20e09b8  projects/laifen-wave-case/preview/openscad-wasm-simulator/dependency-lock.json
+ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841  projects/laifen-wave-case/openscad/laifen_case_customizer_v1.scad
+7f8fac641b3a1db7e1a79b4ad2267bec7a2c1a1391e6c71d5f156d0922afb1b7  projects/laifen-wave-case/tests/node/desktop-customizer.test.mjs
+1d58bf29eb8c7e8f2a09892aa294ed3313ba60205aeeea47efdf9e796a88c7e8  projects/laifen-wave-case/tests/test_openscad_wasm_simulator.py

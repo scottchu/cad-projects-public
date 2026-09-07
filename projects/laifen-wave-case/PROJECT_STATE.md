@@ -1,17 +1,130 @@
 # Project state
 
-## Current authority and review surface
+## Main integration checkpoint — 2026-09-06
 
-The authoritative editable source is `openscad/laifen_case_customizer_v1.scad`,
+The user explicitly approved merging the current work before continuing. PR [19](https://github.com/scottchu/design-projects/pull/19) is the delivery record; its GitHub merge state and merge commit are authoritative for completed integration. Reviewed source head is `90d73c13355385cc51bc2a17c2b3b2ac0d21cbe1` against main `6e00ba898d6435614782de2764c6aae0ff131de5`; only merge review and continuity records are added afterward. Final checks passed: 66 Node tests, 13 Python checks and an isolated production build. Read active `MERGE_REVIEW.md` and `HANDOFF.md` for provenance. The next action is to complete and verify this PR merge, then stop before new feature work. Historical draft/no-merge statements below describe earlier authorization. Proposed patterns and physical acceptance remain open.
+
+Active iteration: `docs/iterations/2026-09-06-pattern-reference-intake`. User supplied33 reference images and requested preservation, regrouping, parameter lists and container feasibility. All33 byte-original images, numbered gallery/provenance, and a10-family parameter catalog with per-image practicality notes are complete under `docs/references/2026-09-06-container-patterns/`; read README, PATTERN_PARAMETERS and the active HANDOFF/REVIEW. This intake does not select the earlier recessed-diamond proposal or implement new geometry. Baseline commit `2989aa412911df1fd947df81d056ea3ebfe7c66d`; source and live customizer stay at their reviewed baseline.
+
+## Preserved pattern-study checkpoint
+
+Active iteration: `docs/iterations/2026-09-06-pattern-backlog`. User authorized continuing the full roadmap one item at a time. Read `docs/FEATURE_BACKLOG.md` and the active BRIEF/DESIGN/HANDOFF. First new gate: compare current blunt Diamond against a Recessed diamond appearance study. No photo needed for the documented first proposal; user appearance acceptance precedes new CAD.
+
+Accepted app/source baseline is commit `191cb37119f9a4e4d23112ecd5bc0d18f0daec86`, SCAD SHA `497098afa555092a0ed85a3a7213cd270852aa76f9001e1478c209cd8469bc42`; private8453 main customizer remains unchanged and compilation stays in the browser. The analytic study is reviewed and delivered at `https://mac-mini.duckbill-ionian.ts.net:8453/pattern-study/`; Node7/7, actual desktop/mobile/state evidence, independent critique and formal review passed. Main-app six-file parity is unchanged. Read active HANDOFF and DELIVERY. Next: user appearance decision on the recessed diamond before a new source/CAD gate.
+
+## Preserved performance checkpoint
+
+Active iteration: `docs/iterations/2026-09-06-pattern-performance`. All five paths were audited; shared Ribs/Rings/Spiral edge and face shortcuts preserve exact output. Candidate SCAD SHA `497098afa555092a0ed85a3a7213cd270852aa76f9001e1478c209cd8469bc42`; source43 manifest `3888018275bfcd05ab1d66a27d5b29a01eaf7268382075f4e2bd2047cc638c4c`.
+
+Independent paired Node medians: Rings26.631→19.317s, Spiral body26.769→19.335s, Spiral assembled46.639→33.499s (27–28% faster). Smooth/Diamond remain within timing noise; Ribs1.065→1.000s in one audit pair. All38 fresh compile receipts preserve exact STL bytes; Node59/Python13, scratch browser Rings Blob/download, distinct critique and formal review passed. No browser/phone speedup or physical acceptance claim.
+
+Private preview `https://mac-mini.duckbill-ionian.ts.net:8453/` has the approved build; six HTTPS files match frozen/local bytes and a fresh live Ribs Body generated the expected STL. See HANDOFF, VALIDATION, REVIEW and DELIVERY for exact evidence and the corrected early-build incident. Source delivery commit `4773ac343b6cd2b1c9e632012e163a9658a9be36` is pushed to draft PR19; no main merge.
+
+Next action: user reviews the faster patterns. Preserve this exact-output baseline and per-pattern controls. Future performance work should measure browser completion separately and retain explicit source/runtime hash joins; the phase-independent JS sampler is not a coordinate oracle. Native Safari/iPhone timing, slicer and physical acceptance remain open.
+
+## Preserved earlier session records
+
+The following records describe their dated iterations; the active performance handoff above controls new work.
+
+Pattern-family checkpoint: R2 is delivered on private 8453. Five choices and contextual remembered sliders passed 56 Node, 13 Python, 21 compile, independent mesh/feature/parity, Chromium desktop/mobile and formal review gates. Six served files and a fresh live STL download match the reviewed build. Source manifest 6701e4c3; SCAD3b96cc2d. Next: user reviews the added patterns; no further feature, native Safari/iPhone or physical acceptance is implied. See active HANDOFF/DELIVERY. Source delivery commit `ac244f8bae6c8faa6bfc5f35e6ac86a27f6e1124` is pushed to draft PR19.
+
+## Pattern families and contextual controls — in progress
+
+Current iteration: `docs/iterations/2026-09-06-pattern-families`, baseline
+`c181dda780a3b9c407ebe3419702419254266792`. The user accepted the existing
+surface selector and requested a few more simple mathematical patterns, each
+with its own parameter group directly below the selector. Design is in progress
+for Ribs, Rings and Spiral plus editable Diamond size/depth. This authorizes a
+scoped exterior/source extension; preserve internals and existing default
+geometry. Private 8453 remains on the accepted Smooth/Diamond build while the
+new candidate is prepared and independently checked. See active HANDOFF.
+
+## Surface pattern ready for user review — 2026-09-06
+
+Current iteration: `docs/iterations/2026-09-06-surface-pattern`, baseline
+`cf4adb08314989f9d52a7afbd2f868756226d799`. The user requested the next item
+after delivery of the count control. Implement the next surface-pattern gate
+using the existing Smooth/Diamond source, with no extra CAD parameters.
+Candidate C3 is implemented: native Smooth/Diamond swatches, immutable existing
+Diamond geometry, shared schema/adapter/UI guards, and exact compiler-compatible
+size limits. Candidate manifest SHA
+`412b5e389a85dbaa7ad730870f496639d8dcd2e2129de733b4da1ba1e031fc63`.
+32 Node and 12 Python checks, source critique and scoped mesh checks pass.
+On resumed user-authorized cleanup, resetting CUA restored Chrome control.
+Whole-solid nonadjacent intersection and geometric T-junction checks now pass
+for the five exact STLs; see GLOBAL_VALIDATION.md. Current C3 Chrome desktop and
+mobile controls, four actual outputs, and downloaded-byte parity also pass.
+The harness-only status-baseline repair passed its focused genuine-result
+replay; no product source changed. REVIEW_RESUMED.md approves this scoped
+Chromium and written-mesh gate. Private 8453 now serves C3 with six-file HTTPS
+parity and a fresh live Diamond render/current STL download check. Temporary
+5181/8461 servers and active test tabs were closed; browser sizing was restored.
+The live preview tab remains available. Native Safari/iPhone, broader
+accessibility, slicing and physical acceptance remain unverified. Keep PR19
+draft for the user's next one-item review. The older 8448 route returned 502
+before delivery; its configuration was untouched.
+
+## Drain count — 2026-09-06
+
+Current iteration: `docs/iterations/2026-09-06-drain-count`, baseline
+`2819a8e5d2dd9c4c4f0b53958c4cce6c6ceec36f`. User passed the drain checkboxes
+and specified the next order: drain-hole count, then pattern. Implement and
+review count first; pattern is queued for the following user gate.
+Candidate C3 manifest `inputs/candidate-03.sha256` SHA
+`6fa4bb84a83bc859b95b0568d43e34227a5bc2be7f82fe8fb6a2f11796953f57`
+adds a shared integer count per selected end, default 7, with size-dependent
+limits (D10:1, D11:7, D30:17). The 0.4 mm ligament is a design assumption.
+29 Node and 12 Python checks, build, independent actual-opening/mesh/boundary
+checks and exact default STL parity pass. Root Safari desktop/mobile count,
+invalid-entry recovery, checkbox memory, slider and Reset checks pass. Current
+SCAD SHA `517f8546612ffecbc50a732362c9e3a326db03fa2c94e94a68daad472a0b42e2`.
+Private 8453 serves C3 with six-file served-byte parity. Formal review passes
+for this scoped item and draft PR delivery; REVIEW.md SHA
+`c863bc1334595a6bcad5a543b52bd67397dc5992792082f00d07313d609ccad7`.
+The user authorized advancing to pattern after count delivery. Keep PR19 draft.
+
+## Accepted drain checkbox baseline — 2026-09-06
+
+Current iteration: `docs/iterations/2026-09-06-drain-checkboxes`.
+User acceptance: the user marked the drain checkbox item passed after delivery
+of `2819a8e`, then authorized continuing one item at a time. The next item is
+drain-hole count, followed by pattern.
+The user requests one item at a time; this iteration only replaces the drain
+selector with independent Top and Bottom checkboxes, including both/neither.
+Bottom-only is the preserved default and Reset state. Candidate manifest
+`inputs/candidate-01.sha256` SHA
+`4a716d71c154bcba1264d556946613ec615c50217bba6331e36da8e9f1c67389`.
+
+Editable SCAD source `openscad/laifen_case_customizer_v1.scad` is now SHA
+`cf0983e84e738be87e31462c903afcf02646915cc1e4a9e8641b8edce05b5393`.
+This intentionally extends only the existing drain selection predicates to
+both; cutter shape, hole locations, dimensions and threads remain unchanged.
+The prior immutable-source UI boundary is superseded only for this user request.
+27 Node and16 Python tests, pinned WASM end-opening checks across all4 modes,
+exact Bottom-only smooth-default STL parity, and build pass. Root Safari
+verified desktop/mobile checkbox states, manual generation, Reset and a both-end
+STL download. See VALIDATION and CRITIQUE; formal review passes for this scoped item and draft PR delivery. REVIEW.md SHA
+`19ef28f4d3032b1d1a56dbb790e7885725433e33575240f4afea1aee58ef0646`.
+
+Private preview: <https://mac-mini.duckbill-ionian.ts.net:8453/>; all6 built
+files match the served bytes. Keep existing draft PR19 unmerged. Earlier compact
+controls evidence lives in `2026-09-06-compact-controls`; current drain checks
+do not retroactively close every broader UI acceptance gap. Existing4mm wall
+floor and edited closed-assembly seam issue remain; no print-ready or physical
+acceptance claim. No change to8448 or printer/public hosting.
+
+## Preserved deployed baseline and CAD authority
+
+The preserved predecessor source revision of `openscad/laifen_case_customizer_v1.scad` is
 SHA-256 `ade77d3fcff4d5ba1c659838b4f9d24245584f0570834453b6e8c2b778047841`.
 It implements relationship B, the VFR-08 drain and print-layout repairs, and the
-39 mm crest OD with 30/31 mm body/cap bores. The only current live review
+39 mm crest OD with 30/31 mm body/cap bores. The preserved deployed review
 surface is the VFR-12 C3 OpenSCAD WASM simulator:
 <https://mac-mini.duckbill-ionian.ts.net:8448/openscad-simulator/>.
 
-The reviewed UI candidate is
+The deployed predecessor UI candidate is
 `2a58f483d2ba653c7e3c7de747bec8466837dd7f46ee4cd493ef9e8b61199433`.
-Current runtime source hashes are schema
+Deployed predecessor runtime source hashes are schema
 `894062333ba7370c4b17efc93b788623eb9db86d0117ffc45275886d0f754ae0`,
 main `98af41e1377afb873208977eedc679ea9e887b04b96253bc2025b3896fbeb353`,
 worker `fabd153527ec6c1aa0d5be9008679c7e2147d4559049149d8084b60795ec3845`,
