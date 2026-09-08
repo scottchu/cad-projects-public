@@ -1,5 +1,0 @@
-#!/bin/zsh
-script_dir=${0:A:h}
-payload_root=${script_dir:h}/payload
-exec /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node \
-  "$payload_root/cli.mjs" --source-root "$payload_root" "$@"

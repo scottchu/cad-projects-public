@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "bound-provider-revision",
+  "provider": {
+    "repository": "https://github.com/scottchu/CAD-workbench",
+    "revision": "1d7f4fcd65e04136bb6bad24e90015ca36d97f2f",
+    "policy_manifest": "catalog/POLICY.sha256",
+    "policy_manifest_sha256": "b95f77ef16d317366d1c93f7ff76dee92c0e69976ce55facec10512e23b6c3cf"
+  },
+  "catalog": "catalog/registry.json",
+  "workflows": [
+    {
+      "id": "WF-CAD-FABRICATION",
+      "path": "workflows/cad-fabrication.md"
+    }
+  ],
+  "policies": {
+    "CAD_WORKFLOW": "workflows/policies/CAD_WORKFLOW.md",
+    "PROJECT_CONTINUITY": "workflows/policies/PROJECT_CONTINUITY.md",
+    "FDM_DESIGN_RULES": "workflows/policies/FDM_DESIGN_RULES.md",
+    "ADDING_A_PROJECT": "workflows/policies/ADDING_A_PROJECT.md"
+  },
+  "templates": "templates/project-continuity",
+  "skills": {
+    "design-reflection": "skills/design-reflection"
+  },
+  "tools": {
+    "cad-viewer-service": "tools/cad-viewer-service"
+  },
+  "project_repository": {
+    "root": ".",
+    "projects": "projects",
+    "workshop": "docs/WORKSHOP.md",
+    "current_state": "projects/<project-slug>/PROJECT_STATE.md",
+    "next_agent": "projects/<project-slug>/NEXT_AGENT.md",
+    "commands": "Resolve exact source revision and project-owned README/active iteration before execution; no generic build command is asserted."
+  }
+}

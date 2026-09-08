@@ -1,3 +1,0 @@
-#!/bin/zsh
-exec /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node \
-  "/Users/scottchu/Library/Application Support/CADViewer/service/current/cli.mjs" "$@"
