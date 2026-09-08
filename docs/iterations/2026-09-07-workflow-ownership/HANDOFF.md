@@ -59,3 +59,16 @@ Coordinator additionally authorized root `.gitignore` exclusion `*.egg-info/` fo
 ## Coordinator delivery
 
 Migration validation and review are recorded in [Workbench PR 1](https://github.com/scottchu/CAD-workbench/pull/1), under docs/iterations/2026-09-07-workflow-ownership/{PRESERVATION_VALIDATION,VALIDATION,REVIEW}.md. [Sticker PR 1](https://github.com/scottchu/sticker-projects/pull/1) preserves accepted history and recovery refs. Root checks finished at 10 pass and 1 confirmed preexisting Laifen missing-VALIDATION failure. The provider binding and fourteen-file CANDIDATE manifest remain unchanged after acceptance. This follow-up changes delivery records only.
+
+## 2026-09-08 authorized main cutover
+
+The user authorized merging the reviewed migration into main and handing off a
+fresh Workbench worktree. The consumer now pins Workbench
+`1d7f4fcd65e04136bb6bad24e90015ca36d97f2f` and policy index SHA-256
+`b95f77ef16d317366d1c93f7ff76dee92c0e69976ce55facec10512e23b6c3cf`.
+This adopts the independently reviewed additive workflow-completeness repairs.
+Earlier no-merge/old-pin statements above are historical checkpoints. Follow the
+live binding and GitHub PR state for current authority. Only the binding and root
+handoff records change; project files, recovery material and unrelated WIP remain
+unchanged. Workbench `docs/iterations/2026-09-08-main-handoff/` records the joined
+merge result and new-agent location.
