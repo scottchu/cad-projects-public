@@ -1,7 +1,9 @@
 # Local work delivery handoff
 
-Status: repair 2 frozen; independent validation, critique and formal review PASS
-for bounded preservation/integration. Authorized Git delivery in progress.
+Status: source/history delivery candidate complete; independent validation,
+critique and formal review PASS for bounded preservation/integration.
+Git delivery receipt: [PR #24](https://github.com/scottchu/design-projects/pull/24).
+Use its merge metadata as the canonical final Git outcome.
 Original checkout and recovery snapshot remain preserved.
 
 Current candidate: `CANDIDATE.sha256`, SHA-256
@@ -15,14 +17,21 @@ P19 is the accepted digital mechanism baseline. P20 R4 historical hash drift
 and print guard failures remain visible. Pill Click is a preserved migration,
 and Drone is an inactive archive. No new fabrication/physical acceptance.
 
-Next: join validation and critique through a distinct formal reviewer, commit
-the reviewed content, record original `a883404` branch ancestry without changing
-the reviewed tree, and create/merge the authorized PR. Verify final remote main
-contains the reviewed tree and original branch ancestry. Preserve unrelated PRs
-and worktrees; do not reset or clean the original dirty checkout.
+Reviewed content commit: `e0be5a82f4c725f718bf2f96afb9fbde332f22e1`.
+Original branch ancestry merge: `e293bd9f76926f9de4a08f50569bf94add493067`.
+Both have exact tree `c14843e28a1ce41cb2d40a56045c5d7a71836fb5`;
+`git merge-base --is-ancestor a883404 HEAD` passed after the ancestry merge.
+Subsequent delivery-index changes do not alter the frozen 529-file candidate.
+
+Next product work remains the project-specific recorded design/physical gates;
+this delivery does not reopen them. For Git recovery, inspect PR #24 and fetch
+main before choosing a checkout. Preserve unrelated PRs and worktrees. The
+original dirty checkout remains untouched; do not mistake its stale local
+status for work absent from the merged PR or reset/clean it without reconciling
+the preserved snapshot and current main.
 
 Formal join completed: `REVIEW.md` SHA-256
 `a6acc1c7b7300ef36cfc5018cab0b0f3697992cd10e8634c7509d2eebbfb674c`.
-The remaining delivery action is commit/ancestry-tree verification and PR merge.
+The PR retains the exact source branch ancestry and independent evidence chain.
 Required focused checks passed; unchanged main's Laifen continuity failure and
 the known P20 print-kit SHA guards remain documented in `VALIDATION.md`.

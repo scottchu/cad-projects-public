@@ -100,3 +100,10 @@ M5 formal-review PASS receipt SHA-256:
 It independently joins the final candidate/source manifests, 547 provenance rows,
 staged scope, resolved findings and known failures. M6 is authorized to commit,
 record `a883404` ancestry with unchanged content tree, and merge through a PR.
+
+M6 committed content as `e0be5a82f4c725f718bf2f96afb9fbde332f22e1`,
+then ancestry merge `e293bd9f76926f9de4a08f50569bf94add493067`.
+Their trees match exactly (`c14843e28a1ce41cb2d40a56045c5d7a71836fb5`),
+and the original source HEAD is an ancestor. The final Git outcome is recorded
+by [PR #24](https://github.com/scottchu/design-projects/pull/24); `HANDOFF.md`
+contains the candidate-delivery and recovery pointers.
