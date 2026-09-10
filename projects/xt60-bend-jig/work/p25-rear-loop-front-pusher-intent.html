@@ -1,0 +1,253 @@
+<div id="p25-clamp-gate" aria-label="XT60 rear-loop and front-pusher clamp concept">
+  <style>
+    #p25-clamp-gate {
+      --blue-rod: #3b82f6;
+      --green-rod: #22c55e;
+      --orange-rod: #f97316;
+      --fixture: #20242b;
+      --fixture-edge: #59616e;
+      width: 100%;
+      color: var(--foreground);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #p25-clamp-gate .p25-header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .65rem;
+    }
+    #p25-clamp-gate h3 { margin: 0; font-size: 1.05rem; }
+    #p25-clamp-gate .p25-subtitle,
+    #p25-clamp-gate .p25-note { color: var(--muted-foreground); }
+    #p25-clamp-gate .p25-subtitle { margin-top: .25rem; font-size: .9rem; }
+    #p25-clamp-gate .p25-badge {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .25rem .55rem;
+      white-space: nowrap;
+      color: var(--muted-foreground);
+      font-size: .78rem;
+    }
+    #p25-clamp-gate svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--background) 96%, var(--foreground) 4%);
+    }
+    #p25-clamp-gate text { fill: var(--foreground); }
+    #p25-clamp-gate .muted { fill: var(--muted-foreground); }
+    #p25-clamp-gate .plate {
+      fill: color-mix(in srgb, var(--muted) 72%, transparent);
+      stroke: var(--border);
+      stroke-width: 2;
+    }
+    #p25-clamp-gate .rod {
+      stroke: color-mix(in srgb, var(--foreground) 75%, transparent);
+      stroke-width: 3;
+    }
+    #p25-clamp-gate .rear-loop {
+      fill: none;
+      stroke: var(--fixture-edge);
+      stroke-width: 24;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #p25-clamp-gate .rear-loop-highlight {
+      fill: none;
+      stroke: #8f9bab;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: .8;
+    }
+    #p25-clamp-gate .front-bar {
+      fill: var(--fixture);
+      stroke: #7d8795;
+      stroke-width: 3;
+    }
+    #p25-clamp-gate .pusher {
+      fill: #fdba74;
+      stroke: #c2410c;
+      stroke-width: 3;
+    }
+    #p25-clamp-gate .hinge { fill: #94a3b8; stroke: #334155; stroke-width: 3; }
+    #p25-clamp-gate .latch { fill: #facc15; stroke: #854d0e; stroke-width: 3; }
+    #p25-clamp-gate .contact {
+      fill: none;
+      stroke: #f8fafc;
+      stroke-width: 3;
+      stroke-dasharray: 5 5;
+      opacity: .9;
+    }
+    #p25-clamp-gate .force {
+      fill: none;
+      stroke-width: 6;
+      stroke-linecap: round;
+    }
+    #p25-clamp-gate .out-of-plane {
+      fill: color-mix(in srgb, var(--background) 88%, transparent);
+      stroke-width: 5;
+    }
+    #p25-clamp-gate .callout {
+      fill: color-mix(in srgb, var(--background) 92%, transparent);
+      stroke: var(--border);
+      stroke-width: 1.5;
+    }
+    #p25-clamp-gate .p25-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .65rem;
+    }
+    #p25-clamp-gate .p25-controls button[aria-pressed="true"] {
+      background: var(--primary);
+      color: var(--primary-foreground);
+      border-color: var(--primary);
+    }
+    #p25-clamp-gate .p25-note { margin-top: .65rem; font-size: .88rem; }
+  </style>
+
+  <div class="p25-header">
+    <div>
+      <h3>快速概念：後方包住 Blue＋Green，前方壓住 Orange</h3>
+      <div id="p25-state-copy" class="p25-subtitle" aria-live="polite"></div>
+    </div>
+    <div class="p25-badge">意圖確認圖・尚非列印 CAD</div>
+  </div>
+
+  <svg viewBox="0 0 920 540" role="img" aria-labelledby="p25-title p25-desc">
+    <title id="p25-title">兩件式被動夾具的 locked-state 接觸關係</title>
+    <desc id="p25-desc">後方 U 形框同時承托藍色和綠色桿，前方橫桿上的壓塊向下壓橘色桿；側邊鉸鏈及扣鉤把兩件夾具連成一體。</desc>
+    <defs>
+      <filter id="p25-shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="7" stdDeviation="7" flood-opacity=".22"/>
+      </filter>
+      <marker id="p25-arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0 0 L10 5 L0 10 Z" fill="var(--blue-rod)"/>
+      </marker>
+      <marker id="p25-arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0 0 L10 5 L0 10 Z" fill="var(--green-rod)"/>
+      </marker>
+      <marker id="p25-arrow-orange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0 0 L10 5 L0 10 Z" fill="var(--orange-rod)"/>
+      </marker>
+    </defs>
+
+    <text x="44" y="42" font-size="17" font-weight="650">正面概念圖</text>
+    <text x="44" y="68" font-size="13" class="muted">三指先把三支桿推到 locked；夾具再接手保持。</text>
+
+    <g id="p25-fixture" filter="url(#p25-shadow)">
+      <rect class="plate" x="206" y="110" width="508" height="326" rx="46"/>
+
+      <g id="p25-rear-loop">
+        <path class="rear-loop" d="M300 180 L246 180 L246 374 L300 374 M620 180 L674 180 L674 374 L620 374"/>
+        <path class="rear-loop-highlight" d="M300 171 L237 171 L237 383 L300 383 M620 171 L683 171 L683 383 L620 383"/>
+      </g>
+
+      <g id="p25-rods">
+        <circle class="rod" cx="360" cy="238" r="43" fill="var(--blue-rod)"/>
+        <circle class="rod" cx="560" cy="238" r="43" fill="var(--green-rod)"/>
+        <circle class="rod" cx="460" cy="338" r="43" fill="var(--orange-rod)"/>
+        <text x="360" y="244" text-anchor="middle" font-size="17" font-weight="750">BLUE</text>
+        <text x="560" y="244" text-anchor="middle" font-size="17" font-weight="750">GREEN</text>
+        <text x="460" y="344" text-anchor="middle" font-size="16" font-weight="750">ORANGE</text>
+      </g>
+
+      <g id="p25-manual-forces">
+        <circle class="out-of-plane" cx="360" cy="146" r="24" stroke="var(--blue-rod)"/>
+        <circle cx="360" cy="146" r="7" fill="var(--blue-rod)"/>
+        <circle class="out-of-plane" cx="560" cy="146" r="24" stroke="var(--green-rod)"/>
+        <circle cx="560" cy="146" r="7" fill="var(--green-rod)"/>
+        <path class="force" d="M460 252 L460 282" stroke="var(--orange-rod)" marker-end="url(#p25-arrow-orange)"/>
+        <text x="460" y="99" text-anchor="middle" font-size="14">食指＋中指：⊙ 從後往前推 Blue / Green</text>
+        <text x="460" y="456" text-anchor="middle" font-size="14">大拇指：往下推 Orange</text>
+      </g>
+
+      <g id="p25-front-assembly">
+        <circle class="hinge" cx="270" cy="312" r="20"/>
+        <rect class="front-bar" x="270" y="286" width="380" height="52" rx="18"/>
+        <rect class="pusher" x="421" y="322" width="78" height="54" rx="12"/>
+        <path class="latch" d="M642 294 L700 294 L713 312 L700 330 L642 330 Z"/>
+        <circle class="contact" cx="360" cy="238" r="51"/>
+        <circle class="contact" cx="560" cy="238" r="51"/>
+        <circle class="contact" cx="460" cy="338" r="51"/>
+      </g>
+    </g>
+
+    <g id="p25-labels">
+      <rect class="callout" x="37" y="154" width="158" height="84" rx="12"/>
+      <text x="54" y="181" font-size="15" font-weight="700">後方 U 形框</text>
+      <text x="54" y="205" font-size="13">同時包住／承托</text>
+      <text x="54" y="226" font-size="13">Blue＋Green</text>
+      <path d="M195 194 L236 194" stroke="var(--muted-foreground)" stroke-width="2"/>
+
+      <rect class="callout" x="725" y="265" width="164" height="106" rx="12"/>
+      <text x="742" y="292" font-size="15" font-weight="700">前方橫桿</text>
+      <text x="742" y="316" font-size="13">壓塊接觸 Orange</text>
+      <text x="742" y="339" font-size="13">右側扣鉤鎖住</text>
+      <text x="742" y="360" font-size="13">左側為鉸鏈</text>
+      <path d="M713 312 L725 312" stroke="var(--muted-foreground)" stroke-width="2"/>
+    </g>
+  </svg>
+
+  <div class="p25-controls" role="group" aria-label="切換夾具狀態">
+    <button id="p25-position" class="btn" type="button" aria-pressed="true">1｜三指定位</button>
+    <button id="p25-clamped" class="btn" type="button" aria-pressed="false">2｜扣上保持</button>
+    <button id="p25-released" class="btn" type="button" aria-pressed="false">3｜鬆開彈離</button>
+  </div>
+  <div class="p25-note">PASS 問題：後方件只承托 Blue＋Green，而前方件只用壓塊壓 Orange，這個接觸拓撲對嗎？</div>
+
+  <script>
+    (() => {
+      const root = document.getElementById('p25-clamp-gate');
+      const front = root.querySelector('#p25-front-assembly');
+      const loop = root.querySelector('#p25-rear-loop');
+      const forces = root.querySelector('#p25-manual-forces');
+      const copy = root.querySelector('#p25-state-copy');
+      const buttons = {
+        position: root.querySelector('#p25-position'),
+        clamped: root.querySelector('#p25-clamped'),
+        released: root.querySelector('#p25-released')
+      };
+
+      const setState = (state) => {
+        Object.entries(buttons).forEach(([name, button]) => {
+          button.setAttribute('aria-pressed', String(name === state));
+        });
+        front.style.transition = 'transform 240ms ease, opacity 180ms ease';
+        loop.style.transition = 'transform 240ms ease, opacity 180ms ease';
+        forces.style.transition = 'opacity 180ms ease';
+
+        if (state === 'position') {
+          front.setAttribute('transform', 'rotate(-24 270 312) translate(-20 -55)');
+          front.style.opacity = '.3';
+          loop.style.opacity = '.45';
+          forces.style.opacity = '1';
+          copy.textContent = '先照你的手勢：大拇指壓 Orange，食指和中指把 Blue／Green 從後往前推。';
+        } else if (state === 'clamped') {
+          front.setAttribute('transform', 'rotate(0 270 312)');
+          front.style.opacity = '1';
+          loop.style.opacity = '1';
+          forces.style.opacity = '.12';
+          copy.textContent = '到位後扣上：後方 U 框承托 Blue＋Green；前方壓塊向下保持 Orange。';
+        } else {
+          front.setAttribute('transform', 'rotate(-58 270 312) translate(-45 -95)');
+          front.style.opacity = '.55';
+          loop.setAttribute('transform', 'translate(0 24)');
+          loop.style.opacity = '.4';
+          forces.style.opacity = '0';
+          copy.textContent = '解除右側扣鉤，前方橫桿繞左鉸鏈打開；夾具不再卡住三支桿。';
+        }
+        if (state !== 'released') loop.removeAttribute('transform');
+      };
+
+      Object.entries(buttons).forEach(([state, button]) => {
+        button.addEventListener('click', () => setState(state));
+      });
+      setState('position');
+    })();
+  </script>
+</div>

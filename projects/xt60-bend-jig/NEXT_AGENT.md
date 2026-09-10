@@ -1,46 +1,38 @@
 # Next agent
 
 Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
-`docs/decisions/README.md`, and every file under
-`docs/iterations/p19-r1-front-edge-short-tail/` before changing this project.
+`docs/decisions/README.md`, then every file under
+`docs/iterations/p25-r1-rear-loop-front-pusher-clamp/` before changing this
+project. Also read the delivery records under
+`../../docs/iterations/2026-09-10-local-work-delivery/`.
 
-## Resume point
+## Exact resume point
 
-- Active iteration: `p19-r1-front-edge-short-tail`.
-- P19 R1 is digitally accepted for CAD, six written STEP artifacts, and exact
-  Viewer handoff only.
-- Exact candidate-manifest SHA-256:
-  `e2492339de9037b6e2a84351699b693202e4585a32623305c616d97712b91677`.
-- Independent validation: `PASS`, report SHA-256
-  `304239aecb3b939a6ef1412d1b31979b4bafda2b2e997ca7e7311b36adfb88ef`.
-- Formal review: `ACCEPT`, report SHA-256
-  `7b5436c57070547b14241bc3de6cbc7047c07cbd1e4070b036f0d8d51040aba3`.
-- Active handoff:
-  `docs/iterations/p19-r1-front-edge-short-tail/HANDOFF.md`.
+- Sole current iteration: `p25-r1-rear-loop-front-pusher-clamp`.
+- Frozen first-CAD candidate: `a1932fb19ffeb6d584153d1c201ebe24b2e06d6a`.
+- Candidate-manifest file SHA-256:
+  `88fdcd25585c35277d66a769b5c35208f8e5b8c7534d93efdbcb57493638a845`
+  (`13/13`).
+- Formal disposition: user-facing first-CAD preview only. It is not a print
+  candidate or physical acceptance.
+- P19 R1 remains the latest accepted digital mechanism baseline. P17-P24 are
+  preserved history with the exact status in their own records; they are not
+  parallel current iterations.
 
-## Frozen current mechanism
+## Preserve
 
-- FRONT: `+Z` XT60 mating-head/up; `+Y` short-tail/tool right/outward.
-- Three `OD4 x 50 mm` stainless rods, six permanent caps, four plates, one
-  real fixed stepped axle at `A=(-13,-9)`; virtual rotation datum `C=(0,0)`.
-- Shared motion only: `alpha_left=-5u`, `alpha_right=+5u`.
-- Plate ODs `54.40/54.70/55.00 mm`; cutters `OD4.15 mm`.
-- OPEN exact right angle; END exact ordered diagonal; identities unchanged.
-- Six inverse-derived rail center travels are all at least `4.00 mm`.
-- Minimum actual web `2.405845 mm`; rank `3`; worst condition `13.007687`.
-- Completed-pigtail rigid removal is digitally clear by exactly the active
-  `0.75 mm` nominal threshold, with zero actual-solid intersection.
+- Manual force topology: Orange DOWN; Blue and Green BACK-to-FRONT; clamps act
+  only at inherited END.
+- Two mirrored P25 modules, Blue+Green rear yoke, Orange-only front bar,
+  `OD4 x 50 mm` rods, zero caps, zero screw cassette, and inherited P20
+  paths/plates/XT60 geometry.
+- The P20 R4 print-kit source hash guard and its two known historical drift
+  failures. Do not weaken the guard or relabel the old fingerprint as current.
+- Separate source/CAD, written-artifact, slicer, and physical acceptance.
 
 ## Next smallest action
 
-Merge GitHub PR `https://github.com/scottchu/design-projects/pull/11`, then
-request human Viewer review before any separately authorized
-mesh/3MF/slicing/printing or physical acceptance. Any geometry change reopens
-the candidate fingerprint, validation, and formal review.
-
-## Printing-profile addendum — 2026-08-31
-
-Read [PRINTING_PROFILE.md](PRINTING_PROFILE.md) before future authorized print
-preparation; P19 process selection and manufacturing/physical gates remain open.
-See the [repository-policy handoff](../../docs/iterations/2026-08-31-printing-profiles/HANDOFF.md) for independent status.
-No CURRENT, frozen contract/fingerprint or design acceptance changes follow.
+Complete delivery-candidate review without regenerating CAD. Product work then
+awaits explicit user PASS/FAIL on P25. A later physical gate, if authorized, is
+one single-side latch/hinge coupon with a real OD4 rod, OD2 hinge pin, and real
+opening bias; do not proceed directly to a complete print.

@@ -1,0 +1,15 @@
+projects/xt60-bend-jig/cad/p24_r1_manual_three_slider_clamp/p24_r1_clamped_end_iso_20260830T034041Z.png
+projects/xt60-bend-jig/cad/p24_r1_manual_three_slider_clamp/p24_r1_clamped_end_repair1_iso_20260830T035753Z.png
+projects/xt60-bend-jig/cad/p24_r1_manual_three_slider_clamp/p24_r1_released_open_iso_20260830T034041Z.png
+projects/xt60-bend-jig/cad/p24_r1_manual_three_slider_clamp/p24_r1_released_open_repair1_iso_20260830T035753Z.png
+projects/xt60-bend-jig/cad/p25_r1_rear_loop_front_pusher_clamp/p25_r1_latched_end.png
+projects/xt60-bend-jig/cad/p25_r1_rear_loop_front_pusher_clamp/p25_r1_modules_exploded.png
+projects/xt60-bend-jig/cad/p25_r1_rear_loop_front_pusher_clamp/p25_r1_preclamp_end.png
+projects/xt60-bend-jig/cad/p25_r1_rear_loop_front_pusher_clamp/p25_r1_released_clear.png
+projects/xt60-bend-jig/docs/review/p20-r4-blocked-test-print-3mf/p20-r4-print-kit-3mf_20260827T212245Z.png
+projects/xt60-bend-jig/docs/review/p20-r4-blocked-test-print-3mf/p20-r4-print-kit-step_20260827T212243Z.png
+projects/xt60-bend-jig/docs/review/p20-r4-custom-profile-full-cad/p20-r4-end-front_20260827T205027Z.png
+projects/xt60-bend-jig/docs/review/p20-r4-custom-profile-full-cad/p20-r4-exploded-axial_20260827T205028Z.png
+projects/xt60-bend-jig/docs/review/p20-r4-custom-profile-full-cad/p20-r4-mid-front_20260827T205025Z.png
+projects/xt60-bend-jig/docs/review/p20-r4-custom-profile-full-cad/p20-r4-open-axial-stack_20260827T205128Z.png
+projects/xt60-bend-jig/docs/review/p20-r4-custom-profile-full-cad/p20-r4-open-front_20260827T205030Z.png

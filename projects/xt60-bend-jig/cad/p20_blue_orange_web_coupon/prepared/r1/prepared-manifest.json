@@ -1,0 +1,132 @@
+{
+  "candidate_fingerprint": "07f4a32d455214ae1d5b71dfdeba8dc55ca5a9a970580011cf35e5cf859a93be",
+  "files": {
+    "p20_blue_orange_web_coupon_u1_petg_t3_r1.gcode": {
+      "sha256": "f159d4bec8793cf22e2739c5a736d86f0a0d3cc1eacc6cb69303201191e7e475",
+      "size_bytes": 416566
+    },
+    "resolved-filament-slot-1.json": {
+      "sha256": "5260b6dc74e7b0ed7ee19b373bf9eb634f4bd8a1dd418477413105c3684c1269",
+      "size_bytes": 3181
+    },
+    "resolved-filament-slot-2.json": {
+      "sha256": "5260b6dc74e7b0ed7ee19b373bf9eb634f4bd8a1dd418477413105c3684c1269",
+      "size_bytes": 3181
+    },
+    "resolved-filament-slot-3.json": {
+      "sha256": "5260b6dc74e7b0ed7ee19b373bf9eb634f4bd8a1dd418477413105c3684c1269",
+      "size_bytes": 3181
+    },
+    "resolved-filament-slot-4.json": {
+      "sha256": "5260b6dc74e7b0ed7ee19b373bf9eb634f4bd8a1dd418477413105c3684c1269",
+      "size_bytes": 3181
+    },
+    "resolved-machine.json": {
+      "sha256": "b2a349bc70e7d61c68523b1ed100044970e5e2fc798499e7517a3659be1509ae",
+      "size_bytes": 13522
+    },
+    "resolved-process.json": {
+      "sha256": "09c168a82b6a661a35dcad4785638d3b91054f97cee3ea99863321730891bdeb",
+      "size_bytes": 4458
+    },
+    "toolpath-analysis.json": {
+      "sha256": "37392842de02208d21e99a59af58be90c0c0d9b634a1a074589d4c3443772d83",
+      "size_bytes": 3251
+    },
+    "toolpath-witness-first-middle-top.png": {
+      "sha256": "17c1da5fb78017e4eecee371825c42759d8422ce5d3505c6dc2a6a19ebb7aff5",
+      "size_bytes": 53206
+    },
+    "toolpath-witness-first-middle-top.svg": {
+      "sha256": "03903e81cf58907dfcc3ace21019e2a70a3e69235b507c4b5b4033cef641efa7",
+      "size_bytes": 173915
+    }
+  },
+  "formal_review_sha256": "f0459a5ba44f9dfe88361a97f2674a04eeba117e6f470a8d4445b0971c816760",
+  "guards": {
+    "all_four_profiles_have_filament_diameter": true,
+    "all_four_profiles_have_filament_is_support": true,
+    "input_process_wipe_tower_filament_key_absent": true,
+    "note": "The successful CLI internally serializes '; wipe_tower_filament = 0' into G-code metadata. The crash-associated explicit input leaf was removed; child exit was 0. This distinction remains provisional."
+  },
+  "hard_prestart_blockers": [
+    "Confirm physical tool 3 currently contains the intended PETG.",
+    "Confirm the U1 build plate is clear, correctly installed, and clean.",
+    "Obtain fresh authorization naming this exact G-code and U1 target."
+  ],
+  "settings": {
+    "bed_c": 70,
+    "bed_type": "Textured PEI Plate",
+    "elephant_foot_compensation_mm": 0.15,
+    "filament": "Snapmaker PETG @U1",
+    "first_layer_height_mm": 0.25,
+    "first_layer_line_width_mm": 0.5,
+    "first_layer_nozzle_c": 250,
+    "inner_wall_line_width_mm": 0.45,
+    "later_nozzle_c": 245,
+    "layer_height_mm": 0.2,
+    "logical_tool": "T2",
+    "outer_wall_line_width_mm": 0.42,
+    "physical_tool": 3,
+    "printer": "Snapmaker U1 (0.4 nozzle)",
+    "process": "0.20 Standard @Snapmaker U1 (0.4 nozzle)",
+    "sparse_infill_percent": 15,
+    "support": false,
+    "wall_loops": 2
+  },
+  "slicer": {
+    "application": "Snapmaker Orca",
+    "child_exit": 0,
+    "cli_banner": "Snapmaker_Orca-01.10.01.50",
+    "executable_sha256": "4c30e59cf582dcc4f12e43741fcab2f97045e972065d465481ed3760678d0fbe",
+    "gcode_generator_version": "2.3.5"
+  },
+  "source_stl": {
+    "path": "projects/xt60-bend-jig/cad/p20_blue_orange_web_coupon/p20_blue_orange_web_coupon.stl",
+    "sha256": "6181d4ae4c9e5a396c1cc425826464cb00074fbb618be9d67630ee12d92529b0"
+  },
+  "static_validation": {
+    "active_tool_commands": [
+      "T2"
+    ],
+    "arranged_witness_xy_mm": [
+      138.44980894977022,
+      141.70290913970203
+    ],
+    "estimated_time": "6m 12s",
+    "filament_g_by_tool": [
+      0.0,
+      0.0,
+      1.8,
+      0.0
+    ],
+    "filament_mm_by_tool": [
+      0.0,
+      0.0,
+      599.7,
+      0.0
+    ],
+    "first_middle_top_blue_slot_center_open": true,
+    "first_middle_top_orange_slot_center_open": true,
+    "first_middle_top_witness_covered": true,
+    "layers": 16,
+    "max_z_mm": 3.25,
+    "movement_and_extrusion_present": true,
+    "object_count": 1,
+    "object_extrusion_xy_bounds_mm": [
+      121.197,
+      149.803,
+      122.163,
+      149.837
+    ],
+    "printable_xy_bounds_mm": [
+      0.5,
+      270.5,
+      1.0,
+      271.0
+    ],
+    "support_toolpaths_present": false
+  },
+  "status": "prepared-not-uploaded-not-started",
+  "task": "P20-WEB-PREP-01"
+}

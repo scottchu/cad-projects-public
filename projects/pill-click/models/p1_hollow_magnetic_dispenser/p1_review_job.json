@@ -1,0 +1,64 @@
+{
+  "jobs": [
+    {
+      "input": "models/p1_hollow_magnetic_dispenser/p1_pressed.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p1_hollow_magnetic_dispenser/snapshots/p1_pressed_iso.png",
+          "camera": { "direction": [1, 1, 0.7], "up": [0, 0, 1] }
+        },
+        {
+          "path": "models/p1_hollow_magnetic_dispenser/snapshots/p1_pressed_bottom_port.png",
+          "camera": { "direction": [0, 0.45, -1], "up": [0, 1, 0] }
+        }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.14, "sizeProfile": "assembly" }
+    },
+    {
+      "input": "models/p1_hollow_magnetic_dispenser/p1_released.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p1_hollow_magnetic_dispenser/snapshots/p1_released_iso.png",
+          "camera": { "direction": [1, 1, 0.7], "up": [0, 0, 1] }
+        },
+        {
+          "path": "models/p1_hollow_magnetic_dispenser/snapshots/p1_released_rear_magnets.png",
+          "camera": { "direction": [-1, -1, 0.45], "up": [0, 0, 1] }
+        }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.14, "sizeProfile": "assembly" }
+    },
+    {
+      "input": "models/p1_hollow_magnetic_dispenser/p1_hopper_cutaway.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p1_hollow_magnetic_dispenser/snapshots/p1_hopper_cutaway_profile.png",
+          "camera": { "direction": [-1, 0, 0], "up": [0, 0, 1] }
+        },
+        {
+          "path": "models/p1_hollow_magnetic_dispenser/snapshots/p1_hopper_cutaway_iso.png",
+          "camera": { "direction": [-1, 1, 0.65], "up": [0, 0, 1] }
+        }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.14, "sizeProfile": "diagnostic" }
+    },
+    {
+      "input": "models/p1_hollow_magnetic_dispenser/print/p1_three_part_test_bundle.step",
+      "mode": "view",
+      "outputs": [
+        {
+          "path": "models/p1_hollow_magnetic_dispenser/snapshots/p1_three_part_print_bundle.png",
+          "camera": { "direction": [1, 1, 0.8], "up": [0, 0, 1] }
+        }
+      ],
+      "display": { "mode": "solid" },
+      "render": { "viewLabels": true, "padding": 0.12, "sizeProfile": "assembly-large" }
+    }
+  ]
+}

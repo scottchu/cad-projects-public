@@ -1,0 +1,20 @@
+{
+  "input": "projects/xt60-bend-jig/cad/p20_blue_orange_web_coupon/p20_blue_orange_web_coupon.step",
+  "mode": "view",
+  "outputs": [
+    {
+      "path": "projects/xt60-bend-jig/cad/p20_blue_orange_web_coupon/snapshots/front.png",
+      "camera": {"direction": [1, 0, 0], "up": [0, 0, 1]}
+    },
+    {
+      "path": "projects/xt60-bend-jig/cad/p20_blue_orange_web_coupon/snapshots/oblique.png",
+      "camera": {"direction": [1, -1, 0.8], "up": [0, 0, 1]}
+    },
+    {
+      "path": "projects/xt60-bend-jig/cad/p20_blue_orange_web_coupon/snapshots/bottom.png",
+      "camera": {"direction": [-1, 0, 0], "up": [0, 0, 1]}
+    }
+  ],
+  "render": {"viewLabels": true, "padding": 0.08, "sizeProfile": "diagnostic"},
+  "display": {"mode": "solid"}
+}

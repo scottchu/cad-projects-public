@@ -1,0 +1,850 @@
+{
+  "origin_baseline": "96b055d4b8d0b87f3e6132fa3d90b23b3be4ed84",
+  "source": "/Users/scottchu/Projects/personal/3d-print/design/pill-click",
+  "destination": "/Users/scottchu/Projects/personal/design-projects/projects/pill-click",
+  "hash_method": "SHA-256 file bytes; sorted relative paths",
+  "included": [
+    {
+      "source": ".gitignore",
+      "destination": ".gitignore",
+      "sha256": "d8d8fc4195e8da996f1f776aa29ee51015fe9a66ccd8ba2a86e6fbc7733c98d5",
+      "bytes": 271
+    },
+    {
+      "source": ".python-version",
+      "destination": ".python-version",
+      "sha256": "7b55f8e67b5623c4bef3fa691288da9437d79d3aba156de48d481db32ac7d16d",
+      "bytes": 5
+    },
+    {
+      "source": "README.md",
+      "destination": "docs/legacy/README.source.md",
+      "sha256": "def779a1edb697d326b811f873e74774e4133110fca94acf524f43180b86a93d",
+      "bytes": 16199
+    },
+    {
+      "source": "docs/cad-brief.md",
+      "destination": "docs/cad-brief.md",
+      "sha256": "46a949f8651303dd97598b76f0e09b6c63a6f1b1c84fb89dda65ea369e4e15d2",
+      "bytes": 3293
+    },
+    {
+      "source": "docs/p0-manual-slider-spec.md",
+      "destination": "docs/p0-manual-slider-spec.md",
+      "sha256": "7bcbbd73b3be53e7f86c18b0ae5b2d681caca4c99f867bbf57796590e8521ec7",
+      "bytes": 4213
+    },
+    {
+      "source": "docs/p0-mechanical-fit-v1-spec.md",
+      "destination": "docs/p0-mechanical-fit-v1-spec.md",
+      "sha256": "c744c64a6ca1bcc06a1aaeabd6d1a10cbbe5605bbe526415f9645c6a66cd9513",
+      "bytes": 12447
+    },
+    {
+      "source": "docs/p0-mechanical-fit-v1-test-plan.md",
+      "destination": "docs/p0-mechanical-fit-v1-test-plan.md",
+      "sha256": "21a8cb7caf8e98174df4e49d3e1aca75a859a60bbff82e4666be43df59cab8c1",
+      "bytes": 2273
+    },
+    {
+      "source": "docs/p0-mechanical-fit-v2-keyboard-inverted-rails-spec.md",
+      "destination": "docs/p0-mechanical-fit-v2-keyboard-inverted-rails-spec.md",
+      "sha256": "d56717fcadf80ae624902ce2fb9086d960d90b4360aa6578cb68957f65268530",
+      "bytes": 32193
+    },
+    {
+      "source": "docs/p0-mechanical-fit-v2-keyboard-inverted-rails-test-plan.md",
+      "destination": "docs/p0-mechanical-fit-v2-keyboard-inverted-rails-test-plan.md",
+      "sha256": "ca87673040753c523a49a4a15232e94d05af76704e6c7594ae91234b5580dce8",
+      "bytes": 4150
+    },
+    {
+      "source": "docs/p0-mechanical-fit-v2.1-keyboard-identity-spec.md",
+      "destination": "docs/p0-mechanical-fit-v2.1-keyboard-identity-spec.md",
+      "sha256": "3828b9771b83e32aa02ff516b37443b813f12f6651f4924b8491c95cc60e6444",
+      "bytes": 3918
+    },
+    {
+      "source": "docs/p0-mechanical-fit-v2.2-planar-latch-spec.md",
+      "destination": "docs/p0-mechanical-fit-v2.2-planar-latch-spec.md",
+      "sha256": "1e513c6c9bb191c44502d8ecea72a31c51d8af250beaeb4b5fecc79425c113fc",
+      "bytes": 2991
+    },
+    {
+      "source": "docs/p0-mechanical-fit-v2.3-keyboard-durable-latch-spec.md",
+      "destination": "docs/p0-mechanical-fit-v2.3-keyboard-durable-latch-spec.md",
+      "sha256": "cbea23bebd733504cdeeb9cde2015d7ac50ab4246c177e7fb2e56e88e7030a61",
+      "bytes": 6837
+    },
+    {
+      "source": "docs/p0-v2-shutter-brief.md",
+      "destination": "docs/p0-v2-shutter-brief.md",
+      "sha256": "74967ee64a6e508331af4b9bf9ef2f3d9a691154bfd2558f7671fc7cf915c2a4",
+      "bytes": 1910
+    },
+    {
+      "source": "docs/p0-v2-shutter-spec.md",
+      "destination": "docs/p0-v2-shutter-spec.md",
+      "sha256": "7867d4b7a552cfd4d4e91c117a21ab05850fc0880959783cc92efd2bc6e049c8",
+      "bytes": 4414
+    },
+    {
+      "source": "docs/p0-v3-coupon-spec.md",
+      "destination": "docs/p0-v3-coupon-spec.md",
+      "sha256": "3265c4150cb995a6166c73df83918271d844e295328de4d0fe6e3c0f67fb0948",
+      "bytes": 29532
+    },
+    {
+      "source": "docs/p0-v3-physical-test-plan.md",
+      "destination": "docs/p0-v3-physical-test-plan.md",
+      "sha256": "5a4fd908eff724e0fd89f70cdeb53b83dcf17b7c742e90b2b117b7c6ed525af6",
+      "bytes": 14137
+    },
+    {
+      "source": "docs/p0-v3-rear-assembly-spec.md",
+      "destination": "docs/p0-v3-rear-assembly-spec.md",
+      "sha256": "5292e1e531394609f7f79691dc975570627a9ade2dd306442aa24c1b6cb6811e",
+      "bytes": 38956
+    },
+    {
+      "source": "docs/p0-v3-shutter-spec.md",
+      "destination": "docs/p0-v3-shutter-spec.md",
+      "sha256": "81da41f7a3c66ea41678358a71976ed405c4fbc1322a7d3da20b387be44ebe02",
+      "bytes": 25394
+    },
+    {
+      "source": "docs/p1-hollow-magnetic-dispenser-spec.md",
+      "destination": "docs/p1-hollow-magnetic-dispenser-spec.md",
+      "sha256": "52676db4ad72bc501c24e67b9c81e4c2784e5df05718b017c6b330e3b9def0f7",
+      "bytes": 6324
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_hollow_inner.py",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_hollow_inner.py",
+      "sha256": "758f2961ef84fd9568ffae5b9730874e35f8ec1b527d8b9fd4b20d225d1816dd",
+      "bytes": 197
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_hollow_inner.step",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_hollow_inner.step",
+      "sha256": "3eccaf15791a8776b8269a524e6892bc7dbc4b8688825157794ed6c58956a081",
+      "bytes": 552298
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_hopper_cutaway.py",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_hopper_cutaway.py",
+      "sha256": "3cf6127cf277b3cdc1846ad152bf8426116f9a52a54e5153a5c56779a05bc022",
+      "bytes": 173
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_hopper_cutaway.step",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_hopper_cutaway.step",
+      "sha256": "b6c86a097517957d74f919f60ee364e5163f6490be3a5439ce2448fc2472e75f",
+      "bytes": 341056
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_magnetic_rear_cover.py",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_magnetic_rear_cover.py",
+      "sha256": "428fba34dc0465cfe81747ac0676a2516e29e180527e63aaf680fa96c6e2c05a",
+      "bytes": 179
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_magnetic_rear_cover.step",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_magnetic_rear_cover.step",
+      "sha256": "a2509eebbe77fe0f3685b3acece835208e43791780e16976264e33f1ea85d64d",
+      "bytes": 333930
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_ported_outer.py",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_ported_outer.py",
+      "sha256": "d8dadffa023d85f78e9030c0622f2c7a84ec9ee46995ecbe6c7d29a48fbc85b3",
+      "bytes": 182
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_ported_outer.step",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_ported_outer.step",
+      "sha256": "8f96a8510441a23e555539fabeae63799e64b1a568406f4efc67dda54d093d83",
+      "bytes": 304533
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_pressed.py",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_pressed.py",
+      "sha256": "8c344c52d6617983e59c271de34bee435349add8c2a6e992f8bd9526566932e6",
+      "bytes": 170
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_pressed.step",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_pressed.step",
+      "sha256": "e73e529d39a2fc0e7f82724e62fa3bc6aca83347ed44e469ed10b5f2a5bc3e96",
+      "bytes": 1221111
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_released.py",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_released.py",
+      "sha256": "26d80b623048bfd8e2815b0ce6f828bb0c1f2fbb29fe308dcadc539352e88b5b",
+      "bytes": 173
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_released.step",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_released.step",
+      "sha256": "f4e73320e037770b1939772926adb3a298e48577fc0997fd89e343ac030d024a",
+      "bytes": 1221118
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/p1_review_job.json",
+      "destination": "models/p1_hollow_magnetic_dispenser/p1_review_job.json",
+      "sha256": "02b48475b4922f9f332b1a9a6a9fb0efe653529106fe34931e9adb0e221a1518",
+      "bytes": 2334
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/print/p1_three_part_test_bundle.3mf",
+      "destination": "models/p1_hollow_magnetic_dispenser/print/p1_three_part_test_bundle.3mf",
+      "sha256": "cdc19e7e6cdd31852fe1efd2a543404241cda9a9313d8c05f57a5a303417b2de",
+      "bytes": 88625
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/print/p1_three_part_test_bundle.py",
+      "destination": "models/p1_hollow_magnetic_dispenser/print/p1_three_part_test_bundle.py",
+      "sha256": "385d4219a7eb60306c4ae28b2237cc8a91e91cb7287be9d7ebbb40988d56701d",
+      "bytes": 173
+    },
+    {
+      "source": "models/p1_hollow_magnetic_dispenser/print/p1_three_part_test_bundle.step",
+      "destination": "models/p1_hollow_magnetic_dispenser/print/p1_three_part_test_bundle.step",
+      "sha256": "12b0e6e5d0c7766d0f88b6eb63618f0f9832c35654e5b531394bbfe4d7b98d3b",
+      "bytes": 1220926
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_bayonet_cap.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_bayonet_cap.py",
+      "sha256": "241272aa81b45340f274b9dbe9dd2c50d649883bde25d520c3652e254aa2d5da",
+      "bytes": 118
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_bayonet_cap.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_bayonet_cap.step",
+      "sha256": "eeb7db693a2acadc7c075f455a09a9b343433ac03d70011b54794623c55960b1",
+      "bytes": 483385
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_cap_exploded.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_cap_exploded.py",
+      "sha256": "90947e48c5e7383590c2bc3a647b92c3f429066289ee215094bef36051acf626",
+      "bytes": 138
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_cap_exploded.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_cap_exploded.step",
+      "sha256": "6f326433380ea9f1eccdc43c7190f92738dde1a9fc8c461ae5684bb383322b96",
+      "bytes": 1739012
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_cap_locked.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_cap_locked.py",
+      "sha256": "6c4e9816cb66b781687782ca8e6770b7ce40e8c5fce9bd4839b9ce8de0752f30",
+      "bytes": 134
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_cap_locked.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_cap_locked.step",
+      "sha256": "da1e75d5b9d950544d98a75d576abd2de877de152ba47cedfba92453ff5e7b33",
+      "bytes": 1739036
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_hollow_inner.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_hollow_inner.py",
+      "sha256": "59d9317808e9d58121ee31cab2f7271d015a2a33fa6b94af9a98069dc4b47dc4",
+      "bytes": 146
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_hollow_inner.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_hollow_inner.step",
+      "sha256": "1ce7362a2978581d6511844d93579c7c44d9f0094169a442a504dd4274c80939",
+      "bytes": 614991
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_hopper_cutaway.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_hopper_cutaway.py",
+      "sha256": "88c782c14d62190e8f935a9a1fdc872bc0f8f1e214b80bd21a806f8b0f87c3fb",
+      "bytes": 124
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_hopper_cutaway.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_hopper_cutaway.step",
+      "sha256": "4d467e3708240663d7e8ddf8f873d335bbcdf6e3a66e3672d4bd4d0052bfde60",
+      "bytes": 1016613
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_magnetic_rear_cover.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_magnetic_rear_cover.py",
+      "sha256": "f1275680b1fee966d3edc4f41b50e9076ec2d6a0d8dd8e9ee9bd03ac57c05291",
+      "bytes": 134
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_magnetic_rear_cover.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_magnetic_rear_cover.step",
+      "sha256": "5b445d63ec47777ac03425dfedbd23072e131cf2da8af2bd4b551615cb6c3d34",
+      "bytes": 349995
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_outer_housing.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_outer_housing.py",
+      "sha256": "d88c6f51b4aa792695e73c7dcf396e734aa2856ebd0752bc2165ec6c8d32e08a",
+      "bytes": 136
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_outer_housing.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_outer_housing.step",
+      "sha256": "1ee81fb9eac4141b5fd9abbdc8df70cdc89276aef3b1d94c371341741ad217e9",
+      "bytes": 304587
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_pressed.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_pressed.py",
+      "sha256": "84638a6a31c3f10c4ef001f06d7cd50d150101d2fddf8377351d7f8bffd24c05",
+      "bytes": 128
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_pressed.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_pressed.step",
+      "sha256": "7af958c6e0ae24130a068304611067a505737f466551fbb42eca538c46048363",
+      "bytes": 1739023
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_released.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_released.py",
+      "sha256": "d145e3f95b4b4249eff946fd929b425293d5d721926dbde53ac87f4fc62c4e71",
+      "bytes": 130
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/p2_released.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/p2_released.step",
+      "sha256": "e468d91bd5f95833660fe88bf0a5a89b01e8cea9e28daa5f508ca659cb21bbfd",
+      "bytes": 1739030
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/print/p2_four_part_test_bundle.3mf",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/print/p2_four_part_test_bundle.3mf",
+      "sha256": "b158b3da700fe1655ef08052f541b8c6f6da01e8f29cb893e12f7dc21308e8fe",
+      "bytes": 108959
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/print/p2_four_part_test_bundle.py",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/print/p2_four_part_test_bundle.py",
+      "sha256": "716a693c29d9969a4b15924c9eceabdcb70799a70eb22f0948ba7371e4cfb7dd",
+      "bytes": 120
+    },
+    {
+      "source": "models/p2_bayonet_refill_8mm_rebound/print/p2_four_part_test_bundle.step",
+      "destination": "models/p2_bayonet_refill_8mm_rebound/print/p2_four_part_test_bundle.step",
+      "sha256": "3c2a93a08adff7358273c2fc886a7fa9509d1ee57b0508b3bf97940012723f86",
+      "bytes": 1807196
+    },
+    {
+      "source": "pyproject.toml",
+      "destination": "pyproject.toml",
+      "sha256": "439731f291b6603ac5c9e7ab50696d048216e962611db6853b0227cbf341b437",
+      "bytes": 400
+    },
+    {
+      "source": "src/pill_click/__init__.py",
+      "destination": "src/pill_click/__init__.py",
+      "sha256": "a607315a9007c3137e19a1d6ec1bc2d27a8065fbc407ac3b7e54b6584893a7b0",
+      "bytes": 277
+    },
+    {
+      "source": "src/pill_click/assembly.py",
+      "destination": "src/pill_click/assembly.py",
+      "sha256": "94a771cd908d3f2d3a85a70d4cf2382665f2c8a206099b37bc83f439d8ab224c",
+      "bytes": 4864
+    },
+    {
+      "source": "src/pill_click/geometry.py",
+      "destination": "src/pill_click/geometry.py",
+      "sha256": "fae4ea484a9e013c838496b685784a4ed9cd5be5dfd0ba18ddaf5d0ada835b51",
+      "bytes": 875
+    },
+    {
+      "source": "src/pill_click/housing.py",
+      "destination": "src/pill_click/housing.py",
+      "sha256": "592261a611ee0f9c61ebf2fdce90fc1679664ad213ea8a9ff41b01e1eec6463f",
+      "bytes": 4281
+    },
+    {
+      "source": "src/pill_click/latch.py",
+      "destination": "src/pill_click/latch.py",
+      "sha256": "c159e5167e8922c19d4a8a287ea32a96a56be2f4befbd5fd194cd3e1c59c65b6",
+      "bytes": 6632
+    },
+    {
+      "source": "src/pill_click/p0/__init__.py",
+      "destination": "src/pill_click/p0/__init__.py",
+      "sha256": "c59396f468a3dc5e9771e09db41f7e0c07fe8b92e16ff581cd62ce654fb73db1",
+      "bytes": 376
+    },
+    {
+      "source": "src/pill_click/p0/assembly.py",
+      "destination": "src/pill_click/p0/assembly.py",
+      "sha256": "c38b8dd28f6d328f59a5621029f64debdb3f45d2bc1d55eff576e00f23d86423",
+      "bytes": 1149
+    },
+    {
+      "source": "src/pill_click/p0/geometry.py",
+      "destination": "src/pill_click/p0/geometry.py",
+      "sha256": "0bee8d3433b661b05f515a77c14392034ef4f08963c23e9b47f0132952402c2a",
+      "bytes": 7183
+    },
+    {
+      "source": "src/pill_click/p0/spec.py",
+      "destination": "src/pill_click/p0/spec.py",
+      "sha256": "f7625d33b291ebc1f6cb2eaa8beffed5aac03e8af7eb7d29019f9e8d116310b1",
+      "bytes": 7607
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v1/__init__.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v1/__init__.py",
+      "sha256": "c3e7770111c9ecb79e269a501fc96b4648daaebf1da95f4784e4b5e3f4681b6d",
+      "bytes": 780
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v1/assembly.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v1/assembly.py",
+      "sha256": "141b1f68b5f49911ac3d7588dfe282e6c0774cedeca97825e346127fd5ae7cbf",
+      "bytes": 1438
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v1/geometry.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v1/geometry.py",
+      "sha256": "7399a3acd3caf5dc3c80ad49f2f75067d2a7c1f9b4479b788eece03609fc53a2",
+      "bytes": 13955
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v1/print_exports.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v1/print_exports.py",
+      "sha256": "335848560e3b753b2fcb000c364388b00642fee7f28d9db51dde9d11b673272c",
+      "bytes": 2177
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v1/spec.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v1/spec.py",
+      "sha256": "d7044c465012dc0132b79b55e78f21e5057e0b38dfcdf640eb89412ddb4b2fa2",
+      "bytes": 6071
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/__init__.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/__init__.py",
+      "sha256": "69cd4252c3abcf51b698ea70898d8ba18f5a2fe06b578c68cbf57e459a61deb1",
+      "bytes": 723
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/assembly.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/assembly.py",
+      "sha256": "3415d83c093ca5a191c8c7298cf585cb403323499dda8dfdf8f852a3f173313f",
+      "bytes": 1799
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/geometry.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/geometry.py",
+      "sha256": "fa6d150a35c7d445bfc8335177302bfcd70c12610d6d15da8db9dc5cd12c482f",
+      "bytes": 2621
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/spec.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v21_keyboard_identity/spec.py",
+      "sha256": "f8608b29c8759c8aef4f3fe9a52b7d759eca171d7100b74a434c1049200b9dc3",
+      "bytes": 1934
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v22_planar_latch/__init__.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v22_planar_latch/__init__.py",
+      "sha256": "736aa3aee7634de3c7fc7cb320198d69f64e21c07702a4d4fad21217b2211530",
+      "bytes": 1084
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v22_planar_latch/assembly.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v22_planar_latch/assembly.py",
+      "sha256": "6876fabca7c9b33114e1a7ce0a298ab53df26fd9d0ba6377ca15cdf28e5009f6",
+      "bytes": 1729
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v22_planar_latch/geometry.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v22_planar_latch/geometry.py",
+      "sha256": "7ad4911a9ee3ff9a172c371e506aba10a482d70d4f3f5f85fd103cfdfa3baed0",
+      "bytes": 10727
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v22_planar_latch/spec.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v22_planar_latch/spec.py",
+      "sha256": "f83963c58ac5b8120128c58d2414bd54c477c114b67ed6d0b7a985cb991332a2",
+      "bytes": 5982
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/__init__.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/__init__.py",
+      "sha256": "e9e998df0c27d5d3c828e8aad2ee779821aed779f35bf40afc54ac5fdedfffdd",
+      "bytes": 1266
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/assembly.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/assembly.py",
+      "sha256": "317ce129f23e989a09adf5fc94cd9941a40ddb732789afe394ffc09951bbed66",
+      "bytes": 1574
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/geometry.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/geometry.py",
+      "sha256": "3701f19ce478b6ea0219d903cb881c56489e70c5b9733211cec337f4779afbf1",
+      "bytes": 13114
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/print_exports.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/print_exports.py",
+      "sha256": "9d8830041d75278fd69b8a925ed4a1572f004858f8258334bfd0e8698cb8e208",
+      "bytes": 2483
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/spec.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v23_keyboard_durable_latch/spec.py",
+      "sha256": "b2e9c1332ffe637561e94c182f1dbb544f8d7f02deba10c063b4f933e7098088",
+      "bytes": 11241
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/__init__.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/__init__.py",
+      "sha256": "dfa9cb4b831e10ca24888588d3cf50ffa9db75e3360ff0678016193abdf22447",
+      "bytes": 1589
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/assembly.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/assembly.py",
+      "sha256": "08f22a9e5cac7f05540afdb23af29e58264870a02031366649df581cafbd1bbe",
+      "bytes": 1553
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/coupon.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/coupon.py",
+      "sha256": "22ce234803a52b0c429dee6b87bd488110d7e455d72109faa9a67560b00b583a",
+      "bytes": 1510
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/geometry.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/geometry.py",
+      "sha256": "403ef6aefaac9ef6d004eb44b6c990a1a0aceb48368b6f4bb04bfe1ed02837f1",
+      "bytes": 13255
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/print_exports.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/print_exports.py",
+      "sha256": "5de2bc93dce46ed1a7593f9dfd8174d1248bce211b841e321eb59c1f6cab09ec",
+      "bytes": 2905
+    },
+    {
+      "source": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/spec.py",
+      "destination": "src/pill_click/p0_mechanical_fit_v2_keyboard_inverted_rails/spec.py",
+      "sha256": "f20747ea18b5516a698e24cf47c595db1007edbeaf82be37e7f71498ffdff196",
+      "bytes": 7207
+    },
+    {
+      "source": "src/pill_click/p0_v2/__init__.py",
+      "destination": "src/pill_click/p0_v2/__init__.py",
+      "sha256": "ec3937b1c74b2f18b7356182e4adbdf149013f80f73b1c5e8924d5b1786bc4a3",
+      "bytes": 555
+    },
+    {
+      "source": "src/pill_click/p0_v2/assembly.py",
+      "destination": "src/pill_click/p0_v2/assembly.py",
+      "sha256": "e25084f15724f8890cdafd7017e2d2ba3c05d2a52837dee4850bbd4f7127c704",
+      "bytes": 1431
+    },
+    {
+      "source": "src/pill_click/p0_v2/geometry.py",
+      "destination": "src/pill_click/p0_v2/geometry.py",
+      "sha256": "4b58ff35c147115d6b58cb5271e5ff216b6b622c725457c8f855e46e3036812d",
+      "bytes": 16833
+    },
+    {
+      "source": "src/pill_click/p0_v2/spec.py",
+      "destination": "src/pill_click/p0_v2/spec.py",
+      "sha256": "716fea84b566a28c021d3275185d85906b93d4207ce8a29e20d7b7916f8db4b6",
+      "bytes": 10955
+    },
+    {
+      "source": "src/pill_click/p0_v3/__init__.py",
+      "destination": "src/pill_click/p0_v3/__init__.py",
+      "sha256": "925ccb2f1c7b2acfcb8d6ab86397f31a56aa219a5f90cba452b11fa285dc942f",
+      "bytes": 1014
+    },
+    {
+      "source": "src/pill_click/p0_v3/assembly.py",
+      "destination": "src/pill_click/p0_v3/assembly.py",
+      "sha256": "ddc7a72906ab134341afcfe9b4bfdf1da75a65d8873b12516de704659cce8fff",
+      "bytes": 1981
+    },
+    {
+      "source": "src/pill_click/p0_v3/coupons.py",
+      "destination": "src/pill_click/p0_v3/coupons.py",
+      "sha256": "4d4ee91b778b96b68b3dcbefaec81c1f39c66428b7ebdf924777c78ddd9caf26",
+      "bytes": 7210
+    },
+    {
+      "source": "src/pill_click/p0_v3/geometry.py",
+      "destination": "src/pill_click/p0_v3/geometry.py",
+      "sha256": "6f19a418112b783deee40b52628282eb54ad7e2479fb43470102540d9a74eeaf",
+      "bytes": 26832
+    },
+    {
+      "source": "src/pill_click/p0_v3/print_exports.py",
+      "destination": "src/pill_click/p0_v3/print_exports.py",
+      "sha256": "f7f0d103450c7ed7c06ee68a9e5988a65ded3e306a8dc19c98e689648b75caa1",
+      "bytes": 6696
+    },
+    {
+      "source": "src/pill_click/p0_v3/spec.py",
+      "destination": "src/pill_click/p0_v3/spec.py",
+      "sha256": "00c72c30f9862de9d2751ff43c82424042a3f52e6a07b7a0a62839384cfecf82",
+      "bytes": 13788
+    },
+    {
+      "source": "src/pill_click/p1_hollow_magnetic_dispenser/__init__.py",
+      "destination": "src/pill_click/p1_hollow_magnetic_dispenser/__init__.py",
+      "sha256": "451e2ab21891e726a0bebe8257c0ee6395b2833c7e0601503990a9d0e24821ac",
+      "bytes": 971
+    },
+    {
+      "source": "src/pill_click/p1_hollow_magnetic_dispenser/assembly.py",
+      "destination": "src/pill_click/p1_hollow_magnetic_dispenser/assembly.py",
+      "sha256": "6711649c789ce9cff1b3df67b83ff5619dd92ae3e9317212a6f644896538d1d4",
+      "bytes": 1212
+    },
+    {
+      "source": "src/pill_click/p1_hollow_magnetic_dispenser/diagnostics.py",
+      "destination": "src/pill_click/p1_hollow_magnetic_dispenser/diagnostics.py",
+      "sha256": "2a117c57b1febd0a824d5a5a0ed9c781e79b73187d92693dee4c0baf6e57f613",
+      "bytes": 498
+    },
+    {
+      "source": "src/pill_click/p1_hollow_magnetic_dispenser/geometry.py",
+      "destination": "src/pill_click/p1_hollow_magnetic_dispenser/geometry.py",
+      "sha256": "171dc0a5b70c11d58cf9aef0c38b2d6801a51124ffe1dcae48333bffd52e0bbd",
+      "bytes": 8324
+    },
+    {
+      "source": "src/pill_click/p1_hollow_magnetic_dispenser/print_exports.py",
+      "destination": "src/pill_click/p1_hollow_magnetic_dispenser/print_exports.py",
+      "sha256": "4171a747d3dad14729b5d8581fe466107dfe9184406a044fda694117068a0e3e",
+      "bytes": 1453
+    },
+    {
+      "source": "src/pill_click/p1_hollow_magnetic_dispenser/spec.py",
+      "destination": "src/pill_click/p1_hollow_magnetic_dispenser/spec.py",
+      "sha256": "03688548e25fbb9ce74386cef09b4083500ecb0ad3241a6ebae6537ae432e1bc",
+      "bytes": 13922
+    },
+    {
+      "source": "src/pill_click/p2_bayonet_refill_8mm_rebound/__init__.py",
+      "destination": "src/pill_click/p2_bayonet_refill_8mm_rebound/__init__.py",
+      "sha256": "f103e03457a292fb2ac646dac860840cd83eacc2f09c08d3abd524f5245fcec0",
+      "bytes": 398
+    },
+    {
+      "source": "src/pill_click/p2_bayonet_refill_8mm_rebound/assembly.py",
+      "destination": "src/pill_click/p2_bayonet_refill_8mm_rebound/assembly.py",
+      "sha256": "6ffaac61dca504d219a0283b0a97492de21f174af42c179deab78490b0ef7c4a",
+      "bytes": 2088
+    },
+    {
+      "source": "src/pill_click/p2_bayonet_refill_8mm_rebound/diagnostics.py",
+      "destination": "src/pill_click/p2_bayonet_refill_8mm_rebound/diagnostics.py",
+      "sha256": "8a32de28d7397ec26df5ec27ed8596746c06b5da602b41341a00971f4768fd69",
+      "bytes": 1274
+    },
+    {
+      "source": "src/pill_click/p2_bayonet_refill_8mm_rebound/geometry.py",
+      "destination": "src/pill_click/p2_bayonet_refill_8mm_rebound/geometry.py",
+      "sha256": "402e7b80bd88687a5781abd12b6c1c5e63fd5307ee01555fa5bd04b2fe0a5a08",
+      "bytes": 9613
+    },
+    {
+      "source": "src/pill_click/p2_bayonet_refill_8mm_rebound/print_exports.py",
+      "destination": "src/pill_click/p2_bayonet_refill_8mm_rebound/print_exports.py",
+      "sha256": "081725ef7e8324800c36ba5851cd360aa5e53ec47578840a45bad91abcd9d851",
+      "bytes": 1517
+    },
+    {
+      "source": "src/pill_click/p2_bayonet_refill_8mm_rebound/spec.py",
+      "destination": "src/pill_click/p2_bayonet_refill_8mm_rebound/spec.py",
+      "sha256": "0fe3522d1db7f45a7eee69dfd780260aef59d0c4f709e983081c19402269fa10",
+      "bytes": 4068
+    },
+    {
+      "source": "src/pill_click/parameters.py",
+      "destination": "src/pill_click/parameters.py",
+      "sha256": "c77bc8746479fed22d3afc95787b8d5e7b7060adb6e402e05279060907b40b33",
+      "bytes": 3108
+    },
+    {
+      "source": "src/pill_click/py.typed",
+      "destination": "src/pill_click/py.typed",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "source": "src/pill_click/returns.py",
+      "destination": "src/pill_click/returns.py",
+      "sha256": "4742b8fb0252e5b150d701597db47113cd84886ed2a119986d2bc24c8f126e44",
+      "bytes": 14167
+    },
+    {
+      "source": "src/pill_click/shuttle.py",
+      "destination": "src/pill_click/shuttle.py",
+      "sha256": "eda5c10fd93f5fa42cb66f1b53e73b879017936542d2017ce0ac49df2965aa10",
+      "bytes": 5280
+    },
+    {
+      "source": "src/pill_click/threemf_compat.py",
+      "destination": "src/pill_click/threemf_compat.py",
+      "sha256": "95a8a1c30cc3945f7ce1d4c9a9b553736b4dd36a33dbeaa4d55b44974421c28d",
+      "bytes": 3615
+    },
+    {
+      "source": "tests/test_assemblies.py",
+      "destination": "tests/test_assemblies.py",
+      "sha256": "b25807d164b518137b103dad3b87f0ddf122759bee104b846b7e3f252d17707f",
+      "bytes": 1830
+    },
+    {
+      "source": "tests/test_core_geometry.py",
+      "destination": "tests/test_core_geometry.py",
+      "sha256": "118148b4c4611564c7e3a9f045f0c60808838ec4591420954e48ffa948acc72a",
+      "bytes": 2801
+    },
+    {
+      "source": "tests/test_environment.py",
+      "destination": "tests/test_environment.py",
+      "sha256": "98fbc78daed0117dccd309f8a44c4dfa0226bb6a479312c1a12da3793ae9b2cf",
+      "bytes": 98
+    },
+    {
+      "source": "tests/test_latch.py",
+      "destination": "tests/test_latch.py",
+      "sha256": "abbc442c1f6908b722d8e1bab0f1290458039330be3bb70e27efc2fad6f0c370",
+      "bytes": 2279
+    },
+    {
+      "source": "tests/test_p0_geometry.py",
+      "destination": "tests/test_p0_geometry.py",
+      "sha256": "03551ce585814b1257085c8c6eaa74dc148e9ca827ef0174900f467dc6433b82",
+      "bytes": 2974
+    },
+    {
+      "source": "tests/test_p0_mechanical_fit_v1.py",
+      "destination": "tests/test_p0_mechanical_fit_v1.py",
+      "sha256": "6ab81d57b6c6ebcdd2948da7d1a352630592a50f017bd90133c6a798fdd1b988",
+      "bytes": 16043
+    },
+    {
+      "source": "tests/test_p0_mechanical_fit_v21_keyboard_identity.py",
+      "destination": "tests/test_p0_mechanical_fit_v21_keyboard_identity.py",
+      "sha256": "7cdb64faf7a1be67fcc4303802d99194140e21d12f504bd4d2f0bb0a572d4d33",
+      "bytes": 4413
+    },
+    {
+      "source": "tests/test_p0_mechanical_fit_v22_planar_latch.py",
+      "destination": "tests/test_p0_mechanical_fit_v22_planar_latch.py",
+      "sha256": "b009c00783d558a52b2c62fefae672067302615ebda678995b9a7e98ce82b250",
+      "bytes": 6871
+    },
+    {
+      "source": "tests/test_p0_mechanical_fit_v23_keyboard_durable_latch.py",
+      "destination": "tests/test_p0_mechanical_fit_v23_keyboard_durable_latch.py",
+      "sha256": "bc5d0baaeb1563ea0237240e84db6bd5428cecd58b856220aeddd5925aba34f9",
+      "bytes": 15637
+    },
+    {
+      "source": "tests/test_p0_mechanical_fit_v2_keyboard_inverted_rails.py",
+      "destination": "tests/test_p0_mechanical_fit_v2_keyboard_inverted_rails.py",
+      "sha256": "97d7e35f5177047984595df2be80ca4368b9ca7134069ba9d64ee0a52d504e19",
+      "bytes": 15843
+    },
+    {
+      "source": "tests/test_p0_spec.py",
+      "destination": "tests/test_p0_spec.py",
+      "sha256": "8fa078be0bf33ceac53e2c2447a7c0aae519ec581b3b1f080233c5a026d85846",
+      "bytes": 5004
+    },
+    {
+      "source": "tests/test_p0_v2_geometry.py",
+      "destination": "tests/test_p0_v2_geometry.py",
+      "sha256": "afb5cf5ab1c286bf29b400eb802aaff880306eda7de16d4cef81d70f231ccf2b",
+      "bytes": 5927
+    },
+    {
+      "source": "tests/test_p0_v2_spec.py",
+      "destination": "tests/test_p0_v2_spec.py",
+      "sha256": "33651e6366dd4dddab12b50569f182a35de69721beb350b66990a95331bd463c",
+      "bytes": 5740
+    },
+    {
+      "source": "tests/test_p0_v3_coupons.py",
+      "destination": "tests/test_p0_v3_coupons.py",
+      "sha256": "5f80517021725d8da2ebecd22bf021e370319e0d2db5e9cb56da7d8200e7c91a",
+      "bytes": 16094
+    },
+    {
+      "source": "tests/test_p0_v3_geometry.py",
+      "destination": "tests/test_p0_v3_geometry.py",
+      "sha256": "55400725ccffd77f562606b0770c8270add897ae0e5f8721c337d615feda9165",
+      "bytes": 21954
+    },
+    {
+      "source": "tests/test_p0_v3_print_exports.py",
+      "destination": "tests/test_p0_v3_print_exports.py",
+      "sha256": "a247583644b06282ccd12380e60c9ff135041ff23ed0e97261df7e8b595b1701",
+      "bytes": 3922
+    },
+    {
+      "source": "tests/test_p0_v3_spec.py",
+      "destination": "tests/test_p0_v3_spec.py",
+      "sha256": "4fdf9942734ae21f004b3da09407a1997c54f6140aa610febfe48a33a1bd5fae",
+      "bytes": 7837
+    },
+    {
+      "source": "tests/test_p1_hollow_magnetic_dispenser.py",
+      "destination": "tests/test_p1_hollow_magnetic_dispenser.py",
+      "sha256": "3055cd6379918775ab7f2d56e30fcc86c43b80c98661a061367dd331dc39b704",
+      "bytes": 14724
+    },
+    {
+      "source": "tests/test_p1_hollow_magnetic_dispenser_artifacts.py",
+      "destination": "tests/test_p1_hollow_magnetic_dispenser_artifacts.py",
+      "sha256": "45c344f21deed95ff65f123d1b5069824359e0b28404566e8c8c42f108a65484",
+      "bytes": 3764
+    },
+    {
+      "source": "tests/test_p2_bayonet_refill_8mm_rebound.py",
+      "destination": "tests/test_p2_bayonet_refill_8mm_rebound.py",
+      "sha256": "425ad7b7151ec883531773dd71665e1a7588630a281670c65757a10dc7d5409a",
+      "bytes": 10687
+    },
+    {
+      "source": "tests/test_returns.py",
+      "destination": "tests/test_returns.py",
+      "sha256": "36e41812ff5f3c086e4c2aa23f423269ca6ec428edbd15cd4608c14b2fb27944",
+      "bytes": 3949
+    }
+  ],
+  "excluded": [
+    {
+      "source": "uv.lock",
+      "sha256": "45c8b400d4af02e8d3c7da584fa5d91859755ec11694bfaaaa93f5d9d6641932",
+      "reason": "Nested lock/environment/cache or filesystem metadata"
+    }
+  ],
+  "external_legacy": [
+    {
+      "source": "/Users/scottchu/Projects/personal/3d-print/pill_click/p1_hollow_magnetic_dispenser/spec.py",
+      "destination": "docs/legacy/root-pill-click/spec.py",
+      "sha256": "17ed9020af5e403833b53a7897165639cd25cfd8799884789b41741b2df9275d"
+    }
+  ]
+}

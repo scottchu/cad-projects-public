@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.DS_Store
+*.log
+.*.step.glb
+
+# Generated visual review output and explicitly rejected prototypes stay local.
+models/**/*.png
+models/**/rejected/
+models/**/__cadgen__/
+models/**/*_review_job.json
+models/**/*_snapshot_jobs.json

@@ -1,0 +1,19 @@
+# P20-DESIGN-01 immutable design input manifest
+# Contract-opening HEAD: e0474bd6f3475cc26c71a9e84148f78b606a1db4
+# Product baseline: b69b6ad12af611644987f026eef4940db9c7bb34
+# `git:<commit>:<path>` entries pin the pre-P20 continuity snapshots and are
+# verified with `git show <commit>:<path> | sha256sum`.
+a0296c5c4a37d7b162117ea3666b70ca8f38c82e13bed33e38828849ad994c80  AGENTS.md
+83bfe40e67ab1f0a90239a77106b491df193b0a7cdf14f782a06ed5bcced6be3  docs/CAD_WORKFLOW.md
+99c9923f5332baf9710d04f19682b874c938678067740d5580ed569c7c434111  git:b69b6ad12af611644987f026eef4940db9c7bb34:projects/xt60-bend-jig/NEXT_AGENT.md
+eb6041710e4f3cf816982bcecef66c885e47ae0cf75680b1f54e9e11c7aa4431  git:b69b6ad12af611644987f026eef4940db9c7bb34:projects/xt60-bend-jig/PROJECT_STATE.md
+4b23ae3a0c65fb861e1215e95ba435b5747d2d3c4f085a6e07a925af37263f5c  projects/xt60-bend-jig/docs/EXPERIENCE.md
+07e86ede330777bca4f1d9975604024aada7fdf7e3d7b261bc524135cfc3cc82  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+c070db3421a38612337821da4e013c6b636023fde01eda75c2a1c2dc971cbb33  projects/xt60-bend-jig/docs/decisions/ADR-0004-p18-r1-compact-45-counter-twist.md
+555a449864b5498400bcccfa45e69097359cecf7f2df5472a9801fd4b55ce105  projects/xt60-bend-jig/docs/decisions/README.md
+e2492339de9037b6e2a84351699b693202e4585a32623305c616d97712b91677  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/IMPLEMENTATION_CANDIDATE.sha256
+36e346c45f6b241e834da8d2dcc9009823bbf85809044021b42e8a33e1f393d4  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/REOPTIMIZED_4MM_OPEN_UPRIGHT_DESIGN.md
+79467228789cf89267ab10afeeaa5871d91eab4fcc7f0629d1fa4d83ff0e811d  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/BRIEF.md
+864335ec427e68e8b1193c667a9b6e8235875f9cee56d24d63e45d4c75651abf  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/TASK_INPUT.md
+41c06b8536fbf4e1bb2e9979d74de299232379b4b0ebf87ee81e93c63f581017  projects/xt60-bend-jig/src/xt60_bend_jig/p19_r1_front_edge_short_tail.py
+c9733d7a870eb7ca84fb7b1cb4ad6ac86271e513d0eebed3bf0ff3a0118f1ffc  projects/xt60-bend-jig/tests/test_p19_r1_front_edge_short_tail.py

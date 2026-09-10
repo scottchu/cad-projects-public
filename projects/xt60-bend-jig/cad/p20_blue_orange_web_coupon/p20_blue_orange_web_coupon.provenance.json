@@ -1,0 +1,154 @@
+{
+  "actualSolidEvidence": {
+    "blueOrangeCutterDistanceMm": 1.715042423717553,
+    "blueOrangeIntersectionMm3": 0.0,
+    "couponBounds": {
+      "max": [
+        1.6000000000000003,
+        16.308446371474318,
+        18.402161485742834
+      ],
+      "min": [
+        -1.6000000000000003,
+        -11.786545004574247,
+        -10.624660298830026
+      ],
+      "size": [
+        3.2000000000000006,
+        28.094991376048565,
+        29.02682178457286
+      ]
+    },
+    "couponSolidCount": 1,
+    "couponValid": true,
+    "couponVolumeMm3": 2009.7053159375214
+  },
+  "baselineHead": "9698cf30e9ddb3e576c08179bfdd067446514c67",
+  "briefSha256": "388c27a9af1c8c6dffe0a809f057428e986d246d099b55617a74de8752ac2081",
+  "candidateFingerprintSha256": "07f4a32d455214ae1d5b71dfdeba8dc55ca5a9a970580011cf35e5cf859a93be",
+  "candidateStatus": "test_only_non_product_coupon",
+  "designSha256": "c8920c6014bfbdfe3904ae09975b7446fbc92d2e115a051556279c0d992034f9",
+  "generatorSha256": "b803696277c1edf831002a5b3809e68ee22cf612a853437e6b9d9fc2f852856d",
+  "meshExport": {
+    "angularDeflection": 0.03,
+    "linearDeflectionMm": 0.01,
+    "orientation": "rigid source transform; broad face at build Z=0"
+  },
+  "parameterManifest": {
+    "baselineHead": "9698cf30e9ddb3e576c08179bfdd067446514c67",
+    "blankBounds": {
+      "x": [
+        -1.6,
+        1.6
+      ],
+      "y": [
+        -11.786545004574247,
+        16.308446371474318
+      ],
+      "z": [
+        -10.624660298830026,
+        18.402161485742834
+      ]
+    },
+    "briefSha256": "388c27a9af1c8c6dffe0a809f057428e986d246d099b55617a74de8752ac2081",
+    "contents": [
+      "blue_cutout",
+      "orange_cutout"
+    ],
+    "coordinateConvention": "+X thickness; FRONT local +Y right, +Z up",
+    "designSha256": "c8920c6014bfbdfe3904ae09975b7446fbc92d2e115a051556279c0d992034f9",
+    "excluded": [
+      "green",
+      "fixed_axle",
+      "other_rails",
+      "assembly"
+    ],
+    "parameters": {
+      "blue_start_angle_deg": 118.0,
+      "coupon_exception_web_mm": 1.7150733085690888,
+      "curve_bias": 0.0,
+      "cutter_overrun_each_face_mm": 1.0,
+      "end_offset_y_mm": -7.3241343806549555,
+      "end_offset_z_mm": -2.77402040577638,
+      "inner_arch_mm": 0.0,
+      "inner_arch_peak": 0.5,
+      "left_end_angle_deg": 45.0,
+      "material": "PETG",
+      "nozzle_diameter_mm": 0.4,
+      "orange_start_angle_deg": 45.0,
+      "ordinary_min_web_mm": 2.2,
+      "outer_plate_thickness_mm": 3.2,
+      "path_steps": 360,
+      "rail_cutter_width_mm": 4.15,
+      "start_radius_mm": 16.0
+    },
+    "physicalAcceptanceClaimed": false,
+    "printTransform": {
+      "result": "broad face at build Z=0; thickness along +Z",
+      "rotationDegXYZ": [
+        0.0,
+        -90.0,
+        0.0
+      ],
+      "translationXYZMm": [
+        0.0,
+        0.0,
+        1.6
+      ]
+    },
+    "productAcceptanceClaimed": false,
+    "railSpecs": {
+      "blue": {
+        "base_end_y": 9.552212035894,
+        "base_end_z": 8.022322349948,
+        "name": "blue",
+        "start_angle_deg": 118.0
+      },
+      "orange": {
+        "base_end_y": 15.802212035894,
+        "base_end_z": 2.272322349948,
+        "name": "orange",
+        "start_angle_deg": 45.0
+      }
+    },
+    "schema": "P20BlueOrangeWebCoupon/v1",
+    "status": "test_only_non_product_coupon",
+    "units": "mm",
+    "witness": {
+      "blueIndex": 360,
+      "centerDistanceMm": 5.865073308569089,
+      "midpointYZ": [
+        7.963860139702033,
+        0.9389413002297666
+      ],
+      "orangeIndex": 209,
+      "sampledBoundaryGapMm": 1.7150733085690888
+    }
+  },
+  "parameterManifestSha256": "e669a3a745505458ff9afe01fa3889e9913f28663345e15ce0a4f09f7ffedcad",
+  "physicalAcceptanceClaimed": false,
+  "printGeneratorSha256": "f51ae3105300bd80d1f16736c104525282c9b8d0a87c4518afe90c04ddf4a3c7",
+  "printMeshBounds": {
+    "max": [
+      10.624660591943359,
+      16.308446984155275,
+      3.2000001476837157
+    ],
+    "min": [
+      -18.40216074453125,
+      -11.786544899804687,
+      -1.0000000244249065e-07
+    ],
+    "size": [
+      29.02682133647461,
+      28.094991883959963,
+      3.200000247683718
+    ]
+  },
+  "productAcceptanceClaimed": false,
+  "schema": "P20BlueOrangeWebCouponProvenance/v1",
+  "sourceSha256": "07755b38ec2b008a19ba556cd18d5cd84e3ebb47b62c995571783480bab5c917",
+  "stepSha256": "14716d85365645ead4774ea03cc5d93fb330b807f902d067ee8c09f2abbef085",
+  "stlSha256": "6181d4ae4c9e5a396c1cc425826464cb00074fbb618be9d67630ee12d92529b0",
+  "threeMfSha256": "07810673e418315fb6c782a1799f65fe15d9f5390db9390a6f8420c139245ce2"
+}

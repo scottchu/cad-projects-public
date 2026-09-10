@@ -1,0 +1,202 @@
+<div id="xt60-force-gate" aria-label="Three-rod manual force relationship">
+  <style>
+    #xt60-force-gate {
+      color: var(--foreground);
+      width: 100%;
+    }
+    #xt60-force-gate .gate-title {
+      margin: 0 0 0.5rem;
+      font-weight: 500;
+    }
+    #xt60-force-gate .gate-state {
+      color: var(--muted-foreground);
+      margin-bottom: 0.5rem;
+    }
+    #xt60-force-gate .gate-stage {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    #xt60-force-gate .rail {
+      stroke: var(--border);
+      stroke-width: 14;
+      stroke-linecap: round;
+      opacity: 0.7;
+    }
+    #xt60-force-gate .rail-center {
+      stroke: var(--muted-foreground);
+      stroke-width: 2;
+      stroke-dasharray: 7 7;
+      opacity: 0.8;
+    }
+    #xt60-force-gate .rod {
+      stroke: var(--foreground);
+      stroke-width: 2;
+    }
+    #xt60-force-gate .rod-blue { fill: var(--blue); }
+    #xt60-force-gate .rod-orange { fill: var(--orange); }
+    #xt60-force-gate .rod-green { fill: var(--green); }
+    #xt60-force-gate .force-blue { stroke: var(--blue); color: var(--blue); }
+    #xt60-force-gate .force-orange { stroke: var(--orange); color: var(--orange); }
+    #xt60-force-gate .force-green { stroke: var(--green); color: var(--green); }
+    #xt60-force-gate .force-arrow {
+      stroke-width: 5;
+      stroke-linecap: round;
+    }
+    #xt60-force-gate .finger-hook,
+    #xt60-force-gate .finger-pad {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    #xt60-force-gate .lock-bar {
+      fill: color-mix(in srgb, var(--primary) 18%, transparent);
+      stroke: var(--primary);
+      stroke-width: 3;
+    }
+    #xt60-force-gate .lock-notch {
+      fill: var(--background);
+      stroke: var(--primary);
+      stroke-width: 2;
+    }
+    #xt60-force-gate text {
+      fill: var(--foreground);
+    }
+    #xt60-force-gate .secondary-label {
+      fill: var(--muted-foreground);
+    }
+    #xt60-force-gate .force-label-blue { fill: var(--blue); }
+    #xt60-force-gate .force-label-orange { fill: var(--orange); }
+    #xt60-force-gate .force-label-green { fill: var(--green); }
+    #xt60-force-gate .gate-controls {
+      margin-top: 0.5rem;
+    }
+    #xt60-force-gate .gate-answer {
+      margin-top: 0.75rem;
+    }
+  </style>
+
+  <h3 class="gate-title">單側操作：三隻手指驅動三支桿</h3>
+  <div id="xt60-force-state" class="gate-state" aria-live="polite">開啟</div>
+
+  <svg class="gate-stage" viewBox="0 0 720 430" role="img" aria-labelledby="xt60-force-title xt60-force-desc">
+    <title id="xt60-force-title">兩支桿被拉動，中心桿沿自己的 inner rail 被推動</title>
+    <desc id="xt60-force-desc">三支桿同時移動；手指到達鎖定位置後，被動鎖桿才扣住它們。</desc>
+
+    <defs>
+      <marker id="xt60-arrow-blue" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+        <path d="M0,0 L9,4.5 L0,9 Z" fill="var(--blue)"></path>
+      </marker>
+      <marker id="xt60-arrow-orange" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+        <path d="M0,0 L9,4.5 L0,9 Z" fill="var(--orange)"></path>
+      </marker>
+      <marker id="xt60-arrow-green" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+        <path d="M0,0 L9,4.5 L0,9 Z" fill="var(--green)"></path>
+      </marker>
+    </defs>
+
+    <text x="32" y="32" class="secondary-label">開啟</text>
+    <text x="548" y="32" class="secondary-label">鎖定</text>
+    <text x="32" y="405" class="secondary-label">另一側鏡像執行相同的三指操作。</text>
+
+    <line class="rail" x1="126" y1="102" x2="500" y2="158"></line>
+    <line class="rail-center" x1="126" y1="102" x2="500" y2="158"></line>
+    <line class="rail" x1="126" y1="215" x2="500" y2="215"></line>
+    <line class="rail-center" x1="126" y1="215" x2="500" y2="215"></line>
+    <line class="rail" x1="126" y1="328" x2="500" y2="272"></line>
+    <line class="rail-center" x1="126" y1="328" x2="500" y2="272"></line>
+
+    <line class="force-arrow force-blue" x1="178" y1="110" x2="292" y2="127" marker-end="url(#xt60-arrow-blue)"></line>
+    <line class="force-arrow force-orange" x1="178" y1="215" x2="292" y2="215" marker-end="url(#xt60-arrow-orange)"></line>
+    <line class="force-arrow force-green" x1="178" y1="320" x2="292" y2="303" marker-end="url(#xt60-arrow-green)"></line>
+
+    <text x="300" y="112" class="force-label-blue">拉：沿藍色 inner rail</text>
+    <text x="300" y="201" class="force-label-orange">推：沿中心 inner rail</text>
+    <text x="300" y="329" class="force-label-green">拉：沿綠色 inner rail</text>
+
+    <g id="xt60-blue-rod">
+      <path class="finger-hook force-blue" d="M25,-22 C42,-22 42,22 25,22"></path>
+      <circle class="rod rod-blue" r="17"></circle>
+    </g>
+    <g id="xt60-orange-rod">
+      <path class="finger-pad force-orange" d="M-39,-22 L-39,22"></path>
+      <circle class="rod rod-orange" r="17"></circle>
+    </g>
+    <g id="xt60-green-rod">
+      <path class="finger-hook force-green" d="M25,-22 C42,-22 42,22 25,22"></path>
+      <circle class="rod rod-green" r="17"></circle>
+    </g>
+
+    <g id="xt60-passive-lock" opacity="0">
+      <rect class="lock-bar" x="526" y="116" width="58" height="198" rx="8"></rect>
+      <circle class="lock-notch" cx="526" cy="158" r="21"></circle>
+      <circle class="lock-notch" cx="526" cy="215" r="21"></circle>
+      <circle class="lock-notch" cx="526" cy="272" r="21"></circle>
+      <text x="598" y="205">被動鎖具</text>
+      <text x="598" y="228" class="secondary-label">移動完成後</text>
+      <text x="598" y="251" class="secondary-label">固定三支桿</text>
+    </g>
+  </svg>
+
+  <div class="viz-controls gate-controls">
+    <label class="form-label" for="xt60-force-progress">手指手動行程 <span id="xt60-force-percent" class="tabular-nums">0%</span></label>
+    <input id="xt60-force-progress" class="form-range" type="range" min="0" max="100" value="0" step="1">
+  </div>
+
+  <div class="viz-controls gate-answer">
+    <button id="xt60-force-pass" type="button" class="btn btn-primary">PASS — 動作正確</button>
+    <button id="xt60-force-fail" type="button" class="btn">FAIL — 受力關係仍不對</button>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.getElementById('xt60-force-gate');
+      const slider = root.querySelector('#xt60-force-progress');
+      const percent = root.querySelector('#xt60-force-percent');
+      const state = root.querySelector('#xt60-force-state');
+      const lock = root.querySelector('#xt60-passive-lock');
+      const rods = {
+        blue: { element: root.querySelector('#xt60-blue-rod'), open: [126, 102], end: [500, 158] },
+        orange: { element: root.querySelector('#xt60-orange-rod'), open: [126, 215], end: [500, 215] },
+        green: { element: root.querySelector('#xt60-green-rod'), open: [126, 328], end: [500, 272] }
+      };
+
+      const update = () => {
+        const t = Number(slider.value) / 100;
+        Object.values(rods).forEach((rod) => {
+          const x = rod.open[0] + (rod.end[0] - rod.open[0]) * t;
+          const y = rod.open[1] + (rod.end[1] - rod.open[1]) * t;
+          rod.element.setAttribute('transform', `translate(${x} ${y})`);
+        });
+        lock.setAttribute('opacity', String(Math.max(0, (t - 0.84) / 0.16)));
+        percent.textContent = `${Math.round(t * 100)}%`;
+        state.textContent = t === 0
+          ? '開啟'
+          : t === 1
+            ? '鎖定 — 被動鎖具固定手動移到位的三支桿'
+            : '移動中 — 兩指拉、一指推；三支桿全部移動';
+      };
+
+      slider.addEventListener('input', update);
+      root.querySelector('#xt60-force-pass').addEventListener('click', async () => {
+        if (window.openai?.sendFollowUpMessage) {
+          await window.openai.sendFollowUpMessage({
+            title: '確認三支桿動作',
+            prompt: 'PASS。這是正確的 XT60 jig 操作：每側兩隻手指拉動外側兩支桿，一隻手指推動中心桿；三支桿沿各自 inner rail 移動，獨立的被動鎖具只負責固定最終位置。請進入下一個 CAD 設計 gate。'
+          });
+        }
+      });
+      root.querySelector('#xt60-force-fail').addEventListener('click', async () => {
+        if (window.openai?.sendFollowUpMessage) {
+          await window.openai.sendFollowUpMessage({
+            title: '修正受力關係',
+            prompt: 'FAIL。圖中的三支桿受力關係仍然不對。建立 CAD 前，請再讓我指出哪支桿被推、哪兩支桿被拉，以及被動鎖具應該接觸哪裡。'
+          });
+        }
+      });
+      update();
+    })();
+  </script>
+</div>
