@@ -1,0 +1,14 @@
+56956b9d43ae8b3f17622e2384c3d3f5c22f86c2c60aa571b6c41941120080b0  projects/xt60-bend-jig/docs/iterations/p20-r4-blocked-test-print-3mf/BRIEF.md
+dc717bfd2b2121a860d9f7860adee8980fb80bb46b777ab8b5bdae922ac6750d  projects/xt60-bend-jig/docs/iterations/p20-r4-blocked-test-print-3mf/TASK_DAG.md
+a11a40b06a2a6335dbdde79e49f9159de9e162cf2834daab00a94ff95e5685a5  projects/xt60-bend-jig/docs/iterations/p20-r4-blocked-test-print-3mf/IMPLEMENTATION.md
+38ed907ea1ec0e22ff8c42c2c03e047049b65ea9962b2fe7e58ea914aecac93e  projects/xt60-bend-jig/src/xt60_bend_jig/p20_r4_custom_profile_full_cad.py
+b850d90c26b7326a885c028978f029d414814050cf9fc1b08d25c6c9c85f04cf  projects/xt60-bend-jig/src/xt60_bend_jig/p20_r4_blocked_test_print_3mf.py
+fbcb5e3e5075dd83ab8db86593381dbe34f6f942c5d2d615411a5dd97fb931ec  projects/xt60-bend-jig/cad/p20_r4_custom_profile_full_cad/p20_r4_print_kit.step.py
+fb1188097e74752522e90dac96996b98c3d1379d42432d09607e62eea47b39e3  projects/xt60-bend-jig/cad/p20_r4_custom_profile_full_cad/p20_r4_print_kit.step
+a4c0dad6522e163613dfb755678225567928abb28f5be9ee8fedfa2e310b4a87  projects/xt60-bend-jig/scripts/export_p20_r4_print_kit_3mf.py
+cd90dc1afa0c0658981b75a040daa2a8cc91d9addf362ae3bd09420ea4b05135  projects/xt60-bend-jig/cad/p20_r4_custom_profile_full_cad/p20_r4_print_kit.3mf
+2f21bcbe1bb614555e62a99c67764580f8f1f3c2e13ab9dca7e5f1129f781327  projects/xt60-bend-jig/cad/p20_r4_custom_profile_full_cad/p20-r4-3mf-provenance.json
+1d46f8f415c76299ae17b43420c24154f1a8739c5decbcdb840270741e81187a  projects/xt60-bend-jig/tests/test_p20_r4_print_kit_3mf.py
+0444e2098f665f58cd493f3e4e545a03133b3bf5d961c2122b3c04ba4c7621cb  projects/xt60-bend-jig/docs/review/p20-r4-blocked-test-print-3mf/p20-r4-print-kit-step-repair1_20260827T213237Z.png
+bc123c459a7931b4eed952054fc7c5d71eb3fa4df19b32a39452a61284682be2  projects/xt60-bend-jig/docs/review/p20-r4-blocked-test-print-3mf/p20-r4-print-kit-3mf-repair1_20260827T213239Z.png
+e90f0f63687118ce9826801335263ea861d546016011c8bb98f31032963f61db  projects/xt60-bend-jig/docs/iterations/p20-r4-custom-profile-full-cad/IMPLEMENTATION_CANDIDATE.sha256

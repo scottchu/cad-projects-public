@@ -1,0 +1,158 @@
+{
+  "layer_count": 16,
+  "global_object_center_xy_mm": [
+    135.5,
+    136.0
+  ],
+  "arrangement_translation_xy_mm": [
+    139.38875025,
+    133.739049
+  ],
+  "source_witness_xy_mm": [
+    -0.9389413002297666,
+    7.963860139702033
+  ],
+  "arranged_witness_xy_mm": [
+    138.44980894977022,
+    141.70290913970203
+  ],
+  "source_web_edge_points_xy_mm": [
+    [
+      -1.2827328621687275,
+      7.17821355156712
+    ],
+    [
+      -0.5777981786048969,
+      8.741683284903761
+    ]
+  ],
+  "arranged_web_edge_points_xy_mm": [
+    [
+      138.10601738783126,
+      140.91726255156712
+    ],
+    [
+      138.8109520713951,
+      142.48073228490375
+    ]
+  ],
+  "source_slot_centers_xy_mm": [
+    [
+      -2.135621075408544,
+      5.286598713468044
+    ],
+    [
+      0.27509003463491943,
+      10.633298123002836
+    ]
+  ],
+  "arranged_slot_centers_xy_mm": [
+    [
+      137.25312917459144,
+      139.02564771346803
+    ],
+    [
+      139.66384028463492,
+      144.37234712300284
+    ]
+  ],
+  "checks": {
+    "first": {
+      "layer_index_1based": 1,
+      "z_mm": 0.25,
+      "height_mm": 0.25,
+      "segment_count": 681,
+      "web_nominal_length_mm": 1.7150424237175483,
+      "web_uncovered_length_mm": 0.30576078774357784,
+      "web_uncovered_segments_xy_mm": [
+        [
+          [
+            138.10601738783126,
+            140.91726255156712
+          ],
+          [
+            138.16659371092578,
+            141.0516143573774
+          ]
+        ],
+        [
+          [
+            138.74585139596556,
+            142.33634594950698
+          ],
+          [
+            138.8109520713951,
+            142.48073228490375
+          ]
+        ]
+      ],
+      "witness_covered": true,
+      "blue_slot_center_open": true,
+      "orange_slot_center_open": true,
+      "toolpath_bounds": [
+        121.387,
+        149.613,
+        122.353,
+        149.647
+      ]
+    },
+    "middle": {
+      "layer_index_1based": 8,
+      "z_mm": 1.65,
+      "height_mm": 0.2,
+      "segment_count": 433,
+      "web_nominal_length_mm": 1.7150424237175483,
+      "web_uncovered_length_mm": 0.008882465620557792,
+      "web_uncovered_segments_xy_mm": [
+        [
+          [
+            138.80730110742772,
+            142.47263483730532
+          ],
+          [
+            138.8109520713951,
+            142.48073228490375
+          ]
+        ]
+      ],
+      "witness_covered": true,
+      "blue_slot_center_open": true,
+      "orange_slot_center_open": true,
+      "toolpath_bounds": [
+        121.197,
+        149.803,
+        122.163,
+        149.837
+      ]
+    },
+    "top": {
+      "layer_index_1based": 16,
+      "z_mm": 3.25,
+      "height_mm": 0.2,
+      "segment_count": 379,
+      "web_nominal_length_mm": 1.7150424237175483,
+      "web_uncovered_length_mm": 0.008882465620557792,
+      "web_uncovered_segments_xy_mm": [
+        [
+          [
+            138.80730110742772,
+            142.47263483730532
+          ],
+          [
+            138.8109520713951,
+            142.48073228490375
+          ]
+        ]
+      ],
+      "witness_covered": true,
+      "blue_slot_center_open": true,
+      "orange_slot_center_open": true,
+      "toolpath_bounds": [
+        121.197,
+        149.803,
+        122.163,
+        149.837
+      ]
+    }
+  }
+}

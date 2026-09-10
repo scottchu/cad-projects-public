@@ -77,3 +77,10 @@ observations rather than replacing historical settings with current intentions.
 
 Next: human review and a separately authorized manufacturing/physical test plan.
 This profile does not change the accepted P19 geometry or authorize print artifacts.
+
+## Delivery reconciliation — 2026-09-10
+
+P19 remains the latest accepted digital mechanism baseline and this file remains
+its draft manufacturing-planning profile. P25 is the sole current first-CAD
+review iteration, but it has no selected process profile and no print authority.
+Preserved P20-P24 preparation records remain historical evidence only.

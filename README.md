@@ -35,6 +35,15 @@ design-projects/
 
 Reusable workflow source, policies, templates and skills belong to [CAD Workbench](https://github.com/scottchu/CAD-workbench). This repository selects them through [the versioned binding](docs/workflows-binding.json). Actual design source and evidence stay project-owned. The sticker project now lives in [sticker-projects](https://github.com/scottchu/sticker-projects) at the preserved `projects/example-sticker-pack` path; its historical V2 release remains in this repository's GitHub releases.
 
+## Project discovery
+
+- [XT60 bend jig](projects/xt60-bend-jig/README.md): P25 first-CAD preview is
+  current; P19 remains the accepted digital mechanism baseline.
+- [Pill Click](projects/pill-click/README.md): source-preserving migration with
+  no selected design or print candidate.
+- `archives/drone/`: inactive historical OpenSCAD/STL material preserved for a
+  possible future reboot; it is not an active project.
+
 ## One-time setup
 
 Install `uv` and Node.js/npm, clone the repository, then run from the repository root:

@@ -1,0 +1,16 @@
+f9525f4e7a3781371ab4710b955299cdefb8691177b43a7c5a60cce000f3e96d  projects/xt60-bend-jig/README.md
+5eb06b49dd5ab28accfc2b6dfa642eeb47d4fa298e08d0e4580e11981460dd7d  projects/xt60-bend-jig/PROJECT_STATE.md
+ff3054f6fb78b8b687f00f458e6440a3026163a822e2776657feae7fb854530b  projects/xt60-bend-jig/NEXT_AGENT.md
+0cc73abc5b767472d067a7f3fecb867f9eaa3d8b881e509817a3be2e97fdcb4b  projects/xt60-bend-jig/PRINTING_PROFILE.md
+de49c99f984fc38b1c614dd089bb77634f109ba6cf3bdc3844d300489b1589f2  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+286e730eb51c9165a42af66fe797a2aacff28bcf11e966418e931278b2fd7512  projects/xt60-bend-jig/docs/EXPERIENCE.md
+555a449864b5498400bcccfa45e69097359cecf7f2df5472a9801fd4b55ce105  projects/xt60-bend-jig/docs/decisions/README.md
+c070db3421a38612337821da4e013c6b636023fde01eda75c2a1c2dc971cbb33  projects/xt60-bend-jig/docs/decisions/ADR-0004-p18-r1-compact-45-counter-twist.md
+b52e784ba0ff86af506d39ead664124133c0086e842236081fa133736fa9757e  projects/xt60-bend-jig/docs/iterations/CURRENT
+e5e1c9eb4e888743c4bdd942aba5b21decfdc580e5eb6d708faedac0f59ee831  projects/xt60-bend-jig/docs/iterations/p24-r1-manual-three-slider-clamp/BRIEF.md
+fa8df1d37b97b4a3744a612051707ee20a36f941d233d39fd020bb6b4d409119  projects/xt60-bend-jig/docs/iterations/p24-r1-manual-three-slider-clamp/DESIGN.md
+7c17d2b501d5d81bb66deb632c356357ffe7fe85a356c92a13ffec82dc5d96b5  projects/xt60-bend-jig/docs/iterations/p24-r1-manual-three-slider-clamp/REVIEW.md
+774772f62c434860ee41263f453f38ba1627ff4c54b558907f2755e7639deaf0  projects/xt60-bend-jig/docs/iterations/p24-r1-manual-three-slider-clamp/HANDOFF.md
+d4c9d5bc428d3e426df1e80099ceef33b1de820fa8af6b4f5a569e97d2480d58  projects/xt60-bend-jig/src/xt60_bend_jig/p20_r4_custom_profile_full_cad.py
+3b4a19e20e2286a8f735db38021a1c6d71263486df226fb18b6c9e1228329a63  projects/xt60-bend-jig/src/xt60_bend_jig/p24_r1_manual_three_slider_clamp.py
+1d1f01a3de0fdd28b61d42997c3debcfd0c1354b6ecc802ffd5675ed7d35c16f  projects/xt60-bend-jig/work/p25-rear-loop-front-pusher-intent.html

@@ -80,6 +80,44 @@ immutable history and input evidence; P18 is the active forward baseline.
 - `PHYS-017`: Limiting-web robustness, PETG dimensional outcome, heat and wear.
 - `PHYS-018`: Whether the `0.50 mm` force-side radius advantage is useful by
   hand without an added grip feature.
+- `CON-041`: The next physical correction requires exactly `28.40 mm` clear
+  span between the fixed inner plates, `10.00 mm` wider than P20 R4.
+- `CON-042`: Preserve the purchased three `OD4.00 x 50.00 mm` stainless rods
+  and the `0.30 mm` cap-to-outer gap. The printed stepped axle becomes
+  `44.90 mm`; the wider stack leaves `3.70 mm` available cap engagement per
+  side, pending physical retention validation.
+- `CON-043`: Permanent cap distal socket is `ID4.10 mm` on nominal `OD4.00 mm`
+  stock; actual installation force and retention remain a physical gate.
+- `PHYS-019`: Confirm the reprinted cap is looser but still retained, and that
+  the assembled fixed-inner clear span is usable; this does not close other
+  physical defects.
+
+## Active P24 R1 manual three-slider clamp contract
+
+- `REQ-044`: The three purchased rods remain exactly `OD4.00 x 50.00 mm` and
+  retain their inherited identities, paths and rails. P24 uses zero legacy
+  permanent caps.
+- `REQ-045`: The user alone creates mechanism motion: thumb pushes Orange
+  DOWN; index and middle fingers push Blue and Green BACK-to-FRONT. All three
+  are independent manual inputs.
+- `REQ-046`: The new clamp acts only after all three rods reach inherited END.
+  Clamp progress may move only pressure/screw geometry along X and may never
+  change rod or shoe YZ centers.
+- `REQ-047`: Each axial side uses three independent floating socket shoes,
+  one common pressure plate, one reaction frame and one captive central screw.
+  No shared shoe carrier may steer or synchronize the three rods.
+- `REQ-048`: The conceptual screw must close both endpoint loops: head-to-plate
+  compression for CLAMPED and captive-retainer-to-plate pull-back for RELEASED,
+  with frame reaction and no positive-volume penetration.
+- `CON-044`: Preserve `3.70 mm` nominal shoe engagement, `ID4.20 mm` sockets,
+  `0.60 mm` pressure-plate travel, `0.30 mm` inactive captive endplay and at
+  least `5.00 mm` finger-stem exposure.
+- `NON-GOAL-011`: P24 R1 does not prove a helical thread, torque, preload,
+  holding force, equal load sharing, anti-jam release, manufacturability,
+  printability or physical acceptance.
+- `PHYS-020`: Resolve the inherited OPEN Blue/XT60 collision and then validate
+  real thread/fit, holding, two-side tightening, shoe rattle/cocking, release,
+  assembly and service paths before any print-candidate claim.
 
 P18 R1 evidence authority is
 `docs/iterations/p18-r1-compact-counter-twist/`; its formal review accepts

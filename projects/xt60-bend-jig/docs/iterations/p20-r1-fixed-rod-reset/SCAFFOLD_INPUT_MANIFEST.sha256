@@ -1,0 +1,22 @@
+# P20-SCAFFOLD-IMPL-01 immutable input manifest
+# Contract-opening HEAD: 5e58e37ad22ed9d2121417c245410c3dbda45a7b
+# Product baseline: b69b6ad12af611644987f026eef4940db9c7bb34
+# Mutable DAG/status/handoff/evidence outputs are intentionally excluded.
+a0296c5c4a37d7b162117ea3666b70ca8f38c82e13bed33e38828849ad994c80  AGENTS.md
+83bfe40e67ab1f0a90239a77106b491df193b0a7cdf14f782a06ed5bcced6be3  docs/CAD_WORKFLOW.md
+4b23ae3a0c65fb861e1215e95ba435b5747d2d3c4f085a6e07a925af37263f5c  projects/xt60-bend-jig/docs/EXPERIENCE.md
+07e86ede330777bca4f1d9975604024aada7fdf7e3d7b261bc524135cfc3cc82  projects/xt60-bend-jig/docs/REQUIREMENTS.md
+c070db3421a38612337821da4e013c6b636023fde01eda75c2a1c2dc971cbb33  projects/xt60-bend-jig/docs/decisions/ADR-0004-p18-r1-compact-45-counter-twist.md
+555a449864b5498400bcccfa45e69097359cecf7f2df5472a9801fd4b55ce105  projects/xt60-bend-jig/docs/decisions/README.md
+e2492339de9037b6e2a84351699b693202e4585a32623305c616d97712b91677  projects/xt60-bend-jig/docs/iterations/p19-r1-front-edge-short-tail/IMPLEMENTATION_CANDIDATE.sha256
+79467228789cf89267ab10afeeaa5871d91eab4fcc7f0629d1fa4d83ff0e811d  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/BRIEF.md
+fd00b98112ddcd83eb4cb5bcecf384b93fa34764e4b09cfe7e9653ac3acddc89  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/DESIGN_CANDIDATE.sha256
+fe5762cef497214c4da7291fc89e7f05ebcb0789f61c8912580110680860abfc  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/DESIGN_CRITIQUE.md
+b26fcf469f3c06c30d89896d91b262c3b0eaeb650a5c00a9d562fd4177b1633b  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/DESIGN_INPUT_MANIFEST.sha256
+f9d57e5aab5204d28a8bf2776a544c08d2f8322e4feea794740f4aa134c45b7f  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/DESIGN.md
+02b6dbcd0487b6a2eef294e14cd07bdb9f37bf68776a0ab6f581d4f11232653e  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/SCAFFOLD_BRIEF.md
+864335ec427e68e8b1193c667a9b6e8235875f9cee56d24d63e45d4c75651abf  projects/xt60-bend-jig/docs/iterations/p20-r1-fixed-rod-reset/TASK_INPUT.md
+e437ecaaaf3779ea23b8f259aa0e9bbc23dd31634a25a55fe1a0217a8b562137  projects/xt60-bend-jig/docs/review/p20-r1-fixed-rod-reset/p20-r1-fixed-rod-reset-2d-gate.png
+33b3a4f87c0296d025d3bac0fcf7a9258b00f7e36d2b84da05c2a6d607f60a87  projects/xt60-bend-jig/docs/review/p20-r1-fixed-rod-reset/p20-r1-fixed-rod-reset-2d-gate.svg
+41c06b8536fbf4e1bb2e9979d74de299232379b4b0ebf87ee81e93c63f581017  projects/xt60-bend-jig/src/xt60_bend_jig/p19_r1_front_edge_short_tail.py
+c9733d7a870eb7ca84fb7b1cb4ad6ac86271e513d0eebed3bf0ff3a0118f1ffc  projects/xt60-bend-jig/tests/test_p19_r1_front_edge_short_tail.py

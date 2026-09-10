@@ -1,0 +1,69 @@
+include <../../spec/gps/bn220.v1.scad>
+
+DEBUG = false;
+
+// Standoff
+STANDOFF_DIAMETER = 5.1;
+STANDOFF_WALL = 2;
+STANDOFF_HEIGHT = 20;
+STANDOFF_DISTANCE = 23.0;
+STANDOFF_OUTER_SIDES = 6;
+STANDOFF_INNER_SIDES = 60;
+STANDOFF_FRONT_FLAT = false;
+
+// SMA - Mount
+SMA_STANDOFF_HEIGHT = STANDOFF_HEIGHT / 2;
+SMA_MOUNT_WIDTH = 31.5;
+SMA_MOUNT_LENGTH = 15;
+SMA_MOUNT_HEIGHT = SMA_STANDOFF_HEIGHT;
+SMA_DISTANCE = 10;
+SMA_ANGLE = 30;
+SMA_MOUNT_THICKNESS = 3;
+SMA_TOP_BACK_CHAMFER = 0.5;
+SMA_FN = $preview ? 30 : 60;
+SHOW_SMA_TEETH_DISK = $preview ? true : false;
+SMA_Y_OFFSET = -1.2;
+
+// GPS - Mount
+GPS_dimension = [
+  BN220_width,
+  BN220_length,
+  BN220_middle_height + BN220_bottom_height
+];
+
+GPS_clip_dimension = [6, 6, 1.6];
+GPS_cover_length = 3.5;
+
+GPS_plug_width = 7;
+GPS_plug_height = BN220_plug_height + 3;
+
+GPS_mount_thickness = [4, 2, 2];
+GPS_mount_chamfer = 0.5;
+GPS_mount_offset = 0.25;
+
+// GPS - Side Panels
+PANEL_STANDOFF_HEIGHT = STANDOFF_HEIGHT / 2;
+PANEL_THICKNESS = 2;
+PANEL_LENGTH = 40;
+
+ARM_LENGTH = 15;
+ARM_HEIGHT = 10;
+ARM_SHIFT = 1.25;
+
+FIN_HEIGHT = 2.5;
+FIN_LENGTH = 7;
+FIN_ANGLE = 25;
+
+BOTTOM_HEIGHT = 15;
+BOTTOM_ANGLE = 50;
+BOTTOM_LENGTH = 37;
+
+MOUNT_SCREW_DIAMETER = 0.001;
+MOUNT_SCREW_DISTANCE = 0.001;
+MOUNT_THICKNESS = 0;
+MOUNT_BASE_MULTIPLIER = 3;
+MOUNT_BASE_SCALE = [1.2, 1.2];
+MOUNT_OFFSET = [0, 0.5];
+MOUNT_ADJUSTABLE_ANGLE = 25;
+
+ANTENNA_OFFSET = [3, 0];

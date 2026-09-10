@@ -1,0 +1,333 @@
+{
+  "artifact": {
+    "allBuildTransformsIdentity": true,
+    "allMeshesManifoldAndOriented": true,
+    "buildItemCount": 13,
+    "labels": [
+      "print_fixed_left_inner_R20_blue_orange_rails_green_round_bore",
+      "print_fixed_right_inner_R20_blue_orange_rails_green_round_bore",
+      "print_rotating_left_outer_R22p5_three_inverse_rails_fixed_axle_arc",
+      "print_rotating_right_outer_R22p5_three_inverse_rails_fixed_axle_arc",
+      "print_fixed_stepped_axle_A_y-10_z-10_L44p90",
+      "print_fixed_left_permanent_outer_keeper",
+      "print_fixed_right_permanent_outer_keeper",
+      "print_left_bottom_permanent_cap_H9p05",
+      "print_right_bottom_permanent_cap_H9p05",
+      "print_left_diagonal_permanent_cap_H9p05",
+      "print_right_diagonal_permanent_cap_H9p05",
+      "print_left_upright_permanent_cap_H9p05",
+      "print_right_upright_permanent_cap_H9p05"
+    ],
+    "layout": {
+      "allMinimumZOnBed": true,
+      "boundsXYMm": [
+        -98.0,
+        -81.30000305175781,
+        130.5,
+        64.5
+      ],
+      "footprintXYMm": [
+        228.5,
+        145.8000030517578
+      ],
+      "pairwiseBoundingBoxOverlapCount": 0
+    },
+    "lib3mfRoundTripValid": true,
+    "meshObjectCount": 13,
+    "modelOnly": true,
+    "objectCount": 13,
+    "objects": [
+      {
+        "boundsMm": [
+          -98.0,
+          22.0,
+          2.6645352591003757e-15,
+          -58.0,
+          62.0,
+          3.2000000000000037
+        ],
+        "label": "print_fixed_left_inner_R20_blue_orange_rails_green_round_bore",
+        "meshSignedVolumeMm3": 3370.5199695017327,
+        "minimumZMm": 2.6645352591003757e-15,
+        "placedBREPVolumeMm3": 3370.923148586827,
+        "sourceBREPVolumeMm3": 3370.9231485868277,
+        "sourceToPlacedVolumeDeltaMm3": 4.547473508864641e-13,
+        "triangleCount": 4084,
+        "vertexCount": 2036
+      },
+      {
+        "boundsMm": [
+          -42.0,
+          22.0,
+          8.881784197001252e-16,
+          -2.0,
+          62.0,
+          3.200000000000002
+        ],
+        "label": "print_fixed_right_inner_R20_blue_orange_rails_green_round_bore",
+        "meshSignedVolumeMm3": 3370.519969501767,
+        "minimumZMm": 8.881784197001252e-16,
+        "placedBREPVolumeMm3": 3370.9231485868277,
+        "sourceBREPVolumeMm3": 3370.9231485868277,
+        "sourceToPlacedVolumeDeltaMm3": 0.0,
+        "triangleCount": 4084,
+        "vertexCount": 2036
+      },
+      {
+        "boundsMm": [
+          19.499999999999993,
+          19.5,
+          2.044348737920285e-15,
+          64.5,
+          64.5,
+          3.200000000000006
+        ],
+        "label": "print_rotating_left_outer_R22p5_three_inverse_rails_fixed_axle_arc",
+        "meshSignedVolumeMm3": 3841.220084884958,
+        "minimumZMm": 2.044348737920285e-15,
+        "placedBREPVolumeMm3": 3841.6889344513247,
+        "sourceBREPVolumeMm3": 3841.6889344513233,
+        "sourceToPlacedVolumeDeltaMm3": 1.3642420526593924e-12,
+        "triangleCount": 7192,
+        "vertexCount": 3590
+      },
+      {
+        "boundsMm": [
+          85.5,
+          19.5,
+          8.67720201529265e-16,
+          130.5,
+          64.5,
+          3.200000000000006
+        ],
+        "label": "print_rotating_right_outer_R22p5_three_inverse_rails_fixed_axle_arc",
+        "meshSignedVolumeMm3": 4091.4592015698568,
+        "minimumZMm": 8.67720201529265e-16,
+        "placedBREPVolumeMm3": 4091.9274320912805,
+        "sourceBREPVolumeMm3": 4091.927432091276,
+        "sourceToPlacedVolumeDeltaMm3": 4.547473508864641e-12,
+        "triangleCount": 7192,
+        "vertexCount": 3590
+      },
+      {
+        "boundsMm": [
+          -78.45,
+          -33.773502691896255,
+          8.881784197001252e-16,
+          -33.550000000000004,
+          -22.226497308103742,
+          10.0
+        ],
+        "label": "print_fixed_stepped_axle_A_y-10_z-10_L44p90",
+        "meshSignedVolumeMm3": 3272.3711196746976,
+        "minimumZMm": 8.881784197001252e-16,
+        "placedBREPVolumeMm3": 3272.4185911080617,
+        "sourceBREPVolumeMm3": 3272.4185911080613,
+        "sourceToPlacedVolumeDeltaMm3": 4.547473508864641e-13,
+        "triangleCount": 2084,
+        "vertexCount": 1044
+      },
+      {
+        "boundsMm": [
+          5.0,
+          -33.0,
+          1.4432899320127035e-15,
+          15.0,
+          -23.0,
+          1.2000000000000015
+        ],
+        "label": "print_fixed_left_permanent_outer_keeper",
+        "meshSignedVolumeMm3": 40.51999040069409,
+        "minimumZMm": 1.4432899320127035e-15,
+        "placedBREPVolumeMm3": 40.524189036818136,
+        "sourceBREPVolumeMm3": 40.524189036818115,
+        "sourceToPlacedVolumeDeltaMm3": 2.1316282072803006e-14,
+        "triangleCount": 2016,
+        "vertexCount": 1008
+      },
+      {
+        "boundsMm": [
+          21.0,
+          -33.0,
+          1.4432899320127035e-15,
+          31.0,
+          -23.0,
+          1.2000000000000015
+        ],
+        "label": "print_fixed_right_permanent_outer_keeper",
+        "meshSignedVolumeMm3": 40.519990400693246,
+        "minimumZMm": 1.4432899320127035e-15,
+        "placedBREPVolumeMm3": 40.524189036818136,
+        "sourceBREPVolumeMm3": 40.524189036818115,
+        "sourceToPlacedVolumeDeltaMm3": 2.1316282072803006e-14,
+        "triangleCount": 2016,
+        "vertexCount": 1008
+      },
+      {
+        "boundsMm": [
+          -37.3,
+          -81.3,
+          1.7763568394002505e-15,
+          -30.7,
+          -74.7,
+          9.050000000000002
+        ],
+        "label": "print_left_bottom_permanent_cap_H9p05",
+        "meshSignedVolumeMm3": 193.21325674477396,
+        "minimumZMm": 1.7763568394002505e-15,
+        "placedBREPVolumeMm3": 193.23327728654175,
+        "sourceBREPVolumeMm3": 193.23327728654186,
+        "sourceToPlacedVolumeDeltaMm3": 1.1368683772161603e-13,
+        "triangleCount": 3020,
+        "vertexCount": 1512
+      },
+      {
+        "boundsMm": [
+          44.7,
+          -81.3,
+          1.7763568394002505e-15,
+          51.3,
+          -74.7,
+          9.050000000000002
+        ],
+        "label": "print_right_bottom_permanent_cap_H9p05",
+        "meshSignedVolumeMm3": 193.21325674481517,
+        "minimumZMm": 1.7763568394002505e-15,
+        "placedBREPVolumeMm3": 193.23327728654172,
+        "sourceBREPVolumeMm3": 193.23327728654186,
+        "sourceToPlacedVolumeDeltaMm3": 1.4210854715202004e-13,
+        "triangleCount": 3020,
+        "vertexCount": 1512
+      },
+      {
+        "boundsMm": [
+          -23.3,
+          -81.3,
+          1.7763568394002505e-15,
+          -16.7,
+          -74.7,
+          9.050000000000002
+        ],
+        "label": "print_left_diagonal_permanent_cap_H9p05",
+        "meshSignedVolumeMm3": 193.21325674480616,
+        "minimumZMm": 1.7763568394002505e-15,
+        "placedBREPVolumeMm3": 193.2332772865418,
+        "sourceBREPVolumeMm3": 193.23327728654186,
+        "sourceToPlacedVolumeDeltaMm3": 5.684341886080802e-14,
+        "triangleCount": 3020,
+        "vertexCount": 1512
+      },
+      {
+        "boundsMm": [
+          58.70000000000001,
+          -81.3,
+          1.7763568394002505e-15,
+          65.30000000000001,
+          -74.7,
+          9.050000000000002
+        ],
+        "label": "print_right_diagonal_permanent_cap_H9p05",
+        "meshSignedVolumeMm3": 193.21325674479633,
+        "minimumZMm": 1.7763568394002505e-15,
+        "placedBREPVolumeMm3": 193.23327728654172,
+        "sourceBREPVolumeMm3": 193.23327728654186,
+        "sourceToPlacedVolumeDeltaMm3": 1.4210854715202004e-13,
+        "triangleCount": 3020,
+        "vertexCount": 1512
+      },
+      {
+        "boundsMm": [
+          -9.3,
+          -81.3,
+          -1.7763568394002505e-15,
+          -2.7,
+          -74.7,
+          9.049999999999999
+        ],
+        "label": "print_left_upright_permanent_cap_H9p05",
+        "meshSignedVolumeMm3": 193.21325674479777,
+        "minimumZMm": -1.7763568394002505e-15,
+        "placedBREPVolumeMm3": 193.23327728654178,
+        "sourceBREPVolumeMm3": 193.23327728654186,
+        "sourceToPlacedVolumeDeltaMm3": 8.526512829121202e-14,
+        "triangleCount": 3020,
+        "vertexCount": 1512
+      },
+      {
+        "boundsMm": [
+          72.7,
+          -81.3,
+          -1.7763568394002505e-15,
+          79.3,
+          -74.7,
+          9.049999999999999
+        ],
+        "label": "print_right_upright_permanent_cap_H9p05",
+        "meshSignedVolumeMm3": 193.2132567447853,
+        "minimumZMm": -1.7763568394002505e-15,
+        "placedBREPVolumeMm3": 193.23327728654175,
+        "sourceBREPVolumeMm3": 193.23327728654186,
+        "sourceToPlacedVolumeDeltaMm3": 1.1368683772161603e-13,
+        "triangleCount": 3020,
+        "vertexCount": 1512
+      }
+    ],
+    "path": "cad/p20_r4_custom_profile_full_cad/p20_r4_print_kit.3mf",
+    "role": "blocked-test-model-only-13-printable-objects",
+    "sha256": "df8c2db3b999962817a8857837b5d56491242e2df7705b3f81cc51aec847f415",
+    "unit": "millimetre"
+  },
+  "briefSha256": "b7f4a308b8f248041a54a9a075211c07a4dae844da82540d1ccdbd96308dddf8",
+  "embeddedMetadata": {
+    "artifactRole": "blocked-test-model-only-13-printable-objects",
+    "briefSha256": "b7f4a308b8f248041a54a9a075211c07a4dae844da82540d1ccdbd96308dddf8",
+    "exporterSha256": "a244dfa2dbba5f1af5d2ac472788309e85874b316f3797df8c6910fa0deff4f3",
+    "manufacturingAccepted": "false",
+    "parentCandidateFingerprint": "3eb9187ec7ad9205a2a1ced5e15e5a87a2a5a24e6c76282193ed086fb776d5b8",
+    "parentSourceSha256": "3eb9187ec7ad9205a2a1ced5e15e5a87a2a5a24e6c76282193ed086fb776d5b8",
+    "printingInitiated": "false",
+    "sourceSha256": "924f8d9ed4fd88803f542b564f8beb826fcc6cfd22b7efe3b5a387e42f09adab"
+  },
+  "excluded": [
+    "three required OD4 x 60 mm stainless rods",
+    "XT60 reference body",
+    "exact 90-degree two-conductor workpiece/wire",
+    "all reference, collision, motion, tool, and coupon geometry"
+  ],
+  "exporterSha256": "a244dfa2dbba5f1af5d2ac472788309e85874b316f3797df8c6910fa0deff4f3",
+  "geometryChangedForThreeMF": false,
+  "knownParentBlockers": [
+    "Blue rod / XT60 intersection 186.980487 mm3 at OPEN",
+    "Blue rod / XT60 intersection 63.593308 mm3 at MID",
+    "fixed-axle hex / inner-rim web 1.152 mm",
+    "left outer Blue-Orange rail web 1.715 mm",
+    "rod/workpiece contacts require functional disposition",
+    "ID4.10 caps and 28.40 mm inner clear span require physical acceptance"
+  ],
+  "manufacturingAccepted": false,
+  "parentCandidateFingerprint": "3eb9187ec7ad9205a2a1ced5e15e5a87a2a5a24e6c76282193ed086fb776d5b8",
+  "parentSourceSha256": "3eb9187ec7ad9205a2a1ced5e15e5a87a2a5a24e6c76282193ed086fb776d5b8",
+  "printingInitiated": false,
+  "schema": "P21R1AxialWidthCapFitThreeMFProvenance/v1",
+  "sliced": false,
+  "sourceLayout": {
+    "allMinimumZOnBed": true,
+    "boundsXYMm": [
+      -98.0,
+      -81.3,
+      130.5,
+      64.5
+    ],
+    "footprintXYMm": [
+      228.5,
+      145.8
+    ],
+    "pairwiseBoundingBoxOverlapCount": 0
+  },
+  "sourceSha256": "924f8d9ed4fd88803f542b564f8beb826fcc6cfd22b7efe3b5a387e42f09adab",
+  "step": {
+    "path": "cad/p20_r4_custom_profile_full_cad/p20_r4_print_kit.step",
+    "sha256": "924d6641a09592147411caa658a4e341d22f60ce005b0a74e04785ca65c3ce8e"
+  },
+  "uploaded": false
+}

@@ -2,6 +2,67 @@
 
 Entries preserve observed evidence separately from CAD inference. Legacy source records remain under `docs/legacy/`.
 
+## `2026-09-05` — retained latch needs separate hold and release paths
+
+- User-confirmed operation remained three manual moving rods: thumb pushes
+  Orange DOWN; index and middle fingers push Blue and Green BACK-to-FRONT.
+  The added mechanism only holds the already reached END pose.
+- A visually openable latch is not automatically a retained latch. The first
+  repair removed early collision but also allowed the bar to rotate free.
+- P25 Repair 2 therefore separates two causal paths: neutral geometry meets a
+  positive barrier at about `0.9 deg`; a deliberate `1.50 mm` receiver
+  deflection creates a collision-free opening path.
+- CAD can prove those rigid-body paths but cannot prove immediate pop-open,
+  flexure force, fatigue, holding force or printed fit. Those questions belong
+  in a single-side functional coupon before a complete two-sided print.
+
+## `2026-08-29` — three-finger manual actuation and clamp-last requirement
+
+- User observation: the working prototype feels smooth when the thumb pushes
+  Orange DOWN while index and middle fingers push Blue and Green
+  BACK-to-FRONT. All three rods are manually moving inputs.
+- User requirement: build a new clamp inspired by a corner clamp. The clamp
+  holds the already hand-reached locked state; it must not replace the three
+  fingers or drive Orange, Blue or Green into position.
+- User requirement: remove the six tight caps. The purchased rods cannot be
+  lengthened and remain exactly `OD4.00 x 50.00 mm`.
+- CAD implication: use three independent rod-end shoes per side and one common
+  axial pressure plate. A captive screw needs both a closed clamp reaction
+  loop and positive pull-back release; a merely posed plate or free screw is
+  not a functioning clamp.
+- Limitation: P24 validates this topology and communication only. Actual
+  holding force, anti-jam release, fit, thread behavior and physical operation
+  still require fabrication and testing after the inherited collision is
+  resolved.
+
+## `2026-08-28` — P20 physical axial-width and cap-fit rejection
+
+- Context: user supplied assembled-jig photos and direct caliper evidence.
+- User observations: the fixed span between the two inner plates needs exactly
+  `10 mm` additional width; the printed permanent caps are much too tight;
+  these are explicitly not the only remaining problems.
+- Correction opened: `18.40 -> 28.40 mm` inner clear span and
+  `ID4.04 -> ID4.10 mm` cap distal socket.
+- Correction: the initial CAD response incorrectly changed the purchased rods
+  to `60.00 mm`. The user clarified that the three physical rods cannot change
+  from `OD4.00 x 50.00 mm`. The printed stepped axle may become `44.90 mm`,
+  while available cap engagement reduces to `3.70 mm` per side and requires a
+  new physical retention check. Every derived 60 mm artifact is rejected.
+- Limitation: CAD validates the nominal correction only. The next print must
+  establish actual cap force/retention and usable inner width; all other
+  physical failures remain independently open.
+
+## `2026-08-28` — direct orange-rod actuation and immediate back-drive
+
+- User observation: with Blue and Green held as the reaction members, directly
+  pressing the Orange rod down gives a smooth and pleasant lock-in motion.
+- User observation: when hand force is released, the mechanism immediately
+  springs open.
+- Design implication: a passive straight band or friction preload alone is
+  insufficient. Any bridge spanning the reaction members must include a
+  positive latch, detent, over-center toggle, or equivalent retained state;
+  required holding and release forces remain physical unknowns.
+
 ## `2026-08-21` — PETG rod-hole coupon
 
 - Context: printed rod-hole calibration coupon, PETG, `0.4 mm` nozzle, actual `OD4.00 mm` rods.
