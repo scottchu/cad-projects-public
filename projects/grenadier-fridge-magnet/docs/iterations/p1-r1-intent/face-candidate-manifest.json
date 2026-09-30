@@ -1,0 +1,48 @@
+{
+  "baseline": "a8834040afe401637d36e94bd8fdd9e1d9874d35",
+  "parent_intent_fingerprint": "8a5aad12d7041a5c2f269dd589dd0c51d1dcd142d8e24df17f7988eeb0650bb0",
+  "method": "SHA-256 of sorted sha256 + two spaces + repo-relative path + LF",
+  "fingerprint": "f893d8fbf98750be9e7366a5cfd8c78c90e58a0d4d0c73d5c2480ba471b7e652",
+  "entries": [
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/intent-manifest.json",
+      "sha256": "840d6e5d511801388e114c296a13648bbe9da9ce45ecbe1088ca2864f562492a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/pyproject.toml",
+      "sha256": "ad7d696ae67aff170bf6bdeb1a70bc0ed25d737e8f1380b32a273c4e07c1faf1"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/references/d4-approved.png",
+      "sha256": "44d20b6b2050d639c44ef00d6396b4150f9ed7280b3d1db4c361be8f31b22171"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/scripts/generate-face-vector.py",
+      "sha256": "6d16fa5b2b6b027cae78bed87fbfba323b1b18a9734c48372f4934e9c32a3496"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/scripts/create-face-review.mjs",
+      "sha256": "6562c5f6a334f0f14ba0bc42b752efdef0dbbf4614566b05a889fd73f82f15ec"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/face_vector.py",
+      "sha256": "83d8fc871fee33972e9e4c55f13ecbd68772f1fd78a3c283401344e1d4654580"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/tests/test_face_vector.py",
+      "sha256": "8f09b6f06213f55a77d408540b0725f8a6797919e4d92361db91e64de161efa9"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face.svg",
+      "sha256": "addd63edc72070d1311be76bda1a0d75ce60a192d7ec97e1171659c7c5efc221"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face-report.json",
+      "sha256": "78a2f011c26f1ab6a378a484e5d48c9bca17dc554e673f97b52392379b06b33c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/review/p1-r1/face-review.html",
+      "sha256": "4b51e5381ba73135e49e6750fb8ac149f16d8c80d4aa07b352a5656c76212e4a"
+    }
+  ]
+}

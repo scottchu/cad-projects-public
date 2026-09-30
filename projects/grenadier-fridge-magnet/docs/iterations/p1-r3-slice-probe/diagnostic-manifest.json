@@ -1,0 +1,75 @@
+{
+  "status": "DIAGNOSTIC NON-PRINT-RELEASE; no sliced output",
+  "fingerprint": "a789b59d4bea188ed6076926970746ea2d0796fff33fdceabcc29d84ae899693",
+  "method": "SHA256(sorted path + NUL + SHA256(content) + LF)",
+  "entries": [
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r3-slice-probe/BRIEF.md",
+      "sha256": "804c5371519c335f2f42b2112bfdd7f311391ea47e5a22f58b559ead7a9e6951"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r3-slice-probe/attempt-1.json",
+      "sha256": "dd494f86cda6f5f5666414a5c39e1f82a4c3bb7b3ec0bd3a33c19a8b97ea7f40"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r3-slice-probe/attempt-2.json",
+      "sha256": "292c0c4a2a5fc69700d2155c0c7df5dd58455546beadc7606b9ceab1d921b3a9"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r3-slice-probe/input-manifest.json",
+      "sha256": "690b7dff6c6499d146a6daa03c0f843303cb73cd45277cbc306495238f1e5fd9"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/scripts/slice_probe_prepare.py",
+      "sha256": "96f11b7bc0890d70c4f3f99e905d5970fe039649dc458dbb797986b6850ee95c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/scripts/slice_probe_run.py",
+      "sha256": "ddfd33af54e42487a116efd3bb874e0c006feac636884a6a7275fb220e64d707"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/filament-0.json",
+      "sha256": "9fb4fc77964f0ad6c725a1928c743128d9339523585a16437e1bd4a1e6482cde"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/filament-1.json",
+      "sha256": "c39276bb8e9bd5dde585f07637c5dec4634997ab9bf2f743ab08fc77a86b780b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/filament-2.json",
+      "sha256": "12c739136ae5d7e4363958be7d00dffe2172c8bb7045e23ecb1113b671570d6d"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/filament-3.json",
+      "sha256": "4a6674ece7ecd99d4cd35bc96dedad8f624a261f54262a6e0cbf3abf1d1fae4e"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/flat-diagnostic.3mf",
+      "sha256": "ed08511411e7f0f704002794505bf20ef0b883752667413c595f147675295eaf"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/machine-run1.json",
+      "sha256": "401ace682bd90d3e2840c8b8575b05244dd2211a4c79e32a59d8e30846365955"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/machine.json",
+      "sha256": "6368d2070b368181cda7a751ec4b66c7926c8bc62ac5345d913ed1bc2ca7971b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/packaging.json",
+      "sha256": "2850c8410fcbf661004e14cf2fa86f8ee96ceff9b0e3bef0d71158e6198c1121"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/process-run1.json",
+      "sha256": "5a11c872fe6b21f2b61cb50139e6cfb3c371d09f57bd7c6b79c908e4dc128e87"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/process.json",
+      "sha256": "a6684fa31e8616531d4b7c297a8b523496ebd8d156737230bd31f41ec33be668"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/relief-diagnostic.3mf",
+      "sha256": "ebc3caadaff4f41c513a3e4b12e6f328730021358deee32067c55cae5577d774"
+    }
+  ]
+}

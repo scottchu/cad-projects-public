@@ -1,0 +1,23 @@
+{
+  "source": "projects/grenadier-fridge-magnet/references/d4-approved.png",
+  "source_sha256": "44d20b6b2050d639c44ef00d6396b4150f9ed7280b3d1db4c361be8f31b22171",
+  "width": 1254,
+  "height": 1254,
+  "units": "source-image-units",
+  "class_pixel_counts": {
+    "black": 473660,
+    "gray": 291556,
+    "white": 154325,
+    "deep-blue": 5587,
+    "glass-mix": 86354
+  },
+  "class_contours": {
+    "black": 218,
+    "gray": 4667,
+    "white": 1136,
+    "deep-blue": 12,
+    "glass-mix": 279
+  },
+  "background_pixels": 561034,
+  "method": "exclusive RGB rules; edge-connected near-white background removed; shared pixel-grid boundaries; collinear-only path reduction"
+}

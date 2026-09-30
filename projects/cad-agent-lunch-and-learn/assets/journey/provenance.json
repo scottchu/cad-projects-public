@@ -1,0 +1,170 @@
+[
+  {
+    "id": "H1",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/docs/review/p13-historical/contact_22deg_cutaway_20260821T225152Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/59853c0cb042-contact_22deg_cutaway_20260821T225152Z.png",
+    "sha256": "59853c0cb04246d3c66bc812c283c1456380c3361b68392921481dfcea183f1a",
+    "local": "assets/journey/H1.png"
+  },
+  {
+    "id": "H2",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/docs/review/p13-historical/p13_repaired_print_kit_iso_20260822T051402Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/7f3017fe7149-p13_repaired_print_kit_iso_20260822T051402Z.png",
+    "sha256": "7f3017fe71493793434bf4db9a8ebea79f4f4077c3a5cf5a0f3c2940dd68ad15",
+    "local": "assets/journey/H2.png"
+  },
+  {
+    "id": "H3",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/docs/review/p18-r1-compact-counter-twist/p18-r1-exploded-iso_20260826T050923Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/701e434dc7bd-p18-r1-exploded-iso_20260826T050923Z.png",
+    "sha256": "701e434dc7bd349881c46447969830899e28dfbf752cd9145d3cdccfdd28896c",
+    "local": "assets/journey/H3.png"
+  },
+  {
+    "id": "H4",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/docs/review/p19-r1-front-edge-short-tail/p19-r1-impl05-open-front_20260826T182611Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/c11badf0493d-p19-r1-impl05-open-front_20260826T182611Z.png",
+    "sha256": "c11badf0493dfdca2a515d176571437d04d3c2e4f1f3870da2e85f02c7fa9a88",
+    "local": "assets/journey/H4.png"
+  },
+  {
+    "id": "H5",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/docs/review/p20-r4-custom-profile-full-cad/p20-r4-open-front-labelrepair_20260827T210320Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/6c47355f207f-p20-r4-open-front-labelrepair_20260827T210320Z.png",
+    "sha256": "6c47355f207f0a4a38e30d1cac2966eb08a292a3f79d8935dde37cb2ba916645",
+    "local": "assets/journey/H5.png"
+  },
+  {
+    "id": "H6",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/docs/review/p20-r4-custom-profile-full-cad/p20-r4-open-axial-stack-labelrepair_20260827T210316Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/2a9ed4864116-p20-r4-open-axial-stack-labelrepair_20260827T210316Z.png",
+    "sha256": "2a9ed48641163ba5984f859786bb4fa117db856e667a5f0c2e6d0f9357e3135b",
+    "local": "assets/journey/H6.png"
+  },
+  {
+    "id": "H7",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/cad/p20_blue_orange_web_coupon/prepared/r1/toolpath-witness-first-middle-top.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/17c1da5fb780-toolpath-witness-first-middle-top.png",
+    "sha256": "17c1da5fb78017e4eecee371825c42759d8422ce5d3505c6dc2a6a19ebb7aff5",
+    "local": "assets/journey/H7.png"
+  },
+  {
+    "id": "H8",
+    "audit": "HISTORY",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/cad/p24_r1_manual_three_slider_clamp/p24_r1_operation_annotated.png",
+    "snapshot": "/tmp/cad-journey-evidence/history/7741e3c8da28-p24_r1_operation_annotated.png",
+    "sha256": "7741e3c8da28e13cbac32e06bd4e6b90dcd9e03fa5f4d2afb4ce4faf010a1241",
+    "local": "assets/journey/H8.png"
+  },
+  {
+    "id": "Pposition",
+    "audit": "SIMULATION",
+    "source": "/tmp/cad-journey-simulation/p25-position.png",
+    "snapshot": "/tmp/cad-journey-evidence/simulation/e4939bee767d-p25-position.png",
+    "sha256": "e4939bee767d397cba7e8e61ba574255bb0b5923405c54a65c17fbd11ab91087",
+    "local": "assets/journey/Pposition.png"
+  },
+  {
+    "id": "Pclamped",
+    "audit": "SIMULATION",
+    "source": "/tmp/cad-journey-simulation/p25-clamped.png",
+    "snapshot": "/tmp/cad-journey-evidence/simulation/dd25b38eb859-p25-clamped.png",
+    "sha256": "dd25b38eb85936b006b1aee85850abdde08ae004d88afeef1095fbcb9b31106e",
+    "local": "assets/journey/Pclamped.png"
+  },
+  {
+    "id": "Preleased",
+    "audit": "SIMULATION",
+    "source": "/tmp/cad-journey-simulation/p25-released.png",
+    "snapshot": "/tmp/cad-journey-evidence/simulation/dabacc18cdce-p25-released.png",
+    "sha256": "dabacc18cdce11b6943f38b642e6944f6e61946337707afdc713558db0911aa7",
+    "local": "assets/journey/Preleased.png"
+  },
+  {
+    "id": "UI",
+    "audit": "CAPABILITIES",
+    "source": "/Users/scottchu/Projects/personal/orca-slicer-mcp/plugins/u1-print-studio/app/test-results/overview-590.png",
+    "snapshot": "/tmp/cad-journey-evidence/capabilities/b520399fd816-overview-590.png",
+    "sha256": "b520399fd81693511cf350436e390f267fb0be9866759e130e7e70fe8c4bb7ed",
+    "local": "assets/journey/UI.png"
+  },
+  {
+    "id": "Lphoto",
+    "audit": "LAIFEN",
+    "source": "/Users/scottchu/.codex/worktrees/4f8c/design-projects/projects/laifen-wave-case/docs/observations/2026-09-02-coupon-fit/photo-1.jpg",
+    "snapshot": "/tmp/cad-journey-evidence/laifen/2976f3553365-photo-1.jpg",
+    "sha256": "2976f3553365b4d2369f0424cb3e06bfc3bad33fb3939cac1696c61692afcdd1",
+    "local": "assets/journey/Lphoto.jpg"
+  },
+  {
+    "id": "Llayout",
+    "audit": "LAIFEN",
+    "source": "/Users/scottchu/.codex/worktrees/4f8c/design-projects/projects/laifen-wave-case/scratch/fullcase-critique/repair/print-layout-open-up_20260903T033441Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/laifen/7d0d28e28b9f-print-layout-open-up_20260903T033441Z.png",
+    "sha256": "7d0d28e28b9f25496af7c338498a6311f23fd19aac3f5be6567b1e16051f5e3d",
+    "local": "assets/journey/Llayout.png"
+  },
+  {
+    "id": "Lclosed",
+    "audit": "LAIFEN",
+    "source": "/Users/scottchu/.codex/worktrees/4f8c/design-projects/projects/laifen-wave-case/scratch/fullcase-critique/repair/closed-long-shaded_20260903T033014Z.png",
+    "snapshot": "/tmp/cad-journey-evidence/laifen/93cd9513cac6-closed-long-shaded_20260903T033014Z.png",
+    "sha256": "93cd9513cac637ca03131257e54c191bd27a6b6bbf0babb2a818b435671c345a",
+    "local": "assets/journey/Lclosed.png"
+  },
+  {
+    "id": "Lsection",
+    "audit": "LAIFEN",
+    "source": "/Users/scottchu/.codex/worktrees/4f8c/design-projects/projects/laifen-wave-case/scratch/fullcase-critique/repair/section-dimensions.png",
+    "snapshot": "/tmp/cad-journey-evidence/laifen/5e57252e3ef8-section-dimensions.png",
+    "sha256": "5e57252e3ef8b6f504ac30129dba2f092d1d74b702af02599d94f4d9caa1b4cd",
+    "local": "assets/journey/Lsection.png"
+  },
+  {
+    "id": "Lcenter",
+    "audit": "LAIFEN",
+    "source": "/tmp/cad-journey-laifen/gate-centered.png",
+    "snapshot": "/tmp/cad-journey-evidence/laifen/08f332a0d959-gate-centered.png",
+    "sha256": "08f332a0d9595303e861f9a5fc62847f3c5e6ad08f36e6185b3ea6212672872c",
+    "local": "assets/journey/Lcenter.png"
+  },
+  {
+    "id": "Lbottom",
+    "audit": "LAIFEN",
+    "source": "/tmp/cad-journey-laifen/gate-bottom.png",
+    "snapshot": "/tmp/cad-journey-evidence/laifen/d63a19711595-gate-bottom.png",
+    "sha256": "d63a19711595637c131ee6209866ea9608735149e727f7fca3f04524dc21dd27",
+    "local": "assets/journey/Lbottom.png"
+  },
+  {
+    "id": "Lgate",
+    "audit": "LAIFEN",
+    "source": "/Users/scottchu/.codex/worktrees/4f8c/design-projects/projects/laifen-wave-case/preview/measurement-gate.html",
+    "snapshot": "/tmp/cad-journey-evidence/laifen/9ea90325ac4f-measurement-gate.html",
+    "sha256": "9ea90325ac4f67267043874af4e1371fa8f05d69c0e604697d713289703e32cc",
+    "local": "assets/journey/Lgate.html"
+  },
+  {
+    "id": "Psource",
+    "audit": "SIMULATION",
+    "source": "/Users/scottchu/Projects/personal/design-projects/projects/xt60-bend-jig/work/p25-rear-loop-front-pusher-intent-preview.html",
+    "snapshot": "/tmp/cad-journey-evidence/simulation/00527e51301c-p25-rear-loop-front-pusher-intent-preview.html",
+    "sha256": "00527e51301c104757538ceff55d48a8e6d9b6a47b299dc72f79c494ec564e52",
+    "local": "assets/journey/Psource.html"
+  },
+  {
+    "id": "Fpath",
+    "audit": "SIMULATION",
+    "source": "/tmp/cad-journey-simulation/force-mid.png",
+    "snapshot": "/tmp/cad-journey-evidence/simulation/7306ea42cbf3-force-mid.png",
+    "sha256": "7306ea42cbf3d0cdfad815fe9ce32a300a4b1997c5f8a9d2cb68159e18c08e6e",
+    "local": "assets/journey/Fpath.png"
+  }
+]

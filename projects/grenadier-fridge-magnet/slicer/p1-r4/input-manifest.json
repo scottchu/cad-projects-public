@@ -1,0 +1,175 @@
+{
+  "fingerprint": "eceb2a4b1c102833a84d71cf8fa01977e9ecd5f4cd5f0366e508b6cb471ebe8b",
+  "parent": "1f66199dfbd9b35780aee9cb93af0179277805085e9ac1bc61bbf2c9999b2fc0",
+  "method": "SHA256(sorted path + NUL + SHA256(content) + LF)",
+  "entries": [
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/MacOS/Snapmaker_Orca",
+      "sha256": "4c30e59cf582dcc4f12e43741fcab2f97045e972065d465481ed3760678d0fbe"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/filament/Generic PLA @base.json",
+      "sha256": "bfee7e83f1d76c862e36680ae3bccba55d45c88bc84bfdc489272f881fad9564"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/filament/Generic PLA.json",
+      "sha256": "833361e0a42122c99bf4fb7c0ab584f66c1f203946e34be1d52ba2eaadb1df8c"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/filament/fdm_filament_common_generic.json",
+      "sha256": "24e4920907489bfdeb250ba749b005c97571d7a547416989af10df502896e99d"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/filament/fdm_filament_pla_generic.json",
+      "sha256": "b815ff418638712ac57f740b5d735e231147128fcd13dc16a16c69011d3bd75a"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/machine/Snapmaker U1 (0.4 nozzle).json",
+      "sha256": "67047c9fd6d2e935c1e0b84afaf6a674698e326a7785d7c6febd47f3d7d3e765"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/machine/fdm_U1.json",
+      "sha256": "ff0724000b1436fcc3d77ffa74bb623a9b322474fc20c8a8d5a26ee164077046"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/machine/fdm_klipper.json",
+      "sha256": "78dd750211347543368a8a0f136441ef7e23b3a4a09a9e33a370c91dbda273b9"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/machine/fdm_toolchanger.json",
+      "sha256": "b2ee2d2c31a26ddee7b0c8bd84c58934d9c01e84e1b8f7ae45e14acfd1f7b52a"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/process/0.08 High Quality @Snapmaker U1 (0.4 nozzle).json",
+      "sha256": "abdeb125e0ff3b038127e945f901da4d106420c2ef130b3e32ab7614582cebf0"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/process/fdm_process_U1.json",
+      "sha256": "66e9e51c4bd04cbbec49fa1a3a043bc3c6e329396c2b38a18db5a66b6e72b4e2"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/process/fdm_process_U1_0.08.json",
+      "sha256": "018d613040ac01d46e39914ee5638d2a0a42081de540b7d37a44315a6b187737"
+    },
+    {
+      "path": "/Applications/Snapmaker Orca.app/Contents/Resources/profiles/Snapmaker/process/fdm_process_U1_common.json",
+      "sha256": "43fba9fe359864b265ffa8682cf404c2b935d12164ffe3d0048e5dcb0691db74"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-color-corrected/color-parity-report.json",
+      "sha256": "78c16f5e6c5531f1457f094ace7f3d40dcf25b382d301d86f5c75aa703fe805a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-color-corrected/flat.glb",
+      "sha256": "bb0b2d54dba75530fbcce067229393cea5534d065251a18a5c6c7c60b8c34e77"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-color-corrected/mesh-report.json",
+      "sha256": "2d16891d7019920e2f0efe4735cbea959f0bf7d98449e7d2d2ab31f22e04e3ee"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-color-corrected/relief.glb",
+      "sha256": "143d67d0365a8b7fd9fc7e2425ee925cf59b24527607b98e8f768880b3966638"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-connected/flat.glb",
+      "sha256": "3d7f7e8f9e2bcc4ffbb2355abd9f1aba848cb3a18cff64059d2cd6011309008b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-connected/relief.glb",
+      "sha256": "86d99b9b6ca36f31969e71db48a61dbb1c4f84024e32a46a1a2a521202eb2a75"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/REQUIREMENTS.md",
+      "sha256": "5fdf49410af4ed3489f6eafa5413608ad4e47ecfed1b0bb82ed14e7ff6d907c5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/BACKING_REPAIR.md",
+      "sha256": "0e503d27edbca30df1f9922a846ce290123a0712bd5e44296f88d62fe231207c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/COLOR_ENCODING_REPAIR.md",
+      "sha256": "92dbe6aa70c89d3a6cbb34c4c42d91979787c48506f2ba9e1cb9963e13d68b9b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/DESIGN.md",
+      "sha256": "53269aa938b4bd4c591ce904a9a25e7365737c2357e409ff6c056024e9c86240"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/color-encoding-input-manifest.json",
+      "sha256": "d85dbd29902fc9133be0f4fd4b20f1395879ba6228b06d9abf632d84f8a9d5a5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/connected-candidate-manifest.json",
+      "sha256": "3a20ac5bc8b27dd0572a877e04077f1c185b3ceb78a591ef63cf3bff2155f570"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/historical-connected-source/parametric_magnet.py",
+      "sha256": "6b294361ebb15ac6e8676dd8d83beb01df129a6aa6671d99ebf7616e17ce879b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/historical-connected-source/test_parametric_magnet.py",
+      "sha256": "3bd1b3b6859ccbc14c9323b757c56367434ee554015841140dc43b2fd4c0a70f"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r4-nozzle04/BRIEF.md",
+      "sha256": "fee63a7fd541b81b57b1081a22e44ea4e8a0b427eb235ba9bf9490590c704c6d"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/pyproject.toml",
+      "sha256": "b5da2fe038d495cf90d09a3ec229976a9d343dc47ee04f0488750e4cc7208dbc"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/scripts/slice_nozzle04_run.py",
+      "sha256": "6617c2d4394e69a5b866bf216f64883e8aabf1cb3ba112e19ad9c1f52da5525b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/flat-diagnostic.3mf",
+      "sha256": "ed08511411e7f0f704002794505bf20ef0b883752667413c595f147675295eaf"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/relief-diagnostic.3mf",
+      "sha256": "ebc3caadaff4f41c513a3e4b12e6f328730021358deee32067c55cae5577d774"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4/filament-0.json",
+      "sha256": "69a150d3ccd032d5041bdc19f9ae055eb8b82b280a33fae21acca108745a17fc"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4/filament-1.json",
+      "sha256": "cb33be002c223ca4d2aec8dcc9eb78abc0eea1a7063a6fc472202aefbae99625"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4/filament-2.json",
+      "sha256": "4dd5f99bbbe9ec49d466e6f34faece93c06dcda297c1429a7917dd2e0742d892"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4/filament-3.json",
+      "sha256": "649511d9567f6f522603c178a1328ab9f91ab7a0725c8e4918a6499524b758fd"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4/machine.json",
+      "sha256": "ed1de418558509e0bbe0cea153828a55c287afee130c5484473e4bd90396b58c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4/process.json",
+      "sha256": "8171d866033c41cf6a979bdf8a8bc090a0930689af1bf053d0b2cabfc98efe2c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/face_vector.py",
+      "sha256": "83d8fc871fee33972e9e4c55f13ecbd68772f1fd78a3c283401344e1d4654580"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/parametric_magnet.py",
+      "sha256": "712c648972c0a9a0601dc6b38c4f5978ee9bacb08aecc988bcd1909337b4ed0c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/tests/test_parametric_magnet.py",
+      "sha256": "3a0daa23acf4577bbb958a83966031286595dfc04c178d2f045670ea1d75f298"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "e03c54f78415c0d7f735a73555494a73afbbb9620435a685b2f579f1fa8e3aec"
+    }
+  ]
+}

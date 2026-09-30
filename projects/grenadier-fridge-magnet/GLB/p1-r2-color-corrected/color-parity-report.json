@@ -1,0 +1,296 @@
+{
+  "flat": {
+    "binary_chunk_identical": true,
+    "nodes_accessors_buffers_identical": true,
+    "primitive_geometry_identical": true,
+    "colors": {
+      "backing-black": {
+        "source_srgb_bytes": [
+          8,
+          9,
+          11
+        ],
+        "written_linear_factor": [
+          0.0024282158683907,
+          0.0027317428519395373,
+          0.003346535763899161,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "black-flat": {
+        "source_srgb_bytes": [
+          8,
+          9,
+          11
+        ],
+        "written_linear_factor": [
+          0.0024282158683907,
+          0.0027317428519395373,
+          0.003346535763899161,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "gray-flat": {
+        "source_srgb_bytes": [
+          155,
+          155,
+          157
+        ],
+        "written_linear_factor": [
+          0.3277780980565422,
+          0.3277780980565422,
+          0.33716361504833037,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "white-flat": {
+        "source_srgb_bytes": [
+          255,
+          255,
+          255
+        ],
+        "written_linear_factor": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "deep-blue-flat": {
+        "source_srgb_bytes": [
+          7,
+          95,
+          188
+        ],
+        "written_linear_factor": [
+          0.0021246888848418626,
+          0.11443537382697373,
+          0.5028864580325687,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "glass-mix-flat": {
+        "source_srgb_bytes": [
+          184,
+          217,
+          236
+        ],
+        "written_linear_factor": [
+          0.4793201831008268,
+          0.6938717612919899,
+          0.83879901174074,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      }
+    }
+  },
+  "relief": {
+    "binary_chunk_identical": true,
+    "nodes_accessors_buffers_identical": true,
+    "primitive_geometry_identical": true,
+    "colors": {
+      "backing-black": {
+        "source_srgb_bytes": [
+          8,
+          9,
+          11
+        ],
+        "written_linear_factor": [
+          0.0024282158683907,
+          0.0027317428519395373,
+          0.003346535763899161,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "black-low": {
+        "source_srgb_bytes": [
+          8,
+          9,
+          11
+        ],
+        "written_linear_factor": [
+          0.0024282158683907,
+          0.0027317428519395373,
+          0.003346535763899161,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "black-middle": {
+        "source_srgb_bytes": [
+          8,
+          9,
+          11
+        ],
+        "written_linear_factor": [
+          0.0024282158683907,
+          0.0027317428519395373,
+          0.003346535763899161,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "black-high": {
+        "source_srgb_bytes": [
+          8,
+          9,
+          11
+        ],
+        "written_linear_factor": [
+          0.0024282158683907,
+          0.0027317428519395373,
+          0.003346535763899161,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "gray-low": {
+        "source_srgb_bytes": [
+          155,
+          155,
+          157
+        ],
+        "written_linear_factor": [
+          0.3277780980565422,
+          0.3277780980565422,
+          0.33716361504833037,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "gray-middle": {
+        "source_srgb_bytes": [
+          155,
+          155,
+          157
+        ],
+        "written_linear_factor": [
+          0.3277780980565422,
+          0.3277780980565422,
+          0.33716361504833037,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "gray-high": {
+        "source_srgb_bytes": [
+          155,
+          155,
+          157
+        ],
+        "written_linear_factor": [
+          0.3277780980565422,
+          0.3277780980565422,
+          0.33716361504833037,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "white-low": {
+        "source_srgb_bytes": [
+          255,
+          255,
+          255
+        ],
+        "written_linear_factor": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "white-middle": {
+        "source_srgb_bytes": [
+          255,
+          255,
+          255
+        ],
+        "written_linear_factor": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "white-high": {
+        "source_srgb_bytes": [
+          255,
+          255,
+          255
+        ],
+        "written_linear_factor": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "deep-blue-high": {
+        "source_srgb_bytes": [
+          7,
+          95,
+          188
+        ],
+        "written_linear_factor": [
+          0.0021246888848418626,
+          0.11443537382697373,
+          0.5028864580325687,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "glass-mix-low": {
+        "source_srgb_bytes": [
+          184,
+          217,
+          236
+        ],
+        "written_linear_factor": [
+          0.4793201831008268,
+          0.6938717612919899,
+          0.83879901174074,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "glass-mix-middle": {
+        "source_srgb_bytes": [
+          184,
+          217,
+          236
+        ],
+        "written_linear_factor": [
+          0.4793201831008268,
+          0.6938717612919899,
+          0.83879901174074,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      },
+      "glass-mix-high": {
+        "source_srgb_bytes": [
+          184,
+          217,
+          236
+        ],
+        "written_linear_factor": [
+          0.4793201831008268,
+          0.6938717612919899,
+          0.83879901174074,
+          1.0
+        ],
+        "rounded_inverse_matches": true
+      }
+    }
+  }
+}

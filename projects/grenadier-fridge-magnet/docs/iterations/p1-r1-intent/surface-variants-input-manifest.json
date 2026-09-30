@@ -1,0 +1,46 @@
+{
+  "task": "S1",
+  "owner": "/root/surface_variants_intent",
+  "baseline": "a8834040afe401637d36e94bd8fdd9e1d9874d35",
+  "accepted_face_fingerprint": "f893d8fbf98750be9e7366a5cfd8c78c90e58a0d4d0c73d5c2480ba471b7e652",
+  "method": "SHA-256 of sorted sha256 + two spaces + repo-relative path + LF; #frozen is exact bytes between frozen markers",
+  "fingerprint": "ec049959fa60a65325e73a0f744837a6dfc7424cd958d4d7d9a9268e19ac764a",
+  "entries": [
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/decisions/0002-both-surface-variants.md",
+      "sha256": "b39f56ff0a5718c92f23d0e7b8540549d537d581d3464b3e1dc389e9efddb3d8"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/BRIEF.md#frozen",
+      "sha256": "8be3b14562c89987ddfd0d7ec5095be393c236f136cc358cf7306ec38d00f010"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/DESIGN.md#frozen",
+      "sha256": "b1d0c0cf228c603f5af524a6f4315a71b9e336dbf072b7dcc4cb9462f0d14cad"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/face-candidate-manifest.json",
+      "sha256": "63aeeeb30620be45daffed490b09a6c9da65d8e6e144fc66733b0f32a08ac3fd"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/SURFACE_VARIANTS.md",
+      "sha256": "a0335e10cb6b02091dae8a25fd9bb404236eb73aa8fcac98fb64b69269ae1a7a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/REQUIREMENTS.md",
+      "sha256": "5fdf49410af4ed3489f6eafa5413608ad4e47ecfed1b0bb82ed14e7ff6d907c5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/references/d4-approved.png",
+      "sha256": "44d20b6b2050d639c44ef00d6396b4150f9ed7280b3d1db4c361be8f31b22171"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/face_vector.py",
+      "sha256": "83d8fc871fee33972e9e4c55f13ecbd68772f1fd78a3c283401344e1d4654580"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face.svg",
+      "sha256": "addd63edc72070d1311be76bda1a0d75ce60a192d7ec97e1171659c7c5efc221"
+    }
+  ]
+}

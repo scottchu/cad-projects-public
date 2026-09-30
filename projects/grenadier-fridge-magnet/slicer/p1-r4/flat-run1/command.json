@@ -1,0 +1,29 @@
+{
+  "status": "DIAGNOSTIC NON-PRINT-RELEASE",
+  "fingerprint": "eceb2a4b1c102833a84d71cf8fa01977e9ecd5f4cd5f0366e508b6cb471ebe8b",
+  "argv": [
+    "/Applications/Snapmaker Orca.app/Contents/MacOS/Snapmaker_Orca",
+    "--debug",
+    "3",
+    "--datadir",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/flat-run1/datadir",
+    "--load-settings",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/machine.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/process.json",
+    "--load-filaments",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/filament-0.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/filament-1.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/filament-2.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/filament-3.json",
+    "--arrange",
+    "0",
+    "--orient",
+    "0",
+    "--slice",
+    "0",
+    "--export-3mf",
+    "flat-sliced.3mf",
+    "--outputdir",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r4/flat-run1",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3/flat-diagnostic.3mf"
+  ],
+  "bundle_version": "2.3.5",
+  "executable_sha256": "4c30e59cf582dcc4f12e43741fcab2f97045e972065d465481ed3760678d0fbe",
+  "started": 1788717870.767901
+}

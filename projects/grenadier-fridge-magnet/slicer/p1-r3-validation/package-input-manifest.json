@@ -1,0 +1,53 @@
+{
+  "owner": "/root/slice_artifact_validator",
+  "task": "P3-V-package",
+  "method": "SHA256(sorted path + NUL + SHA256(content) + LF)",
+  "fingerprint": "6f6797238847e77fcecac99ceb31848b7a3e011959c217bf198700446874203d",
+  "entries": [
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-color-corrected/flat.glb",
+      "sha256": "bb0b2d54dba75530fbcce067229393cea5534d065251a18a5c6c7c60b8c34e77"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2-color-corrected/relief.glb",
+      "sha256": "143d67d0365a8b7fd9fc7e2425ee925cf59b24527607b98e8f768880b3966638"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/REQUIREMENTS.md",
+      "sha256": "5fdf49410af4ed3489f6eafa5413608ad4e47ecfed1b0bb82ed14e7ff6d907c5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/DESIGN.md",
+      "sha256": "53269aa938b4bd4c591ce904a9a25e7365737c2357e409ff6c056024e9c86240"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/color-corrected-candidate-manifest.json",
+      "sha256": "bd3347ec958484d64249ffbc52e56f8ce2ffc09413871b6d1f43d92aec1c85f0"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r3-slice-probe/input-manifest.json",
+      "sha256": "690b7dff6c6499d146a6daa03c0f843303cb73cd45277cbc306495238f1e5fd9"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/scripts/validate_slice_probe_package.py",
+      "sha256": "5da338a444a07722c4ee74a278e629f86e46ffffe5e085bc74beebb96359d69c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/flat-diagnostic.3mf",
+      "sha256": "ed08511411e7f0f704002794505bf20ef0b883752667413c595f147675295eaf"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r3/relief-diagnostic.3mf",
+      "sha256": "ebc3caadaff4f41c513a3e4b12e6f328730021358deee32067c55cae5577d774"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/face_vector.py",
+      "sha256": "83d8fc871fee33972e9e4c55f13ecbd68772f1fd78a3c283401344e1d4654580"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/parametric_magnet.py",
+      "sha256": "712c648972c0a9a0601dc6b38c4f5978ee9bacb08aecc988bcd1909337b4ed0c"
+    }
+  ],
+  "scope": "GM-R3 diagnostic geometry preservation, four-tool metadata; parent P1-R3 contract frozen by input-manifest; mutable orchestration and receipts excluded"
+}

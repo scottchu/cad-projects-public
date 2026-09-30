@@ -1,0 +1,148 @@
+[
+  {
+    "file": "00-cad-projects.tar.gz",
+    "sha256": "1760e0453beba81305e6ffce4c673341b6bc61bb36a43eef9740621e4adbfb4f",
+    "bytes": 8964612,
+    "source": "/Users/scottchu/Projects/personal/cad-projects",
+    "head": "053cce933276ae26a042bf7a1300d55c9ccff51d",
+    "preserved_files": 44
+  },
+  {
+    "file": "01-cad-projects.tar.gz",
+    "sha256": "c7c645ba8964fa6e07bf96f23325d213e8f36587ee217e19e7b618d9c39acda2",
+    "bytes": 55621423,
+    "source": "/Users/scottchu/.codex/worktrees/3fc3/design-projects",
+    "head": "fef4f264d6af6904e8debd99d522ce186bcec49d",
+    "preserved_files": 196
+  },
+  {
+    "file": "02-cad-projects.tar.gz",
+    "sha256": "33674d05b642018c3bdaa16d364d8666591971b36cf0bef18cba6b03794ba14a",
+    "bytes": 259655866,
+    "source": "/Users/scottchu/.codex/worktrees/4f8c/design-projects",
+    "head": "e0a935f1644dd6af6c18f7c6014aeb23c3c48203",
+    "preserved_files": 943
+  },
+  {
+    "file": "03-cad-projects.tar.gz",
+    "sha256": "a0f645b9aa9d0df45edbacd5a7d324c7441480dbb6b428d9cb4e7b452b602107",
+    "bytes": 19452589,
+    "source": "/Users/scottchu/.codex/worktrees/740e/design-projects",
+    "head": "d0aab1ff21a0cd2e5790c9800fcec7cfec2bfc3c",
+    "preserved_files": 218
+  },
+  {
+    "file": "04-cad-projects.tar.gz",
+    "sha256": "67cebce76bcf1c3c93e66ea6eb17d3292d0aad70e201504054d91245666d0569",
+    "bytes": 123308014,
+    "source": "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects",
+    "head": "a8834040afe401637d36e94bd8fdd9e1d9874d35",
+    "preserved_files": 713
+  },
+  {
+    "file": "05-cad-projects.tar.gz",
+    "sha256": "41465cc9e51bef49f71de4f42a76b47e3ded29e459d09627491fe8c77e30f1ee",
+    "bytes": 30098803,
+    "source": "/Users/scottchu/.codex/worktrees/a373f6e6-90f4-4c0e-857b-643add242937/design-projects",
+    "head": "b69b6ad12af611644987f026eef4940db9c7bb34",
+    "preserved_files": 59
+  },
+  {
+    "file": "06-cad-projects.tar.gz",
+    "sha256": "c200f330531187e7649fdf11fe9a25a72cf0430c19946eb1be4946a6ca192c1d",
+    "bytes": 101698,
+    "source": "/Users/scottchu/.codex/worktrees/b478a5e4-c0d0-4bb2-a265-df482c0a1937/design-projects",
+    "head": "5f7d4021f14f45fe11bc10a2596d3b1548762ec6",
+    "preserved_files": 0
+  },
+  {
+    "file": "07-cad-projects.tar.gz",
+    "sha256": "40bda8918c5107356bc9414c11fdb758eb49d952dfb580b03cf864128307ddbe",
+    "bytes": 2614220,
+    "source": "/Users/scottchu/.codex/worktrees/printing-profiles-pr.Ve1PlT/design-projects",
+    "head": "d47baf15e00d98a3b20202293972af9c9dd18746",
+    "preserved_files": 142
+  },
+  {
+    "file": "08-cad-projects.tar.gz",
+    "sha256": "72e16608e4086cb2e3edbf81ccfdf35ced87b318938c7021f68bb0ddae2140fb",
+    "bytes": 254759,
+    "source": "/Users/scottchu/Projects/personal/design-projects-delivery-20260910",
+    "head": "93c5f0815a5873a8c684dbd1d54d4716bdf36ce8",
+    "preserved_files": 1
+  },
+  {
+    "file": "09-cad-projects.tar.gz",
+    "sha256": "cdf8049c6fc9e6b5178b1c87bd497996ccb262b6774b56695c8d68c0f09d9d31",
+    "bytes": 6264685,
+    "source": "/Users/scottchu/Projects/personal/design-projects-workflow-separation",
+    "head": "1780798fdfa3c12f6db44ca939becff9aa092470",
+    "preserved_files": 8
+  },
+  {
+    "file": "10-sticker-projects.tar.gz",
+    "sha256": "26570dd41e5520e15727b0122ce5ed4e305df9243f3e2dcf8fa30c007dc2dd8f",
+    "bytes": 1527,
+    "source": "/Users/scottchu/Projects/personal/sticker-projects",
+    "head": "766b44377a73643477712bf898fb0ac0cee94a92",
+    "preserved_files": 0
+  },
+  {
+    "file": "11-CAD-workbench.tar.gz",
+    "sha256": "8deb44c84a09864ea7dd154971107bfd617ad14ff8d1bd82331c14e7a69b5e56",
+    "bytes": 699566,
+    "source": "/Users/scottchu/Projects/personal/CAD-workbench",
+    "head": "54eb6061044f26714f76c8617ae9828f35573664",
+    "preserved_files": 125
+  },
+  {
+    "file": "12-workflow-library.tar.gz",
+    "sha256": "f9f07161b41735ed55944c29a9b6af92a75d79e1e1972186ed32403ccd95978d",
+    "bytes": 16532,
+    "source": "/Users/scottchu/Projects/personal/workflow-library",
+    "head": "8624fb05d23cc3b747df0d46eecc55e3d8f404dd",
+    "preserved_files": 22
+  },
+  {
+    "file": "CAD-workbench.bundle",
+    "sha256": "e7cf8b490fe5f81ebe8f5938b305b8baa704e2fab4f4c86499e4e4f2053e2391",
+    "bytes": 432297,
+    "source": "/Users/scottchu/Projects/personal/CAD-workbench",
+    "kind": "all Git refs including stash"
+  },
+  {
+    "file": "cad-projects.bundle",
+    "sha256": "34cde78ef1ff701ecf0b1e984253ec567c9764531b9f7314bdd9d42998582ca5",
+    "bytes": 468858252,
+    "source": "/Users/scottchu/Projects/personal/cad-projects",
+    "kind": "all Git refs including stash"
+  },
+  {
+    "file": "sticker-projects.bundle",
+    "sha256": "b3b59081b0172a148ae87c4ef4cd0185f75848af2ea25818fddaf4f3162917ae",
+    "bytes": 365574898,
+    "source": "/Users/scottchu/Projects/personal/sticker-projects",
+    "kind": "all Git refs including stash"
+  },
+  {
+    "file": "workflow-library.bundle",
+    "sha256": "b999c829cb9744cf7b1b5e668133464bb85552a5f86eb7cd93d4d780dade4bbb",
+    "bytes": 382,
+    "source": "/Users/scottchu/Projects/personal/workflow-library",
+    "kind": "all Git refs including stash"
+  },
+  {
+    "file": "previous-main-backup.tar.gz",
+    "source": "/Users/scottchu/.codex/backups/design-main-20260910T101124",
+    "bytes": 29105967,
+    "sha256": "b0c76052a7f3fed577cc39f6a2743192819e6fbf01d4f8d36e872bd450d56626",
+    "preserved_files": 443
+  },
+  {
+    "file": "sticker-rejected-release-quarantine.tar.gz",
+    "source": "/Users/scottchu/.Trash/example-sticker-pack-release-wip-cleanup-2026-09-05.wkEBup",
+    "bytes": 70185594,
+    "sha256": "093d5b1f421625003189cd03f2cc317a531fbcec5f25de6a39b39fbc3d1d5b12",
+    "preserved_files": 173
+  }
+]

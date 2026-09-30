@@ -1,0 +1,59 @@
+{
+  "baseline": "a8834040afe401637d36e94bd8fdd9e1d9874d35",
+  "fingerprint": "8a5aad12d7041a5c2f269dd589dd0c51d1dcd142d8e24df17f7988eeb0650bb0",
+  "method": "SHA-256 of sorted sha256 + two spaces + repo-relative path + LF; #frozen bytes between markers, excluding markers",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "3f061c2b5f8dc02aaad5460822502830d79148a54b3edc750bc267e14f200811"
+    },
+    {
+      "path": "docs/CAD_WORKFLOW.md",
+      "sha256": "8ad2d642b8407171108f20b5d6846a2754771582fc15531b4690ad6a7ff82799"
+    },
+    {
+      "path": "docs/FDM_DESIGN_RULES.md",
+      "sha256": "891147d9d3e2970fddbc48625db05631fdcc71e3f9f742e06d242cc2be653161"
+    },
+    {
+      "path": "docs/PROJECT_CONTINUITY.md",
+      "sha256": "f5c8fa2378074f8f976587f36f6cd404672f227a725e2e0038e5ab0a6b35f046"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/REQUIREMENTS.md",
+      "sha256": "5fdf49410af4ed3489f6eafa5413608ad4e47ecfed1b0bb82ed14e7ff6d907c5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/decisions/0001-face-first.md",
+      "sha256": "6ba0c99f130f61c7d4275e98c0ff20d2b49764440da9a7c835fef15a7523c721"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/BRIEF.md#frozen",
+      "sha256": "8be3b14562c89987ddfd0d7ec5095be393c236f136cc358cf7306ec38d00f010"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/DESIGN.md#frozen",
+      "sha256": "b1d0c0cf228c603f5af524a6f4315a71b9e336dbf072b7dcc4cb9462f0d14cad"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/pyproject.toml",
+      "sha256": "83f9b89cb369d24fcb559e182e94a4d58a06ebdd3825445c4d1bceb836862ad4"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/references/d4-approved.png",
+      "sha256": "44d20b6b2050d639c44ef00d6396b4150f9ed7280b3d1db4c361be8f31b22171"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/references/photo-6-original.jpg",
+      "sha256": "addbd1cf72c604ed3b1fcda40ede9e6cf3319fe99c925eaace0f7296c2fce3e4"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/scripts/intent-manifest.mjs",
+      "sha256": "5be774a26f71cbc74e4b71585d6343d8643899213ddae2247d06f3748c6c412c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/tests/README.md",
+      "sha256": "562d41f5cd56c562ad61d5297859f9226d51f08003c0b75dda4b57aee4392541"
+    }
+  ]
+}

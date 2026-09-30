@@ -1,0 +1,68 @@
+# Selected visual and simulator contract
+
+## Narrative changes
+
+Keep 22 slides and the first-deck typography, palette, real images, sources and two audience exercises. Change these four slides; no unrelated redesign.
+
+| Slide | Main claim | Required visual/content |
+| --- | --- | --- |
+| 3 | The gap chooses the next experiment | Actual connected SVG/HTML flow: parallel **Expected** and **Observed** inputs converge on **Gap** → **Small experiment** → **Compose** → **Observe again**, with a visible return arrow from Observe again to the Observed input. Under Gap: “Which assumption differs?” Under experiment: “One relationship.” Under Compose: “Check interactions.” Expected = “slides freely”; Observed = “binds”. Label the loop as reasoning, not a completed process. |
+| 6 | Nominal clearance does not predict physical fit | Upgrade “Which hole would you print?” with the Three.js cutaway defined below, a nominal-hole choice, a hypothetical hole-error slider, live numeric metrics and the existing independent coupon reveal. This remains exercise 1. |
+| 13 | Each observed gap needs a different response | A semantic HTML table with three rows and columns **Challenge**, **Evidence**, **Response / status**. Use the exact concise row meanings below. Title may be “Let the evidence choose the response.” Move the existing five-layer diagnostic synthesis to presenter notes so the slide has one job. |
+| 20 | Independence needs explicit handoffs | Actual branching flowchart: **Scope + frozen design** → **One implementation candidate** → fork to **Critique** and **Validation** → join **Formal review** → **Evidence + next action**. A compact return arrow from findings to implementation is allowed. Keep “Exact candidate identity travels with every handoff” and distinction from product Manager/Teacher/Operator roles. The formal reviewer is downstream, not the implementer. |
+
+Table row 1: Challenge “XT60: a sliding fit”; Evidence “4.05 tight → 4.25 wobble; 4.15 best in this coupon”; Response/status “Keep a role-specific fit reference — observed.” For precision, presenter notes and revealed coupon strip retain “4.05 very tight; 4.10 tight; 4.15 best sliding with slight friction; 4.20 similar but looser; 4.25 loose with wobble.” Source S01.
+
+Table row 2: Challenge “XT60: the intended 90° bend”; Evidence “Source and tests shared a diagonal assumption”; Response/status “Wire-only correction + requirement regression — proposed in that handoff.” Source S02. Do not imply later completion.
+
+Table row 3: Challenge “Kage: interfaces in composition”; Evidence “Passing tests omitted critical pairs; later solid overlaps”; Response/status “Seam → guide/ring → motor → compose — proposed restart gates.” Source S03. The historical 11/11 refers to reported test results, not a count of omitted pairs. These overlaps are CAD inspection evidence and those gates are not completed physical experiments.
+
+Use real table header semantics and row headers; keep three rows, not a dense catalogue. Do not add another version-count chart or acceptance metric. Sources on slides 3/6/13/20 remain S01+S06 / S01 / S01+S02+S03 / S09. Source register S01–S09, A01/A02, all 11 Kage hashes and scoped counts remain byte-for-byte unchanged.
+
+## One useful Three.js teaching model
+
+The model isolates a concentric rod and hole, inspired by the XT60 coupon. It is explicitly **“Teaching model · hypothetical hole error · clearance exaggerated ×8.”** It is neither reconstructed XT60 geometry nor a calibrated printer model. It predicts only geometric clearance under a supplied dimensional assumption; it cannot predict friction, force, wobble, material compliance, print variation, wear or physical success.
+
+### Parameters and exact arithmetic
+
+All analytic quantities are in mm. The invariant rod diameter is `D = 4.00` from S01. The selectable nominal hole diameter `H` is one of `[4.05, 4.10, 4.15, 4.20, 4.25]`, the historical nominal coupon sizes. Default H is 4.15; it is a starting example, not an initially revealed winning answer. Hypothetical printed-hole error `e` is adjustable from −0.25 to +0.10 in 0.01 increments, default 0.00. Negative means a smaller hole. This range is an arbitrary teaching range and **is not measured or inferred from the coupon**. Keep the rod unchanged to teach one relationship.
+
+Derived: `H_model = H + e`; nominal diametral clearance `C_nominal = H − D`; hypothetical diametral clearance `C_d = H_model − D`; hypothetical radial clearance `C_r = C_d / 2`. Visible live metrics: nominal diametral clearance, assumed hole diameter, hypothetical diametral clearance, radial clearance, and geometric state. Positive C_d: “Geometric gap”; zero: “Geometric contact”; negative: “Geometric interference”. Never say “fits”, “will slide”, “passes” or “binding predicted” from this sign. Evaluate zero consistently to the input resolution, not raw floating-point equality. Two decimals suffice for diameters/diametral clearance; use three for radial clearance so 0.075 is not rounded misleadingly.
+
+The presenter asks: “Can positive nominal clearance become geometric interference?” With H = 4.15 and e = −0.20, nominal clearance stays +0.15, assumed hole is 3.95, hypothetical diametral clearance is −0.05 and radial clearance −0.025. This is a what-if, not an explanation proven for the real coupon. At e = −0.15: exact geometric contact. At e = 0: +0.15 diametral / +0.075 radial. Then reveal S01 and ask what physical evidence the model still lacks.
+
+### Geometry and visual behavior
+
+Render a rod cylinder through a cutaway annular sleeve, e.g. 270° sleeve segment with front quadrant removed. The cut faces and rod make a small clearance visible from the default oblique camera. All geometry is generated in Three.js; no production CAD imports or physics engine. Rod display radius `R = 2`. Exaggerate only signed radial clearance: display bore radius `R_h = R + 8*C_r`. Thus display radial clearance is exactly 8 times the analytic value and its sign is preserved. The allowed parameters give a positive bore radius throughout (minimum 1.2). Choose fixed illustrative sleeve outer radius 4.4, sleeve length 2.4 and rod length 6, or mathematically equivalent camera-scaled display dimensions. These lengths/outer radius are drawing choices, not sourced coupon dimensions. Document them in source; they cannot support manufacturing claims.
+
+Use distinct labeled rod/sleeve colors; indicate overlap in rust and include the geometric-state text so meaning never depends on color. If the view needs a separate section inset for interference clarity, use a small analytic SVG; do not let a solid-shading artifact become the evidence. The model must update geometry, numeric text and color consistently. No automatic insertion/motion animation: a smooth-looking path could falsely suggest successful assembly. Orbit with pointer drag, bounded zoom, and accessible “Front view” / “Isometric view” controls plus “Reset view”. Full exercise Reset restores H = 4.15, e = 0.00, default camera, and hides coupon observations. Camera reset alone preserves parameter selection and reveal state.
+
+The existing reveal shows all five actual coupon observations unchanged and cites “Observed coupon · PETG · 0.4 mm nozzle · OD4.00 rod”. The error slider must never alter that observation text or choose a fabricated friction category. Keep the real observation separate from hypothetical outputs. Label the reveal “Reveal coupon observations”, avoiding a suggestion that actual printed-hole diameters were measured in the source. Initial reveal remains hidden.
+
+## Runtime, fallback and layout
+
+Use real `three` exactly `0.176.0`, already represented in the root workspace lock; use `esbuild` exactly `0.25.8` for build-time bundling if needed. Declare dependencies only in this project's package.json; install/update from the repository root and keep the root lock. Root node_modules was absent at design time. Do not create a nested installation or change unrelated versions. These versions are selected for workspace compatibility, not claimed as latest.
+
+Bundle Three.js and any OrbitControls inline into index.html during the build. No runtime import, CDN, fetch, font, texture, decoder, external worker or service worker. Keep dependency license notices and readable Three.js version/MIT attribution in an embedded technical-source detail or notes, with official links allowed as text/anchors; they must not load by themselves. Record installed package integrity/version and bundle provenance in the candidate receipt. Root consulted official https://threejs.org/manual/en/creating-a-scene.html and https://threejs.org/docs/ for technical guidance; implementation must verify APIs against the installed package. No API details become physical evidence.
+
+Render on demand for parameter, camera and size changes, not continuously while the slide is hidden. No auto-rotation; reduced-motion gets the same static initial scene and input-triggered updates. Resize canvas from its container and cap device pixel ratio reasonably (e.g. 2). Allocate the renderer lazily when slide 6 is visible, or explicitly resize/re-render on entry so an initially hidden canvas cannot stay 0×0. Leaving/re-entering preserves exercise state.
+
+Native numeric/range/radio/button controls must support keyboard use with labels and visible focus; deck arrows must not hijack controls or focused canvas navigation. Use a concise polite live region for updated numeric state. Pointer orbit is optional interaction, not required for understanding; front/isometric buttons provide keyboard-accessible camera alternatives.
+
+Always retain an HTML/SVG section fallback with the same current arithmetic. Show it when WebGL is unavailable or renderer initialization/context fails; failures must not break deck navigation, reveals, source drawer or exercise 2. Include a concise “3D view unavailable — section view shown” message only in that state. For printing use a static labeled SVG/HTML section and fixed default values (H 4.15, e 0.00) independent of current interaction/camera, with all coupon observations revealed. Do not rely on a WebGL canvas surviving PDF rendering.
+
+At 1280×800 / 1920×1080 slide 6 is an intentional two-column teaching view: controls/metrics and model, with compact source/boundary labels. Make the heading smaller on this content slide rather than obscure controls. At 390×844 stack model/controls, allow the content to scroll if necessary, retain usable controls and readable text, and keep the toolbar/source footer separate. Table/flow diagrams must stack or adapt at narrow width without clipped arrows or illegible miniature text. Diagrams need a short accessible textual equivalent; static SVG arrows carry the relationships visually. Printed output remains exactly 22 complete landscape pages with legible diagrams/table and both revealed exercises.
+
+## Focused evidence plan
+
+1. Arithmetic and coupling: independently check H/e at default, contact, interference and range extremes; verify radial/diametral distinction, error sign and render radius formula. Credible risk: the drawing disagrees with metrics, or rounding/contact logic reverses a teaching result.
+2. Truth and preservation: compare actual five coupon strings, all source/hash rows, counts, CAD reference images and proposed-status table rows with frozen sources. Verify hypothetical controls cannot rewrite observation text. Credible risk: a seductive model launders assumptions into historical facts.
+3. Browser behavior: real Three.js canvas has rendered nonzero-size geometry at slide 6; changing controls changes scene and metrics; orbit/front/isometric/reset work; navigation away/back preserves state; deck keys leave form controls alone; exercise 2/notes/sources continue working. Capture default and interference states.
+4. Offline and failure: load the single file with network unavailable, inspect actual resource requests, and repeat with WebGL deliberately disabled. Both produce an intelligible useful exercise. Check reduced motion and no continuing render loop while hidden. Credible risk: inline HTML secretly needs a CDN or WebGL support.
+5. Visual/print: inspect all changed slides at laptop/projector/mobile sizes and actual written 22-page PDF, including slide 6 reveal and table wrapping. Recheck existing Kage slide and first/last print pages only for concrete shared-CSS regression risk. Preserve prior page/component selector isolation and mobile rule ordering.
+
+Existing author checks must be upgraded carefully: allow inert https links/license text while rejecting external runtime resources; parse every inline executable script rather than one greedy script regex. Actual offline browser evidence is the load guarantee. Add only tests that catch the credible failures above; no test-count target. Independent critique, validation and formal review have distinct identities for the exact new candidate. No actual-solid, slicer, manufacturing or physical certification is claimed for illustrative Three.js meshes.
+
+## Rejected alternatives
+
+Full Kage assembly/motion simulation is disproportionate and could imply unearned mechanism acceptance. A full XT60 kinematics reconstruction would consume the talk and repeat historical identity/frame risks. A purely decorative rotating model adds little teaching value. Replacing the observed coupon data with a fitted friction curve would invent calibration. A CDN demo violates standalone offline delivery. Adding more slides would weaken the bounded 22-slide story; upgrading the existing fit exercise provides the requested simulator without a separate live demonstration.

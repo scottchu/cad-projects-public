@@ -1,0 +1,80 @@
+[
+  {
+    "source": "/Users/scottchu/Projects/personal/cad-projects",
+    "head": "053cce933276ae26a042bf7a1300d55c9ccff51d",
+    "restored_tracked_tree": "81ef01e5e92f116441a08086e58e6ed6a3119149",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/.codex/worktrees/3fc3/design-projects",
+    "head": "fef4f264d6af6904e8debd99d522ce186bcec49d",
+    "restored_tracked_tree": "e414cee3c7395e59724ae9c83bef319e36c7e2f9",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/.codex/worktrees/4f8c/design-projects",
+    "head": "e0a935f1644dd6af6c18f7c6014aeb23c3c48203",
+    "restored_tracked_tree": "6d3abf810a6f4d18ef2edaf41f492bac3234f0ae",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/.codex/worktrees/740e/design-projects",
+    "head": "d0aab1ff21a0cd2e5790c9800fcec7cfec2bfc3c",
+    "restored_tracked_tree": "75703bc0fadb4c19f753a50383889d53fc2bd77d",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects",
+    "head": "a8834040afe401637d36e94bd8fdd9e1d9874d35",
+    "restored_tracked_tree": "e7a197767c2d0e46f83d4ae19cc55a1799ceb518",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/.codex/worktrees/a373f6e6-90f4-4c0e-857b-643add242937/design-projects",
+    "head": "b69b6ad12af611644987f026eef4940db9c7bb34",
+    "restored_tracked_tree": "612caea7e5d26343036c3074bd761e08a2e01517",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/.codex/worktrees/b478a5e4-c0d0-4bb2-a265-df482c0a1937/design-projects",
+    "head": "5f7d4021f14f45fe11bc10a2596d3b1548762ec6",
+    "restored_tracked_tree": "c65a6c99077a3060bcb420c1bb81161f31f7aa65",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/.codex/worktrees/printing-profiles-pr.Ve1PlT/design-projects",
+    "head": "d47baf15e00d98a3b20202293972af9c9dd18746",
+    "restored_tracked_tree": "45f816a98bf83a54c4783d90d95f2624c2e3b68f",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/Projects/personal/design-projects-delivery-20260910",
+    "head": "93c5f0815a5873a8c684dbd1d54d4716bdf36ce8",
+    "restored_tracked_tree": "e2c167ba7daca3abafe42a57697dae3d3d6ecf62",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/Projects/personal/design-projects-workflow-separation",
+    "head": "1780798fdfa3c12f6db44ca939becff9aa092470",
+    "restored_tracked_tree": "39df86f65aa849f654f137f074d818557ae2303a",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/Projects/personal/sticker-projects",
+    "head": "766b44377a73643477712bf898fb0ac0cee94a92",
+    "restored_tracked_tree": "53e41f77f2eb5924bd8651ba10347c14d0285e61",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/Projects/personal/CAD-workbench",
+    "head": "54eb6061044f26714f76c8617ae9828f35573664",
+    "restored_tracked_tree": "60c6afdcb1f6ebf3e71af867ab5746852c969e86",
+    "patch_restore_pass": true
+  },
+  {
+    "source": "/Users/scottchu/Projects/personal/workflow-library",
+    "head": "8624fb05d23cc3b747df0d46eecc55e3d8f404dd",
+    "restored_tracked_tree": "4b825dc642cb6eb9a060e54bf8d69288fbee4904",
+    "patch_restore_pass": true
+  }
+]

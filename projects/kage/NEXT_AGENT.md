@@ -1,5 +1,9 @@
 # Next agent
 
+## Reformat preservation — 2026-09-29
+
+The newer R3/R4 roller-mount investigations were blocked and stopped, and remain recovery-only. Their source, diagnostics and exact stop knowledge are preserved in archive `07-cad-projects.tar.gz` in the [recovery release](https://github.com/scottchu/cad-projects/releases/tag/reformat-recovery-20260929). Read [the recovery index](../../docs/REFORMAT_RECOVERY.md) before resuming. Current main does not silently adopt that rejected fork geometry or authorize printing. Older next-action statements below are historical and do not override the September 8 stop.
+
 Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`, `docs/decisions/README.md`, and every file in the iteration named by `docs/iterations/CURRENT`. Recompute `manifests/candidate.sha256` and require SHA-256 `da3bcedc68ed5324cf805f42ff0bca48cd1ccbcf89db7aa9207908b5df27f631` with 805 rows before acting.
 
 Pull request [#5](https://github.com/scottchu/design-projects/pull/5) records the formally accepted reversible Kage cleanup plus the now-superseded generic preview launcher. Pull request [#6](https://github.com/scottchu/design-projects/pull/6) records its removal and the accepted direct-Viewer workflow. Do not restore that launcher. Use the installed `cad-viewer` workflow directly with:

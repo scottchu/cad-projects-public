@@ -1,5 +1,9 @@
 # Kage project state
 
+## Reformat preservation — 2026-09-29
+
+The newer R3/R4 roller-mount investigations were blocked and stopped, and remain recovery-only. Their source, diagnostics and exact stop knowledge are preserved in archive `07-cad-projects.tar.gz` in the [recovery release](https://github.com/scottchu/cad-projects/releases/tag/reformat-recovery-20260929). Read [the recovery index](../../docs/REFORMAT_RECOVERY.md) before resuming. Current main does not silently adopt that rejected fork geometry or authorize printing. Older next-action statements below are historical and do not override the September 8 stop.
+
 ## Baseline
 
 - Authority: clean-restart document plus locked direct-gear reference, identified by `manifests/`.

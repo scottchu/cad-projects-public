@@ -1,0 +1,580 @@
+{
+  "machine": {
+    "default_print_profile": {
+      "nozzle02": "0.10 Standard @Snapmaker U1 (0.2 nozzle)",
+      "nozzle04": "0.20 Standard @Snapmaker U1 (0.4 nozzle)"
+    },
+    "max_layer_height": {
+      "nozzle02": [
+        "0.14",
+        "0.14",
+        "0.14",
+        "0.14"
+      ],
+      "nozzle04": [
+        "0.32",
+        "0.32",
+        "0.32",
+        "0.32"
+      ]
+    },
+    "min_layer_height": {
+      "nozzle02": [
+        "0.04",
+        "0.04",
+        "0.04",
+        "0.04"
+      ],
+      "nozzle04": [
+        "0.08",
+        "0.08",
+        "0.08",
+        "0.08"
+      ]
+    },
+    "name": {
+      "nozzle02": "Snapmaker U1 (0.2 nozzle)",
+      "nozzle04": "Snapmaker U1 (0.4 nozzle)"
+    },
+    "nozzle_diameter": {
+      "nozzle02": [
+        "0.2",
+        "0.2",
+        "0.2",
+        "0.2"
+      ],
+      "nozzle04": [
+        "0.4",
+        "0.4",
+        "0.4",
+        "0.4"
+      ]
+    },
+    "printer_settings_id": {
+      "nozzle02": "Snapmaker U1 (0.2 nozzle)",
+      "nozzle04": "Snapmaker U1 (0.4 nozzle)"
+    },
+    "printer_variant": {
+      "nozzle02": "0.2",
+      "nozzle04": "0.4"
+    },
+    "retraction_length": {
+      "nozzle02": [
+        "0.4",
+        "0.4",
+        "0.4",
+        "0.4"
+      ],
+      "nozzle04": [
+        "1.5",
+        "1.5",
+        "1.5",
+        "1.5"
+      ]
+    },
+    "setting_id": {
+      "nozzle02": "1591507869",
+      "nozzle04": "SM_U1"
+    },
+    "support_multi_bed_types": {
+      "nozzle02": "0",
+      "nozzle04": null
+    }
+  },
+  "process": {
+    "bottom_shell_layers": {
+      "nozzle02": "5",
+      "nozzle04": "7"
+    },
+    "compatible_printers": {
+      "nozzle02": [
+        "Snapmaker U1 (0.2 nozzle)"
+      ],
+      "nozzle04": [
+        "Snapmaker U1 (0.4 nozzle)"
+      ]
+    },
+    "description": {
+      "nozzle02": "Compared with the default profile of a 0.2 mm nozzle, it has a smaller layer lines, lower speeds and acceleration, and the sparse infill pattern is Gyroid. So, it results in almost invisible layer lines and much higher printing quality, but much longer printing time.",
+      "nozzle04": "Compared with the default profile of a 0.4 mm nozzle, it has a smaller layer height, lower speeds and acceleration, and the sparse infill pattern is Gyroid. So, it results in almost negligible layer lines and much higher printing quality, but much longer printing time."
+    },
+    "gap_fill_target": {
+      "nozzle02": null,
+      "nozzle04": "topbottom"
+    },
+    "gap_infill_speed": {
+      "nozzle02": "50",
+      "nozzle04": "210"
+    },
+    "initial_layer_infill_speed": {
+      "nozzle02": "70",
+      "nozzle04": "105"
+    },
+    "initial_layer_line_width": {
+      "nozzle02": "0.25",
+      "nozzle04": "0.5"
+    },
+    "initial_layer_print_height": {
+      "nozzle02": "0.1",
+      "nozzle04": "0.2"
+    },
+    "initial_layer_speed": {
+      "nozzle02": "40",
+      "nozzle04": "50"
+    },
+    "inner_wall_line_width": {
+      "nozzle02": "0.22",
+      "nozzle04": "0.45"
+    },
+    "inner_wall_speed": {
+      "nozzle02": "150",
+      "nozzle04": "120"
+    },
+    "internal_solid_infill_line_width": {
+      "nozzle02": "0.22",
+      "nozzle04": "0.42"
+    },
+    "ironing_flow": {
+      "nozzle02": "10%",
+      "nozzle04": "8%"
+    },
+    "line_width": {
+      "nozzle02": "0.22",
+      "nozzle04": "0.42"
+    },
+    "name": {
+      "nozzle02": "0.08 High Quality @Snapmaker U1 (0.2 nozzle)",
+      "nozzle04": "0.08 High Quality @Snapmaker U1 (0.4 nozzle)"
+    },
+    "outer_wall_line_width": {
+      "nozzle02": "0.22",
+      "nozzle04": "0.42"
+    },
+    "overhang_1_4_speed": {
+      "nozzle02": "0",
+      "nozzle04": "60"
+    },
+    "overhang_2_4_speed": {
+      "nozzle02": "50",
+      "nozzle04": "30"
+    },
+    "overhang_3_4_speed": {
+      "nozzle02": "30",
+      "nozzle04": "10"
+    },
+    "print_settings_id": {
+      "nozzle02": "0.08 High Quality @Snapmaker U1 (0.2 nozzle)",
+      "nozzle04": "0.08 High Quality @Snapmaker U1 (0.4 nozzle)"
+    },
+    "setting_id": {
+      "nozzle02": "GP122",
+      "nozzle04": "GP099"
+    },
+    "sparse_infill_line_width": {
+      "nozzle02": "0.22",
+      "nozzle04": "0.45"
+    },
+    "sparse_infill_speed": {
+      "nozzle02": "100",
+      "nozzle04": "150"
+    },
+    "support_line_width": {
+      "nozzle02": "0.22",
+      "nozzle04": "0.42"
+    },
+    "support_threshold_angle": {
+      "nozzle02": "30",
+      "nozzle04": "15"
+    },
+    "top_shell_layers": {
+      "nozzle02": "7",
+      "nozzle04": "9"
+    },
+    "top_surface_line_width": {
+      "nozzle02": "0.22",
+      "nozzle04": "0.42"
+    },
+    "wall_loops": {
+      "nozzle02": "4",
+      "nozzle04": "2"
+    },
+    "wipe_tower_cone_angle": {
+      "nozzle02": null,
+      "nozzle04": "15"
+    }
+  },
+  "filament-0": {
+    "circle_compensation_speed": {
+      "nozzle02": [
+        "200"
+      ],
+      "nozzle04": null
+    },
+    "compatible_printers": {
+      "nozzle02": [
+        "Snapmaker U1 (0.2 nozzle)"
+      ],
+      "nozzle04": [
+        "Snapmaker U1 (0.4 nozzle)"
+      ]
+    },
+    "counter_coef_1": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "counter_coef_2": {
+      "nozzle02": [
+        "0.008"
+      ],
+      "nozzle04": null
+    },
+    "counter_coef_3": {
+      "nozzle02": [
+        "-0.041"
+      ],
+      "nozzle04": null
+    },
+    "counter_limit_max": {
+      "nozzle02": [
+        "0.033"
+      ],
+      "nozzle04": null
+    },
+    "counter_limit_min": {
+      "nozzle02": [
+        "-0.035"
+      ],
+      "nozzle04": null
+    },
+    "description": {
+      "nozzle02": "The generic presets are conservatively tuned for compatibility with a wider range of filaments. For higher printing quality and speeds, please use Bambu filaments with Bambu presets.",
+      "nozzle04": null
+    },
+    "diameter_limit": {
+      "nozzle02": [
+        "50"
+      ],
+      "nozzle04": null
+    },
+    "filament_adaptive_volumetric_speed": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_adhesiveness_category": {
+      "nozzle02": [
+        "100"
+      ],
+      "nozzle04": null
+    },
+    "filament_change_length": {
+      "nozzle02": [
+        "10"
+      ],
+      "nozzle04": null
+    },
+    "filament_cooling_before_tower": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_ams_drying_ams_limitations": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_ams_drying_heat_distortion_temperature": {
+      "nozzle02": [
+        "45.0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_ams_drying_temperature": {
+      "nozzle02": [
+        "40.0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_ams_drying_time": {
+      "nozzle02": [
+        "8.0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_chamber_drying_bed_temperature": {
+      "nozzle02": [
+        "90.0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_chamber_drying_time": {
+      "nozzle02": [
+        "12.0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_drying_cooling_temperature": {
+      "nozzle02": [
+        "35.0"
+      ],
+      "nozzle04": null
+    },
+    "filament_dev_drying_softening_temperature": {
+      "nozzle02": [
+        "40.0"
+      ],
+      "nozzle04": null
+    },
+    "filament_end_gcode": {
+      "nozzle02": [
+        "; filament end gcode \n\n"
+      ],
+      "nozzle04": [
+        "\n"
+      ]
+    },
+    "filament_extruder_variant": {
+      "nozzle02": [
+        "Direct Drive Standard"
+      ],
+      "nozzle04": null
+    },
+    "filament_flush_temp": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_flush_volumetric_speed": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_id": {
+      "nozzle02": "GFL99",
+      "nozzle04": "GFL9922"
+    },
+    "filament_long_retractions_when_ec": {
+      "nozzle02": [
+        "nil"
+      ],
+      "nozzle04": null
+    },
+    "filament_max_volumetric_speed": {
+      "nozzle02": [
+        "1.6"
+      ],
+      "nozzle04": [
+        "12"
+      ]
+    },
+    "filament_multitool_ramming_flow": {
+      "nozzle02": [
+        "2"
+      ],
+      "nozzle04": [
+        "20"
+      ]
+    },
+    "filament_multitool_ramming_volume": {
+      "nozzle02": [
+        "1"
+      ],
+      "nozzle04": [
+        "0.5"
+      ]
+    },
+    "filament_pre_cooling_temperature": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_pre_cooling_temperature_nc": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_prime_volume": {
+      "nozzle02": [
+        "45"
+      ],
+      "nozzle04": null
+    },
+    "filament_prime_volume_nc": {
+      "nozzle02": [
+        "60"
+      ],
+      "nozzle04": null
+    },
+    "filament_printable": {
+      "nozzle02": [
+        "3"
+      ],
+      "nozzle04": null
+    },
+    "filament_ramming_travel_time": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_ramming_travel_time_nc": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "filament_ramming_volumetric_speed": {
+      "nozzle02": [
+        "-1"
+      ],
+      "nozzle04": null
+    },
+    "filament_ramming_volumetric_speed_nc": {
+      "nozzle02": [
+        "-1"
+      ],
+      "nozzle04": null
+    },
+    "filament_retract_length_nc": {
+      "nozzle02": [
+        "14"
+      ],
+      "nozzle04": null
+    },
+    "filament_retraction_distances_when_ec": {
+      "nozzle02": [
+        "nil"
+      ],
+      "nozzle04": null
+    },
+    "filament_scarf_gap": {
+      "nozzle02": [
+        "15%"
+      ],
+      "nozzle04": null
+    },
+    "filament_scarf_height": {
+      "nozzle02": [
+        "10%"
+      ],
+      "nozzle04": null
+    },
+    "filament_scarf_length": {
+      "nozzle02": [
+        "10"
+      ],
+      "nozzle04": null
+    },
+    "filament_scarf_seam_type": {
+      "nozzle02": [
+        "none"
+      ],
+      "nozzle04": null
+    },
+    "filament_shrink": {
+      "nozzle02": [
+        "100%"
+      ],
+      "nozzle04": null
+    },
+    "filament_velocity_adaptation_factor": {
+      "nozzle02": [
+        "1"
+      ],
+      "nozzle04": null
+    },
+    "hole_coef_1": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "hole_coef_2": {
+      "nozzle02": [
+        "-0.008"
+      ],
+      "nozzle04": null
+    },
+    "hole_coef_3": {
+      "nozzle02": [
+        "0.23415"
+      ],
+      "nozzle04": null
+    },
+    "hole_limit_max": {
+      "nozzle02": [
+        "0.22"
+      ],
+      "nozzle04": null
+    },
+    "hole_limit_min": {
+      "nozzle02": [
+        "0.088"
+      ],
+      "nozzle04": null
+    },
+    "impact_strength_z": {
+      "nozzle02": [
+        "10.0"
+      ],
+      "nozzle04": null
+    },
+    "is_custom_defined": {
+      "nozzle02": "0",
+      "nozzle04": null
+    },
+    "long_retractions_when_ec": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "name": {
+      "nozzle02": "Generic PLA @U1 0.2 nozzle",
+      "nozzle04": "Generic PLA"
+    },
+    "no_slow_down_for_cooling_on_outwalls": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "retraction_distances_when_ec": {
+      "nozzle02": [
+        "0"
+      ],
+      "nozzle04": null
+    },
+    "setting_id": {
+      "nozzle02": "GFSL99_00",
+      "nozzle04": "GFSL991"
+    },
+    "supertack_plate_temp": {
+      "nozzle02": [
+        "45"
+      ],
+      "nozzle04": null
+    },
+    "supertack_plate_temp_initial_layer": {
+      "nozzle02": [
+        "45"
+      ],
+      "nozzle04": null
+    },
+    "volumetric_speed_coefficients": {
+      "nozzle02": [
+        "0 0 0 0 0 0"
+      ],
+      "nozzle04": null
+    }
+  }
+}

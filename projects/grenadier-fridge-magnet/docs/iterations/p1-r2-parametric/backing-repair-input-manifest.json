@@ -1,0 +1,52 @@
+{
+  "algorithm": "sha256",
+  "fingerprint": "1d042dfdc028b6fd09faa6d0e41db28679e96039c1618210867faaf082ee859a",
+  "entries": [
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2/flat.glb",
+      "sha256": "ffd526272b197b9da3a12cfed230e5cce9b99766739998829d4a804f25c74197"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2/relief.glb",
+      "sha256": "fb606070739dd7532c5de605744b5fcefb4b6dd2eaac4b447a8a34429aca6387"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face.svg",
+      "sha256": "addd63edc72070d1311be76bda1a0d75ce60a192d7ec97e1171659c7c5efc221"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/BACKING_REPAIR.md",
+      "sha256": "0e503d27edbca30df1f9922a846ce290123a0712bd5e44296f88d62fe231207c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/BRIEF.md",
+      "sha256": "0b3bcf501a68bf399dd99362c5167ea656f7bc0bae22f59e64b959018a4e1cc1"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/DESIGN.md",
+      "sha256": "53269aa938b4bd4c591ce904a9a25e7365737c2357e409ff6c056024e9c86240"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/candidate-manifest.json",
+      "sha256": "2d94cc1decf50fcde2a760abe5b819ba9c4812a66761e387ad32a776a70eb62a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/input-manifest.json",
+      "sha256": "e8332b55db4f9347a9ef2a84b1d97b31c72de3bf29e694a026e71c4b6a800e72"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/face_vector.py",
+      "sha256": "83d8fc871fee33972e9e4c55f13ecbd68772f1fd78a3c283401344e1d4654580"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/parametric_magnet.py",
+      "sha256": "dddb2d8fae619fc84c24a66ab2adc39243485b8475465dc6f9e1dd2e5dc4145d"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/tests/test_parametric_magnet.py",
+      "sha256": "31f2374ce9c1d554079c46af68a855ae3094f1ac910082bec32a0911e136aa2a"
+    }
+  ],
+  "excludes": "mutable status/evidence only",
+  "parent_candidate": "1e5f22bf7437b8cf29b7ae612e04258a2f507aa94908d05ae1cb8631458fcb3d"
+}
