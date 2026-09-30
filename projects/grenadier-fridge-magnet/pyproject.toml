@@ -1,0 +1,16 @@
+[project]
+name = "grenadier-fridge-magnet"
+version = "0.1.0"
+description = "Grenadier flat four-filament fridge magnet intent study"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=2.0,<3",
+    "Pillow>=10.0,<12",
+    "shapely>=2.1.2,<3",
+    "trimesh>=4.0,<6",
+    "scipy>=1.14,<2",
+]
+
+[tool.uv]
+package = false

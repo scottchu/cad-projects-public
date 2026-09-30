@@ -1,0 +1,79 @@
+{
+  "algorithm": "sha256",
+  "fingerprint": "2479dacd84b1cc33f54bde6dc7e30c9bfa77a32450827babe3d6361567d0fc7c",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "3f061c2b5f8dc02aaad5460822502830d79148a54b3edc750bc267e14f200811"
+    },
+    {
+      "path": "docs/CAD_WORKFLOW.md",
+      "sha256": "8ad2d642b8407171108f20b5d6846a2754771582fc15531b4690ad6a7ff82799"
+    },
+    {
+      "path": "docs/FDM_DESIGN_RULES.md",
+      "sha256": "891147d9d3e2970fddbc48625db05631fdcc71e3f9f742e06d242cc2be653161"
+    },
+    {
+      "path": "docs/PROJECT_CONTINUITY.md",
+      "sha256": "f5c8fa2378074f8f976587f36f6cd404672f227a725e2e0038e5ab0a6b35f046"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/PRINTING_PROFILE.md",
+      "sha256": "e214164c07de162d95f47013a55ab125ba7842960696b7415f93c47b2bc8a237"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face-report.json",
+      "sha256": "78a2f011c26f1ab6a378a484e5d48c9bca17dc554e673f97b52392379b06b33c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face.svg",
+      "sha256": "addd63edc72070d1311be76bda1a0d75ce60a192d7ec97e1171659c7c5efc221"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/REQUIREMENTS.md",
+      "sha256": "5fdf49410af4ed3489f6eafa5413608ad4e47ecfed1b0bb82ed14e7ff6d907c5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/decisions/0001-face-first.md",
+      "sha256": "6ba0c99f130f61c7d4275e98c0ff20d2b49764440da9a7c835fef15a7523c721"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/decisions/0002-both-surface-variants.md",
+      "sha256": "b39f56ff0a5718c92f23d0e7b8540549d537d581d3464b3e1dc389e9efddb3d8"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/SURFACE_VARIANTS.md",
+      "sha256": "a0335e10cb6b02091dae8a25fd9bb404236eb73aa8fcac98fb64b69269ae1a7a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/face-candidate-manifest.json",
+      "sha256": "63aeeeb30620be45daffed490b09a6c9da65d8e6e144fc66733b0f32a08ac3fd"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/BRIEF.md",
+      "sha256": "0b3bcf501a68bf399dd99362c5167ea656f7bc0bae22f59e64b959018a4e1cc1"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/DESIGN.md",
+      "sha256": "53269aa938b4bd4c591ce904a9a25e7365737c2357e409ff6c056024e9c86240"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/bmw-user-print-reference.jpg",
+      "sha256": "ec336d2a7ff0c591137f54fdac5a4defde86d1ff7867c82680d95144f1d089d4"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/references/d4-approved.png",
+      "sha256": "44d20b6b2050d639c44ef00d6396b4150f9ed7280b3d1db4c361be8f31b22171"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/face_vector.py",
+      "sha256": "83d8fc871fee33972e9e4c55f13ecbd68772f1fd78a3c283401344e1d4654580"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/tests/test_face_vector.py",
+      "sha256": "8f09b6f06213f55a77d408540b0725f8a6797919e4d92361db91e64de161efa9"
+    }
+  ],
+  "excludes": "Mutable orchestration/status/evidence indexes only; BRIEF frozen in full for this handoff."
+}

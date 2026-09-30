@@ -1,0 +1,14 @@
+520eacad7a9e2d26ea18879ba79ca1a1f525081c0b4919c9bc45e3d87f4da807  projects/cad-agent-lunch-and-learn/build.mjs
+d178097111b89b44d237848f21462d90234d8ca883c501a1d67ba5aaa35a91e6  projects/cad-agent-lunch-and-learn/simulator.mjs
+17cfe54de80aa25396594896d8df4830bf8696b5c57431241f767dd2bbb89bd7  projects/cad-agent-lunch-and-learn/test/deck.test.mjs
+06d289e8bc325f42b5e308ef449b971d77f2e6691178f864cdf1358ecda76895  projects/cad-agent-lunch-and-learn/index.html
+48d2690df3bd6696dedb1ea5e281b9c598c181ca6482ede647e82bc458abe880  projects/cad-agent-lunch-and-learn/package.json
+5e134df1bc7e959293435e1be635a8c46559f856502becfae35aa788c4d24b1c  projects/cad-agent-lunch-and-learn/docs/REQUIREMENTS.md
+8edef82bda7a820fdc7a6361572da26dc838b3bbaa9b7ac4dccf12d91e47336d  projects/cad-agent-lunch-and-learn/docs/SOURCES.md
+ffc1026c6ef3fe00b5f9bace06be7fa8cb67aa43cea5094de50c39a32d5d55a5  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-audience-rewrite/BRIEF.md
+0134ffcd5c45d2ae57cc4fd9209addc19e51b3991a01791122528d3c5ffb5950  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-audience-rewrite/DESIGN.md
+e969de6b552acff8f3d8c033b4fa9685765512bd7f869aeecbc887a3574053a8  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-audience-rewrite/AUDIT.md
+67b865a128fe7943c2720d77c3698f34e7ffea8a7d3088dd1df1270a89bd056c  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-audience-rewrite/FROZEN_INPUTS.sha256
+67b865a128fe7943c2720d77c3698f34e7ffea8a7d3088dd1df1270a89bd056c  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-audience-rewrite/INPUTS.sha256
+470e06e2c9cdb4465db26085c5f3f3b9939d43bc710d5c419d94ea0d8c2ee0ff  projects/xt60-bend-jig/docs/review/p19-r1-front-edge-short-tail/p19-r1-impl05-exploded-iso_20260826T182821Z.png
+c11badf0493dfdca2a515d176571437d04d3c2e4f1f3870da2e85f02c7fa9a88  projects/xt60-bend-jig/docs/review/p19-r1-front-edge-short-tail/p19-r1-impl05-open-front_20260826T182611Z.png

@@ -1,0 +1,15 @@
+# Collaboration made concrete
+
+Selected 13-slide sequence: thesis; why feedback; XT60 purpose and visible wire task; exact rod-fit example; actual center-shaft person/agent repair sequence; one feedback model; visible required/erroneous wire paths and independence lesson; Kage purpose and shaft/gear overlap; actual pilot head correction; pilot completion versus physical nonacceptance; illustrative tools extend that lesson; portable day-one criterion; action-led close.
+
+Primary attribution: P13 R2 center-hole HANDOFF explicitly names design-diagnosis and implementation agents. The user reported the printed center shaft would not fit. Agents identified the responsible repeated plate-hole interface, changed only hole geometry and regenerated checked artifacts. The next decision was to reprint repaired plates and test passage by hand; physical acceptance remains pending in the record. This is a different fit from the metal forming-rod coupon, explicitly named on the slide. The coupon and print pilot do not independently attribute every step to an agent; no invented actor dialogue or successful repair print is added.
+
+Visible relationships: the jig task sketch shows two wires making a 90-degree bend near the connector for soldering; the actual Three.js fit gets screen-projected label leaders without changing geometry; wire comparison shows right-angle versus diagonal reference; Kage sketch shows shaft material crossing solid gear; the actual collaboration sketch identifies printed center shaft and matching plate holes. All are labelled schematics or historical CAD, not reconstructed photographs or measurements.
+
+Consolidation: retain one conceptual loop, fold independent intent checking into the wire case and same-job evidence into pilot outcome. Remove separate preparation/operations and internal review workflow slides. The future tools slide now follows the pilot and connects robotic-arm action, camera/force measurement and a keep/adjust/stop decision; it is explicitly illustrative, not a deployed integration.
+
+Decision criterion: before acting, agree what we expect, what we will observe and what would change the plan. Applied to the rod test: tight or wobbling fit means revise; sliding with slight friction is the recorded reference, with final real-guide fit still to be checked. No friction prediction or broad acceptance claim.
+
+Known evidence limit: the pilot reports physical fit/mechanism failures but does not name exact failed features. The deck therefore shows its observed nonacceptance and keeps the separate center-shaft case distinct, instead of attaching an unrelated cap or shaft failure to its artifact. Original named-agent handoff, EXPERIENCE, source wire requirement and Kage restart record are frozen in the candidate manifest.
+
+Validation plan: root build/existing checks, fitGeometry preservation, then independent all-slide desktop/mobile/PDF and source attribution review; expert editor checks the five requested outcomes, then formal review joins exact receipts. No source-project/tool/printer/robot/dependency/hosting/Git changes.

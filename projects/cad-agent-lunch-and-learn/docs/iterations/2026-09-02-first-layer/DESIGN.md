@@ -1,0 +1,15 @@
+# Slide 5 first-layer explanation
+
+Selected contract: explain the printing process before the fault. The slicer divides a solid into thin layers; the printer lays the first on the bed. A visibly thick orange band marks that first layer in two read-only Three.js teaching scenes. On the left the broad plate face starts above that band; the orange dashed footprint is empty underneath. On the right the broad plain face sits on the bed and its bottom layer occupies that band, with a raised feature pointing upward. Directly adjacent text names each relationship.
+
+Source boundaries: XT60 EXPERIENCE 2026-08-22 records incomplete or floating early layers, not an exact reconstructed missing-half toolpath. The P13 source-domain amendment lines 74–81 explicitly specifies flat/plain face down with hub/land up and a planar footprint at Z=0. EXPERIENCE also records revised thin thrust contact surfaces; orientation alone is not presented as the entire historical repair. The diagrams exaggerate the gap and layer thickness, simplify the plate and raised feature, and do not simulate deposition, exact toolpaths, manufacturing support or physical success.
+
+Alternatives rejected: a central foot would suggest unexplained support underneath a floating face; a translucent plate would obscure what actually occupies the first layer; an actual toolpath would require unprovided before/after slice evidence; motion and controls would interrupt the requested show-and-tell format. Static isometric solids with a low camera and explicit orange first-layer marker provide the physical relationship without these claims.
+
+Preservation: only slide 5, its two bed scenes, scoped bed CSS and static print/no-WebGL equivalents change. The other 17 complete sections, fit function and navigation stay byte-identical. An offline source entry for the newly used amendment is added; source projects, dependencies, locks and hosting stay read-only.
+
+Done gates: root workspace build/check, precise baseline comparison, independent visible-content critique and factual/browser validation, then distinct formal review. No production CAD, export/slicer or physical acceptance is created.
+
+## Repair 1 — factual boundary and plain-language response
+
+F-V found that the initial left caption incorrectly attached the schematic's completely empty first-layer band to the historical preview. EXPERIENCE establishes faces above the bed and incomplete/floating early layers, not a broad face above the entire first-layer thickness. F-C also found the secondary contact-surface wording opaque. Repair scope is copy only: caption uses the literal observation, orange-band labels explicitly identify the schematic, and the source geometry change is described as the small raised areas where plates touch. Geometry, cameras, layout, other slides and source facts stay unchanged. Prior source and manifest are preserved under /tmp/cad-first-layer-repair1-baseline; initial HTML 1a31ba1fc5b2f1b45773f69a902be2527aa75987f9ee41d46c059027bc0ec1e6, manifest 80d2e8905cd9fc3bc848a0eb4c427859d7e4ce86f9a43dce3295d63404d393c8.

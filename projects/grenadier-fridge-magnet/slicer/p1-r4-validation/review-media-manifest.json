@@ -1,0 +1,167 @@
+{
+  "fingerprint": "10e249a13ae7a74f5a449d5755ca21cb145b2402e4cc1f27522f1d2af76a5162",
+  "method": "SHA256(sorted path + NUL + SHA256(content) + LF)",
+  "input_fingerprint": "96f8e8046ddb896e59e0bf8e07d10511745defc4fde1e8e0ff1e44a971bcb68f",
+  "entries": [
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-1-z1.96.png",
+      "sha256": "be8ecb07a76bc6406fe94fcb4367b2fd4925388e9739115c11e4f7e75d58e7f5",
+      "bytes": 28456
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-1-z1.96.svg",
+      "sha256": "4750b78a433580d96587b3c451aaebd24b21a246d44f6db2f625cf449f4d1ef6",
+      "bytes": 118424
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-2-z1.96.png",
+      "sha256": "de944d58313abbb98663a87720beada87aa969b049a056c5d22a6e9b849613f6",
+      "bytes": 29718
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-2-z1.96.svg",
+      "sha256": "9efd4ab22974b03ec3fc302dee3a8e938a3ee271361b043e334b6f1d64ca4db0",
+      "bytes": 141620
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-3-z1.96.png",
+      "sha256": "dc7696c9e122930d3035c0ce7543cad78102cda51a0622d4a9b8185f383a221a",
+      "bytes": 31911
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-3-z1.96.svg",
+      "sha256": "bf2d4689b1f2aa55a6dd3984e3a2acb48e526a59b102e0d55c0b45aadaf1ebe2",
+      "bytes": 169902
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-4-z1.96.png",
+      "sha256": "2da257b1adc0e481a0ebf3f840693b893386a4ecc2bcf31ff256e231b31bc4ad",
+      "bytes": 31210
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-lamp-4-z1.96.svg",
+      "sha256": "3cd48d9a8a70dd8bed099f7f9ace56729080f59e05261a1083cde8cef9802ee5",
+      "bytes": 125558
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-plate-z1.96.png",
+      "sha256": "31160525f85f10f79b9d4005df7456d5b5ae1019a104c15305b2236eaf68d78c",
+      "bytes": 36160
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-plate-z1.96.svg",
+      "sha256": "fe02a27f6955f67757e04b3bb2b606840010f5e074711fe2070be74170b813db",
+      "bytes": 149137
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-whole-z1.96.png",
+      "sha256": "3466819b780511fdd173a191f8411fb0f928d85edfa7547637681e5d986083d1",
+      "bytes": 1298828
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-whole-z1.96.svg",
+      "sha256": "b58006fb82675c7d9ca3ad5a122652086c1b9421c4a3bdf881fe72a26fd65980",
+      "bytes": 4784105
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-wordmark-z1.96.png",
+      "sha256": "79246236536d1b209da34f3634c2fdb7f8a25efd351b0ce06a7bbffa635e1189",
+      "bytes": 20939
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/flat-wordmark-z1.96.svg",
+      "sha256": "51409b7034bb0b082784d5f062ce52d43680fa5e28a71e2b0349ed4a7167275d",
+      "bytes": 54654
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-1-z2.44.png",
+      "sha256": "90adaf3a49692eb76f49ca4adf4ed500e998616f623819e92a51736c9771dd18",
+      "bytes": 25258
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-1-z2.44.svg",
+      "sha256": "7eafe55b57877b48c0e00e0d22a397436cfd9f56e7fc04a7c3fefd0607a60c39",
+      "bytes": 108706
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-2-z2.44.png",
+      "sha256": "46e3e061ef9c79672364c3e6559f21b556e9fdf846c57db5ee908266de4cfaf7",
+      "bytes": 27065
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-2-z2.44.svg",
+      "sha256": "bb77db06e04510e8c80f83f523caefaecbab82091cdf52e9721ab82d3b1bfb3f",
+      "bytes": 138284
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-3-z2.44.png",
+      "sha256": "17c64e09660b6e5c4be0b736560dce9327689d96b3cb42bd6bc4781b583d0838",
+      "bytes": 29238
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-3-z2.44.svg",
+      "sha256": "ed11bebcc4cb75b6fab20254430457508c35f0680ec9e2f95fa928414d4f551d",
+      "bytes": 163556
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-4-z2.44.png",
+      "sha256": "f522a41d255a3da654759c1200a5720c91c9011d733474e42363ebe6a8035bcc",
+      "bytes": 29968
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-lamp-4-z2.44.svg",
+      "sha256": "d9819a07b498f3031cec317c2730730ad3377b5b4df614d5e40cdcfb935f1313",
+      "bytes": 132460
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-plate-z2.44.png",
+      "sha256": "d07d5d560e1778216461042e8daaf8395b1b6495418ffebc3d657f26fec76885",
+      "bytes": 33964
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-plate-z2.44.svg",
+      "sha256": "836e7b14564f7c23ca561f43cf7a338fef3ed39935c22a9df868dd87cf5bbe2b",
+      "bytes": 150243
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-whole-z1.64.png",
+      "sha256": "6d3af45f758def8e4dfd69447088a0bf9c9d8f3f0865774d00972fd576261eb9",
+      "bytes": 1551743
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-whole-z1.64.svg",
+      "sha256": "6a41991d8d9d66fa777a173975b29338514201fa6e3701f2f82a23e804adca11",
+      "bytes": 5973270
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-whole-z2.04.png",
+      "sha256": "e9506cbd4a716de399fbdff352c0c7684f19bb7a5643dd13166b82d3a5f3852a",
+      "bytes": 1182524
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-whole-z2.04.svg",
+      "sha256": "ca2cff7beb9885c5cccd9ed06e3d4e218e689438f1feaafa52be4a5165b96897",
+      "bytes": 4399882
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-whole-z2.44.png",
+      "sha256": "0b94f00a46f2b3c70cca92377ada6cdf47d17e51f51013d68bb8d197a20e04f1",
+      "bytes": 256113
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-whole-z2.44.svg",
+      "sha256": "7dd176419f2780ac120aebe9fa1a1e4a41a4e671d4ede3478d3aa38991f5b13f",
+      "bytes": 964113
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-wordmark-z2.04.png",
+      "sha256": "934f5e40d2fbd04c2225a923d201e441f07186746c0724f4fa4759188e67c9b7",
+      "bytes": 20985
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/slicer/p1-r4-validation/relief-wordmark-z2.04.svg",
+      "sha256": "12d2a22ba1eb72259e694304d50dbe5e4477be4fd72712c967c5454a1496ec8c",
+      "bytes": 54748
+    }
+  ]
+}

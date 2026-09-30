@@ -1,0 +1,202 @@
+{
+  "algorithm": "sha256",
+  "fingerprint_method": "SHA256(sorted path + NUL + content-sha256 + LF)",
+  "fingerprint": "1e5f22bf7437b8cf29b7ae612e04258a2f507aa94908d05ae1cb8631458fcb3d",
+  "input_fingerprint": "2479dacd84b1cc33f54bde6dc7e30c9bfa77a32450827babe3d6361567d0fc7c",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "3f061c2b5f8dc02aaad5460822502830d79148a54b3edc750bc267e14f200811"
+    },
+    {
+      "path": "docs/CAD_WORKFLOW.md",
+      "sha256": "8ad2d642b8407171108f20b5d6846a2754771582fc15531b4690ad6a7ff82799"
+    },
+    {
+      "path": "docs/FDM_DESIGN_RULES.md",
+      "sha256": "891147d9d3e2970fddbc48625db05631fdcc71e3f9f742e06d242cc2be653161"
+    },
+    {
+      "path": "docs/PROJECT_CONTINUITY.md",
+      "sha256": "f5c8fa2378074f8f976587f36f6cd404672f227a725e2e0038e5ab0a6b35f046"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2/flat.glb",
+      "sha256": "ffd526272b197b9da3a12cfed230e5cce9b99766739998829d4a804f25c74197"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/GLB/p1-r2/relief.glb",
+      "sha256": "fb606070739dd7532c5de605744b5fcefb4b6dd2eaac4b447a8a34429aca6387"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/PRINTING_PROFILE.md",
+      "sha256": "e214164c07de162d95f47013a55ab125ba7842960696b7415f93c47b2bc8a237"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/README.md",
+      "sha256": "609ddcc075bf1a18c180c6320b8d0174b9de7d9e5cee93a9b5b1288e1571f08b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/flat/backing-black.stl",
+      "sha256": "1ca3e2eb62abe76cfbfbb34a55f17d33f915573a16429ce5dd847a9db4f70bdf"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/flat/black-flat.stl",
+      "sha256": "7411b56fecb37ae1a7dd23b8a2d4cc6dba842480fc08131e416dc75671c06cb5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/flat/deep-blue-flat.stl",
+      "sha256": "098d66bc2ecdb194057e124a7b5fa572d5082a53d29b536ea21e4aa1992fd86c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/flat/glass-mix-flat.stl",
+      "sha256": "7ddc43bab71807b96f39d27e8435e033a33373a63bc724b9d6156da72fc3c596"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/flat/gray-flat.stl",
+      "sha256": "ea6216d8696a8dd9e810cc74d5431cb1edee144bac8acc368820704a31359346"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/flat/white-flat.stl",
+      "sha256": "f5a6856689142913447e6f9cf774d9323f37b8d5bfcc999cfd0ebee6c47b5b3a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/backing-black.stl",
+      "sha256": "1ca3e2eb62abe76cfbfbb34a55f17d33f915573a16429ce5dd847a9db4f70bdf"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/black-high.stl",
+      "sha256": "6de9b555aeba430c44775146d2d79ed39de8bb1c547244057ae2f1afc33c1583"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/black-low.stl",
+      "sha256": "2b61e4ef73f990207a76e3f58c442f82c5c8003364bad7d900480428192e92f0"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/black-middle.stl",
+      "sha256": "41657486001954f7d9a0246648fddd80b9552da3c5008d13e3cee03254b9a0e2"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/deep-blue-high.stl",
+      "sha256": "eba215e54ab998d18a07249a3ad3337ff675e01327d1757afd18fec2d5c0cac7"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/glass-mix-high.stl",
+      "sha256": "ee1d8e2d328c6cd5645f286c8adec7d0974f21d76386ce93adf9fdac90faa194"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/glass-mix-low.stl",
+      "sha256": "ad2d92c7ba4c9fac7a3186be06a7f23af8a52b9a973a17255d68fb8e5700728a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/glass-mix-middle.stl",
+      "sha256": "8bb448489ee1f70fb697a54b6a82d673f20808048f48922188d66acd6e0fabdb"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/gray-high.stl",
+      "sha256": "e150e50405470a424932bdefedb00c98abde5dfeee91eb3e6fcc97c221e74695"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/gray-low.stl",
+      "sha256": "a0c95749d1416380fc538726ec9367aaeda28c1bf6dfb3003fac88a5d95ad5e3"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/gray-middle.stl",
+      "sha256": "634dc0183d9d1b6c4f17e31139ea1bfe70ed1c1f27aac006214cf9cb7830f1f0"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/white-high.stl",
+      "sha256": "5be9ae6461dd4908f274b2b858df0279a68dbf44d104e60558161e4dcddd07e0"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/white-low.stl",
+      "sha256": "f4a22d3255596effcd01705255d6e9ad3027adf5e7e09341c02dba9fc3c988a8"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/STL/p1-r2/relief/white-middle.stl",
+      "sha256": "bb26a8ad61da0f749669a3616d7919c8be5ee2cc37a877e1812bf8acd53f151b"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face-report.json",
+      "sha256": "78a2f011c26f1ab6a378a484e5d48c9bca17dc554e673f97b52392379b06b33c"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/SVG/p1-r1/face.svg",
+      "sha256": "addd63edc72070d1311be76bda1a0d75ce60a192d7ec97e1171659c7c5efc221"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/REQUIREMENTS.md",
+      "sha256": "5fdf49410af4ed3489f6eafa5413608ad4e47ecfed1b0bb82ed14e7ff6d907c5"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/decisions/0001-face-first.md",
+      "sha256": "6ba0c99f130f61c7d4275e98c0ff20d2b49764440da9a7c835fef15a7523c721"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/decisions/0002-both-surface-variants.md",
+      "sha256": "b39f56ff0a5718c92f23d0e7b8540549d537d581d3464b3e1dc389e9efddb3d8"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/SURFACE_VARIANTS.md",
+      "sha256": "a0335e10cb6b02091dae8a25fd9bb404236eb73aa8fcac98fb64b69269ae1a7a"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r1-intent/face-candidate-manifest.json",
+      "sha256": "63aeeeb30620be45daffed490b09a6c9da65d8e6e144fc66733b0f32a08ac3fd"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/BRIEF.md",
+      "sha256": "0b3bcf501a68bf399dd99362c5167ea656f7bc0bae22f59e64b959018a4e1cc1"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/DESIGN.md",
+      "sha256": "53269aa938b4bd4c591ce904a9a25e7365737c2357e409ff6c056024e9c86240"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/bmw-user-print-reference.jpg",
+      "sha256": "ec336d2a7ff0c591137f54fdac5a4defde86d1ff7867c82680d95144f1d089d4"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/input-manifest.json",
+      "sha256": "e8332b55db4f9347a9ef2a84b1d97b31c72de3bf29e694a026e71c4b6a800e72"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/mesh-report.json",
+      "sha256": "1942b3cd150d1a13fd82571c0f27f0dd9fead66c82fddee0b0ec3887316ef239"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/docs/iterations/p1-r2-parametric/stl-parity-report.json",
+      "sha256": "9e00ce44736ebfd31c3566163e713e2f1b58ea2c42da644b766c4cc88aa94473"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/pyproject.toml",
+      "sha256": "e47bb272dd80f9895174f80542b7d37b1e6d293f9f42ec46e9c04583011707ca"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/references/d4-approved.png",
+      "sha256": "44d20b6b2050d639c44ef00d6396b4150f9ed7280b3d1db4c361be8f31b22171"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/face_vector.py",
+      "sha256": "83d8fc871fee33972e9e4c55f13ecbd68772f1fd78a3c283401344e1d4654580"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/src/parametric_magnet.py",
+      "sha256": "dddb2d8fae619fc84c24a66ab2adc39243485b8475465dc6f9e1dd2e5dc4145d"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/tests/test_face_vector.py",
+      "sha256": "8f09b6f06213f55a77d408540b0725f8a6797919e4d92361db91e64de161efa9"
+    },
+    {
+      "path": "projects/grenadier-fridge-magnet/tests/test_parametric_magnet.py",
+      "sha256": "31f2374ce9c1d554079c46af68a855ae3094f1ac910082bec32a0911e136aa2a"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "8d34616dbde603e656f3ad54e15bcd1d9479cbcfe62557fa79ca8c1ac260b435"
+    }
+  ],
+  "excludes": "Mutable orchestration, evidence narrative and delivery UI; geometry measurement reports are included.",
+  "acceptance": "Implementation candidate only; independent review pending; STL non-fabrication studies"
+}

@@ -1,0 +1,97 @@
+{
+  "htmlSha256": "9f246ce8a7e52b24ca8c9b2414544b4d21f44628eb98a5150d5a3b75b8cb22c8",
+  "slides": [
+    {
+      "slide": 1,
+      "sha256": "05ac97b176f906779f9fd3dc313e9872efc33533c882998a3255b5973b482936"
+    },
+    {
+      "slide": 2,
+      "sha256": "0db71ebc94840a093158608dfd0e92381e35dd2e1336e6637496eea4b5bf1887"
+    },
+    {
+      "slide": 3,
+      "sha256": "5ddd6558a453616eb2ba526c72dae8f680baa52f5edca733e9b0dfddc1ef6bbe"
+    },
+    {
+      "slide": 4,
+      "sha256": "d4c1a283508dd011ed8a24a52c6afd3c50ddea24a0bb6fa56cd20bfaed9fda39"
+    },
+    {
+      "slide": 5,
+      "sha256": "59dc92aa74aa0f8de9e9ba059d75a776c4cc525fedfa7a21c49c5516d268cedb"
+    },
+    {
+      "slide": 6,
+      "sha256": "66fe529d3f375f6754fca4fddcb159be263ea97bd3a5fbf85fc0179c5edfdcb7"
+    },
+    {
+      "slide": 7,
+      "sha256": "5ef41804c38b85e65f1f1d481b9122e845d202e0335fe2cc14bb7d8bc44139e3"
+    },
+    {
+      "slide": 8,
+      "sha256": "369345710c058ec8abe8a6b37aea20f4c47ba1c30b49a0cdb65fcd13b536a5d7"
+    },
+    {
+      "slide": 9,
+      "sha256": "68fd9668dae24796eeefbaeb07db1394ef409783991bba9218f3c1279364e5d4"
+    },
+    {
+      "slide": 10,
+      "sha256": "fa2015dff30a3302ab251cd66ea8c9a81c2c74a8186b757359aecba074986129"
+    },
+    {
+      "slide": 11,
+      "sha256": "43cf61aec35419bdd546e27f1f27af8f04067d7b07571421d08eb440d2efa982"
+    },
+    {
+      "slide": 12,
+      "sha256": "b6891f98c2f7c6b80e28fa81c12ab8756bcfc4953e5d740ffb577902b7b2e85e"
+    },
+    {
+      "slide": 13,
+      "sha256": "9ecc23a87a010edbdbcee8ec2f6c4201a3d822a1a904b0daa65a5846f2c8591a"
+    },
+    {
+      "slide": 14,
+      "sha256": "e3a10cb651880ab9d394cc055dbc783838f85d598af000719f84fb0022f45077"
+    },
+    {
+      "slide": 15,
+      "sha256": "16f8582f8be15e8533dc8d8006eaf2cfc03edbd21cb4f6a7c7688815ec871be2"
+    },
+    {
+      "slide": 16,
+      "sha256": "d858b1f849e13804c869ce48972f33ddaa8b8a0e6a4ca17aa6b4e7350c1a2aad"
+    },
+    {
+      "slide": 17,
+      "sha256": "3d667dcda1141ef5761db5ac27bc3a643a6b842d1efa98aa14f099eb679c9028"
+    },
+    {
+      "slide": 18,
+      "sha256": "7cad933757da39e593a13584f08a42a1697422e91f210e90d6a4fa10344f40f7"
+    },
+    {
+      "slide": 19,
+      "sha256": "d720f29cfb340b27986cce2fd73653ff28d115a2f4939ad20a469d14aad580b9"
+    },
+    {
+      "slide": 20,
+      "sha256": "3a8740b2ad6fac856bc988bdaca0e2d1a00905b29fbd1c436d771e923bfed43e"
+    },
+    {
+      "slide": 21,
+      "sha256": "c5df152ac1c99654c9aed2fc8c6a62a0cdda0d31201c504d8c8aef44bc86e04b"
+    },
+    {
+      "slide": 22,
+      "sha256": "d617f0083bb470a70bfe6c74f67bf249b19b484dbcf7917a705e20927a2d32cc"
+    }
+  ],
+  "inlineScripts": [
+    "7b90796b371d284ca5cb6037a3e561bd74c008828cbfe387b809abd2afefb12f",
+    "c69aba2d0930ac3b0f55615927ff03f30908228d610fc682335463b51ecd7f65"
+  ]
+}

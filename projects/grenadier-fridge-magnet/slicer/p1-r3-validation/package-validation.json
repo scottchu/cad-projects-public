@@ -1,0 +1,253 @@
+{
+  "status": "PASS packaging parity only; no print release",
+  "fingerprint": "6f6797238847e77fcecac99ceb31848b7a3e011959c217bf198700446874203d",
+  "parent_candidate_verified_entries": 18,
+  "variants": [
+    {
+      "variant": "flat",
+      "glb_sha256": "bb0b2d54dba75530fbcce067229393cea5534d065251a18a5c6c7c60b8c34e77",
+      "3mf_sha256": "ed08511411e7f0f704002794505bf20ef0b883752667413c595f147675295eaf",
+      "assembled_build_items": 1,
+      "whole_translation_mm": [
+        135,
+        136,
+        0
+      ],
+      "bounds_mm": [
+        [
+          72.4000015,
+          84.2999992,
+          0.0
+        ],
+        [
+          197.4000015,
+          186.0999985,
+          2.0
+        ]
+      ],
+      "dimensions_mm": [
+        125.0,
+        101.7999993,
+        2.0
+      ],
+      "parts": [
+        {
+          "name": "backing-black",
+          "vertices": 5448,
+          "triangles": 10892,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 0
+        },
+        {
+          "name": "black-flat",
+          "vertices": 47276,
+          "triangles": 95168,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 0
+        },
+        {
+          "name": "deep-blue-flat",
+          "vertices": 1124,
+          "triangles": 2240,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 3
+        },
+        {
+          "name": "glass-mix-flat",
+          "vertices": 6536,
+          "triangles": 11996,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        },
+        {
+          "name": "gray-flat",
+          "vertices": 66140,
+          "triangles": 113864,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 1
+        },
+        {
+          "name": "white-flat",
+          "vertices": 28192,
+          "triangles": 52108,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        }
+      ]
+    },
+    {
+      "variant": "relief",
+      "glb_sha256": "143d67d0365a8b7fd9fc7e2425ee925cf59b24527607b98e8f768880b3966638",
+      "3mf_sha256": "ebc3caadaff4f41c513a3e4b12e6f328730021358deee32067c55cae5577d774",
+      "assembled_build_items": 1,
+      "whole_translation_mm": [
+        135,
+        136,
+        0
+      ],
+      "bounds_mm": [
+        [
+          72.4000015,
+          84.2999992,
+          0.0
+        ],
+        [
+          197.4000015,
+          186.0999985,
+          2.4000001
+        ]
+      ],
+      "dimensions_mm": [
+        125.0,
+        101.7999993,
+        2.4000001
+      ],
+      "parts": [
+        {
+          "name": "backing-black",
+          "vertices": 5448,
+          "triangles": 10892,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 0
+        },
+        {
+          "name": "black-high",
+          "vertices": 10184,
+          "triangles": 20340,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 0
+        },
+        {
+          "name": "black-low",
+          "vertices": 6484,
+          "triangles": 12836,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 0
+        },
+        {
+          "name": "black-middle",
+          "vertices": 36324,
+          "triangles": 72920,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 0
+        },
+        {
+          "name": "deep-blue-high",
+          "vertices": 1124,
+          "triangles": 2240,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 3
+        },
+        {
+          "name": "glass-mix-high",
+          "vertices": 2168,
+          "triangles": 3264,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        },
+        {
+          "name": "glass-mix-low",
+          "vertices": 4364,
+          "triangles": 8724,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        },
+        {
+          "name": "glass-mix-middle",
+          "vertices": 92,
+          "triangles": 172,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        },
+        {
+          "name": "gray-high",
+          "vertices": 14660,
+          "triangles": 25636,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 1
+        },
+        {
+          "name": "gray-low",
+          "vertices": 4584,
+          "triangles": 8500,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 1
+        },
+        {
+          "name": "gray-middle",
+          "vertices": 49920,
+          "triangles": 85548,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 1
+        },
+        {
+          "name": "white-high",
+          "vertices": 6604,
+          "triangles": 12740,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        },
+        {
+          "name": "white-low",
+          "vertices": 2384,
+          "triangles": 4740,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        },
+        {
+          "name": "white-middle",
+          "vertices": 19400,
+          "triangles": 34984,
+          "max_coordinate_serialization_error_mm": 3.7060548407907845e-08,
+          "exact_indices": true,
+          "indexed_nonmanifold_edges": 0,
+          "tool": 2
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Indexed edge closure does not prove welded-coordinate manifoldness; known point-pinched contacts retained intentionally.",
+    "3MF metadata mapping is independently verified; actual tool use awaits successful Gcode.",
+    "glass-mix including plate antialias regions maps to T2 white provisionally, so original blue edge color is not preserved or accepted.",
+    "No source, mesh, or geometry repaired; no physical acceptance."
+  ]
+}

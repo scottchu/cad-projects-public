@@ -1,0 +1,187 @@
+[
+  {
+    "slide": 1,
+    "title": "My 3D Printing Journey With AI Agents",
+    "minutes": 0.5,
+    "notes": "Introduce the two things I wanted to make: a wire-bending jig and a toothbrush travel case. Explain that this is a journey through attempts, evidence and changing decisions.",
+    "sources": [
+      "HISTORY",
+      "LAIFEN"
+    ]
+  },
+  {
+    "slide": 2,
+    "title": "I wanted to make physical things",
+    "minutes": 1,
+    "notes": "Explain that making the object was the goal. CAD, materials and printer skills still matter, but I wanted help carrying the tool work so I could spend more attention on intent and judgment.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 3,
+    "title": "A jig for bending two wires",
+    "minutes": 1.5,
+    "notes": "Point out the XT60 connector, the two wires and the grey forming rods. Trace the intended 90-degree bend, then point to the plates and grooves that guide movement.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 4,
+    "title": "The design kept changing",
+    "minutes": 1.5,
+    "notes": "Walk across the six historical CAD images. Use the folder count to convey the amount of recorded design work, then move to the physical observations that made revisions necessary.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 5,
+    "title": "The real jig changed the problem",
+    "minutes": 1.5,
+    "notes": "Name the three changes in the problem: room, fit and holding. Explain how releasing my hand revealed a different requirement from merely reaching a plausible pose.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 6,
+    "title": "I kept asking for another rail route",
+    "minutes": 1,
+    "notes": "Describe the frustration of asking for another rail route while the relationships remained unclear. Use the illustrative loop to explain where a vague failure report loses information.",
+    "sources": [
+      "BRIEF",
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 7,
+    "title": "Simulation made the relationships visible",
+    "minutes": 1.5,
+    "notes": "Point to the same study from both perspectives: I can explain the intended contact; the agent can explain and revise the representation. Identify the rear cradle and front pad in the clamped pose.",
+    "sources": [
+      "SIMULATION",
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 8,
+    "title": "We could inspect the whole sequence",
+    "minutes": 1,
+    "notes": "Trace positioning, holding and release across the three screenshots. Explain why building a small feedback interface can be more useful than immediately generating another full model.",
+    "sources": [
+      "SIMULATION"
+    ]
+  },
+  {
+    "slide": 9,
+    "title": "A small print answered one fit question",
+    "minutes": 1.5,
+    "notes": "Use the cutaway to identify rod, guide and clearance. Read the observed tight-to-wobbly progression, then explain why 4.15 mm became a contextual sliding-fit reference.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 10,
+    "title": "Another experiment isolated a thin web",
+    "minutes": 1,
+    "notes": "Point to the thin bridge between the curved slots. Explain the physical question: can this specific web survive printing and handling. The toolpaths show preparation; the result is still pending.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 11,
+    "title": "Different questions need different evidence",
+    "minutes": 1.5,
+    "notes": "Compare the question each evidence type can answer. Emphasize that the cheapest useful experiment is the one that can change the decision, rather than always the smallest or fastest test.",
+    "sources": [
+      "BRIEF",
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 12,
+    "title": "The useful loop starts with a specific gap",
+    "minutes": 1.5,
+    "notes": "Start with the difference between what we observe and what we want. Follow one branch to its evidence, then show how person and agent interpret it together before the next action.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 13,
+    "title": "A focused loop changes what we ask for",
+    "minutes": 1,
+    "notes": "Compare the two complete loops. The focused version produces a specific observation about one uncertainty, making the next revision easier to justify.",
+    "sources": [
+      "BRIEF",
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 14,
+    "title": "The execution tools can sit beneath the agent",
+    "minutes": 1.5,
+    "notes": "Name the layers plainly: Snapmaker Orca CLI guided workflows performed preparation and authorized printing; U1 Print Studio MCP supplies read-only observation. Point to the fixture label and distinguish demonstrated workflows from further automation.",
+    "sources": [
+      "CAPABILITIES"
+    ]
+  },
+  {
+    "slide": 15,
+    "title": "A finished print still needs a person",
+    "minutes": 1,
+    "notes": "Use the single PETG pilot to separate printing from acceptance. Two cam-plate parts printed, but assembly exposed fit and mechanism-design failures. Read the human-loop sentence and explain what I still need to judge.",
+    "sources": [
+      "CAPABILITIES"
+    ]
+  },
+  {
+    "slide": 16,
+    "title": "Laifen: start with the parts I can hold",
+    "minutes": 1.5,
+    "notes": "Introduce the travel case for my Laifen electric toothbrush. Start with the actual earlier thread specimens, explain the hand-fit feedback and shape preference, then show the separate full-size R6 CAD.",
+    "sources": [
+      "LAIFEN"
+    ]
+  },
+  {
+    "slide": 17,
+    "title": "Extra length does not hold the brush in place",
+    "minutes": 2,
+    "notes": "Connect this to XT60: inspect one relationship before more execution. Compare the two outlined cavities, then open the earlier study and follow the 90-second demonstration below. Ask what evidence would settle whether bottom support is acceptable, without turning the slide into an audience exercise.",
+    "sources": [
+      "LAIFEN"
+    ]
+  },
+  {
+    "slide": 18,
+    "title": "The same approach works for software",
+    "minutes": 1,
+    "notes": "Apply the same planning habit to software: a stale reading could look current. Explain the small fixture, the screen evidence and the two conditional next actions. This is an illustrative experiment.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 19,
+    "title": "I want to choose what to learn next",
+    "minutes": 1,
+    "notes": "Imagine measuring holding force as a hand releases the jig. Explain what a sensor adds to a camera view and how a repeatable action could help; people still choose the criterion and interpret the result.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 20,
+    "title": "Keep human judgment in the feedback loop",
+    "minutes": 1,
+    "notes": "Return to the shared model at the center. Connect human intent and acceptance, agent reasoning and continuity, digital evidence and physical observations. Close by choosing what to learn next and designing feedback from day one.",
+    "sources": [
+      "BRIEF"
+    ]
+  }
+]

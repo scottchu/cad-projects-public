@@ -1,0 +1,106 @@
+{
+  "flat": {
+    "backing-black": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "black-flat": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "gray-flat": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "white-flat": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "deep-blue-flat": {
+      "welded_stl_watertight": true,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "glass-mix-flat": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    }
+  },
+  "relief": {
+    "backing-black": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "black-low": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "black-middle": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "black-high": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "gray-low": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "gray-middle": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "gray-high": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "white-low": {
+      "welded_stl_watertight": true,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "white-middle": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "white-high": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "deep-blue-high": {
+      "welded_stl_watertight": true,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "glass-mix-low": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "glass-mix-middle": {
+      "welded_stl_watertight": true,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    },
+    "glass-mix-high": {
+      "welded_stl_watertight": false,
+      "welded_stl_winding": true,
+      "bounds_volume_parity": true
+    }
+  }
+}

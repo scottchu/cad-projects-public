@@ -1,0 +1,10 @@
+[project]
+name = "cad-agent-lunch-and-learn"
+version = "0.1.0"
+description = "Evidence-based HTML lunch-and-learn on CAD and agent workflows"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[tool.uv]
+package = false

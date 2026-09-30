@@ -1,5 +1,23 @@
 # Project state
 
+## Baseline
+
+Preserved source and reference intake already integrated through PR 19; the detailed historical checkpoints below retain their hashes and validation limits.
+
+## Active iteration
+
+`2026-09-06-pattern-reference-intake`: 33 original images and proposed parameter groupings.
+
+## Acceptance state
+
+Historical independent review passes image archival and proposed design notes only. No pattern selection, new CAD, export, slicer, or physical acceptance follows from that intake.
+
+## Next action
+
+Select one small appearance/section gate before implementing another pattern. Local preview URLs in historical records are not a restored service after reformat.
+
+## Historical project records
+
 ## Main integration checkpoint — 2026-09-06
 
 The user explicitly approved merging the current work before continuing. PR [19](https://github.com/scottchu/design-projects/pull/19) is the delivery record; its GitHub merge state and merge commit are authoritative for completed integration. Reviewed source head is `90d73c13355385cc51bc2a17c2b3b2ac0d21cbe1` against main `6e00ba898d6435614782de2764c6aae0ff131de5`; only merge review and continuity records are added afterward. Final checks passed: 66 Node tests, 13 Python checks and an isolated production build. Read active `MERGE_REVIEW.md` and `HANDOFF.md` for provenance. The next action is to complete and verify this PR merge, then stop before new feature work. Historical draft/no-merge statements below describe earlier authorization. Proposed patterns and physical acceptance remain open.

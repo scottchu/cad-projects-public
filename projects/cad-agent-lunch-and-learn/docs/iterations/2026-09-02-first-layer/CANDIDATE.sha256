@@ -1,0 +1,14 @@
+d9311c0033f430e4d8e38a25a950e35a3168a97cee4335224be1d9074a934179  package-lock.json
+fa670fa6cef055b12982959a27588d8fda42dcd0fb91e5027fdd6f6e1753acaf  package.json
+2a2819bac968445b78e53a63b18b071e12c0c3f4cfb009809a42aaa47af9d292  projects/cad-agent-lunch-and-learn/build.mjs
+cd46845bea624c6b8c213c9b623a4fbe8e60bbf51ba08f6bb3765535977516a4  projects/cad-agent-lunch-and-learn/docs/REQUIREMENTS.md
+803fc319ac06fb18288b82e8a0df222f6d63f6684b25951b083c239f4a30baba  projects/cad-agent-lunch-and-learn/docs/SOURCES.md
+482d60bd8708972da87ea91a3ae54601af3ccda8f3bb59d14429ea98a1d1cd20  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-first-layer/BRIEF.md
+99f45bc2fea413b9e52a66fc0f220ccecbb6660397d288e039337f0b86ce7aba  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-first-layer/DESIGN.md
+55234a74dfdb328ac82865dadacc59b3cb0021d1c7c775a9fe7029ece0ed2806  projects/cad-agent-lunch-and-learn/docs/iterations/2026-09-02-first-layer/INPUTS.sha256
+c8766aeb3d0c03f0332e226b55a896bc33d52c21da0969f5a9263626cfb9dfa7  projects/cad-agent-lunch-and-learn/index.html
+48d2690df3bd6696dedb1ea5e281b9c598c181ca6482ede647e82bc458abe880  projects/cad-agent-lunch-and-learn/package.json
+bfe77aed606179d6e50e34418a1c7066b4810db02911b3589b514405b185755e  projects/cad-agent-lunch-and-learn/simulator.mjs
+dfdbecdbaebfed8adf1171c634bc6ba6b2b6ee3b3cb09fc8a6fef37ae3494436  projects/cad-agent-lunch-and-learn/test/deck.test.mjs
+4b23ae3a0c65fb861e1215e95ba435b5747d2d3c4f085a6e07a925af37263f5c  projects/xt60-bend-jig/docs/EXPERIENCE.md
+dcf770f5da16d5f71b4d99b69b1fe568adbabce64c37e66ece5250f6cd8f6bda  projects/xt60-bend-jig/docs/p13-cad-source-domain-amendment.md

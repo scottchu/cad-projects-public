@@ -1,0 +1,28 @@
+{
+  "status": "DIAGNOSTIC NON-PRINT-RELEASE",
+  "fingerprint": "1ffedbf975408c220d3d469fc7db953964ea0ce17d52659f9993d002f8cb2b9d",
+  "argv": [
+    "/Applications/Snapmaker Orca.app/Contents/MacOS/Snapmaker_Orca",
+    "--debug",
+    "3",
+    "--datadir",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/relief-run1/datadir",
+    "--load-settings",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/machine.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/process.json",
+    "--load-filaments",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/filament-0.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/filament-1.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/filament-2.json;/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/filament-3.json",
+    "--arrange",
+    "0",
+    "--orient",
+    "0",
+    "--slice",
+    "0",
+    "--export-3mf",
+    "relief-sliced.3mf",
+    "--outputdir",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3-recovery/relief-run1",
+    "/Users/scottchu/.codex/worktrees/a1ea952b-c880-4de4-b60d-6a179f4fa54b/design-projects/projects/grenadier-fridge-magnet/slicer/p1-r3/relief-diagnostic.3mf"
+  ],
+  "executable_sha256": "4c30e59cf582dcc4f12e43741fcab2f97045e972065d465481ed3760678d0fbe",
+  "started": 1788716451.235122
+}

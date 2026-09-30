@@ -1,0 +1,605 @@
+{
+  "flat": {
+    "gcode_sha256": "8c25bf304f425ca763839839a030a88856afe7aeea336a925a18b27c7c286259",
+    "complete_executable_block": true,
+    "layers": [
+      0.1,
+      0.18,
+      0.26,
+      0.34,
+      0.42,
+      0.5,
+      0.58,
+      0.66,
+      0.74,
+      0.82,
+      0.9,
+      0.98,
+      1.06,
+      1.14,
+      1.22,
+      1.3,
+      1.38,
+      1.46,
+      1.54,
+      1.62,
+      1.7,
+      1.78,
+      1.86,
+      1.94,
+      2.02
+    ],
+    "actual_extrusion_tool_segment_counts": {
+      "0": 993253,
+      "3": 9052,
+      "2": 296319,
+      "1": 377737
+    },
+    "actual_tool_changes": 30,
+    "extrusion_features": {
+      "Custom": 1,
+      "Prime tower": 63733,
+      "Inner wall": 624330,
+      "Outer wall": 492150,
+      "Gap infill": 141326,
+      "Bottom surface": 1559,
+      "Internal solid infill": 113324,
+      "Sparse infill": 215766,
+      "Internal Bridge": 10360,
+      "Top surface": 13812
+    },
+    "all_extrusion_centerline_bounds_mm": [
+      5.282,
+      1.0,
+      197.19,
+      260.571
+    ],
+    "object_extrusion_centerline_bounds_mm": [
+      72.71,
+      84.61,
+      197.19,
+      185.99
+    ],
+    "arc_extrusions": 0,
+    "metadata": [
+      "; filament used [mm] = 4247.27, 946.29, 865.17, 98.94",
+      "; filament used [cm3] = 10.22, 2.28, 2.08, 0.24",
+      "; filament used [g] = 12.67, 2.82, 2.58, 0.30",
+      "; total filament used [g] = 18.37",
+      "; total filament cost = 0.37",
+      "; total filament change = 30",
+      "; estimated printing time (normal mode) = 6h 52m 1s"
+    ],
+    "macros_not_resolved": {
+      "PRINT_START": 1,
+      "DEFECT_DETECTION_START": 1,
+      "TIMELAPSE_START": 1,
+      "DEFECT_DETECT_NOODLE_FIRST": 1,
+      "DEFECT_DETECTION_DETECT_BED": 1,
+      "SM_PRINT_CHECK_SWITCH_EXTRUDER": 1,
+      "SM_PRINT_EXTRUDER_PREHEAT": 3,
+      "SM_PRINT_AUTO_FEED": 4,
+      "SM_PRINT_FLOW_CALIBRATE": 4,
+      "ROUGHLY_CLEAN_NOZZLE_WITH_DISCARD": 1,
+      "DETECT_BED_PLATE": 1,
+      "ROUGHLY_CLEAN_NOZZLE": 2,
+      "FINELY_CLEAN_NOZZLE_STAGE_1": 1,
+      "FINELY_CLEAN_NOZZLE_STAGE_2": 1,
+      "WAIT_CHAMBER_TEMP": 1,
+      "BED_MESH_CALIBRATE": 1,
+      "TIMELAPSE_TAKE_FRAME": 25,
+      "DEFECT_DETECTION_DETECT": 25,
+      "SM_PRINT_PREEXTRUDE_FILAMENT": 25,
+      "PRINT_END": 1,
+      "TIMELAPSE_STOP": 1
+    },
+    "rois": {
+      "whole": {
+        "2.02": {
+          "segments": 67339,
+          "tool_segment_counts": {
+            "1": 19274,
+            "2": 11870,
+            "3": 857,
+            "0": 35338
+          },
+          "width_mm_min_max": [
+            0.0943324,
+            0.353998
+          ],
+          "source_bounds_mm": [
+            71,
+            83,
+            199,
+            187
+          ]
+        }
+      },
+      "plate": {
+        "2.02": {
+          "segments": 2260,
+          "tool_segment_counts": {
+            "1": 74,
+            "2": 951,
+            "3": 857,
+            "0": 378
+          },
+          "width_mm_min_max": [
+            0.0943369,
+            0.317882
+          ],
+          "source_bounds_mm": [
+            104.9,
+            103.8,
+            130.7,
+            114.9
+          ]
+        }
+      },
+      "wordmark": {
+        "2.02": {
+          "segments": 1373,
+          "tool_segment_counts": {
+            "1": 47,
+            "2": 499,
+            "0": 827
+          },
+          "width_mm_min_max": [
+            0.0943381,
+            0.275051
+          ],
+          "source_bounds_mm": [
+            143.9,
+            137.4,
+            162.5,
+            145.0
+          ]
+        }
+      },
+      "lamp-1": {
+        "2.02": {
+          "segments": 1989,
+          "tool_segment_counts": {
+            "1": 434,
+            "2": 609,
+            "0": 946
+          },
+          "width_mm_min_max": [
+            0.0943341,
+            0.294342
+          ],
+          "source_bounds_mm": [
+            80.0,
+            120.2,
+            92.0,
+            133.2
+          ]
+        }
+      },
+      "lamp-2": {
+        "2.02": {
+          "segments": 2361,
+          "tool_segment_counts": {
+            "1": 934,
+            "2": 450,
+            "0": 977
+          },
+          "width_mm_min_max": [
+            0.0943381,
+            0.334759
+          ],
+          "source_bounds_mm": [
+            95.19999999999999,
+            119.5,
+            107.0,
+            131.5
+          ]
+        }
+      },
+      "lamp-3": {
+        "2.02": {
+          "segments": 2392,
+          "tool_segment_counts": {
+            "1": 969,
+            "2": 432,
+            "0": 991
+          },
+          "width_mm_min_max": [
+            0.0943381,
+            0.298881
+          ],
+          "source_bounds_mm": [
+            126.5,
+            118.9,
+            138.5,
+            131.3
+          ]
+        }
+      },
+      "lamp-4": {
+        "2.02": {
+          "segments": 2094,
+          "tool_segment_counts": {
+            "1": 438,
+            "2": 652,
+            "0": 1004
+          },
+          "width_mm_min_max": [
+            0.0943381,
+            0.225252
+          ],
+          "source_bounds_mm": [
+            146.0,
+            119.1,
+            159.0,
+            132.9
+          ]
+        }
+      }
+    },
+    "media": [
+      "flat-whole-z2.02.svg",
+      "flat-plate-z2.02.svg",
+      "flat-wordmark-z2.02.svg",
+      "flat-lamp-1-z2.02.svg",
+      "flat-lamp-2-z2.02.svg",
+      "flat-lamp-3-z2.02.svg",
+      "flat-lamp-4-z2.02.svg"
+    ],
+    "temperatures": [
+      "M104 S0 T0 A0",
+      "M104 S0 T1 A0",
+      "M104 S0 T2 A0",
+      "M104 S0 T3 A0",
+      "M104 S130",
+      "M104 S220 T0",
+      "M104 S220 T1",
+      "M104 S220 T2",
+      "M104 S220 T3",
+      "M104 S70 T0",
+      "M104 S70 T1",
+      "M104 S70 T2",
+      "M104 S70 T3",
+      "M104 T0 S130",
+      "M104 T0 S140",
+      "M109 S130",
+      "M109 S170",
+      "M109 S220",
+      "M109 S220 T0",
+      "M109 S220 T1",
+      "M109 S220 T2",
+      "M109 S220 T3",
+      "M109 T0 S130",
+      "M140 S65",
+      "M190 S65"
+    ]
+  },
+  "relief": {
+    "gcode_sha256": "dc41c358a0ca015ddc2fae5aa9676e9cdacd13b7dc62a5029aa6db3d20ae54d5",
+    "complete_executable_block": true,
+    "layers": [
+      0.1,
+      0.18,
+      0.26,
+      0.34,
+      0.42,
+      0.5,
+      0.58,
+      0.66,
+      0.74,
+      0.82,
+      0.9,
+      0.98,
+      1.06,
+      1.14,
+      1.22,
+      1.3,
+      1.38,
+      1.46,
+      1.54,
+      1.62,
+      1.7,
+      1.78,
+      1.86,
+      1.94,
+      2.02,
+      2.1,
+      2.18,
+      2.26,
+      2.34,
+      2.42
+    ],
+    "actual_extrusion_tool_segment_counts": {
+      "0": 989907,
+      "3": 13591,
+      "2": 301850,
+      "1": 400577
+    },
+    "actual_tool_changes": 45,
+    "extrusion_features": {
+      "Custom": 1,
+      "Prime tower": 66400,
+      "Inner wall": 628585,
+      "Outer wall": 529290,
+      "Gap infill": 148911,
+      "Bottom surface": 1559,
+      "Internal solid infill": 112220,
+      "Sparse infill": 193246,
+      "Internal Bridge": 10496,
+      "Top surface": 15217
+    },
+    "all_extrusion_centerline_bounds_mm": [
+      5.258,
+      1.0,
+      197.19,
+      260.594
+    ],
+    "object_extrusion_centerline_bounds_mm": [
+      72.71,
+      84.61,
+      197.19,
+      185.99
+    ],
+    "arc_extrusions": 0,
+    "metadata": [
+      "; filament used [mm] = 4662.77, 977.04, 791.09, 148.25",
+      "; filament used [cm3] = 11.22, 2.35, 1.90, 0.36",
+      "; filament used [g] = 13.91, 2.91, 2.36, 0.44",
+      "; total filament used [g] = 19.62",
+      "; total filament cost = 0.39",
+      "; total filament change = 45",
+      "; estimated printing time (normal mode) = 7h 12m 22s"
+    ],
+    "macros_not_resolved": {
+      "PRINT_START": 1,
+      "DEFECT_DETECTION_START": 1,
+      "TIMELAPSE_START": 1,
+      "DEFECT_DETECT_NOODLE_FIRST": 1,
+      "DEFECT_DETECTION_DETECT_BED": 1,
+      "SM_PRINT_CHECK_SWITCH_EXTRUDER": 1,
+      "SM_PRINT_EXTRUDER_PREHEAT": 3,
+      "SM_PRINT_AUTO_FEED": 4,
+      "SM_PRINT_FLOW_CALIBRATE": 4,
+      "ROUGHLY_CLEAN_NOZZLE_WITH_DISCARD": 1,
+      "DETECT_BED_PLATE": 1,
+      "ROUGHLY_CLEAN_NOZZLE": 2,
+      "FINELY_CLEAN_NOZZLE_STAGE_1": 1,
+      "FINELY_CLEAN_NOZZLE_STAGE_2": 1,
+      "WAIT_CHAMBER_TEMP": 1,
+      "BED_MESH_CALIBRATE": 1,
+      "TIMELAPSE_TAKE_FRAME": 30,
+      "DEFECT_DETECTION_DETECT": 30,
+      "SM_PRINT_PREEXTRUDE_FILAMENT": 38,
+      "PRINT_END": 1,
+      "TIMELAPSE_STOP": 1
+    },
+    "rois": {
+      "whole": {
+        "1.62": {
+          "segments": 126779,
+          "tool_segment_counts": {
+            "0": 59358,
+            "3": 837,
+            "2": 27970,
+            "1": 38614
+          },
+          "width_mm_min_max": [
+            0.0443181,
+            0.377527
+          ],
+          "source_bounds_mm": [
+            71,
+            83,
+            199,
+            187
+          ]
+        },
+        "2.02": {
+          "segments": 70738,
+          "tool_segment_counts": {
+            "1": 21505,
+            "2": 13108,
+            "3": 837,
+            "0": 35288
+          },
+          "width_mm_min_max": [
+            0.0443201,
+            0.359489
+          ],
+          "source_bounds_mm": [
+            71,
+            83,
+            199,
+            187
+          ]
+        },
+        "2.42": {
+          "segments": 15099,
+          "tool_segment_counts": {
+            "0": 6530,
+            "3": 867,
+            "2": 3365,
+            "1": 4337
+          },
+          "width_mm_min_max": [
+            0.0943322,
+            0.346305
+          ],
+          "source_bounds_mm": [
+            71,
+            83,
+            199,
+            187
+          ]
+        }
+      },
+      "plate": {
+        "2.42": {
+          "segments": 2273,
+          "tool_segment_counts": {
+            "0": 382,
+            "3": 867,
+            "2": 951,
+            "1": 73
+          },
+          "width_mm_min_max": [
+            0.0943362,
+            0.31788
+          ],
+          "source_bounds_mm": [
+            104.9,
+            103.8,
+            130.7,
+            114.9
+          ]
+        }
+      },
+      "wordmark": {
+        "2.02": {
+          "segments": 1338,
+          "tool_segment_counts": {
+            "1": 47,
+            "2": 499,
+            "0": 792
+          },
+          "width_mm_min_max": [
+            0.0943381,
+            0.260565
+          ],
+          "source_bounds_mm": [
+            143.9,
+            137.4,
+            162.5,
+            145.0
+          ]
+        }
+      },
+      "lamp-1": {
+        "2.42": {
+          "segments": 1963,
+          "tool_segment_counts": {
+            "0": 891,
+            "2": 607,
+            "1": 465
+          },
+          "width_mm_min_max": [
+            0.0943341,
+            0.333044
+          ],
+          "source_bounds_mm": [
+            80.0,
+            120.2,
+            92.0,
+            133.2
+          ]
+        }
+      },
+      "lamp-2": {
+        "2.42": {
+          "segments": 2342,
+          "tool_segment_counts": {
+            "0": 1076,
+            "2": 450,
+            "1": 816
+          },
+          "width_mm_min_max": [
+            0.0943381,
+            0.346305
+          ],
+          "source_bounds_mm": [
+            95.19999999999999,
+            119.5,
+            107.0,
+            131.5
+          ]
+        }
+      },
+      "lamp-3": {
+        "2.42": {
+          "segments": 2348,
+          "tool_segment_counts": {
+            "0": 1101,
+            "2": 433,
+            "1": 814
+          },
+          "width_mm_min_max": [
+            0.0943381,
+            0.336279
+          ],
+          "source_bounds_mm": [
+            126.5,
+            118.9,
+            138.5,
+            131.3
+          ]
+        }
+      },
+      "lamp-4": {
+        "2.42": {
+          "segments": 2141,
+          "tool_segment_counts": {
+            "0": 973,
+            "2": 651,
+            "1": 517
+          },
+          "width_mm_min_max": [
+            0.0943322,
+            0.299922
+          ],
+          "source_bounds_mm": [
+            146.0,
+            119.1,
+            159.0,
+            132.9
+          ]
+        }
+      }
+    },
+    "media": [
+      "relief-whole-z1.62.svg",
+      "relief-whole-z2.02.svg",
+      "relief-whole-z2.42.svg",
+      "relief-plate-z2.42.svg",
+      "relief-wordmark-z2.02.svg",
+      "relief-lamp-1-z2.42.svg",
+      "relief-lamp-2-z2.42.svg",
+      "relief-lamp-3-z2.42.svg",
+      "relief-lamp-4-z2.42.svg"
+    ],
+    "temperatures": [
+      "M104 S0 T0 A0",
+      "M104 S0 T1 A0",
+      "M104 S0 T2 A0",
+      "M104 S0 T3 A0",
+      "M104 S130",
+      "M104 S220 T0",
+      "M104 S220 T1",
+      "M104 S220 T2",
+      "M104 S220 T3",
+      "M104 S70 T0",
+      "M104 S70 T1",
+      "M104 S70 T2",
+      "M104 S70 T3",
+      "M104 T0 S130",
+      "M104 T0 S140",
+      "M109 S130",
+      "M109 S170",
+      "M109 S220",
+      "M109 S220 T0",
+      "M109 S220 T1",
+      "M109 S220 T2",
+      "M109 S220 T3",
+      "M109 T0 S130",
+      "M140 S65",
+      "M190 S65"
+    ],
+    "archive_gcode_exact_match": true,
+    "native_thumbnails": []
+  },
+  "fingerprint": "b605c99ed5ce11538a0643ff4ef2fd4353f1d12858936f57fdc322fc3cba54d1",
+  "limits": [
+    "Selected-layer paths are direct Gcode extrusion strokes, not a simulated final appearance or measured bead size.",
+    "PNG inspection copies use rounded display pixels; SVG retains actual declared width.",
+    "Native firmware macros not simulated. No printer or physical validation."
+  ]
+}

@@ -1,4 +1,4 @@
-# Design Projects
+# CAD Projects
 
 Private monorepo for personal parametric design, simulation, CAD, fabrication, and physical-validation projects.
 
@@ -7,7 +7,7 @@ The repository is intentionally a container for multiple independent projects. E
 ## Repository layout
 
 ```text
-design-projects/
+cad-projects/
 ├── AGENTS.md
 ├── README.md
 ├── pyproject.toml
@@ -36,6 +36,10 @@ design-projects/
 Reusable workflow source, policies, templates and skills belong to [CAD Workbench](https://github.com/scottchu/CAD-workbench). This repository selects them through [the versioned binding](docs/workflows-binding.json). Actual design source and evidence stay project-owned. The sticker project now lives in [sticker-projects](https://github.com/scottchu/sticker-projects) at the preserved `projects/example-sticker-pack` path; its historical V2 release remains in this repository's GitHub releases.
 
 ## Project discovery
+
+- [CAD and agent lunch-and-learn](projects/cad-agent-lunch-and-learn/README.md): completed 20-slide offline HTML presentation.
+- [Grenadier fridge magnet](projects/grenadier-fridge-magnet/README.md): completed development preview and nozzle studies; print release and physical validation remain blocked.
+- [Reformat recovery](docs/REFORMAT_RECOVERY.md): off-machine backups, worktree dispositions, and restoration instructions.
 
 - [XT60 bend jig](projects/xt60-bend-jig/README.md): P25 first-CAD preview is
   current; P19 remains the accepted digital mechanism baseline.

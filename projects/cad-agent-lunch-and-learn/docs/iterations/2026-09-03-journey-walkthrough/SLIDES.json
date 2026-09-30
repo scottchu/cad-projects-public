@@ -1,0 +1,190 @@
+[
+  {
+    "slide": 1,
+    "title": "My 3D Printing Journey With AI Agents",
+    "minutes": 0.5,
+    "notes": "Introduce the two things I wanted to make: a wire-bending jig and a toothbrush travel case. Explain that this is a journey through attempts, evidence and changing decisions.",
+    "sources": [
+      "HISTORY",
+      "LAIFEN"
+    ]
+  },
+  {
+    "slide": 2,
+    "title": "I started with downloaded models",
+    "minutes": 1,
+    "notes": "Start at the beginning: buying the printer, downloading models and printing them. Explain the shift from choosing an existing design to wanting a personal solution.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 3,
+    "title": "My own ideas came with a stack of skills",
+    "minutes": 1,
+    "notes": "Trace the vertical stack between an idea and an object. Explain that the barrier was learning how these decisions fit together, rather than just finding a button in one application.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 4,
+    "title": "The agent was an assistant and a teacher",
+    "minutes": 1,
+    "notes": "Explain both roles in ordinary language. The agent could help produce work and make its reasoning understandable. Lead into the jig as a real project where these roles were tested.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 5,
+    "title": "A jig for bending two wires",
+    "minutes": 1.5,
+    "notes": "Point out the XT60 connector, the two wires and the grey forming rods. Trace the intended 90-degree bend, then point to the plates and grooves that guide movement.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 6,
+    "title": "The design kept changing",
+    "minutes": 1.5,
+    "notes": "Walk across the six historical CAD images. Use the folder count to convey the amount of recorded design work, then move to the physical observations that made revisions necessary.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 7,
+    "title": "The real jig changed the problem",
+    "minutes": 1.5,
+    "notes": "Name the three changes in the problem: room, fit and holding. Explain how releasing my hand revealed a different requirement from merely reaching a plausible pose.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 8,
+    "title": "I kept asking for another rail route",
+    "minutes": 1,
+    "notes": "Describe relying on AI to deliver the imagined mechanism. Explain that seeing relationships in simulation changed how I could reason with the agent. The exact original customizer is missing; the next slide uses other recovered studies.",
+    "sources": [
+      "BRIEF",
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 9,
+    "title": "Different studies answered different questions",
+    "minutes": 1.5,
+    "notes": "Compare the questions, not competing accepted designs. The earlier study prescribes paths for the rods. P25 keeps rod centers fixed while fixture poses show contact and release. Identify its rear cradle supporting Blue and Green and its front pad holding Orange. These are separate historical hypotheses; neither is the missing original rail customizer or a force solver.",
+    "sources": [
+      "SIMULATION",
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 10,
+    "title": "The fit test became knowledge we could reuse",
+    "minutes": 1.5,
+    "notes": "Identify the rod, guide and clearance in the cutaway. Follow the observed tight-to-wobbly progression. Explain how the 4.15 mm result was recorded with its material, nozzle and rod context, making it available for later decisions without claiming universal fit.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 11,
+    "title": "We prepared a print around one question",
+    "minutes": 1,
+    "notes": "Point to the thin web between curved slots. Explain how a smaller experiment can retain the actual uncertainty. This record contains prepared toolpaths and slicer estimates; the physical survival result remains pending.",
+    "sources": [
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 12,
+    "title": "I learned to choose the smallest useful test",
+    "minutes": 1.5,
+    "notes": "Compare the question each evidence type can answer. Emphasize that the cheapest useful experiment is the one that can change the decision, rather than always the smallest or fastest test.",
+    "sources": [
+      "BRIEF",
+      "HISTORY"
+    ]
+  },
+  {
+    "slide": 13,
+    "title": "Tools reduced the work between decisions",
+    "minutes": 1.5,
+    "notes": "Explain how guided Snapmaker Orca CLI workflows carried preparation and authorized printing, while U1 Print Studio MCP supplied read-only observation. These tool connections reduced execution friction; they did not remove the need to choose and interpret the experiment.",
+    "sources": [
+      "CAPABILITIES"
+    ]
+  },
+  {
+    "slide": 14,
+    "title": "A finished print still needed me",
+    "minutes": 1,
+    "notes": "Use the single PETG pilot to separate printing from acceptance. Two cam-plate parts printed, but assembly exposed fit and mechanism-design failures. Read the human-loop sentence and explain what I still need to judge.",
+    "sources": [
+      "CAPABILITIES"
+    ]
+  },
+  {
+    "slide": 15,
+    "title": "The projects and the working system grew together",
+    "minutes": 1.5,
+    "notes": "Use the two loops as the payoff of co-evolution. Point back to the saved fit reference, the separate studies and the guided tools. Explain that project pressure supplied the reason for each improvement; this is not a dated claim that every capability appeared in this order.",
+    "sources": [
+      "BRIEF",
+      "HISTORY",
+      "SIMULATION",
+      "CAPABILITIES"
+    ]
+  },
+  {
+    "slide": 16,
+    "title": "Laifen: a case for my electric toothbrush",
+    "minutes": 1,
+    "notes": "Introduce Laifen as the current example of this way of working. Show the earlier physical thread specimens and their hand-fit feedback, then distinguish the separately reviewed full-size R6 CAD. The physical specimens informed preference, not proof of R6 loaded fit.",
+    "sources": [
+      "LAIFEN"
+    ]
+  },
+  {
+    "slide": 17,
+    "title": "Extra length does not hold the brush in place",
+    "minutes": 2,
+    "notes": "Connect this to XT60: inspect one relationship before more execution. Compare the two outlined cavities, then open the earlier study and follow the 90-second demonstration below. Ask what evidence would settle whether bottom support is acceptable, without turning the slide into an audience exercise.",
+    "sources": [
+      "LAIFEN"
+    ]
+  },
+  {
+    "slide": 18,
+    "title": "Now we can name what remains to learn",
+    "minutes": 1,
+    "notes": "Move beyond the clearance observation to the actual acceptance decision. Separate earlier closure feedback, nominal model evidence and the still-needed full-size loaded-case observations. Explain what a useful result would let us decide.",
+    "sources": [
+      "LAIFEN",
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 19,
+    "title": "The same habit can guide other work",
+    "minutes": 1,
+    "notes": "Compare the same uncertainty, experiment and decision pattern across software and physical work. Keep the software fixture explicitly illustrative and sensor or arm examples future-facing. Leave the full architecture to the next slide.",
+    "sources": [
+      "BRIEF"
+    ]
+  },
+  {
+    "slide": 20,
+    "title": "Keep human judgment in the feedback loop",
+    "minutes": 1,
+    "notes": "Return to the shared model at the center. Connect human intent and acceptance, agent reasoning and continuity, digital evidence and physical observations. Close by choosing what to learn next and designing feedback from day one.",
+    "sources": [
+      "BRIEF"
+    ]
+  }
+]

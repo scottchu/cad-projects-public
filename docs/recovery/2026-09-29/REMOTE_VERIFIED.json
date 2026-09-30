@@ -1,0 +1,140 @@
+[
+  {
+    "file": "00-cad-projects.tar.gz",
+    "sha256": "1760e0453beba81305e6ffce4c673341b6bc61bb36a43eef9740621e4adbfb4f",
+    "bytes": 8964612,
+    "download_verified": true
+  },
+  {
+    "file": "01-cad-projects.tar.gz",
+    "sha256": "c7c645ba8964fa6e07bf96f23325d213e8f36587ee217e19e7b618d9c39acda2",
+    "bytes": 55621423,
+    "download_verified": true
+  },
+  {
+    "file": "02-cad-projects.tar.gz",
+    "sha256": "33674d05b642018c3bdaa16d364d8666591971b36cf0bef18cba6b03794ba14a",
+    "bytes": 259655866,
+    "download_verified": true
+  },
+  {
+    "file": "03-cad-projects.tar.gz",
+    "sha256": "a0f645b9aa9d0df45edbacd5a7d324c7441480dbb6b428d9cb4e7b452b602107",
+    "bytes": 19452589,
+    "download_verified": true
+  },
+  {
+    "file": "04-cad-projects.tar.gz",
+    "sha256": "67cebce76bcf1c3c93e66ea6eb17d3292d0aad70e201504054d91245666d0569",
+    "bytes": 123308014,
+    "download_verified": true
+  },
+  {
+    "file": "05-cad-projects.tar.gz",
+    "sha256": "41465cc9e51bef49f71de4f42a76b47e3ded29e459d09627491fe8c77e30f1ee",
+    "bytes": 30098803,
+    "download_verified": true
+  },
+  {
+    "file": "06-cad-projects.tar.gz",
+    "sha256": "c200f330531187e7649fdf11fe9a25a72cf0430c19946eb1be4946a6ca192c1d",
+    "bytes": 101698,
+    "download_verified": true
+  },
+  {
+    "file": "07-cad-projects.tar.gz",
+    "sha256": "40bda8918c5107356bc9414c11fdb758eb49d952dfb580b03cf864128307ddbe",
+    "bytes": 2614220,
+    "download_verified": true
+  },
+  {
+    "file": "08-cad-projects.tar.gz",
+    "sha256": "72e16608e4086cb2e3edbf81ccfdf35ced87b318938c7021f68bb0ddae2140fb",
+    "bytes": 254759,
+    "download_verified": true
+  },
+  {
+    "file": "09-cad-projects.tar.gz",
+    "sha256": "cdf8049c6fc9e6b5178b1c87bd497996ccb262b6774b56695c8d68c0f09d9d31",
+    "bytes": 6264685,
+    "download_verified": true
+  },
+  {
+    "file": "10-sticker-projects.tar.gz",
+    "sha256": "26570dd41e5520e15727b0122ce5ed4e305df9243f3e2dcf8fa30c007dc2dd8f",
+    "bytes": 1527,
+    "download_verified": true
+  },
+  {
+    "file": "11-CAD-workbench.tar.gz",
+    "sha256": "8deb44c84a09864ea7dd154971107bfd617ad14ff8d1bd82331c14e7a69b5e56",
+    "bytes": 699566,
+    "download_verified": true
+  },
+  {
+    "file": "12-workflow-library.tar.gz",
+    "sha256": "f9f07161b41735ed55944c29a9b6af92a75d79e1e1972186ed32403ccd95978d",
+    "bytes": 16532,
+    "download_verified": true
+  },
+  {
+    "file": "archives.json",
+    "sha256": "d280d5b35ebed31a1492a32718549aec10a5ea7b209a9ab29ab0d2310cb9de07",
+    "bytes": 5689,
+    "download_verified": true
+  },
+  {
+    "file": "cad-projects.bundle",
+    "sha256": "34cde78ef1ff701ecf0b1e984253ec567c9764531b9f7314bdd9d42998582ca5",
+    "bytes": 468858252,
+    "download_verified": true
+  },
+  {
+    "file": "CAD-workbench.bundle",
+    "sha256": "e7cf8b490fe5f81ebe8f5938b305b8baa704e2fab4f4c86499e4e4f2053e2391",
+    "bytes": 432297,
+    "download_verified": true
+  },
+  {
+    "file": "inventory.json",
+    "sha256": "07d719c19b287fe4d24a140623d9e334f7b79a02b63df0978833b68f28a8819a",
+    "bytes": 17845442,
+    "download_verified": true
+  },
+  {
+    "file": "preserve.py",
+    "sha256": "a306462ca85212a53d6e2335dffd02b5590afba8d5b825400561389bf3be2445",
+    "bytes": 4439,
+    "download_verified": true
+  },
+  {
+    "file": "previous-main-backup.tar.gz",
+    "sha256": "b0c76052a7f3fed577cc39f6a2743192819e6fbf01d4f8d36e872bd450d56626",
+    "bytes": 29105967,
+    "download_verified": true
+  },
+  {
+    "file": "SHA256SUMS",
+    "sha256": "46da4e1fc962aa3d58cd7eaaa69a04e5893c1f786a3ab088a91503a36838e760",
+    "bytes": 1722,
+    "download_verified": true
+  },
+  {
+    "file": "sticker-projects.bundle",
+    "sha256": "b3b59081b0172a148ae87c4ef4cd0185f75848af2ea25818fddaf4f3162917ae",
+    "bytes": 365574898,
+    "download_verified": true
+  },
+  {
+    "file": "sticker-rejected-release-quarantine.tar.gz",
+    "sha256": "093d5b1f421625003189cd03f2cc317a531fbcec5f25de6a39b39fbc3d1d5b12",
+    "bytes": 70185594,
+    "download_verified": true
+  },
+  {
+    "file": "workflow-library.bundle",
+    "sha256": "b999c829cb9744cf7b1b5e668133464bb85552a5f86eb7cd93d4d780dade4bbb",
+    "bytes": 382,
+    "download_verified": true
+  }
+]

@@ -1,0 +1,785 @@
+{
+  "parameters": {
+    "working_mm_per_source_unit": 0.1,
+    "xy_scale": 1.0,
+    "back_thickness_mm": 1.2,
+    "flat_face_depth_mm": 0.8,
+    "low_depth_mm": 0.4,
+    "middle_depth_mm": 0.8,
+    "high_depth_mm": 1.2
+  },
+  "features": {
+    "plate": {
+      "bounds": [
+        326,
+        838,
+        584,
+        949
+      ],
+      "anchor": [
+        455,
+        893.5
+      ],
+      "xy_scale": 1.0,
+      "stroke_offset_source_units": 0
+    },
+    "grenadier_wordmark": {
+      "bounds": [
+        716,
+        537,
+        902,
+        613
+      ],
+      "anchor": [
+        809,
+        575
+      ],
+      "xy_scale": 1.0,
+      "stroke_offset_source_units": 0
+    },
+    "lamps": {
+      "bounds": [
+        [
+          77,
+          655,
+          197,
+          785
+        ],
+        [
+          229,
+          672,
+          347,
+          792
+        ],
+        [
+          542,
+          674,
+          662,
+          798
+        ],
+        [
+          737,
+          658,
+          867,
+          796
+        ]
+      ],
+      "anchor": [
+        457,
+        730
+      ],
+      "xy_scale": 1.0,
+      "stroke_offset_source_units": 0
+    }
+  },
+  "regions": {
+    "windshield": [
+      [
+        299,
+        464
+      ],
+      [
+        334,
+        292
+      ],
+      [
+        365,
+        267
+      ],
+      [
+        904,
+        250
+      ],
+      [
+        927,
+        279
+      ],
+      [
+        931,
+        453
+      ],
+      [
+        904,
+        476
+      ]
+    ],
+    "side-front": [
+      [
+        971,
+        285
+      ],
+      [
+        1029,
+        307
+      ],
+      [
+        1050,
+        497
+      ],
+      [
+        978,
+        508
+      ]
+    ],
+    "side-middle": [
+      [
+        1044,
+        313
+      ],
+      [
+        1100,
+        326
+      ],
+      [
+        1120,
+        490
+      ],
+      [
+        1065,
+        500
+      ]
+    ],
+    "side-rear": [
+      [
+        1115,
+        322
+      ],
+      [
+        1160,
+        337
+      ],
+      [
+        1176,
+        491
+      ],
+      [
+        1139,
+        500
+      ]
+    ],
+    "grille": [
+      [
+        236,
+        628
+      ],
+      [
+        677,
+        626
+      ],
+      [
+        681,
+        818
+      ],
+      [
+        236,
+        810
+      ]
+    ],
+    "bumper": [
+      [
+        36,
+        804
+      ],
+      [
+        225,
+        811
+      ],
+      [
+        263,
+        831
+      ],
+      [
+        619,
+        829
+      ],
+      [
+        673,
+        809
+      ],
+      [
+        938,
+        814
+      ],
+      [
+        944,
+        938
+      ],
+      [
+        878,
+        961
+      ],
+      [
+        690,
+        971
+      ],
+      [
+        626,
+        951
+      ],
+      [
+        279,
+        951
+      ],
+      [
+        234,
+        965
+      ],
+      [
+        79,
+        919
+      ],
+      [
+        36,
+        889
+      ]
+    ],
+    "plate": [
+      [
+        329,
+        838
+      ],
+      [
+        583,
+        838
+      ],
+      [
+        584,
+        949
+      ],
+      [
+        326,
+        949
+      ]
+    ]
+  },
+  "lamps": [
+    [
+      137,
+      720,
+      60,
+      65
+    ],
+    [
+      288,
+      732,
+      59,
+      60
+    ],
+    [
+      602,
+      736,
+      60,
+      62
+    ],
+    [
+      802,
+      727,
+      65,
+      69
+    ]
+  ],
+  "representation": "closed multipart mesh; exact grid; no STEP",
+  "material_intents": {
+    "black": "black",
+    "gray": "gray",
+    "white": "white",
+    "deep-blue": "deep-blue",
+    "glass-mix": "blue+white unresolved process placeholder; NOT fifth spool"
+  },
+  "variants": {
+    "flat": {
+      "parts": {
+        "backing-black": {
+          "components": 179,
+          "faces": 10532,
+          "pixel_area": 1011482,
+          "bounds": [
+            [
+              -62.6,
+              -51.7,
+              0.0
+            ],
+            [
+              62.400000000000006,
+              50.1,
+              1.2
+            ]
+          ],
+          "volume_mm3": 12137.784,
+          "expected_volume_mm3": 12137.784000000001,
+          "z0": 0,
+          "depth": 1.2,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "black-flat": {
+          "components": 31,
+          "faces": 95168,
+          "pixel_area": 473660,
+          "bounds": [
+            [
+              -62.300000000000004,
+              -51.400000000000006,
+              1.2
+            ],
+            [
+              62.2,
+              49.900000000000006,
+              2.0
+            ]
+          ],
+          "volume_mm3": 3789.28,
+          "expected_volume_mm3": 3789.280000000001,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "gray-flat": {
+          "components": 4624,
+          "faces": 113864,
+          "pixel_area": 291556,
+          "bounds": [
+            [
+              -62.400000000000006,
+              -51.5,
+              1.2
+            ],
+            [
+              62.300000000000004,
+              50.0,
+              2.0
+            ]
+          ],
+          "volume_mm3": 2332.4480000000003,
+          "expected_volume_mm3": 2332.4480000000003,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "white-flat": {
+          "components": 1098,
+          "faces": 52108,
+          "pixel_area": 154325,
+          "bounds": [
+            [
+              -62.6,
+              -51.7,
+              1.2
+            ],
+            [
+              62.400000000000006,
+              50.1,
+              2.0
+            ]
+          ],
+          "volume_mm3": 1234.6000000000006,
+          "expected_volume_mm3": 1234.6000000000004,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "deep-blue-flat": {
+          "components": 7,
+          "faces": 2240,
+          "pixel_area": 5587,
+          "bounds": [
+            [
+              -27.8,
+              -29.8,
+              1.2
+            ],
+            [
+              -6.6000000000000005,
+              -24.0,
+              2.0
+            ]
+          ],
+          "volume_mm3": 44.69600000000003,
+          "expected_volume_mm3": 44.69600000000001,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "glass-mix-flat": {
+          "components": 274,
+          "faces": 11996,
+          "pixel_area": 86354,
+          "bounds": [
+            [
+              -31.5,
+              -29.900000000000002,
+              1.2
+            ],
+            [
+              53.5,
+              37.1,
+              2.0
+            ]
+          ],
+          "volume_mm3": 690.832,
+          "expected_volume_mm3": 690.8320000000002,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        }
+      },
+      "bounds": [
+        [
+          -62.6,
+          -51.7,
+          0.0
+        ],
+        [
+          62.400000000000006,
+          50.1,
+          2.0
+        ]
+      ],
+      "glb": "GLB/p1-r2/flat.glb"
+    },
+    "relief": {
+      "parts": {
+        "backing-black": {
+          "components": 179,
+          "faces": 10532,
+          "pixel_area": 1011482,
+          "bounds": [
+            [
+              -62.6,
+              -51.7,
+              0.0
+            ],
+            [
+              62.400000000000006,
+              50.1,
+              1.2
+            ]
+          ],
+          "volume_mm3": 12137.784,
+          "expected_volume_mm3": 12137.784000000001,
+          "z0": 0,
+          "depth": 1.2,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "black-low": {
+          "components": 43,
+          "faces": 12836,
+          "pixel_area": 76975,
+          "bounds": [
+            [
+              -39.1,
+              -19.0,
+              1.2
+            ],
+            [
+              54.800000000000004,
+              37.7,
+              1.6
+            ]
+          ],
+          "volume_mm3": 307.9000000000001,
+          "expected_volume_mm3": 307.9000000000001,
+          "z0": 1.2,
+          "depth": 0.4,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "black-middle": {
+          "components": 68,
+          "faces": 72920,
+          "pixel_area": 339222,
+          "bounds": [
+            [
+              -62.300000000000004,
+              -51.400000000000006,
+              1.2
+            ],
+            [
+              62.2,
+              49.900000000000006,
+              2.0
+            ]
+          ],
+          "volume_mm3": 2713.776000000001,
+          "expected_volume_mm3": 2713.7760000000007,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "black-high": {
+          "components": 22,
+          "faces": 20340,
+          "pixel_area": 57463,
+          "bounds": [
+            [
+              -59.0,
+              -34.4,
+              1.2
+            ],
+            [
+              31.5,
+              -2.9000000000000004,
+              2.4
+            ]
+          ],
+          "volume_mm3": 689.5559999999997,
+          "expected_volume_mm3": 689.5560000000002,
+          "z0": 1.2,
+          "depth": 1.2,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "gray-low": {
+          "components": 167,
+          "faces": 8500,
+          "pixel_area": 44671,
+          "bounds": [
+            [
+              -39.1,
+              -19.0,
+              1.2
+            ],
+            [
+              54.900000000000006,
+              36.800000000000004,
+              1.6
+            ]
+          ],
+          "volume_mm3": 178.6840000000001,
+          "expected_volume_mm3": 178.68400000000005,
+          "z0": 1.2,
+          "depth": 0.4,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "gray-middle": {
+          "components": 3577,
+          "faces": 85548,
+          "pixel_area": 175183,
+          "bounds": [
+            [
+              -62.400000000000006,
+              -51.5,
+              1.2
+            ],
+            [
+              62.300000000000004,
+              50.0,
+              2.0
+            ]
+          ],
+          "volume_mm3": 1401.464,
+          "expected_volume_mm3": 1401.4640000000004,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "gray-high": {
+          "components": 934,
+          "faces": 25636,
+          "pixel_area": 71702,
+          "bounds": [
+            [
+              -59.1,
+              -33.6,
+              1.2
+            ],
+            [
+              31.700000000000003,
+              -2.8000000000000003,
+              2.4
+            ]
+          ],
+          "volume_mm3": 860.4240000000003,
+          "expected_volume_mm3": 860.4240000000001,
+          "z0": 1.2,
+          "depth": 1.2,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "white-low": {
+          "components": 7,
+          "faces": 4740,
+          "pixel_area": 10975,
+          "bounds": [
+            [
+              -27.8,
+              17.3,
+              1.2
+            ],
+            [
+              52.400000000000006,
+              34.800000000000004,
+              1.6
+            ]
+          ],
+          "volume_mm3": 43.90000000000007,
+          "expected_volume_mm3": 43.90000000000001,
+          "z0": 1.2,
+          "depth": 0.4,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "white-middle": {
+          "components": 967,
+          "faces": 34984,
+          "pixel_area": 109814,
+          "bounds": [
+            [
+              -62.6,
+              -51.7,
+              1.2
+            ],
+            [
+              62.400000000000006,
+              50.1,
+              2.0
+            ]
+          ],
+          "volume_mm3": 878.5120000000002,
+          "expected_volume_mm3": 878.5120000000002,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "white-high": {
+          "components": 132,
+          "faces": 12740,
+          "pixel_area": 33536,
+          "bounds": [
+            [
+              -59.1,
+              -32.7,
+              1.2
+            ],
+            [
+              22.400000000000002,
+              -3.4000000000000004,
+              2.4
+            ]
+          ],
+          "volume_mm3": 402.4320000000001,
+          "expected_volume_mm3": 402.4320000000001,
+          "z0": 1.2,
+          "depth": 1.2,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "deep-blue-high": {
+          "components": 7,
+          "faces": 2240,
+          "pixel_area": 5587,
+          "bounds": [
+            [
+              -27.8,
+              -29.8,
+              1.2
+            ],
+            [
+              -6.6000000000000005,
+              -24.0,
+              2.4
+            ]
+          ],
+          "volume_mm3": 67.04400000000004,
+          "expected_volume_mm3": 67.04400000000001,
+          "z0": 1.2,
+          "depth": 1.2,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "glass-mix-low": {
+          "components": 6,
+          "faces": 8724,
+          "pixel_area": 85403,
+          "bounds": [
+            [
+              -31.5,
+              14.100000000000001,
+              1.2
+            ],
+            [
+              53.5,
+              37.1,
+              1.6
+            ]
+          ],
+          "volume_mm3": 341.612,
+          "expected_volume_mm3": 341.6120000000001,
+          "z0": 1.2,
+          "depth": 0.4,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "glass-mix-middle": {
+          "components": 3,
+          "faces": 172,
+          "pixel_area": 122,
+          "bounds": [
+            [
+              38.0,
+              30.400000000000002,
+              1.2
+            ],
+            [
+              46.1,
+              32.9,
+              2.0
+            ]
+          ],
+          "volume_mm3": 0.9760000000000014,
+          "expected_volume_mm3": 0.9760000000000002,
+          "z0": 1.2,
+          "depth": 0.8,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        },
+        "glass-mix-high": {
+          "components": 268,
+          "faces": 3264,
+          "pixel_area": 829,
+          "bounds": [
+            [
+              -27.900000000000002,
+              -29.900000000000002,
+              1.2
+            ],
+            [
+              -6.6000000000000005,
+              -24.0,
+              2.4
+            ]
+          ],
+          "volume_mm3": 9.947999999999974,
+          "expected_volume_mm3": 9.948,
+          "z0": 1.2,
+          "depth": 1.2,
+          "watertight_indexed": true,
+          "winding_consistent": true
+        }
+      },
+      "bounds": [
+        [
+          -62.6,
+          -51.7,
+          0.0
+        ],
+        [
+          62.400000000000006,
+          50.1,
+          2.4
+        ]
+      ],
+      "glb": "GLB/p1-r2/relief.glb"
+    }
+  }
+}
