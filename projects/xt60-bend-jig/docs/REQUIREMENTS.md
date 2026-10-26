@@ -497,3 +497,11 @@ single rotary input with two-hand direct counter-twist under `REQ-010`.
 | `REQ-009`–`REQ-026` | P17-I07-R1 source, tests, ten STEP exports, frozen visuals, P17-C07/P17-V07/P17-R07 | accepted for digital CAD/export/Viewer readiness |
 | `REQ-013`, `REQ-014`, `PHYS-007` | Future permanent-cap coupon | pending physical |
 | `PHYS-008`–`PHYS-012` | Future PETG assembly and use tests | pending physical |
+
+
+## Offline rail-customizer recovery (2026-10-26)
+
+RC-1 through RC-6 in [the recovery brief](iterations/2026-10-26-rail-customizer-recovery/BRIEF.md)
+govern both OPEN/END hole editing, full inverse local rails, default recovery,
+portable JSON/SVG output and diagnostic limits. Simulator experiments do not
+change accepted CAD or grant fabrication/physical acceptance.

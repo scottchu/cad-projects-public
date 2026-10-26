@@ -1,6 +1,24 @@
 # XT60 bend jig project state
 
-Last updated: `2026-09-10`
+Last updated: `2026-10-26`
+
+## Active iteration
+
+- Active iteration: [rail customizer recovery](docs/iterations/2026-10-26-rail-customizer-recovery/BRIEF.md).
+- Recreate the missing offline HTML simulator, with both OPEN and END hole
+  dragging explicitly requested. Candidate is `preview/xt60-rail-customizer.html`.
+- Current gate: PR delivery; bounded simulator review PASS. User decision: none.
+- Proven self-checks: archived P20 rail/profile math and coupon web witness;
+  offline Chrome OPEN/END drag, fixed local cuts during scrub, keyboard edits,
+  JSON save/load/rejection, SVG exports, reset/play and desktop/mobile layout.
+- CAD baseline stays P19 R1; P25 remains bounded first-CAD preview history with
+  its product-level review/physical gates unresolved. No CAD regenerated.
+- Canonical ordered backlog: RC-1 `partial` simulator recovery/review, source
+  and UI evidence in the recovery iteration; RC-2 `deferred` P25 user preview
+  decision, CAD evidence in the P25 iteration; RC-3 `deferred` one-side physical
+  latch/hinge coupon, contingent on product decision and separate authority.
+
+## Preserved mechanism state (2026-09-10)
 
 ## Baseline
 
@@ -8,9 +26,9 @@ Last updated: `2026-09-10`
 - P19 R1 remains the latest accepted digital mechanism baseline. P25 is a
   later first-CAD concept preview with a separate, narrower acceptance state.
 
-## Active iteration
+## Prior mechanism iteration
 
-- The sole current iteration is `p25-r1-rear-loop-front-pusher-clamp`.
+- The prior mechanism iteration is `p25-r1-rear-loop-front-pusher-clamp`.
 - Frozen P25 source candidate: commit `a1932fb19ffeb6d584153d1c201ebe24b2e06d6a`;
   candidate-manifest file SHA-256
   `88fdcd25585c35277d66a769b5c35208f8e5b8c7534d93efdbcb57493638a845`
@@ -67,6 +85,12 @@ Last updated: `2026-09-10`
 - No geometry was redesigned or regenerated during reconciliation.
 
 ## Next action
+
+Complete the simulator's independent review and PR delivery. Open
+`preview/xt60-rail-customizer.html` for user evaluation; no product-design
+decision is required to finish this recovery. See the active iteration HANDOFF.
+
+## Preserved mechanism next gate
 
 Obtain independent validation, critique, and formal review of the delivery
 candidate. After delivery, the product-level next gate remains explicit user

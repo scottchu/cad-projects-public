@@ -340,3 +340,14 @@ Entries preserve observed evidence separately from CAD inference. Legacy source 
   modeled.
 - Physical acceptance remains pending for cap/keeper retention, axle/hex fit,
   limiting-web PETG outcome, grip usefulness, heat, wear and self-lock.
+
+
+## 2026-10-26 — Rail customizer recovery
+
+The visualization-only HTML was missing. The saved P20 R4 profile and equations
+preserve its default geometry, not its exact interface. Keep the recovered
+standalone artifact, source and tests project-owned. Extreme diagonal endpoints
+revealed viewport clipping after inverse rotation: endpoint Euclidean norms
+plus slot envelopes bound linear paths in every rotating frame. Sampled rail
+diagnostics remain distinct from solid clearance, manufacturing and physical
+acceptance. See the 2026-10-26-rail-customizer-recovery iteration for evidence.

@@ -1,5 +1,14 @@
 # Next agent
 
+Current task is the [offline rail customizer recovery](docs/iterations/2026-10-26-rail-customizer-recovery/HANDOFF.md).
+Start there, then its BRIEF, DESIGN, VALIDATION and REVIEW. Open
+`preview/xt60-rail-customizer.html`; edit `preview/rail-customizer/` and rebuild
+with the documented npm command. Both OPEN and END editing are required.
+P19 stays the accepted digital baseline. P25 state below is preserved mechanism
+history, not the active simulator task. Do not regenerate CAD for this recovery.
+
+## Preserved P25 restart route
+
 Read `PROJECT_STATE.md`, `docs/REQUIREMENTS.md`, `docs/EXPERIENCE.md`,
 `docs/decisions/README.md`, then every file under
 `docs/iterations/p25-r1-rear-loop-front-pusher-clamp/` before changing this
@@ -8,7 +17,7 @@ project. Also read the delivery records under
 
 ## Exact resume point
 
-- Sole current iteration: `p25-r1-rear-loop-front-pusher-clamp`.
+- Prior mechanism iteration: `p25-r1-rear-loop-front-pusher-clamp`.
 - Frozen first-CAD candidate: `a1932fb19ffeb6d584153d1c201ebe24b2e06d6a`.
 - Candidate-manifest file SHA-256:
   `88fdcd25585c35277d66a769b5c35208f8e5b8c7534d93efdbcb57493638a845`

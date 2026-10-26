@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>XT60 rail customizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <div><h1>XT60 rail customizer</h1><p>Move the holes. See the rails they require.</p></div>
+    <div class="file-actions"><button id="load">Load JSON</button><button id="save">Save JSON</button><button id="reset">Restore P20 default</button></div>
+    <input id="file" type="file" accept=".json,application/json" hidden>
+  </header>
+  <main class="layout">
+    <section class="drawing-area" aria-label="Rail drawings">
+      <div class="editor-heading"><div><h2>Fixed inner plate</h2><p>Choose OPEN or END, then drag the three colored holes.</p></div><span class="units">FRONT · YZ · mm</span></div>
+      <div class="edit-modes"><button data-edit="open" aria-pressed="true">Edit OPEN circles</button><button data-edit="end" aria-pressed="false">Edit END diamonds</button><span id="selected-hole">Drag a hole or use the coordinates.</span></div>
+      <svg id="editor" viewBox="-30 -30 60 60" role="group" aria-label="Editable OPEN and END hole positions. Numeric controls are also available." tabindex="0"></svg>
+      <div class="motion">
+        <div class="motion-header"><h2>Motion preview</h2><output id="state-label">OPEN · 0%</output></div>
+        <label class="sr-only" for="progress">Motion progress</label><input id="progress" type="range" min="0" max="1000" value="0">
+        <div class="motion-actions"><button data-state="0">Open</button><button data-state="0.5">Mid</button><button data-state="1">End</button><button id="play" aria-pressed="false">Play motion</button><span id="angles"></span></div>
+      </div>
+      <div class="outer-views">
+        <section><div class="view-heading"><h2>Left outer · local</h2><button data-export="left">Export SVG</button></div><svg id="left-view" viewBox="-30 -30 60 60" role="img" aria-label="Complete left outer rail cuts in the fixed local plate frame"></svg><p id="left-metrics" class="metrics"></p></section>
+        <section><div class="view-heading"><h2>Right outer · local</h2><button data-export="right">Export SVG</button></div><svg id="right-view" viewBox="-30 -30 60 60" role="img" aria-label="Complete right outer rail cuts in the fixed local plate frame"></svg><p id="right-metrics" class="metrics"></p></section>
+      </div>
+      <p class="frame-note">Outer drawings stay in each plate’s own coordinates. Slots stay fixed; white rod markers move through them. The default left and right rotations are opposite; your travel settings control their direction.</p>
+    </section>
+    <aside class="controls" aria-label="Profile controls">
+      <section><h2>Hole positions</h2><p class="hint">Y → right · Z ↑ up. Coordinates are in mm.</p><div id="rod-controls"></div></section>
+      <section class="parameters"><h2>Plates &amp; travel</h2>
+        <label>Left rotation <span><input id="leftTravelDeg" type="number" min="-180" max="180" step="1"> °</span></label>
+        <label>Right rotation <span><input id="rightTravelDeg" type="number" min="-180" max="180" step="1"> °</span></label>
+        <label>Inner radius <span><input id="innerRadiusMm" type="number" min="5" max="60" step="0.5"> mm</span></label>
+        <label>Outer radius <span><input id="outerRadiusMm" type="number" min="5" max="60" step="0.5"> mm</span></label>
+        <label>Rod slot diameter <span><input id="slotDiameterMm" type="number" min="0.1" max="15" step="0.05"> mm</span></label>
+        <p id="axle-note" class="hint">Rod stock Ø4 × 50 mm. Fixed axle at (−10, −10), guide Ø7.90 mm. Rotation center at (0, 0).</p>
+      </section>
+      <section><div class="view-heading"><h2>Geometry checks</h2><button data-export="inner">Inner SVG</button></div><div id="diagnostics"></div><p class="hint">361 centerline samples. Web estimates can overestimate continuous clearance; negative means overlapping envelopes. Inner rim includes a conservative AF8.15 axle-hex envelope; inner web compares rod tracks only. Target rim/web ≥2.20 mm is a warning threshold, not certification.</p></section>
+      <details><summary>How the rails are calculated</summary><p>The fixed inner track joins each OPEN and END point with a straight line. At progress u, the rod is at P(u). A rotating outer plate needs the local slot R(−θu)P(u). Rotating that slot point forward by θu returns the same rod position.</p><p>The purple axle stays fixed in the world. Its outer guide is the inverse rotation of the profile’s fixed axle position, (−10, −10) by default. The inner purple circle is an axle reference, not its hex-bore cut.</p><p>Recovered from the saved P20 R4 profile. This interface is a reconstruction. Arch/bias controls from the missing page are not recovered.</p></details>
+      <p class="scope">Kinematic study only. No force, locking, printability, wire/XT60 collision or physical-fit approval. The archived default has thin webs; P19 remains the accepted digital mechanism baseline.</p>
+    </aside>
+  </main>
+  <footer><span id="profile-state">Recovered P20 profile</span><span id="status" role="status" aria-live="polite"></span></footer>
+  <script src="geometry.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
