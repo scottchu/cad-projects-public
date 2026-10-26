@@ -112,3 +112,7 @@ Resolve [the external workflow binding](docs/workflows-binding.json) before sele
 ## Contributing changes
 
 Start trunk-bound work from a non-`main` branch and use the [pull request template](.github/pull_request_template.md) for the critical delivery summary and evidence pointers. Repository continuity files remain authoritative. The machine-readable delivery contract is in [`.github/repository-policy.toml`](.github/repository-policy.toml); only an explicit user override for a specific change bypasses the pull-request route. Required validation runs locally or through delegated validation, not hosted CI workflows.
+
+## Repository privacy
+
+See [privacy policy and local staged-file checks](docs/privacy.md). Personal originals and real account activity belong outside Git; use synthetic fixtures.

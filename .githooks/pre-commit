@@ -1,0 +1,3 @@
+#!/bin/sh
+set -eu
+uv run --no-sync python scripts/check_private_material.py
