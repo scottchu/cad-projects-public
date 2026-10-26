@@ -3,7 +3,9 @@
 Current request revision3: remove mode toggle; drag each endpoint directly,
 translate whole rail by dragging it, and shape each curve using its midpoint dot.
 Implemented and checked on the existing private Tailscale URL; bounded
-independent review passed. PR delivery receipt follows. Exact source/contract candidate is CANDIDATE.sha256.
+independent review passed. Delivered in [PR #27](https://github.com/scottchu/cad-projects/pull/27),
+source commit 0855edb5e4d675d900d4e8723251c8ceb648e96e. Remote branch and
+PR head/base read back successfully; base main, open, not merged. Exact source/contract candidate is CANDIDATE.sha256.
 The prior recovery iteration remains historical and its fingerprint is preserved.
 
 Hosting: loopback5208, Tailscale HTTPS8480; only the single HTML is served.
@@ -29,3 +31,10 @@ Cleanup preserves active scratch/rail-hosting runtime/PID/log and the worktree
 because the preview reads its HTML. Diagnostic browser output and dependency
 symlink can be retired after records readback; browser reproduction is tracked
 in this iteration. Primary main and unrelated worktrees remain untouched.
+
+
+Browser diagnostics and PR body scratch were retired after durable regression
+code/results were saved and read back. Removed the task dependency symlink and
+ignored build/cache output. Active scratch/rail-hosting, its PID/log and the
+worktree remain required by the live preview. Flow-reflect selection remains
+disabled for this task directory. No unrelated cleanup performed.
