@@ -351,3 +351,12 @@ revealed viewport clipping after inverse rotation: endpoint Euclidean norms
 plus slot envelopes bound linear paths in every rotating frame. Sampled rail
 diagnostics remain distinct from solid clearance, manufacturing and physical
 acceptance. See the 2026-10-26-rail-customizer-recovery iteration for evidence.
+
+
+## 2026-10-26 — Direct manipulation includes stationary paths
+
+Both endpoint handles must remain directly available; line dragging translates
+the full path and a midpoint dot controls its bow. A zero-length stationary
+Green path still needs a round-cap line hit target. Noninteractive rod markers
+must ignore pointer events so they cannot swallow that target. Actual live
+Chrome hit-testing and whole-Green translation now cover this regression.

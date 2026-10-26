@@ -13,7 +13,7 @@
     return {
       schema: 'xt60-rail-customizer/v1', units: 'mm',
       rods: names.map((name, i) => ({name,
-        open: rotate([16, 0], [118, 45, -23][i]),
+        open: rotate([16, 0], [118, 45, -23][i]), bendMm: [0, 0],
         end: [baseEnds[i][0] - 7.3241343806549555, baseEnds[i][1] - 2.77402040577638]})),
       leftTravelDeg: 45, rightTravelDeg: -45,
       innerRadiusMm: 20, outerRadiusMm: 22.5, slotDiameterMm: 4.15,
@@ -34,7 +34,7 @@
     if (!Array.isArray(value.rods) || value.rods.length !== 3) fail('The profile needs exactly Blue, Orange and Green rods.');
     const result = {schema: value.schema, units: 'mm', rods: value.rods.map((rod, i) => {
       if (!rod || rod.name !== names[i]) fail('Keep the rod order Blue, Orange, Green.');
-      return {name: rod.name, open: point(rod.open, `${rod.name} OPEN`), end: point(rod.end, `${rod.name} END`)};
+      return {name: rod.name, open: point(rod.open, `${rod.name} OPEN`), end: point(rod.end, `${rod.name} END`), bendMm: rod.bendMm === undefined ? [0, 0] : point(rod.bendMm, `${rod.name} curve offset`)};
     })};
     for (const key of ['leftTravelDeg', 'rightTravelDeg']) result[key] = finite(value[key], -180, 180, key);
     for (const key of ['innerRadiusMm', 'outerRadiusMm']) result[key] = finite(value[key], 5, 60, key);
@@ -43,7 +43,7 @@
     return result;
   }
   function world(rod, u) {
-    return rod.open.map((v, j) => v + (rod.end[j] - v) * u);
+    return rod.open.map((v, j) => v + (rod.end[j] - v) * u + 4 * u * (1 - u) * (rod.bendMm?.[j] ?? 0));
   }
   const travel = (p, frame) => frame === 'left' ? p.leftTravelDeg : frame === 'right' ? p.rightTravelDeg : 0;
   const local = (p, rod, u, frame) => rotate(world(rod, u), -travel(p, frame) * u);
@@ -51,10 +51,10 @@
   const sample = fn => Array.from({length: 361}, (_, i) => fn(i / 360));
   const paths = (p, frame) => p.rods.map(rod => sample(u => local(p, rod, u, frame)));
   function viewBound(p) {
-    // A line segment's norm is bounded by its endpoint norms; rotation preserves
-    // that norm. This encloses every frame/state, including diagonal extremes.
+    // The linear endpoint norm plus bend norm bounds the complete bowed path;
+    // the bump weight is in 0..1 and rotation preserves norm.
     return Math.max(27, p.innerRadiusMm + 5, p.outerRadiusMm + 5,
-      ...p.rods.flatMap(rod => [rod.open, rod.end].map(v => Math.hypot(...v) + p.slotDiameterMm / 2 + 7)),
+      ...p.rods.flatMap(rod => [rod.open, rod.end].map(v => Math.hypot(...v) + Math.hypot(...(rod.bendMm ?? [0, 0])) + p.slotDiameterMm / 2 + 7)),
       Math.hypot(...p.axle) + p.axleGuideDiameterMm / 2 + 7);
   }
   const length = points => points.slice(1).reduce((sum, v, i) => sum + Math.hypot(v[0] - points[i][0], v[1] - points[i][1]), 0);

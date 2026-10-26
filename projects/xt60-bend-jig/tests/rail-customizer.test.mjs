@@ -69,11 +69,36 @@ test('viewport encloses rotated extreme diagonal endpoints and complete slot env
   p.rods[0].open = [60, 60]; p.rods[0].end = [60, 60];
   p.rods[1].open = [-60, 60]; p.rods[1].end = [-60, -60];
   p.leftTravelDeg = 180; p.rightTravelDeg = -180; p.axle = [-60, 60];
+  p.rods[0].bendMm = [60, -60]; p.rods[1].bendMm = [-60, 60];
   const bound = G.viewBound(p);
   for (const frame of ['inner', 'left', 'right']) {
     for (const rail of G.paths(p, frame)) for (const point of rail) {
       for (const coord of point) assert.ok(Math.abs(coord) + p.slotDiameterMm / 2 < bound);
     }
     for (const point of G.sample(u => G.axleLocal(p, u, frame))) for (const coord of point) assert.ok(Math.abs(coord) + p.axleGuideDiameterMm / 2 < bound);
+  }
+});
+
+test('curve dot determines midpoint while preserving endpoints and both inverse frames', () => {
+  const p = G.defaults(), rod = p.rods[0]; rod.bendMm = [3, -5];
+  assert.deepEqual(G.world(rod, 0), rod.open);
+  G.world(rod, 1).forEach((v, j) => near(v, rod.end[j]));
+  G.world(rod, .5).forEach((v, j) => near(v, (rod.open[j] + rod.end[j]) / 2 + rod.bendMm[j]));
+  for (const frame of ['left', 'right']) for (let n = 0; n <= 360; n++) {
+    const u = n / 360;
+    G.rotate(G.local(p, rod, u, frame), G.travel(p, frame) * u).forEach((v, j) => near(v, G.world(rod, u)[j]));
+  }
+  const delta = [7, -2], shifted = {...rod, open: rod.open.map((v, j) => v + delta[j]), end: rod.end.map((v, j) => v + delta[j])};
+  for (const u of [0, .25, .5, .75, 1]) G.world(shifted, u).forEach((v, j) => near(v, G.world(rod, u)[j] + delta[j]));
+  for (const frame of ['inner', 'left', 'right']) assert.ok(G.svg(p, frame).includes(G.pathData(G.paths(p, frame)[0])));
+});
+
+test('legacy profiles migrate to zero bend and new curves survive JSON', () => {
+  const old = G.defaults(); old.rods.forEach(rod => delete rod.bendMm);
+  assert.deepEqual(G.validate(old), G.defaults());
+  const current = G.defaults(); current.rods[2].bendMm = [-4.5, 7.25];
+  assert.deepEqual(G.validate(JSON.parse(JSON.stringify(current))), current);
+  for (const bad of [null, [1], [0, Infinity], [61, 0]]) {
+    const p = G.defaults(); p.rods[0].bendMm = bad; assert.throws(() => G.validate(p));
   }
 });

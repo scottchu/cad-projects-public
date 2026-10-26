@@ -15,8 +15,8 @@
   </header>
   <main class="layout">
     <section class="drawing-area" aria-label="Rail drawings">
-      <div class="editor-heading"><div><h2>Fixed inner plate</h2><p>Choose OPEN or END, then drag the three colored holes.</p></div><span class="units">FRONT · YZ · mm</span></div>
-      <div class="edit-modes"><button data-edit="open" aria-pressed="true">Edit OPEN circles</button><button data-edit="end" aria-pressed="false">Edit END diamonds</button><span id="selected-hole">Drag a hole or use the coordinates.</span></div>
+      <div class="editor-heading"><div><h2>Fixed inner plate</h2><p>Drag either end, move the whole line, or bend it with the curve dot.</p></div><span class="units">FRONT · YZ · mm</span></div>
+      <div class="edit-legend"><span>Circle O: OPEN · Diamond E: END · Small dot: curve</span><span id="selected-hole">Drag an endpoint, path or curve dot.</span></div>
       <svg id="editor" viewBox="-30 -30 60 60" role="group" aria-label="Editable OPEN and END hole positions. Numeric controls are also available." tabindex="0"></svg>
       <div class="motion">
         <div class="motion-header"><h2>Motion preview</h2><output id="state-label">OPEN · 0%</output></div>
@@ -30,7 +30,7 @@
       <p class="frame-note">Outer drawings stay in each plate’s own coordinates. Slots stay fixed; white rod markers move through them. The default left and right rotations are opposite; your travel settings control their direction.</p>
     </section>
     <aside class="controls" aria-label="Profile controls">
-      <section><h2>Hole positions</h2><p class="hint">Y → right · Z ↑ up. Coordinates are in mm.</p><div id="rod-controls"></div></section>
+      <section><h2>Hole positions &amp; curves</h2><p class="hint">Y → right · Z ↑ up. Curve values offset the path midpoint; zero gives a straight path. All values in mm.</p><div id="rod-controls"></div></section>
       <section class="parameters"><h2>Plates &amp; travel</h2>
         <label>Left rotation <span><input id="leftTravelDeg" type="number" min="-180" max="180" step="1"> °</span></label>
         <label>Right rotation <span><input id="rightTravelDeg" type="number" min="-180" max="180" step="1"> °</span></label>
@@ -40,7 +40,7 @@
         <p id="axle-note" class="hint">Rod stock Ø4 × 50 mm. Fixed axle at (−10, −10), guide Ø7.90 mm. Rotation center at (0, 0).</p>
       </section>
       <section><div class="view-heading"><h2>Geometry checks</h2><button data-export="inner">Inner SVG</button></div><div id="diagnostics"></div><p class="hint">361 centerline samples. Web estimates can overestimate continuous clearance; negative means overlapping envelopes. Inner rim includes a conservative AF8.15 axle-hex envelope; inner web compares rod tracks only. Target rim/web ≥2.20 mm is a warning threshold, not certification.</p></section>
-      <details><summary>How the rails are calculated</summary><p>The fixed inner track joins each OPEN and END point with a straight line. At progress u, the rod is at P(u). A rotating outer plate needs the local slot R(−θu)P(u). Rotating that slot point forward by θu returns the same rod position.</p><p>The purple axle stays fixed in the world. Its outer guide is the inverse rotation of the profile’s fixed axle position, (−10, −10) by default. The inner purple circle is an axle reference, not its hex-bore cut.</p><p>Recovered from the saved P20 R4 profile. This interface is a reconstruction. Arch/bias controls from the missing page are not recovered.</p></details>
+      <details><summary>How the rails are calculated</summary><p>The inner path interpolates OPEN and END, plus a smooth quadratic bend: P(u) = (1−u) OPEN + u END + 4u(1−u) curve offset. The curve dot is the actual midpoint P(0.5). Zero offset restores a straight path. A rotating outer plate needs the local slot R(−θu)P(u); rotating that point forward returns the same rod position.</p><p>Drag a line to translate both endpoints together. Drag either endpoint to move it independently, or the curve dot to bend the path. Controls that coincide are spread apart with short leader lines so each stays draggable.</p><p>The purple axle stays fixed in the world. Its outer guide is the inverse rotation of the profile’s fixed axle position, (−10, −10) by default. The inner purple circle is an axle reference, not its hex-bore cut.</p><p>The default geometry is recovered from P20 R4. Curve-dot editing is a reconstructed feature; the missing page’s original curve algorithm is not asserted.</p></details>
       <p class="scope">Kinematic study only. No force, locking, printability, wire/XT60 collision or physical-fit approval. The archived default has thin webs; P19 remains the accepted digital mechanism baseline.</p>
     </aside>
   </main>

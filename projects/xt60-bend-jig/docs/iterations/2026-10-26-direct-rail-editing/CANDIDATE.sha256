@@ -1,0 +1,9 @@
+e64998b660e92180a08a264a8c35ab6c689bce3e5030254385ee2aba3b190287  projects/xt60-bend-jig/docs/iterations/2026-10-26-direct-rail-editing/BRIEF.md
+e0503ba7adef8650d2cf5ebe43e53b67eaee38f2c005d72f4ed486383672b098  projects/xt60-bend-jig/docs/iterations/2026-10-26-direct-rail-editing/DESIGN.md
+5d53e641f4e5132b3bcb1add543889f92549c758e4dc19d7d5cee8da2746458c  projects/xt60-bend-jig/preview/rail-customizer/geometry.js
+f61e5946f6bd64b3c235d2e33ffcf5f3a24e1554b14755dd58ad547de068267e  projects/xt60-bend-jig/preview/rail-customizer/index.html
+7e75ce8dba44023b81ebbf72d587efe7ccda3dd8c858c96d88505a80c12cf12e  projects/xt60-bend-jig/preview/rail-customizer/styles.css
+c74243b18fa3e0d57bb57b4a648df34049f60cbfeb82e36d7fb6376bb640dc73  projects/xt60-bend-jig/preview/rail-customizer/ui.js
+56b9e5144160e73f7a3a439641dc7fcca04caa0ca7c91222cf6348605b9f6cf2  projects/xt60-bend-jig/preview/xt60-rail-customizer.html
+dbbd18bce385549e40c81bbaa4bd632c9c6e2ec2bb2c4dcaf2cf3c4475d07ba3  projects/xt60-bend-jig/scripts/build_rail_customizer.mjs
+f44c9d515bc85c2b0e2a65b3e93baebd4ef1eede0a777014783e05f515d2eb76  projects/xt60-bend-jig/tests/rail-customizer.test.mjs

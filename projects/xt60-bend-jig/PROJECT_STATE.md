@@ -4,16 +4,16 @@ Last updated: `2026-10-26`
 
 ## Active iteration
 
-- Active iteration: [rail customizer recovery](docs/iterations/2026-10-26-rail-customizer-recovery/BRIEF.md).
-- Recreate the missing offline HTML simulator, with both OPEN and END hole
-  dragging explicitly requested. Candidate is `preview/xt60-rail-customizer.html`.
-- Current gate: simulator delivered in [PR #27](https://github.com/scottchu/cad-projects/pull/27), ready for user evaluation. User decision: none required for recovery.
+- Active iteration: [direct rail editing](docs/iterations/2026-10-26-direct-rail-editing/BRIEF.md).
+- Both endpoints are directly draggable, the whole rail translates on line
+  drag, and a curve dot shapes each path. Candidate: `preview/xt60-rail-customizer.html`.
+- Current gate: direct editing delivered in [PR #27](https://github.com/scottchu/cad-projects/pull/27), ready for user evaluation. User decision: none required for recovery.
 - Proven self-checks: archived P20 rail/profile math and coupon web witness;
   offline Chrome OPEN/END drag, fixed local cuts during scrub, keyboard edits,
   JSON save/load/rejection, SVG exports, reset/play and desktop/mobile layout.
 - CAD baseline stays P19 R1; P25 remains bounded first-CAD preview history with
   its product-level review/physical gates unresolved. No CAD regenerated.
-- Canonical ordered backlog: RC-1 `delivered` simulator recovery, source
+- Canonical ordered backlog: RC-1 `delivered` simulator recovery; DE-1 `delivered` direct rail editing, source
   and UI evidence in the recovery iteration; RC-2 `deferred` P25 user preview
   decision, CAD evidence in the P25 iteration; RC-3 `deferred` one-side physical
   latch/hinge coupon, contingent on product decision and separate authority.

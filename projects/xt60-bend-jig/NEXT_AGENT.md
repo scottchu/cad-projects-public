@@ -1,9 +1,9 @@
 # Next agent
 
-Current task is the [offline rail customizer recovery](docs/iterations/2026-10-26-rail-customizer-recovery/HANDOFF.md).
+Current task is [direct rail editing](docs/iterations/2026-10-26-direct-rail-editing/HANDOFF.md).
 Start there, then its BRIEF, DESIGN, VALIDATION and REVIEW. Open
 `preview/xt60-rail-customizer.html`; edit `preview/rail-customizer/` and rebuild
-with the documented npm command. Both OPEN and END editing are required.
+with the documented npm command. Both endpoints, whole-path translation and midpoint curve-dot editing are required; no mode toggle.
 P19 stays the accepted digital baseline. P25 state below is preserved mechanism
 history, not the active simulator task. Do not regenerate CAD for this recovery.
 

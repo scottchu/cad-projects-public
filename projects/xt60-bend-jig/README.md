@@ -124,14 +124,17 @@ The service always uses the canonical repository uv interpreter at
 
 Open [`preview/xt60-rail-customizer.html`](preview/xt60-rail-customizer.html)
 directly in a browser. This self-contained offline page recreates the missing
-P20 rail customizer: drag the three OPEN and END hole positions, scrub motion,
+P20 rail customizer: drag either endpoint, drag a rail to move its whole path,
+shape it with a curve dot, scrub motion,
 inspect fixed-inner and both outer-local rail paths, save/load JSON and export
 SVG drawings in mm. It does not change accepted CAD or establish fabrication
 or physical acceptance. The archived P20 default's thin-web warnings remain.
 
 Editable source is in `preview/rail-customizer/`. Rebuild the standalone HTML
 from the repository root with `npm run build:rails --workspace projects/xt60-bend-jig`.
-Recovery evidence is in `docs/iterations/2026-10-26-rail-customizer-recovery/`.
+Initial recovery evidence is in `docs/iterations/2026-10-26-rail-customizer-recovery/`;
+current interaction evidence is in `docs/iterations/2026-10-26-direct-rail-editing/`.
+Live private preview: <https://mac-mini.duckbill-ionian.ts.net:8480/>.
 
 ### Historical cam mechanism study
 

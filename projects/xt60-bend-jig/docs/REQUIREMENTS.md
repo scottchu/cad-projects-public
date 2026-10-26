@@ -505,3 +505,8 @@ RC-1 through RC-6 in [the recovery brief](iterations/2026-10-26-rail-customizer-
 govern both OPEN/END hole editing, full inverse local rails, default recovery,
 portable JSON/SVG output and diagnostic limits. Simulator experiments do not
 change accepted CAD or grant fabrication/physical acceptance.
+
+
+Direct interaction correction: [DE-1..6](iterations/2026-10-26-direct-rail-editing/BRIEF.md)
+remove the OPEN/END toggle, add whole-path translation and a midpoint curve dot.
+Legacy profiles load as straight paths; this is simulator-only curve editing.
