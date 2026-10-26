@@ -31,7 +31,7 @@ Validator independently PASS on the same repaired manifest, including fresh
 offline browser interaction and actual extreme-coordinate clipping regression.
 Canonical command/results and limits are in VALIDATION.md.
 
-No final acceptance decision yet. P19/P25 and fabrication statuses remain as recorded.
+Final bounded disposition is recorded in the formal join below. P19/P25 and fabrication statuses remain as recorded.
 
 
 ## Formal join

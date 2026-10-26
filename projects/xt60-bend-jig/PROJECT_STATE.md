@@ -7,13 +7,13 @@ Last updated: `2026-10-26`
 - Active iteration: [rail customizer recovery](docs/iterations/2026-10-26-rail-customizer-recovery/BRIEF.md).
 - Recreate the missing offline HTML simulator, with both OPEN and END hole
   dragging explicitly requested. Candidate is `preview/xt60-rail-customizer.html`.
-- Current gate: PR delivery; bounded simulator review PASS. User decision: none.
+- Current gate: simulator delivered in [PR #27](https://github.com/scottchu/cad-projects/pull/27), ready for user evaluation. User decision: none required for recovery.
 - Proven self-checks: archived P20 rail/profile math and coupon web witness;
   offline Chrome OPEN/END drag, fixed local cuts during scrub, keyboard edits,
   JSON save/load/rejection, SVG exports, reset/play and desktop/mobile layout.
 - CAD baseline stays P19 R1; P25 remains bounded first-CAD preview history with
   its product-level review/physical gates unresolved. No CAD regenerated.
-- Canonical ordered backlog: RC-1 `partial` simulator recovery/review, source
+- Canonical ordered backlog: RC-1 `delivered` simulator recovery, source
   and UI evidence in the recovery iteration; RC-2 `deferred` P25 user preview
   decision, CAD evidence in the P25 iteration; RC-3 `deferred` one-side physical
   latch/hinge coupon, contingent on product decision and separate authority.
@@ -86,9 +86,9 @@ Last updated: `2026-10-26`
 
 ## Next action
 
-Complete the simulator's independent review and PR delivery. Open
-`preview/xt60-rail-customizer.html` for user evaluation; no product-design
-decision is required to finish this recovery. See the active iteration HANDOFF.
+Open `preview/xt60-rail-customizer.html` for user evaluation. Recovery is delivered
+in PR #27; merge was not requested. See the active iteration HANDOFF for evidence
+and the retained task worktree. No product CAD or fabrication gate was reopened.
 
 ## Preserved mechanism next gate
 

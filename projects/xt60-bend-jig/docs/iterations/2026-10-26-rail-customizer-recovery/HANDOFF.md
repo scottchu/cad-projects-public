@@ -1,7 +1,9 @@
 # Rail customizer handoff
 
-Status: reconstructed simulator implemented and self-checked; independent
-review/edge-case repair and PR delivery in progress. Root owns integration.
+Status: offline simulator implemented, checked, independently critiqued/validated,
+formally joined from the evidence packet and delivered in PR #27. Root completed
+integration. The frozen BRIEF preserves the initial plan; this handoff records
+final execution status.
 
 Open `preview/xt60-rail-customizer.html` directly in a browser. Source lives in
 `preview/rail-customizer/`; rebuild from repository root with
@@ -28,5 +30,24 @@ and pending PR are safely retained; no merge authority was requested.
 Independent critic/validator and formal evidence join PASS on the repaired
 candidate. The formal reviewer used a relayed packet because its direct tools
 failed; exact limits are in REVIEW. All required local checks passed. Root
-opened the standalone HTML via macOS. PR commit/push/readback is the remaining
-delivery step. Temporary dependency symlink removed; canonical install retained.
+opened the standalone HTML via macOS. PR commit/push/readback is complete. Temporary dependency symlink removed; canonical install retained.
+
+
+## Delivery and cleanup
+
+[PR #27](https://github.com/scottchu/cad-projects/pull/27), source commit
+`51aea289a2ea73a818062b837c24ead4a9c0b78d`. Remote branch and PR head/base
+were read back: branch recreate-xt60-rail-customizer, base main, open and not
+merged. Documentation receipt commit follows without changing the frozen source.
+No hosted CI is configured; all required local checks passed. No deployment
+service applies: delivery is the offline single-file HTML, opened with macOS.
+
+Task-owned browser outputs, raw logs and scratch scripts were inspected and
+retired after their useful findings were saved and read back in VALIDATION/REVIEW.
+No active task browser process remained. Dependency symlink removed; shared root
+install and sole root Python environment retained. The clean task worktree and
+branch are retained because the user-facing HTML link lives there and PR #27 is
+open. Primary main remains clean and unchanged; no unrelated worktree removed.
+
+Closure reflection selection checked: flow-reflect is disabled for this task
+working directory. Ordinary knowledge reconciliation and cleanup completed.
